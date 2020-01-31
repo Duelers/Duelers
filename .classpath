@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Client/src"/>
+	<classpathentry kind="src" path="Server/src"/>
+	<classpathentry kind="src" path="tools/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/yoelkastro/Downloads/gson-2.8.6.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rest-client"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/httpcomponents-client-4.5.11"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

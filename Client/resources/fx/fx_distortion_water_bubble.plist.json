@@ -1,0 +1,15 @@
+{
+  "frameWidth": 272,
+  "frameHeight": 272,
+  "frameDuration": 100,
+  "extraX": 0.0,
+  "extraY": 0.0,
+  "lists": {
+    "frames": [
+      {
+        "x": 2,
+        "y": 2
+      }
+    ]
+  }
+}
