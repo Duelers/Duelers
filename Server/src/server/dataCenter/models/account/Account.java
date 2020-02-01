@@ -27,7 +27,7 @@ public class Account {
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
-        this.money = 15000;
+        this.money = 9999999;
         this.collection = new Collection();
         this.accountType = NORMAL;
     }
@@ -98,12 +98,14 @@ public class Account {
         if (card.getPrice() > money) {
             throw new ClientException("account's money isn't enough.");
         }
-        if (card.getRemainingNumber() <= 0) {
-            throw new ClientException("Shop doesn't have any of this card.");
-        }
+        //removed so we can buy as many cards as we want
+        //if (card.getRemainingNumber() <= 0) {
+            //throw new ClientException("Shop doesn't have any of this card.");
+        //}
         collection.addCard(cardName, originalCards, username);
         money -= card.getPrice();
-        DataCenter.getInstance().changeCardNumber(cardName, -1);
+        //removed, no longer needed
+        //DataCenter.getInstance().changeCardNumber(cardName, -1);
     }
 
     public void sellCard(String cardId) throws LogicException {

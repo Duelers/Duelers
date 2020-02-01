@@ -125,7 +125,38 @@ public class DataCenter extends Thread {
             accounts.put(account, null);
             saveAccount(account);
             Server.getInstance().serverPrint(message.getAccountFields().getUsername() + " Is Created!");
+
             login(message);
+
+            //give the player all cards upon registration
+            //cant give all items because player can only own 3
+            Collection originalCards = dataBase.getOriginalCards();
+
+            System.out.println("Starting Heroes");
+                for (Card card : originalCards.getHeroes()) {
+                    buyAllCards(message, card.getName());
+
+                }
+
+            for(int i = 0; i < 3; i++) {
+                System.out.println("Starting Minions");
+                for (Card card : originalCards.getMinions()) {
+                    //this card is bugged, skipped
+                    if(card.getName().equals("Turanian SpearMan")){
+                        continue;
+                    }
+                    buyAllCards(message, card.getName());
+                }
+                System.out.println("Starting Spells");
+                for (Card card : originalCards.getSpells()) {
+                    buyAllCards(message, card.getName());
+                }
+
+                System.out.println("Starting Items");
+                for (Card card : originalCards.getItems()) {
+                    buyAllCards(message, card.getName());
+                }
+            }
         }
     }
 
@@ -229,11 +260,25 @@ public class DataCenter extends Thread {
     }
 
     public void buyCard(Message message) throws LogicException {
+
+        //System.out.println((message.getOtherFields().getCardName()));
+        //System.out.println( dataBase.getOriginalCards().toString() );
+
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.buyCard(message.getOtherFields().getCardName(), dataBase.getOriginalCards());
         Server.getInstance().addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
+    }
+
+    public void buyAllCards(Message message, String cardName) throws LogicException{
+
+        loginCheck(message);
+        Account account = clients.get(message.getSender());
+        account.buyCard(cardName, dataBase.getOriginalCards());
+        Server.getInstance().addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        saveAccount(account);
+
     }
 
     public void sellCard(Message message) throws LogicException {
