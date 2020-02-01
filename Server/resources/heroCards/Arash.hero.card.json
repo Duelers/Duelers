@@ -1,0 +1,78 @@
+{
+  "name": "Arash",
+  "description": "a ranged HERO with 2 AP, 30 HP, have a 4-unit ROW-attack spell",
+  "cardId": "Arash",
+  "spriteName": "boss_christmas",
+  "type": "HERO",
+  "spells": [
+    {
+      "spellId": "ar_row_attack",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": -4,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 1,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 1,
+          "column": 18
+        },
+        "owner": {
+          "own": false,
+          "enemy": true
+        },
+        "cardType": {
+          "cell": false,
+          "hero": true,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": false,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": true,
+        "onStart": false,
+        "onDefend": false
+      },
+      "coolDown": 2,
+      "mannaPoint": 2,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 2,
+  "defaultHp": 30,
+  "mannaPoint": 0,
+  "price": 10000,
+  "attackType": "RANGED",
+  "range": 6,
+  "hasCombo": false,
+  "remainingNumber": 22
+}

@@ -1,0 +1,32 @@
+{
+  "deck": {
+    "deckName": "Third Stage",
+    "heroId": "Arash",
+    "itemId": "TerrorHood",
+    "othersIds": [
+      "HellFire",
+      "AllDisarm",
+      "Dispel",
+      "PowerUp",
+      "AllPower",
+      "AllAttack",
+      "Weakening",
+      "PersianGeneral",
+      "TuranianArcher",
+      "TuranianSpy",
+      "CatapultGiant",
+      "HogRiderDemon",
+      "HogRiderDemon",
+      "PredatorLion",
+      "Wolf",
+      "Wizard",
+      "WildBoar",
+      "Piran",
+      "Bahman",
+      "GreatGiant"
+    ]
+  },
+  "gameType": "SOME_FLAG",
+  "reward": 1500,
+  "numberOfFlags": 16
+}
