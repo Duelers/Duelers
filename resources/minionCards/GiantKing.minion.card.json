@@ -1,0 +1,15 @@
+{
+  "name": "Giant King",
+  "description": "a melee MINION with 4 AP, 10 HP, can attack combo",
+  "cardId": "GiantKing",
+  "spriteName": "boss_serpenti",
+  "type": "MINION",
+  "defaultAp": 4,
+  "defaultHp": 10,
+  "mannaPoint": 5,
+  "price": 600,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": true,
+  "remainingNumber": 6
+}

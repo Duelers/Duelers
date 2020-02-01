@@ -1,0 +1,78 @@
+{
+  "name": "Eagle",
+  "description": "a ranged MINION with 2 AP, 0 HP, have a PASSIVE POWER BUFF with 10 units HP increment",
+  "cardId": "Eagle",
+  "spriteName": "neutral_monsterdragonhawk",
+  "type": "MINION",
+  "spells": [
+    {
+      "spellId": "e_power_buff",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": 10,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": false,
+        "removeBuffs": 0,
+        "duration": -1,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 1,
+          "column": 1
+        },
+        "owner": {
+          "own": true,
+          "enemy": false
+        },
+        "cardType": {
+          "cell": false,
+          "hero": false,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": false,
+          "ranged": true,
+          "hybrid": false
+        }
+      },
+      "availabilityType": {
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
+      },
+      "coolDown": 0,
+      "mannaPoint": 0,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 2,
+  "defaultHp": 0,
+  "mannaPoint": 2,
+  "price": 200,
+  "attackType": "RANGED",
+  "range": 3,
+  "hasCombo": false,
+  "remainingNumber": 0
+}

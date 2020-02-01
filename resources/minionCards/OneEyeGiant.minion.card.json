@@ -1,0 +1,78 @@
+{
+  "name": "One Eye Giant",
+  "description": "a hybrid MINION with 11 AP, 12 HP, have an ON_DEATH HP decreasing to 3*3 square around itself 2 units HP decrement",
+  "cardId": "OneEyeGiant",
+  "spriteName": "boss_paragon",
+  "type": "MINION",
+  "spells": [
+    {
+      "spellId": "og_on_death",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": -2,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 1,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 3,
+          "column": 3
+        },
+        "owner": {
+          "own": false,
+          "enemy": true
+        },
+        "cardType": {
+          "cell": false,
+          "hero": false,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": false,
+        "onAttack": false,
+        "onDeath": true,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
+      },
+      "coolDown": 0,
+      "mannaPoint": 0,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 11,
+  "defaultHp": 12,
+  "mannaPoint": 7,
+  "price": 500,
+  "attackType": "HYBRID",
+  "range": 3,
+  "hasCombo": false,
+  "remainingNumber": 5
+}

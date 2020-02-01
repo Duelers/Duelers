@@ -1,0 +1,15 @@
+{
+  "name": "Turanian SpearMan",
+  "description": "a hybrid MINION with 4 AP, 4 HP",
+  "cardId": "TuranianSpearMan",
+  "spriteName": "f1_mech",
+  "type": "MINION",
+  "defaultAp": 4,
+  "defaultHp": 4,
+  "mannaPoint": 1,
+  "price": 600,
+  "attackType": "HYBRID",
+  "range": 3,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

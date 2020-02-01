@@ -1,0 +1,77 @@
+{
+  "name": "Total Disarm",
+  "description": "Make an enemy troop DISARM till the end of the game",
+  "cardId": "TotalDisarm",
+  "spriteName": "icon_f2_hellskitchen",
+  "type": "SPELL",
+  "spells": [
+    {
+      "spellId": "totalDisarm",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": 0,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": true,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": false,
+        "removeBuffs": 0,
+        "duration": 2147483647,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": false,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 1,
+          "column": 1
+        },
+        "owner": {
+          "own": false,
+          "enemy": true
+        },
+        "cardType": {
+          "cell": false,
+          "hero": true,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
+      },
+      "coolDown": 0,
+      "mannaPoint": 0,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 0,
+  "defaultHp": 0,
+  "mannaPoint": 0,
+  "price": 1000,
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 7
+}

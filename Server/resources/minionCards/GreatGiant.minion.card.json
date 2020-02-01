@@ -1,0 +1,15 @@
+{
+  "name": "Great Giant",
+  "description": "a hybrid MINION with 8 AP, 30 HP",
+  "cardId": "GreatGiant",
+  "spriteName": "boss_solfist",
+  "type": "MINION",
+  "defaultAp": 8,
+  "defaultHp": 30,
+  "mannaPoint": 9,
+  "price": 600,
+  "attackType": "HYBRID",
+  "range": 2,
+  "hasCombo": false,
+  "remainingNumber": 6
+}

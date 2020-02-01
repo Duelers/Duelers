@@ -1,0 +1,15 @@
+{
+  "name": "Persian Archer",
+  "description": "a ranged MINION with 4 AP and 6 HP",
+  "cardId": "PersianArcher",
+  "spriteName": "boss_skurge",
+  "type": "MINION",
+  "defaultAp": 4,
+  "defaultHp": 6,
+  "mannaPoint": 2,
+  "price": 300,
+  "attackType": "RANGED",
+  "range": 7,
+  "hasCombo": false,
+  "remainingNumber": 6
+}
