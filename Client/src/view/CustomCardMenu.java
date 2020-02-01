@@ -43,7 +43,7 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
     private static final String TROOPS_PATH = "Client/resources/troopAnimations";
     private static final Map<CardType, ObservableList<String>> sprites = new HashMap<>();
     private static Media backgroundMusic = new Media(
-            new File("resources/music/shop_menu.m4a").toURI().toString()
+            new File("Client/resources/music/shop_menu.m4a").toURI().toString()
     );
 
     static {
