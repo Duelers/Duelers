@@ -1,0 +1,15 @@
+{
+  "name": "Persian General",
+  "description": "a melee MINION with 4 AP, 12 HP, can attack combo",
+  "cardId": "PersianGeneral",
+  "spriteName": "f1_3rdgeneral",
+  "type": "MINION",
+  "defaultAp": 4,
+  "defaultHp": 12,
+  "mannaPoint": 7,
+  "price": 800,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": true,
+  "remainingNumber": 5
+}

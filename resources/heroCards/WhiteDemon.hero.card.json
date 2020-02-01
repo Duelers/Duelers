@@ -1,0 +1,78 @@
+{
+  "name": "White Demon",
+  "description": "a melee HERO with 4 AP, 50 HP, have a POWER BUFF spell on itself",
+  "cardId": "WhiteDemon",
+  "spriteName": "boss_grym",
+  "type": "HERO",
+  "spells": [
+    {
+      "spellId": "wd_power",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 4,
+        "hpChange": 0,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": false,
+        "removeBuffs": 0,
+        "duration": 2147483647,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 1,
+          "column": 1
+        },
+        "owner": {
+          "own": true,
+          "enemy": false
+        },
+        "cardType": {
+          "cell": false,
+          "hero": true,
+          "minion": false,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": false,
+          "hybrid": false
+        }
+      },
+      "availabilityType": {
+        "onPut": false,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": true,
+        "onStart": false,
+        "onDefend": false
+      },
+      "coolDown": 2,
+      "mannaPoint": 1,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 4,
+  "defaultHp": 50,
+  "mannaPoint": 0,
+  "price": 8000,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 322
+}
