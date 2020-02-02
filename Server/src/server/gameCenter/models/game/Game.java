@@ -183,10 +183,14 @@ public abstract class Game {
     }
 
     private void addNextCardToHand() {
-        Card nextCard = getCurrentTurnPlayer().getNextCard();
-        if (getCurrentTurnPlayer().addNextCardToHand()) {
-            Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
-            Server.getInstance().sendChangeCardPositionMessage(this, getCurrentTurnPlayer().getNextCard(), CardPosition.NEXT);
+        //If you want to draw 2 cards at the end of your turn, set the for loop to run 2 times
+        //If you want to draw 1 card at the end of your turn, set the for loop to run 1 time or remove it.
+        for(int i = 0; i < 2; i++) {
+            Card nextCard = getCurrentTurnPlayer().getNextCard();
+            if (getCurrentTurnPlayer().addNextCardToHand()) {
+                Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
+                Server.getInstance().sendChangeCardPositionMessage(this, getCurrentTurnPlayer().getNextCard(), CardPosition.NEXT);
+            }
         }
     }
 

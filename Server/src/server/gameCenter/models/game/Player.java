@@ -31,7 +31,7 @@ public class Player {
         this.userName = userName;
         deck = new Deck(mainDeck);
         setNextCard();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             addNextCardToHand();
         }
     }
