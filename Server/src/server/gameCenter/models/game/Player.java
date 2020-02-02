@@ -92,7 +92,7 @@ public class Player {
     }
 
     boolean addNextCardToHand() {
-        if (hand.size() < 5) {
+        if (hand.size() < 6) {
             hand.add(nextCard);
             setNextCard();
             return true;
