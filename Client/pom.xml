@@ -14,7 +14,7 @@
         <groupId>groupId</groupId>
         <artifactId>Duelers</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../Duelers/pom..xml</relativePath>
+        <relativePath>../../Duelers/pom.xml</relativePath>
     </parent>
 
     <groupId>groupId</groupId>
@@ -24,15 +24,32 @@
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
-        <!--
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx</artifactId>
             <version>11</version>
             <type>pom</type>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/jdk.tools/jdk.tools -->
+        <!--
+        <dependency>
+            <groupId>jdk.tools</groupId>
+            <artifactId>jdk.tools</artifactId>
+            <version>1.8.0_221</version>
+            <scope>system</scope>
+        </dependency>
         -->
 
+        <!-- https://mvnrepository.com/artifact/com.oracle.java/jre -->
+        <!--
+        <dependency>
+            <groupId>com.oracle.java</groupId>
+            <artifactId>jre</artifactId>
+            <version>1.8.0_221</version>
+        </dependency>
+        -->
+        
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>

@@ -14,7 +14,7 @@
         <groupId>groupId</groupId>
         <artifactId>Duelers</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../Duelers/pom..xml</relativePath>
+        <relativePath>../../Duelers/pom.xml</relativePath>
     </parent>
 
     <groupId>groupId</groupId>
