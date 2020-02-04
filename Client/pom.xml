@@ -93,9 +93,7 @@
                                 <manifest>
                                     <addClasspath>true</addClasspath>
                                     <classpathPrefix>target/</classpathPrefix>
-                                    <mainClass>
-                                        ${project.basedir}\target\classes\Main.Class
-                                    </mainClass>
+                                    <mainClass>Main</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
