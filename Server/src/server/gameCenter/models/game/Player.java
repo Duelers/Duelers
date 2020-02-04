@@ -91,6 +91,10 @@ public class Player {
 
     }
 
+    public void setNewNextCard() {
+        setNextCard();
+    }
+
     boolean addNextCardToHand() {
         if (hand.size() < 5) {
             hand.add(nextCard);
@@ -225,4 +229,5 @@ public class Player {
     void addTroop(Troop troop) {
         troops.add(troop);
     }
+
 }

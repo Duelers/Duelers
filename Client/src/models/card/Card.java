@@ -129,4 +129,6 @@ public class Card implements ICard {
     public void addListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
+
+
 }

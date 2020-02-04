@@ -113,6 +113,10 @@ public class HandBox implements PropertyChangeListener {
         next.setOnMouseExited(mouseEvent -> {
             imageView2.setImage(nextRingSmoke);
         });
+
+        next.setOnMouseClicked(mouseEvent -> {
+            replaceSelectedCard();
+        });
     }
 
     private void updateCards() {
@@ -435,5 +439,18 @@ public class HandBox implements PropertyChangeListener {
             updateItems();
             updateNext();
         }
+    }
+
+    public void replaceSelectedCard(){
+        if(selectedCard != -1 ) {
+            System.out.println(selectedCard);
+            player.replaceSelectedCard(selectedCard);
+            battleScene.getController().setNewNextCard();
+            System.out.println(player.getHand().get(selectedCard).getName());
+            updateCards();
+            selectedCard = -1;
+
+        }
+
     }
 }

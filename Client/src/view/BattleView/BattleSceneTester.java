@@ -173,4 +173,9 @@ public class BattleSceneTester extends Application implements GameActions {
     public void forceFinish() {
 
     }
+
+    @Override
+    public void setNewNextCard(){
+
+    }
 }

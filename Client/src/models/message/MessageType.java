@@ -53,6 +53,7 @@ public enum MessageType {
     ADD_CARD,
     ONLINE_GAME_SHOW_REQUEST,
     STOP_SHOW_GAME,
+    SET_NEW_NEXT_CARD,
     //SENDER:DUAL
     CHAT,
     ACCEPT_REQUEST,

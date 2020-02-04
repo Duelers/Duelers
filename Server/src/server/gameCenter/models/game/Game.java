@@ -194,6 +194,11 @@ public abstract class Game {
         }
     }
 
+    public void setNewNextCard(){
+        getCurrentTurnPlayer().setNewNextCard();
+        Server.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard().toCompressedCard() );
+    }
+
     private void playCurrentTurn() throws LogicException {
         try {
             AvailableActions actions = new AvailableActions();

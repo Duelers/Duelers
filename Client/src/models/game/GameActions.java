@@ -23,4 +23,6 @@ public interface GameActions {
     void useSpecialPower(int row, int column);
 
     void exitGameShow(OnlineGame onlineGame);
+
+    void setNewNextCard();
 }
