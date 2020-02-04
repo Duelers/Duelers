@@ -31,7 +31,7 @@ public class HandBox implements PropertyChangeListener {
     private final BattleScene battleScene;
     private final CompressedPlayer player;
     private final Group handGroup;
-    private final Pane[] cards = new Pane[6];
+    private final Pane[] cards = new Pane[Constants.MAXIMUM_CARD_HAND_SIZE];
     private final Pane next = new Pane();
     private int selectedCard = -1;
     private int selectedItem = -1;
@@ -61,7 +61,7 @@ public class HandBox implements PropertyChangeListener {
             hBox.setLayoutY(25 * Constants.SCALE);
             hBox.setSpacing(-15 * Constants.SCALE);
             handGroup.getChildren().add(hBox);
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
                 cards[i] = new Pane();
                 hBox.getChildren().add(cards[i]);
             }
@@ -119,7 +119,7 @@ public class HandBox implements PropertyChangeListener {
     }
 
     private void updateCards() {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
             final int I = i;
             cards[i].getChildren().clear();
             final ImageView imageView = new ImageView();
