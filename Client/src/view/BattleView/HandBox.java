@@ -94,28 +94,19 @@ public class HandBox implements PropertyChangeListener {
         imageView2.setFitWidth(Constants.SCREEN_WIDTH * 0.11);
         imageView2.setFitHeight(Constants.SCREEN_WIDTH * 0.11);
 
-        final CardAnimation cardAnimation;
-        if (player.getNextCard() != null) {
-            cardAnimation = new CardAnimation(next, player.getNextCard(),
-                    imageView1.getLayoutY() + imageView1.getFitHeight() / 2, imageView1.getLayoutX() + imageView1.getFitWidth() / 2);
-        } else {
-            cardAnimation = null;
-        }
+        CardAnimation cardAnimation = null;
 
         imageView2.setImage(nextRingSmoke);
 
-        if (cardAnimation != null) {
-            next.setOnMouseEntered(mouseEvent -> {
-                if (battleScene.isMyTurn()) {
-                    cardAnimation.inActive();
-                    imageView2.setImage(nextRingShine);
-                }
-            });
-            next.setOnMouseExited(mouseEvent -> {
-                cardAnimation.pause();
-                imageView2.setImage(nextRingSmoke);
-            });
-        }
+        next.setOnMouseEntered(mouseEvent -> {
+            if (battleScene.isMyTurn()) {
+                imageView2.setImage(nextRingShine);
+            }
+        });
+
+        next.setOnMouseExited(mouseEvent -> {
+            imageView2.setImage(nextRingSmoke);
+        });
     }
 
     private void updateCards() {
@@ -134,6 +125,9 @@ public class HandBox implements PropertyChangeListener {
             } else {
                 cardAnimation = null;
             }
+
+
+
 
             if (selectedCard == i && cardAnimation != null) {
                 imageView.setImage(cardBackGlow);
