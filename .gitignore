@@ -87,6 +87,8 @@ fabric.properties
 ### Maven ###
 Server/target/
 Client/target/
+tools/target/
+
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
