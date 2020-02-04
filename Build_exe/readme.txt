@@ -13,6 +13,9 @@ These instructions assume that you already have:
 The first step is to download and setup the Launch4j app. 
 You can download it here: http://launch4j.sourceforge.net/
 
-When you open the app, load the launch4j._build_configs.xml file. You may need to change some of the paths (especially the link to the jre)
-Note that all relative paths are relative in relation to the directory of the config file itself.
+### Configurations
 
+When you open the launch4j app, load the "launch4j._build_configs.xml" file. 
+You may need to change some of the paths (especially the link to the jre)
+
+Note that all relative paths are relative in relation to the directory of the config file itself.
