@@ -13,6 +13,8 @@ These instructions assume that you already have:
 The first step is to download and setup the Launch4j app. 
 You can download it here: http://launch4j.sourceforge.net/
 
+As a quick hack, if the software complains about having the wrong JDK you maybe about to run jar file from the command line. 
+
 ### Configurations
 
 When you open the launch4j app, load the "launch4j._build_configs.xml" file. 
