@@ -1,6 +1,7 @@
 package models.comperessedData;
 
 import models.card.CardType;
+import view.BattleView.Constants;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -57,8 +58,8 @@ public class CompressedPlayer {
             support = new PropertyChangeSupport(this);
         }
         support.firePropertyChange("hand", null, null);
-        if (hand.size() > 5)
-            System.out.println("Client Game Error!");
+        if (hand.size() > Constants.MAXIMUM_CARD_HAND_SIZE)
+            System.out.println("Client Game Error! - current card hand exceeds max card hand size size");
     }
 
     public void addCardToNext(CompressedCard card) {
