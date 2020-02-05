@@ -8,6 +8,7 @@ import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.gameCenter.models.map.Cell;
+import view.BattleView.Constants;
 
 import java.util.*;
 
@@ -92,7 +93,7 @@ public class Player {
     }
 
     boolean addNextCardToHand() {
-        if (hand.size() < 5) {
+        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
             hand.add(nextCard);
             setNextCard();
             return true;
