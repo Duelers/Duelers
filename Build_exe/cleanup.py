@@ -36,7 +36,7 @@ if __name__ == "__main__":
     os.makedirs(jre_path)
 
     print("Adding .gitkeep files")
-    ## Not that you cannot add empty directories to source control.
+    ## Note that you cannot add empty directories to source control.
     ## To solve this issue we add this empty files to the directories.
     open(os.path.join(jre_path, ".gitkeep"), "w+")
     open(os.path.join(client_path, ".gitkeep"), "w+")
