@@ -23,5 +23,5 @@ The Original Project was created by:
 
 The original repo can be found here: https://github.com/aps2019project/Duelers
 
-# NOTES:
+### NOTES:
 * Sound effects just work on Windows. On Linux you need to install Glib.
