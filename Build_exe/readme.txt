@@ -15,7 +15,7 @@ In build_exe\Application\jre copy the jre you want to bundle with this build.
 
 We are currently using 1.8.0_221
 
-### Run Python Script
+### Run Python Script (package_script.py)
 
 The Python Script copies over all necessary files to the 'build_exe\Application' folder. 
 Note that this script reads from the launch4j configurations file.
@@ -42,4 +42,6 @@ Once you hit the cog icon you should get a log message:
 ### Sucess !?
 
 If this all works, you should be able to double-click the .exe in the application folder and having a working game.   
+
+If something failed, you can always try again. The cleanup.py should help you get back to where you started.
 
