@@ -7,7 +7,7 @@ import re
 
 
 SCRIPT_DIR = os.path.dirname(__file__)
-ROOT_DIR = os.path.abspath(os.path.join(__file__ ,"../.."))
+ROOT_DIR = os.path.abspath(os.path.join(__file__ ,"..",".."))
 
 CLIENT_DIR = os.path.join(ROOT_DIR, "Client")
 SERVER_DIR = os.path.join(ROOT_DIR, "Server")
@@ -16,7 +16,7 @@ LAUNCH4J_CONFIGS = os.path.join(SCRIPT_DIR, "launch4j_build_configs.xml")
 
 def read_output_path(xml_file):
     """
-    Reads the config file, and returns the path
+    Reads the launch4j config file, and returns the .exe output path
     """
     tree = ET.parse(xml_file)
     root = tree.getroot()
@@ -29,7 +29,7 @@ def read_output_path(xml_file):
 
 def read_jre_path(xml_file):
      """
-         Reads the config file, and returns the path of the jre
+     Reads the launch4j config file, and returns the path of the bundled jre
      """
      tree = ET.parse(xml_file)
      root = tree.getroot()
@@ -43,19 +43,18 @@ def read_jre_path(xml_file):
 
 if __name__ == "__main__":
 
-    print("Running Windows .exe Packaging Script...")
-
+    print("+===========================================+")
+    print("|    WINDOWS .EXE PACKAGING SCRIPT ver1.0   |")
+    print("+===========================================+")
+    
     output_dir = os.path.abspath(os.path.join(os.path.dirname(read_output_path(LAUNCH4J_CONFIGS)), ".."))
     assert os.path.exists(output_dir), f"ERROR: bad path {output_dir}"
 
     jre_path = read_jre_path(LAUNCH4J_CONFIGS)
     assert os.path.exists(jre_path), f"ERROR: bad path {jre_path}"
-    assert len(os.listdir(jre_path)) > 2, "ERROR: jre files are missing!"
-
-    #print("Copying the jre...")
-    #jre_out = os.path.join(output_dir, os.path.basename(jre_path))
-    #if not os.path.exists(jre_out):
-    #    shutil.copytree(jre_path, jre_out)
+    ## If this next assertion fails, you have failed to add the jre correctly.
+    ## e.g. ./application/jre/bin should be a valid path. 
+    assert len(os.listdir(jre_path)) > 3, "ERROR: jre files are missing!"
 
     print("Copying Client Resources and Classes...")
     client_classes = os.path.join(CLIENT_DIR, "target", "classes")
