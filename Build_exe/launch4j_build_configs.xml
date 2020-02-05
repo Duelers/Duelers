@@ -15,7 +15,7 @@
   <manifest></manifest>
   <icon>.\icon.ico</icon>
   <jre>
-    <path>D:\Code\Repo\Scripts\CardBoard\downloads\jre and jdk 1.8\jre1.8.0_221</path>
+    <path>application\jre</path>
     <bundledJre64Bit>true</bundledJre64Bit>
     <bundledJreAsFallback>false</bundledJreAsFallback>
     <minVersion></minVersion>
