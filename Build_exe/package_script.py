@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
     jre_path = read_jre_path(LAUNCH4J_CONFIGS)
     assert os.path.exists(jre_path), f"ERROR: bad path {jre_path}"
-    assert len(os.listdir(jre_path)) > 1, "ERROR: jre files are missing!"
+    assert len(os.listdir(jre_path)) > 2, "ERROR: jre files are missing!"
 
     #print("Copying the jre...")
     #jre_out = os.path.join(output_dir, os.path.basename(jre_path))

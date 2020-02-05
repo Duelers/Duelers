@@ -13,6 +13,8 @@ These instructions assume that you already have:
 
 In build_exe\Application\jre copy the jre you want to bundle with this build. 
 
+We are currently using 1.8.0_221
+
 ### Run Python Script
 
 The Python Script copies over all necessary files to the 'build_exe\Application' folder. 
@@ -25,7 +27,7 @@ For best results, run the python script in ADMINISTRATOR mode. If you get file p
 The first step is to download and setup the Launch4j app. 
 You can download it here: http://launch4j.sourceforge.net/
 
-As a quick hack, if the software complains about having the wrong JDK you maybe about to run jar file from the command line. 
+As a quick hack, if the software complains about having the wrong JDK you maybe able to run jar file from the command line with a different JDK. 
 
 ### Configurations
 

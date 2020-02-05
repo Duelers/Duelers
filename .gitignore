@@ -114,4 +114,14 @@ buildNumber.properties
 /Server/resources/itemCards/
 /Server/resources/minionCards/
 /Server/resources/spellCards/
-Build_exe/Application/Client/CardBoard.exe
+
+## Windows Exe
+
+/Build_exe/Application/Client/*.exe
+/Build_exe/Application/Client/Resources
+/Build_exe/Application/Client/Classes
+/Build_exe/Application/resources
+/Build_exe/Application/Server
+/Build_exe/Application/jre
+
+
