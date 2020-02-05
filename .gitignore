@@ -85,9 +85,9 @@ fabric.properties
 # Edit at https://www.gitignore.io/?templates=maven
 
 ### Maven ###
-/Server/target/
-/Client/target/
-/tools/target/
+/Server/target
+/Client/target
+/tools/target
 
 pom.xml.tag
 pom.xml.releaseBackup
@@ -107,6 +107,8 @@ buildNumber.properties
 
 /bin/
 
+## Resources
+
 /Server/resources/*
 /exported_decks/*
 /Server/resources/accounts/
@@ -122,6 +124,7 @@ buildNumber.properties
 /Build_exe/Application/Client/Classes
 /Build_exe/Application/resources
 /Build_exe/Application/Server
-/Build_exe/Application/jre
+/Build_exe/Application/jre/
 
-
+# don't ignore keep files
+!.keep
