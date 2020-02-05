@@ -3,7 +3,7 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>..\Client\target\Client-1.0-SNAPSHOT-jar-with-dependencies.jar</jar>
-  <outfile>..\Client\target\CardBoard.exe</outfile>
+  <outfile>..\target\Application\CardBoard.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>..\..</chdir>
