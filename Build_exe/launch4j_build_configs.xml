@@ -3,14 +3,14 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>..\Client\target\Client-1.0-SNAPSHOT-jar-with-dependencies.jar</jar>
-  <outfile>..\target\Application\CardBoard.exe</outfile>
+  <outfile>..\build_exe\Application\Client\CardBoard.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
-  <chdir>..\..</chdir>
+  <chdir>..</chdir>
   <priority>normal</priority>
   <downloadUrl>http://java.com/download</downloadUrl>
   <supportUrl></supportUrl>
-  <stayAlive>false</stayAlive>
+  <stayAlive>true</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
   <icon>.\icon.ico</icon>

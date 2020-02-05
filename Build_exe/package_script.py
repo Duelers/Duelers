@@ -1,39 +1,80 @@
 import os
+#from distutils import dir_util 
 import shutil
 
-SCRIPT_PATH = os.path.realpath(__file__)
-ROOT_DIR = os.path.dirname(SCRIPT_PATH)
+import xml
+import xml.etree.ElementTree as ET
+import re
 
-OUTPUT_DIR = os.path.join(os.path.dirname(SCRIPT_PATH), "target", "application") # This should be the same path given in the Launch4j configs
+
+SCRIPT_DIR = os.path.dirname(__file__)
+ROOT_DIR = os.path.abspath(os.path.join(__file__ ,"../.."))
 
 CLIENT_DIR = os.path.join(ROOT_DIR, "Client")
 SERVER_DIR = os.path.join(ROOT_DIR, "Server")
 
-#EXE_NAME = "cardboard.exe"
+LAUNCH4J_CONFIGS = os.path.join(SCRIPT_DIR, "launch4j_build_configs.xml")
 
-os.makedirs(OUTPUT_DIR, mode = 0o777, exist_ok = True)
+def read_output_path(xml_file):
+    """
+    Reads the config file, and returns the path
+    """
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+
+    string= str(xml.etree.ElementTree.tostring(root))
+
+    pattern = "<outfile>(.*)</outfile>"
+    x = os.path.normpath(re.findall(pattern, string, flags= re.S)[0])
+    return os.path.abspath(x)
+
+def read_jre_path(xml_file):
+    """
+        Reads the config file, and returns the path of the jre
+    """
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+
+    string= str(xml.etree.ElementTree.tostring(root))
+
+    pattern = "<jre>.*<path>(.*)</path>"
+    x = os.path.normpath(re.findall(pattern, string, flags= re.S)[0])
+    return os.path.abspath(x)
 
 
-## Copy Client data
-client_classes = os.path.join(CLIENT_DIR, "target", "classes")
-client_resources = os.path.join(CLIENT_DIR, "resources")
+if __name__ == "__main__":
 
-client_out = os.path.join(OUTPUT_DIR, "Client")
+    output_dir = os.path.abspath(os.path.join(os.path.dirname(read_output_path(LAUNCH4J_CONFIGS)), ".."))
+    assert os.path.exists(output_dir), f"ERROR: bad path {output_dir}"
 
-shutil.copy(client_resources, client_out)
-shutil.copy(client_classes, client_out)
+    jre_path = read_jre_path(LAUNCH4J_CONFIGS)
+    assert os.path.exists(jre_path), f"ERROR: bad path {jre_path}"
 
-## Copy Server data
-server_classes = os.path.join(SERVER_DIR, "target", "classes")
-server_resources = os.path.join(SERVER_DIR, "resources")
+    ## Bundle Jre (If does not already exist)
+    jre_out = os.path.join(output_dir, os.path.basename(jre_path))
+    if not os.path.exists(jre_out):
+        shutil.copytree(jre_path, jre_out)
 
-server_out = os.path.join(OUTPUT_DIR, "Server")
+    ## Copy Client data
+    client_classes = os.path.join(CLIENT_DIR, "target", "classes")
+    client_resources = os.path.join(CLIENT_DIR, "resources")
 
-shutil.copy(server_resources, server_out)
-shutil.copy(server_classes, server_out)
+    client_out = os.path.join(output_dir, "Client")
 
-## Copy Resources
-resources = os.path.join(ROOT_DIR, "resources")
-resources_out = os.path.join(OUTPUT_DIR, "resources")
+    shutil.copytree(client_classes, os.path.join(client_out, "classes"))
+    shutil.copytree(client_resources, os.path.join(client_out, "resources"))
 
-shutil.copy(resources, resources_out)
+    ## Copy Server data
+    server_classes = os.path.join(SERVER_DIR, "target", "classes")
+    server_resources = os.path.join(SERVER_DIR, "resources")
+
+    server_out = os.path.join(output_dir, "Server")
+
+    shutil.copytree(server_classes, os.path.join(server_out, "classes"))
+    shutil.copytree(server_resources, os.path.join(server_out, "resources"))
+
+    ## Copy Resources
+    resources = os.path.join(ROOT_DIR, "resources")
+    resources_out = os.path.join(output_dir, "resources")
+
+    shutil.copytree(resources, resources_out)
