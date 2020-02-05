@@ -124,7 +124,6 @@ buildNumber.properties
 /Build_exe/Application/Client/Classes
 /Build_exe/Application/resources
 /Build_exe/Application/Server
-/Build_exe/Application/jre/
 
 # don't ignore keep files
 !.keep
