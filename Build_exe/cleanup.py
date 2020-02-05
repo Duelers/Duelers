@@ -29,7 +29,16 @@ if __name__ == "__main__":
 
     # Default Structure is empty 'jre' and 'Client' folders inside build_exe/Application
     print("recreating empty folder structure...")
+    client_path = os.path.join(SCRIPT_DIR, "application", "Client")
     os.makedirs(os.path.join(SCRIPT_DIR, "application", "Client"))
-    os.makedirs(os.path.join(SCRIPT_DIR, "application", "jre"))
+
+    jre_path = os.path.join(SCRIPT_DIR, "application", "jre")
+    os.makedirs(jre_path)
+
+    print("Adding .gitkeep files")
+    ## Not that you cannot add empty directories to source control.
+    ## To solve this issue we add this empty files to the directories.
+    open(os.path.join(jre_path, ".gitkeep"), "w+")
+    open(os.path.join(client_path, ".gitkeep"), "w+")
 
     print("Clean up Script Complete.")
