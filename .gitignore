@@ -85,6 +85,7 @@ fabric.properties
 # Edit at https://www.gitignore.io/?templates=maven
 
 ### Maven ###
+
 /Server/target
 /Client/target
 /tools/target
