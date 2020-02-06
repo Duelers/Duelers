@@ -109,8 +109,7 @@ buildNumber.properties
 
 /Server/resources/*
 /exported_decks/*
-/Server/resources/accounts/*
-!/Server/resources/john_doe.account.json
+!Server/resources/john_doe.account.json
 /Server/resources/heroCards/
 /Server/resources/itemCards/
 /Server/resources/minionCards/
