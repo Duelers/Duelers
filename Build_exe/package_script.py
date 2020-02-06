@@ -52,9 +52,7 @@ if __name__ == "__main__":
 
     jre_path = read_jre_path(LAUNCH4J_CONFIGS)
     assert os.path.exists(jre_path), f"ERROR: bad path {jre_path}"
-    ## If this next assertion fails, you have failed to add the jre correctly.
-    ## e.g. ./application/jre/bin should be a valid path. 
-    assert len(os.listdir(jre_path)) > 3, "ERROR: jre files are missing!"
+    assert len(os.listdir(jre_path)) > 3, "ERROR: jre files are missing! Please ensure that '/application/jre/bin' is a valid path"
 
     print("Copying Client Resources and Classes...")
     client_classes = os.path.join(CLIENT_DIR, "target", "classes")
