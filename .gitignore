@@ -107,11 +107,14 @@ buildNumber.properties
 
 /bin/
 
-/Server/resources/*
+
 /exported_decks/*
-!Server/resources/john_doe.account.json
+
 /Server/resources/heroCards/
 /Server/resources/itemCards/
 /Server/resources/minionCards/
 /Server/resources/spellCards/
 
+## white list 
+
+!john_doe.account.json
