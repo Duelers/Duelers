@@ -8,7 +8,7 @@ import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.gameCenter.models.map.Cell;
-
+import server.dataCenter.models.Constants;
 
 import java.util.*;
 
@@ -93,9 +93,7 @@ public class Player {
     }
 
     boolean addNextCardToHand() {
-        if (hand.size() < 6) {
-            // Removed reference to client Since Server should not have
-            // Client as a dependancy
+        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
             hand.add(nextCard);
             setNextCard();
             return true;
