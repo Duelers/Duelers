@@ -114,7 +114,7 @@ buildNumber.properties
 /Server/resources/itemCards/
 /Server/resources/minionCards/
 /Server/resources/spellCards/
+/Server/resources/accounts/
 
 ## white list 
-
-!john_doe.account.json
+!/Server/resources/accounts/john_doe.account.json
