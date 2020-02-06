@@ -8,7 +8,7 @@ import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.gameCenter.models.map.Cell;
-import view.BattleView.Constants;
+import server.dataCenter.models.Constants;
 
 import java.util.*;
 
