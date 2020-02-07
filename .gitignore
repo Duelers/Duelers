@@ -110,13 +110,13 @@ buildNumber.properties
 
 ## Resources
 
-/Server/resources/*
 /exported_decks/*
-/Server/resources/accounts/
+/Server/resources/*
 /Server/resources/heroCards/
 /Server/resources/itemCards/
 /Server/resources/minionCards/
 /Server/resources/spellCards/
+/Server/resources/accounts/
 
 ## Windows Exe
 
@@ -126,5 +126,7 @@ buildNumber.properties
 /Build_exe/Application/resources
 /Build_exe/Application/Server
 
-# don't ignore keep files
+## white list 
+
+!/Server/resources/accounts/john_doe.account.json
 !.keep
