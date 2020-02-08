@@ -165,9 +165,6 @@ public class Client {
             case LEADERBOARD_COPY:
                 MainMenuController.getInstance().setLeaderBoard(message.getLeaderBoardCopyMessage().getLeaderBoard());
                 break;
-            case STORIES_COPY:
-                StoryMenuController.getInstance().setStories(message.getStoriesCopyMessage().getStories());
-                break;
             case CARD_POSITION://TODO:CHANGE
                 CardPosition cardPosition = message.getCardPositionMessage().getCardPosition();
                 switch (cardPosition) {

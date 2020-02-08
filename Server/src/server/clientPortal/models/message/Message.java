@@ -24,7 +24,6 @@ public class Message {
     private CardsCopyMessage cardsCopyMessage;
     private AccountCopyMessage accountCopyMessage;
     private LeaderBoardCopyMessage leaderBoardCopyMessage;
-    private StoriesCopyMessage storiesCopyMessage;
     private CardPositionMessage cardPositionMessage;
     private TroopUpdateMessage troopUpdateMessage;
     private GameUpdateMessage gameUpdateMessage;
@@ -91,12 +90,7 @@ public class Message {
         return message;
     }
 
-    public static Message makeStoriesCopyMessage(String receiver, Story[] stories) {
-        Message message = new Message(receiver);
-        message.storiesCopyMessage = new StoriesCopyMessage(stories);
-        message.messageType = MessageType.STORIES_COPY;
-        return message;
-    }
+
 
     public static Message makeChangeCardPositionMessage(String receiver, Card card, CardPosition cardPosition) {
         Message message = new Message(receiver);
