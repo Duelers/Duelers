@@ -26,7 +26,7 @@
       "GiantKing"
     ]
   },
-  "gameType": "A_FLAG",
+  "gameType": "KILL_HERO",
   "reward": 1000,
   "numberOfFlags": 1
 }
