@@ -112,8 +112,6 @@ public class CompressedGame {
             support.firePropertyChange("mp2", player2CurrentMP, maxMP);
             playerTwo.setCurrentMP(player2CurrentMP, turnNumber);
         }
-        playerOne.setNumberOfCollectedFlags(player1NumberOfCollectedFlags);
-        playerTwo.setNumberOfCollectedFlags(player2NumberOfCollectedFlags);
         support.firePropertyChange("flag", player2CurrentMP, maxMP);
         gameMap.updateCellEffects(cellEffects);
     }

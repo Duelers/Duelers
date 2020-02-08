@@ -41,7 +41,7 @@ public class BattleSceneTester extends Application implements GameActions {
         final CompressedCell[][] cells = new CompressedCell[5][9];
         for (int j = 0; j < 5; j++) {
             for (int i = 0; i < 9; i++) {
-                cells[j][i] = new CompressedCell(j, i, null, j + i);
+                cells[j][i] = new CompressedCell(j, i, null);
             }
         }
         final CompressedPlayer player1 = new CompressedPlayer("Ali", 2, new ArrayList<>(), null,
@@ -78,7 +78,7 @@ public class BattleSceneTester extends Application implements GameActions {
             card = new CompressedCard("boss_christmas", null, "a1", CardType.MINION,
                     null, 0, 0, 0, null, 2, true);
             CompressedTroop troop = new CompressedTroop(card, 5, 6, 5, new Position(2, 2),
-                    true, true, false, false, 1, 1);
+                    true, true, false, false, 1);
             myPlayer.addCardToNext(card);
             map.updateTroop(troop);
             String s = "boss_wolfpunch";
@@ -86,7 +86,7 @@ public class BattleSceneTester extends Application implements GameActions {
                     new CompressedSpell("a", null, null, 0, 2, 3),
                     0, 0, 0, null, 2, true);
             troop = new CompressedTroop(card, 5, 6, 5, new Position(1, 3),
-                    true, true, false, false, 1, 1);
+                    true, true, false, false, 1);
             map.updateTroop(troop);
             try {
                 Thread.sleep(1000);
@@ -97,7 +97,7 @@ public class BattleSceneTester extends Application implements GameActions {
             card = new CompressedCard(s, null, "a2", CardType.MINION,
                     null, 0, 0, 0, null, 2, true);
             troop = new CompressedTroop(card, 5, 6, 5, new Position(4, 4),
-                    true, true, false, false, 1, 2);
+                    true, true, false, false, 2);
             map.updateTroop(troop);
             try {
                 Thread.sleep(1000);
@@ -105,7 +105,7 @@ public class BattleSceneTester extends Application implements GameActions {
                 e.printStackTrace();
             }
             troop = new CompressedTroop(card, 5, 6, 5, new Position(4, 8),
-                    true, true, false, false, 1, 2);
+                    true, true, false, false, 2);
             map.updateTroop(troop);
             try {
                 Thread.sleep(1000);
@@ -113,7 +113,7 @@ public class BattleSceneTester extends Application implements GameActions {
                 e.printStackTrace();
             }
             troop = new CompressedTroop(card, 5, 6, 5, new Position(1, 4),
-                    true, true, false, false, 1, 2);
+                    true, true, false, false, 2);
             map.updateTroop(troop);
             try {
                 Thread.sleep(1000);

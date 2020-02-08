@@ -16,13 +16,12 @@ public class MultiPlayerMenuController {
         return ourInstance;
     }
 
-    public void startGame(GameType gameType, int numberOfFlags, String opponent) {
+    public void startGame(GameType gameType, String opponent) {
         try {
             if (opponent != null && opponent.length() < 2)
                 throw new InputException("invalid opponent");
             Client.getInstance().addToSendingMessagesAndSend(
-                    Message.makeMultiPlayerGameReQuestMessage(Constants.SERVER_NAME, gameType,
-                            numberOfFlags, opponent));
+                    Message.makeMultiPlayerGameReQuestMessage(Constants.SERVER_NAME, gameType, opponent));
         } catch (InputException e) {
             Platform.runLater(() -> Client.getInstance().getCurrentShow().showError(e.getMessage()));
         }

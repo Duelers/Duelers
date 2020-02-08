@@ -6,16 +6,11 @@ public class TempStory {
     private TempDeck deck;
     private GameType gameType;
     private int reward;
-    private int numberOfFlags;
 
     public TempStory(Story story) {
         this.deck = new TempDeck(story.getDeck());
         this.gameType = story.getGameType();
         this.reward = story.getReward();
-    }
-
-    public int getNumberOfFlags() {
-        return numberOfFlags;
     }
 
     public TempDeck getDeck() {

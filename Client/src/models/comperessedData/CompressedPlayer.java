@@ -188,27 +188,6 @@ public class CompressedPlayer {
         return playerNumber;
     }
 
-    public int getNumberOfCollectedFlags() {
-        return numberOfCollectedFlags;
-    }
-
-    void setNumberOfCollectedFlags(int numberOfCollectedFlags) {
-        this.numberOfCollectedFlags = numberOfCollectedFlags;
-        //TODO:support.firePropertyChange("troop", getTroop(troop.getCard().getCardId()), troop);
-    }
-
-    public List<CompressedTroop> getFlagCarriers() {
-        ArrayList<CompressedTroop> flagCarriers = new ArrayList<>();
-
-        for (CompressedTroop troop : troops) {
-            if (troop.getNumberOfCollectedFlags() > 0) {
-                flagCarriers.add(troop);
-            }
-        }
-
-        return Collections.unmodifiableList(flagCarriers);
-    }
-
     public CompressedCard getUsableItem() {
         return usableItem;
     }

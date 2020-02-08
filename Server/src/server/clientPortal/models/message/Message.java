@@ -170,10 +170,10 @@ public class Message {
         return message;
     }
 
-    public static Message makeInvitationMessage(String receiver, String inviterUsername, GameType gameType, int numberOfFlags) {
+    public static Message makeInvitationMessage(String receiver, String inviterUsername, GameType gameType) {
         Message message = new Message(receiver);
         message.messageType = MessageType.INVITATION;
-        message.newGameFields = new NewGameFields(gameType, numberOfFlags, 0, null, inviterUsername);
+        message.newGameFields = new NewGameFields(gameType, 0, null, inviterUsername);
         return message;
     }
 

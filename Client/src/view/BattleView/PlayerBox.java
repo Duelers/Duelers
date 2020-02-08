@@ -132,8 +132,6 @@ public class PlayerBox implements PropertyChangeListener {
         player2Name = new DefaultLabel("", Constants.NAME_FONT, Color.WHITE, SCREEN_WIDTH - 600 * SCALE, 75 * SCALE);
         player2Name.setBackground(new Background(new BackgroundFill(Color.rgb(155, 82, 100, 0.7), new CornerRadii(3), Insets.EMPTY)));
         player2Name.setPadding(Constants.NAME_PADDING);
-        player1Name.setText(player1.getUserName() + " Flags:" + player1.getNumberOfCollectedFlags());
-        player2Name.setText(player2.getUserName() + " Flags:" + player2.getNumberOfCollectedFlags());
         player1ImageEffect = new ColorAdjust();
         player2ImageEffect = new ColorAdjust();
         player1Image.setEffect(player1ImageEffect);
@@ -378,12 +376,6 @@ public class PlayerBox implements PropertyChangeListener {
                     player2ImageEffect.setBrightness(0);
                 }
                 SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.your_turn);
-            });
-        }
-        if (evt.getPropertyName().equals("flag")) {
-            Platform.runLater(() -> {
-                player1Name.setText(player1.getUserName() + " Flags:" + player1.getNumberOfCollectedFlags());
-                player2Name.setText(player2.getUserName() + " Flags:" + player2.getNumberOfCollectedFlags());
             });
         }
     }

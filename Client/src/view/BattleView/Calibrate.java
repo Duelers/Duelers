@@ -48,7 +48,7 @@ public class Calibrate extends Application implements GameActions {
         final CompressedCell[][] cells = new CompressedCell[5][9];
         for (int j = 0; j < 5; j++) {
             for (int i = 0; i < 9; i++) {
-                cells[j][i] = new CompressedCell(j, i, null, 0);
+                cells[j][i] = new CompressedCell(j, i, null);
             }
         }
         final CompressedPlayer player1 = new CompressedPlayer("Ali", 2, new ArrayList<>(), new ArrayList<>(),
@@ -68,7 +68,7 @@ public class Calibrate extends Application implements GameActions {
             CompressedCard card = new CompressedCard("boss_harmony", null, "a1", CardType.MINION,
                     null, 0, 0, 0, null, 2, true);
             CompressedTroop troop = new CompressedTroop(card, 5, 6, 5, new Position(0, 0),
-                    true, true, false, false, 1, 1);
+                    true, true, false, false, 1);
             map.updateTroop(troop);
             player1.addCardToNext(card);
             player1.addNextCardToHand();

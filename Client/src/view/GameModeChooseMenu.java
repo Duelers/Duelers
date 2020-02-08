@@ -14,10 +14,6 @@ public abstract class GameModeChooseMenu extends PlayMenu {
     private static final PlayButtonItem[] items = {
             new PlayButtonItem("Client/resources/menu/playButtons/kill_hero.jpg", "KILL HERO",
                     "You must kill opponent's hero to win", event -> menu.startKillHero()),
-            new PlayButtonItem("Client/resources/menu/playButtons/single_flag.jpg", "SINGLE FLAG",
-                    "You must keep the flag for 6 turns to win", event -> menu.startSingleFlag()),
-            new PlayButtonItem("Client/resources/menu/playButtons/multi_flag.jpg", "MULTI FLAG",
-                    "You must collect at least half the flags to win", event -> menu.startMultiFlag())
     };
 
     GameModeChooseMenu(String backgroundUrl) throws FileNotFoundException {
@@ -31,10 +27,6 @@ public abstract class GameModeChooseMenu extends PlayMenu {
     }
 
     abstract void startKillHero();
-
-    abstract void startSingleFlag();
-
-    abstract void startMultiFlag();
 
     class DialogWrapper {
         private final DialogBox box;
@@ -62,12 +54,11 @@ public abstract class GameModeChooseMenu extends PlayMenu {
             box.makeClosable(container);
         }
 
-        void makeButton(GameType type, int numberOfFlags) {
+        void makeButton(GameType type) {
             box.makeButton("START", buttonEvent -> {
                 if (usernameField != null && "".equals(usernameField.getText())) return;
                 MultiPlayerMenuController.getInstance().startGame(
                         type,
-                        flagNumSpinner == null ? numberOfFlags : flagNumSpinner.getValue(),
                         usernameField == null ? null : usernameField.getText()
                 );
                 container.close();

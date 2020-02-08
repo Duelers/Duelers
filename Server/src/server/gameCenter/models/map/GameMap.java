@@ -12,7 +12,7 @@ public class GameMap {
     private Cell[][] cells;
     private List<Troop> troops = new ArrayList<>();
 
-    public GameMap(List<Card> items, int numberOfFlags, Card originalFlag) {
+    public GameMap(List<Card> items, Card originalFlag) {
         cells = new Cell[ROW_NUMBER][COLUMN_NUMBER];
         for (int i = 0; i < ROW_NUMBER; i++) {
             for (int j = 0; j < COLUMN_NUMBER; j++) {
@@ -22,19 +22,9 @@ public class GameMap {
         LinkedList<Card> newItems = new LinkedList<>(items);
         Collections.shuffle(newItems);
 
-        cells[0][4].addItem(newItems.poll());
-        cells[2][5].addItem(newItems.poll());
-        cells[4][4].addItem(newItems.poll());
-
-        for (int i = 0; i < numberOfFlags; i++) {
-            int row = new Random().nextInt(ROW_NUMBER);
-            int column = new Random().nextInt(COLUMN_NUMBER);
-            while (!cells[row][column].getItems().isEmpty()) {
-                row = new Random().nextInt(ROW_NUMBER);
-                column = new Random().nextInt(COLUMN_NUMBER);
-            }
-            cells[row][column].addItem(new Card(originalFlag, "Flag", i));
-        }
+        //cells[0][4].addItem(newItems.poll());
+        //cells[2][5].addItem(newItems.poll());
+        //cells[4][4].addItem(newItems.poll());
     }
 
     public static int getRowNumber() {
@@ -106,16 +96,8 @@ public class GameMap {
 
     public void removeTroop(Player player, Troop troop) {
         troops.remove(troop);
-        throwFlags(player, troop);
-        player.removeFlagCarrier(troop);
     }
 
-    private void throwFlags(Player player, Troop troop) {
-        for (Card flag : troop.getFlags()) {
-            troop.getCell().addItem(flag);
-            player.decreaseNumberOfCollectedFlags();
-        }
-    }
 
     public List<Troop> getTroops() {
         return Collections.unmodifiableList(troops);

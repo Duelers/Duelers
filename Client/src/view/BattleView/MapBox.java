@@ -42,8 +42,6 @@ public class MapBox implements PropertyChangeListener {
     private boolean comboSelected = false;
     private CardPane cardPane = null;
     private SelectionType selectionType;
-    private DefaultLabel[][] flagLabels = new DefaultLabel[5][9];
-    private StackPane[][] flagPanes = new StackPane[5][9];
     private HashMap<String, CardAnimation> collectibleItems = new HashMap<>();
     private Image flag = new Image(new FileInputStream("Client/resources/ui/flag.png"));
 
@@ -54,7 +52,6 @@ public class MapBox implements PropertyChangeListener {
         mapGroup.setLayoutY(y);
         mapGroup.setLayoutX(x);
         makePolygons();
-        addFlagLabels();
         addCollectibleItems();
         resetSelection();
         for (CompressedTroop troop : gameMap.getTroops()) {
@@ -118,32 +115,6 @@ public class MapBox implements PropertyChangeListener {
         }
     }
 
-    private void addFlagLabels() {
-        for (int j = 0; j < 5; j++) {
-            for (int i = 0; i < 9; i++) {
-                flagPanes[j][i] = new StackPane();
-                flagPanes[j][i].setLayoutX(cellsX[j][i]);
-                flagPanes[j][i].setLayoutY(cellsY[j][i]);
-                ImageView imageView = new ImageView(flag);
-                imageView.setFitHeight(Constants.FLAG_HEIGHT);
-                imageView.setFitWidth(Constants.FLAG_WIDTH);
-                flagLabels[j][i] = new DefaultLabel(Integer.toString(gameMap.getCell(j, i).getNumberOfFlags()),
-                        Constants.FLAG_FONT, Color.BLACK);
-                flagPanes[j][i].getChildren().addAll(imageView, flagLabels[j][i]);
-                if (gameMap.getCell(j, i).getNumberOfFlags() == 0) {
-                    flagPanes[j][i].setVisible(false);
-                } else {
-                    flagPanes[j][i].setVisible(true);
-                }
-                final int J = j, I = i;
-                flagPanes[J][I].setOnMouseClicked(mouseEvent -> clickCell(J, I));
-                flagPanes[J][I].setOnMouseExited(mouseEvent -> exitCell(J, I));
-                flagPanes[J][I].setOnMouseEntered(mouseEvent -> hoverCell(J, I));
-                mapGroup.getChildren().addAll(flagPanes[j][i]);
-            }
-        }
-    }
-
     private void updateTroop(CompressedTroop oldTroop, CompressedTroop newTroop) {
         final TroopAnimation animation;
         if (newTroop == null) {
@@ -190,12 +161,6 @@ public class MapBox implements PropertyChangeListener {
             Platform.runLater(() -> {
                 Position position = (Position) evt.getOldValue();
                 Integer newValue = (Integer) evt.getNewValue();
-                flagLabels[position.getRow()][position.getColumn()].setText(Integer.toString(newValue));
-                if (gameMap.getCell(position.getRow(), position.getColumn()).getNumberOfFlags() == 0) {
-                    flagPanes[position.getRow()][position.getColumn()].setVisible(false);
-                } else {
-                    flagPanes[position.getRow()][position.getColumn()].setVisible(true);
-                }
             });
         }
         if (evt.getPropertyName().equals("item")) {

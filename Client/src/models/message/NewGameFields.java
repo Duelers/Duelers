@@ -5,14 +5,9 @@ import models.game.GameType;
 
 public class NewGameFields {
     private GameType gameType;
-    private int numberOfFlags;
     private int stage;
     private String customDeckName;
     private String opponentUsername;
-
-    void setNumberOfFlags(int numberOfFlags) {
-        this.numberOfFlags = numberOfFlags;
-    }
 
     void setStage(int stage) {
         this.stage = stage;
