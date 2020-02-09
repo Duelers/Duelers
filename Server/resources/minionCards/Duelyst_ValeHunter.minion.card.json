@@ -1,7 +1,7 @@
 {
   "name": "Vale Hunter",
   "description": "Ranged",
-  "cardId": "ValeHunter",
+  "cardId": "DuelystValeHunter",
   "spriteName": "neutral_tribalranged1",
   "type": "MINION",
   "spells": [],
