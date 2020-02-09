@@ -4,8 +4,8 @@
   "accountType": "NORMAL",
   "collection": {
     "heroes": [
-      {
-		  {
+	
+		{
 		  "name": "Argeon Highmayne",
 		  "description": "Lyonar General",
 		  "cardId": "johndoe_ArgeonHighmayne_1",
@@ -39,6 +39,7 @@
 		  "remainingNumber": 20
 		},
 	  
+	    {
         "name": "Afsaaneh",
         "description": "a ranged HERO with 3 AP, 40 HP, have a DISPEL spell",
         "cardId": "johndoe_Afsaaneh_1",
@@ -439,7 +440,9 @@
         "remainingNumber": 20
       }
     ],
+	
     "minions": [
+		
       {
         "name": "Arjang The Demon",
         "description": "a melee MINION with 6 AP, 6 HP, can attack combo",
