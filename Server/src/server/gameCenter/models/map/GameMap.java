@@ -22,9 +22,9 @@ public class GameMap {
         LinkedList<Card> newItems = new LinkedList<>(items);
         Collections.shuffle(newItems);
 
-        cells[0][4].addItem(newItems.poll());
-        cells[2][5].addItem(newItems.poll());
-        cells[4][4].addItem(newItems.poll());
+        //cells[0][0].addItem(newItems.poll());
+        //cells[2][5].addItem(newItems.poll());
+        //cells[4][4].addItem(newItems.poll());
 
         for (int i = 0; i < numberOfFlags; i++) {
             int row = new Random().nextInt(ROW_NUMBER);
