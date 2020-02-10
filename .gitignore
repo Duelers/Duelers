@@ -109,11 +109,6 @@ buildNumber.properties
 
 
 /exported_decks/*
-
-/Server/resources/heroCards/
-/Server/resources/itemCards/
-/Server/resources/minionCards/
-!Server/resources/spellCards/
 /Server/resources/accounts/
 
 ## white list 
