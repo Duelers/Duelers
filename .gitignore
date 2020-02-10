@@ -111,11 +111,6 @@ buildNumber.properties
 ## Resources
 
 /exported_decks/*
-/Server/resources/*
-/Server/resources/heroCards/
-/Server/resources/itemCards/
-/Server/resources/minionCards/
-/Server/resources/spellCards/
 /Server/resources/accounts/
 
 ## Windows Exe
@@ -127,6 +122,5 @@ buildNumber.properties
 /Build_exe/Application/Server
 
 ## white list 
-
 !/Server/resources/accounts/john_doe.account.json
 !.keep
