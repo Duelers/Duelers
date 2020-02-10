@@ -405,8 +405,57 @@
         "remainingNumber": 20
       }
     ],
+	
     "minions": [
 		{
+
+			"name": "Flameblood Warlock",
+			"description": "Opening Gambit: Deal 3 damage to both generals",
+			"cardId": "johndoe_FlamebloodWarlock_1",
+			"spriteName": "neutral_mercflamebloodwarlock",
+			"type": "MINION",
+			"spells": [{
+					"spellId": "deal_3_to_generals",
+					"action": {
+						"hpChange": -3,
+						"durable": true,
+						"duration": 1
+					},
+					"target": {
+						"isRelatedToCardOwnerPosition": true,
+						"dimensions": {
+							"row": 10,
+							"column": 18
+						},
+
+						"owner": {
+							"own": true,
+							"enemy": true
+						},
+
+						"cardType": {
+							"hero": true
+						},
+
+						"attackType": {
+							"melee": true,
+							"ranged": true,
+							"hybrid": true
+						}
+					},
+					"availabilityType": {
+						"onPut": true
+					}
+			}],
+			"defaultAp": 3,
+			"defaultHp": 1,
+			"mannaPoint": 2,
+			"price": 100,
+			"attackType": "MELEE",
+			"remainingNumber": 20
+  },
+  
+  {
 		  "name": "Vale Hunter",
 		  "description": "Ranged",
 		  "cardId": "ValeHunter",
@@ -421,6 +470,7 @@
 		  "range": 15,
 		  "hasCombo": false,
 		  "remainingNumber": 20
+
 		},
 	
       {
