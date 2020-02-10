@@ -4,7 +4,42 @@
   "accountType": "NORMAL",
   "collection": {
     "heroes": [
-      {
+	
+		{
+		  "name": "Argeon Highmayne",
+		  "description": "Lyonar General",
+		  "cardId": "johndoe_ArgeonHighmayne_1",
+		  "spriteName": "f1_general",
+		  "type": "HERO",
+		  "spells": [],
+		  "defaultAp": 2,
+		  "defaultHp": 25,
+		  "mannaPoint": 0,
+		  "price": 10,
+		  "attackType": "MELEE",
+		  "range": 0,
+		  "hasCombo": false,
+		  "remainingNumber": 20
+		},
+		
+		{
+		  "name": "Vaath The Immortal",
+		  "description": "Magmar General",
+		  "cardId": "johndoe_VaathTheImmortal_1",
+		  "spriteName": "f5_general",
+		  "type": "HERO",
+		  "spells": [],
+		  "defaultAp": 2,
+		  "defaultHp": 25,
+		  "mannaPoint": 0,
+		  "price": 10,
+		  "attackType": "MELEE",
+		  "range": 0,
+		  "hasCombo": false,
+		  "remainingNumber": 20
+		},
+	  
+	    {
         "name": "Afsaaneh",
         "description": "a ranged HERO with 3 AP, 40 HP, have a DISPEL spell",
         "cardId": "johndoe_Afsaaneh_1",
@@ -405,8 +440,10 @@
         "remainingNumber": 20
       }
     ],
+	
     "minions": [
 		{
+
 		  "name": "Brightmoss Golem",
 		  "description": "Golem",
 		  "cardId": "BrightmossGolem",
@@ -481,8 +518,72 @@
 		  "hasCombo": false,
 		  "remainingNumber": 20
 		}, 
+      
+    {
+			"name": "Flameblood Warlock",
+			"description": "Opening Gambit: Deal 3 damage to both generals",
+			"cardId": "johndoe_FlamebloodWarlock_1",
+			"spriteName": "neutral_mercflamebloodwarlock",
+			"type": "MINION",
+			"spells": [{
+					"spellId": "deal_3_to_generals",
+					"action": {
+						"hpChange": -3,
+						"durable": true,
+						"duration": 1
+					},
+					"target": {
+						"isRelatedToCardOwnerPosition": true,
+						"dimensions": {
+							"row": 10,
+							"column": 18
+						},
 
-	
+						"owner": {
+							"own": true,
+							"enemy": true
+						},
+
+						"cardType": {
+							"hero": true
+						},
+
+						"attackType": {
+							"melee": true,
+							"ranged": true,
+							"hybrid": true
+						}
+					},
+					"availabilityType": {
+						"onPut": true
+					}
+			}],
+			"defaultAp": 3,
+			"defaultHp": 1,
+			"mannaPoint": 2,
+			"price": 100,
+			"attackType": "MELEE",
+			"remainingNumber": 20
+  },
+  
+  {
+		  "name": "Vale Hunter",
+		  "description": "Ranged",
+		  "cardId": "ValeHunter",
+		  "spriteName": "neutral_tribalranged1",
+		  "type": "MINION",
+		  "spells": [],
+		  "defaultAp": 1,
+		  "defaultHp": 2,
+		  "mannaPoint": 2,
+		  "price": 100,
+		  "attackType": "RANGED",
+		  "range": 15,
+		  "hasCombo": false,
+		  "remainingNumber": 20
+
+		},
+
 	
       {
         "name": "Arjang The Demon",
