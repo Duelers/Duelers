@@ -113,7 +113,7 @@ buildNumber.properties
 /Server/resources/heroCards/
 /Server/resources/itemCards/
 /Server/resources/minionCards/
-/Server/resources/spellCards/
+!Server/resources/spellCards/
 /Server/resources/accounts/
 
 ## white list 
