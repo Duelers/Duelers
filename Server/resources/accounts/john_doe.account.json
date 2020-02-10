@@ -7529,7 +7529,7 @@
         "remainingNumber": 20
       }
     ],
-    "items": [
+    "items": [		
       {
         "name": "Assassination Dagger",
         "description": "TODO",
@@ -9273,7 +9273,6 @@
     {
       "deckName": "deck",
       "heroId": "johndoe_SevenHeadedDragon_1",
-      "itemId": "johndoe_CrownOfWisdom_1",
       "othersIds": [
         "johndoe_ArjangTheDemon_1",
         "johndoe_ArjangTheDemon_2",
@@ -9300,7 +9299,6 @@
     {
       "deckName": "Prebuilt Deck 1",
       "heroId": "johndoe_Afsaaneh_1",
-      "itemId": "johndoe_CrownOfWisdom_1",
       "othersIds": [
         "johndoe_ArjangTheDemon_1",
         "johndoe_ArjangTheDemon_2",
