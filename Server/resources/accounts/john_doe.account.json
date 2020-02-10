@@ -408,6 +408,7 @@
 	
     "minions": [
 		{
+
 			"name": "Flameblood Warlock",
 			"description": "Opening Gambit: Deal 3 damage to both generals",
 			"cardId": "johndoe_FlamebloodWarlock_1",
@@ -452,6 +453,24 @@
 			"price": 100,
 			"attackType": "MELEE",
 			"remainingNumber": 20
+  },
+  
+  {
+		  "name": "Vale Hunter",
+		  "description": "Ranged",
+		  "cardId": "ValeHunter",
+		  "spriteName": "neutral_tribalranged1",
+		  "type": "MINION",
+		  "spells": [],
+		  "defaultAp": 1,
+		  "defaultHp": 2,
+		  "mannaPoint": 2,
+		  "price": 100,
+		  "attackType": "RANGED",
+		  "range": 15,
+		  "hasCombo": false,
+		  "remainingNumber": 20
+
 		},
 	
       {
