@@ -33,9 +33,7 @@ public class AvailableActions {
 
     private void calculateCardInserts(CompressedPlayer ownPlayer) {
         for (CompressedCard card : ownPlayer.getHand()) {
-            if (ownPlayer.getCurrentMP() >= card.getMannaPoint()) {
-                handInserts.add(new Insert(card));
-            }
+            handInserts.add(new Insert(card));
         }
     }
 

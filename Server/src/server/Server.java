@@ -214,6 +214,9 @@ public class Server {
                     GameCenter.getInstance().setNewNextCard(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));
                     break;
+                case REPLACE_CARD:
+                    GameCenter.getInstance().replaceCard(message);
+                    break;
                 case FORCE_FINISH:
                     GameCenter.getInstance().forceFinishGame(message.getSender());
                     break;

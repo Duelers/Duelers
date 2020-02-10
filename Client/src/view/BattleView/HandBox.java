@@ -443,10 +443,10 @@ public class HandBox implements PropertyChangeListener {
 
     public void replaceSelectedCard(){
         if(selectedCard != -1 ) {
-            System.out.println(selectedCard);
-            player.replaceSelectedCard(selectedCard);
-            battleScene.getController().setNewNextCard();
-            System.out.println(player.getHand().get(selectedCard).getName());
+
+            String cardID = player.getHand().get(selectedCard).getCardId();
+            battleScene.getController().replaceCard(cardID);
+            System.out.println(cardID);
             updateCards();
             selectedCard = -1;
 

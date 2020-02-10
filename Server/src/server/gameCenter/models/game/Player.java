@@ -79,6 +79,25 @@ public class Player {
         return card;
     }
 
+    public Card removeCardFromHand(String cardID) throws ClientException {
+        Card cardToRemove = null;
+        Iterator<Card> iterator = hand.iterator();
+
+        for(int i = 0; i < hand.size(); i++){
+            Card tempCard = hand.get(i);
+            if(tempCard.getCardId().equalsIgnoreCase(cardID)){
+                hand.remove(i);
+                cardToRemove = tempCard;
+            }
+        }
+
+        if(cardToRemove == null){
+            throw new ClientException("cardID sent from client to remove from player's hand not found on server");
+        }
+
+        return cardToRemove;
+    }
+
     private void setNextCard() {
         if (!deck.getOthers().isEmpty()) {
             int index = new Random().nextInt(deck.getOthers().size());
@@ -229,5 +248,4 @@ public class Player {
     void addTroop(Troop troop) {
         troops.add(troop);
     }
-
 }

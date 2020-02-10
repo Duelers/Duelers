@@ -178,4 +178,9 @@ public class BattleSceneTester extends Application implements GameActions {
     public void setNewNextCard(){
 
     }
+
+    @Override
+    public void replaceCard(String cardID) {
+
+    }
 }

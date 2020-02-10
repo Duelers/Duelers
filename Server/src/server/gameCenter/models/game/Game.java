@@ -199,6 +199,16 @@ public abstract class Game {
         Server.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard().toCompressedCard() );
     }
 
+    public void replaceCard(String cardID) throws ClientException {
+        Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
+        Card nextCard = getCurrentTurnPlayer().getNextCard();
+        if (getCurrentTurnPlayer().addNextCardToHand()) {
+            Server.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
+            Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
+            Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
+        }
+    }
+
     private void playCurrentTurn() throws LogicException {
         try {
             AvailableActions actions = new AvailableActions();

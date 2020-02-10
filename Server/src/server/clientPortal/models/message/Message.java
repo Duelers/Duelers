@@ -43,6 +43,7 @@ public class Message {
     private OnlineGame onlineGame;
     //SENDER:DUAL
     private Card card;
+    private String cardID;
     private ChatMessage chatMessage;
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
@@ -297,5 +298,9 @@ public class Message {
 
     public OnlineGame getOnlineGame() {
         return onlineGame;
+    }
+
+    public String getCardID() {
+        return cardID;
     }
 }
