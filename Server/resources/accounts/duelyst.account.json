@@ -2253,7 +2253,7 @@
     },
     "decks": [
         {
-            "deckName": "Golem starter deck",
+            "deckName": "aggro starter deck",
             "heroId": "VaathTheImmortal",
             "othersIds": [
                 "DuelystFlamebloodWarlock_1",
