@@ -1,5 +1,6 @@
 package server.gameCenter.models.game;
 
+import server.Server;
 import server.clientPortal.models.comperessedData.CompressedCard;
 import server.clientPortal.models.comperessedData.CompressedPlayer;
 import server.dataCenter.models.account.MatchHistory;
@@ -9,6 +10,7 @@ import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import server.gameCenter.models.map.Cell;
+import server.dataCenter.models.Constants;
 
 import java.util.*;
 
@@ -38,8 +40,15 @@ public class Player {
     }
 
     public CompressedPlayer toCompressedPlayer() {
+        Card firstItem = deck.getItem();
+        CompressedCard useableItem = null;
+
+        if (firstItem != null){
+            useableItem = firstItem.toCompressedCard();
+        }
+
         return new CompressedPlayer(
-                userName, currentMP, hand, graveyard, nextCard,deck.getItem().toCompressedCard(), collectedItems, playerNumber, numberOfCollectedFlags);
+                userName, currentMP, hand, graveyard, nextCard, useableItem , collectedItems, playerNumber, numberOfCollectedFlags);
     }
 
     public List<Card> getHand() {
@@ -118,7 +127,7 @@ public class Player {
     }
 
     boolean addNextCardToHand() {
-        if (hand.size() < 5) {
+        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
             hand.add(nextCard);
             setNextCard();
             return true;

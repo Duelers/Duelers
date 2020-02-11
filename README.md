@@ -1,22 +1,28 @@
-# DUELYST Game
+# DUELERS
 
-Required libraries to run:
+### Building and installing with Maven
 
-https://github.com/josueeduardo/rest-client
+1. Import as a mavan project (you will need the maven-plugin to do this)
+2. Run the command: mvm clean package
+3. In Client/target there should be a file ending with "...jar-with-dependencies.jar". 
+4. Run the above file and enjoy playing the game!
 
-http://hc.apache.org/downloads.cgi, latest version
+### Building and Installing an Executable (Windows)
 
-Advanced Programming Course(Java)
+* Please see the readme in the 'build_exe' directory for instructions.
 
-#### https://youtu.be/s0aTC6NB-yg
-#### https://www.aparat.com/v/OJTf1
+### Original Project
 
-Team members:
-1. Ahmad Salimi
-2. MohammadMahdi Jarrahi
-3. Mohammad Hadi Esnaashari
+The Original Project was created by:
 
+	1. Ahmad Salimi
+	2. MohammadMahdi Jarrahi
+	3. Mohammad Hadi Esnaashari
 
+..And has been copied under the MIT license:
 
-# NOTICE:
+The original repo can be found here: https://github.com/aps2019project/Duelers
+
+### NOTES:
+
 * Sound effects just work on Windows. On Linux you need to install Glib.

@@ -31,9 +31,8 @@ public class HandBox implements PropertyChangeListener {
     private final BattleScene battleScene;
     private final CompressedPlayer player;
     private final Group handGroup;
-    private final Pane[] cards = new Pane[5];
+    private final Pane[] cards = new Pane[Constants.MAXIMUM_CARD_HAND_SIZE];
     private final Pane next = new Pane();
-    private final Pane[] items = new Pane[3];
     private int selectedCard = -1;
     private int selectedItem = -1;
     private CardPane cardPane = null;
@@ -62,16 +61,11 @@ public class HandBox implements PropertyChangeListener {
             hBox.setLayoutY(25 * Constants.SCALE);
             hBox.setSpacing(-15 * Constants.SCALE);
             handGroup.getChildren().add(hBox);
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
                 cards[i] = new Pane();
                 hBox.getChildren().add(cards[i]);
             }
-            for (int i = 0; i < 3; i++) {
-                items[i] = new Pane();
-                hBox.getChildren().add(items[i]);
-            }
             updateCards();
-            updateItems();
 
             next.setLayoutX(0 * Constants.SCALE);
             next.setLayoutY(0);
@@ -120,7 +114,7 @@ public class HandBox implements PropertyChangeListener {
     }
 
     private void updateCards() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
             final int I = i;
             cards[i].getChildren().clear();
             final ImageView imageView = new ImageView();
@@ -186,81 +180,6 @@ public class HandBox implements PropertyChangeListener {
                     }
                 });
             }
-        }
-    }
-
-    private void updateItems() {
-        try {
-            for (int i = 0; i < 3; i++) {
-                final int I = i;
-                items[i].getChildren().clear();
-                final ImageView imageView = new ImageView();
-                items[i].getChildren().add(imageView);
-                imageView.setFitWidth(Constants.SCREEN_WIDTH * 0.065);
-                imageView.setFitHeight(Constants.SCREEN_WIDTH * 0.065);
-                imageView.setLayoutY(Constants.SCREEN_WIDTH * 0.01);
-
-                final CardAnimation cardAnimation;
-                if (player.getCollectedItems().size() > i) {
-                    cardAnimation = new CardAnimation(items[i], player.getCollectedItems().get(i),
-                            imageView.getFitHeight() / 2 + Constants.SCREEN_WIDTH * 0.01, imageView.getFitWidth() / 2);
-                } else {
-                    cardAnimation = null;
-                }
-
-                if (selectedItem == i && cardAnimation != null) {
-                    imageView.setImage(cardBackGlow);
-                    cardAnimation.inActive();
-                } else
-                    imageView.setImage(cardBack);
-
-                if (cardAnimation != null) {
-                    final CompressedCard card = player.getCollectedItems().get(I);
-                    items[i].setOnMouseEntered(mouseEvent -> {
-                        if (cardPane != null) {
-                            handGroup.getChildren().remove(cardPane);
-                            cardPane = null;
-                        }
-                        if (battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card)) {
-                            SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.in_game_hove);
-                            cardAnimation.inActive();
-                            imageView.setImage(cardBackGlow);
-                        } else {
-                            imageView.setImage(cardBack);
-                        }
-                        try {
-                            cardPane = new CardPane(card, false, false, null);
-                            cardPane.setLayoutY(-300 * Constants.SCALE + items[I].getLayoutY());
-                            cardPane.setLayoutX(75 * Constants.SCALE + items[I].getLayoutX());
-                            handGroup.getChildren().add(cardPane);
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                    });
-
-                    items[i].setOnMouseExited(mouseEvent -> {
-                        if (cardPane != null) {
-                            handGroup.getChildren().remove(cardPane);
-                            cardPane = null;
-                        }
-                        if (selectedItem == I) {
-                            imageView.setImage(cardBackGlow);
-                        } else {
-                            imageView.setImage(cardBack);
-                            cardAnimation.pause();
-                        }
-                    });
-
-                    items[i].setOnMouseClicked(mouseEvent -> {
-                        if (battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card)) {
-                            clickOnItem(I);
-                        }
-                    });
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error making hand items");
         }
     }
 
@@ -399,24 +318,9 @@ public class HandBox implements PropertyChangeListener {
         } else {
             selectedCard = i;
             selectedItem = -1;
-            updateItems();
             battleScene.getMapBox().resetSelection();
         }
         updateCards();
-    }
-
-    private void clickOnItem(int i) {
-        SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
-        if (selectedItem == i) {
-            selectedItem = -1;
-            battleScene.getMapBox().updateMapColors();
-        } else {
-            selectedItem = i;
-            selectedCard = -1;
-            updateCards();
-            battleScene.getMapBox().resetSelection();
-        }
-        updateItems();
     }
 
     Group getHandGroup() {
@@ -436,7 +340,6 @@ public class HandBox implements PropertyChangeListener {
             selectedCard = -1;
             selectedItem = -1;
             updateCards();
-            updateItems();
             updateNext();
         }
     }
