@@ -129,7 +129,7 @@ if __name__ == "__main__":
     
     print(f"Number of cards Found: {len(cards)}")
     
-    account_name = "john_doe"
+    account_name = "duelyst" ## Name of account you wish to import to. This is the bit before 'account.json'
     for c in cards:
         card_path = os.path.join(import_card_path, c)
         print("---------------------------------------")
