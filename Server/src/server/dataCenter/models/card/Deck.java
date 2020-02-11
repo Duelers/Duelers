@@ -106,7 +106,7 @@ public class Deck {
     }
 
     public boolean isValid() {
-        if (hero == null || item == null) return false;
+        if (hero == null) return false;
         return others.size() == 20;
     }
 
