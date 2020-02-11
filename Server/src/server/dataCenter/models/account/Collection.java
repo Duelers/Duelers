@@ -85,11 +85,11 @@ public class Collection {
 
     public void addCard(Card card) {//for shop
         if (card == null) {
-            Server.getInstance().serverPrint("Error!");
+            Server.getInstance().serverPrint("Error: Card is null");
             return;
         }
         if (hasCard(card.getCardId())) {
-            Server.getInstance().serverPrint("Error!");
+            Server.getInstance().serverPrint("Error: Account does not own '" + card.getCardId() + "'" );
             return;
         }
         switch (card.getType()) {
@@ -107,7 +107,7 @@ public class Collection {
                 items.add(card);
                 break;
             case FLAG:
-                Server.getInstance().serverPrint("Error");
+                Server.getInstance().serverPrint("Error: flag switch case");
                 break;
         }
     }
