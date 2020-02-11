@@ -2255,6 +2255,7 @@
         {
             "deckName": "aggro starter deck",
             "heroId": "VaathTheImmortal",
+			"itemId": "",
             "othersIds": [
                 "DuelystFlamebloodWarlock_1",
                 "DuelystFlamebloodWarlock_2",
@@ -2281,6 +2282,7 @@
         {
             "deckName": "Golem starter deck",
             "heroId": "ArgeonHighmane",
+		    "itemId": "",
             "othersIds": [
                 "DuelystBloodshardGolem_1",
                 "DuelystBloodshardGolem_2",
