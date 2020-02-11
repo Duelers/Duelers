@@ -8,7 +8,62 @@
 		"spells": [],
 		"items":[]
 	},
-	"decks":[],
+	"decks":[
+	
+		{
+		  "deckName": "aggro starter deck",
+		  "heroId": "VaathTheImmortal",
+		  "othersIds": [
+			"DuelystFlamebloodWarlock_1",
+			"DuelystFlamebloodWarlock_2",
+			"DuelystFlamebloodWarlock_3",
+			"DuelystValeHunter_1",
+			"DuelystValeHunter_2",
+			"DuelystValeHunter_3",
+			"DuelystBloodshardGolem_1",
+			"DuelystBloodshardGolem_2",
+			"DuelystBloodshardGolem_3",
+			"DuelystRazorcragGolem_1",
+			"DuelystRazorcragGolem_2",
+			"DuelystRazorcragGolem_3",
+			"DuelystPhoenixFire_1",
+			"DuelystPhoenixFire_2",
+			"DuelystPhoenixFire_3",
+			"DuelystTempest_1",
+			"DuelystTempest_2",
+			"DuelystTempest_3",
+			"DuelystShadowReflection_1",
+			"DuelystShadowReflection_2"
+		  ]
+		},
+		
+		{
+		  "deckName": "aggro starter deck",
+		  "heroId": "VaathTheImmortal",
+		  "othersIds": [
+			"DuelystBloodshardGolem_1",
+			"DuelystBloodshardGolem_2",
+			"DuelystBloodshardGolem_3",
+			"DuelystHailstoneGolem_1",
+			"DuelystHailstoneGolem_2",
+			"DuelystHailstoneGolem_3",
+			"DuelystBrightmossGolem_1",
+			"DuelystBrightmossGolem_2",
+			"DuelystBrightmossGolem_3",
+			"DuelystDryboneGolem_1",
+			"DuelystDryboneGolem_2",
+			"DuelystDryboneGolem_3",
+			"DuelystBeamShock_1",
+			"DuelystBeamShock_2",
+			"DuelystBeamShock_3",
+			"DuelystAurynNexus_1",
+			"DuelystAurynNexus_2",
+			"DuelystAurynNexus_3",
+			"DuelystKineticEquilibrium_1",
+			"DuelystKineticEquilibrium_2"
+		  ]
+		}
+	],
     "matchHistories":[],
     "money":9543289
 }
