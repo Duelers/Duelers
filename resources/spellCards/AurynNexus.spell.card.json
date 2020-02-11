@@ -1,7 +1,7 @@
 {
   "name": "Auryn Nexus",
   "description": "Give a friendly minion +3 Health",
-  "cardId": "Auryn Nexus",
+  "cardId": "AurynNexus",
   "spriteName": "icon_f1_aurynnexus",
   "type": "SPELL",
   "spells": [
