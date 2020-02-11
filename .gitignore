@@ -119,6 +119,8 @@ buildNumber.properties
 /Build_exe/Application/Client/*.exe
 /Build_exe/Application/Client/Resources
 /Build_exe/Application/Client/Classes
+/Build_exe/Application/devTools
+/Build_exe/Application/jre
 /Build_exe/Application/resources
 /Build_exe/Application/Server
 
