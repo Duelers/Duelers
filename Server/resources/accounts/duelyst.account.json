@@ -1,0 +1,14 @@
+{ 
+    "username":"duelyst",
+    "password":"duel",
+    "accountType":"NORMAL",
+    "collection":{ 
+		"heroes":[],
+		"minions": [],
+		"spells": [],
+		"items":[]
+	},
+	"decks":[],
+    "matchHistories":[],
+    "money":9543289
+}
