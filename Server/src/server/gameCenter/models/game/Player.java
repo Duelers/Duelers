@@ -7,6 +7,7 @@ import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
+import server.exceptions.LogicException;
 import server.gameCenter.models.map.Cell;
 
 import java.util.*;
@@ -81,7 +82,6 @@ public class Player {
 
     public Card removeCardFromHand(String cardID) throws ClientException {
         Card cardToRemove = null;
-        Iterator<Card> iterator = hand.iterator();
 
         for(int i = 0; i < hand.size(); i++){
             Card tempCard = hand.get(i);
@@ -94,8 +94,11 @@ public class Player {
         if(cardToRemove == null){
             throw new ClientException("cardID sent from client to remove from player's hand not found on server");
         }
-
         return cardToRemove;
+    }
+
+    public void addCardToDeck(Card card) throws LogicException {
+        deck.addCard(card);
     }
 
     private void setNextCard() {
