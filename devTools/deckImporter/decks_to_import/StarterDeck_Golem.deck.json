@@ -1,0 +1,26 @@
+{
+      "deckName": "aggro starter deck",
+      "heroId": "VaathTheImmortal",
+      "othersIds": [
+		"BloodshardGolem_1",
+		"BloodshardGolem_2",
+		"BloodshardGolem_3",
+		"HailstoneGolem_1",
+		"HailstoneGolem_2",
+		"HailstoneGolem_3",
+		"BrightmossGolem_1",
+		"BrightmossGolem_2",
+		"BrightmossGolem_3",
+        "DryboneGolem_1",
+        "DryboneGolem_2",
+        "DryboneGolem_3",
+		"BeamShock_1",
+		"BeamShock_2",
+		"BeamShock_3",
+		"AurynNexus_1",
+		"AurynNexus_2",
+		"AurynNexus_3",
+        "KineticEquilibrium_1",
+        "KineticEquilibrium_2"
+      ]
+}
