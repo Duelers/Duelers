@@ -113,4 +113,3 @@ buildNumber.properties
 
 ## white list 
 !/Server/resources/accounts/john_doe.account.json
-
