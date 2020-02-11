@@ -1,0 +1,15 @@
+{
+  "name": "Bloodshard Golem",
+  "description": "Golem",
+  "cardId": "BloodshardGolem",
+  "spriteName": "neutral_golembloodshard",
+  "type": "MINION",
+  "defaultAp": 4,
+  "defaultHp": 3,
+  "mannaPoint": 3,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
