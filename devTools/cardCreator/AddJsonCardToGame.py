@@ -35,7 +35,7 @@ def get_card_id_for_account(account_name: str, card_id: str, i: int) -> str:
 def make_copies(ids: List[str], data: Dict[Any, Any]) -> List[Dict[Any,Any]]:
 
     c1 = data.copy() 
-    c1["cardId"] = acc_ids[0]
+    c1["cardId"] = ids[0]
 
     if len(ids) == 1:
         return [c1]
@@ -44,32 +44,13 @@ def make_copies(ids: List[str], data: Dict[Any, Any]) -> List[Dict[Any,Any]]:
         c2 = data.copy()
         c3 = data.copy() 
 
-        c2["cardId"] = acc_ids[1]
-        c3["cardId"] = acc_ids[2]
+        c2["cardId"] = ids[1]
+        c3["cardId"] = ids[2]
 
         return [c1, c2, c3]
 
-
-if __name__ == "__main__":
-
-    print("+===========================================+")
-    print("|    NEW CARD INSTALLER SCRIPT ver1.0       |")
-    print("+===========================================+")
-
-    assert os.path.isdir(RESOURCES_DIR), "ERROR: {RESOURCES_PATH} is not a valid directory!"
-    assert os.path.isdir(RESOURCES_SERVER_DIR), "ERROR: {RESOURCES_SERVER_PATH} is not a valid directory!"
-    assert os.path.isdir(ACCOUNTS_DIR), "ERROR: {ACCOUNT_PATH} is not a valid directory!"
-
-    card: str = ""
-    for f in os.listdir(SCRIPT_PATH):
-        if f.endswith(".card.json"):
-            card = f
-            break
-    assert card, f"ERROR: no card was found in {SCRIPT_PATH}"
+def main(card: str, card_path: str, account_name: str) -> None:
     
-    print(f"Card Found: {card}")
-    card_path = os.path.join(SCRIPT_PATH, card)
-
     print("loading json...")
     data = load_json(card_path)
 
@@ -89,11 +70,10 @@ if __name__ == "__main__":
     print(f"attempting to copy card to dir: {loc_2}")
     shutil.copy(card_path, loc_2)
 
-    ACCOUNT_NAME = "john_doe"
-    account_path = os.path.join(ACCOUNTS_DIR, ACCOUNT_NAME + ".account.json")
+    account_path = os.path.join(ACCOUNTS_DIR, account_name + ".account.json")
     assert os.path.exists(account_path), f"ERROR: '{account_path}' is not a file!"
 
-    print(f"Attempting to add card to account: {ACCOUNT_NAME}")
+    print(f"Attempting to add card to account: {account_name}")
     acc_json = load_json(account_path)
     username = acc_json["username"]
     
@@ -107,7 +87,8 @@ if __name__ == "__main__":
 
     card_objects = make_copies(acc_ids, data)
 
-    collection = acc_json["collection"][card_type.lower() + "s"]
+    key = card_type.lower() + "s" if card_type in ["MINION", "SPELL"] else card_type.lower() + "es" ## minion(s), spell(s), hero(es)
+    collection = acc_json["collection"][key]
     for idx, collected_card in enumerate(collection): 
         if collected_card["cardId"] in acc_ids:
             print(f"Card was found in account, overwriting")
@@ -124,5 +105,37 @@ if __name__ == "__main__":
     print("Saving changes made to account")
     with open(account_path, "w") as jsonFile:
         json.dump(acc_json, jsonFile, indent=4)
+
+
+if __name__ == "__main__":
+
+    print("+===========================================+")
+    print("|    NEW CARD INSTALLER SCRIPT ver1.0       |")
+    print("+===========================================+")
+
+    assert os.path.isdir(RESOURCES_DIR), "ERROR: {RESOURCES_PATH} is not a valid directory!"
+    assert os.path.isdir(RESOURCES_SERVER_DIR), "ERROR: {RESOURCES_SERVER_PATH} is not a valid directory!"
+    assert os.path.isdir(ACCOUNTS_DIR), "ERROR: {ACCOUNT_PATH} is not a valid directory!"
+
+    import_card_path = os.path.join(SCRIPT_PATH, "cards_to_import")
+    assert os.path.isdir(import_card_path), f"ERROR: {import_card_path} is not a valid directory!"
+
+    print(f"Looking for cards in: {import_card_path}")
+    cards = []
+    for f in os.listdir(import_card_path):
+        if f.endswith(".card.json"):
+            cards.append(f)
+    assert cards, f"ERROR: no cards were found in {import_card_path}"
+    
+    print(f"Number of cards Found: {len(cards)}")
+    
+    account_name = "john_doe"
+    for c in cards:
+        card_path = os.path.join(import_card_path, c)
+        print("---------------------------------------")
+        print(f"Starting import process for Card: {c}")
+        main(c, card_path, account_name)
+        print(f"Finished import process for Card: {c}\n")
+
 
     print("SCRIPT COMPLETE!")
