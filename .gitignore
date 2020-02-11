@@ -111,7 +111,6 @@ buildNumber.properties
 ## Resources
 
 /exported_decks/*
-/Server/resources/accounts/
 /resources/accounts/
 
 ## Windows Exe
