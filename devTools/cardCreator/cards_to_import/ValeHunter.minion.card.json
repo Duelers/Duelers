@@ -1,0 +1,16 @@
+{
+  "name": "Vale Hunter",
+  "description": "Ranged",
+  "cardId": "ValeHunter",
+  "spriteName": "neutral_tribalranged1",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 1,
+  "defaultHp": 2,
+  "mannaPoint": 2,
+  "price": 100,
+  "attackType": "HYBRID",
+  "range": 99,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
