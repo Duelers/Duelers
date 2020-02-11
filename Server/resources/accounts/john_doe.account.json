@@ -444,6 +444,82 @@
     "minions": [
 		{
 
+		  "name": "Brightmoss Golem",
+		  "description": "Golem",
+		  "cardId": "BrightmossGolem",
+		  "spriteName": "neutral_golemnature",
+		  "type": "MINION",
+		  "defaultAp": 4,
+		  "defaultHp": 9,
+		  "mannaPoint": 5,
+		  "price": 100,
+		  "attackType": "MELEE",
+		  "range": 0,
+		  "hasCombo": false,
+		  "remainingNumber": 20
+		},
+		{
+		  "name": "Drybone Golem",
+		  "description": "Golem",
+		  "cardId": "DryboneGolem",
+		  "spriteName": "neutral_golemdragonbone",
+		  "type": "MINION",
+		  "defaultAp": 10,
+		  "defaultHp": 10,
+		  "mannaPoint": 7,
+		  "price": 100,
+		  "attackType": "MELEE",
+		  "range": 0,
+		  "hasCombo": false,
+		  "remainingNumber": 20
+		},
+		{
+		  "name": "Bloodshard Golem",
+		  "description": "Golem",
+		  "cardId": "BloodshardGolem",
+		  "spriteName": "neutral_golembloodshard",
+		  "type": "MINION",
+		  "defaultAp": 4,
+		  "defaultHp": 3,
+		  "mannaPoint": 3,
+		  "price": 100,
+		  "attackType": "MELEE",
+		  "range": 0,
+		  "hasCombo": false,
+		  "remainingNumber": 20
+		},
+		{
+		  "name": "Razorcrag Golem",
+		  "description": "Golem",
+		  "cardId": "RazorcragGolem",
+		  "spriteName": "neutral_razorcraggolem",
+		  "type": "MINION",
+		  "defaultAp": 10,
+		  "defaultHp": 3,
+		  "mannaPoint": 4,
+		  "price": 100,
+		  "attackType": "MELEE",
+		  "range": 0,
+		  "hasCombo": false,
+		  "remainingNumber": 20
+		},
+		{
+		  "name": "Hailstone Golem",
+		  "description": "Golem",
+		  "cardId": "HailstoneGolem",
+		  "spriteName": "neutral_golemice",
+		  "type": "MINION",
+		  "defaultAp": 4,
+		  "defaultHp": 6,
+		  "mannaPoint": 4,
+		  "price": 100,
+		  "attackType": "MELEE",
+		  "range": 0,
+		  "hasCombo": false,
+		  "remainingNumber": 20
+		}, 
+      
+    {
 			"name": "Flameblood Warlock",
 			"description": "Opening Gambit: Deal 3 damage to both generals",
 			"cardId": "johndoe_FlamebloodWarlock_1",
@@ -507,6 +583,7 @@
 		  "remainingNumber": 20
 
 		},
+
 	
       {
         "name": "Arjang The Demon",
@@ -7529,7 +7606,7 @@
         "remainingNumber": 20
       }
     ],
-    "items": [
+    "items": [		
       {
         "name": "Assassination Dagger",
         "description": "TODO",
@@ -9273,7 +9350,6 @@
     {
       "deckName": "deck",
       "heroId": "johndoe_SevenHeadedDragon_1",
-      "itemId": "johndoe_CrownOfWisdom_1",
       "othersIds": [
         "johndoe_ArjangTheDemon_1",
         "johndoe_ArjangTheDemon_2",
@@ -9300,7 +9376,6 @@
     {
       "deckName": "Prebuilt Deck 1",
       "heroId": "johndoe_Afsaaneh_1",
-      "itemId": "johndoe_CrownOfWisdom_1",
       "othersIds": [
         "johndoe_ArjangTheDemon_1",
         "johndoe_ArjangTheDemon_2",
