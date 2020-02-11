@@ -85,9 +85,10 @@ fabric.properties
 # Edit at https://www.gitignore.io/?templates=maven
 
 ### Maven ###
-/Server/target/
-/Client/target/
-/tools/target/
+
+/Server/target
+/Client/target
+/tools/target
 
 pom.xml.tag
 pom.xml.releaseBackup
@@ -107,10 +108,20 @@ buildNumber.properties
 
 /bin/
 
+## Resources
 
 /exported_decks/*
 /Server/resources/accounts/
 /resources/accounts/
 
+## Windows Exe
+
+/Build_exe/Application/Client/*.exe
+/Build_exe/Application/Client/Resources
+/Build_exe/Application/Client/Classes
+/Build_exe/Application/resources
+/Build_exe/Application/Server
+
 ## white list 
 !/Server/resources/accounts/john_doe.account.json
+!.keep
