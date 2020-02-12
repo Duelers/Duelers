@@ -12,6 +12,8 @@ RESOURCES_SERVER_DIR = os.path.abspath(os.path.join(SCRIPT_PATH, "..", "..", "Se
 
 ACCOUNTS_DIR = os.path.join(RESOURCES_SERVER_DIR, "accounts")
 
+INFO_FILE = os.path.join(SCRIPT_PATH, "info.json")
+
 RESOURCES_SUBFOLDER_NAMES = ["heroCards", "minionCards", "spellCards"]
 SUPPORTED_CARD_TYPES = ["HERO", "MINION", "SPELL"]
 
@@ -116,8 +118,12 @@ if __name__ == "__main__":
     assert os.path.isdir(RESOURCES_DIR), "ERROR: {RESOURCES_PATH} is not a valid directory!"
     assert os.path.isdir(RESOURCES_SERVER_DIR), "ERROR: {RESOURCES_SERVER_PATH} is not a valid directory!"
     assert os.path.isdir(ACCOUNTS_DIR), "ERROR: {ACCOUNT_PATH} is not a valid directory!"
+    assert os.path.isfile(INFO_FILE), f"ERROR: {INFO_FILE} is not a valid file!"
 
-    import_card_path = os.path.join(SCRIPT_PATH, "cards_to_import")
+    print("Loading Info.json...")
+    info = load_json(INFO_FILE)
+    account_name = info["account_name"]
+    import_card_path =  os.path.abspath(info["import_directory"])
     assert os.path.isdir(import_card_path), f"ERROR: {import_card_path} is not a valid directory!"
 
     print(f"Looking for cards in: {import_card_path}")
@@ -128,8 +134,7 @@ if __name__ == "__main__":
     assert cards, f"ERROR: no cards were found in {import_card_path}"
     
     print(f"Number of cards Found: {len(cards)}")
-    
-    account_name = "duelyst" ## Name of account you wish to import to. This is the bit before 'account.json'
+
     for c in cards:
         card_path = os.path.join(import_card_path, c)
         print("---------------------------------------")

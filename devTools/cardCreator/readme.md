@@ -3,15 +3,18 @@
 ## You will need: 
 
 * Test Editor (that can read python files and Json)
-* Python installed on your computer
+* [OPTIONAL] Python installed on your computer
 
 For text editors I recommend Notepad++, with the 'JSTool' plugin installed (this plugin will allow you to test and format Json files).
 
-## What does the script do?
+If you do not have python then use the 'AddJsonCardToGame.exe' instead.
+
+## What does the script/exe do?
 
 The 'AddJsonCardToGame.py' script currently does the following:
 
-* Search 'cards_to_import' directory for cards
+* Loads info.json to determine (a) what account do add the card(s) to and (b) set the directory for the cards.
+* If you do not edit the info.json file then the program will default to importing the 'cards_to_import' directory.
 * For each card it finds it checks that the file follows the current conventions.
 * Adds the card in both the Server/Resources and Resources directory.
 * Attempts to add 3x copies (or 1x copy for Hero cards) to a account (found in Server/Resources/accounts).
@@ -19,10 +22,9 @@ The 'AddJsonCardToGame.py' script currently does the following:
 
 ## Instructions 
 
-* design a new card, and add it in the "cards_to_import" directory
-* open the 'AddJsonCardToGame.py' script (in notepad++), somewhere toward the end of the script you should find a variable called 'account_name'. Ensure that this is the name
+* design a new card, and add it in the "cards_to_import" directory (or, if you changed it, the directory specified in info.json. 
 * Run the script
-* Assuming you have no errors, run the game and login as the account mentioned above.
+* Assuming you have no errors, run the game and login as the account mentioned in info.json (this defaults to "duelyst").
 * Go to collection, add your new card to decks and playtest it.
 * If you are happy with the card then the next is to sumbit it:
 	* Developers can 'submit' the card by creating a pull request using Git. 
