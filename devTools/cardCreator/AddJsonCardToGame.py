@@ -2,7 +2,6 @@ import os
 import json
 import shutil
 import copy
-import sys
 from typing import Dict, Any, List
 
 SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
@@ -142,10 +141,8 @@ if __name__ == "__main__":
         card_path = os.path.join(import_card_path, c)
         print("---------------------------------------")
         print(f"Starting import process for Card: {c}")
-        main(c, card_path, account_name)
+        main(c, card_path, account_path)
         print(f"Finished import process for Card: {c}\n")
 
     print("¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦")
     print("SCRIPT COMPLETE -- If you see this message no errors were detected :)")
-    input("Press Any Key to exit")
-    sys.exit(0)
