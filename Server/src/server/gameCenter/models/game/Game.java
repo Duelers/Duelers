@@ -156,7 +156,7 @@ public abstract class Game {
                 startTurnTimeLimit();
 
                 if (getCurrentTurnPlayer().getUserName().equals("AI")) {
-                    playCurrentTurn();
+                    playCurrentTurnAtRandom();
                 }
             } else {
                 throw new ClientException("it isn't your turn!");
@@ -194,7 +194,7 @@ public abstract class Game {
         }
     }
 
-    private void playCurrentTurn() throws LogicException {
+    private void playCurrentTurnAtRandom() throws LogicException {
         try {
             AvailableActions actions = new AvailableActions();
             actions.calculateAvailableActions(this);
