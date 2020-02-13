@@ -130,3 +130,4 @@ buildNumber.properties
 !/Server/resources/accounts/template.account.json
 !/Server/resources/accounts/duelyst.account.json
 
+devTools/cardCreator/AddJsonCardToGame.exe
