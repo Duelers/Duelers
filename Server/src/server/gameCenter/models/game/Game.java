@@ -195,6 +195,7 @@ public abstract class Game {
     }
 
     private void playCurrentTurnAtRandom() throws LogicException {
+        // AI
         try {
             AvailableActions actions = new AvailableActions();
             actions.calculateAvailableActions(this);
