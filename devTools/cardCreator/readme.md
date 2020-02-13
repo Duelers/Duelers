@@ -2,11 +2,10 @@
 
 ## You will need: 
 
-* Test Editor (that can read python files and Json)
+* Test Editor (that can read Json)
 * [OPTIONAL] Python installed on your computer
 
 For text editors I recommend Notepad++, with the 'JSTool' plugin installed (this plugin will allow you to test and format Json files).
-
 If you do not have python then use the 'AddJsonCardToGame.exe' instead.
 
 ## What does the script/exe do?
@@ -20,10 +19,17 @@ The 'AddJsonCardToGame.py' script currently does the following:
 * Attempts to add 3x copies (or 1x copy for Hero cards) to a account (found in Server/Resources/accounts).
 * If a card with the same cardId is found IT WILL BE OVERWRITTEN
 
+The .exe does exactly the same thing, its a much larger file because it runs without Python.
+
+## Info.json
+
+The info.json has two properties; where to look for the cards and what account to add them to.
+By default, we search for cards in the 'cards_to_import' directory and add them to the 'duelyst' account.
+
 ## Instructions 
 
 * design a new card, and add it in the "cards_to_import" directory (or, if you changed it, the directory specified in info.json. 
-* Run the script
+* Run the script  (ideally from the command line, if you double-click the .exe you won't see error messages)
 * Assuming you have no errors, run the game and login as the account mentioned in info.json (this defaults to "duelyst").
 * Go to collection, add your new card to decks and playtest it.
 * If you are happy with the card then the next is to sumbit it:
@@ -59,5 +65,6 @@ Here is a (non-exhaustive) list of card creation rules:
 * Use pre-existing cards as inspiration: For example, I was able to create the "spiral technique" spell in about 5 minutes of work because that card is just a bigger version of a card I had already created (i.e. 'Pheonix Fire')
 * Other card examples can be found in the Client/Resources directory. 
 * If you get an error when running the python script, please do read the error message. In many cases, these messages will indicate why the import process failed.
+* 'CardTriggerNotes' has some description about what different things do. Its not complete, be sure to add to it if you discover something!
 
 ## Fin! 
