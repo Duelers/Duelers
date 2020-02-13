@@ -2,7 +2,7 @@ import os
 import json
 import shutil
 import copy
-
+import sys
 from typing import Dict, Any, List
 
 SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
@@ -51,7 +51,7 @@ def make_copies(ids: List[str], data: Dict[Any, Any]) -> List[Dict[Any,Any]]:
 
         return [c1, c2, c3]
 
-def main(card: str, card_path: str, account_name: str) -> None:
+def main(card: str, card_path: str, account_path: str) -> None:
     
     print("loading json...")
     data = load_json(card_path)
@@ -72,10 +72,8 @@ def main(card: str, card_path: str, account_name: str) -> None:
     print(f"attempting to copy card to dir: {loc_2}")
     shutil.copy(card_path, loc_2)
 
-    account_path = os.path.join(ACCOUNTS_DIR, account_name + ".account.json")
-    assert os.path.exists(account_path), f"ERROR: '{account_path}' is not a file!"
 
-    print(f"Attempting to add card to account: {account_name}")
+    print(f"Attempting to add card to account")
     acc_json = load_json(account_path)
     username = acc_json["username"]
     
@@ -123,10 +121,15 @@ if __name__ == "__main__":
     print("Loading Info.json...")
     info = load_json(INFO_FILE)
     account_name = info["account_name"]
+
+    print(f"Checking '{account_name}' account exists...")
+    account_path = os.path.join(ACCOUNTS_DIR, account_name + ".account.json")
+    assert os.path.isfile(account_path), f"ERROR: '{account_path}' is not a file!"
+
     import_card_path =  os.path.abspath(info["import_directory"])
     assert os.path.isdir(import_card_path), f"ERROR: {import_card_path} is not a valid directory!"
-
     print(f"Looking for cards in: {import_card_path}")
+
     cards = []
     for f in os.listdir(import_card_path):
         if f.endswith(".card.json"):
@@ -142,5 +145,7 @@ if __name__ == "__main__":
         main(c, card_path, account_name)
         print(f"Finished import process for Card: {c}\n")
 
-
-    print("SCRIPT COMPLETE!")
+    print("¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦")
+    print("SCRIPT COMPLETE -- If you see this message no errors were detected :)")
+    input("Press Any Key to exit")
+    sys.exit(0)
