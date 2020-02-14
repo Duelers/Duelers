@@ -28,6 +28,7 @@ public class Player {
     private int playerNumber;
     private int numberOfCollectedFlags;
     private MatchHistory matchHistory;
+    private boolean canReplaceCard;
 
     Player(Deck mainDeck, String userName, int playerNumber) {
         this.playerNumber = playerNumber;
@@ -37,6 +38,7 @@ public class Player {
         for (int i = 0; i < 3; i++) {
             addNextCardToHand();
         }
+        this.canReplaceCard = true;
     }
 
     public CompressedPlayer toCompressedPlayer() {
@@ -259,5 +261,13 @@ public class Player {
 
     void addTroop(Troop troop) {
         troops.add(troop);
+    }
+
+    public boolean getCanReplaceCard(){
+        return this.canReplaceCard;
+    }
+
+    public void setCanReplaceCard(boolean state){
+        this.canReplaceCard = state;
     }
 }

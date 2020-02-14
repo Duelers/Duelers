@@ -141,6 +141,7 @@ public abstract class Game {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
                 addNextCardToHand();
+                getCurrentTurnPlayer().setCanReplaceCard(true);
 
                 revertNotDurableBuffs();
                 removeFinishedBuffs();
@@ -200,13 +201,19 @@ public abstract class Game {
     }
 
     public void replaceCard(String cardID) throws LogicException {
-        Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
-        getCurrentTurnPlayer().addCardToDeck(removedCard);
-        if (getCurrentTurnPlayer().addNextCardToHand()) {
-            Card nextCard = getCurrentTurnPlayer().getNextCard();
-            Server.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
-            Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
-            Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
+        if( getCurrentTurnPlayer().getCanReplaceCard() ){
+            Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
+            getCurrentTurnPlayer().addCardToDeck(removedCard);
+            if (getCurrentTurnPlayer().addNextCardToHand()) {
+                getCurrentTurnPlayer().setCanReplaceCard(false);
+                Card nextCard = getCurrentTurnPlayer().getNextCard();
+                Server.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
+                Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
+                Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
+            }
+        }
+        else{
+            System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
         }
     }
 

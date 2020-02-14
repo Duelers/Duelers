@@ -348,8 +348,7 @@ public class HandBox implements PropertyChangeListener {
         if(selectedCard != -1 ) {
             String cardID = player.getHand().get(selectedCard).getCardId();
             battleScene.getController().replaceCard(cardID);
-            updateCards();
-            selectedCard = -1;
+            clickOnCard(selectedCard);
         }
     }
 }
