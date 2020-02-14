@@ -21,10 +21,13 @@ import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedPlayer;
 import models.comperessedData.CompressedTroop;
 import models.gui.*;
+import server.Server;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
 
 import static java.lang.Math.pow;
 import static view.BattleView.Constants.SCALE;
@@ -37,8 +40,6 @@ public class PlayerBox implements PropertyChangeListener {
     private final Image spellNotSelectedImage = new Image(new FileInputStream("Client/resources/ui/quests@2x.png"));
     private final Image manaImage = new Image(new FileInputStream("Client/resources/ui/icon_mana@2x.png"));
     private final Image inActiveManaImage = new Image(new FileInputStream("Client/resources/ui/icon_mana_inactive@2x.png"));
-    private final Image player1Profile = new Image(new FileInputStream("Client/resources/photo/general_portrait_image_hex_f5@2x.png"));
-    private final Image player2Profile = new Image(new FileInputStream("Client/resources/photo/general_portrait_image_hex_f6-third@2x.png"));
     private final Image chatImage = new Image(new FileInputStream("Client/resources/ui/chat_bubble.png"));
     private final double CHAT_BUBBLE_SIZE = 150 * SCALE;
     private final NormalField chatField = new NormalField("Type message and send");
@@ -61,6 +62,9 @@ public class PlayerBox implements PropertyChangeListener {
         this.battleScene = battleScene;
         this.player1 = game.getPlayerOne();
         this.player2 = game.getPlayerTwo();
+
+        player1.getHero().getCard().getCardId();
+
         group = new Group();
         addPhotos();
         if (game.getTurnNumber() % 2 == 1) {
@@ -83,6 +87,16 @@ public class PlayerBox implements PropertyChangeListener {
         }
 
         game.addPropertyChangeListener(this);
+    }
+
+    private HashMap<String,String> MapGeneralToPortrait(){
+        // Note that this is a quick hack; a better solution is to have "portraitId" defined in the Hero's json file.
+        HashMap<String, String> nameToPortrait = new HashMap<String, String>();
+        nameToPortrait.put("Reva Eventide", "Client/resources/photo/general_portrait_image_hex_f2-alt@2x.png");
+        nameToPortrait.put("Vaath The Immortal", "Client/resources/photo/general_portrait_image_hex_f5@2x.png");
+        nameToPortrait.put("Argeon Highmayne", "Client/resources/photo/general_portrait_image_hex_f1@2x.png");
+
+        return nameToPortrait;
     }
 
     private void addChatField() {
@@ -113,7 +127,17 @@ public class PlayerBox implements PropertyChangeListener {
         player2MessageShow = new MessageShow(player2Image);
     }
 
-    private void addPhotos() {
+    private void addPhotos() throws FileNotFoundException {
+
+        String player1HeroName = player1.getHero().getCard().getName();
+        Image player1Profile = new Image(new FileInputStream (MapGeneralToPortrait().getOrDefault(player1HeroName,  "Client/resources/photo/general_portrait_image_hex_rook@2x.png")));
+
+        String player2HeroName = player2.getHero().getCard().getName();
+        Image player2Profile = new Image(new FileInputStream (MapGeneralToPortrait().getOrDefault(player2HeroName, "Client/resources/photo/general_portrait_image_hex_calibero@2x.png")));
+
+        Server.serverPrint(player1HeroName);
+        Server.serverPrint(player2HeroName);
+
         player1Image = ImageLoader.makeImageView(player1Profile,
                 player1Profile.getWidth() * SCALE * 0.3,
                 player1Profile.getHeight() * SCALE * 0.3
