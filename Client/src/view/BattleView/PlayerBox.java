@@ -63,8 +63,6 @@ public class PlayerBox implements PropertyChangeListener {
         this.player1 = game.getPlayerOne();
         this.player2 = game.getPlayerTwo();
 
-        player1.getHero().getCard().getCardId();
-
         group = new Group();
         addPhotos();
         if (game.getTurnNumber() % 2 == 1) {
@@ -135,9 +133,6 @@ public class PlayerBox implements PropertyChangeListener {
         String player2HeroName = player2.getHero().getCard().getName();
         Image player2Profile = new Image(new FileInputStream (MapGeneralToPortrait().getOrDefault(player2HeroName, "Client/resources/photo/general_portrait_image_hex_calibero@2x.png")));
 
-        Server.serverPrint(player1HeroName);
-        Server.serverPrint(player2HeroName);
-
         player1Image = ImageLoader.makeImageView(player1Profile,
                 player1Profile.getWidth() * SCALE * 0.3,
                 player1Profile.getHeight() * SCALE * 0.3
@@ -156,8 +151,8 @@ public class PlayerBox implements PropertyChangeListener {
         player2Name = new DefaultLabel("", Constants.NAME_FONT, Color.WHITE, SCREEN_WIDTH - 600 * SCALE, 75 * SCALE);
         player2Name.setBackground(new Background(new BackgroundFill(Color.rgb(155, 82, 100, 0.7), new CornerRadii(3), Insets.EMPTY)));
         player2Name.setPadding(Constants.NAME_PADDING);
-        player1Name.setText(player1.getUserName() + " Flags:" + player1.getNumberOfCollectedFlags());
-        player2Name.setText(player2.getUserName() + " Flags:" + player2.getNumberOfCollectedFlags());
+        player1Name.setText(player1.getUserName());
+        player2Name.setText(player2.getUserName());
         player1ImageEffect = new ColorAdjust();
         player2ImageEffect = new ColorAdjust();
         player1Image.setEffect(player1ImageEffect);
