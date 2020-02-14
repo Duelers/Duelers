@@ -21,7 +21,6 @@ import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedPlayer;
 import models.comperessedData.CompressedTroop;
 import models.gui.*;
-import server.Server;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
