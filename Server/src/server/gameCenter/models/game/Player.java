@@ -1,6 +1,5 @@
 package server.gameCenter.models.game;
 
-import server.Server;
 import server.clientPortal.models.comperessedData.CompressedCard;
 import server.clientPortal.models.comperessedData.CompressedPlayer;
 import server.dataCenter.models.account.MatchHistory;
@@ -39,15 +38,8 @@ public class Player {
     }
 
     public CompressedPlayer toCompressedPlayer() {
-        Card firstItem = deck.getItem();
-        CompressedCard useableItem = null;
-
-        if (firstItem != null){
-            useableItem = firstItem.toCompressedCard();
-        }
-
         return new CompressedPlayer(
-                userName, currentMP, hand, graveyard, nextCard, useableItem , collectedItems, playerNumber, numberOfCollectedFlags);
+                userName, currentMP, hand, graveyard, nextCard,deck.getItem().toCompressedCard(), collectedItems, playerNumber, numberOfCollectedFlags);
     }
 
     public List<Card> getHand() {

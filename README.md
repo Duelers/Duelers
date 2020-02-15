@@ -7,10 +7,6 @@
 3. In Client/target there should be a file ending with "...jar-with-dependencies.jar". 
 4. Run the above file and enjoy playing the game!
 
-### Building and Installing an Executable (Windows)
-
-* Please see the readme in the 'build_exe' directory for instructions.
-
 ### Original Project
 
 The Original Project was created by:
@@ -21,8 +17,8 @@ The Original Project was created by:
 
 ..And has been copied under the MIT license:
 
-The original repo can be found here: https://github.com/aps2019project/Duelers
+The original repo can be found here:
+https://github.com/aps2019project/Duelers
 
-### NOTES:
-
+# NOTES:
 * Sound effects just work on Windows. On Linux you need to install Glib.
