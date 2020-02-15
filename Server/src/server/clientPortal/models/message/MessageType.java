@@ -33,7 +33,6 @@ public enum MessageType {
     SELL_CARD,
     INSERT,
     ATTACK,
-    COMBO,
     USE_SPECIAL_POWER,
     END_TURN,
     LOG_IN,

@@ -197,10 +197,6 @@ public class Server {
                     GameCenter.getInstance().endTurn(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));
                     break;
-                case COMBO:
-                    GameCenter.getInstance().combo(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
-                    break;
                 case USE_SPECIAL_POWER:
                     GameCenter.getInstance().useSpecialPower(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));

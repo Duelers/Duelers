@@ -31,8 +31,6 @@ import static view.BattleView.Constants.SCALE;
 import static view.BattleView.Constants.SCREEN_WIDTH;
 
 public class PlayerBox implements PropertyChangeListener {
-    private final Image comboNotSelectedImage = new Image(new FileInputStream("Client/resources/ui/ranked_chevron_empty@2x.png"));
-    private final Image comboSelectedImage = new Image(new FileInputStream("Client/resources/ui/ranked_chevron_full@2x.png"));
     private final Image spellSelectedImage = new Image(new FileInputStream("Client/resources/ui/quests_glow@2x.png"));
     private final Image spellNotSelectedImage = new Image(new FileInputStream("Client/resources/ui/quests@2x.png"));
     private final Image manaImage = new Image(new FileInputStream("Client/resources/ui/icon_mana@2x.png"));
@@ -52,7 +50,6 @@ public class PlayerBox implements PropertyChangeListener {
     private ImageView player2Image;
     private ColorAdjust player1ImageEffect;
     private ColorAdjust player2ImageEffect;
-    private ImageView comboButton;
     private ImageView spellButton;
     private DefaultLabel player1Name;
     private DefaultLabel player2Name;
@@ -75,7 +72,6 @@ public class PlayerBox implements PropertyChangeListener {
         updateMP(3);
 
         if (battleScene.getMyPlayerNumber() != -1) {
-            addComboButton();
             addSpellButton();
             addChatField();
             makeMessageShows();
@@ -169,7 +165,6 @@ public class PlayerBox implements PropertyChangeListener {
         if (battleScene.getMyPlayerNumber() == -1)
             return;
         try {
-            comboButton.setImage(comboNotSelectedImage);
             spellButton.setImage(spellNotSelectedImage);
         } catch (Exception e) {
             e.printStackTrace();
@@ -231,62 +226,6 @@ public class PlayerBox implements PropertyChangeListener {
                     battleScene.getMapBox().setSpellSelected();
                     battleScene.getMapBox().updateMapColors();
                     spellButton.setImage(spellSelectedImage);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void addComboButton() {
-        comboButton = new ImageView(comboNotSelectedImage);
-        comboButton.setFitWidth(comboButton.getImage().getWidth() * SCALE * 0.3);
-        comboButton.setFitHeight(comboButton.getImage().getHeight() * SCALE * 0.3);
-        comboButton.setY(SCALE * (260));
-        if (battleScene.getMyPlayerNumber() == 1)
-            comboButton.setX(SCALE * (230));
-        else
-            comboButton.setX(Constants.SCREEN_WIDTH - SCALE * (230) - comboButton.getFitWidth());
-        group.getChildren().add(comboButton);
-        comboButton.setOnMouseEntered(mouseEvent -> hoverComboButton());
-        comboButton.setOnMouseExited(mouseEvent -> exitComboButton());
-        comboButton.setOnMouseClicked(mouseEvent -> clickComboButton());
-    }
-
-    private void exitComboButton() {
-        try {
-            if (battleScene.getMapBox().isComboSelected())
-                comboButton.setImage(comboSelectedImage);
-            else
-                comboButton.setImage(comboNotSelectedImage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void hoverComboButton() {
-        try {
-            if (battleScene.isMyTurn() && battleScene.getMapBox().getSelectedTroop() != null &&
-                    battleScene.getMapBox().getSelectedTroop().getCard().isHasCombo())
-                comboButton.setImage(comboSelectedImage);
-            else
-                comboButton.setImage(comboNotSelectedImage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void clickComboButton() {
-        try {
-            if (battleScene.isMyTurn() && battleScene.getMapBox().getSelectedTroop() != null &&
-                    battleScene.getMapBox().getSelectedTroop().getCard().isHasCombo()) {
-                if (battleScene.getMapBox().isComboSelected()) {
-                    battleScene.getMapBox().resetSelection();
-                    comboButton.setImage(comboNotSelectedImage);
-                } else {
-                    battleScene.getMapBox().setComboSelected();
-                    battleScene.getMapBox().updateMapColors();
-                    comboButton.setImage(comboSelectedImage);
                 }
             }
         } catch (Exception e) {

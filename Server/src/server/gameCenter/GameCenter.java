@@ -345,14 +345,6 @@ public class GameCenter extends Thread {//synchronize
         );
     }
 
-    public void combo(Message message) throws LogicException {
-        Game game = getGame(message.getSender());
-        game.comboAttack(
-                DataCenter.getInstance().getClients().get(message.getSender()).getUsername(),
-                message.getOtherFields().getMyCardIds(), message.getOtherFields().getOpponentCardId()
-        );
-    }
-
     public void useSpecialPower(Message message) throws LogicException {
         Game game = getGame(message.getSender());
         game.useSpecialPower(
