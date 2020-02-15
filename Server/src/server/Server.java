@@ -127,9 +127,6 @@ public class Server {
                         case ORIGINAL_CARDS:
                             sendOriginalCards(message);
                             break;
-                        case STORIES:
-                            sendStories(message);
-                            break;
                         case CUSTOM_CARDS:
                             sendCustomCards(message);
                             break;
@@ -177,10 +174,6 @@ public class Server {
                 case DECLINE_REQUEST:
                     GameCenter.getInstance().getDeclineRequest(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));
-                    break;
-                case NEW_STORY_GAME:
-                    GameCenter.getInstance().newStoryGame(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));//TODO:can be removed
                     break;
                 case NEW_DECK_GAME:
                     GameCenter.getInstance().newDeckGame(message);
@@ -266,13 +259,6 @@ public class Server {
 
     private static void sendException(String exceptionString, String receiver) {
         addToSendingMessages(Message.makeExceptionMessage(receiver, exceptionString));
-    }
-
-    private static void sendStories(Message message) throws LogicException {
-    	Story[] s = new Story[DataCenter.getInstance().getStories().size()];
-        DataCenter.getInstance().loginCheck(message);
-        addToSendingMessages(Message.makeStoriesCopyMessage(message.getSender(),
-                DataCenter.getInstance().getStories().toArray(s)));
     }
 
     private static void sendOnlineGames(Message message) throws LogicException {

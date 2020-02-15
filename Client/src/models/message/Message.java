@@ -238,14 +238,6 @@ public class Message {
         return message;
     }
 
-    public static Message makeNewStoryGameMessage(String receiver, int stage) {
-        Message message = new Message(receiver);
-        message.newGameFields = new NewGameFields();
-        message.newGameFields.setStage(stage);
-        message.messageType = MessageType.NEW_STORY_GAME;
-        return message;
-    }
-
     public static Message makeSelectUserMessage(String receiver, String opponentUserName) {
         Message message = new Message(receiver);
         message.newGameFields = new NewGameFields();

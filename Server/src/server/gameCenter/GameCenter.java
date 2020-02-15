@@ -235,40 +235,6 @@ public class GameCenter extends Thread {//synchronize
         game.startGame();
     }
 
-    public void newStoryGame(Message message) throws LogicException {
-        DataCenter.getInstance().loginCheck(message);
-        Account myAccount = DataCenter.getInstance().getClients().get(message.getSender());
-        removeAllGameRequests(myAccount);
-        if (!myAccount.hasValidMainDeck()) {
-            throw new ClientException("you don't have valid main deck!");
-        }
-        if (onlineGames.get(myAccount) != null) {
-            throw new ClientException("you have online game!");
-        }
-        Game game = null;
-        Story story = DataCenter.getInstance().getStories().get(message.getNewGameFields().getStage());
-        GameMap gameMap = new GameMap(DataCenter.getInstance().getCollectibleItems(), story.getNumberOfFlags(), DataCenter.getInstance().getOriginalFlag());
-        switch (story.getGameType()) {
-            case KILL_HERO:
-                game = new KillHeroBattle(myAccount, story.getDeck(), gameMap);
-                game.addObserver(myAccount);
-                break;
-            case A_FLAG:
-                game = new SingleFlagBattle(myAccount, story.getDeck(), gameMap);
-                game.addObserver(myAccount);
-                break;
-            case SOME_FLAG:
-                game = new MultiFlagBattle(myAccount, story.getDeck(), gameMap, story.getNumberOfFlags());
-                game.addObserver(myAccount);
-                break;
-        }
-        game.setReward(story.getReward());
-        onlineGames.put(myAccount, game);
-        gameInfos.add(new OnlineGame(game));
-        Server.getInstance().addToSendingMessages(Message.makeGameCopyMessage
-                (message.getSender(), game));
-        game.startGame();
-    }
 
     private void newMultiplayerGame(Account account1, Account account2, GameType gameType, int numberOfFlags) {
 
