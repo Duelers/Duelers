@@ -53,13 +53,4 @@ public class MainMenuController {
     public void changeAccountTypeRequest(String username, AccountType newValue) {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeChangeAccountTypeMessage(SERVER_NAME, username, newValue));
     }
-
-    public void acceptCustomCard(String cardName) {
-        Client.getInstance().addToSendingMessagesAndSend(Message.makeValidateCustomCardMessage(SERVER_NAME, cardName));
-    }
-
-    public void rejectCustomCard(String cardName) {
-        Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeInValidateCustomCardMessage(SERVER_NAME, cardName));
-    }
 }

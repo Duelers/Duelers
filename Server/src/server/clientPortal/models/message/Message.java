@@ -203,27 +203,6 @@ public class Message {
         return message;
     }
 
-    public static Message makeAddCustomCardMessage(String receiver, Card card) {
-        Message message = new Message(receiver);
-        message.card = card;
-        message.messageType = MessageType.ADD_TO_CUSTOM_CARDS;
-        return message;
-    }
-
-    public static Message makeRemoveCustomCardMessage(String receiver, String cardName) {
-        Message message = new Message(receiver);
-        message.cardName = cardName;
-        message.messageType = MessageType.REMOVE_FROM_CUSTOM_CARDS;
-        return message;
-    }
-
-    public static Message makeCustomCardsCopyMessage(String receiver, Collection customCards) {
-        Message message = new Message(receiver);
-        message.cardsCopyMessage = new CardsCopyMessage(customCards);
-        message.messageType = MessageType.CUSTOM_CARDS_COPY;
-        return message;
-    }
-
     public static Message makeOnlineGamesCopyMessage(String receiver, OnlineGame[] onlines) {
         Message message = new Message(receiver);
         message.onlineGames = onlines;

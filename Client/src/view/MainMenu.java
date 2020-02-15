@@ -32,10 +32,7 @@ public class MainMenu extends Show {
     private final MenuItem[] itemsArray = {
             new MenuItem(itemIndex++, "PLAY", "Single player, multiplayer", event -> PlayMenu.getInstance().show()),
             new MenuItem(itemIndex++, "PROFILE", "See you profile information", event -> menu.showProfileDialog()),
-            //disabled for now. General consensus is that we do not want it
-            //new MenuItem(itemIndex++, "SHOP", "Buy or sell every card you want", event -> new ShopMenu().show()),
             new MenuItem(itemIndex++, "COLLECTION", "View your cards or build a deck", event -> new CollectionMenu().show()),
-            new MenuItem(itemIndex++, "CUSTOM CARD", "Design your card with your own taste", event -> new CustomCardMenu().show()),
             new MenuItem(itemIndex++, "GLOBAL CHAT", "chat with other players", event -> GlobalChatDialog.getInstance().show()),
             new MenuItem(itemIndex++, "LEADERBOARD", "See other people and their place", event -> menu.showLeaderboard()),
             new MenuItem(itemIndex++, "QUIT GAME", "Exit the game", event -> System.exit(0))
@@ -48,8 +45,6 @@ public class MainMenu extends Show {
         if (Client.getInstance().getAccount().getAccountType() == ADMIN) {
             System.out.println(Client.getInstance().getAccount().getUsername());
             items.addAll(Arrays.asList(
-                    new MenuItem(itemIndex++, "SHOP ADMIN", "Change shop properties", event -> ShopAdminMenu.getInstance().show()),
-                    new MenuItem(itemIndex++, "CUSTOM CARD REQUESTS", "check custom card requests", event -> menu.showCustomCardRequests()),
                     new MenuItem(itemIndex++, "ONLINE GAMES", "View online games real time", event -> menu.showOnlineGamesList())
             ));
         }
@@ -73,22 +68,6 @@ public class MainMenu extends Show {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    private void showCustomCardRequests() {
-        BackgroundMaker.makeMenuBackgroundFrozen();
-        DialogBox dialogBox = new DialogBox();
-        CustomCardRequestsList requestsList = new CustomCardRequestsList();
-        dialogBox.getChildren().add(requestsList);
-        DialogContainer customCardRequestsDialog = new DialogContainer(root, dialogBox);
-        dialogBox.makeClosable(customCardRequestsDialog, closeEvent -> {
-            CustomCardRequestsController.getInstance().removeListener(requestsList);
-            BackgroundMaker.makeMenuBackgroundUnfrozen();
-        });
-
-        CustomCardRequestsController.getInstance().requestCustomCardRequests();
-
-        customCardRequestsDialog.show();
     }
 
     private void showGlobalChatDialog(AnchorPane sceneContents) {

@@ -10,7 +10,6 @@ import java.util.List;
 
 public class OldDataBase implements DataBase {
     private Collection originalCards = new Collection();
-    private Collection newCustomCards = new Collection();
     private List<Card> collectibleItems = new ArrayList<>();
     private Card originalFlag;
     private List<Story> stories = new ArrayList<>();
@@ -19,26 +18,12 @@ public class OldDataBase implements DataBase {
         return originalCards;
     }
 
-    public Collection getNewCustomCards() {
-        return newCustomCards;
-    }
-
     public List<Card> getCollectibleItems() {
         return collectibleItems;
     }
 
     public Card getOriginalFlag() {
         return originalFlag;
-    }
-
-    @Override
-    public void addNewCustomCards(Card card) {
-        newCustomCards.addCard(card);
-    }
-
-    @Override
-    public void removeCustomCards(Card card) {
-        newCustomCards.removeCard(card);
     }
 
     @Override

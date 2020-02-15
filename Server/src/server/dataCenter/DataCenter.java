@@ -28,14 +28,12 @@ import java.util.*;
 
 public class DataCenter extends Thread {
     private static final String ACCOUNTS_PATH = "Server/resources/accounts";
-    private static final String CUSTOM_CARD_PATH = "Server/resources/customCards";
     private static final String[] CARDS_PATHS = {
             "Server/resources/heroCards",
             "Server/resources/minionCards",
             "Server/resources/spellCards",
             "Server/resources/itemCards/collectible",
-            "Server/resources/itemCards/usable",
-            CUSTOM_CARD_PATH};
+            "Server/resources/itemCards/usable"};
     private static final String FLAG_PATH = "Server/resources/itemCards/flag/Flag.item.card.json";
     private static final String STORIES_PATH = "Server/resources/stories";
 
@@ -313,10 +311,6 @@ public class DataCenter extends Thread {
         return Collections.unmodifiableList(dataBase.getCollectibleItems());
     }
 
-    public Collection getNewCustomCards() {
-        return dataBase.getNewCustomCards();
-    }
-
     public Card getOriginalFlag() {
         return dataBase.getOriginalFlag();
     }
@@ -329,14 +323,6 @@ public class DataCenter extends Thread {
         Account[] leaderBoard = accounts.keySet().toArray(a);
         Arrays.sort(leaderBoard, new LeaderBoardSorter());
         return leaderBoard;
-    }
-
-    public void addCustomCard(Message message) throws LogicException {
-        if (!isValidCardName(message.getCard().getCardId()))
-            throw new ClientException("invalid name!");
-        dataBase.addNewCustomCards(message.getCard());
-        saveCustomCard(message.getCard());
-        Server.getInstance().sendAddToCustomCardsMessage(message.getCard());
     }
 
     public void importDeck(Message message) throws LogicException {
@@ -381,35 +367,6 @@ public class DataCenter extends Thread {
         Server.getInstance().sendAccountUpdateMessage(changingAccount);
     }
 
-    public void acceptCustomCard(Message message) throws LogicException {
-        loginCheck(message);
-        Account account = clients.get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
-            throw new ClientException("You don't have admin access!");
-        Card card = getCard(message.getCardName(), dataBase.getNewCustomCards());
-        if (card == null)
-            throw new ClientException("invalid card name");
-        removeCustomCard(card);
-        saveOriginalCard(card);
-        dataBase.removeCustomCards(card);
-        dataBase.addOriginalCard(card);
-        Server.getInstance().sendRemoveCustomCardsMessage(card);
-        Server.getInstance().sendAddToOriginalsMessage(card);
-    }
-
-    public void rejectCustomCard(Message message) throws LogicException {
-        loginCheck(message);
-        Account account = clients.get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
-            throw new ClientException("You don't have admin access!");
-        Card card = getCard(message.getCardName(), dataBase.getNewCustomCards());
-        if (card == null)
-            throw new ClientException("invalid card name");
-        removeCustomCard(card);
-        dataBase.removeCustomCards(card);
-        Server.getInstance().sendRemoveCustomCardsMessage(card);
-    }
-
     public void readAccounts() {
         File[] files = new File(ACCOUNTS_PATH).listFiles();
         if (files != null) {
@@ -431,9 +388,7 @@ public class DataCenter extends Thread {
                 for (File file : files) {
                     Card card = loadFile(file, Card.class);
                     if (card == null) continue;
-                    if (path.equals(CUSTOM_CARD_PATH)) {
-                        dataBase.addNewCustomCards(card);
-                    } else if (card.getType() == CardType.COLLECTIBLE_ITEM) {
+                    else if (card.getType() == CardType.COLLECTIBLE_ITEM) {
                         dataBase.addNewCollectible(card);
                     } else {
                         dataBase.addOriginalCard(card);
@@ -485,30 +440,6 @@ public class DataCenter extends Thread {
                         }
                         return;
                     }
-                }
-            }
-        }
-        throw new ServerException("Card not found");
-    }
-
-    private void saveCustomCard(Card customCard) {
-        String cardJson = new GsonBuilder().setPrettyPrinting().create().toJson(customCard);
-        try {
-            FileWriter writer = new FileWriter(CUSTOM_CARD_PATH + "/" + customCard.getCardId() + ".custom.card.json");
-            writer.write(cardJson);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void removeCustomCard(Card card) throws ServerException {
-        File[] files = new File(CUSTOM_CARD_PATH).listFiles();
-        if (files != null) {
-            for (File file : files) {
-                if (file.getName().startsWith(card.getCardId() + ".")) {
-                    file.delete();
-                    return;
                 }
             }
         }

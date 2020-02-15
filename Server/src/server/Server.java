@@ -129,9 +129,6 @@ public class Server {
                         case STORIES:
                             sendStories(message);
                             break;
-                        case CUSTOM_CARDS:
-                            sendCustomCards(message);
-                            break;
                         case ONLINE_GAMES_LIST:
                             sendOnlineGames(message);
                             break;
@@ -221,20 +218,11 @@ public class Server {
                 case SUDO:
                     sudo(message);
                     break;
-                case ADD_CARD:
-                    DataCenter.getInstance().addCustomCard(message);
-                    break;
                 case CHANGE_CARD_NUMBER:
                     DataCenter.getInstance().changeCardNumber(message);
                     break;
                 case CHANGE_ACCOUNT_TYPE:
                     DataCenter.getInstance().changeAccountType(message);
-                    break;
-                case ACCEPT_CARD:
-                    DataCenter.getInstance().acceptCustomCard(message);
-                    break;
-                case REJECT_CARD:
-                    DataCenter.getInstance().rejectCustomCard(message);
                     break;
                 case ONLINE_GAME_SHOW_REQUEST:
                     GameCenter.getInstance().addOnlineShowRequest(message);
@@ -283,12 +271,6 @@ public class Server {
     private static void sendOriginalCards(Message message) throws LogicException {
         DataCenter.getInstance().loginCheck(message);
         addToSendingMessages(Message.makeOriginalCardsCopyMessage(message.getSender(), DataCenter.getInstance().getOriginalCards()));
-    }
-
-    private static void sendCustomCards(Message message) throws LogicException {
-        DataCenter.getInstance().loginCheck(message);
-        addToSendingMessages(Message.makeCustomCardsCopyMessage(message.getSender(), DataCenter.getInstance().getNewCustomCards()));
-
     }
 
     private static void sendLeaderBoard(Message message) throws ClientException { //Check
@@ -425,24 +407,6 @@ public class Server {
                 addToSendingMessages(
                         Message.makeAddOriginalCardMessage(DataCenter.getInstance().getAccounts().get(account), card)
                 );
-            }
-        }
-    }
-
-    public void sendAddToCustomCardsMessage(Card card) {
-        for (Account account : DataCenter.getInstance().getAccounts().keySet()) {
-            if (account.getAccountType() == AccountType.ADMIN && DataCenter.getInstance().isOnline(account.getUsername())) {
-                addToSendingMessages(Message.makeAddCustomCardMessage(DataCenter.getInstance().getAccounts().get(account),
-                        card));
-            }
-        }
-    }
-
-    public void sendRemoveCustomCardsMessage(Card card) {
-        for (Account account : DataCenter.getInstance().getAccounts().keySet()) {
-            if (account.getAccountType() == AccountType.ADMIN && DataCenter.getInstance().isOnline(account.getUsername())) {
-                addToSendingMessages(Message.makeRemoveCustomCardMessage(DataCenter.getInstance().getAccounts().get(account),
-                        card.getName()));
             }
         }
     }
