@@ -348,9 +348,38 @@ public abstract class Game {
     }
 
     private void putMinion(int playerNumber, Troop troop, Cell cell) {
+
+        if (!(troop.getCard().getType() == CardType.HERO)){
+            // This function is also used to place heros at start of game, hence this check.
+            if (!isLegalCellForMinion(cell, troop)){
+                Server.serverPrint("Illegal Position for Minion");
+                return;
+            }
+        }
+
         troop.setCell(cell);
         gameMap.addTroop(playerNumber, troop);
         Server.getInstance().sendTroopUpdateMessage(this, troop);
+    }
+
+    private boolean isLegalCellForMinion(Cell cell, Troop troop){
+
+        // Current implementation only allows for placing next to Hero's.
+        // Unless minion has 'Airdrop' Keyword.
+
+        // Not the most elegant bits of code, but it will do until the custom card parser comes along,
+        // In which case most of the game logic will be rewritten in any case.
+        if (troop.getCard().getDescription().contains("Airdrop")){
+            return true;
+        }
+
+        Player player = getCurrentTurnPlayer();
+        Cell heroposition = player.getHero().getCell();
+
+        boolean checkRow = Math.abs (cell.getRow() - heroposition.getRow()) <= 1;
+        boolean checkColumn = Math.abs( cell.getColumn() - heroposition.getColumn()) <=1 ;
+
+        return checkRow && checkColumn;
     }
 
     private void applyOnPutSpells(Card card, Cell cell) {
