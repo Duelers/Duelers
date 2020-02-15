@@ -1,0 +1,15 @@
+{
+  "name": "Skyrock Golem",
+  "description": "Golem",
+  "cardId": "SkyrockGolem",
+  "spriteName": "neutral_golemrunesand",
+  "type": "MINION",
+  "defaultAp": 3,
+  "defaultHp": 2,
+  "mannaPoint": 2,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

@@ -1,0 +1,14 @@
+{ 
+    "username":"template",
+    "password":"empty",
+    "accountType":"NORMAL",
+    "collection":{ 
+		"heroes":[],
+		"minions": [],
+		"spells": [],
+		"items":[]
+	},
+	"decks":[],
+    "matchHistories":[],
+    "money":9543289
+}

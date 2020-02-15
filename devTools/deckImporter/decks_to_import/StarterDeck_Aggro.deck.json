@@ -1,0 +1,26 @@
+{
+      "deckName": "aggro starter deck",
+      "heroId": "VaathTheImmortal",
+      "othersIds": [
+        "*_FlamebloodWarlock_1",
+		"*_FlamebloodWarlock_2",
+		"*_FlamebloodWarlock_3",
+		"*_ValeHunter_1",
+		"*_ValeHunter_2",
+		"*_ValeHunter_3",
+		"*_BloodshardGolem_1",
+		"*_BloodshardGolem_2",
+		"*_BloodshardGolem_3",
+		"*_RazorcragGolem_1",
+		"*_RazorcragGolem_2",
+		"*_RazorcragGolem_3",
+		"*_PhoenixFire_1",
+		"*_PhoenixFire_2",
+		"*_PhoenixFire_3",
+        "*_Tempest_1",
+        "*_Tempest_2",
+        "*_Tempest_3",
+        "*_ShadowReflection_1",
+        "*_ShadowReflection_2"
+      ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "Kinetic Equilibrium",
-  "description": "This card, destroys positive BUFFs of enemy troops and negative BUFFs of own troops in a 2*2 square",
+  "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
   "cardId": "KineticEquilibrium",
   "spriteName": "icon_f5_kineticequilibrium",
   "type": "SPELL",
