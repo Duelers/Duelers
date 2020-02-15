@@ -22,9 +22,10 @@ public class GameMap {
         LinkedList<Card> newItems = new LinkedList<>(items);
         Collections.shuffle(newItems);
 
-        cells[0][4].addItem(newItems.poll());
-        cells[2][5].addItem(newItems.poll());
-        cells[4][4].addItem(newItems.poll());
+        // (0,4) | (2,5) | (4,4) are the correct coordinates for mana springs.
+        //cells[0][4].addItem(newItems.poll());
+        //cells[2][5].addItem(newItems.poll());
+        //cells[4][4].addItem(newItems.poll());
     }
 
     public static int getRowNumber() {

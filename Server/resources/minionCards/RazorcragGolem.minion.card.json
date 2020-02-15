@@ -1,0 +1,15 @@
+{
+  "name": "Razorcrag Golem",
+  "description": "Golem",
+  "cardId": "RazorcragGolem",
+  "spriteName": "neutral_razorcraggolem",
+  "type": "MINION",
+  "defaultAp": 10,
+  "defaultHp": 3,
+  "mannaPoint": 4,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
