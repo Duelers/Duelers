@@ -117,13 +117,7 @@ public class CardMaker {
         System.out.println("continuous?");
         boolean continuous = parseBoolean(scanner.nextLine());
 
-        System.out.println("specialPower?");
-        boolean specialPower = parseBoolean(scanner.nextLine());
-
-        System.out.println("onStart?");
-        boolean onStart = parseBoolean(scanner.nextLine());
-
-        return new AvailabilityType(onPut, onAttack, onDeath, continuous, specialPower, onStart);
+        return new AvailabilityType(onPut, onAttack, onDeath, continuous);
     }
 
     private static SpellAction makeNewSpellAction() {

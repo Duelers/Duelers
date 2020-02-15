@@ -18,14 +18,12 @@ public class AvailableActions {
     private List<Insert> collectibleInserts = new ArrayList<>();
     private List<Attack> attacks = new ArrayList<>();
     private List<Combo> combos = new ArrayList<>();
-    private SpecialPower specialPower;
     private List<Move> moves = new ArrayList<>();
 
     public void calculateAvailableActions(Game game) {
         calculateAvailableInsets(game);
         calculateAvailableAttacks(game);
         calculateAvailableCombos(game);
-        calculateAvailableSpecialPower(game);
         calculateAvailableMoves(game);
     }
 
@@ -91,20 +89,6 @@ public class AvailableActions {
         }
     }
 
-    private void calculateAvailableSpecialPower(Game game) {
-        Player ownPlayer = game.getCurrentTurnPlayer();
-        Troop hero = ownPlayer.getHero();
-
-        if (hero != null) {
-            if (hero.getCard().getSpells().isEmpty()) return;
-            Spell spell = hero.getCard().getSpells().get(0);
-
-            if (spell != null && !spell.isCoolDown(game.getTurnNumber()) && spell.getMannaPoint() <= ownPlayer.getCurrentMP()) {
-                specialPower = new SpecialPower(hero);
-            }
-        }
-    }
-
     public void calculateAvailableMoves(Game game) {
         Player ownPlayer = game.getCurrentTurnPlayer();
         moves.clear();
@@ -161,10 +145,6 @@ public class AvailableActions {
 
     public List<Combo> getCombos() {
         return Collections.unmodifiableList(combos);
-    }
-
-    public SpecialPower getSpecialPower() {
-        return specialPower;
     }
 
     public List<Move> getMoves() {

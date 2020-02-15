@@ -160,11 +160,6 @@ public class BattleSceneTester extends Application implements GameActions {
     }
 
     @Override
-    public void useSpecialPower(int row, int column) {
-        System.out.println("use spell");
-    }
-
-    @Override
     public void exitGameShow(OnlineGame onlineGame) {
 
     }

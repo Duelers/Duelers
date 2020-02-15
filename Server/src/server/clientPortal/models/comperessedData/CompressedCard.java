@@ -35,14 +35,7 @@ public class CompressedCard {
         this.attackType = attackType;
         this.range = range;
         this.hasCombo = hasCombo;
-        if (type == CardType.HERO) {
-            for (Spell spell : spells) {
-                if (spell.getAvailabilityType().isSpecialPower()) {
-                    this.spell = spell.toCompressedSpell();
-                    break;
-                }
-            }
-        }
+
         this.remainingNumber = remainingNumber;
     }
 }

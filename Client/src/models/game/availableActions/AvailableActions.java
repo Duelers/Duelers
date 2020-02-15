@@ -15,7 +15,6 @@ public class AvailableActions {
     private List<Insert> collectibleInserts = new ArrayList<>();
     private List<Attack> attacks = new ArrayList<>();
     private List<Combo> combos = new ArrayList<>();
-    private SpecialPower specialPower;
     private List<Move> moves = new ArrayList<>();
 
     public void calculate(CompressedGame game) {
@@ -27,7 +26,6 @@ public class AvailableActions {
         calculateCollectibles(ownPlayer);
         calculateAttacks(ownPlayer, otherPlayer);
         calculateCombo(ownPlayer, otherPlayer);
-        calculateSpecialPower(game, ownPlayer);
         calculateMoves(game, ownPlayer);
     }
 
@@ -86,18 +84,6 @@ public class AvailableActions {
         }
     }
 
-    private void calculateSpecialPower(CompressedGame game, CompressedPlayer ownPlayer) {
-        CompressedTroop hero = ownPlayer.getHero();
-
-        if (hero != null) {
-            CompressedSpell spell = hero.getCard().getSpell();
-
-            if (spell != null && !spell.isCoolDown(game.getTurnNumber()) && spell.getMannaPoint() <= ownPlayer.getCurrentMP()) {
-                specialPower = new SpecialPower(hero);
-            }
-        }
-    }
-
     private void calculateMoves(CompressedGame game, CompressedPlayer ownPlayer) {
         for (CompressedTroop troop : ownPlayer.getTroops()) {
             if (!troop.canMove()) continue;
@@ -133,7 +119,6 @@ public class AvailableActions {
         attacks.clear();
         combos.clear();
         moves.clear();
-        specialPower = null;
     }
 
     private boolean checkRangeForAttack(CompressedTroop myTroop, CompressedTroop enemyTroop) {
@@ -161,10 +146,6 @@ public class AvailableActions {
 
     public List<Combo> getCombos() {
         return Collections.unmodifiableList(combos);
-    }
-
-    public SpecialPower getSpecialPower() {
-        return specialPower;
     }
 
     public List<Move> getMoves() {
@@ -202,7 +183,4 @@ public class AvailableActions {
         return getAttackPositions(troop).contains(new Position(row, column));
     }
 
-    public boolean canUseSpecialAction(CompressedTroop troop) {
-        return specialPower != null && specialPower.getHero().equals(troop);
-    }
 }

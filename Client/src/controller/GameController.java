@@ -178,13 +178,6 @@ public class GameController implements GameActions {
         return (card.getType() == CardType.SPELL || card.getType() == CardType.COLLECTIBLE_ITEM) || (currentGame.getGameMap().getTroop(new Position(row, column)) == null);
     }
 
-    @Override
-    public void useSpecialPower(int row, int column) {
-        Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeUseSpecialPowerMessage(
-                        SERVER_NAME, currentGame.getCurrentTurnPlayer().getHero().getCard().getCardId(), new Position(row, column)
-                ));
-    }
 
     @Override
     public void exitGameShow(OnlineGame onlineGame) {

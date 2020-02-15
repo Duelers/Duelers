@@ -34,7 +34,6 @@ public enum MessageType {
     INSERT,
     ATTACK,
     COMBO,
-    USE_SPECIAL_POWER,
     END_TURN,
     LOG_IN,
     LOG_OUT,

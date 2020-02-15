@@ -296,15 +296,6 @@ public class MapBox implements PropertyChangeListener {
             resetSelection();
             return;
         }
-        if (selectionType == SelectionType.SPELL) {
-            if (GameController.getInstance().getAvailableActions().canUseSpecialAction(selectedTroop)) {
-                battleScene.getController().useSpecialPower(row, column);
-                System.out.println(selectedTroop.getCard().getCardId() + " SpecialPower");
-                battleScene.getHandBox().resetSelection();
-                resetSelection();
-            }
-            return;
-        }
         if (selectionType == SelectionType.COMBO) {
             if (currentTroop != null && currentTroop.getPlayerNumber() == battleScene.getMyPlayerNumber()
                     && currentTroop.getCard().isHasCombo()) {
@@ -381,13 +372,6 @@ public class MapBox implements PropertyChangeListener {
                 if (selectedTroop != null && selectedTroop.getPosition().getRow() == row &&
                         selectedTroop.getPosition().getColumn() == column) {
                     cells[row][column].setFill(Constants.SELECTED_COLOR);//not important
-                    continue;
-                }
-                if (selectionType == SelectionType.SPELL) {
-                    if (GameController.getInstance().getAvailableActions().canUseSpecialAction(selectedTroop)) {
-                        cells[row][column].setFill(Constants.SPELL_COLOR);
-                    } else
-                        cells[row][column].setFill(Constants.defaultColor);
                     continue;
                 }
                 if (selectionType == SelectionType.COMBO) {

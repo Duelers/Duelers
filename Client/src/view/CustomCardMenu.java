@@ -347,15 +347,13 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
         CheckBox onAttack = new CheckBox("onAttack");
         CheckBox onDeath = new CheckBox("onDeath");
         CheckBox continuous = new CheckBox("continuous");
-        CheckBox specialPower = new CheckBox("specialPower");
-        CheckBox onStart = new CheckBox("onStart");
 
         NumberField coolDown = new NumberField("coolDown");
         NumberField mannaPoint = new NumberField("manna point");
         dialogBox.getChildren().addAll(dialogText, spellId,
                 spellActionLabel, new ScrollPane(new VBox(enemyHitChange, apChange, hpChange, isPoison, makeStun, disarm, noDisarm, noPoison, noStun, noBadEffect, noAttackFromWeakerOnes, killsTarget, durable, duration, delay)),
                 spellTarget, new ScrollPane(new VBox(isRelatedToCardOwnerPosition, isForAroundOwnHero, row, column, isRandom, own, enemy, cell, hero, minion, melee, ranged, hybrid, isForDeckCards)),
-                availabilityTypeLabel, new ScrollPane(new VBox(onPut, onAttack, onDeath, continuous, specialPower, onStart)),
+                availabilityTypeLabel, new ScrollPane(new VBox(onPut, onAttack, onDeath, continuous)),
                 coolDown, mannaPoint
         );
         dialogBox.getChildren().stream().filter(node -> node instanceof ScrollPane).forEach(node -> ((ScrollPane) node).setMinHeight(300 * SCALE));
@@ -380,7 +378,7 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
 
             AvailabilityType availabilityType = new AvailabilityType(
                     onPut.isSelected(), onAttack.isSelected(), onDeath.isSelected(),
-                    continuous.isSelected(), specialPower.isSelected(), onStart.isSelected(),
+                    continuous.isSelected(),
                     false);
 
             card.addSpell(new Spell(
