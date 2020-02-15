@@ -6,6 +6,7 @@ import models.JsonConverter;
 import models.account.AccountType;
 import models.card.Card;
 import models.card.ExportedDeck;
+import models.comperessedData.CompressedCard;
 import models.game.GameType;
 import models.game.map.Position;
 
@@ -38,6 +39,8 @@ public class Message {
     private OnlineGame onlineGame;
     //SENDER:DUAL
     private Card card;
+    private String cardID;
+    private CompressedCard compressedCard;
     private ChatMessage chatMessage;
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
@@ -315,6 +318,19 @@ public class Message {
         return message;
     }
 
+    public static Message makeSetNewNextCardMessage(String receiver){
+        Message message = new Message(receiver);
+        message.messageType = MessageType.SET_NEW_NEXT_CARD;
+        return message;
+    }
+
+    public static Message makeNewReplaceCardMessage(String serverName, String cardID) {
+        Message message = new Message(serverName);
+        message.messageType = MessageType.REPLACE_CARD;
+        message.cardID = cardID;
+        return message;
+    }
+
     public String toJson() {
         return JsonConverter.toJson(this);
     }
@@ -401,5 +417,9 @@ public class Message {
 
     public OnlineGame[] getOnlineGames() {
         return onlineGames;
+    }
+
+    public CompressedCard getCompressedCard() {
+        return compressedCard;
     }
 }

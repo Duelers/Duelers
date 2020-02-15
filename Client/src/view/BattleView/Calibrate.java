@@ -110,6 +110,16 @@ public class Calibrate extends Application implements GameActions {
     }
 
     @Override
+    public void setNewNextCard() {
+
+    }
+
+    @Override
+    public void replaceCard(String cardID) {
+
+    }
+
+    @Override
     public void forceFinish() {
 
     }

@@ -2,6 +2,7 @@ package server.clientPortal.models.message;
 
 import server.Server;
 import server.clientPortal.models.JsonConverter;
+import server.clientPortal.models.comperessedData.CompressedCard;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.Card;
@@ -42,10 +43,12 @@ public class Message {
     private OnlineGame onlineGame;
     //SENDER:DUAL
     private Card card;
+    private String cardID;
     private ChatMessage chatMessage;
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
     private ChangeAccountType changeAccountType;
+    private CompressedCard compressedCard;
 
 
     private Message(String receiver) {
@@ -115,6 +118,12 @@ public class Message {
         return message;
     }
 
+    public static Message makeNewNextCardSetMessage(String receiver, CompressedCard nextCard) {
+        Message message = new Message(receiver);
+        message.messageType = MessageType.SET_NEW_NEXT_CARD;
+        message.compressedCard = nextCard;
+        return message;
+    }
 
     public static Message makeSpellMessage(String receiver, Set<Position> positions, AvailabilityType availabilityType) {
         Message message = new Message(receiver);
@@ -289,5 +298,9 @@ public class Message {
 
     public OnlineGame getOnlineGame() {
         return onlineGame;
+    }
+
+    public String getCardID() {
+        return cardID;
     }
 }

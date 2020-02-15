@@ -362,6 +362,18 @@ public class GameCenter extends Thread {//synchronize
         );
     }
 
+    public void setNewNextCard(Message message) throws LogicException{
+        DataCenter.getInstance().loginCheck(message);
+        Game game = getGame(message.getSender());
+        game.setNewNextCard();
+    }
+
+    public void replaceCard(Message message) throws LogicException {
+        DataCenter.getInstance().loginCheck(message);
+        Game game = getGame(message.getSender());
+        game.replaceCard(message.getCardID());
+    }
+
     public void endTurn(Message message) throws LogicException {
         Game game = getGame(message.getSender());
         game.changeTurn(DataCenter.getInstance().getClients().get(message.getSender()).getUsername());

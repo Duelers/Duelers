@@ -2,6 +2,7 @@ package server;
 
 import server.chatCenter.ChatCenter;
 import server.clientPortal.ClientPortal;
+import server.clientPortal.models.comperessedData.CompressedCard;
 import server.clientPortal.models.message.CardPosition;
 import server.clientPortal.models.message.Message;
 import server.clientPortal.models.message.OnlineGame;
@@ -205,6 +206,13 @@ public class Server {
                     GameCenter.getInstance().moveTroop(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));
                     break;
+                case SET_NEW_NEXT_CARD:
+                    GameCenter.getInstance().setNewNextCard(message);
+                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    break;
+                case REPLACE_CARD:
+                    GameCenter.getInstance().replaceCard(message);
+                    break;
                 case FORCE_FINISH:
                     GameCenter.getInstance().forceFinishGame(message.getSender());
                     break;
@@ -321,6 +329,17 @@ public class Server {
                 continue;
             }
             addToSendingMessages(Message.makeChangeCardPositionMessage(clientName, card, newCardPosition));
+        }
+    }
+
+    public void sendNewNextCardSetMessage(Game game, CompressedCard nextCard) {
+        for (Account account : game.getObservers()) {
+            String clientName = DataCenter.getInstance().getAccounts().get(account);
+            if (clientName == null) {
+                serverPrint("*Error: Client not found");
+                continue;
+            }
+            addToSendingMessages(Message.makeNewNextCardSetMessage(clientName, nextCard));
         }
     }
 
@@ -449,4 +468,5 @@ public class Server {
             return;
         addToSendingMessages(Message.makeAccountCopyMessage(clientName, account));
     }
+
 }

@@ -132,6 +132,16 @@ public class GameController implements GameActions {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeEndTurnMessage(SERVER_NAME));
     }
 
+    @Override
+    public void setNewNextCard(){
+        Client.getInstance().addToSendingMessagesAndSend(Message.makeSetNewNextCardMessage(SERVER_NAME));
+    }
+
+    @Override
+    public void replaceCard(String cardID){
+        Client.getInstance().addToSendingMessagesAndSend(Message.makeNewReplaceCardMessage(SERVER_NAME,cardID));
+    }
+
     public void forceFinish() {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeForceFinishGameMessage(SERVER_NAME));
     }
