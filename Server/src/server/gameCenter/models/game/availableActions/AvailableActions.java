@@ -17,14 +17,12 @@ public class AvailableActions {
     private List<Insert> handInserts = new ArrayList<>();
     private List<Insert> collectibleInserts = new ArrayList<>();
     private List<Attack> attacks = new ArrayList<>();
-    private List<Combo> combos = new ArrayList<>();
     private SpecialPower specialPower;
     private List<Move> moves = new ArrayList<>();
 
     public void calculateAvailableActions(Game game) {
         calculateAvailableInsets(game);
         calculateAvailableAttacks(game);
-        calculateAvailableCombos(game);
         calculateAvailableSpecialPower(game);
         calculateAvailableMoves(game);
     }
@@ -71,11 +69,10 @@ public class AvailableActions {
     private void calculateAvailableCombos(Game game) {
         Player ownPlayer = game.getCurrentTurnPlayer();
         Player otherPlayer = game.getOtherTurnPlayer();
-        combos.clear();
         for (Troop enemyTroop : otherPlayer.getTroops()) {
             ArrayList<Troop> attackers = new ArrayList<>();
             for (Troop myTroop : ownPlayer.getTroops()) {
-                if (!myTroop.getCard().hasCombo() || !myTroop.canAttack()) continue;
+                if (!myTroop.canAttack()) continue;
 
                 if (enemyTroop.canBeAttackedFromWeakerOnes() && myTroop.getCurrentAp() < enemyTroop.getCurrentAp())
                     continue;
@@ -86,8 +83,6 @@ public class AvailableActions {
             }
 
             if (attackers.size() == 0) continue;
-
-            combos.add(new Combo(attackers, enemyTroop));
         }
     }
 
@@ -157,10 +152,6 @@ public class AvailableActions {
 
     public List<Attack> getAttacks() {
         return Collections.unmodifiableList(attacks);
-    }
-
-    public List<Combo> getCombos() {
-        return Collections.unmodifiableList(combos);
     }
 
     public SpecialPower getSpecialPower() {

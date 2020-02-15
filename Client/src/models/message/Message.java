@@ -178,15 +178,6 @@ public class Message {
         return message;
     }
 
-    public static Message makeComboAttackMessage(String receiver, String opponentCardId, String[] myCardIds) {
-        Message message = new Message(receiver);
-        message.otherFields = new OtherFields();
-        message.otherFields.setOpponentCardId(opponentCardId);
-        message.otherFields.setMyCardIds(myCardIds);
-        message.messageType = MessageType.COMBO;
-        return message;
-    }
-
     public static Message makeForceFinishGameMessage(String receiver) {
         Message message = new Message(receiver);
         message.messageType = MessageType.FORCE_FINISH;

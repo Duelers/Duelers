@@ -543,24 +543,6 @@ public abstract class Game {
         return specialPower;
     }
 
-    public void comboAttack(String username, String[] attackerCardIds, String defenderCardId) throws LogicException {
-        try {
-            if (!canCommand(username)) {
-                throw new ClientException("its not your turn");
-            }
-
-            Troop defenderTroop = getAndValidateTroop(defenderCardId, getOtherTurnPlayer());
-            Troop[] attackerTroops = getAndValidateAttackerTroops(attackerCardIds, defenderTroop);
-
-            damageFromAllAttackers(defenderTroop, attackerTroops);
-
-            applyOnDefendSpells(defenderTroop, attackerTroops[0]);
-            counterAttack(defenderTroop, attackerTroops[0]);
-        } finally {
-            GameCenter.getInstance().checkGameFinish(this);
-        }
-    }
-
     private Troop getAndValidateTroop(String defenderCardId, Player otherTurnPlayer) throws ClientException {
         Troop troop = otherTurnPlayer.getTroop(defenderCardId);
         if (troop == null) {
@@ -573,7 +555,7 @@ public abstract class Game {
         Troop[] attackerTroops = new Troop[attackerCardIds.length];
         for (int i = 0; i < attackerTroops.length; i++) {
             attackerTroops[i] = getCurrentTurnPlayer().getTroop(attackerCardIds[i]);
-            if (attackerTroops[i] == null || !attackerTroops[i].getCard().hasCombo()) {
+            if (attackerTroops[i] == null) {
                 throw new ClientException("invalid attacker troop");
             }
 

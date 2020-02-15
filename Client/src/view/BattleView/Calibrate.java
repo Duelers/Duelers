@@ -66,7 +66,7 @@ public class Calibrate extends Application implements GameActions {
 
         new Thread(() -> {
             CompressedCard card = new CompressedCard("boss_harmony", null, "a1", CardType.MINION,
-                    null, 0, 0, 0, null, 2, true);
+                    null, 0, 0, 0, null, 2);
             CompressedTroop troop = new CompressedTroop(card, 5, 6, 5, new Position(0, 0),
                     true, true, false, false, 1, 1);
             map.updateTroop(troop);
@@ -81,11 +81,6 @@ public class Calibrate extends Application implements GameActions {
 
     @Override
     public void attack(CompressedTroop selectedTroop, CompressedTroop troop) {
-
-    }
-
-    @Override
-    public void comboAttack(ArrayList<CompressedTroop> comboTroops, CompressedTroop troop) {
 
     }
 
