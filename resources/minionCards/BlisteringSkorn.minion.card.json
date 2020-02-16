@@ -33,9 +33,7 @@
           "player": false
         },
         "attackType": {
-          "melee": true,
-          "ranged": true,
-          "hybrid": true
+          "melee": true
         }
       },
       "availabilityType": {

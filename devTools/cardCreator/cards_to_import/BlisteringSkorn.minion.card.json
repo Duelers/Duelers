@@ -33,7 +33,7 @@
           "player": false
         },
         "attackType": {
-          "melee": true,
+          "melee": true
         }
       },
       "availabilityType": {

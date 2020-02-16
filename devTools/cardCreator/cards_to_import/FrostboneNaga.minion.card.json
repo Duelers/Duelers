@@ -50,7 +50,7 @@
           "player": false
         },
         "attackType": {
-          "melee": true,
+          "melee": true
         }
       },
       "availabilityType": {
@@ -107,7 +107,7 @@
           "player": false
         },
         "attackType": {
-          "melee": true,
+          "melee": true
         }
       },
       "availabilityType": {
