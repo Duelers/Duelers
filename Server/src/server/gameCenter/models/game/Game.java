@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Stream;
 
 public abstract class Game {
     private static final int DEFAULT_REWARD = 1000;
@@ -236,8 +237,48 @@ public abstract class Game {
             }
             actions.calculateAvailableInsets(this);
             while (actions.getHandInserts().size() > 0) {
-                Insert insert = actions.getHandInserts().get(new Random().nextInt(actions.getHandInserts().size()));
-                insert("AI", insert.getCard().getCardId(), new Position(new Random().nextInt(5), new Random().nextInt(9)));
+
+                int currentMana = getCurrentTurnPlayer().getCurrentMP();
+
+                // Pick a playable minion in the hand at random.
+                // By "playable" we simply check availible mana relative to minion cost.
+                ArrayList<Card> minionOptions = new ArrayList<Card>();
+                for(Insert i : actions.getHandInserts()){
+                    if (i.getCard().getMannaPoint() <= currentMana && i.getCard().getType() == CardType.MINION){
+                        minionOptions.add(i.getCard());
+                    }
+                }
+
+                if (minionOptions.isEmpty()){ break; }
+
+                System.out.print("AI Minion Options: ");
+                minionOptions.forEach( (n) -> System.out.print(n.getCardId() + " | "));
+                System.out.print("\n");
+
+                int idx = new Random().nextInt(Math.max(1, minionOptions.size() - 1));
+                Card minion = minionOptions.get(idx);
+
+                int[] offsets = new int[] {-1, 0, 1};
+                Cell HeroPosition = getCurrentTurnPlayer().getHero().getCell();
+
+                // Attempt (max n tries) to place minion on a random square next to Hero.
+                for (int attempts = 0; attempts < 5 ; attempts++){
+
+                    int x = offsets[new Random().nextInt(offsets.length)];
+                    int y = offsets[new Random().nextInt(offsets.length)];
+
+                    int x2 = x + HeroPosition.getRow();
+                    int y2 = y + HeroPosition.getColumn();
+
+                    Cell c = new Cell(x2, y2);
+
+                    // Check cell is: legal square for minion and currently empty
+                    if (getGameMap().isInMap(x2, y2) && isLegalCellForMinion(c, minion) && getGameMap().getTroop(c) == null) {
+                        insert("AI", minion.getCardId(), new Position(c.getRow(), c.getColumn()));
+                        break;
+                    }
+                }
+
                 Thread.sleep(500);
                 actions.calculateAvailableInsets(this);
             }
@@ -374,7 +415,7 @@ public abstract class Game {
 
         if (!(troop.getCard().getType() == CardType.HERO)){
             // This function is also used to place heros at start of game, hence this check.
-            if (!isLegalCellForMinion(cell, troop)){
+            if (!isLegalCellForMinion(cell, troop.getCard())){
                 Server.serverPrint("Illegal Position for " + troop.getCard().getCardId());
                 return;
             }
@@ -385,14 +426,14 @@ public abstract class Game {
         Server.getInstance().sendTroopUpdateMessage(this, troop);
     }
 
-    private boolean isLegalCellForMinion(Cell cell, Troop troop){
+    private boolean isLegalCellForMinion(Cell cell, Card card){
 
         // Current implementation only allows for placing next to Hero's.
         // Unless minion has 'Airdrop' Keyword.
 
         // Not the most elegant bits of code, but it will do until the custom card parser comes along,
         // In which case most of the game logic will be rewritten in any case.
-        if (troop.getCard().getDescription().contains("Airdrop")){
+        if (card.getDescription().contains("Airdrop")){
             return true;
         }
 
