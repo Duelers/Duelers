@@ -1,1 +1,2104 @@
-{"username":"duelyst","password":"duel","accountType":"NORMAL","collection":{"heroes":[{"name":"Argeon Highmayne","description":"Lyonar General","cardId":"duelyst_ArgeonHighmayne_1","spriteName":"f1_general","type":"HERO","spells":[],"defaultAp":2,"defaultHp":25,"price":10,"attackType":"MELEE","remainingNumber":20},{"name":"Reva Eventide","description":"Songhai General","cardId":"duelyst_RevaEventide_1","spriteName":"f2_altgeneral","type":"HERO","spells":[],"defaultAp":2,"defaultHp":25,"price":10,"attackType":"MELEE","remainingNumber":20},{"name":"Vaath The Immortal","description":"Magmar General","cardId":"duelyst_VaathTheImmortal_1","spriteName":"f5_general","type":"HERO","spells":[],"defaultAp":2,"defaultHp":25,"price":100,"attackType":"MELEE","remainingNumber":20}],"minions":[{"name":"Arctic Displacer","description":"Airdrop","cardId":"duelyst_ArcticDisplacer_1","spriteName":"f6_snowwyvern","type":"MINION","spells":[],"defaultAp":10,"defaultHp":4,"mannaPoint":5,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Arctic Displacer","description":"Airdrop","cardId":"duelyst_ArcticDisplacer_2","spriteName":"f6_snowwyvern","type":"MINION","spells":[],"defaultAp":10,"defaultHp":4,"mannaPoint":5,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Arctic Displacer","description":"Airdrop","cardId":"duelyst_ArcticDisplacer_3","spriteName":"f6_snowwyvern","type":"MINION","spells":[],"defaultAp":10,"defaultHp":4,"mannaPoint":5,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Blistering Skorn","description":"Opening Gambit: Deal 1 damage to everything (including itself)","cardId":"duelyst_BlisteringSkorn_1","spriteName":"neutral_blisteringscorn","type":"MINION","spells":[{"spellId":"dmg_on_put","action":{"hpChange":-1,"durable":true,"duration":1},"target":{"dimensions":{"row":20,"column":20},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"defaultAp":4,"defaultHp":5,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Blistering Skorn","description":"Opening Gambit: Deal 1 damage to everything (including itself)","cardId":"duelyst_BlisteringSkorn_2","spriteName":"neutral_blisteringscorn","type":"MINION","spells":[{"spellId":"dmg_on_put","action":{"hpChange":-1,"durable":true,"duration":1},"target":{"dimensions":{"row":20,"column":20},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"defaultAp":4,"defaultHp":5,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Blistering Skorn","description":"Opening Gambit: Deal 1 damage to everything (including itself)","cardId":"duelyst_BlisteringSkorn_3","spriteName":"neutral_blisteringscorn","type":"MINION","spells":[{"spellId":"dmg_on_put","action":{"hpChange":-1,"durable":true,"duration":1},"target":{"dimensions":{"row":20,"column":20},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"defaultAp":4,"defaultHp":5,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Bloodshard Golem","description":"Golem","cardId":"duelyst_BloodshardGolem_1","spriteName":"neutral_golembloodshard","type":"MINION","defaultAp":4,"defaultHp":3,"mannaPoint":3,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Bloodshard Golem","description":"Golem","cardId":"duelyst_BloodshardGolem_2","spriteName":"neutral_golembloodshard","type":"MINION","defaultAp":4,"defaultHp":3,"mannaPoint":3,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Bloodshard Golem","description":"Golem","cardId":"duelyst_BloodshardGolem_3","spriteName":"neutral_golembloodshard","type":"MINION","defaultAp":4,"defaultHp":3,"mannaPoint":3,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Brightmoss Golem","description":"Golem","cardId":"duelyst_BrightmossGolem_1","spriteName":"neutral_golemnature","type":"MINION","defaultAp":4,"defaultHp":9,"mannaPoint":5,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Brightmoss Golem","description":"Golem","cardId":"duelyst_BrightmossGolem_2","spriteName":"neutral_golemnature","type":"MINION","defaultAp":4,"defaultHp":9,"mannaPoint":5,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Brightmoss Golem","description":"Golem","cardId":"duelyst_BrightmossGolem_3","spriteName":"neutral_golemnature","type":"MINION","defaultAp":4,"defaultHp":9,"mannaPoint":5,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Drybone Golem","description":"Golem","cardId":"duelyst_DryboneGolem_1","spriteName":"neutral_golemdragonbone","type":"MINION","defaultAp":10,"defaultHp":10,"mannaPoint":7,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Drybone Golem","description":"Golem","cardId":"duelyst_DryboneGolem_2","spriteName":"neutral_golemdragonbone","type":"MINION","defaultAp":10,"defaultHp":10,"mannaPoint":7,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Drybone Golem","description":"Golem","cardId":"duelyst_DryboneGolem_3","spriteName":"neutral_golemdragonbone","type":"MINION","defaultAp":10,"defaultHp":10,"mannaPoint":7,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Flameblood Warlock","description":"Opening Gambit: Deal 3 damage to both generals","cardId":"duelyst_FlamebloodWarlock_1","spriteName":"neutral_mercflamebloodwarlock","type":"MINION","spells":[{"spellId":"deal_3_to_generals","action":{"hpChange":-3,"durable":true,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":20,"column":20},"owner":{"own":true,"enemy":true},"cardType":{"hero":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"defaultAp":3,"defaultHp":1,"mannaPoint":2,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Flameblood Warlock","description":"Opening Gambit: Deal 3 damage to both generals","cardId":"duelyst_FlamebloodWarlock_2","spriteName":"neutral_mercflamebloodwarlock","type":"MINION","spells":[{"spellId":"deal_3_to_generals","action":{"hpChange":-3,"durable":true,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":20,"column":20},"owner":{"own":true,"enemy":true},"cardType":{"hero":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"defaultAp":3,"defaultHp":1,"mannaPoint":2,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Flameblood Warlock","description":"Opening Gambit: Deal 3 damage to both generals","cardId":"duelyst_FlamebloodWarlock_3","spriteName":"neutral_mercflamebloodwarlock","type":"MINION","spells":[{"spellId":"deal_3_to_generals","action":{"hpChange":-3,"durable":true,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":20,"column":20},"owner":{"own":true,"enemy":true},"cardType":{"hero":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"defaultAp":3,"defaultHp":1,"mannaPoint":2,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Frostbone Naga","description":"Opening Gambit: Deal 2 damage to everything around it","cardId":"duelyst_FrostboneNaga_1","spriteName":"neutral_mercfrostbonenaga","type":"MINION","spells":[{"spellId":"health_on_put","action":{"hpChange":2,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}},{"spellId":"dmg_on_put","action":{"hpChange":-2,"durable":true,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":3,"column":3},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"defaultAp":3,"defaultHp":3,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Frostbone Naga","description":"Opening Gambit: Deal 2 damage to everything around it","cardId":"duelyst_FrostboneNaga_2","spriteName":"neutral_mercfrostbonenaga","type":"MINION","spells":[{"spellId":"health_on_put","action":{"hpChange":2,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}},{"spellId":"dmg_on_put","action":{"hpChange":-2,"durable":true,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":3,"column":3},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"defaultAp":3,"defaultHp":3,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Frostbone Naga","description":"Opening Gambit: Deal 2 damage to everything around it","cardId":"duelyst_FrostboneNaga_3","spriteName":"neutral_mercfrostbonenaga","type":"MINION","spells":[{"spellId":"health_on_put","action":{"hpChange":2,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}},{"spellId":"dmg_on_put","action":{"hpChange":-2,"durable":true,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":3,"column":3},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"defaultAp":3,"defaultHp":3,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Hailstone Golem","description":"Golem","cardId":"duelyst_HailstoneGolem_1","spriteName":"neutral_golemice","type":"MINION","defaultAp":4,"defaultHp":6,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Hailstone Golem","description":"Golem","cardId":"duelyst_HailstoneGolem_2","spriteName":"neutral_golemice","type":"MINION","defaultAp":4,"defaultHp":6,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Hailstone Golem","description":"Golem","cardId":"duelyst_HailstoneGolem_3","spriteName":"neutral_golemice","type":"MINION","defaultAp":4,"defaultHp":6,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Planar Scout","description":"Airdrop","cardId":"duelyst_PlanarScout_1","spriteName":"neutral_beastphasehound","type":"MINION","spells":[],"defaultAp":2,"defaultHp":1,"mannaPoint":1,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Planar Scout","description":"Airdrop","cardId":"duelyst_PlanarScout_2","spriteName":"neutral_beastphasehound","type":"MINION","spells":[],"defaultAp":2,"defaultHp":1,"mannaPoint":1,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Planar Scout","description":"Airdrop","cardId":"duelyst_PlanarScout_3","spriteName":"neutral_beastphasehound","type":"MINION","spells":[],"defaultAp":2,"defaultHp":1,"mannaPoint":1,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Razorcrag Golem","description":"Golem","cardId":"duelyst_RazorcragGolem_1","spriteName":"neutral_razorcraggolem","type":"MINION","defaultAp":10,"defaultHp":3,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Razorcrag Golem","description":"Golem","cardId":"duelyst_RazorcragGolem_2","spriteName":"neutral_razorcraggolem","type":"MINION","defaultAp":10,"defaultHp":3,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Razorcrag Golem","description":"Golem","cardId":"duelyst_RazorcragGolem_3","spriteName":"neutral_razorcraggolem","type":"MINION","defaultAp":10,"defaultHp":3,"mannaPoint":4,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Skyrock Golem","description":"Golem","cardId":"duelyst_SkyrockGolem_1","spriteName":"neutral_golemrunesand","type":"MINION","defaultAp":3,"defaultHp":2,"mannaPoint":2,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Skyrock Golem","description":"Golem","cardId":"duelyst_SkyrockGolem_2","spriteName":"neutral_golemrunesand","type":"MINION","defaultAp":3,"defaultHp":2,"mannaPoint":2,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Skyrock Golem","description":"Golem","cardId":"duelyst_SkyrockGolem_3","spriteName":"neutral_golemrunesand","type":"MINION","defaultAp":3,"defaultHp":2,"mannaPoint":2,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Vale Hunter","description":"Ranged","cardId":"duelyst_ValeHunter_1","spriteName":"neutral_tribalranged1","type":"MINION","spells":[],"defaultAp":1,"defaultHp":2,"mannaPoint":2,"price":100,"attackType":"HYBRID","range":99,"remainingNumber":20},{"name":"Vale Hunter","description":"Ranged","cardId":"duelyst_ValeHunter_2","spriteName":"neutral_tribalranged1","type":"MINION","spells":[],"defaultAp":1,"defaultHp":2,"mannaPoint":2,"price":100,"attackType":"HYBRID","range":99,"remainingNumber":20},{"name":"Vale Hunter","description":"Ranged","cardId":"duelyst_ValeHunter_3","spriteName":"neutral_tribalranged1","type":"MINION","spells":[],"defaultAp":1,"defaultHp":2,"mannaPoint":2,"price":100,"attackType":"HYBRID","range":99,"remainingNumber":20},{"name":"Piercing Mantis","description":"After attacking, deal 2 damage to all surrounding enemies","cardId":"duelyst_PiercingMantis_1","spriteName":"neutral_monstershreddingmantis","type":"MINION","spells":[{"spellId":"dmg_on_atk","action":{"hpChange":-2,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":3,"column":3},"owner":{"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onAttack":true}}],"defaultAp":2,"defaultHp":2,"mannaPoint":2,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Piercing Mantis","description":"After attacking, deal 2 damage to all surrounding enemies","cardId":"duelyst_PiercingMantis_2","spriteName":"neutral_monstershreddingmantis","type":"MINION","spells":[{"spellId":"dmg_on_atk","action":{"hpChange":-2,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":3,"column":3},"owner":{"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onAttack":true}}],"defaultAp":2,"defaultHp":2,"mannaPoint":2,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Piercing Mantis","description":"After attacking, deal 2 damage to all surrounding enemies","cardId":"duelyst_PiercingMantis_3","spriteName":"neutral_monstershreddingmantis","type":"MINION","spells":[{"spellId":"dmg_on_atk","action":{"hpChange":-2,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":3,"column":3},"owner":{"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onAttack":true}}],"defaultAp":2,"defaultHp":2,"mannaPoint":2,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Serpenti","description":"After attacking, deal 7 damage to all surrounding enemies","cardId":"duelyst_Serpenti_1","spriteName":"neutral_serpenti","type":"MINION","spells":[{"spellId":"dmg_on_atk","action":{"hpChange":-7,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":3,"column":3},"owner":{"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onAttack":true}}],"defaultAp":7,"defaultHp":4,"mannaPoint":6,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Serpenti","description":"After attacking, deal 7 damage to all surrounding enemies","cardId":"duelyst_Serpenti_2","spriteName":"neutral_serpenti","type":"MINION","spells":[{"spellId":"dmg_on_atk","action":{"hpChange":-7,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":3,"column":3},"owner":{"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onAttack":true}}],"defaultAp":7,"defaultHp":4,"mannaPoint":6,"price":100,"attackType":"MELEE","remainingNumber":20},{"name":"Serpenti","description":"After attacking, deal 7 damage to all surrounding enemies","cardId":"duelyst_Serpenti_3","spriteName":"neutral_serpenti","type":"MINION","spells":[{"spellId":"dmg_on_atk","action":{"hpChange":-7,"duration":1},"target":{"isRelatedToCardOwnerPosition":true,"dimensions":{"row":3,"column":3},"owner":{"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onAttack":true}}],"defaultAp":7,"defaultHp":4,"mannaPoint":6,"price":100,"attackType":"MELEE","remainingNumber":20}],"spells":[{"name":"Auryn Nexus","description":"Give a friendly minion +3 Health","cardId":"duelyst_AurynNexus_1","spriteName":"icon_f1_aurynnexus","type":"SPELL","spells":[{"spellId":"give_3_health","action":{"hpChange":3,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":1,"price":100,"remainingNumber":20},{"name":"Auryn Nexus","description":"Give a friendly minion +3 Health","cardId":"duelyst_AurynNexus_2","spriteName":"icon_f1_aurynnexus","type":"SPELL","spells":[{"spellId":"give_3_health","action":{"hpChange":3,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":1,"price":100,"remainingNumber":20},{"name":"Auryn Nexus","description":"Give a friendly minion +3 Health","cardId":"duelyst_AurynNexus_3","spriteName":"icon_f1_aurynnexus","type":"SPELL","spells":[{"spellId":"give_3_health","action":{"hpChange":3,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":1,"price":100,"remainingNumber":20},{"name":"Beam Shock","description":"STUN an enemy","cardId":"duelyst_BeamShock_1","spriteName":"icon_f1_beamshock","type":"SPELL","spells":[{"spellId":"stun","action":{"makeStun":true,"duration":2},"target":{"dimensions":{"row":1,"column":1},"owner":{"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"price":100,"remainingNumber":20},{"name":"Beam Shock","description":"STUN an enemy","cardId":"duelyst_BeamShock_2","spriteName":"icon_f1_beamshock","type":"SPELL","spells":[{"spellId":"stun","action":{"makeStun":true,"duration":2},"target":{"dimensions":{"row":1,"column":1},"owner":{"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"price":100,"remainingNumber":20},{"name":"Beam Shock","description":"STUN an enemy","cardId":"duelyst_BeamShock_3","spriteName":"icon_f1_beamshock","type":"SPELL","spells":[{"spellId":"stun","action":{"makeStun":true,"duration":2},"target":{"dimensions":{"row":1,"column":1},"owner":{"enemy":true},"cardType":{"hero":true,"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"price":100,"remainingNumber":20},{"name":"Kinetic Equilibrium","description":"Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack","cardId":"duelyst_KineticEquilibrium_1","spriteName":"icon_f5_kineticequilibrium","type":"SPELL","spells":[{"spellId":"2_damage","action":{"hpChange":-2,"durable":true,"duration":1},"target":{"dimensions":{"row":3,"column":3},"owner":{"own":true,"enemy":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}},{"spellId":"2_atk_self","action":{"apChange":2,"durable":true,"duration":1},"target":{"dimensions":{"row":3,"column":3},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":3,"price":100,"remainingNumber":20},{"name":"Kinetic Equilibrium","description":"Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack","cardId":"duelyst_KineticEquilibrium_2","spriteName":"icon_f5_kineticequilibrium","type":"SPELL","spells":[{"spellId":"2_damage","action":{"hpChange":-2,"durable":true,"duration":1},"target":{"dimensions":{"row":3,"column":3},"owner":{"own":true,"enemy":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}},{"spellId":"2_atk_self","action":{"apChange":2,"durable":true,"duration":1},"target":{"dimensions":{"row":3,"column":3},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":3,"price":100,"remainingNumber":20},{"name":"Kinetic Equilibrium","description":"Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack","cardId":"duelyst_KineticEquilibrium_3","spriteName":"icon_f5_kineticequilibrium","type":"SPELL","spells":[{"spellId":"2_damage","action":{"hpChange":-2,"durable":true,"duration":1},"target":{"dimensions":{"row":3,"column":3},"owner":{"own":true,"enemy":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}},{"spellId":"2_atk_self","action":{"apChange":2,"durable":true,"duration":1},"target":{"dimensions":{"row":3,"column":3},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":3,"price":100,"remainingNumber":20},{"name":"Phoenix Fire","description":"Deal 3 damage to anything.","cardId":"duelyst_PhoenixFire_1","spriteName":"generalspell_f2_phoenixfire","type":"SPELL","spells":[{"spellId":"deal_3_to_anything","action":{"hpChange":-3,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true,"player":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":2,"price":100,"remainingNumber":20},{"name":"Phoenix Fire","description":"Deal 3 damage to anything.","cardId":"duelyst_PhoenixFire_2","spriteName":"generalspell_f2_phoenixfire","type":"SPELL","spells":[{"spellId":"deal_3_to_anything","action":{"hpChange":-3,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true,"player":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":2,"price":100,"remainingNumber":20},{"name":"Phoenix Fire","description":"Deal 3 damage to anything.","cardId":"duelyst_PhoenixFire_3","spriteName":"generalspell_f2_phoenixfire","type":"SPELL","spells":[{"spellId":"deal_3_to_anything","action":{"hpChange":-3,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true,"player":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":2,"price":100,"remainingNumber":20},{"name":"Shadow Reflection","description":"Give a friendly minion +5 Attack.","cardId":"duelyst_ShadowReflection_1","spriteName":"icon_f4_shadowreflection","type":"SPELL","spells":[{"spellId":"Give_5_atk_to_friendly_minion","action":{"apChange":5,"duration":2147483647},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":3,"price":100,"remainingNumber":20},{"name":"Shadow Reflection","description":"Give a friendly minion +5 Attack.","cardId":"duelyst_ShadowReflection_2","spriteName":"icon_f4_shadowreflection","type":"SPELL","spells":[{"spellId":"Give_5_atk_to_friendly_minion","action":{"apChange":5,"duration":2147483647},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":3,"price":100,"remainingNumber":20},{"name":"Shadow Reflection","description":"Give a friendly minion +5 Attack.","cardId":"duelyst_ShadowReflection_3","spriteName":"icon_f4_shadowreflection","type":"SPELL","spells":[{"spellId":"Give_5_atk_to_friendly_minion","action":{"apChange":5,"duration":2147483647},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true},"cardType":{"minion":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":3,"price":100,"remainingNumber":20},{"name":"Spiral Technique","description":"Deal 8 damage to anything","cardId":"duelyst_SpiralTechnique_1","spriteName":"icon_f2_spiraltechnique","type":"SPELL","spells":[{"spellId":"deal_8_to_anything","action":{"hpChange":-8,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true,"player":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":8,"price":100,"remainingNumber":20},{"name":"Spiral Technique","description":"Deal 8 damage to anything","cardId":"duelyst_SpiralTechnique_2","spriteName":"icon_f2_spiraltechnique","type":"SPELL","spells":[{"spellId":"deal_8_to_anything","action":{"hpChange":-8,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true,"player":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":8,"price":100,"remainingNumber":20},{"name":"Spiral Technique","description":"Deal 8 damage to anything","cardId":"duelyst_SpiralTechnique_3","spriteName":"icon_f2_spiraltechnique","type":"SPELL","spells":[{"spellId":"deal_8_to_anything","action":{"hpChange":-8,"durable":true,"duration":1},"target":{"dimensions":{"row":1,"column":1},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true,"player":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":8,"price":100,"remainingNumber":20},{"name":"Tempest","description":"Deal 2 Damage to ALL characters","cardId":"duelyst_Tempest_1","spriteName":"generalspell_f1_tesmpest","type":"SPELL","spells":[{"spellId":"deal_2_dmg_everything","action":{"hpChange":-2,"durable":true,"duration":1},"target":{"dimensions":{"row":10,"column":18},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true,"player":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":2,"price":100,"remainingNumber":20},{"name":"Tempest","description":"Deal 2 Damage to ALL characters","cardId":"duelyst_Tempest_2","spriteName":"generalspell_f1_tesmpest","type":"SPELL","spells":[{"spellId":"deal_2_dmg_everything","action":{"hpChange":-2,"durable":true,"duration":1},"target":{"dimensions":{"row":10,"column":18},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true,"player":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":2,"price":100,"remainingNumber":20},{"name":"Tempest","description":"Deal 2 Damage to ALL characters","cardId":"duelyst_Tempest_3","spriteName":"generalspell_f1_tesmpest","type":"SPELL","spells":[{"spellId":"deal_2_dmg_everything","action":{"hpChange":-2,"durable":true,"duration":1},"target":{"dimensions":{"row":10,"column":18},"owner":{"own":true,"enemy":true},"cardType":{"hero":true,"minion":true,"player":true},"attackType":{"melee":true,"ranged":true,"hybrid":true}},"availabilityType":{"onPut":true}}],"mannaPoint":2,"price":100,"remainingNumber":20}],"items":[]},"decks":[{"deckName":"starterDeck Aggro","heroId":"duelyst_VaathTheImmortal_1","othersIds":["duelyst_FlamebloodWarlock_1","duelyst_FlamebloodWarlock_2","duelyst_FlamebloodWarlock_3","duelyst_ValeHunter_1","duelyst_ValeHunter_2","duelyst_ValeHunter_3","duelyst_BloodshardGolem_1","duelyst_BloodshardGolem_2","duelyst_BloodshardGolem_3","duelyst_RazorcragGolem_1","duelyst_RazorcragGolem_2","duelyst_RazorcragGolem_3","duelyst_PhoenixFire_1","duelyst_PhoenixFire_2","duelyst_PhoenixFire_3","duelyst_Tempest_1","duelyst_Tempest_2","duelyst_Tempest_3","duelyst_ShadowReflection_1","duelyst_ShadowReflection_2"]},{"deckName":"starterDeck Golem","heroId":"duelyst_ArgeonHighmayne_1","othersIds":["duelyst_BloodshardGolem_1","duelyst_BloodshardGolem_2","duelyst_BloodshardGolem_3","duelyst_BrightmossGolem_1","duelyst_BrightmossGolem_2","duelyst_BrightmossGolem_3","duelyst_DryboneGolem_1","duelyst_DryboneGolem_2","duelyst_DryboneGolem_3","duelyst_HailstoneGolem_1","duelyst_HailstoneGolem_2","duelyst_HailstoneGolem_3","duelyst_AurynNexus_1","duelyst_AurynNexus_2","duelyst_AurynNexus_3","duelyst_BeamShock_1","duelyst_BeamShock_2","duelyst_BeamShock_3","duelyst_KineticEquilibrium_1","duelyst_KineticEquilibrium_2"]},{"deckName":"test all","heroId":"duelyst_ArgeonHighmayne_1","othersIds":["duelyst_PiercingMantis_1","duelyst_PiercingMantis_2","duelyst_PiercingMantis_3","duelyst_Serpenti_1","duelyst_Serpenti_2","duelyst_Serpenti_3","duelyst_PlanarScout_1","duelyst_PlanarScout_2","duelyst_PlanarScout_3","duelyst_FlamebloodWarlock_1","duelyst_FlamebloodWarlock_2","duelyst_FlamebloodWarlock_3","duelyst_FrostboneNaga_1","duelyst_FrostboneNaga_2","duelyst_FrostboneNaga_3","duelyst_BlisteringSkorn_1","duelyst_BlisteringSkorn_2","duelyst_BlisteringSkorn_3","duelyst_SkyrockGolem_1","duelyst_SkyrockGolem_2"]},{"deckName":"ai","heroId":"duelyst_VaathTheImmortal_1","othersIds":["duelyst_FlamebloodWarlock_1","duelyst_FlamebloodWarlock_2","duelyst_FlamebloodWarlock_3","duelyst_PlanarScout_1","duelyst_PlanarScout_2","duelyst_PlanarScout_3","duelyst_SkyrockGolem_1","duelyst_SkyrockGolem_2","duelyst_SkyrockGolem_3","duelyst_ValeHunter_1","duelyst_ValeHunter_2","duelyst_ValeHunter_3","duelyst_PiercingMantis_1","duelyst_PiercingMantis_2","duelyst_PiercingMantis_3","duelyst_RazorcragGolem_2","duelyst_RazorcragGolem_3","duelyst_FrostboneNaga_1","duelyst_FrostboneNaga_2","duelyst_FrostboneNaga_3"]}],"mainDeckName":"test all","matchHistories":[{"oppName":"customGame_starterDeck Aggro","date":"Feb 16, 2020 1:23:04 PM"},{"oppName":"customGame_starterDeck Aggro","date":"Feb 16, 2020 1:25:09 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 1:49:04 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 4:45:51 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 4:47:04 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 4:47:05 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 4:47:05 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 4:47:05 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 5:04:20 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 5:04:21 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 5:04:21 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 5:18:42 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 5:58:45 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 6:17:19 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 6:17:19 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 6:17:20 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 6:17:20 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 6:17:20 PM"},{"oppName":"customGame_ai","amIWinner":true,"date":"Feb 16, 2020 7:35:26 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 7:48:21 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 7:48:22 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 7:48:23 PM"},{"oppName":"customGame_ai","date":"Feb 16, 2020 7:48:23 PM"}],"money":9544289}
+{
+    "username": "duelyst",
+    "password": "duel",
+    "accountType": "NORMAL",
+    "collection": {
+        "heroes": [{
+                "name": "Argeon Highmayne",
+                "description": "Lyonar General",
+                "cardId": "duelyst_ArgeonHighmayne_1",
+                "spriteName": "f1_general",
+                "type": "HERO",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 25,
+                "price": 10,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Reva Eventide",
+                "description": "Songhai General",
+                "cardId": "duelyst_RevaEventide_1",
+                "spriteName": "f2_altgeneral",
+                "type": "HERO",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 25,
+                "price": 10,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Vaath The Immortal",
+                "description": "Magmar General",
+                "cardId": "duelyst_VaathTheImmortal_1",
+                "spriteName": "f5_general",
+                "type": "HERO",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 25,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }
+        ],
+        "minions": [{
+                "name": "Arctic Displacer",
+                "description": "Airdrop",
+                "cardId": "duelyst_ArcticDisplacer_1",
+                "spriteName": "f6_snowwyvern",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 10,
+                "defaultHp": 4,
+                "mannaPoint": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Arctic Displacer",
+                "description": "Airdrop",
+                "cardId": "duelyst_ArcticDisplacer_2",
+                "spriteName": "f6_snowwyvern",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 10,
+                "defaultHp": 4,
+                "mannaPoint": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Arctic Displacer",
+                "description": "Airdrop",
+                "cardId": "duelyst_ArcticDisplacer_3",
+                "spriteName": "f6_snowwyvern",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 10,
+                "defaultHp": 4,
+                "mannaPoint": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Blistering Skorn",
+                "description": "Opening Gambit: Deal 1 damage to everything (including itself)",
+                "cardId": "duelyst_BlisteringSkorn_1",
+                "spriteName": "neutral_blisteringscorn",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "dmg_on_put",
+                        "action": {
+                            "hpChange": -1,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 4,
+                "defaultHp": 5,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Blistering Skorn",
+                "description": "Opening Gambit: Deal 1 damage to everything (including itself)",
+                "cardId": "duelyst_BlisteringSkorn_2",
+                "spriteName": "neutral_blisteringscorn",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "dmg_on_put",
+                        "action": {
+                            "hpChange": -1,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 4,
+                "defaultHp": 5,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Blistering Skorn",
+                "description": "Opening Gambit: Deal 1 damage to everything (including itself)",
+                "cardId": "duelyst_BlisteringSkorn_3",
+                "spriteName": "neutral_blisteringscorn",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "dmg_on_put",
+                        "action": {
+                            "hpChange": -1,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 4,
+                "defaultHp": 5,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Bloodshard Golem",
+                "description": "Golem",
+                "cardId": "duelyst_BloodshardGolem_1",
+                "spriteName": "neutral_golembloodshard",
+                "type": "MINION",
+                "defaultAp": 4,
+                "defaultHp": 3,
+                "mannaPoint": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Bloodshard Golem",
+                "description": "Golem",
+                "cardId": "duelyst_BloodshardGolem_2",
+                "spriteName": "neutral_golembloodshard",
+                "type": "MINION",
+                "defaultAp": 4,
+                "defaultHp": 3,
+                "mannaPoint": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Bloodshard Golem",
+                "description": "Golem",
+                "cardId": "duelyst_BloodshardGolem_3",
+                "spriteName": "neutral_golembloodshard",
+                "type": "MINION",
+                "defaultAp": 4,
+                "defaultHp": 3,
+                "mannaPoint": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Brightmoss Golem",
+                "description": "Golem",
+                "cardId": "duelyst_BrightmossGolem_1",
+                "spriteName": "neutral_golemnature",
+                "type": "MINION",
+                "defaultAp": 4,
+                "defaultHp": 9,
+                "mannaPoint": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Brightmoss Golem",
+                "description": "Golem",
+                "cardId": "duelyst_BrightmossGolem_2",
+                "spriteName": "neutral_golemnature",
+                "type": "MINION",
+                "defaultAp": 4,
+                "defaultHp": 9,
+                "mannaPoint": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Brightmoss Golem",
+                "description": "Golem",
+                "cardId": "duelyst_BrightmossGolem_3",
+                "spriteName": "neutral_golemnature",
+                "type": "MINION",
+                "defaultAp": 4,
+                "defaultHp": 9,
+                "mannaPoint": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Drybone Golem",
+                "description": "Golem",
+                "cardId": "duelyst_DryboneGolem_1",
+                "spriteName": "neutral_golemdragonbone",
+                "type": "MINION",
+                "defaultAp": 10,
+                "defaultHp": 10,
+                "mannaPoint": 7,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Drybone Golem",
+                "description": "Golem",
+                "cardId": "duelyst_DryboneGolem_2",
+                "spriteName": "neutral_golemdragonbone",
+                "type": "MINION",
+                "defaultAp": 10,
+                "defaultHp": 10,
+                "mannaPoint": 7,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Drybone Golem",
+                "description": "Golem",
+                "cardId": "duelyst_DryboneGolem_3",
+                "spriteName": "neutral_golemdragonbone",
+                "type": "MINION",
+                "defaultAp": 10,
+                "defaultHp": 10,
+                "mannaPoint": 7,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Flameblood Warlock",
+                "description": "Opening Gambit: Deal 3 damage to both generals",
+                "cardId": "duelyst_FlamebloodWarlock_1",
+                "spriteName": "neutral_mercflamebloodwarlock",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "deal_3_to_generals",
+                        "action": {
+                            "hpChange": -3,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 3,
+                "defaultHp": 1,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Flameblood Warlock",
+                "description": "Opening Gambit: Deal 3 damage to both generals",
+                "cardId": "duelyst_FlamebloodWarlock_2",
+                "spriteName": "neutral_mercflamebloodwarlock",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "deal_3_to_generals",
+                        "action": {
+                            "hpChange": -3,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 3,
+                "defaultHp": 1,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Flameblood Warlock",
+                "description": "Opening Gambit: Deal 3 damage to both generals",
+                "cardId": "duelyst_FlamebloodWarlock_3",
+                "spriteName": "neutral_mercflamebloodwarlock",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "deal_3_to_generals",
+                        "action": {
+                            "hpChange": -3,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 3,
+                "defaultHp": 1,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Frostbone Naga",
+                "description": "Opening Gambit: Deal 2 damage to everything around it",
+                "cardId": "duelyst_FrostboneNaga_1",
+                "spriteName": "neutral_mercfrostbonenaga",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "health_on_put",
+                        "action": {
+                            "hpChange": 2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }, {
+                        "spellId": "dmg_on_put",
+                        "action": {
+                            "hpChange": -2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 3,
+                "defaultHp": 3,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Frostbone Naga",
+                "description": "Opening Gambit: Deal 2 damage to everything around it",
+                "cardId": "duelyst_FrostboneNaga_2",
+                "spriteName": "neutral_mercfrostbonenaga",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "health_on_put",
+                        "action": {
+                            "hpChange": 2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }, {
+                        "spellId": "dmg_on_put",
+                        "action": {
+                            "hpChange": -2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 3,
+                "defaultHp": 3,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Frostbone Naga",
+                "description": "Opening Gambit: Deal 2 damage to everything around it",
+                "cardId": "duelyst_FrostboneNaga_3",
+                "spriteName": "neutral_mercfrostbonenaga",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "health_on_put",
+                        "action": {
+                            "hpChange": 2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }, {
+                        "spellId": "dmg_on_put",
+                        "action": {
+                            "hpChange": -2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 3,
+                "defaultHp": 3,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Hailstone Golem",
+                "description": "Golem",
+                "cardId": "duelyst_HailstoneGolem_1",
+                "spriteName": "neutral_golemice",
+                "type": "MINION",
+                "defaultAp": 4,
+                "defaultHp": 6,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Hailstone Golem",
+                "description": "Golem",
+                "cardId": "duelyst_HailstoneGolem_2",
+                "spriteName": "neutral_golemice",
+                "type": "MINION",
+                "defaultAp": 4,
+                "defaultHp": 6,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Hailstone Golem",
+                "description": "Golem",
+                "cardId": "duelyst_HailstoneGolem_3",
+                "spriteName": "neutral_golemice",
+                "type": "MINION",
+                "defaultAp": 4,
+                "defaultHp": 6,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Planar Scout",
+                "description": "Airdrop",
+                "cardId": "duelyst_PlanarScout_1",
+                "spriteName": "neutral_beastphasehound",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 1,
+                "mannaPoint": 1,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Planar Scout",
+                "description": "Airdrop",
+                "cardId": "duelyst_PlanarScout_2",
+                "spriteName": "neutral_beastphasehound",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 1,
+                "mannaPoint": 1,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Planar Scout",
+                "description": "Airdrop",
+                "cardId": "duelyst_PlanarScout_3",
+                "spriteName": "neutral_beastphasehound",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 1,
+                "mannaPoint": 1,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Razorcrag Golem",
+                "description": "Golem",
+                "cardId": "duelyst_RazorcragGolem_1",
+                "spriteName": "neutral_razorcraggolem",
+                "type": "MINION",
+                "defaultAp": 10,
+                "defaultHp": 3,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Razorcrag Golem",
+                "description": "Golem",
+                "cardId": "duelyst_RazorcragGolem_2",
+                "spriteName": "neutral_razorcraggolem",
+                "type": "MINION",
+                "defaultAp": 10,
+                "defaultHp": 3,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Razorcrag Golem",
+                "description": "Golem",
+                "cardId": "duelyst_RazorcragGolem_3",
+                "spriteName": "neutral_razorcraggolem",
+                "type": "MINION",
+                "defaultAp": 10,
+                "defaultHp": 3,
+                "mannaPoint": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Skyrock Golem",
+                "description": "Golem",
+                "cardId": "duelyst_SkyrockGolem_1",
+                "spriteName": "neutral_golemrunesand",
+                "type": "MINION",
+                "defaultAp": 3,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Skyrock Golem",
+                "description": "Golem",
+                "cardId": "duelyst_SkyrockGolem_2",
+                "spriteName": "neutral_golemrunesand",
+                "type": "MINION",
+                "defaultAp": 3,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Skyrock Golem",
+                "description": "Golem",
+                "cardId": "duelyst_SkyrockGolem_3",
+                "spriteName": "neutral_golemrunesand",
+                "type": "MINION",
+                "defaultAp": 3,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Vale Hunter",
+                "description": "Ranged",
+                "cardId": "duelyst_ValeHunter_1",
+                "spriteName": "neutral_tribalranged1",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 1,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "HYBRID",
+                "range": 99,
+                "remainingNumber": 20
+            }, {
+                "name": "Vale Hunter",
+                "description": "Ranged",
+                "cardId": "duelyst_ValeHunter_2",
+                "spriteName": "neutral_tribalranged1",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 1,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "HYBRID",
+                "range": 99,
+                "remainingNumber": 20
+            }, {
+                "name": "Vale Hunter",
+                "description": "Ranged",
+                "cardId": "duelyst_ValeHunter_3",
+                "spriteName": "neutral_tribalranged1",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 1,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "HYBRID",
+                "range": 99,
+                "remainingNumber": 20
+            }, {
+                "name": "Piercing Mantis",
+                "description": "After attacking, deal 2 damage to all surrounding enemies",
+                "cardId": "duelyst_PiercingMantis_1",
+                "spriteName": "neutral_monstershreddingmantis",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "hpChange": -2,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        }
+                    }
+                ],
+                "defaultAp": 2,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Piercing Mantis",
+                "description": "After attacking, deal 2 damage to all surrounding enemies",
+                "cardId": "duelyst_PiercingMantis_2",
+                "spriteName": "neutral_monstershreddingmantis",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "hpChange": -2,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        }
+                    }
+                ],
+                "defaultAp": 2,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Piercing Mantis",
+                "description": "After attacking, deal 2 damage to all surrounding enemies",
+                "cardId": "duelyst_PiercingMantis_3",
+                "spriteName": "neutral_monstershreddingmantis",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "hpChange": -2,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        }
+                    }
+                ],
+                "defaultAp": 2,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Serpenti",
+                "description": "After attacking, deal 7 damage to all surrounding enemies",
+                "cardId": "duelyst_Serpenti_1",
+                "spriteName": "neutral_serpenti",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "hpChange": -7,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        }
+                    }
+                ],
+                "defaultAp": 7,
+                "defaultHp": 4,
+                "mannaPoint": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Serpenti",
+                "description": "After attacking, deal 7 damage to all surrounding enemies",
+                "cardId": "duelyst_Serpenti_2",
+                "spriteName": "neutral_serpenti",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "hpChange": -7,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        }
+                    }
+                ],
+                "defaultAp": 7,
+                "defaultHp": 4,
+                "mannaPoint": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }, {
+                "name": "Serpenti",
+                "description": "After attacking, deal 7 damage to all surrounding enemies",
+                "cardId": "duelyst_Serpenti_3",
+                "spriteName": "neutral_serpenti",
+                "type": "MINION",
+                "spells": [{
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "hpChange": -7,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        }
+                    }
+                ],
+                "defaultAp": 7,
+                "defaultHp": 4,
+                "mannaPoint": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            }
+        ],
+        "spells": [{
+                "name": "Auryn Nexus",
+                "description": "Give a friendly minion +3 Health",
+                "cardId": "duelyst_AurynNexus_1",
+                "spriteName": "icon_f1_aurynnexus",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "give_3_health",
+                        "action": {
+                            "hpChange": 3,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 1,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Auryn Nexus",
+                "description": "Give a friendly minion +3 Health",
+                "cardId": "duelyst_AurynNexus_2",
+                "spriteName": "icon_f1_aurynnexus",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "give_3_health",
+                        "action": {
+                            "hpChange": 3,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 1,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Auryn Nexus",
+                "description": "Give a friendly minion +3 Health",
+                "cardId": "duelyst_AurynNexus_3",
+                "spriteName": "icon_f1_aurynnexus",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "give_3_health",
+                        "action": {
+                            "hpChange": 3,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 1,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Beam Shock",
+                "description": "STUN an enemy",
+                "cardId": "duelyst_BeamShock_1",
+                "spriteName": "icon_f1_beamshock",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "stun",
+                        "action": {
+                            "makeStun": true,
+                            "duration": 2
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Beam Shock",
+                "description": "STUN an enemy",
+                "cardId": "duelyst_BeamShock_2",
+                "spriteName": "icon_f1_beamshock",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "stun",
+                        "action": {
+                            "makeStun": true,
+                            "duration": 2
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Beam Shock",
+                "description": "STUN an enemy",
+                "cardId": "duelyst_BeamShock_3",
+                "spriteName": "icon_f1_beamshock",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "stun",
+                        "action": {
+                            "makeStun": true,
+                            "duration": 2
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Kinetic Equilibrium",
+                "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
+                "cardId": "duelyst_KineticEquilibrium_1",
+                "spriteName": "icon_f5_kineticequilibrium",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "2_damage",
+                        "action": {
+                            "hpChange": -2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }, {
+                        "spellId": "2_atk_self",
+                        "action": {
+                            "apChange": 2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 3,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Kinetic Equilibrium",
+                "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
+                "cardId": "duelyst_KineticEquilibrium_2",
+                "spriteName": "icon_f5_kineticequilibrium",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "2_damage",
+                        "action": {
+                            "hpChange": -2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }, {
+                        "spellId": "2_atk_self",
+                        "action": {
+                            "apChange": 2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 3,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Kinetic Equilibrium",
+                "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
+                "cardId": "duelyst_KineticEquilibrium_3",
+                "spriteName": "icon_f5_kineticequilibrium",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "2_damage",
+                        "action": {
+                            "hpChange": -2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }, {
+                        "spellId": "2_atk_self",
+                        "action": {
+                            "apChange": 2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 3,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Phoenix Fire",
+                "description": "Deal 3 damage to anything.",
+                "cardId": "duelyst_PhoenixFire_1",
+                "spriteName": "generalspell_f2_phoenixfire",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "deal_3_to_anything",
+                        "action": {
+                            "hpChange": -3,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 2,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Phoenix Fire",
+                "description": "Deal 3 damage to anything.",
+                "cardId": "duelyst_PhoenixFire_2",
+                "spriteName": "generalspell_f2_phoenixfire",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "deal_3_to_anything",
+                        "action": {
+                            "hpChange": -3,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 2,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Phoenix Fire",
+                "description": "Deal 3 damage to anything.",
+                "cardId": "duelyst_PhoenixFire_3",
+                "spriteName": "generalspell_f2_phoenixfire",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "deal_3_to_anything",
+                        "action": {
+                            "hpChange": -3,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 2,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Shadow Reflection",
+                "description": "Give a friendly minion +5 Attack.",
+                "cardId": "duelyst_ShadowReflection_1",
+                "spriteName": "icon_f4_shadowreflection",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "Give_5_atk_to_friendly_minion",
+                        "action": {
+                            "apChange": 5,
+                            "duration": 2147483647
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 3,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Shadow Reflection",
+                "description": "Give a friendly minion +5 Attack.",
+                "cardId": "duelyst_ShadowReflection_2",
+                "spriteName": "icon_f4_shadowreflection",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "Give_5_atk_to_friendly_minion",
+                        "action": {
+                            "apChange": 5,
+                            "duration": 2147483647
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 3,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Shadow Reflection",
+                "description": "Give a friendly minion +5 Attack.",
+                "cardId": "duelyst_ShadowReflection_3",
+                "spriteName": "icon_f4_shadowreflection",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "Give_5_atk_to_friendly_minion",
+                        "action": {
+                            "apChange": 5,
+                            "duration": 2147483647
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 3,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Spiral Technique",
+                "description": "Deal 8 damage to anything",
+                "cardId": "duelyst_SpiralTechnique_1",
+                "spriteName": "icon_f2_spiraltechnique",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "deal_8_to_anything",
+                        "action": {
+                            "hpChange": -8,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 8,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Spiral Technique",
+                "description": "Deal 8 damage to anything",
+                "cardId": "duelyst_SpiralTechnique_2",
+                "spriteName": "icon_f2_spiraltechnique",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "deal_8_to_anything",
+                        "action": {
+                            "hpChange": -8,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 8,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Spiral Technique",
+                "description": "Deal 8 damage to anything",
+                "cardId": "duelyst_SpiralTechnique_3",
+                "spriteName": "icon_f2_spiraltechnique",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "deal_8_to_anything",
+                        "action": {
+                            "hpChange": -8,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 8,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Tempest",
+                "description": "Deal 2 Damage to ALL characters",
+                "cardId": "duelyst_Tempest_1",
+                "spriteName": "generalspell_f1_tesmpest",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "deal_2_dmg_everything",
+                        "action": {
+                            "hpChange": -2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 10,
+                                "column": 18
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 2,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Tempest",
+                "description": "Deal 2 Damage to ALL characters",
+                "cardId": "duelyst_Tempest_2",
+                "spriteName": "generalspell_f1_tesmpest",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "deal_2_dmg_everything",
+                        "action": {
+                            "hpChange": -2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 10,
+                                "column": 18
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 2,
+                "price": 100,
+                "remainingNumber": 20
+            }, {
+                "name": "Tempest",
+                "description": "Deal 2 Damage to ALL characters",
+                "cardId": "duelyst_Tempest_3",
+                "spriteName": "generalspell_f1_tesmpest",
+                "type": "SPELL",
+                "spells": [{
+                        "spellId": "deal_2_dmg_everything",
+                        "action": {
+                            "hpChange": -2,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 10,
+                                "column": 18
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "hero": true,
+                                "minion": true,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "mannaPoint": 2,
+                "price": 100,
+                "remainingNumber": 20
+            }
+        ],
+        "items": []
+    },
+    "decks": [{
+            "deckName": "starterDeck Aggro",
+            "heroId": "duelyst_VaathTheImmortal_1",
+            "othersIds": ["duelyst_FlamebloodWarlock_1", "duelyst_FlamebloodWarlock_2", "duelyst_FlamebloodWarlock_3", "duelyst_ValeHunter_1", "duelyst_ValeHunter_2", "duelyst_ValeHunter_3", "duelyst_BloodshardGolem_1", "duelyst_BloodshardGolem_2", "duelyst_BloodshardGolem_3", "duelyst_RazorcragGolem_1", "duelyst_RazorcragGolem_2", "duelyst_RazorcragGolem_3", "duelyst_PhoenixFire_1", "duelyst_PhoenixFire_2", "duelyst_PhoenixFire_3", "duelyst_Tempest_1", "duelyst_Tempest_2", "duelyst_Tempest_3", "duelyst_ShadowReflection_1", "duelyst_ShadowReflection_2"]
+        }, {
+            "deckName": "starterDeck Golem",
+            "heroId": "duelyst_ArgeonHighmayne_1",
+            "othersIds": ["duelyst_BloodshardGolem_1", "duelyst_BloodshardGolem_2", "duelyst_BloodshardGolem_3", "duelyst_BrightmossGolem_1", "duelyst_BrightmossGolem_2", "duelyst_BrightmossGolem_3", "duelyst_DryboneGolem_1", "duelyst_DryboneGolem_2", "duelyst_DryboneGolem_3", "duelyst_HailstoneGolem_1", "duelyst_HailstoneGolem_2", "duelyst_HailstoneGolem_3", "duelyst_AurynNexus_1", "duelyst_AurynNexus_2", "duelyst_AurynNexus_3", "duelyst_BeamShock_1", "duelyst_BeamShock_2", "duelyst_BeamShock_3", "duelyst_KineticEquilibrium_1", "duelyst_KineticEquilibrium_2"]
+        }, {
+            "deckName": "test all",
+            "heroId": "duelyst_ArgeonHighmayne_1",
+            "othersIds": ["duelyst_PiercingMantis_1", "duelyst_PiercingMantis_2", "duelyst_PiercingMantis_3", "duelyst_Serpenti_1", "duelyst_Serpenti_2", "duelyst_Serpenti_3", "duelyst_PlanarScout_1", "duelyst_PlanarScout_2", "duelyst_PlanarScout_3", "duelyst_FlamebloodWarlock_1", "duelyst_FlamebloodWarlock_2", "duelyst_FlamebloodWarlock_3", "duelyst_FrostboneNaga_1", "duelyst_FrostboneNaga_2", "duelyst_FrostboneNaga_3", "duelyst_BlisteringSkorn_1", "duelyst_BlisteringSkorn_2", "duelyst_BlisteringSkorn_3", "duelyst_SkyrockGolem_1", "duelyst_SkyrockGolem_2"]
+        }, {
+            "deckName": "ai",
+            "heroId": "duelyst_VaathTheImmortal_1",
+            "othersIds": ["duelyst_FlamebloodWarlock_1", "duelyst_FlamebloodWarlock_2", "duelyst_FlamebloodWarlock_3", "duelyst_PlanarScout_1", "duelyst_PlanarScout_2", "duelyst_PlanarScout_3", "duelyst_SkyrockGolem_1", "duelyst_SkyrockGolem_2", "duelyst_SkyrockGolem_3", "duelyst_ValeHunter_1", "duelyst_ValeHunter_2", "duelyst_ValeHunter_3", "duelyst_PiercingMantis_1", "duelyst_PiercingMantis_2", "duelyst_PiercingMantis_3", "duelyst_RazorcragGolem_2", "duelyst_RazorcragGolem_3", "duelyst_FrostboneNaga_1", "duelyst_FrostboneNaga_2", "duelyst_FrostboneNaga_3"]
+        }
+    ],
+    "mainDeckName": "test all",
+    "matchHistories": [{
+            "oppName": "customGame_starterDeck Aggro",
+            "date": "Feb 16, 2020 1:23:04 PM"
+        }, {
+            "oppName": "customGame_starterDeck Aggro",
+            "date": "Feb 16, 2020 1:25:09 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 1:49:04 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 4:45:51 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 4:47:04 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 4:47:05 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 4:47:05 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 4:47:05 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 5:04:20 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 5:04:21 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 5:04:21 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 5:18:42 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 5:58:45 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 6:17:19 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 6:17:19 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 6:17:20 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 6:17:20 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 6:17:20 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "amIWinner": true,
+            "date": "Feb 16, 2020 7:35:26 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 7:48:21 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 7:48:22 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 7:48:23 PM"
+        }, {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 7:48:23 PM"
+        }
+    ],
+    "money": 9544289
+}
