@@ -111,7 +111,6 @@ buildNumber.properties
 ## Resources
 
 /exported_decks/*
-/Server/resources/accounts/
 /resources/accounts/
 
 ## Windows Exe
@@ -123,6 +122,4 @@ buildNumber.properties
 /Build_exe/Application/Server
 
 ## white list 
-!/Server/resources/accounts/john_doe.account.json
-!/Server/resources/accounts/duelyst.account.json
 !.keep
