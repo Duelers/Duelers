@@ -8,7 +8,6 @@ public enum MessageType {
     GAME_COPY,
     ORIGINAL_CARDS_COPY,
     LEADERBOARD_COPY,
-    STORIES_COPY,
     CARD_POSITION,
     TROOP_UPDATE,
     GAME_UPDATE,
@@ -33,7 +32,6 @@ public enum MessageType {
     SELL_CARD,
     INSERT,
     ATTACK,
-    COMBO,
     USE_SPECIAL_POWER,
     END_TURN,
     LOG_IN,
@@ -42,7 +40,6 @@ public enum MessageType {
     MULTIPLAYER_GAME_REQUEST,
     CANCEL_REQUEST,
     NEW_DECK_GAME,
-    NEW_STORY_GAME,
     SELECT_USER,
     SUDO,
     IMPORT_DECK,
@@ -53,9 +50,11 @@ public enum MessageType {
     ADD_CARD,
     STOP_SHOW_GAME,
     ONLINE_GAME_SHOW_REQUEST,
+    SET_NEW_NEXT_CARD,
     //SENDER:DUAL
     CHAT,
     ACCEPT_REQUEST,
     DECLINE_REQUEST,
-    CHANGE_CARD_NUMBER
+    CHANGE_CARD_NUMBER,
+    REPLACE_CARD;
 }

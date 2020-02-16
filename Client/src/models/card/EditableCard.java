@@ -22,7 +22,6 @@ public class EditableCard implements ICard {
     private int price;
     private AttackType attackType;
     private int range;
-    private boolean hasCombo;
 
     public void addSpell(Spell spell) {
         spells.add(spell);
@@ -42,10 +41,6 @@ public class EditableCard implements ICard {
 
     public void setRange(int range) {
         this.range = range;
-    }
-
-    public void setHasCombo(boolean hasCombo) {
-        this.hasCombo = hasCombo;
     }
 
     @Override
@@ -157,7 +152,7 @@ public class EditableCard implements ICard {
         return new Card(
                 name, cardId, description, spriteName, type,
                 spells, defaultAp, defaultHp, mannaPoint,
-                price, attackType, range, hasCombo
+                price, attackType, range
         );
     }
 }

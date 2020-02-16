@@ -141,6 +141,7 @@ public abstract class Game {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
                 addNextCardToHand();
+                getCurrentTurnPlayer().setCanReplaceCard(true);
 
                 revertNotDurableBuffs();
                 removeFinishedBuffs();
@@ -191,6 +192,28 @@ public abstract class Game {
                 Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
                 Server.getInstance().sendChangeCardPositionMessage(this, getCurrentTurnPlayer().getNextCard(), CardPosition.NEXT);
             }
+        }
+    }
+
+    public void setNewNextCard(){
+        getCurrentTurnPlayer().setNewNextCard();
+        Server.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard().toCompressedCard() );
+    }
+
+    public void replaceCard(String cardID) throws LogicException {
+        if( getCurrentTurnPlayer().getCanReplaceCard() ){
+            Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
+            getCurrentTurnPlayer().addCardToDeck(removedCard);
+            if (getCurrentTurnPlayer().addNextCardToHand()) {
+                getCurrentTurnPlayer().setCanReplaceCard(false);
+                Card nextCard = getCurrentTurnPlayer().getNextCard();
+                Server.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
+                Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
+                Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
+            }
+        }
+        else{
+            System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
         }
     }
 
@@ -544,24 +567,6 @@ public abstract class Game {
         return specialPower;
     }
 
-    public void comboAttack(String username, String[] attackerCardIds, String defenderCardId) throws LogicException {
-        try {
-            if (!canCommand(username)) {
-                throw new ClientException("its not your turn");
-            }
-
-            Troop defenderTroop = getAndValidateTroop(defenderCardId, getOtherTurnPlayer());
-            Troop[] attackerTroops = getAndValidateAttackerTroops(attackerCardIds, defenderTroop);
-
-            damageFromAllAttackers(defenderTroop, attackerTroops);
-
-            applyOnDefendSpells(defenderTroop, attackerTroops[0]);
-            counterAttack(defenderTroop, attackerTroops[0]);
-        } finally {
-            GameCenter.getInstance().checkGameFinish(this);
-        }
-    }
-
     private Troop getAndValidateTroop(String defenderCardId, Player otherTurnPlayer) throws ClientException {
         Troop troop = otherTurnPlayer.getTroop(defenderCardId);
         if (troop == null) {
@@ -574,7 +579,7 @@ public abstract class Game {
         Troop[] attackerTroops = new Troop[attackerCardIds.length];
         for (int i = 0; i < attackerTroops.length; i++) {
             attackerTroops[i] = getCurrentTurnPlayer().getTroop(attackerCardIds[i]);
-            if (attackerTroops[i] == null || !attackerTroops[i].getCard().hasCombo()) {
+            if (attackerTroops[i] == null) {
                 throw new ClientException("invalid attacker troop");
             }
 

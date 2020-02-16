@@ -6,6 +6,7 @@ import models.JsonConverter;
 import models.account.AccountType;
 import models.card.Card;
 import models.card.ExportedDeck;
+import models.comperessedData.CompressedCard;
 import models.game.GameType;
 import models.game.map.Position;
 
@@ -38,6 +39,8 @@ public class Message {
     private OnlineGame onlineGame;
     //SENDER:DUAL
     private Card card;
+    private String cardID;
+    private CompressedCard compressedCard;
     private ChatMessage chatMessage;
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
@@ -178,15 +181,6 @@ public class Message {
         return message;
     }
 
-    public static Message makeComboAttackMessage(String receiver, String opponentCardId, String[] myCardIds) {
-        Message message = new Message(receiver);
-        message.otherFields = new OtherFields();
-        message.otherFields.setOpponentCardId(opponentCardId);
-        message.otherFields.setMyCardIds(myCardIds);
-        message.messageType = MessageType.COMBO;
-        return message;
-    }
-
     public static Message makeForceFinishGameMessage(String receiver) {
         Message message = new Message(receiver);
         message.messageType = MessageType.FORCE_FINISH;
@@ -241,14 +235,6 @@ public class Message {
         message.newGameFields.setNumberOfFlags(numberOfFlags);
         message.newGameFields.setGameType(gameType);
         message.messageType = MessageType.NEW_DECK_GAME;
-        return message;
-    }
-
-    public static Message makeNewStoryGameMessage(String receiver, int stage) {
-        Message message = new Message(receiver);
-        message.newGameFields = new NewGameFields();
-        message.newGameFields.setStage(stage);
-        message.messageType = MessageType.NEW_STORY_GAME;
         return message;
     }
 
@@ -321,6 +307,19 @@ public class Message {
         Message message = new Message(receiver);
         message.onlineGame = onlineGame;
         message.messageType = MessageType.STOP_SHOW_GAME;
+        return message;
+    }
+
+    public static Message makeSetNewNextCardMessage(String receiver){
+        Message message = new Message(receiver);
+        message.messageType = MessageType.SET_NEW_NEXT_CARD;
+        return message;
+    }
+
+    public static Message makeNewReplaceCardMessage(String serverName, String cardID) {
+        Message message = new Message(serverName);
+        message.messageType = MessageType.REPLACE_CARD;
+        message.cardID = cardID;
         return message;
     }
 
@@ -410,5 +409,9 @@ public class Message {
 
     public OnlineGame[] getOnlineGames() {
         return onlineGames;
+    }
+
+    public CompressedCard getCompressedCard() {
+        return compressedCard;
     }
 }

@@ -8,6 +8,7 @@ import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
+import server.exceptions.LogicException;
 import server.gameCenter.models.map.Cell;
 import server.dataCenter.models.Constants;
 
@@ -27,6 +28,7 @@ public class Player {
     private int playerNumber;
     private int numberOfCollectedFlags;
     private MatchHistory matchHistory;
+    private boolean canReplaceCard;
 
     Player(Deck mainDeck, String userName, int playerNumber) {
         this.playerNumber = playerNumber;
@@ -36,6 +38,7 @@ public class Player {
         for (int i = 0; i < 3; i++) {
             addNextCardToHand();
         }
+        this.canReplaceCard = true;
     }
 
     public CompressedPlayer toCompressedPlayer() {
@@ -88,6 +91,27 @@ public class Player {
         return card;
     }
 
+    public Card removeCardFromHand(String cardID) throws ClientException {
+        Card cardToRemove = null;
+
+        for(int i = 0; i < hand.size(); i++){
+            Card tempCard = hand.get(i);
+            if(tempCard.getCardId().equalsIgnoreCase(cardID)){
+                hand.remove(i);
+                cardToRemove = tempCard;
+            }
+        }
+
+        if(cardToRemove == null){
+            throw new ClientException("cardID sent from client to remove from player's hand not found on server");
+        }
+        return cardToRemove;
+    }
+
+    public void addCardToDeck(Card card) throws LogicException {
+        deck.addCard(card);
+    }
+
     private void setNextCard() {
         if (!deck.getOthers().isEmpty()) {
             int index = new Random().nextInt(deck.getOthers().size());
@@ -98,6 +122,10 @@ public class Player {
             }
         }
 
+    }
+
+    public void setNewNextCard() {
+        setNextCard();
     }
 
     boolean addNextCardToHand() {
@@ -233,5 +261,13 @@ public class Player {
 
     void addTroop(Troop troop) {
         troops.add(troop);
+    }
+
+    public boolean getCanReplaceCard(){
+        return this.canReplaceCard;
+    }
+
+    public void setCanReplaceCard(boolean state){
+        this.canReplaceCard = state;
     }
 }
