@@ -275,11 +275,11 @@ public abstract class Game {
                     // Check cell is: legal square for minion and currently empty
                     if (getGameMap().isInMap(x2, y2) && isLegalCellForMinion(c, minion) && getGameMap().getTroop(c) == null) {
                         insert("AI", minion.getCardId(), new Position(c.getRow(), c.getColumn()));
+                        Thread.sleep(500);
                         break;
                     }
                 }
 
-                Thread.sleep(500);
                 actions.calculateAvailableInsets(this);
             }
         } catch (InterruptedException ignored) {
@@ -544,7 +544,7 @@ public abstract class Game {
             if (spell.getAvailabilityType().isOnAttack())
                 applySpell(
                         spell,
-                        detectTarget(spell, defenderTroop.getCell(), defenderTroop.getCell(), getCurrentTurnPlayer().getHero().getCell())
+                        detectTarget(spell, attackerTroop.getCell(), defenderTroop.getCell(), getCurrentTurnPlayer().getHero().getCell())
                 );
         }
     }
@@ -975,14 +975,14 @@ public abstract class Game {
         // This fixes a bug in the previous logic;
         // Previously 3x3 square on the edges/corners of the board gave incorrect result.
         if (dimensions.getRow() % 2 != 0 && dimensions.getColumn() % 2 != 0){
-            int rowMin = centerPosition.getRow() - (dimensions.getRow() - 1);
-            int rowMax = centerPosition.getRow() + (dimensions.getRow() - 1);
+            int rowMin = centerPosition.getRow() - (dimensions.getRow() / 2);
+            int rowMax = centerPosition.getRow() + (dimensions.getRow() / 2);
 
-            int colMin = centerPosition.getColumn() - (dimensions.getColumn() - 1);
-            int colMax = centerPosition.getColumn() + (dimensions.getColumn() - 1);
+            int colMin = centerPosition.getColumn() - (dimensions.getColumn()  / 2);
+            int colMax = centerPosition.getColumn() + (dimensions.getColumn() / 2);
 
-            for (int i = rowMin; i < rowMax; i++){
-                for(int j = colMin; j < colMax; j++){
+            for (int i = rowMin; i <= rowMax; i++){
+                for(int j = colMin; j <= colMax; j++){
                     if (gameMap.isInMap(i, j)){
                         targetCells.add(gameMap.getCells()[i][j]);
                     }
@@ -1005,9 +1005,9 @@ public abstract class Game {
         }
 
         // Debugging print statements
-        //Server.serverPrint("( " + centerPosition.toString() + ") (" + dimensions.toString() + ")");
-        //targetCells.forEach((n) -> System.out.print("[" + n.getRow() + n.getColumn() + "] "));
-        //System.out.println();
+        Server.serverPrint("( " + centerPosition.toString() + ") (" + dimensions.toString() + ")");
+        targetCells.forEach((n) -> System.out.print("[" + n.getRow() + n.getColumn() + "] "));
+        System.out.println();
         return targetCells;
     }
 
