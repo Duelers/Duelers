@@ -25,7 +25,7 @@
 		"addSpell": false,
 		"killsTarget": false,
 		"isForGladiator": false,
-		"durable": false,
+		"durable": true,
 		"removeBuffs": 0,
 		"duration": 1,
 		"delay": 0
