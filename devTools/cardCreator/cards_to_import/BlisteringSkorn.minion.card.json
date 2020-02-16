@@ -34,8 +34,6 @@
         },
         "attackType": {
           "melee": true,
-          "ranged": true,
-          "hybrid": true
         }
       },
       "availabilityType": {

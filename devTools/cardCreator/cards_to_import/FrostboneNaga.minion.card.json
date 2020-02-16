@@ -51,8 +51,6 @@
         },
         "attackType": {
           "melee": true,
-          "ranged": true,
-          "hybrid": true
         }
       },
       "availabilityType": {
@@ -110,8 +108,6 @@
         },
         "attackType": {
           "melee": true,
-          "ranged": true,
-          "hybrid": true
         }
       },
       "availabilityType": {
