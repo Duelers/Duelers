@@ -118,8 +118,17 @@ buildNumber.properties
 /Build_exe/Application/Client/*.exe
 /Build_exe/Application/Client/Resources
 /Build_exe/Application/Client/Classes
+/Build_exe/Application/devTools
+/Build_exe/Application/jre
 /Build_exe/Application/resources
 /Build_exe/Application/Server
+/Build_exe/application/exported_decks/*
 
 ## white list 
 !.keep
+!/Server/resources/accounts/john_doe.account.json
+!/Server/resources/accounts/template.account.json
+!/Server/resources/accounts/duelyst.account.json
+
+devTools/cardCreator/AddJsonCardToGame.exe
+

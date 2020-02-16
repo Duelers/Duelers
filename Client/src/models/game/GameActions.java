@@ -10,8 +10,6 @@ public interface GameActions {
 
     void attack(CompressedTroop selectedTroop, CompressedTroop troop);
 
-    void comboAttack(ArrayList<CompressedTroop> comboTroops, CompressedTroop troop);
-
     void move(CompressedTroop selectedTroop, int j, int i);
 
     void endTurn();
@@ -23,4 +21,8 @@ public interface GameActions {
     void useSpecialPower(int row, int column);
 
     void exitGameShow(OnlineGame onlineGame);
+
+    void setNewNextCard();
+
+    void replaceCard(String cardID);
 }

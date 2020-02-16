@@ -7,6 +7,7 @@ import models.account.Account;
 import models.account.AccountInfo;
 import models.card.Card;
 import models.card.DeckInfo;
+import models.comperessedData.CompressedCard;
 import models.game.map.Position;
 import models.message.CardPosition;
 import models.message.GameUpdateMessage;
@@ -165,9 +166,6 @@ public class Client {
             case LEADERBOARD_COPY:
                 MainMenuController.getInstance().setLeaderBoard(message.getLeaderBoardCopyMessage().getLeaderBoard());
                 break;
-            case STORIES_COPY:
-                StoryMenuController.getInstance().setStories(message.getStoriesCopyMessage().getStories());
-                break;
             case CARD_POSITION://TODO:CHANGE
                 CardPosition cardPosition = message.getCardPositionMessage().getCardPosition();
                 switch (cardPosition) {
@@ -196,6 +194,9 @@ public class Client {
             case TROOP_UPDATE:
                 GameController.getInstance().getCurrentGame().troopUpdate(message.getTroopUpdateMessage().getCompressedTroop());
                 GameController.getInstance().calculateAvailableActions();
+                break;
+            case SET_NEW_NEXT_CARD:
+                GameController.getInstance().getCurrentGame().moveCardToNext( message.getCompressedCard() );
                 break;
             case GAME_UPDATE:
                 GameUpdateMessage gameUpdateMessage = message.getGameUpdateMessage();

@@ -7,9 +7,7 @@ import server.dataCenter.DataBase;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.CardType;
-import server.dataCenter.models.sorter.StoriesSorter;
-import server.gameCenter.models.game.Story;
-import server.gameCenter.models.game.TempStory;
+
 
 import java.io.File;
 import java.util.ArrayList;
@@ -52,32 +50,6 @@ public class Rest implements DataBase {
         Rest rest = new Rest();
 
         readCards(rest);
-        read(rest);
-        List x = rest.getAllKeys(maps.STORIES.path);
-        for (Object o :
-                x) {
-            Story story = JsonConverter.fromJson((String) o, Story.class);
-//            System.out.println(card.getName());
-            System.out.println((String) o);
-        }
-
-        for (Story story :
-                rest.getStories()) {
-            System.out.println(story.getDeck().getOthers().size());
-        }
-    }
-
-
-    private static void read(Rest dataBase) {
-        File[] files = new File(STORIES_PATH).listFiles();
-        if (files != null) {
-            for (File file : files) {
-                TempStory story = loadFile(file, TempStory.class);
-                if (story == null) continue;
-
-                dataBase.addStory(new Story(story, dataBase.getOriginalCards()));
-            }
-        }
     }
 
     private static void readCards(Rest dataBase) {
@@ -221,13 +193,6 @@ public class Rest implements DataBase {
         return collection;
     }
 
-    @Override
-    public List<Story> getStories() {
-        List<Story> stories = getList(getAllKeys(maps.STORIES.path), Story.class);
-        stories.sort(new StoriesSorter());
-        return stories;
-    }
-
     private <T> List<T> getList(List list, Class<T> classOfT) {
         List<T> arrayList = new ArrayList<>();
         for (Object o
@@ -282,12 +247,6 @@ public class Rest implements DataBase {
     @Override
     public void setOriginalFlag(Card card) {
         put(maps.ORIGINAL_FLAG.path, maps.ORIGINAL_FLAG.path, JsonConverter.toJson(card));
-    }
-
-    @Override
-    public void addStory(Story story) {
-        put(maps.STORIES.path, JsonConverter.toJson(story), "");
-
     }
 
     @Override

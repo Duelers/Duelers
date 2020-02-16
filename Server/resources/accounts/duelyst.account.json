@@ -2987,7 +2987,61 @@
         ],
         "items": []
     },
-    "decks": [],
+    "decks": [
+        {
+            "deckName": "starterDeck Aggro",
+            "heroId": "duelyst_VaathTheImmortal_1",
+            "othersIds": [
+                "duelyst_FlamebloodWarlock_1",
+                "duelyst_FlamebloodWarlock_2",
+                "duelyst_FlamebloodWarlock_3",
+                "duelyst_ValeHunter_1",
+                "duelyst_ValeHunter_2",
+                "duelyst_ValeHunter_3",
+                "duelyst_BloodshardGolem_1",
+                "duelyst_BloodshardGolem_2",
+                "duelyst_BloodshardGolem_3",
+                "duelyst_RazorcragGolem_1",
+                "duelyst_RazorcragGolem_2",
+                "duelyst_RazorcragGolem_3",
+                "duelyst_PhoenixFire_1",
+                "duelyst_PhoenixFire_2",
+                "duelyst_PhoenixFire_3",
+                "duelyst_Tempest_1",
+                "duelyst_Tempest_2",
+                "duelyst_Tempest_3",
+                "duelyst_ShadowReflection_1",
+                "duelyst_ShadowReflection_2"
+            ]
+        },
+        {
+            "deckName": "starterDeck Golem",
+            "heroId": "duelyst_ArgeonHighmayne_1",
+            "othersIds": [
+                "duelyst_BloodshardGolem_1",
+                "duelyst_BloodshardGolem_2",
+                "duelyst_BloodshardGolem_3",
+                "duelyst_BrightmossGolem_1",
+                "duelyst_BrightmossGolem_2",
+                "duelyst_BrightmossGolem_3",
+                "duelyst_DryboneGolem_1",
+                "duelyst_DryboneGolem_2",
+                "duelyst_DryboneGolem_3",
+                "duelyst_HailstoneGolem_1",
+                "duelyst_HailstoneGolem_2",
+                "duelyst_HailstoneGolem_3",
+                "duelyst_AurynNexus_1",
+                "duelyst_AurynNexus_2",
+                "duelyst_AurynNexus_3",
+                "duelyst_BeamShock_1",
+                "duelyst_BeamShock_2",
+                "duelyst_BeamShock_3",
+                "duelyst_KineticEquilibrium_1",
+                "duelyst_KineticEquilibrium_2"
+            ]
+        }
+    ],
+    "mainDeckName": "starterDeck Golem",
     "matchHistories": [],
     "money": 9543289
 }
