@@ -251,19 +251,19 @@ public abstract class Game {
 
                 if (minionOptions.isEmpty()){ break; }
 
-                System.out.print("AI, minion in Hand: ");
-                minionOptions.forEach( (n) -> System.out.print(n.getName() + " | "));
+                System.out.print("AI PLAYER: minion(s) in Hand = ");
+                minionOptions.forEach( (n) -> System.out.print(n.getName() + ", "));
                 System.out.print("\n");
 
                 int idx = new Random().nextInt(Math.max(1, minionOptions.size() - 1));
                 Card minion = minionOptions.get(idx);
 
                 // Skew probability distribution towards favoring squares closer to Hero position.
-                int[] offsets = new int[] {-3, -2, -2, -1, -1,-1, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3};
+                int[] offsets = new int[] {-3, -2, -2, -1, -1,-1, 0, 0, 0, 1, 1, 1, 2, 2, 3};
                 Cell HeroPosition = getCurrentTurnPlayer().getHero().getCell();
 
                 // Attempt (max n tries) to place minion on a random square.
-                for (int attempts = 0; attempts < 13 ; attempts++){
+                for (int attempts = 0; attempts < 20 ; attempts++){
 
                     int x = offsets[new Random().nextInt(offsets.length)];
                     int y = offsets[new Random().nextInt(offsets.length)];
@@ -274,10 +274,9 @@ public abstract class Game {
 
                     Cell c = new Cell(x2, y2);
 
-                    // Check cell is legal square for minion.
-                    if (isLegalCellForMinion(c, minion) && gameMap.getTroop(c) == null) {
+                    if (isLegalCellForMinion(c, minion)) {
                         insert("AI", minion.getCardId(), new Position(c.getRow(), c.getColumn()));
-                        Thread.sleep(500);
+                        Thread.sleep(1000);
                         break;
                     }
                 }
@@ -417,6 +416,7 @@ public abstract class Game {
         if (!(troop.getCard().getType() == CardType.HERO)){
             // This function is also used to place heros at start of game, hence this check.
             if (!isLegalCellForMinion(cell, troop.getCard())){
+                // Note: there is a bug where is you target an illegal square the game gets in an unplayable state
                 return;
             }
         }
@@ -428,13 +428,15 @@ public abstract class Game {
 
     private boolean isLegalCellForMinion(Cell cell, Card card){
 
-        // Current implementation only allows for placing next to Hero's.
-        // Unless minion has 'Airdrop' Keyword.
+        if (!(gameMap.getTroop(cell) == null)){
+            // square is not empty
+            return false;
+        }
 
-        // Not the most elegant bits of code, but it will do until the custom card parser comes along,
-        // In which case most of the game logic will be rewritten in any case.
+        // Minion Placement rules: nearby ally <Hero, Minion>
+        // Note, hard-coded the AIRDROP keyword ability
         if (card.getDescription().contains("Airdrop")){
-            System.out.println("Cell: (" + cell.toString() + ") Is a legal square because " + card.getCardId() + "has AIRDROP keyword.");
+            System.out.println(cell.toString() + "Is a legal square because " + card.getCardId() + "has AIRDROP keyword.");
             return true;
         }
 
@@ -447,12 +449,11 @@ public abstract class Game {
             boolean checkColumn = Math.abs( cell.getColumn() - allyPosition.getColumn()) <=1 ;
 
             if (checkRow && checkColumn){
-                System.out.println("Cell: (" + cell.toString() + ") Is a legal square because Ally UNIT: " + troop.getCard().getCardId()
-                        + "Is on square: (" + allyPosition.toString() + " )");
+                System.out.println(cell.toString() + "Is a legal square because Ally UNIT: " + troop.getCard().getCardId()
+                        + " Is on " + allyPosition.toString());
                 return true;
             }
         }
-        System.out.println("Cell: (" + cell.toString() + ")  is not a legal move for " + card.getCardId() );
         return false;
     }
 
@@ -1015,9 +1016,9 @@ public abstract class Game {
         }
 
         // Debugging print statements
-        Server.serverPrint("( " + centerPosition.toString() + ") (" + dimensions.toString() + ")");
-        targetCells.forEach((n) -> System.out.print("[" + n.getRow() + n.getColumn() + "] "));
-        System.out.println();
+        //Server.serverPrint("( " + centerPosition.toString() + ") (" + dimensions.toString() + ")");
+        //targetCells.forEach((n) -> System.out.print("[" + n.getRow() + n.getColumn() + "] "));
+        //System.out.println();
         return targetCells;
     }
 
