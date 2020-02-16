@@ -42,7 +42,7 @@ class AbabeelLogoBox extends VBox {
 
     private Text makeAbabeelText() {
         return new DefaultText(
-                "For all cards and default decks:\nLogin: 'john doe'\nPASSWORD: 'qwer'",
+                "For Duelyst cards and decks:\nLogin: 'duelyst'\nPASSWORD: 'duel'",
                 BOX_SIZE - UIConstants.DEFAULT_SPACING * 5,
                 FONT, ABABEEL_TEXT_COLOR
         );
