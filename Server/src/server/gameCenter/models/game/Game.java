@@ -219,20 +219,23 @@ public abstract class Game {
     }
 
     private void playCurrentTurn() throws LogicException {
+
+        final int delay = 1000;
+
         try {
             AvailableActions actions = new AvailableActions();
             actions.calculateAvailableActions(this);
             while (actions.getMoves().size() > 0) {
                 Move move = actions.getMoves().get(new Random().nextInt(actions.getMoves().size()));
                 moveTroop("AI", move.getTroop().getCard().getCardId(), move.getTargets().get(new Random().nextInt(move.getTargets().size())));
-                Thread.sleep(500);
+                Thread.sleep(delay);
                 actions.calculateAvailableMoves(this);
             }
             actions.calculateAvailableAttacks(this);
             while (actions.getAttacks().size() > 0) {
                 Attack attack = actions.getAttacks().get(new Random().nextInt(actions.getAttacks().size()));
                 attack("AI", attack.getAttackerTroop().getCard().getCardId(), attack.getDefenders().get(new Random().nextInt(attack.getDefenders().size())).getCard().getCardId());
-                Thread.sleep(500);
+                Thread.sleep(delay);
                 actions.calculateAvailableAttacks(this);
             }
             actions.calculateAvailableInsets(this);
@@ -276,7 +279,7 @@ public abstract class Game {
 
                     if (isLegalCellForMinion(c, minion)) {
                         insert("AI", minion.getCardId(), new Position(c.getRow(), c.getColumn()));
-                        Thread.sleep(1000);
+                        Thread.sleep(delay);
                         break;
                     }
                 }
