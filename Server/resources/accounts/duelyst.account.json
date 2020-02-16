@@ -425,8 +425,8 @@
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
                             "dimensions": {
-                                "row": 10,
-                                "column": 18
+                                "row": 20,
+                                "column": 20
                             },
                             "owner": {
                                 "own": true,
@@ -470,8 +470,8 @@
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
                             "dimensions": {
-                                "row": 10,
-                                "column": 18
+                                "row": 20,
+                                "column": 20
                             },
                             "owner": {
                                 "own": true,
@@ -515,8 +515,8 @@
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
                             "dimensions": {
-                                "row": 10,
-                                "column": 18
+                                "row": 20,
+                                "column": 20
                             },
                             "owner": {
                                 "own": true,
@@ -569,7 +569,7 @@
                             "addSpell": false,
                             "killsTarget": false,
                             "isForGladiator": false,
-                            "durable": false,
+                            "durable": true,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -705,7 +705,7 @@
                             "addSpell": false,
                             "killsTarget": false,
                             "isForGladiator": false,
-                            "durable": false,
+                            "durable": true,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -841,7 +841,7 @@
                             "addSpell": false,
                             "killsTarget": false,
                             "isForGladiator": false,
-                            "durable": false,
+                            "durable": true,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -1179,6 +1179,474 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 99,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Piercing Mantis",
+                "description": "After attacking, deal 2 damage to all surrounding enemies",
+                "cardId": "duelyst_PiercingMantis_1",
+                "spriteName": "neutral_monstershreddingmantis",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -2,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": false,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": true,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "mannaPoint": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 2,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Piercing Mantis",
+                "description": "After attacking, deal 2 damage to all surrounding enemies",
+                "cardId": "duelyst_PiercingMantis_2",
+                "spriteName": "neutral_monstershreddingmantis",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -2,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": false,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": true,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "mannaPoint": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 2,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Piercing Mantis",
+                "description": "After attacking, deal 2 damage to all surrounding enemies",
+                "cardId": "duelyst_PiercingMantis_3",
+                "spriteName": "neutral_monstershreddingmantis",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -2,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": false,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": true,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "mannaPoint": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 2,
+                "defaultHp": 2,
+                "mannaPoint": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Serpenti",
+                "description": "After attacking, deal 7 damage to all surrounding enemies",
+                "cardId": "duelyst_Serpenti_1",
+                "spriteName": "neutral_serpenti",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -7,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": false,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": true,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "mannaPoint": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 7,
+                "defaultHp": 4,
+                "mannaPoint": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Serpenti",
+                "description": "After attacking, deal 7 damage to all surrounding enemies",
+                "cardId": "duelyst_Serpenti_2",
+                "spriteName": "neutral_serpenti",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -7,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": false,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": true,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "mannaPoint": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 7,
+                "defaultHp": 4,
+                "mannaPoint": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Serpenti",
+                "description": "After attacking, deal 7 damage to all surrounding enemies",
+                "cardId": "duelyst_Serpenti_3",
+                "spriteName": "neutral_serpenti",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -7,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": false,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": true,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "mannaPoint": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 7,
+                "defaultHp": 4,
+                "mannaPoint": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
                 "hasCombo": false,
                 "remainingNumber": 20
             }
@@ -3039,9 +3507,139 @@
                 "duelyst_KineticEquilibrium_1",
                 "duelyst_KineticEquilibrium_2"
             ]
+        },
+        {
+            "deckName": "test all",
+            "heroId": "duelyst_ArgeonHighmayne_1",
+            "othersIds": [
+                "duelyst_PiercingMantis_1",
+                "duelyst_PiercingMantis_2",
+                "duelyst_PiercingMantis_3",
+                "duelyst_Serpenti_1",
+                "duelyst_Serpenti_2",
+                "duelyst_Serpenti_3",
+                "duelyst_PlanarScout_1",
+                "duelyst_PlanarScout_2",
+                "duelyst_PlanarScout_3",
+                "duelyst_FlamebloodWarlock_1",
+                "duelyst_FlamebloodWarlock_2",
+                "duelyst_FlamebloodWarlock_3",
+                "duelyst_FrostboneNaga_1",
+                "duelyst_FrostboneNaga_2",
+                "duelyst_FrostboneNaga_3",
+                "duelyst_BlisteringSkorn_1",
+                "duelyst_BlisteringSkorn_2",
+                "duelyst_BlisteringSkorn_3",
+                "duelyst_SkyrockGolem_1",
+                "duelyst_SkyrockGolem_2"
+            ]
+        },
+        {
+            "deckName": "ai",
+            "heroId": "duelyst_VaathTheImmortal_1",
+            "othersIds": [
+                "duelyst_FlamebloodWarlock_1",
+                "duelyst_FlamebloodWarlock_2",
+                "duelyst_FlamebloodWarlock_3",
+                "duelyst_PlanarScout_1",
+                "duelyst_PlanarScout_2",
+                "duelyst_PlanarScout_3",
+                "duelyst_SkyrockGolem_1",
+                "duelyst_SkyrockGolem_2",
+                "duelyst_SkyrockGolem_3",
+                "duelyst_ValeHunter_1",
+                "duelyst_ValeHunter_2",
+                "duelyst_ValeHunter_3",
+                "duelyst_PiercingMantis_1",
+                "duelyst_PiercingMantis_2",
+                "duelyst_PiercingMantis_3",
+                "duelyst_RazorcragGolem_2",
+                "duelyst_RazorcragGolem_3",
+                "duelyst_FrostboneNaga_1",
+                "duelyst_FrostboneNaga_2",
+                "duelyst_FrostboneNaga_3"
+            ]
         }
     ],
-    "mainDeckName": "starterDeck Golem",
-    "matchHistories": [],
-    "money": 9543289
+    "mainDeckName": "test all",
+    "matchHistories": [
+        {
+            "oppName": "customGame_starterDeck Aggro",
+            "date": "Feb 16, 2020 1:23:04 PM"
+        },
+        {
+            "oppName": "customGame_starterDeck Aggro",
+            "date": "Feb 16, 2020 1:25:09 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 1:49:04 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 4:45:51 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 4:47:04 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 4:47:05 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 4:47:05 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 4:47:05 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 5:04:20 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 5:04:21 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 5:04:21 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 5:18:42 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 5:58:45 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 6:17:19 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 6:17:19 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 6:17:20 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 6:17:20 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "date": "Feb 16, 2020 6:17:20 PM"
+        },
+        {
+            "oppName": "customGame_ai",
+            "amIWinner": true,
+            "date": "Feb 16, 2020 7:35:26 PM"
+        }
+    ],
+    "money": 9544289
 }
