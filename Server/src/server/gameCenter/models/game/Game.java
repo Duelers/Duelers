@@ -969,18 +969,45 @@ public abstract class Game {
     }
 
     private ArrayList<Cell> detectCells(Position centerPosition, Position dimensions) {
-        int firstRow = calculateFirstCoordinate(centerPosition.getRow(), dimensions.getRow());
-        int firstColumn = calculateFirstCoordinate(centerPosition.getColumn(), dimensions.getColumn());
 
-        int lastRow = calculateLastCoordinate(firstRow, dimensions.getRow(), GameMap.getRowNumber());
-        int lastColumn = calculateLastCoordinate(firstColumn, dimensions.getColumn(), GameMap.getColumnNumber());
         ArrayList<Cell> targetCells = new ArrayList<>();
-        for (int i = firstRow; i < lastRow; i++) {
-            for (int j = firstColumn; j < lastColumn; j++) {
-                if (gameMap.isInMap(i, j))
-                    targetCells.add(gameMap.getCells()[i][j]);
+
+        // This fixes a bug in the previous logic;
+        // Previously 3x3 square on the edges/corners of the board gave incorrect result.
+        if (dimensions.getRow() % 2 != 0 && dimensions.getColumn() % 2 != 0){
+            int rowMin = centerPosition.getRow() - (dimensions.getRow() - 1);
+            int rowMax = centerPosition.getRow() + (dimensions.getRow() - 1);
+
+            int colMin = centerPosition.getColumn() - (dimensions.getColumn() - 1);
+            int colMax = centerPosition.getColumn() + (dimensions.getColumn() - 1);
+
+            for (int i = rowMin; i < rowMax; i++){
+                for(int j = colMin; j < colMax; j++){
+                    if (gameMap.isInMap(i, j)){
+                        targetCells.add(gameMap.getCells()[i][j]);
+                    }
+                }
             }
         }
+
+        else {
+            int firstRow = calculateFirstCoordinate(centerPosition.getRow(), dimensions.getRow());
+            int firstColumn = calculateFirstCoordinate(centerPosition.getColumn(), dimensions.getColumn());
+
+            int lastRow = calculateLastCoordinate(firstRow, dimensions.getRow(), GameMap.getRowNumber());
+            int lastColumn = calculateLastCoordinate(firstColumn, dimensions.getColumn(), GameMap.getColumnNumber());
+            for (int i = firstRow; i < lastRow; i++) {
+                for (int j = firstColumn; j < lastColumn; j++) {
+                    if (gameMap.isInMap(i, j))
+                        targetCells.add(gameMap.getCells()[i][j]);
+                }
+            }
+        }
+
+        // Debugging print statements
+        //Server.serverPrint("( " + centerPosition.toString() + ") (" + dimensions.toString() + ")");
+        //targetCells.forEach((n) -> System.out.print("[" + n.getRow() + n.getColumn() + "] "));
+        //System.out.println();
         return targetCells;
     }
 
