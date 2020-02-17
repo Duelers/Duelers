@@ -20,7 +20,6 @@ public class Message {
     private GameCopyMessage gameCopyMessage;
     private CardsCopyMessage cardsCopyMessage;
     private AccountCopyMessage accountCopyMessage;
-    private LeaderBoardCopyMessage leaderBoardCopyMessage;
     private StoriesCopyMessage storiesCopyMessage;
     private CardPositionMessage cardPositionMessage;
     private TroopUpdateMessage troopUpdateMessage;
@@ -349,10 +348,6 @@ public class Message {
 
     public AccountCopyMessage getAccountCopyMessage() {
         return accountCopyMessage;
-    }
-
-    public LeaderBoardCopyMessage getLeaderBoardCopyMessage() {
-        return leaderBoardCopyMessage;
     }
 
     public StoriesCopyMessage getStoriesCopyMessage() {
