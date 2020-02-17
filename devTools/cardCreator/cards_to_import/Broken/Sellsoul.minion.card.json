@@ -12,14 +12,20 @@
 				"duration": 1
 			},
 			"target": {
-				"isRelatedToCardOwnerPosition": false,
+				"isRelatedToCardOwnerPosition": true,
+				"dimensions": {
+					"row": 20,
+					"column": 20
+				},
+				
 				"owner": {
 					"own": true,
 					"enemy": false
 				},
 
+
 				"cardType": {
-					"hero": true
+					"player": true
 				},
 
 				"attackType": {

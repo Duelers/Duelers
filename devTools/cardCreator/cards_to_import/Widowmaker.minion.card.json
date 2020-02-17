@@ -1,0 +1,16 @@
+{
+  "name": "Widowmaker",
+  "description": "Ranged",
+  "cardId": "Widowmaker",
+  "spriteName": "f2_ranged",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 2,
+  "defaultHp": 3,
+  "mannaPoint": 3,
+  "price": 100,
+  "attackType": "HYBRID",
+  "range": 99,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

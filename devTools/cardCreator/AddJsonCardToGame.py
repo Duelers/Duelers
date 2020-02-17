@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
     assert os.path.isdir(RESOURCES_DIR), "ERROR: {RESOURCES_PATH} is not a valid directory!"
     assert os.path.isdir(RESOURCES_SERVER_DIR), "ERROR: {RESOURCES_SERVER_PATH} is not a valid directory!"
-    assert os.path.isdir(ACCOUNTS_DIR), "ERROR: {ACCOUNT_PATH} is not a valid directory!"
+    assert os.path.isdir(ACCOUNTS_DIR), "ERROR: {ACCOUNTS_DIR} is not a valid directory!"
     assert os.path.isfile(INFO_FILE), f"ERROR: {INFO_FILE} is not a valid file!"
 
     print("Loading Info.json...")
