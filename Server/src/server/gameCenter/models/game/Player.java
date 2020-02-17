@@ -119,6 +119,7 @@ public class Player {
             try {
                 deck.removeCard(nextCard);
             } catch (ClientException ignored) {
+                System.out.println("Unable to remove card from deck");
             }
         }
 
@@ -129,7 +130,7 @@ public class Player {
     }
 
     boolean addNextCardToHand() {
-        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
+        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE && !deck.getOthers().isEmpty()) {
             hand.add(nextCard);
             setNextCard();
             return true;
