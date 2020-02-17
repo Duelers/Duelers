@@ -9,6 +9,7 @@
 		"items":[]
 	},
 	"decks":[],
+	"mainDeckName": "",
     "matchHistories":[],
     "money":9543289
 }
