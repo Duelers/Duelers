@@ -25,7 +25,7 @@
 		"addSpell": false,
 		"killsTarget": false,
 		"isForGladiator": false,
-		"durable": false,
+		"durable": true,
 		"removeBuffs": 0,
 		"duration": 1,
 		"delay": 0
@@ -84,7 +84,7 @@
         "addSpell": false,
         "killsTarget": false,
         "isForGladiator": false,
-        "durable": false,
+        "durable": true,
         "removeBuffs": 0,
         "duration": 1,
         "delay": 0
@@ -108,11 +108,12 @@
           "minion": true,
           "player": false
         },
-        "attackType": {
-          "melee": true,
-          "ranged": true,
-          "hybrid": true
-        }
+        
+		"attackType": {
+			"melee": true,
+			"ranged": true,
+			"hybrid": true
+		}
       },
       "availabilityType": {
         "onPut": true,

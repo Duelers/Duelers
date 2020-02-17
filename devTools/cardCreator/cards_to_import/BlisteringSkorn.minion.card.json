@@ -37,7 +37,7 @@
           "ranged": true,
           "hybrid": true
         }
-      },
+	  },
       "availabilityType": {
         "onPut": true
       },
