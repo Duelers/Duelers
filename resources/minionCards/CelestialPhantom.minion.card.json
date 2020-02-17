@@ -43,7 +43,7 @@
         "onDeath": false,
         "specialPower": false,
         "onStart": false,
-        "onDefend": false
+        "onDefend": true
       },
       "coolDown": 0,
       "mannaPoint": 0,
