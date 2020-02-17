@@ -24,7 +24,7 @@ public class Rest implements DataBase {
             "resources/spellCards"};
 
     private enum maps {
-        ORINGINAL_CARDS("originalCards");
+        ORIGINAL_CARDS("originalCards");
 
         maps(String s) {
             path = s;
@@ -161,13 +161,13 @@ public class Rest implements DataBase {
 
     @Override
     public Card getCard(String cardName) {
-        String json = getFromDataBase(maps.ORINGINAL_CARDS.path, cardName);
+        String json = getFromDataBase(maps.ORIGINAL_CARDS.path, cardName);
         return JsonConverter.fromJson(json, Card.class);
     }
 
     @Override
     public Collection getOriginalCards() {
-        List jsons = getAllValues(maps.ORINGINAL_CARDS.path);
+        List jsons = getAllValues(maps.ORIGINAL_CARDS.path);
         Collection collection = new Collection();
         for (Object o : jsons) {
             collection.addCard(JsonConverter.fromJson((String) o, Card.class));
@@ -186,7 +186,7 @@ public class Rest implements DataBase {
 
     @Override
     public void addOriginalCard(Card card) {
-        put(maps.ORINGINAL_CARDS.path, card.getName(), JsonConverter.toJson(card));
+        put(maps.ORIGINAL_CARDS.path, card.getName(), JsonConverter.toJson(card));
     }
 
     @Override
