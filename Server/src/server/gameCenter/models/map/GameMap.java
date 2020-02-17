@@ -1,8 +1,6 @@
 package server.gameCenter.models.map;
 
 import server.clientPortal.models.comperessedData.CompressedGameMap;
-import server.dataCenter.models.card.Card;
-import server.gameCenter.models.game.Player;
 import server.gameCenter.models.game.Troop;
 
 import java.util.*;

@@ -4,9 +4,6 @@ import server.dataCenter.DataBase;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.Card;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class OldDataBase implements DataBase {
     private Collection originalCards = new Collection();
 

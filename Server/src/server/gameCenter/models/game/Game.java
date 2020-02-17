@@ -13,7 +13,6 @@ import server.dataCenter.models.card.spell.Spell;
 import server.dataCenter.models.card.spell.SpellAction;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
-import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
 import server.gameCenter.models.game.availableActions.Attack;
 import server.gameCenter.models.game.availableActions.AvailableActions;
@@ -27,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Stream;
+
 
 public abstract class Game {
     private static final int DEFAULT_REWARD = 1000;
@@ -161,7 +160,7 @@ public abstract class Game {
     private void addNextCardToHand() {
         //If you want to draw 2 cards at the end of your turn, set the for loop to run 2 times
         //If you want to draw 1 card at the end of your turn, set the for loop to run 1 time or remove it.
-        for(int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             Card nextCard = getCurrentTurnPlayer().getNextCard();
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
@@ -170,13 +169,13 @@ public abstract class Game {
         }
     }
 
-    public void setNewNextCard(){
+    public void setNewNextCard() {
         getCurrentTurnPlayer().setNewNextCard();
-        Server.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard().toCompressedCard() );
+        Server.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard().toCompressedCard());
     }
 
     public void replaceCard(String cardID) throws LogicException {
-        if( getCurrentTurnPlayer().getCanReplaceCard() ){
+        if (getCurrentTurnPlayer().getCanReplaceCard()) {
             Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             if (getCurrentTurnPlayer().addNextCardToHand()) {
@@ -186,8 +185,7 @@ public abstract class Game {
                 Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
                 Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
             }
-        }
-        else{
+        } else {
             System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
         }
     }
@@ -219,27 +217,29 @@ public abstract class Game {
                 // Pick a playable minion in the hand at random.
                 // By "playable" we simply check availible mana relative to minion cost.
                 ArrayList<Card> minionOptions = new ArrayList<Card>();
-                for(Insert i : actions.getHandInserts()){
-                    if (i.getCard().getMannaPoint() <= currentMana && i.getCard().getType() == CardType.MINION){
+                for (Insert i : actions.getHandInserts()) {
+                    if (i.getCard().getMannaPoint() <= currentMana && i.getCard().getType() == CardType.MINION) {
                         minionOptions.add(i.getCard());
                     }
                 }
 
-                if (minionOptions.isEmpty()){ break; }
+                if (minionOptions.isEmpty()) {
+                    break;
+                }
 
                 System.out.print("AI PLAYER: minion(s) in Hand = ");
-                minionOptions.forEach( (n) -> System.out.print(n.getName() + ", "));
+                minionOptions.forEach((n) -> System.out.print(n.getName() + ", "));
                 System.out.print("\n");
 
                 int idx = new Random().nextInt(Math.max(1, minionOptions.size() - 1));
                 Card minion = minionOptions.get(idx);
 
                 // Skew probability distribution towards favoring squares closer to Hero position.
-                int[] offsets = new int[] {-3, -2, -2, -1, -1,-1, 0, 0, 0, 1, 1, 1, 2, 2, 3};
+                int[] offsets = new int[]{-3, -2, -2, -1, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 3};
                 Cell HeroPosition = getCurrentTurnPlayer().getHero().getCell();
 
                 // Attempt (max n tries) to place minion on a random square.
-                for (int attempts = 0; attempts < 20 ; attempts++){
+                for (int attempts = 0; attempts < 20; attempts++) {
 
                     int x = offsets[new Random().nextInt(offsets.length)];
                     int y = offsets[new Random().nextInt(offsets.length)];
@@ -382,9 +382,9 @@ public abstract class Game {
 
     private void putMinion(int playerNumber, Troop troop, Cell cell) {
 
-        if (!(troop.getCard().getType() == CardType.HERO)){
+        if (!(troop.getCard().getType() == CardType.HERO)) {
             // This function is also used to place heros at start of game, hence this check.
-            if (!isLegalCellForMinion(cell, troop.getCard())){
+            if (!isLegalCellForMinion(cell, troop.getCard())) {
                 // Note: there is a bug where is you target an illegal square the game gets in an unplayable state
                 return;
             }
@@ -395,29 +395,29 @@ public abstract class Game {
         Server.getInstance().sendTroopUpdateMessage(this, troop);
     }
 
-    private boolean isLegalCellForMinion(Cell cell, Card card){
+    private boolean isLegalCellForMinion(Cell cell, Card card) {
 
-        if (!(gameMap.getTroop(cell) == null)){
+        if (!(gameMap.getTroop(cell) == null)) {
             // square is not empty
             return false;
         }
 
         // Minion Placement rules: nearby ally <Hero, Minion>
         // Note, hard-coded the AIRDROP keyword ability
-        if (card.getDescription().contains("Airdrop")){
+        if (card.getDescription().contains("Airdrop")) {
             System.out.println(cell.toString() + "Is a legal square because " + card.getCardId() + "has AIRDROP keyword.");
             return true;
         }
 
         Player player = getCurrentTurnPlayer();
 
-        for (Troop troop : player.getTroops()){
+        for (Troop troop : player.getTroops()) {
             Cell allyPosition = troop.getCell();
 
-            boolean checkRow = Math.abs (cell.getRow() - allyPosition.getRow()) <= 1;
-            boolean checkColumn = Math.abs( cell.getColumn() - allyPosition.getColumn()) <=1 ;
+            boolean checkRow = Math.abs(cell.getRow() - allyPosition.getRow()) <= 1;
+            boolean checkColumn = Math.abs(cell.getColumn() - allyPosition.getColumn()) <= 1;
 
-            if (checkRow && checkColumn){
+            if (checkRow && checkColumn) {
                 System.out.println(cell.toString() + "Is a legal square because Ally UNIT: " + troop.getCard().getCardId()
                         + " Is on " + allyPosition.toString());
                 return true;
@@ -900,23 +900,21 @@ public abstract class Game {
 
         // This fixes a bug in the previous logic;
         // Previously 3x3 square on the edges/corners of the board gave incorrect result.
-        if (dimensions.getRow() % 2 != 0 && dimensions.getColumn() % 2 != 0){
+        if (dimensions.getRow() % 2 != 0 && dimensions.getColumn() % 2 != 0) {
             int rowMin = centerPosition.getRow() - (dimensions.getRow() / 2);
             int rowMax = centerPosition.getRow() + (dimensions.getRow() / 2);
 
-            int colMin = centerPosition.getColumn() - (dimensions.getColumn()  / 2);
+            int colMin = centerPosition.getColumn() - (dimensions.getColumn() / 2);
             int colMax = centerPosition.getColumn() + (dimensions.getColumn() / 2);
 
-            for (int i = rowMin; i <= rowMax; i++){
-                for(int j = colMin; j <= colMax; j++){
-                    if (gameMap.isInMap(i, j)){
+            for (int i = rowMin; i <= rowMax; i++) {
+                for (int j = colMin; j <= colMax; j++) {
+                    if (gameMap.isInMap(i, j)) {
                         targetCells.add(gameMap.getCells()[i][j]);
                     }
                 }
             }
-        }
-
-        else {
+        } else {
             int firstRow = calculateFirstCoordinate(centerPosition.getRow(), dimensions.getRow());
             int firstColumn = calculateFirstCoordinate(centerPosition.getColumn(), dimensions.getColumn());
 

@@ -3,7 +3,6 @@ package server.dataCenter.models.account;
 import server.Server;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.card.Card;
-import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
 import server.exceptions.ClientException;
@@ -86,7 +85,7 @@ public class Collection {
             return;
         }
         if (hasCard(card.getCardId())) {
-            Server.getInstance().serverPrint("Error: Account does not own '" + card.getCardId() + "'" );
+            Server.getInstance().serverPrint("Error: Account does not own '" + card.getCardId() + "'");
             return;
         }
         switch (card.getType()) {

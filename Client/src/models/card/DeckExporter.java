@@ -25,7 +25,7 @@ public class DeckExporter {
             int counter = 1;
             String name = deck.getName();
             outer:
-            while (files.length > 0) {
+            while (files.length > 0) { //todo: This is definitely written wrong. Test it so we can safely change it.
                 for (File file : files) {
                     if (file.getName().equals(name + FORMAT)) {
                         counter++;

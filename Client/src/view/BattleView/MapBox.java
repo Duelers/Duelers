@@ -3,26 +3,17 @@ package view.BattleView;
 import controller.GameController;
 import controller.SoundEffectPlayer;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import models.card.CardType;
 import models.comperessedData.CompressedGameMap;
 import models.comperessedData.CompressedTroop;
-import models.game.map.Position;
 import models.gui.CardPane;
-import models.gui.DefaultLabel;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.FileInputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import static view.BattleView.Constants.NEGATIVE_BUFF_EFFECT;
@@ -239,7 +230,6 @@ public class MapBox implements PropertyChangeListener {
                 resetSelection();
                 SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.move);
             }
-            return;
         }
     }
 
@@ -289,7 +279,6 @@ public class MapBox implements PropertyChangeListener {
                         cells[row][column].setFill(Constants.MOVE_COLOR);
                     else
                         cells[row][column].setFill(Constants.defaultColor);
-                    continue;
                 }
             }
         }

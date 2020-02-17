@@ -1,6 +1,5 @@
 package server.gameCenter.models.game;
 
-import server.Server;
 import server.clientPortal.models.comperessedData.CompressedCard;
 import server.clientPortal.models.comperessedData.CompressedPlayer;
 import server.dataCenter.models.account.MatchHistory;
@@ -42,7 +41,7 @@ public class Player {
         Card firstItem = deck.getItem();
         CompressedCard useableItem = null;
 
-        if (firstItem != null){
+        if (firstItem != null) {
             useableItem = firstItem.toCompressedCard();
         }
 
@@ -80,15 +79,15 @@ public class Player {
     public Card removeCardFromHand(String cardID) throws ClientException {
         Card cardToRemove = null;
 
-        for(int i = 0; i < hand.size(); i++){
+        for (int i = 0; i < hand.size(); i++) {
             Card tempCard = hand.get(i);
-            if(tempCard.getCardId().equalsIgnoreCase(cardID)){
+            if (tempCard.getCardId().equalsIgnoreCase(cardID)) {
                 hand.remove(i);
                 cardToRemove = tempCard;
             }
         }
 
-        if(cardToRemove == null){
+        if (cardToRemove == null) {
             throw new ClientException("cardID sent from client to remove from player's hand not found on server");
         }
         return cardToRemove;
@@ -136,8 +135,8 @@ public class Player {
         this.currentMP = currentMP;
     }
 
-    void increaseMP(int currentMP){
-        this.currentMP+= currentMP;
+    void increaseMP(int currentMP) {
+        this.currentMP += currentMP;
     }
 
     void changeCurrentMP(int change) {
@@ -221,11 +220,11 @@ public class Player {
         troops.add(troop);
     }
 
-    public boolean getCanReplaceCard(){
+    public boolean getCanReplaceCard() {
         return this.canReplaceCard;
     }
 
-    public void setCanReplaceCard(boolean state){
+    public void setCanReplaceCard(boolean state) {
         this.canReplaceCard = state;
     }
 }

@@ -10,7 +10,6 @@ import server.dataCenter.models.account.AccountType;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.account.TempAccount;
 import server.dataCenter.models.card.Card;
-import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
 import server.dataCenter.models.db.OldDataBase;
@@ -117,12 +116,12 @@ public class DataCenter extends Thread {
             Collection originalCards = dataBase.getOriginalCards();
 
             System.out.println("Starting Heroes");
-                for (Card card : originalCards.getHeroes()) {
-                    buyAllCards(message, card.getName());
+            for (Card card : originalCards.getHeroes()) {
+                buyAllCards(message, card.getName());
 
-                }
+            }
 
-            for(int i = 0; i < 3; i++) {
+            for (int i = 0; i < 3; i++) {
                 System.out.println("Starting Minions");
                 for (Card card : originalCards.getMinions()) {
                     buyAllCards(message, card.getName());
@@ -246,7 +245,7 @@ public class DataCenter extends Thread {
         saveAccount(account);
     }
 
-    public void buyAllCards(Message message, String cardName) throws LogicException{
+    public void buyAllCards(Message message, String cardName) throws LogicException {
 
         loginCheck(message);
         Account account = clients.get(message.getSender());
@@ -325,7 +324,7 @@ public class DataCenter extends Thread {
         File[] files = new File(ACCOUNTS_PATH).listFiles();
         if (files != null) {
             for (File file : files) {
-            	System.out.println(file.getName());
+                System.out.println(file.getName());
                 TempAccount account = loadFile(file, TempAccount.class);
                 if (account == null) continue;
                 Account newAccount = new Account(account);
@@ -341,8 +340,7 @@ public class DataCenter extends Thread {
             if (files != null) {
                 for (File file : files) {
                     Card card = loadFile(file, Card.class);
-                    if (card == null) continue;
-                    else {
+                    if (card != null) {
                         dataBase.addOriginalCard(card);
                     }
                 }
@@ -368,7 +366,7 @@ public class DataCenter extends Thread {
             File[] files = new File(path).listFiles();
             if (files != null) {
                 for (File file : files) {
-                    if (file.getName().startsWith(card.getName().replaceAll(" ","") + ".")) {
+                    if (file.getName().startsWith(card.getName().replaceAll(" ", "") + ".")) {
                         try {
                             FileWriter writer = new FileWriter(file.getPath());
                             writer.write(cardJson);

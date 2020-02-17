@@ -4,9 +4,6 @@ import server.clientPortal.models.comperessedData.CompressedTroop;
 import server.dataCenter.models.card.Card;
 import server.gameCenter.models.map.Cell;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Troop {
     private Card card;

@@ -13,7 +13,6 @@ import models.game.map.Position;
 import models.message.*;
 import view.BattleView.BattleScene;
 
-import java.util.ArrayList;
 
 import static models.Constants.SERVER_NAME;
 
@@ -103,7 +102,6 @@ public class GameController implements GameActions {
     }
 
 
-
     @Override
     public void move(CompressedTroop selectedTroop, int row, int column) {
         try {
@@ -133,13 +131,13 @@ public class GameController implements GameActions {
     }
 
     @Override
-    public void setNewNextCard(){
+    public void setNewNextCard() {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeSetNewNextCardMessage(SERVER_NAME));
     }
 
     @Override
-    public void replaceCard(String cardID){
-        Client.getInstance().addToSendingMessagesAndSend(Message.makeNewReplaceCardMessage(SERVER_NAME,cardID));
+    public void replaceCard(String cardID) {
+        Client.getInstance().addToSendingMessagesAndSend(Message.makeNewReplaceCardMessage(SERVER_NAME, cardID));
     }
 
     public void forceFinish() {
