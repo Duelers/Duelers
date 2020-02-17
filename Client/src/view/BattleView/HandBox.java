@@ -291,6 +291,8 @@ public class HandBox implements PropertyChangeListener {
         switch (evt.getPropertyName()) {
             case "next":
             case "hand":
+                Platform.runLater(this::resetSelection);
+                break;
             case "turn":
                 if (((int) evt.getNewValue() + 1) % 2 == battleScene.getMyPlayerNumber() % 2) {
                     Platform.runLater(() -> {
