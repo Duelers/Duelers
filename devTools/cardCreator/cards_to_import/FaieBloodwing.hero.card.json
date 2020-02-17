@@ -1,0 +1,16 @@
+{
+  "name": "Faie Bloodwing",
+  "description": "Vanar General",
+  "cardId": "Faie Bloodwing",
+  "spriteName": "f6_general",
+  "type": "HERO",
+  "spells": [],
+  "defaultAp": 2,
+  "defaultHp": 25,
+  "mannaPoint": 0,
+  "price": 10,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
