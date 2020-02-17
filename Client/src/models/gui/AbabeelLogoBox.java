@@ -18,9 +18,9 @@ import java.io.FileNotFoundException;
 import static models.gui.UIConstants.SCALE;
 
 class AbabeelLogoBox extends VBox {
-    private static final String ABABEEL_URL = "Client/resources/ui/logo.png";
+    private static final String ABABEEL_URL = "Client/resources/ui/meme_logo.png";
     private static final Paint ABABEEL_TEXT_COLOR = Color.rgb(102, 166, 214);
-    private static final Font FONT = Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE);
+    private static final Font FONT = Font.font("SansSerif", FontWeight.EXTRA_BOLD, 35 * SCALE);
     private static final Background ABABEEL_BACKGROUND = new Background(
             new BackgroundFill(Color.rgb(15, 16, 11), CornerRadii.EMPTY, Insets.EMPTY)
     );
@@ -42,8 +42,8 @@ class AbabeelLogoBox extends VBox {
 
     private Text makeAbabeelText() {
         return new DefaultText(
-                "For all cards and default decks:\nLogin: 'john doe'\nPASSWORD: 'qwer'",
-                BOX_SIZE - UIConstants.DEFAULT_SPACING * 5,
+                "THE COMMUNITY TRIES TO SAVE DUELYST\n\nFor Duelyst cards and decks:\nLogin: 'duelyst'\nPASSWORD: 'duel'",
+                BOX_SIZE - UIConstants.DEFAULT_SPACING * 3,
                 FONT, ABABEEL_TEXT_COLOR
         );
     }
