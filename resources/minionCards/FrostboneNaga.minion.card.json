@@ -108,7 +108,6 @@
           "minion": true,
           "player": false
         },
-        
 		"attackType": {
 			"melee": true,
 			"ranged": true,

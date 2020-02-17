@@ -34,8 +34,8 @@
 				"isRandom": false,
 				"isForDeckCards": false,
 				"dimensions": {
-				  "row": 1,
-				  "column": 1
+				  "row": 10,
+				  "column": 10
 				},
 				"owner": {
 					"own": false,
