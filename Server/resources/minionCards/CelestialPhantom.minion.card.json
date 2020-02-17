@@ -1,6 +1,6 @@
 {
   "name": "Celestial Phantom",
-  "description": "Destroy the minion Phantom attacks",
+  "description": "Destroy any enemy minion that Celestial Phantom attacks",
   "cardId": "CelestialPhantom",
   "spriteName": "boss_spelleater",
   "type": "MINION",

@@ -381,7 +381,7 @@
             },
             {
                 "name": "Celestial Phantom",
-                "description": "Destroy the minion Phantom attacks",
+                "description": "Destroy any enemy minion that Celestial Phantom attacks",
                 "cardId": "duelyst_CelestialPhantom_1",
                 "spriteName": "boss_spelleater",
                 "type": "MINION",
@@ -441,7 +441,7 @@
             },
             {
                 "name": "Celestial Phantom",
-                "description": "Destroy the minion Phantom attacks",
+                "description": "Destroy any enemy minion that Celestial Phantom attacks",
                 "cardId": "duelyst_CelestialPhantom_2",
                 "spriteName": "boss_spelleater",
                 "type": "MINION",
@@ -501,7 +501,7 @@
             },
             {
                 "name": "Celestial Phantom",
-                "description": "Destroy the minion Phantom attacks",
+                "description": "Destroy any enemy minion that Celestial Phantom attacks",
                 "cardId": "duelyst_CelestialPhantom_3",
                 "spriteName": "boss_spelleater",
                 "type": "MINION",
@@ -3975,7 +3975,7 @@
         ],
         "items": []
     },
-   "decks": [
+    "decks": [
         {
             "deckName": "starterDeck Aggro",
             "heroId": "duelyst_VaathTheImmortal_1",
