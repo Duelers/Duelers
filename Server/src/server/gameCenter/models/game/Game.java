@@ -769,7 +769,7 @@ public abstract class Game {
 
     private void applyOnDeathSpells(Troop troop) {
         for (Spell spell : troop.getCard().getSpells()) {
-            if (spell.getAvailabilityType().isOnDefend())
+            if (spell.getAvailabilityType().isOnDeath())
                 applySpell(
                         spell,
                         detectTarget(spell, troop.getCell(), gameMap.getCell(0, 0), getOtherTurnPlayer().getHero().getCell())

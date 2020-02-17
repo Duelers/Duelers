@@ -88,6 +88,7 @@ public class PlayerBox implements PropertyChangeListener {
         nameToPortrait.put("Reva Eventide", "Client/resources/photo/general_portrait_image_hex_f2-alt@2x.png");
         nameToPortrait.put("Vaath The Immortal", "Client/resources/photo/general_portrait_image_hex_f5@2x.png");
         nameToPortrait.put("Argeon Highmayne", "Client/resources/photo/general_portrait_image_hex_f1@2x.png");
+        nameToPortrait.put("Faie Bloodwing", "Client/resources/photo/general_portrait_image_hex_f6@2x.png");
 
         return nameToPortrait;
     }
