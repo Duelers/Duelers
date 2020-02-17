@@ -49,7 +49,7 @@ class CustomGameMenu extends GameModeChooseMenu {
         dialogBox.makeButton("START", buttonEvent -> {
             if (listView.getSelectionModel().getSelectedItem() == null) return;
             CustomGameMenuController.getInstance().startGame(
-                    listView.getSelectionModel().getSelectedItem(), GameType.KILL_HERO, 0
+                    listView.getSelectionModel().getSelectedItem(), GameType.KILL_HERO
             );
             dialogContainer.close();
         });

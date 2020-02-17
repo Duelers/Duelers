@@ -26,7 +26,7 @@ public class FriendGameMenu extends GameModeChooseMenu {
     @Override
     void startKillHero() {
         DialogWrapper dialog = new DialogWrapper(true, false);
-        dialog.makeButton(GameType.KILL_HERO, 0);
+        dialog.makeButton(GameType.KILL_HERO);
         dialog.show();
     }
 

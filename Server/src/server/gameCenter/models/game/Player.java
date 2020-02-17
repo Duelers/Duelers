@@ -23,10 +23,7 @@ public class Player {
     private List<Troop> troops = new ArrayList<>();
     private List<Card> graveyard = new ArrayList<>();
     private Card nextCard;
-    private List<Card> collectedItems = new ArrayList<>();
-    private List<Troop> flagCarriers = new ArrayList<>();
     private int playerNumber;
-    private int numberOfCollectedFlags;
     private MatchHistory matchHistory;
     private boolean canReplaceCard;
 
@@ -50,7 +47,7 @@ public class Player {
         }
 
         return new CompressedPlayer(
-                userName, currentMP, hand, graveyard, nextCard, useableItem , collectedItems, playerNumber, numberOfCollectedFlags);
+                userName, currentMP, hand, graveyard, nextCard, playerNumber);
     }
 
     public List<Card> getHand() {
@@ -65,17 +62,6 @@ public class Player {
             if (card1.getCardId().equalsIgnoreCase(cardId)) {
                 card = card1;
                 break;
-            }
-        }
-
-        if (card == null) {
-            iterator = collectedItems.iterator();
-            while (iterator.hasNext()) {
-                Card card1 = (Card) iterator.next();
-                if (card1.getCardId().equalsIgnoreCase(cardId)) {
-                    card = card1;
-                    break;
-                }
             }
         }
 
@@ -154,15 +140,6 @@ public class Player {
         this.currentMP+= currentMP;
     }
 
-    void addFlagCarrier(Troop troop) {
-        if (!this.flagCarriers.contains(troop))
-            this.flagCarriers.add(troop);
-    }
-
-    public void removeFlagCarrier(Troop troop) {
-        flagCarriers.remove(troop);
-    }
-
     void changeCurrentMP(int change) {
         currentMP += change;
     }
@@ -185,14 +162,6 @@ public class Player {
 
     Card getNextCard() {
         return this.nextCard;
-    }
-
-    public List<Card> getCollectedItems() {
-        return Collections.unmodifiableList(collectedItems);
-    }
-
-    void collectItem(Card card) {
-        collectedItems.add(card);
     }
 
     Troop getTroop(Cell cell) {
@@ -238,18 +207,6 @@ public class Player {
         if (troop.getCard().getType() == CardType.HERO) {
             hero = null;
         }
-    }
-
-    public int getNumberOfCollectedFlags() {
-        return numberOfCollectedFlags;
-    }
-
-    void increaseNumberOfCollectedFlags() {
-        this.numberOfCollectedFlags++;
-    }
-
-    public void decreaseNumberOfCollectedFlags() {
-        this.numberOfCollectedFlags--;
     }
 
     public MatchHistory getMatchHistory() {

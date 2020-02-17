@@ -15,10 +15,7 @@ public class CompressedPlayer {
     private List<CompressedCard> hand;
     private List<CompressedCard> graveyard;
     private CompressedCard nextCard;
-    private CompressedCard usableItem;
-    private List<CompressedCard> collectedItems;
     private int playerNumber;
-    private int numberOfCollectedFlags;
     private List<CompressedTroop> troops;
     private CompressedTroop hero;
 
@@ -27,16 +24,13 @@ public class CompressedPlayer {
     //just for testing BattleView
     public CompressedPlayer(String userName, int currentMP, ArrayList<CompressedCard> hand,
                             ArrayList<CompressedCard> graveyard, CompressedCard nextCard,
-                            ArrayList<CompressedCard> collectedItems, int playerNumber, int numberOfCollectedFlags,
-                            ArrayList<CompressedTroop> troops, CompressedTroop hero) {
+                            int playerNumber, ArrayList<CompressedTroop> troops, CompressedTroop hero) {
         this.userName = userName;
         this.currentMP = currentMP;
         this.hand = hand;
         this.graveyard = graveyard;
         this.nextCard = nextCard;
-        this.collectedItems = collectedItems;
         this.playerNumber = playerNumber;
-        this.numberOfCollectedFlags = numberOfCollectedFlags;
         this.troops = troops;
         this.hero = hero;
     }
@@ -74,21 +68,13 @@ public class CompressedPlayer {
         }
     }
 
-    public void replaceSelectedCard(int selectedCardIndex){
+    public void replaceSelectedCard(int selectedCardIndex) {
         hand.set(selectedCardIndex, nextCard);
         removeCardFromNext();
-        if(support == null){
-            support = new PropertyChangeSupport(this);
-        }
-        support.firePropertyChange("replace",null,null);
-    }
-
-    void addCardToCollectedItems(CompressedCard card) {
-        collectedItems.add(card);
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }
-        support.firePropertyChange("items", null, null);
+        support.firePropertyChange("replace", null, null);
     }
 
     void addCardToGraveYard(CompressedCard card) {
@@ -120,14 +106,6 @@ public class CompressedPlayer {
             support = new PropertyChangeSupport(this);
         }
         support.firePropertyChange("next", null, null);
-    }
-
-    void removeCardFromCollectedItems(String cardId) {
-        collectedItems.removeIf(compressedCard -> compressedCard.getCardId().equalsIgnoreCase(cardId));
-        if (support == null) {
-            support = new PropertyChangeSupport(this);
-        }
-        support.firePropertyChange("items", null, null);
     }
 
     void removeTroop(String cardId) {
@@ -189,36 +167,7 @@ public class CompressedPlayer {
         return nextCard;
     }
 
-    public List<CompressedCard> getCollectedItems() {
-        return Collections.unmodifiableList(collectedItems);
-    }
-
     public int getPlayerNumber() {
         return playerNumber;
-    }
-
-    public int getNumberOfCollectedFlags() {
-        return numberOfCollectedFlags;
-    }
-
-    void setNumberOfCollectedFlags(int numberOfCollectedFlags) {
-        this.numberOfCollectedFlags = numberOfCollectedFlags;
-        //TODO:support.firePropertyChange("troop", getTroop(troop.getCard().getCardId()), troop);
-    }
-
-    public List<CompressedTroop> getFlagCarriers() {
-        ArrayList<CompressedTroop> flagCarriers = new ArrayList<>();
-
-        for (CompressedTroop troop : troops) {
-            if (troop.getNumberOfCollectedFlags() > 0) {
-                flagCarriers.add(troop);
-            }
-        }
-
-        return Collections.unmodifiableList(flagCarriers);
-    }
-
-    public CompressedCard getUsableItem() {
-        return usableItem;
     }
 }

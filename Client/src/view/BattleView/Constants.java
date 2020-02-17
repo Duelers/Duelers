@@ -26,7 +26,6 @@ public class Constants {
 
     static final Font NAME_FONT = Font.font("SansSerif", FontWeight.BOLD, 30 * SCALE);
     static final Font AP_FONT = Font.font("SansSerif", FontWeight.LIGHT, 20 * SCALE);
-    static final Font FLAG_FONT = Font.font("SansSerif", FontWeight.LIGHT, 15 * SCALE);
     static final Font END_TURN_FONT = Font.font("SansSerif", FontWeight.BOLD, 20 * SCALE);
     static final Insets NAME_PADDING = new Insets(10 * SCALE);
 
@@ -41,8 +40,4 @@ public class Constants {
     static final ColorAdjust POSITIVE_BUFF_EFFECT = new ColorAdjust(-0.5, 1, -0.5, 0);
     static final ColorAdjust NEGATIVE_BUFF_EFFECT = new ColorAdjust(0.5, 1, -0.5, 0);
 
-    static final double FLAG_HEIGHT = 45 * SCALE;
-    static final double FLAG_WIDTH = 45 * SCALE;
-    static final double ITEM_HEIGHT = 45 * SCALE;
-    static final double ITEM_WIDTH = 45 * SCALE;
 }

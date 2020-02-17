@@ -291,7 +291,6 @@ public class HandBox implements PropertyChangeListener {
         switch (evt.getPropertyName()) {
             case "next":
             case "hand":
-            case "items":
                 Platform.runLater(this::resetSelection);
                 break;
             case "turn":
@@ -330,8 +329,6 @@ public class HandBox implements PropertyChangeListener {
     CompressedCard getSelectedCard() {
         if (selectedCard >= 0)
             return player.getHand().get(selectedCard);
-        if (selectedItem >= 0)
-            return player.getCollectedItems().get(selectedItem);
         return null;
     }
 

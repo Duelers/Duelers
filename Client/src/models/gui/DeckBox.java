@@ -72,7 +72,6 @@ public class DeckBox extends GridPane {
         ImageView remove = ImageLoader.makeImageView(removeIcon, ICON_SIZE, ICON_SIZE);
         ImageView export = ImageLoader.makeImageView(saveIcon, ICON_SIZE, ICON_SIZE);
         DefaultLabel cardsNumber = new DefaultLabel(deck.getOthers().size() + " Cards", DETAILS_FONT, Color.WHITE);
-        DefaultLabel itemsNumber = new DefaultLabel((deck.getItem() != null ? "1" : "0") + " Item", DETAILS_FONT, Color.WHITE);
         DefaultLabel heroNumber = new DefaultLabel((deck.getHero() != null ? "1" : "0") + " Hero", DETAILS_FONT, Color.WHITE);
 
         modify.setOnMouseEntered(event -> {
@@ -152,7 +151,6 @@ public class DeckBox extends GridPane {
         }
 
         add(heroNumber, 5, 2, 2, 1);
-        add(itemsNumber, 7, 2);
         add(cardsNumber, 8, 2);
 
         add(modify, 0, 0);

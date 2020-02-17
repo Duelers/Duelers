@@ -180,10 +180,6 @@ public class Client {
                         GameController.getInstance().getCurrentGame().moveCardToGraveYard(message.getCardPositionMessage().getCompressedCard());
                         GameController.getInstance().calculateAvailableActions();
                         break;
-                    case COLLECTED:
-                        GameController.getInstance().getCurrentGame().moveCardToCollectedItems(message.getCardPositionMessage().getCompressedCard());
-                        GameController.getInstance().calculateAvailableActions();
-                        break;
                 }
                 break;
             case TROOP_UPDATE:
@@ -198,9 +194,7 @@ public class Client {
                 GameController.getInstance().getCurrentGame().gameUpdate(
                         gameUpdateMessage.getTurnNumber(),
                         gameUpdateMessage.getPlayer1CurrentMP(),
-                        gameUpdateMessage.getPlayer1NumberOfCollectedFlags(),
                         gameUpdateMessage.getPlayer2CurrentMP(),
-                        gameUpdateMessage.getPlayer2NumberOfCollectedFlags(),
                         gameUpdateMessage.getCellEffects());
                 GameController.getInstance().calculateAvailableActions();
                 break;

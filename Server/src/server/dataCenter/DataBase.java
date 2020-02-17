@@ -11,16 +11,7 @@ public interface DataBase {
 
     Collection getOriginalCards();
 
-    List<Card> getCollectibleItems();
-
-
-    Card getOriginalFlag();
-
     void addOriginalCard(Card card);
-
-    void addNewCollectible(Card card);
-
-    void setOriginalFlag(Card loadFile);
 
     boolean isEmpty();
 }

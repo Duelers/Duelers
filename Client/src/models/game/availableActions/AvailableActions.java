@@ -22,7 +22,6 @@ public class AvailableActions {
         CompressedPlayer otherPlayer = game.getOtherTurnPlayer();
 
         calculateCardInserts(ownPlayer);
-        calculateCollectibles(ownPlayer);
         calculateAttacks(ownPlayer, otherPlayer);
         calculateMoves(game, ownPlayer);
     }
@@ -30,12 +29,6 @@ public class AvailableActions {
     private void calculateCardInserts(CompressedPlayer ownPlayer) {
         for (CompressedCard card : ownPlayer.getHand()) {
             handInserts.add(new Insert(card));
-        }
-    }
-
-    private void calculateCollectibles(CompressedPlayer ownPlayer) {
-        for (CompressedCard item : ownPlayer.getCollectedItems()) {
-            collectibleInserts.add(new Insert(item));
         }
     }
 

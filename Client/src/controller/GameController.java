@@ -154,7 +154,7 @@ public class GameController implements GameActions {
     }
 
     private boolean validatePositionForInsert(CompressedCard card, int row, int column) {
-        return (card.getType() == CardType.SPELL || card.getType() == CardType.COLLECTIBLE_ITEM) || (currentGame.getGameMap().getTroop(new Position(row, column)) == null);
+        return (card.getType() == CardType.SPELL) || (currentGame.getGameMap().getTroop(new Position(row, column)) == null);
     }
 
 

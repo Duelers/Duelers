@@ -12,13 +12,11 @@ import java.util.List;
 public class Deck {
     private String deckName;
     private Card hero;
-    private Card item;
     private ArrayList<Card> others = new ArrayList<>();
 
     public Deck(TempDeck tempDeck, Collection collection) {
         this.deckName = tempDeck.getDeckName();
         this.hero = collection.findHero(tempDeck.getHeroId());
-        this.item = collection.findItem(tempDeck.getItemId());
         for (String cardId : tempDeck.getOthersIds()) {
             others.add(collection.findOthers(cardId));
         }
@@ -33,9 +31,6 @@ public class Deck {
             if (hero == null ^ deck.hero == null) return false;
             if (hero != null && !hero.equals(deck.hero)) return false;
 
-            if (item == null ^ deck.item == null) return false;
-            if (item != null && !item.equals(deck.item)) return false;
-
             if (others.size() != deck.others.size()) return false;
             for (Card other : others) {
                 if (!deck.others.contains(other)) return false;
@@ -47,9 +42,6 @@ public class Deck {
             if (!deckName.equals(deck.getDeckName())) return false;
             if (hero == null ^ deck.getHeroId() == null) return false;
             if (hero != null && !hero.getCardId().equalsIgnoreCase(deck.getHeroId())) return false;
-
-            if (item == null ^ deck.getItemId() == null) return false;
-            if (item != null && !item.getCardId().equalsIgnoreCase(deck.getItemId())) return false;
 
             if (others.size() != deck.getOthersIds().size()) return false;
             for (Card other : others) {
@@ -72,10 +64,6 @@ public class Deck {
         return Collections.unmodifiableList(this.others);
     }
 
-    public Card getItem() {
-        return this.item;
-    }
-
     public boolean areSame(String deckName) {
         return this.deckName.equalsIgnoreCase(deckName);
     }
@@ -94,9 +82,6 @@ public class Deck {
             case HERO:
                 if (hero != null && hero.isSameAs(card.getName())) return 1;
                 return 0;
-            case USABLE_ITEM:
-                if (item != null && item.isSameAs(card.getName())) return 1;
-                return 0;
             case MINION:
             case SPELL:
                 int count = 0;
@@ -114,11 +99,6 @@ public class Deck {
         return this.hero.equals(hero);
     }
 
-    public boolean hasItem(Card item) {
-        if (this.item == null) return false;
-        return this.item.equals(item);
-    }
-
     public boolean hasCard(Card other) {
         for (Card card : others) {
             if (card.equals(other)) {
@@ -130,7 +110,6 @@ public class Deck {
 
     public Card getCard(String cardName) {
         if (hero != null && hero.isSameAs(cardName)) return hero;
-        if (item != null && item.isSameAs(cardName)) return item;
 
         for (Card other : others) {
             if (other.isSameAs(cardName)) return other;

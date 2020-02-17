@@ -22,17 +22,10 @@ public class Rest implements DataBase {
     private static final String[] CARDS_PATHS = {
             "resources/heroCards",
             "resources/minionCards",
-            "resources/spellCards",
-            "resources/itemCards/collectible",
-            "resources/itemCards/usable"};
-    private static final String FLAG_PATH = "Server/resources/itemCards/flag/Flag.item.card.json";
-    private static final String STORIES_PATH = "Server/resources/stories";
+            "resources/spellCards"};
 
     private enum maps {
-        ORINGINAL_CARDS("originalCards"),
-        COLLECTIBLE_ITEMS("collectibleItems"),
-        STORIES("stories"),
-        ORIGINAL_FLAG("originalFlag");
+        ORINGINAL_CARDS("originalCards");
 
         maps(String s) {
             path = s;
@@ -56,16 +49,12 @@ public class Rest implements DataBase {
                 for (File file : files) {
                     Card card = loadFile(file, Card.class);
                     if (card == null) continue;
-                    else if (card.getType() == CardType.COLLECTIBLE_ITEM) {
-                        dataBase.addNewCollectible(card);
-                    } else {
+                    else {
                         dataBase.addOriginalCard(card);
                     }
                 }
             }
         }
-        dataBase.setOriginalFlag(loadFile(new File(FLAG_PATH), Card.class));
-
     }
 
     public Rest() {
@@ -197,33 +186,9 @@ public class Rest implements DataBase {
         return arrayList;
     }
 
-
-    @Override
-    public List<Card> getCollectibleItems() {
-        return getList(getAllValues(maps.COLLECTIBLE_ITEMS.path), Card.class);
-    }
-
-
-    @Override
-    public Card getOriginalFlag() {
-        return JsonConverter.fromJson(getFromDataBase(maps.ORIGINAL_FLAG.path, maps.ORIGINAL_FLAG.path), Card.class);
-    }
-
-
     @Override
     public void addOriginalCard(Card card) {
         put(maps.ORINGINAL_CARDS.path, card.getName(), JsonConverter.toJson(card));
-    }
-
-    @Override
-    public void addNewCollectible(Card card) {
-        put(maps.COLLECTIBLE_ITEMS.path, card.getName(), JsonConverter.toJson(card));
-
-    }
-
-    @Override
-    public void setOriginalFlag(Card card) {
-        put(maps.ORIGINAL_FLAG.path, maps.ORIGINAL_FLAG.path, JsonConverter.toJson(card));
     }
 
     @Override

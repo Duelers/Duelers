@@ -27,11 +27,7 @@ public class DataCenter extends Thread {
     private static final String[] CARDS_PATHS = {
             "Server/resources/heroCards",
             "Server/resources/minionCards",
-            "Server/resources/spellCards",
-            "Server/resources/itemCards/collectible",
-            "Server/resources/itemCards/usable"};
-    private static final String FLAG_PATH = "Server/resources/itemCards/flag/Flag.item.card.json";
-    private static final String STORIES_PATH = "Server/resources/stories";
+            "Server/resources/spellCards"};
 
     private static DataCenter ourInstance = new DataCenter();
 
@@ -69,10 +65,6 @@ public class DataCenter extends Thread {
                 return card;
         }
         for (Card card : collection.getSpells()) {
-            if (card.getName().equals(cardName))
-                return card;
-        }
-        for (Card card : collection.getItems()) {
             if (card.getName().equals(cardName))
                 return card;
         }
@@ -133,19 +125,10 @@ public class DataCenter extends Thread {
             for(int i = 0; i < 3; i++) {
                 System.out.println("Starting Minions");
                 for (Card card : originalCards.getMinions()) {
-                    //this card is bugged, skipped
-                    if(card.getName().equals("Turanian SpearMan")){
-                        continue;
-                    }
                     buyAllCards(message, card.getName());
                 }
                 System.out.println("Starting Spells");
                 for (Card card : originalCards.getSpells()) {
-                    buyAllCards(message, card.getName());
-                }
-
-                System.out.println("Starting Items");
-                for (Card card : originalCards.getItems()) {
                     buyAllCards(message, card.getName());
                 }
             }
@@ -297,14 +280,6 @@ public class DataCenter extends Thread {
         return dataBase.getOriginalCards();
     }
 
-    public List<Card> getCollectibleItems() {
-        return Collections.unmodifiableList(dataBase.getCollectibleItems());
-    }
-
-    public Card getOriginalFlag() {
-        return dataBase.getOriginalFlag();
-    }
-
     public void importDeck(Message message) throws LogicException {
         loginCheck(message);
         Account account = clients.get(message.getSender());
@@ -367,15 +342,12 @@ public class DataCenter extends Thread {
                 for (File file : files) {
                     Card card = loadFile(file, Card.class);
                     if (card == null) continue;
-                    else if (card.getType() == CardType.COLLECTIBLE_ITEM) {
-                        dataBase.addNewCollectible(card);
-                    } else {
+                    else {
                         dataBase.addOriginalCard(card);
                     }
                 }
             }
         }
-        dataBase.setOriginalFlag(loadFile(new File(FLAG_PATH), Card.class));
         Server.getInstance().serverPrint("Original Cards Loaded");
     }
 
@@ -425,9 +397,6 @@ public class DataCenter extends Thread {
                     break;
                 case SPELL:
                     path = CARDS_PATHS[2] + "/" + card.getCardId() + ".spell.card.json";
-                    break;
-                case USABLE_ITEM:
-                    path = CARDS_PATHS[4] + "/" + card.getCardId() + ".usable.item.card.json";
                     break;
                 default:
                     throw new ServerException("Error");

@@ -7,13 +7,11 @@ public class UserInvitation {
     private final Account inviter;
     private final Account invited;
     private final GameType gameType;
-    private final int numberOfFlags;
 
-    public UserInvitation(Account inviter, Account invited, GameType gameType, int numberOfFlags) {
+    public UserInvitation(Account inviter, Account invited, GameType gameType) {
         this.inviter = inviter;
         this.invited = invited;
         this.gameType = gameType;
-        this.numberOfFlags = numberOfFlags;
     }
 
     public Account getInviter() {
@@ -26,9 +24,5 @@ public class UserInvitation {
 
     public GameType getGameType() {
         return gameType;
-    }
-
-    public int getNumberOfFlags() {
-        return numberOfFlags;
     }
 }

@@ -132,9 +132,6 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
                     getChildren().addAll(apLabel, hpLabel);
                 }
                 break;
-            case USABLE_ITEM:
-                getChildren().removeAll(mannaPane, apLabel, hpLabel);
-                break;
             case SPELL:
                 getChildren().removeAll(apLabel, hpLabel);
                 if (!getChildren().contains(mannaPane)) {

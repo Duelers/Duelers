@@ -139,7 +139,7 @@ public class EditableCard implements ICard {
             throw new InputException("description is empty");
         if (spriteName == null || spriteName.isEmpty())
             throw new InputException("sprite is empty");
-        if ((type == CardType.SPELL || type == CardType.USABLE_ITEM) && spells.isEmpty()) {
+        if ((type == CardType.SPELL) && spells.isEmpty()) {
             throw new InputException("Spell is empty");
         }
     }

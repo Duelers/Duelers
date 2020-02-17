@@ -27,7 +27,7 @@ public class GlobalGameMenu extends GameModeChooseMenu {
 
     @Override
     void startKillHero() {
-        MultiPlayerMenuController.getInstance().startGame(GameType.KILL_HERO, 0, null);
+        MultiPlayerMenuController.getInstance().startGame(GameType.KILL_HERO, null);
         new WaitingMenu(this).show();
     }
 
