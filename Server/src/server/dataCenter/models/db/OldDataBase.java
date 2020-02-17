@@ -3,7 +3,6 @@ package server.dataCenter.models.db;
 import server.dataCenter.DataBase;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.Card;
-import server.gameCenter.models.game.Story;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,6 @@ public class OldDataBase implements DataBase {
     private Collection originalCards = new Collection();
     private List<Card> collectibleItems = new ArrayList<>();
     private Card originalFlag;
-    private List<Story> stories = new ArrayList<>();
 
     public Collection getOriginalCards() {
         return originalCards;
@@ -42,18 +40,10 @@ public class OldDataBase implements DataBase {
     }
 
     @Override
-    public void addStory(Story story) {
-        stories.add(story);
-    }
-
-    @Override
     public boolean isEmpty() {
         return true;
     }
 
-    public List<Story> getStories() {
-        return stories;
-    }
 
     @Override
     public Card getCard(String cardName) {

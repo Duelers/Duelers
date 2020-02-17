@@ -2,6 +2,7 @@ package server;
 
 import server.chatCenter.ChatCenter;
 import server.clientPortal.ClientPortal;
+import server.clientPortal.models.comperessedData.CompressedCard;
 import server.clientPortal.models.message.CardPosition;
 import server.clientPortal.models.message.Message;
 import server.clientPortal.models.message.OnlineGame;
@@ -120,15 +121,10 @@ public class Server {
                     break;
                 case GET_DATA:
                     switch (message.getGetDataMessage().getDataName()) {
-                        case LEADERBOARD:
-                            sendLeaderBoard(message);
-                            break;
                         case ORIGINAL_CARDS:
                             sendOriginalCards(message);
                             break;
-                        case STORIES:
-                            sendStories(message);
-                            break;
+
                         case ONLINE_GAMES_LIST:
                             sendOnlineGames(message);
                             break;
@@ -174,10 +170,6 @@ public class Server {
                     GameCenter.getInstance().getDeclineRequest(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));
                     break;
-                case NEW_STORY_GAME:
-                    GameCenter.getInstance().newStoryGame(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));//TODO:can be removed
-                    break;
                 case NEW_DECK_GAME:
                     GameCenter.getInstance().newDeckGame(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));
@@ -194,17 +186,16 @@ public class Server {
                     GameCenter.getInstance().endTurn(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));
                     break;
-                case COMBO:
-                    GameCenter.getInstance().combo(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
-                    break;
-                case USE_SPECIAL_POWER:
-                    GameCenter.getInstance().useSpecialPower(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
-                    break;
                 case MOVE_TROOP:
                     GameCenter.getInstance().moveTroop(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    break;
+                case SET_NEW_NEXT_CARD:
+                    GameCenter.getInstance().setNewNextCard(message);
+                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    break;
+                case REPLACE_CARD:
+                    GameCenter.getInstance().replaceCard(message);
                     break;
                 case FORCE_FINISH:
                     GameCenter.getInstance().forceFinishGame(message.getSender());
@@ -252,13 +243,6 @@ public class Server {
         addToSendingMessages(Message.makeExceptionMessage(receiver, exceptionString));
     }
 
-    private static void sendStories(Message message) throws LogicException {
-    	Story[] s = new Story[DataCenter.getInstance().getStories().size()];
-        DataCenter.getInstance().loginCheck(message);
-        addToSendingMessages(Message.makeStoriesCopyMessage(message.getSender(),
-                DataCenter.getInstance().getStories().toArray(s)));
-    }
-
     private static void sendOnlineGames(Message message) throws LogicException {
         DataCenter.getInstance().loginCheck(message);
         Account account = DataCenter.getInstance().getClients().get(message.getSender());
@@ -273,10 +257,6 @@ public class Server {
         addToSendingMessages(Message.makeOriginalCardsCopyMessage(message.getSender(), DataCenter.getInstance().getOriginalCards()));
     }
 
-    private static void sendLeaderBoard(Message message) throws ClientException { //Check
-        addToSendingMessages(Message.makeLeaderBoardCopyMessage(message.getSender(),
-                DataCenter.getInstance().getLeaderBoard()));
-    }
 
     private static void selectUserForMultiPlayer(Message message) throws ClientException {
         Account account = DataCenter.getInstance().getAccount(message.getNewGameFields().getOpponentUsername());
@@ -307,6 +287,17 @@ public class Server {
                 continue;
             }
             addToSendingMessages(Message.makeChangeCardPositionMessage(clientName, card, newCardPosition));
+        }
+    }
+
+    public void sendNewNextCardSetMessage(Game game, CompressedCard nextCard) {
+        for (Account account : game.getObservers()) {
+            String clientName = DataCenter.getInstance().getAccounts().get(account);
+            if (clientName == null) {
+                serverPrint("*Error: Client not found");
+                continue;
+            }
+            addToSendingMessages(Message.makeNewNextCardSetMessage(clientName, nextCard));
         }
     }
 
@@ -397,10 +388,6 @@ public class Server {
         }
     }
 
-    public void sendLeaderBoardUpdateMessage(Account account) {
-
-    }
-
     public void sendAddToOriginalsMessage(Card card) {
         for (Account account : DataCenter.getInstance().getAccounts().keySet()) {
             if (DataCenter.getInstance().isOnline(account.getUsername())) {
@@ -417,4 +404,5 @@ public class Server {
             return;
         addToSendingMessages(Message.makeAccountCopyMessage(clientName, account));
     }
+
 }

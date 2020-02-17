@@ -20,7 +20,6 @@ public class Card {
     private int price;
     private AttackType attackType;
     private int range;
-    private boolean hasCombo;
     private int remainingNumber = 20;
 
     public Card(Card referenceCard, String username, int number) {
@@ -45,12 +44,11 @@ public class Card {
         this.mannaPoint = referenceCard.mannaPoint;
         this.price = referenceCard.price;
         this.attackType = referenceCard.attackType;
-        this.hasCombo = referenceCard.hasCombo;
         this.range = referenceCard.range;
     }
 
     public Card(String name, String description, CardType cardType, ArrayList<Spell> spells, int defaultAp,
-			int defaultHp, int mannaPoint, int price, AttackType attackType, int range, boolean hasCombo) {
+			int defaultHp, int mannaPoint, int price, AttackType attackType, int range) {
 		this.name = name;
 		this.description = description;
 		this.type = cardType;
@@ -61,7 +59,6 @@ public class Card {
 		this.price = price;
 		this.attackType = attackType;
 		this.range = range;
-		this.hasCombo = hasCombo;
 	}
 
 	public CompressedCard toCompressedCard() {
@@ -69,7 +66,7 @@ public class Card {
                 name, description, cardId,
                 spriteName, type, spells,
                 defaultAp, defaultHp, mannaPoint,
-                attackType, range, hasCombo, remainingNumber
+                attackType, range, remainingNumber
         );
     }
 
@@ -142,10 +139,6 @@ public class Card {
 
     public void decreaseRemainingNumber() {
         remainingNumber--;
-    }
-
-    public boolean hasCombo() {
-        return hasCombo;
     }
 
     public void addSpell(Spell spell) {

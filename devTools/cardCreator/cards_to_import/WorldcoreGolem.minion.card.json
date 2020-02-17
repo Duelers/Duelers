@@ -1,0 +1,15 @@
+{
+  "name": "Worldcore Golem",
+  "description": "Golem",
+  "cardId": "WorldcoreGolem",
+  "spriteName": "neutral_moltengolem",
+  "type": "MINION",
+  "defaultAp": 25,
+  "defaultHp": 25,
+  "mannaPoint": 9,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

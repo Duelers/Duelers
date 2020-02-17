@@ -1,0 +1,16 @@
+{
+  "name": "Planar Scout",
+  "description": "Airdrop",
+  "cardId": "PlanarScout",
+  "spriteName": "neutral_beastphasehound",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 2,
+  "defaultHp": 1,
+  "mannaPoint": 1,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

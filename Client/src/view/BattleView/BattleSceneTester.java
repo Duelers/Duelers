@@ -64,7 +64,7 @@ public class BattleSceneTester extends Application implements GameActions {
                 e.printStackTrace();
             }
             CompressedCard card = new CompressedCard("generalspell_f5_overload", null, "a1", CardType.SPELL,
-                    null, 0, 0, 0, null, 2, true);
+                    null, 0, 0, 0, null, 2);
             myPlayer.addCardToNext(card);
             game.gameUpdate(10, 1, 0, 2, 0, cellEffects);
             try {
@@ -76,7 +76,7 @@ public class BattleSceneTester extends Application implements GameActions {
             myPlayer.removeCardFromNext();
             game.gameUpdate(11, 4, 0, 4, 0, cellEffects);
             card = new CompressedCard("boss_christmas", null, "a1", CardType.MINION,
-                    null, 0, 0, 0, null, 2, true);
+                    null, 0, 0, 0, null, 2);
             CompressedTroop troop = new CompressedTroop(card, 5, 6, 5, new Position(2, 2),
                     true, true, false, false, 1, 1);
             myPlayer.addCardToNext(card);
@@ -84,7 +84,7 @@ public class BattleSceneTester extends Application implements GameActions {
             String s = "boss_wolfpunch";
             card = new CompressedCard(s, null, "a3", CardType.HERO,
                     new CompressedSpell("a", null, null, 0, 2, 3),
-                    0, 0, 0, null, 2, true);
+                    0, 0, 0, null, 2);
             troop = new CompressedTroop(card, 5, 6, 5, new Position(1, 3),
                     true, true, false, false, 1, 1);
             map.updateTroop(troop);
@@ -95,7 +95,7 @@ public class BattleSceneTester extends Application implements GameActions {
             }
             myPlayer.addNextCardToHand();
             card = new CompressedCard(s, null, "a2", CardType.MINION,
-                    null, 0, 0, 0, null, 2, true);
+                    null, 0, 0, 0, null, 2);
             troop = new CompressedTroop(card, 5, 6, 5, new Position(4, 4),
                     true, true, false, false, 1, 2);
             map.updateTroop(troop);
@@ -133,15 +133,6 @@ public class BattleSceneTester extends Application implements GameActions {
     }
 
     @Override
-    public void comboAttack(ArrayList<CompressedTroop> comboTroops, CompressedTroop troop) {
-        for (CompressedTroop comboAttacker : comboTroops) {
-            battleScene.attack(comboAttacker.getCard().getCardId(), troop.getCard().getCardId());
-        }
-        battleScene.defend(troop.getCard().getCardId(), comboTroops.get(comboTroops.size() - 1).getCard().getCardId());
-        battleScene.attack(troop.getCard().getCardId(), comboTroops.get(comboTroops.size() - 1).getCard().getCardId());
-    }
-
-    @Override
     public void move(CompressedTroop selectedTroop, int j, int i) {
         battleScene.getMapBox().getGameMap().updateTroop(new CompressedTroop(selectedTroop, j, i));
     }
@@ -160,17 +151,22 @@ public class BattleSceneTester extends Application implements GameActions {
     }
 
     @Override
-    public void useSpecialPower(int row, int column) {
-        System.out.println("use spell");
-    }
-
-    @Override
     public void exitGameShow(OnlineGame onlineGame) {
 
     }
 
     @Override
     public void forceFinish() {
+
+    }
+
+    @Override
+    public void setNewNextCard(){
+
+    }
+
+    @Override
+    public void replaceCard(String cardID) {
 
     }
 }

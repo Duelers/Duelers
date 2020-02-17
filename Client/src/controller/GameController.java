@@ -102,38 +102,7 @@ public class GameController implements GameActions {
 
     }
 
-    @Override
-    public void comboAttack(ArrayList<CompressedTroop> comboTroops, CompressedTroop defenderTroop) {
-        String[] cardIDs = new String[comboTroops.size()];
-        int i = 0;
-        try {
-            for (CompressedTroop attackerTroop :
-                    comboTroops) {
-                if (!attackerTroop.canAttack())
-                    throw new InputException("you can not attack");
-                if (attackerTroop.getCard().getAttackType() == AttackType.MELEE) {
-                    if (!attackerTroop.getPosition().isNextTo(defenderTroop.getPosition())) {
-                        throw new InputException("you can not attack to this target");
-                    }
-                } else if (attackerTroop.getCard().getAttackType() == AttackType.RANGED) {
-                    if (attackerTroop.getPosition().isNextTo(defenderTroop.getPosition()) ||
-                            attackerTroop.getPosition().manhattanDistance(defenderTroop.getPosition()) > attackerTroop.getCard().getRange()) {
-                        throw new InputException("you can not attack to this target");
-                    }
-                } else { // HYBRID
-                    if (attackerTroop.getPosition().manhattanDistance(defenderTroop.getPosition()) > attackerTroop.getCard().getRange()) {
-                        throw new InputException("you can not attack to this target");
-                    }
-                }
-                cardIDs[i] = attackerTroop.getCard().getCardId();
-                i++;
-            }
 
-            Client.getInstance().addToSendingMessagesAndSend(Message.makeComboAttackMessage(SERVER_NAME, defenderTroop.getCard().getCardId(), cardIDs));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     @Override
     public void move(CompressedTroop selectedTroop, int row, int column) {
@@ -163,6 +132,16 @@ public class GameController implements GameActions {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeEndTurnMessage(SERVER_NAME));
     }
 
+    @Override
+    public void setNewNextCard(){
+        Client.getInstance().addToSendingMessagesAndSend(Message.makeSetNewNextCardMessage(SERVER_NAME));
+    }
+
+    @Override
+    public void replaceCard(String cardID){
+        Client.getInstance().addToSendingMessagesAndSend(Message.makeNewReplaceCardMessage(SERVER_NAME,cardID));
+    }
+
     public void forceFinish() {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeForceFinishGameMessage(SERVER_NAME));
     }
@@ -178,13 +157,6 @@ public class GameController implements GameActions {
         return (card.getType() == CardType.SPELL || card.getType() == CardType.COLLECTIBLE_ITEM) || (currentGame.getGameMap().getTroop(new Position(row, column)) == null);
     }
 
-    @Override
-    public void useSpecialPower(int row, int column) {
-        Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeUseSpecialPowerMessage(
-                        SERVER_NAME, currentGame.getCurrentTurnPlayer().getHero().getCard().getCardId(), new Position(row, column)
-                ));
-    }
 
     @Override
     public void exitGameShow(OnlineGame onlineGame) {

@@ -37,9 +37,7 @@ public class MapBox implements PropertyChangeListener {
     private final double[][] cellsY = new double[5][9];
     private final HashMap<CompressedTroop, TroopAnimation> troopAnimationHashMap = new HashMap<>();
     private CompressedTroop selectedTroop = null;
-    private ArrayList<CompressedTroop> comboTroops = new ArrayList<>();
     private boolean spellSelected = false;
-    private boolean comboSelected = false;
     private CardPane cardPane = null;
     private SelectionType selectionType;
     private DefaultLabel[][] flagLabels = new DefaultLabel[5][9];
@@ -214,13 +212,10 @@ public class MapBox implements PropertyChangeListener {
 
     void resetSelection() {
         selectedTroop = null;
-        comboTroops.clear();
         spellSelected = false;
-        comboSelected = false;
         for (TroopAnimation animation : troopAnimationHashMap.values()) {
             animation.diSelect();
         }
-        battleScene.getPlayerBox().refreshComboAndSpell();
         updateMapColors();
     }
 
@@ -236,7 +231,7 @@ public class MapBox implements PropertyChangeListener {
         TroopAnimation animation = troopAnimationHashMap.get(troop);
         if (animation == null)
             return;
-        if (!(selectedTroop == troop || comboTroops.contains(troop))) {
+        if (!(selectedTroop == troop)) {
             animation.diSelect();
         }
     }
@@ -296,39 +291,6 @@ public class MapBox implements PropertyChangeListener {
             resetSelection();
             return;
         }
-        if (selectionType == SelectionType.SPELL) {
-            if (GameController.getInstance().getAvailableActions().canUseSpecialAction(selectedTroop)) {
-                battleScene.getController().useSpecialPower(row, column);
-                System.out.println(selectedTroop.getCard().getCardId() + " SpecialPower");
-                battleScene.getHandBox().resetSelection();
-                resetSelection();
-            }
-            return;
-        }
-        if (selectionType == SelectionType.COMBO) {
-            if (currentTroop != null && currentTroop.getPlayerNumber() == battleScene.getMyPlayerNumber()
-                    && currentTroop.getCard().isHasCombo()) {
-                if (comboTroops.contains(currentTroop)) {
-                    comboTroops.remove(currentTroop);
-                    System.out.println("remove " + currentTroop.getCard().getCardId() + " from combos");
-                    SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
-                } else {
-                    comboTroops.add(currentTroop);
-                    System.out.println("add " + currentTroop.getCard().getCardId() + " to combos");
-                    SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
-                }
-                updateMapColors();
-            } else if (GameController.getInstance().getAvailableActions().canAttack(
-                    selectedTroop, row, column)) {
-                comboTroops.add(selectedTroop);
-                battleScene.getController().comboAttack(comboTroops, currentTroop);
-                battleScene.getHandBox().resetSelection();
-                resetSelection();
-                System.out.println("combo attack");
-                SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.attack);
-            }
-            return;
-        }
         if (selectionType == SelectionType.NORMAL) {
             if (GameController.getInstance().getAvailableActions().canAttack(
                     selectedTroop, row, column)) {
@@ -383,24 +345,9 @@ public class MapBox implements PropertyChangeListener {
                     cells[row][column].setFill(Constants.SELECTED_COLOR);//not important
                     continue;
                 }
+
                 if (selectionType == SelectionType.SPELL) {
-                    if (GameController.getInstance().getAvailableActions().canUseSpecialAction(selectedTroop)) {
-                        cells[row][column].setFill(Constants.SPELL_COLOR);
-                    } else
-                        cells[row][column].setFill(Constants.defaultColor);
-                    continue;
-                }
-                if (selectionType == SelectionType.COMBO) {
-                    if (currentTroop != null && currentTroop.getPlayerNumber() == battleScene.getMyPlayerNumber()
-                            && currentTroop.getCard().isHasCombo()) {
-                        if (comboTroops.contains(currentTroop))
-                            cells[row][column].setFill(Constants.SELECTED_COLOR);
-                        else
-                            cells[row][column].setFill(Constants.CAN_SELECT_COLOR);
-                    } else if (GameController.getInstance().getAvailableActions().canAttack(selectedTroop, row, column))
-                        cells[row][column].setFill(Constants.ATTACK_COLOR);
-                    else
-                        cells[row][column].setFill(Constants.defaultColor);
+                    cells[row][column].setFill(Constants.defaultColor);
                     continue;
                 }
                 if (selectionType == SelectionType.NORMAL) {
@@ -440,10 +387,6 @@ public class MapBox implements PropertyChangeListener {
             selectionType = SelectionType.SELECTION;
             return;
         }
-        if (isComboSelected()) {
-            selectionType = SelectionType.COMBO;
-            return;
-        }
         if (isSpellSelected()) {
             selectionType = SelectionType.SPELL;
             return;
@@ -467,16 +410,8 @@ public class MapBox implements PropertyChangeListener {
         this.spellSelected = true;
     }
 
-    void setComboSelected() {
-        this.comboSelected = true;
-    }
-
     boolean isSpellSelected() {
         return spellSelected;
-    }
-
-    boolean isComboSelected() {
-        return comboSelected;
     }
 
     CompressedGameMap getGameMap() {
@@ -524,6 +459,6 @@ public class MapBox implements PropertyChangeListener {
     }
 
     enum SelectionType {
-        INSERTION, SELECTION, COMBO, SPELL, NORMAL
+        INSERTION, SELECTION, SPELL, NORMAL
     }
 }

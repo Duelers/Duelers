@@ -14,8 +14,6 @@ public class AvailableActions {
     private List<Insert> handInserts = new ArrayList<>();
     private List<Insert> collectibleInserts = new ArrayList<>();
     private List<Attack> attacks = new ArrayList<>();
-    private List<Combo> combos = new ArrayList<>();
-    private SpecialPower specialPower;
     private List<Move> moves = new ArrayList<>();
 
     public void calculate(CompressedGame game) {
@@ -26,16 +24,12 @@ public class AvailableActions {
         calculateCardInserts(ownPlayer);
         calculateCollectibles(ownPlayer);
         calculateAttacks(ownPlayer, otherPlayer);
-        calculateCombo(ownPlayer, otherPlayer);
-        calculateSpecialPower(game, ownPlayer);
         calculateMoves(game, ownPlayer);
     }
 
     private void calculateCardInserts(CompressedPlayer ownPlayer) {
         for (CompressedCard card : ownPlayer.getHand()) {
-            if (ownPlayer.getCurrentMP() >= card.getMannaPoint()) {
-                handInserts.add(new Insert(card));
-            }
+            handInserts.add(new Insert(card));
         }
     }
 
@@ -65,38 +59,6 @@ public class AvailableActions {
         }
     }
 
-    private void calculateCombo(CompressedPlayer ownPlayer, CompressedPlayer otherPlayer) {
-        for (CompressedTroop enemyTroop : otherPlayer.getTroops()) {
-
-            ArrayList<CompressedTroop> attackers = new ArrayList<>();
-            for (CompressedTroop myTroop : ownPlayer.getTroops()) {
-                if (!myTroop.getCard().isHasCombo() || !myTroop.canAttack()) continue;
-
-                if (enemyTroop.isNoAttackFromWeakerOnes() && myTroop.getCurrentAp() < enemyTroop.getCurrentAp())
-                    continue;
-
-                if (checkRangeForAttack(myTroop, enemyTroop)) continue;
-
-                attackers.add(myTroop);
-            }
-
-            if (attackers.size() == 0) continue;
-
-            combos.add(new Combo(attackers, enemyTroop));
-        }
-    }
-
-    private void calculateSpecialPower(CompressedGame game, CompressedPlayer ownPlayer) {
-        CompressedTroop hero = ownPlayer.getHero();
-
-        if (hero != null) {
-            CompressedSpell spell = hero.getCard().getSpell();
-
-            if (spell != null && !spell.isCoolDown(game.getTurnNumber()) && spell.getMannaPoint() <= ownPlayer.getCurrentMP()) {
-                specialPower = new SpecialPower(hero);
-            }
-        }
-    }
 
     private void calculateMoves(CompressedGame game, CompressedPlayer ownPlayer) {
         for (CompressedTroop troop : ownPlayer.getTroops()) {
@@ -131,9 +93,7 @@ public class AvailableActions {
         handInserts.clear();
         collectibleInserts.clear();
         attacks.clear();
-        combos.clear();
         moves.clear();
-        specialPower = null;
     }
 
     private boolean checkRangeForAttack(CompressedTroop myTroop, CompressedTroop enemyTroop) {
@@ -157,14 +117,6 @@ public class AvailableActions {
 
     public List<Attack> getAttacks() {
         return Collections.unmodifiableList(attacks);
-    }
-
-    public List<Combo> getCombos() {
-        return Collections.unmodifiableList(combos);
-    }
-
-    public SpecialPower getSpecialPower() {
-        return specialPower;
     }
 
     public List<Move> getMoves() {
@@ -202,7 +154,4 @@ public class AvailableActions {
         return getAttackPositions(troop).contains(new Position(row, column));
     }
 
-    public boolean canUseSpecialAction(CompressedTroop troop) {
-        return specialPower != null && specialPower.getHero().equals(troop);
-    }
 }

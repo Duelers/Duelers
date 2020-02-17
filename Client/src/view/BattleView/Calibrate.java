@@ -32,8 +32,7 @@ public class Calibrate extends Application implements GameActions {
         new Thread(() -> {
             while (true) {
                 Platform.runLater(() -> {
-                    battleScene.spell(new AvailabilityType(false, false, false, false, false
-                            , false, true), new Position(0, 0));//TODO
+                    battleScene.spell(new AvailabilityType(false, false, false, false, false), new Position(0, 0));//TODO
                 });
                 try {
                     Thread.sleep(6000);
@@ -66,7 +65,7 @@ public class Calibrate extends Application implements GameActions {
 
         new Thread(() -> {
             CompressedCard card = new CompressedCard("boss_harmony", null, "a1", CardType.MINION,
-                    null, 0, 0, 0, null, 2, true);
+                    null, 0, 0, 0, null, 2);
             CompressedTroop troop = new CompressedTroop(card, 5, 6, 5, new Position(0, 0),
                     true, true, false, false, 1, 1);
             map.updateTroop(troop);
@@ -81,11 +80,6 @@ public class Calibrate extends Application implements GameActions {
 
     @Override
     public void attack(CompressedTroop selectedTroop, CompressedTroop troop) {
-
-    }
-
-    @Override
-    public void comboAttack(ArrayList<CompressedTroop> comboTroops, CompressedTroop troop) {
 
     }
 
@@ -105,12 +99,17 @@ public class Calibrate extends Application implements GameActions {
     }
 
     @Override
-    public void useSpecialPower(int row, int column) {
-        System.out.println("use spell");
+    public void exitGameShow(OnlineGame onlineGame) {
+
     }
 
     @Override
-    public void exitGameShow(OnlineGame onlineGame) {
+    public void setNewNextCard() {
+
+    }
+
+    @Override
+    public void replaceCard(String cardID) {
 
     }
 

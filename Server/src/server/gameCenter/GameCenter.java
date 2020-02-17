@@ -218,14 +218,6 @@ public class GameCenter extends Thread {//synchronize
                 game = new KillHeroBattle(myAccount, deck, gameMap);
                 game.addObserver(myAccount);
                 break;
-            case A_FLAG:
-                game = new SingleFlagBattle(myAccount, deck, gameMap);
-                game.addObserver(myAccount);
-                break;
-            case SOME_FLAG:
-                game = new MultiFlagBattle(myAccount, deck, gameMap, message.getNewGameFields().getNumberOfFlags());
-                game.addObserver(myAccount);
-                break;
         }
         game.setReward(Game.getDefaultReward());
         onlineGames.put(myAccount, game);
@@ -235,40 +227,6 @@ public class GameCenter extends Thread {//synchronize
         game.startGame();
     }
 
-    public void newStoryGame(Message message) throws LogicException {
-        DataCenter.getInstance().loginCheck(message);
-        Account myAccount = DataCenter.getInstance().getClients().get(message.getSender());
-        removeAllGameRequests(myAccount);
-        if (!myAccount.hasValidMainDeck()) {
-            throw new ClientException("you don't have valid main deck!");
-        }
-        if (onlineGames.get(myAccount) != null) {
-            throw new ClientException("you have online game!");
-        }
-        Game game = null;
-        Story story = DataCenter.getInstance().getStories().get(message.getNewGameFields().getStage());
-        GameMap gameMap = new GameMap(DataCenter.getInstance().getCollectibleItems(), story.getNumberOfFlags(), DataCenter.getInstance().getOriginalFlag());
-        switch (story.getGameType()) {
-            case KILL_HERO:
-                game = new KillHeroBattle(myAccount, story.getDeck(), gameMap);
-                game.addObserver(myAccount);
-                break;
-            case A_FLAG:
-                game = new SingleFlagBattle(myAccount, story.getDeck(), gameMap);
-                game.addObserver(myAccount);
-                break;
-            case SOME_FLAG:
-                game = new MultiFlagBattle(myAccount, story.getDeck(), gameMap, story.getNumberOfFlags());
-                game.addObserver(myAccount);
-                break;
-        }
-        game.setReward(story.getReward());
-        onlineGames.put(myAccount, game);
-        gameInfos.add(new OnlineGame(game));
-        Server.getInstance().addToSendingMessages(Message.makeGameCopyMessage
-                (message.getSender(), game));
-        game.startGame();
-    }
 
     private void newMultiplayerGame(Account account1, Account account2, GameType gameType, int numberOfFlags) {
 
@@ -282,16 +240,7 @@ public class GameCenter extends Thread {//synchronize
                 game.addObserver(account1);
                 game.addObserver(account2);
                 break;
-            case A_FLAG:
-                game = new SingleFlagBattle(account1, account2, gameMap);
-                game.addObserver(account1);
-                game.addObserver(account2);
-                break;
-            case SOME_FLAG:
-                game = new MultiFlagBattle(account1, account2, gameMap, numberOfFlags);
-                game.addObserver(account1);
-                game.addObserver(account2);
-                break;
+
         }
         game.setReward(Game.getDefaultReward());
         onlineGames.put(account1, game);
@@ -345,29 +294,24 @@ public class GameCenter extends Thread {//synchronize
         );
     }
 
-    public void combo(Message message) throws LogicException {
-        Game game = getGame(message.getSender());
-        game.comboAttack(
-                DataCenter.getInstance().getClients().get(message.getSender()).getUsername(),
-                message.getOtherFields().getMyCardIds(), message.getOtherFields().getOpponentCardId()
-        );
-    }
-
-    public void useSpecialPower(Message message) throws LogicException {
-        Game game = getGame(message.getSender());
-        game.useSpecialPower(
-                DataCenter.getInstance().getClients().get(message.getSender()).getUsername(),
-                message.getOtherFields().getMyCardId(), message.getOtherFields().getPosition()
-        );
-        Server.getInstance().sendGameUpdateMessage(game);
-    }
-
     public void moveTroop(Message message) throws LogicException {
         Game game = getGame(message.getSender());
         game.moveTroop(
                 DataCenter.getInstance().getClients().get(message.getSender()).getUsername(),
                 message.getOtherFields().getMyCardId(), message.getOtherFields().getPosition()
         );
+    }
+
+    public void setNewNextCard(Message message) throws LogicException{
+        DataCenter.getInstance().loginCheck(message);
+        Game game = getGame(message.getSender());
+        game.setNewNextCard();
+    }
+
+    public void replaceCard(Message message) throws LogicException {
+        DataCenter.getInstance().loginCheck(message);
+        Game game = getGame(message.getSender());
+        game.replaceCard(message.getCardID());
     }
 
     public void endTurn(Message message) throws LogicException {

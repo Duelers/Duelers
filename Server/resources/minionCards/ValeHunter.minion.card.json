@@ -9,8 +9,8 @@
   "defaultHp": 2,
   "mannaPoint": 2,
   "price": 100,
-  "attackType": "RANGED",
-  "range": 15,
+  "attackType": "HYBRID",
+  "range": 99,
   "hasCombo": false,
   "remainingNumber": 20
 }

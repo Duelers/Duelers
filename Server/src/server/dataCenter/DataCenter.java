@@ -14,14 +14,10 @@ import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
 import server.dataCenter.models.db.OldDataBase;
-import server.dataCenter.models.db.Rest;
-import server.dataCenter.models.sorter.LeaderBoardSorter;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
-import server.gameCenter.models.game.Story;
-import server.gameCenter.models.game.TempStory;
 
 import java.io.*;
 import java.util.*;
@@ -56,8 +52,6 @@ public class DataCenter extends Thread {
         if (dataBase.isEmpty()) {
             Server.getInstance().serverPrint("Reading Cards...");
             readAllCards();
-            Server.getInstance().serverPrint("Reading Stories...");
-            readStories();
         }
         Server.getInstance().serverPrint("Reading Accounts...");
         readAccounts();
@@ -299,10 +293,6 @@ public class DataCenter extends Thread {
         clients.put(name, account);
     }
 
-    public List<Story> getStories() {
-        return Collections.unmodifiableList(dataBase.getStories());
-    }
-
     public Collection getOriginalCards() {
         return dataBase.getOriginalCards();
     }
@@ -313,16 +303,6 @@ public class DataCenter extends Thread {
 
     public Card getOriginalFlag() {
         return dataBase.getOriginalFlag();
-    }
-
-    public Account[] getLeaderBoard() throws ClientException {
-        if (accounts.size() == 0) {
-            throw new ClientException("leader board is empty");
-        }
-        Account[] a = new Account[accounts.keySet().size()];
-        Account[] leaderBoard = accounts.keySet().toArray(a);
-        Arrays.sort(leaderBoard, new LeaderBoardSorter());
-        return leaderBoard;
     }
 
     public void importDeck(Message message) throws LogicException {
@@ -363,7 +343,6 @@ public class DataCenter extends Thread {
             throw new ClientException("invalid username!");
         changingAccount.setAccountType(message.getChangeAccountType().getNewType());
         saveAccount(changingAccount);
-        Server.getInstance().sendLeaderBoardUpdateMessage(changingAccount);
         Server.getInstance().sendAccountUpdateMessage(changingAccount);
     }
 
@@ -398,19 +377,6 @@ public class DataCenter extends Thread {
         }
         dataBase.setOriginalFlag(loadFile(new File(FLAG_PATH), Card.class));
         Server.getInstance().serverPrint("Original Cards Loaded");
-    }
-
-    public void readStories() {
-        File[] files = new File(STORIES_PATH).listFiles();
-        if (files != null) {
-            for (File file : files) {
-                TempStory story = loadFile(file, TempStory.class);
-                if (story == null) continue;
-
-                dataBase.addStory(new Story(story, dataBase.getOriginalCards()));
-            }
-        }
-        Server.getInstance().serverPrint("Stories Loaded");
     }
 
     public void saveAccount(Account account) {
