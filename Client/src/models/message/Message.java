@@ -236,12 +236,6 @@ public class Message {
         return message;
     }
 
-    public static Message makeCustomCardMessage(String receiver, Card customCard) {
-        Message message = new Message(receiver);
-        message.card = customCard;
-        message.messageType = MessageType.ADD_CARD;
-        return message;
-    }
 
     public static Message makeChatMessage(String receiver, String messageSender, String messageReceiver, String textMessage) {
         Message message = new Message(receiver);
@@ -269,20 +263,6 @@ public class Message {
         Message message = new Message(receiver);
         message.changeAccountType = new ChangeAccountType(username, newValue);
         message.messageType = MessageType.CHANGE_ACCOUNT_TYPE;
-        return message;
-    }
-
-    public static Message makeValidateCustomCardMessage(String receiver, String customCardName) {
-        Message message = new Message(receiver);
-        message.cardName = customCardName;
-        message.messageType = MessageType.ACCEPT_CARD;
-        return message;
-    }
-
-    public static Message makeInValidateCustomCardMessage(String receiver, String customCardName) {
-        Message message = new Message(receiver);
-        message.cardName = customCardName;
-        message.messageType = MessageType.REJECT_CARD;
         return message;
     }
 

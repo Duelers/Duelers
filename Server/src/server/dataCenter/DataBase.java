@@ -13,13 +13,8 @@ public interface DataBase {
 
     List<Card> getCollectibleItems();
 
-    Collection getNewCustomCards();
 
     Card getOriginalFlag();
-
-    void addNewCustomCards(Card card);
-
-    void removeCustomCards(Card card);
 
     void addOriginalCard(Card card);
 

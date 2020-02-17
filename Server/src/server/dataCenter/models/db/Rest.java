@@ -19,20 +19,17 @@ import static server.dataCenter.DataCenter.loadFile;
 public class Rest implements DataBase {
 
     private static final String ACCOUNTS_PATH = "Server/resources/accounts";
-    private static final String CUSTOM_CARD_PATH = "Server/resources/customCards";
     private static final String[] CARDS_PATHS = {
             "resources/heroCards",
             "resources/minionCards",
             "resources/spellCards",
             "resources/itemCards/collectible",
-            "resources/itemCards/usable",
-            CUSTOM_CARD_PATH};
+            "resources/itemCards/usable"};
     private static final String FLAG_PATH = "Server/resources/itemCards/flag/Flag.item.card.json";
     private static final String STORIES_PATH = "Server/resources/stories";
 
     private enum maps {
         ORINGINAL_CARDS("originalCards"),
-        CUSTOM_CARDS("customCards"),
         COLLECTIBLE_ITEMS("collectibleItems"),
         STORIES("stories"),
         ORIGINAL_FLAG("originalFlag");
@@ -59,9 +56,7 @@ public class Rest implements DataBase {
                 for (File file : files) {
                     Card card = loadFile(file, Card.class);
                     if (card == null) continue;
-                    if (path.equals(CUSTOM_CARD_PATH)) {
-                        dataBase.addNewCustomCards(card);
-                    } else if (card.getType() == CardType.COLLECTIBLE_ITEM) {
+                    else if (card.getType() == CardType.COLLECTIBLE_ITEM) {
                         dataBase.addNewCollectible(card);
                     } else {
                         dataBase.addOriginalCard(card);
@@ -208,30 +203,12 @@ public class Rest implements DataBase {
         return getList(getAllValues(maps.COLLECTIBLE_ITEMS.path), Card.class);
     }
 
-    @Override
-    public Collection getNewCustomCards() {
-        List jsons = getAllValues(maps.CUSTOM_CARDS.path);
-        Collection collection = new Collection();
-        for (Object o : jsons) {
-            collection.addCard(JsonConverter.fromJson((String) o, Card.class));
-        }
-        return collection;
-    }
 
     @Override
     public Card getOriginalFlag() {
         return JsonConverter.fromJson(getFromDataBase(maps.ORIGINAL_FLAG.path, maps.ORIGINAL_FLAG.path), Card.class);
     }
 
-    @Override
-    public void addNewCustomCards(Card card) {
-        put(maps.CUSTOM_CARDS.path, card.getName(), JsonConverter.toJson(card));
-    }
-
-    @Override
-    public void removeCustomCards(Card card) {
-        delete(maps.CUSTOM_CARDS.path, card.getName());
-    }
 
     @Override
     public void addOriginalCard(Card card) {

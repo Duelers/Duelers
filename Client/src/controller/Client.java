@@ -160,7 +160,6 @@ public class Client {
                 GameController.getInstance().calculateAvailableActions();
                 break;
             case ORIGINAL_CARDS_COPY:
-                ShopController.getInstance().setOriginalCards(message.getCardsCopyMessage().getCards());
                 break;
             case CARD_POSITION://TODO:CHANGE
                 CardPosition cardPosition = message.getCardPositionMessage().getCardPosition();
@@ -240,26 +239,7 @@ public class Client {
                     ((WaitingMenu) currentShow).close();
                 }
                 break;
-            case CHANGE_CARD_NUMBER:
-                ShopAdminController.getInstance().setValue(
-                        message.getChangeCardNumber().getCardName(),
-                        message.getChangeCardNumber().getNumber()
-                );
-                break;
-            case ADD_TO_ORIGINALS:
-                if (ShopController.isLoaded()) {
-                    ShopController.getInstance().addCard(message.getCard());
-                }
-                break;
-            case ADD_TO_CUSTOM_CARDS:
-                CustomCardRequestsController.getInstance().addCard(message.getCard());
-                break;
-            case REMOVE_FROM_CUSTOM_CARDS:
-                CustomCardRequestsController.getInstance().removeCard(message.getCardName());
-                break;
-            case CUSTOM_CARDS_COPY:
-                CustomCardRequestsController.getInstance().setCustomCardRequests(message.getCardsCopyMessage().getCards());
-                break;
+
             case ONLINE_GAMES_COPY:
                 OnlineGamesListController.getInstance().setOnlineGames(message.getOnlineGames());
                 break;
