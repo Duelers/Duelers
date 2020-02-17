@@ -121,9 +121,6 @@ public class Server {
                     break;
                 case GET_DATA:
                     switch (message.getGetDataMessage().getDataName()) {
-                        case LEADERBOARD:
-                            sendLeaderBoard(message);
-                            break;
                         case ORIGINAL_CARDS:
                             sendOriginalCards(message);
                             break;
@@ -281,11 +278,6 @@ public class Server {
 
     }
 
-    private static void sendLeaderBoard(Message message) throws ClientException { //Check
-        addToSendingMessages(Message.makeLeaderBoardCopyMessage(message.getSender(),
-                DataCenter.getInstance().getLeaderBoard()));
-    }
-
     private static void selectUserForMultiPlayer(Message message) throws ClientException {
         Account account = DataCenter.getInstance().getAccount(message.getNewGameFields().getOpponentUsername());
         if (account == null) {
@@ -414,10 +406,6 @@ public class Server {
                         card, card.getRemainingNumber()));
             }
         }
-    }
-
-    public void sendLeaderBoardUpdateMessage(Account account) {
-
     }
 
     public void sendAddToOriginalsMessage(Card card) {

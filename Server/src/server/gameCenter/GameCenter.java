@@ -218,14 +218,6 @@ public class GameCenter extends Thread {//synchronize
                 game = new KillHeroBattle(myAccount, deck, gameMap);
                 game.addObserver(myAccount);
                 break;
-            case A_FLAG:
-                game = new SingleFlagBattle(myAccount, deck, gameMap);
-                game.addObserver(myAccount);
-                break;
-            case SOME_FLAG:
-                game = new MultiFlagBattle(myAccount, deck, gameMap, message.getNewGameFields().getNumberOfFlags());
-                game.addObserver(myAccount);
-                break;
         }
         game.setReward(Game.getDefaultReward());
         onlineGames.put(myAccount, game);
@@ -248,16 +240,7 @@ public class GameCenter extends Thread {//synchronize
                 game.addObserver(account1);
                 game.addObserver(account2);
                 break;
-            case A_FLAG:
-                game = new SingleFlagBattle(account1, account2, gameMap);
-                game.addObserver(account1);
-                game.addObserver(account2);
-                break;
-            case SOME_FLAG:
-                game = new MultiFlagBattle(account1, account2, gameMap, numberOfFlags);
-                game.addObserver(account1);
-                game.addObserver(account2);
-                break;
+
         }
         game.setReward(Game.getDefaultReward());
         onlineGames.put(account1, game);
