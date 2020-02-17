@@ -15,7 +15,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedPlayer;
 import models.gui.*;
@@ -75,7 +74,7 @@ public class PlayerBox implements PropertyChangeListener {
         game.addPropertyChangeListener(this);
     }
 
-    private HashMap<String,String> MapGeneralToPortrait(){
+    private HashMap<String, String> MapGeneralToPortrait() {
         // Note that this is a quick hack; a better solution is to have "portraitId" defined in the Hero's json file.
         HashMap<String, String> nameToPortrait = new HashMap<String, String>();
         nameToPortrait.put("Reva Eventide", "Client/resources/photo/general_portrait_image_hex_f2-alt@2x.png");
@@ -117,10 +116,10 @@ public class PlayerBox implements PropertyChangeListener {
     private void addHeroPortraits() throws FileNotFoundException {
 
         String player1HeroName = player1.getHero().getCard().getName();
-        Image player1Profile = new Image(new FileInputStream (MapGeneralToPortrait().getOrDefault(player1HeroName,  "Client/resources/photo/general_portrait_image_hex_rook@2x.png")));
+        Image player1Profile = new Image(new FileInputStream(MapGeneralToPortrait().getOrDefault(player1HeroName, "Client/resources/photo/general_portrait_image_hex_rook@2x.png")));
 
         String player2HeroName = player2.getHero().getCard().getName();
-        Image player2Profile = new Image(new FileInputStream (MapGeneralToPortrait().getOrDefault(player2HeroName, "Client/resources/photo/general_portrait_image_hex_calibero@2x.png")));
+        Image player2Profile = new Image(new FileInputStream(MapGeneralToPortrait().getOrDefault(player2HeroName, "Client/resources/photo/general_portrait_image_hex_calibero@2x.png")));
 
         player1Image = ImageLoader.makeImageView(player1Profile,
                 player1Profile.getWidth() * SCALE * 0.3,

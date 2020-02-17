@@ -3,10 +3,8 @@ package controller;
 
 import javafx.application.Platform;
 import models.Constants;
-import models.account.AccountInfo;
 import models.account.AccountType;
 import models.message.ChatMessage;
-import models.message.DataName;
 import models.message.Message;
 import view.GlobalChatDialog;
 

@@ -1,11 +1,6 @@
 package server.gameCenter.models.map;
 
 import server.clientPortal.models.comperessedData.CompressedCell;
-import server.dataCenter.models.card.Card;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Cell {
     private int row;
@@ -28,7 +23,7 @@ public class Cell {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Cell: (" + this.getRow() + "," + this.getColumn() + ")";
     }
 

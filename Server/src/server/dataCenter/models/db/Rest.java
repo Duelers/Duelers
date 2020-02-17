@@ -6,7 +6,6 @@ import server.clientPortal.models.JsonConverter;
 import server.dataCenter.DataBase;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.Card;
-import server.dataCenter.models.card.CardType;
 
 
 import java.io.File;
@@ -48,8 +47,7 @@ public class Rest implements DataBase {
             if (files != null) {
                 for (File file : files) {
                     Card card = loadFile(file, Card.class);
-                    if (card == null) continue;
-                    else {
+                    if (card != null) {
                         dataBase.addOriginalCard(card);
                     }
                 }

@@ -4,10 +4,8 @@ import com.google.gson.Gson;
 import javafx.application.Platform;
 import models.Constants;
 import models.account.Account;
-import models.account.AccountInfo;
 import models.card.Card;
 import models.card.DeckInfo;
-import models.comperessedData.CompressedCard;
 import models.game.map.Position;
 import models.message.CardPosition;
 import models.message.GameUpdateMessage;
@@ -160,6 +158,7 @@ public class Client {
                 GameController.getInstance().calculateAvailableActions();
                 break;
             case ORIGINAL_CARDS_COPY:
+            case DONE:
                 break;
             case CARD_POSITION://TODO:CHANGE
                 CardPosition cardPosition = message.getCardPositionMessage().getCardPosition();
@@ -216,8 +215,6 @@ public class Client {
                 break;
             case ANIMATION:
                 GameController.getInstance().showAnimation(message.getGameAnimations());
-                break;
-            case DONE:
                 break;
             case CHAT:
                 showOrSaveMessage(message);
