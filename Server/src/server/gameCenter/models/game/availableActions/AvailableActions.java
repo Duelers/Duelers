@@ -63,27 +63,6 @@ public class AvailableActions {
             attacks.add(new Attack(myTroop, targets));
         }
     }
-
-    private void calculateAvailableCombos(Game game) {
-        Player ownPlayer = game.getCurrentTurnPlayer();
-        Player otherPlayer = game.getOtherTurnPlayer();
-        for (Troop enemyTroop : otherPlayer.getTroops()) {
-            ArrayList<Troop> attackers = new ArrayList<>();
-            for (Troop myTroop : ownPlayer.getTroops()) {
-                if (!myTroop.canAttack()) continue;
-
-                if (enemyTroop.canBeAttackedFromWeakerOnes() && myTroop.getCurrentAp() < enemyTroop.getCurrentAp())
-                    continue;
-
-                if (checkRangeForAttack(myTroop, enemyTroop)) continue;
-
-                attackers.add(myTroop);
-            }
-
-            if (attackers.size() == 0) continue;
-        }
-    }
-
     public void calculateAvailableMoves(Game game) {
         Player ownPlayer = game.getCurrentTurnPlayer();
         moves.clear();

@@ -37,9 +37,7 @@ public class MapBox implements PropertyChangeListener {
     private final double[][] cellsY = new double[5][9];
     private final HashMap<CompressedTroop, TroopAnimation> troopAnimationHashMap = new HashMap<>();
     private CompressedTroop selectedTroop = null;
-    private ArrayList<CompressedTroop> comboTroops = new ArrayList<>();
     private boolean spellSelected = false;
-    private boolean comboSelected = false;
     private CardPane cardPane = null;
     private SelectionType selectionType;
     private DefaultLabel[][] flagLabels = new DefaultLabel[5][9];
@@ -214,13 +212,10 @@ public class MapBox implements PropertyChangeListener {
 
     void resetSelection() {
         selectedTroop = null;
-        comboTroops.clear();
         spellSelected = false;
-        comboSelected = false;
         for (TroopAnimation animation : troopAnimationHashMap.values()) {
             animation.diSelect();
         }
-        battleScene.getPlayerBox().refreshComboAndSpell();
         updateMapColors();
     }
 
@@ -236,7 +231,7 @@ public class MapBox implements PropertyChangeListener {
         TroopAnimation animation = troopAnimationHashMap.get(troop);
         if (animation == null)
             return;
-        if (!(selectedTroop == troop || comboTroops.contains(troop))) {
+        if (!(selectedTroop == troop)) {
             animation.diSelect();
         }
     }
@@ -392,10 +387,6 @@ public class MapBox implements PropertyChangeListener {
             selectionType = SelectionType.SELECTION;
             return;
         }
-        if (isComboSelected()) {
-            selectionType = SelectionType.COMBO;
-            return;
-        }
         if (isSpellSelected()) {
             selectionType = SelectionType.SPELL;
             return;
@@ -419,16 +410,8 @@ public class MapBox implements PropertyChangeListener {
         this.spellSelected = true;
     }
 
-    void setComboSelected() {
-        this.comboSelected = true;
-    }
-
     boolean isSpellSelected() {
         return spellSelected;
-    }
-
-    boolean isComboSelected() {
-        return comboSelected;
     }
 
     CompressedGameMap getGameMap() {
@@ -476,6 +459,6 @@ public class MapBox implements PropertyChangeListener {
     }
 
     enum SelectionType {
-        INSERTION, SELECTION, COMBO, SPELL, NORMAL
+        INSERTION, SELECTION, SPELL, NORMAL
     }
 }

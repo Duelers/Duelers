@@ -180,16 +180,6 @@ public class PlayerBox implements PropertyChangeListener {
         group.getChildren().add(stackPane);
     }
 
-    void refreshComboAndSpell() {
-        if (battleScene.getMyPlayerNumber() == -1)
-            return;
-        try {
-            spellButton.setImage(spellNotSelectedImage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private void addSpellButton() throws Exception {
         spellButton = new ImageView(new Image(new FileInputStream("Client/resources/ui/quests@2x.png")));
         spellButton.setFitWidth(spellButton.getImage().getWidth() * SCALE * 0.75);
