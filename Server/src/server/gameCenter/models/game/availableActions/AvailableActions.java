@@ -17,13 +17,11 @@ public class AvailableActions {
     private List<Insert> handInserts = new ArrayList<>();
     private List<Insert> collectibleInserts = new ArrayList<>();
     private List<Attack> attacks = new ArrayList<>();
-    private SpecialPower specialPower;
     private List<Move> moves = new ArrayList<>();
 
     public void calculateAvailableActions(Game game) {
         calculateAvailableInsets(game);
         calculateAvailableAttacks(game);
-        calculateAvailableSpecialPower(game);
         calculateAvailableMoves(game);
     }
 
@@ -65,41 +63,6 @@ public class AvailableActions {
             attacks.add(new Attack(myTroop, targets));
         }
     }
-
-    private void calculateAvailableCombos(Game game) {
-        Player ownPlayer = game.getCurrentTurnPlayer();
-        Player otherPlayer = game.getOtherTurnPlayer();
-        for (Troop enemyTroop : otherPlayer.getTroops()) {
-            ArrayList<Troop> attackers = new ArrayList<>();
-            for (Troop myTroop : ownPlayer.getTroops()) {
-                if (!myTroop.canAttack()) continue;
-
-                if (enemyTroop.canBeAttackedFromWeakerOnes() && myTroop.getCurrentAp() < enemyTroop.getCurrentAp())
-                    continue;
-
-                if (checkRangeForAttack(myTroop, enemyTroop)) continue;
-
-                attackers.add(myTroop);
-            }
-
-            if (attackers.size() == 0) continue;
-        }
-    }
-
-    private void calculateAvailableSpecialPower(Game game) {
-        Player ownPlayer = game.getCurrentTurnPlayer();
-        Troop hero = ownPlayer.getHero();
-
-        if (hero != null) {
-            if (hero.getCard().getSpells().isEmpty()) return;
-            Spell spell = hero.getCard().getSpells().get(0);
-
-            if (spell != null && !spell.isCoolDown(game.getTurnNumber()) && spell.getMannaPoint() <= ownPlayer.getCurrentMP()) {
-                specialPower = new SpecialPower(hero);
-            }
-        }
-    }
-
     public void calculateAvailableMoves(Game game) {
         Player ownPlayer = game.getCurrentTurnPlayer();
         moves.clear();
@@ -152,10 +115,6 @@ public class AvailableActions {
 
     public List<Attack> getAttacks() {
         return Collections.unmodifiableList(attacks);
-    }
-
-    public SpecialPower getSpecialPower() {
-        return specialPower;
     }
 
     public List<Move> getMoves() {

@@ -65,11 +65,9 @@ public abstract class Game {
     public void startGame() {
         playerOne.setCurrentMP(2);
 
-        applyOnStartSpells(playerOne.getDeck());
         putMinion(1, playerOne.createHero(), gameMap.getCell(2, 0));
 
         this.turnNumber = 2;
-        applyOnStartSpells(playerTwo.getDeck());
         putMinion(2, playerTwo.createHero(), gameMap.getCell(2, 8));
 
         this.turnNumber = 1;
@@ -81,30 +79,6 @@ public abstract class Game {
 
     public CompressedGame toCompressedGame() {
         return new CompressedGame(playerOne, playerTwo, gameMap, turnNumber, gameType);
-    }
-
-    private void applyOnStartSpells(Deck deck) {
-        for (Card card : deck.getOthers()) {
-            iterateOnOnStartSpells(card);
-        }
-        if (deck.getItem() != null) {
-            iterateOnOnStartSpells(deck.getItem());
-        }
-        if (deck.getHero() != null) {
-            iterateOnOnStartSpells(deck.getHero());
-        }
-    }
-
-    private void iterateOnOnStartSpells(Card card) {
-        for (Spell spell : card.getSpells()) {
-            if (spell.getAvailabilityType().isOnStart())
-                applySpell(spell, detectTarget(
-                        spell,
-                        gameMap.getCell(2, 2),
-                        gameMap.getCell(2, 2),
-                        gameMap.getCell(2, 2))
-                );
-        }
     }
 
     public Player getPlayerOne() {
@@ -606,24 +580,6 @@ public abstract class Game {
         return attackPower;
     }
 
-    public void useSpecialPower(String username, String cardId, Position target) throws LogicException {
-        try {
-            if (!canCommand(username)) {
-                throw new ClientException("its not your turn");
-            }
-
-            Troop hero = getAndValidateHero(cardId);
-            Spell specialPower = getAndValidateSpecialPower(hero);
-            getCurrentTurnPlayer().changeCurrentMP(-specialPower.getMannaPoint());
-
-            applySpell(
-                    specialPower,
-                    detectTarget(specialPower, hero.getCell(), gameMap.getCell(target), hero.getCell())
-            );
-        } finally {
-            GameCenter.getInstance().checkGameFinish(this);
-        }
-    }
 
     private Troop getAndValidateHero(String cardId) throws ClientException {
         Troop hero = getCurrentTurnPlayer().getHero();
@@ -631,22 +587,6 @@ public abstract class Game {
             throw new ClientException("hero id is not valid");
         }
         return hero;
-    }
-
-    private Spell getAndValidateSpecialPower(Troop hero) throws ClientException {
-        Spell specialPower = hero.getCard().getSpells().get(0);
-        if (specialPower == null || !specialPower.getAvailabilityType().isSpecialPower()) {
-            throw new ClientException("special power is not available");
-        }
-
-        if (specialPower.isCoolDown(turnNumber)) {
-            throw new ClientException("special power is cool down");
-        }
-
-        if (getCurrentTurnPlayer().getCurrentMP() < specialPower.getMannaPoint()) {
-            throw new ClientException("insufficient manna");
-        }
-        return specialPower;
     }
 
     private Troop getAndValidateTroop(String defenderCardId, Player otherTurnPlayer) throws ClientException {

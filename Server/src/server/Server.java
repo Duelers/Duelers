@@ -188,10 +188,6 @@ public class Server {
                     GameCenter.getInstance().endTurn(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));
                     break;
-                case USE_SPECIAL_POWER:
-                    GameCenter.getInstance().useSpecialPower(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
-                    break;
                 case MOVE_TROOP:
                     GameCenter.getInstance().moveTroop(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));

@@ -44,7 +44,6 @@ public class BattleScene extends Show {
         spellSpriteNames.put(SpellType.DEATH, "fx_f4_deathfire_crescendo");
         spellSpriteNames.put(SpellType.DEFEND, "fx_f2_bbs_spellsword");
         spellSpriteNames.put(SpellType.CONTINUOUS, "fx_f3_sandportal");
-        spellSpriteNames.put(SpellType.SPECIAL_POWER, "fx_f1_lasting_judgment");
         spellSpriteNames.put(SpellType.DEFAULT, "fx_f2_eightgates_teallotus");
     }
 
@@ -103,7 +102,6 @@ public class BattleScene extends Show {
         if (availabilityType.isOnAttack()) return spellSpriteNames.get(SpellType.ATTACK);
         if (availabilityType.isOnDeath()) return spellSpriteNames.get(SpellType.DEATH);
         if (availabilityType.isOnDefend()) return spellSpriteNames.get(SpellType.DEFEND);
-        if (availabilityType.isSpecialPower()) return spellSpriteNames.get(SpellType.SPECIAL_POWER);
         if (availabilityType.isContinuous()) return spellSpriteNames.get(SpellType.CONTINUOUS);
         if (availabilityType.isOnPut()) return spellSpriteNames.get(SpellType.PUT);
         return spellSpriteNames.get(SpellType.DEFAULT);
@@ -201,6 +199,6 @@ public class BattleScene extends Show {
     }
 
     private enum SpellType {
-        ATTACK, PUT, DEATH, CONTINUOUS, SPECIAL_POWER, DEFEND, DEFAULT, WINNER
+        ATTACK, PUT, DEATH, CONTINUOUS, DEFEND, DEFAULT, WINNER
     }
 }

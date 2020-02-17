@@ -32,8 +32,7 @@ public class Calibrate extends Application implements GameActions {
         new Thread(() -> {
             while (true) {
                 Platform.runLater(() -> {
-                    battleScene.spell(new AvailabilityType(false, false, false, false, false
-                            , false, true), new Position(0, 0));//TODO
+                    battleScene.spell(new AvailabilityType(false, false, false, false, false), new Position(0, 0));//TODO
                 });
                 try {
                     Thread.sleep(6000);
@@ -97,11 +96,6 @@ public class Calibrate extends Application implements GameActions {
     @Override
     public void insert(CompressedCard compressedCard, int row, int column) {
         System.out.println("insert");
-    }
-
-    @Override
-    public void useSpecialPower(int row, int column) {
-        System.out.println("use spell");
     }
 
     @Override

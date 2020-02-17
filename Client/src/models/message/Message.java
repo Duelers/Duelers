@@ -186,15 +186,6 @@ public class Message {
         return message;
     }
 
-    public static Message makeUseSpecialPowerMessage(String receiver, String cardId, Position position) {
-        Message message = new Message(receiver);
-        message.otherFields = new OtherFields();
-        message.otherFields.setMyCardId(cardId);
-        message.otherFields.setPosition(position);
-        message.messageType = MessageType.USE_SPECIAL_POWER;
-        return message;
-    }
-
     public static Message makeMultiPlayerGameReQuestMessage(String receiver, GameType gameType, int numberOfFlags, String opponentUsername) {
         Message message = new Message(receiver);
         message.newGameFields = new NewGameFields();

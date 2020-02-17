@@ -73,10 +73,8 @@ public class PlayerBox implements PropertyChangeListener {
         updateMP(3);
 
         if (battleScene.getMyPlayerNumber() != -1) {
-            addSpellButton();
             addChatField();
             makeMessageShows();
-            addUsableItem();
         }
 
         game.addPropertyChangeListener(this);
@@ -179,79 +177,7 @@ public class PlayerBox implements PropertyChangeListener {
         stackPane.setOnMouseExited(mouseEvent -> animation.pause());
         group.getChildren().add(stackPane);
     }
-
-    void refreshComboAndSpell() {
-        if (battleScene.getMyPlayerNumber() == -1)
-            return;
-        try {
-            spellButton.setImage(spellNotSelectedImage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void addSpellButton() throws Exception {
-        spellButton = new ImageView(new Image(new FileInputStream("Client/resources/ui/quests@2x.png")));
-        spellButton.setFitWidth(spellButton.getImage().getWidth() * SCALE * 0.75);
-        spellButton.setFitHeight(spellButton.getImage().getHeight() * SCALE * 0.75);
-        spellButton.setY(SCALE * (325));
-        if (battleScene.getMyPlayerNumber() == 1)
-            spellButton.setX(SCALE * (180));
-        else
-            spellButton.setX(Constants.SCREEN_WIDTH - SCALE * (180) - spellButton.getFitWidth());
-        group.getChildren().add(spellButton);
-        spellButton.setOnMouseEntered(mouseEvent -> hoverSpellButton());
-        spellButton.setOnMouseExited(mouseEvent -> exitSpellButton());
-        spellButton.setOnMouseClicked(mouseEvent -> clickSpellButton());
-    }
-
-    private void exitSpellButton() {
-        try {
-            if (battleScene.getMapBox().isSpellSelected())
-                spellButton.setImage(spellSelectedImage);
-            else
-                spellButton.setImage(spellNotSelectedImage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void hoverSpellButton() {
-        try {
-            CompressedTroop troop = battleScene.getMapBox().getSelectedTroop();
-            if (battleScene.isMyTurn() && troop != null && troop.getCard().getType() == CardType.HERO
-                    && troop.getCard().getSpell() != null &&
-                    troop.getCard().getSpell().getCoolDown() + troop.getCard().getSpell().getLastTurnUsed() <=
-                            battleScene.getGame().getTurnNumber())
-                spellButton.setImage(spellSelectedImage);
-            else
-                spellButton.setImage(spellNotSelectedImage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void clickSpellButton() {
-        try {
-            CompressedTroop troop = battleScene.getMapBox().getSelectedTroop();
-            if (battleScene.isMyTurn() && troop != null && troop.getCard().getType() == CardType.HERO
-                    && troop.getCard().getSpell() != null &&
-                    troop.getCard().getSpell().getCoolDown() + troop.getCard().getSpell().getLastTurnUsed() <=
-                            battleScene.getGame().getTurnNumber()) {
-                if (battleScene.getMapBox().isSpellSelected()) {
-                    battleScene.getMapBox().resetSelection();
-                    spellButton.setImage(spellNotSelectedImage);
-                } else {
-                    battleScene.getMapBox().setSpellSelected();
-                    battleScene.getMapBox().updateMapColors();
-                    spellButton.setImage(spellSelectedImage);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     private void updateMP(int maxMP) {
         mpGroup.getChildren().clear();
         for (int i = 1; i <= player1.getCurrentMP(); i++) {

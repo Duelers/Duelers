@@ -33,14 +33,6 @@ public class CompressedCard {
         this.mannaPoint = mannaPoint;
         this.attackType = attackType;
         this.range = range;
-        if (type == CardType.HERO) {
-            for (Spell spell : spells) {
-                if (spell.getAvailabilityType().isSpecialPower()) {
-                    this.spell = spell.toCompressedSpell();
-                    break;
-                }
-            }
-        }
         this.remainingNumber = remainingNumber;
     }
 }

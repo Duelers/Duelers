@@ -294,15 +294,6 @@ public class GameCenter extends Thread {//synchronize
         );
     }
 
-    public void useSpecialPower(Message message) throws LogicException {
-        Game game = getGame(message.getSender());
-        game.useSpecialPower(
-                DataCenter.getInstance().getClients().get(message.getSender()).getUsername(),
-                message.getOtherFields().getMyCardId(), message.getOtherFields().getPosition()
-        );
-        Server.getInstance().sendGameUpdateMessage(game);
-    }
-
     public void moveTroop(Message message) throws LogicException {
         Game game = getGame(message.getSender());
         game.moveTroop(

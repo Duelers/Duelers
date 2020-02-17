@@ -64,23 +64,16 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
     private final DefaultLabel attackTypeLabel = new DefaultLabel("ATTACK", DEFAULT_FONT, Color.WHITE);
     private final DefaultLabel mannaPointLabel = new DefaultLabel("MANNA", DEFAULT_FONT, Color.WHITE);
     private final DefaultLabel rangeLabel = new DefaultLabel("RANGE", DEFAULT_FONT, Color.WHITE);
-    private final DefaultLabel hasComboLabel = new DefaultLabel("COMBO", DEFAULT_FONT, Color.WHITE);
     private final NormalField name = new NormalField("name");
     private final NormalField description = new NormalField("description");
     private final DefaultSpinner<CardType> cardTypeSpinner = new DefaultSpinner<>(FXCollections.observableArrayList(cardTypes));
     private final DefaultSpinner<AttackType> attackTypeSpinner = new DefaultSpinner<>(FXCollections.observableArrayList(AttackType.values()));
-    private final DefaultSpinner<ComboState> hasComboSpinner = new DefaultSpinner<>(FXCollections.observableArrayList(ComboState.values()));
     private final DefaultSpinner<Integer> defaultHpSpinner = new DefaultSpinner<>(1, 50, 1);
     private final DefaultSpinner<Integer> defaultApSpinner = new DefaultSpinner<>(0, 15, 0);
     private final DefaultSpinner<Integer> rangeSpinner = new DefaultSpinner<>(2, 4, 2);
     private final DefaultSpinner<Integer> mannaPointSpinner = new DefaultSpinner<>(0, 9, 0);
     private final DefaultSpinner<String> spriteSpinner = new DefaultSpinner<>(FXCollections.observableArrayList(sprites.get(cardTypeSpinner.getValue())));
     private final NumberField priceField = new NumberField("price");
-    private final OrangeButton addSpellButton = new OrangeButton("ADD NEW SPELL", event -> addSpell(), click);
-    private final OrangeButton makeCardButton = new OrangeButton("MAKE CARD", event -> {
-        CustomCardController.getInstance().createCard(card);
-        new MainMenu().show();
-    }, click);
     private VBox spellsBox;
     private GridPane cardMakerGrid;
     private EditableCardPane cardPane;
@@ -112,8 +105,6 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
             cardMakerGrid.setHgap(DEFAULT_SPACING * 2);
             cardMakerGrid.setVgap(DEFAULT_SPACING * 2);
             cardMakerGrid.setMaxSize(1500 * SCALE, 1000 * SCALE);
-            GridPane.setHalignment(addSpellButton, HPos.CENTER);
-            GridPane.setHalignment(makeCardButton, HPos.CENTER);
             GridPane.setHalignment(spriteSpinner, HPos.CENTER);
 
             cardMakerGrid.add(name, 0, 0, 2, 1);
@@ -132,9 +123,6 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
             cardMakerGrid.add(cardPane, 3, 0, 2, 8);
             cardMakerGrid.add(new DefaultLabel("SPRITE", DEFAULT_FONT, Color.WHITE), 3, 8);
             cardMakerGrid.add(spriteSpinner, 4, 8);
-
-            cardMakerGrid.add(addSpellButton, 3, 9, 2, 1);
-            cardMakerGrid.add(makeCardButton, 3, 10, 2, 1);
 
             cardMakerGrid.add(new DefaultSeparator(Orientation.VERTICAL), 5, 0, 1, 11);
 
@@ -227,8 +215,7 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
                         defaultApLabel, defaultApSpinner,
                         defaultHpLabel, defaultHpSpinner,
                         attackTypeLabel, attackTypeSpinner,
-                        mannaPointLabel, mannaPointSpinner,
-                        hasComboLabel, hasComboSpinner
+                        mannaPointLabel, mannaPointSpinner
                 );
                 cardMakerGrid.add(defaultApLabel, 0, 5);
                 cardMakerGrid.add(defaultApSpinner, 1, 5);
@@ -239,16 +226,13 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
                 cardMakerGrid.add(attackTypeLabel, 0, 7);
                 cardMakerGrid.add(attackTypeSpinner, 1, 7);
 
-                cardMakerGrid.add(hasComboLabel, 0, 8);
-                cardMakerGrid.add(hasComboSpinner, 1, 8);
                 break;
             case MINION:
                 cardMakerGrid.getChildren().removeAll(
                         defaultApLabel, defaultApSpinner,
                         defaultHpLabel, defaultHpSpinner,
                         attackTypeLabel, attackTypeSpinner,
-                        mannaPointLabel, mannaPointSpinner,
-                        hasComboLabel, hasComboSpinner
+                        mannaPointLabel, mannaPointSpinner
                 );
                 cardMakerGrid.add(defaultApLabel, 0, 5);
                 cardMakerGrid.add(defaultApSpinner, 1, 5);
@@ -262,16 +246,13 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
                 cardMakerGrid.add(mannaPointLabel, 0, 8);
                 cardMakerGrid.add(mannaPointSpinner, 1, 8);
 
-                cardMakerGrid.add(hasComboLabel, 0, 9);
-                cardMakerGrid.add(hasComboSpinner, 1, 9);
                 break;
             case SPELL:
                 cardMakerGrid.getChildren().removeAll(
                         defaultApLabel, defaultApSpinner,
                         defaultHpLabel, defaultHpSpinner,
                         attackTypeLabel, attackTypeSpinner,
-                        mannaPointLabel, mannaPointSpinner,
-                        hasComboLabel, hasComboSpinner
+                        mannaPointLabel, mannaPointSpinner
                 );
                 cardMakerGrid.add(mannaPointLabel, 0, 5);
                 cardMakerGrid.add(mannaPointSpinner, 1, 5);
@@ -281,8 +262,7 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
                         defaultApLabel, defaultApSpinner,
                         defaultHpLabel, defaultHpSpinner,
                         attackTypeLabel, attackTypeSpinner,
-                        mannaPointLabel, mannaPointSpinner,
-                        hasComboLabel, hasComboSpinner
+                        mannaPointLabel, mannaPointSpinner
                 );
                 break;
         }
@@ -345,15 +325,13 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
         CheckBox onAttack = new CheckBox("onAttack");
         CheckBox onDeath = new CheckBox("onDeath");
         CheckBox continuous = new CheckBox("continuous");
-        CheckBox specialPower = new CheckBox("specialPower");
-        CheckBox onStart = new CheckBox("onStart");
 
         NumberField coolDown = new NumberField("coolDown");
         NumberField mannaPoint = new NumberField("manna point");
         dialogBox.getChildren().addAll(dialogText, spellId,
                 spellActionLabel, new ScrollPane(new VBox(enemyHitChange, apChange, hpChange, isPoison, makeStun, disarm, noDisarm, noPoison, noStun, noBadEffect, noAttackFromWeakerOnes, killsTarget, durable, duration, delay)),
                 spellTarget, new ScrollPane(new VBox(isRelatedToCardOwnerPosition, isForAroundOwnHero, row, column, isRandom, own, enemy, cell, hero, minion, melee, ranged, hybrid, isForDeckCards)),
-                availabilityTypeLabel, new ScrollPane(new VBox(onPut, onAttack, onDeath, continuous, specialPower, onStart)),
+                availabilityTypeLabel, new ScrollPane(new VBox(onPut, onAttack, onDeath, continuous)),
                 coolDown, mannaPoint
         );
         dialogBox.getChildren().stream().filter(node -> node instanceof ScrollPane).forEach(node -> ((ScrollPane) node).setMinHeight(300 * SCALE));
@@ -378,7 +356,7 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
 
             AvailabilityType availabilityType = new AvailabilityType(
                     onPut.isSelected(), onAttack.isSelected(), onDeath.isSelected(),
-                    continuous.isSelected(), specialPower.isSelected(), onStart.isSelected(),
+                    continuous.isSelected(),
                     false);
 
             card.addSpell(new Spell(
@@ -389,17 +367,5 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
         DialogContainer dialogContainer = new DialogContainer(root, dialogBox);
         dialogContainer.show();
         dialogBox.makeClosable(dialogContainer);
-    }
-
-
-    enum ComboState {
-        YES(true),
-        NO(false);
-
-        private final boolean hasCombo;
-
-        ComboState(boolean hasCombo) {
-            this.hasCombo = hasCombo;
-        }
     }
 }
