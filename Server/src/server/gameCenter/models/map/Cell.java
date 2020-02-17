@@ -28,6 +28,11 @@ public class Cell {
         return row == cell.row && column == cell.column;
     }
 
+    @Override
+    public String toString(){
+        return "Cell: (" + this.getRow() + "," + this.getColumn() + ")";
+    }
+
     public int getRow() {
         return this.row;
     }

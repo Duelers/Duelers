@@ -1,0 +1,65 @@
+{
+	"name": "Crossbones",
+	"description": "Opening Gambit: Destroy an enemy minion with Ranged",
+	"cardId": "Crossbones",
+	"spriteName": "boss_spelleater",
+	"type": "MINION",
+	"spells": [{
+			"spellId": "kill ranged",
+			  "action": {
+				"enemyHitChanges": 0,
+				"apChange": 0,
+				"hpChange": 0,
+				"mpChange": 0,
+				"poison": false,
+				"makeStun": false,
+				"makeDisarm": false,
+				"noDisarm": false,
+				"noPoison": false,
+				"noStun": false,
+				"noBadEffect": false,
+				"noAttackFromWeakerOnes": false,
+				"disableHolyBuff": false,
+				"addSpell": false,
+				"killsTarget": true,
+				"isForGladiator": false,
+				"durable": true,
+				"removeBuffs": 0,
+				"duration": 1,
+				"delay": 0
+			  },
+			  "target": {
+				"isRelatedToCardOwnerPosition": false,
+				"isForAroundOwnHero": false,
+				"isRandom": false,
+				"isForDeckCards": false,
+				"dimensions": {
+				  "row": 10,
+				  "column": 10
+				},
+				"owner": {
+					"own": false,
+					"enemy": true
+				},
+
+				"cardType": {
+					"minion": true
+				},
+
+				"attackType": {
+				    "melee": false,
+					"ranged": true,
+					"hybrid": true
+				}
+			},
+			"availabilityType": {
+				"onPut": true
+			}
+	}],
+	"defaultAp": 3,
+	"defaultHp": 3,
+	"mannaPoint": 3,
+	"price": 100,
+	"attackType": "MELEE",
+	"remainingNumber": 20
+}

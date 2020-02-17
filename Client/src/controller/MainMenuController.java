@@ -14,7 +14,6 @@ import static models.Constants.SERVER_NAME;
 
 public class MainMenuController {
     private static MainMenuController ourInstance;
-    private AccountInfo[] leaderBoard;
 
     public static MainMenuController getInstance() {
         if (ourInstance == null) {
@@ -28,9 +27,6 @@ public class MainMenuController {
                 Message.makeLogOutMessage(SERVER_NAME));
     }
 
-    public void requestLeaderboard() {
-        Client.getInstance().addToSendingMessagesAndSend(Message.makeGetDataMessage(SERVER_NAME, DataName.LEADERBOARD));
-    }
 
     void addChatMessage(ChatMessage chatMessage) {
         Platform.runLater(() -> GlobalChatDialog.getInstance().addMessage(chatMessage));
@@ -39,15 +35,6 @@ public class MainMenuController {
     public void sendChatMessage(String text) {
         Client.getInstance().addToSendingMessagesAndSend(
                 Message.makeChatMessage(Constants.SERVER_NAME, Client.getInstance().getAccount().getUsername(), null, text));
-    }
-
-    public AccountInfo[] getLeaderBoard() {
-        return leaderBoard;
-    }
-
-    synchronized void setLeaderBoard(AccountInfo[] leaderBoard) {
-        this.leaderBoard = leaderBoard;
-        this.notifyAll();
     }
 
     public void changeAccountTypeRequest(String username, AccountType newValue) {

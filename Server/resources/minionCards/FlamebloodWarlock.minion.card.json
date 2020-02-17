@@ -14,8 +14,8 @@
 			"target": {
 				"isRelatedToCardOwnerPosition": true,
 				"dimensions": {
-					"row": 10,
-					"column": 18
+					"row": 20,
+					"column": 20
 				},
 
 				"owner": {

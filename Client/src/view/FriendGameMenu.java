@@ -30,17 +30,4 @@ public class FriendGameMenu extends GameModeChooseMenu {
         dialog.show();
     }
 
-    @Override
-    void startSingleFlag() {
-        DialogWrapper dialog = new DialogWrapper(true, false);
-        dialog.makeButton(GameType.A_FLAG, 1);
-        dialog.show();
-    }
-
-    @Override
-    void startMultiFlag() {
-        DialogWrapper dialog = new DialogWrapper(true, true);
-        dialog.makeButton(GameType.SOME_FLAG, 0);
-        dialog.show();
-    }
 }

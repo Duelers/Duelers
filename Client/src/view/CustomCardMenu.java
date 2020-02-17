@@ -91,7 +91,6 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
         card.setAttackType(attackTypeSpinner.getValue());
         card.setDefaultAp(defaultApSpinner.getValue());
         card.setDefaultHp(defaultHpSpinner.getValue());
-        card.setHasCombo(hasComboSpinner.getValue().hasCombo);
         card.setMannaPoint(mannaPointSpinner.getValue());
         card.setPrice(String.valueOf(priceField.getValue()));
         card.setRange(rangeSpinner.getValue());
@@ -187,7 +186,6 @@ public class CustomCardMenu extends Show implements PropertyChangeListener {
         defaultHpSpinner.valueProperty().addListener(((observable, oldValue, newValue) -> card.setDefaultHp(newValue)));
         mannaPointSpinner.valueProperty().addListener(((observable, oldValue, newValue) -> card.setMannaPoint(newValue)));
         rangeSpinner.valueProperty().addListener(((observable, oldValue, newValue) -> card.setRange(newValue)));
-        hasComboSpinner.valueProperty().addListener(((observable, oldValue, newValue) -> card.setHasCombo(newValue.hasCombo)));
         priceField.textProperty().addListener(((observable, oldValue, newValue) -> card.setPrice(newValue)));
     }
 

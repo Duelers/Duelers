@@ -1,0 +1,57 @@
+{
+  "name": "Blistering Skorn",
+  "description": "Opening Gambit: Deal 1 damage to everything (including itself)",
+  "cardId": "BlisteringSkorn",
+  "spriteName": "neutral_blisteringscorn",
+  "type": "MINION",
+  "spells": [
+    {
+      "spellId": "dmg_on_put",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": -1,
+        "mpChange": 0,
+        "removeBuffs": 0,
+		"durable": true,
+        "duration": 1,
+        "delay": 0
+      },
+      "target": {
+        "dimensions": {
+          "row": 20,
+          "column": 20
+        },
+        "owner": {
+          "own": true,
+          "enemy": true
+        },
+        "cardType": {
+          "cell": false,
+          "hero": true,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+	  },
+      "availabilityType": {
+        "onPut": true
+      },
+      "coolDown": 0,
+      "mannaPoint": 0,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 4,
+  "defaultHp": 5,
+  "mannaPoint": 4,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
