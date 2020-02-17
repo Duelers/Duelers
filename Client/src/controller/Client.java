@@ -29,7 +29,6 @@ public class Client {
     private Show currentShow;
     private LinkedList<Message> receivingMessages = new LinkedList<>();
     private DeckInfo[] customDecks;
-    private AccountInfo[] leaderBoard;
     private Card selected;
     private Position[] positions;
     private boolean validation = true;
@@ -162,9 +161,6 @@ public class Client {
                 break;
             case ORIGINAL_CARDS_COPY:
                 ShopController.getInstance().setOriginalCards(message.getCardsCopyMessage().getCards());
-                break;
-            case LEADERBOARD_COPY:
-                MainMenuController.getInstance().setLeaderBoard(message.getLeaderBoardCopyMessage().getLeaderBoard());
                 break;
             case CARD_POSITION://TODO:CHANGE
                 CardPosition cardPosition = message.getCardPositionMessage().getCardPosition();

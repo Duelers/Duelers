@@ -7,7 +7,6 @@ public enum MessageType {
     ACCOUNT_COPY,
     GAME_COPY,
     ORIGINAL_CARDS_COPY,
-    LEADERBOARD_COPY,
     CARD_POSITION,
     TROOP_UPDATE,
     GAME_UPDATE,

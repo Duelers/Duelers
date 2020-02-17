@@ -14,7 +14,6 @@ import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
 import server.dataCenter.models.db.OldDataBase;
-import server.dataCenter.models.sorter.LeaderBoardSorter;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import server.exceptions.ServerException;
@@ -312,16 +311,6 @@ public class DataCenter extends Thread {
         return dataBase.getOriginalFlag();
     }
 
-    public Account[] getLeaderBoard() throws ClientException {
-        if (accounts.size() == 0) {
-            throw new ClientException("leader board is empty");
-        }
-        Account[] a = new Account[accounts.keySet().size()];
-        Account[] leaderBoard = accounts.keySet().toArray(a);
-        Arrays.sort(leaderBoard, new LeaderBoardSorter());
-        return leaderBoard;
-    }
-
     public void addCustomCard(Message message) throws LogicException {
         if (!isValidCardName(message.getCard().getCardId()))
             throw new ClientException("invalid name!");
@@ -368,7 +357,6 @@ public class DataCenter extends Thread {
             throw new ClientException("invalid username!");
         changingAccount.setAccountType(message.getChangeAccountType().getNewType());
         saveAccount(changingAccount);
-        Server.getInstance().sendLeaderBoardUpdateMessage(changingAccount);
         Server.getInstance().sendAccountUpdateMessage(changingAccount);
     }
 

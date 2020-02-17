@@ -71,7 +71,7 @@ public class CardMaker {
         System.out.println("has combo??");
         boolean hasCombo = parseBoolean(scanner.nextLine());
 
-        return new Card(name, description, cardType, spells, defaultAp, defaultHp, mannaPoint, price, attackType, range, hasCombo);
+        return new Card(name, description, cardType, spells, defaultAp, defaultHp, mannaPoint, price, attackType, range);
     }
 
     private static ArrayList<Spell> makeSpells(int number) {
