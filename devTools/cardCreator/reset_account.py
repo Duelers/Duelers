@@ -20,7 +20,14 @@ if __name__ == "__main__":
     account_path = os.path.join(ACCOUNTS_DIR, accname + ".account.json")
     template_path = os.path.join(ACCOUNTS_DIR, "template.account.json")
 
+    main_deck = decks = None 
     if os.path.exists(account_path):
+        with open() as f:
+        ac_data = json.load(account_path)
+        
+        main_deck = ac_data["mainDeckName"]
+        decks = ac_data["decks"]
+        
         os.remove(account_path)
 
 
@@ -30,6 +37,10 @@ if __name__ == "__main__":
 
     data["username"] = accname
     data["password"] = passw
+    
+    if main_deck and decks:
+        data["mainDeckName"] = main_deck
+        data["decks"] = decks
 
     with open(account_path, "w") as jsonFile:
         json.dump(data, jsonFile, indent=4)
