@@ -10,7 +10,6 @@ import java.util.List;
 public class Cell {
     private int row;
     private int column;
-    private List<Card> items = new ArrayList<>();
 
     public Cell(int row, int column) {
         this.row = row;
@@ -18,7 +17,7 @@ public class Cell {
     }
 
     public CompressedCell toCompressedCell() {
-        return new CompressedCell(row, column, items);
+        return new CompressedCell(row, column);
     }
 
     @Override
@@ -41,25 +40,12 @@ public class Cell {
         return this.column;
     }
 
-
-    public List<Card> getItems() {
-        return Collections.unmodifiableList(items);
-    }
-
-    public void clearItems() {
-        items.clear();
-    }
-
-    void addItem(Card item) {
-        this.items.add(item);
-    }
-
     public boolean isNextTo(Cell cell) {
         return Math.abs(cell.row - row) < 2 && Math.abs(cell.column - column) < 2;
     }
 
-    public int manhattanDistance(Cell cell) {
-        return Math.abs(cell.row - row) + Math.abs(cell.column - column);
+    public int manhattanDistance(Cell otherCell) {
+        return Math.abs(otherCell.row - row) + Math.abs(otherCell.column - column);
     }
 
     public int manhattanDistance(Position position) {

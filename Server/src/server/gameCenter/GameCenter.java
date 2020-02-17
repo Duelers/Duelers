@@ -74,35 +74,35 @@ public class GameCenter extends Thread {//synchronize
         if (message.getNewGameFields() == null || message.getNewGameFields().getGameType() == null)
             throw new ClientException("Invalid Request");
         if (message.getNewGameFields().getOpponentUsername() == null) {
-            addGlobalRequest(account1, message.getNewGameFields().getGameType(), message.getNewGameFields().getNumberOfFlags());
+            addGlobalRequest(account1, message.getNewGameFields().getGameType());
         } else {
             Account account2 = DataCenter.getInstance().getAccount(message.getNewGameFields().getOpponentUsername());
             checkOpponentAccountValidation(account2);
-            addUserInvitation(account1, account2, message.getNewGameFields().getGameType(), message.getNewGameFields().getNumberOfFlags());
+            addUserInvitation(account1, account2, message.getNewGameFields().getGameType());
         }
     }
 
-    private void addGlobalRequest(Account account, GameType gameType, int numberOfFlags) {
+    private void addGlobalRequest(Account account, GameType gameType) {
         removeAllGameRequests(account);
         synchronized (globalRequests) {
             for (GlobalRequest globalRequest : globalRequests) {
-                if (globalRequest.getNumberOfFlags() == numberOfFlags && globalRequest.getGameType() == gameType) {
-                    newMultiplayerGame(globalRequest.getRequester(), account, gameType, numberOfFlags);
+                if (globalRequest.getGameType() == gameType) {
+                    newMultiplayerGame(globalRequest.getRequester(), account, gameType);
                     globalRequests.remove(globalRequest);
                     return;
                 }
             }
-            globalRequests.addLast(new GlobalRequest(account, gameType, numberOfFlags));
+            globalRequests.addLast(new GlobalRequest(account, gameType));
         }
     }
 
-    private void addUserInvitation(Account inviter, Account invited, GameType gameType, int numberOfFlags) {
+    private void addUserInvitation(Account inviter, Account invited, GameType gameType) {
         removeAllGameRequests(inviter);
         synchronized (userInvitations) {
-            userInvitations.addLast(new UserInvitation(inviter, invited, gameType, numberOfFlags));
+            userInvitations.addLast(new UserInvitation(inviter, invited, gameType));
             Server.getInstance().addToSendingMessages(Message.makeInvitationMessage(
                     DataCenter.getInstance().getAccounts().get(invited), inviter.getUsername(),
-                    gameType, numberOfFlags));
+                    gameType));
         }
     }
 
@@ -152,7 +152,7 @@ public class GameCenter extends Thread {//synchronize
             userInvitations.remove(invitation);
             Server.getInstance().addToSendingMessages(Message.makeAcceptRequestMessage(
                     DataCenter.getInstance().getAccounts().get(inviter)));
-            newMultiplayerGame(inviter, invited, invitation.getGameType(), invitation.getNumberOfFlags());
+            newMultiplayerGame(inviter, invited, invitation.getGameType());
         }
     }
 
@@ -212,7 +212,7 @@ public class GameCenter extends Thread {//synchronize
         }
         deck.makeCustomGameDeck();
         Game game = null;
-        GameMap gameMap = new GameMap(DataCenter.getInstance().getCollectibleItems(), message.getNewGameFields().getNumberOfFlags(), DataCenter.getInstance().getOriginalFlag());
+        GameMap gameMap = new GameMap();
         switch (message.getNewGameFields().getGameType()) {
             case KILL_HERO:
                 game = new KillHeroBattle(myAccount, deck, gameMap);
@@ -228,12 +228,12 @@ public class GameCenter extends Thread {//synchronize
     }
 
 
-    private void newMultiplayerGame(Account account1, Account account2, GameType gameType, int numberOfFlags) {
+    private void newMultiplayerGame(Account account1, Account account2, GameType gameType) {
 
         removeAllGameRequests(account1);
         removeAllGameRequests(account2);
         Game game = null;
-        GameMap gameMap = new GameMap(DataCenter.getInstance().getCollectibleItems(), numberOfFlags, DataCenter.getInstance().getOriginalFlag());
+        GameMap gameMap = new GameMap();
         switch (gameType) {
             case KILL_HERO:
                 game = new KillHeroBattle(account1, account2, gameMap);

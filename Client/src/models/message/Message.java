@@ -186,11 +186,10 @@ public class Message {
         return message;
     }
 
-    public static Message makeMultiPlayerGameReQuestMessage(String receiver, GameType gameType, int numberOfFlags, String opponentUsername) {
+    public static Message makeMultiPlayerGameReQuestMessage(String receiver, GameType gameType, String opponentUsername) {
         Message message = new Message(receiver);
         message.newGameFields = new NewGameFields();
         message.newGameFields.setOpponentUsername(opponentUsername);
-        message.newGameFields.setNumberOfFlags(numberOfFlags);
         message.newGameFields.setGameType(gameType);
         message.messageType = MessageType.MULTIPLAYER_GAME_REQUEST;
         return message;
@@ -218,11 +217,10 @@ public class Message {
         return message;
     }
 
-    public static Message makeNewCustomGameMessage(String receiver, GameType gameType, int numberOfFlags, String customDeckName) {
+    public static Message makeNewCustomGameMessage(String receiver, GameType gameType, String customDeckName) {
         Message message = new Message(receiver);
         message.newGameFields = new NewGameFields();
         message.newGameFields.setCustomDeckName(customDeckName);
-        message.newGameFields.setNumberOfFlags(numberOfFlags);
         message.newGameFields.setGameType(gameType);
         message.messageType = MessageType.NEW_DECK_GAME;
         return message;

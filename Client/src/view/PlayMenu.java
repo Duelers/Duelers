@@ -38,7 +38,7 @@ public class PlayMenu extends Show {
         root.setBackground(ROOT_BACKGROUND);
 
         BorderPane background = BackgroundMaker.getPlayBackground(backgroundUrl);
-        DefaultContainer container = new DefaultContainer(new HorizontalButtonsBox(items));
+        DefaultContainer container = new DefaultContainer(new HorizontalButtonsBox());
         BackButton backButton = new BackButton(backEvent);
 
         AnchorPane sceneContents = new AnchorPane(background, container, backButton);

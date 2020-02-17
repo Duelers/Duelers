@@ -15,11 +15,9 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import models.card.CardType;
 import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedPlayer;
-import models.comperessedData.CompressedTroop;
 import models.gui.*;
 
 import java.beans.PropertyChangeEvent;
@@ -33,8 +31,6 @@ import static view.BattleView.Constants.SCALE;
 import static view.BattleView.Constants.SCREEN_WIDTH;
 
 public class PlayerBox implements PropertyChangeListener {
-    private final Image spellSelectedImage = new Image(new FileInputStream("Client/resources/ui/quests_glow@2x.png"));
-    private final Image spellNotSelectedImage = new Image(new FileInputStream("Client/resources/ui/quests@2x.png"));
     private final Image manaImage = new Image(new FileInputStream("Client/resources/ui/icon_mana@2x.png"));
     private final Image inActiveManaImage = new Image(new FileInputStream("Client/resources/ui/icon_mana_inactive@2x.png"));
     private final Image chatImage = new Image(new FileInputStream("Client/resources/ui/chat_bubble.png"));
@@ -50,7 +46,6 @@ public class PlayerBox implements PropertyChangeListener {
     private ImageView player2Image;
     private ColorAdjust player1ImageEffect;
     private ColorAdjust player2ImageEffect;
-    private ImageView spellButton;
     private DefaultLabel player1Name;
     private DefaultLabel player2Name;
 
@@ -60,7 +55,7 @@ public class PlayerBox implements PropertyChangeListener {
         this.player2 = game.getPlayerTwo();
 
         group = new Group();
-        addPhotos();
+        addHeroPortraits();
         if (game.getTurnNumber() % 2 == 1) {
             player1ImageEffect.setBrightness(0);
             player2ImageEffect.setBrightness(-0.6);
@@ -119,7 +114,7 @@ public class PlayerBox implements PropertyChangeListener {
         player2MessageShow = new MessageShow(player2Image);
     }
 
-    private void addPhotos() throws FileNotFoundException {
+    private void addHeroPortraits() throws FileNotFoundException {
 
         String player1HeroName = player1.getHero().getCard().getName();
         Image player1Profile = new Image(new FileInputStream (MapGeneralToPortrait().getOrDefault(player1HeroName,  "Client/resources/photo/general_portrait_image_hex_rook@2x.png")));
@@ -154,30 +149,6 @@ public class PlayerBox implements PropertyChangeListener {
         group.getChildren().addAll(player1Image, player2Image, player1Name, player2Name);
     }
 
-    private void addUsableItem() {
-        CompressedCard card = null;
-        if (battleScene.getMyPlayerNumber() == 1)
-            card = player1.getUsableItem();
-        if (battleScene.getMyPlayerNumber() == 2)
-            card = player2.getUsableItem();
-        if (card == null)
-            return;
-        StackPane stackPane = new StackPane();
-        CardAnimation animation = new CardAnimation(stackPane, card, 0, 0);
-        stackPane.setLayoutY(SCALE * (390));
-        if (battleScene.getMyPlayerNumber() == 1)
-            stackPane.setLayoutX(SCALE * (130));
-        else if (battleScene.getMyPlayerNumber() == 2)
-            stackPane.setLayoutX(Constants.SCREEN_WIDTH - SCALE * (130) - animation.getImageView().getFitWidth());
-        stackPane.setOnMouseEntered(mouseEvent -> {
-            if (battleScene.isMyTurn()) {
-                animation.inActive();
-            }
-        });
-        stackPane.setOnMouseExited(mouseEvent -> animation.pause());
-        group.getChildren().add(stackPane);
-    }
-    
     private void updateMP(int maxMP) {
         mpGroup.getChildren().clear();
         for (int i = 1; i <= player1.getCurrentMP(); i++) {
@@ -262,12 +233,6 @@ public class PlayerBox implements PropertyChangeListener {
                     player2ImageEffect.setBrightness(0);
                 }
                 SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.your_turn);
-            });
-        }
-        if (evt.getPropertyName().equals("flag")) {
-            Platform.runLater(() -> {
-                player1Name.setText(player1.getUserName() + " Flags:" + player1.getNumberOfCollectedFlags());
-                player2Name.setText(player2.getUserName() + " Flags:" + player2.getNumberOfCollectedFlags());
             });
         }
     }

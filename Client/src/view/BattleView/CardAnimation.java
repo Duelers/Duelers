@@ -43,8 +43,6 @@ public class CardAnimation extends Transition {
         Image image;
         switch (card.getType()) {
             case SPELL:
-            case USABLE_ITEM:
-            case COLLECTIBLE_ITEM:
                 image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/resources/icons/" + card.getSpriteName() + ".png"));
                 playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                     try {
@@ -170,8 +168,6 @@ public class CardAnimation extends Transition {
         Image image;
         switch (card.getType()) {
             case SPELL:
-            case USABLE_ITEM:
-            case COLLECTIBLE_ITEM:
                 image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/resources/icons/" + card.getSpriteName() + ".png"));
                 playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                     try {

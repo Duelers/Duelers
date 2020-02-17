@@ -6,12 +6,10 @@ import server.gameCenter.models.game.GameType;
 public class GlobalRequest {
     private final Account requester;
     private final GameType gameType;
-    private final int numberOfFlags;
 
-    public GlobalRequest(Account requester, GameType gameType, int numberOfFlags) {
+    public GlobalRequest(Account requester, GameType gameType) {
         this.requester = requester;
         this.gameType = gameType;
-        this.numberOfFlags = numberOfFlags;
     }
 
     public Account getRequester() {
@@ -22,7 +20,4 @@ public class GlobalRequest {
         return gameType;
     }
 
-    public int getNumberOfFlags() {
-        return numberOfFlags;
-    }
 }

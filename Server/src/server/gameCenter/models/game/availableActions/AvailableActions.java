@@ -35,10 +35,6 @@ public class AvailableActions {
                 handInserts.add(new Insert(card));
             }
         }
-
-        for (Card item : ownPlayer.getCollectedItems()) {
-            collectibleInserts.add(new Insert(item));
-        }
     }
 
     public void calculateAvailableAttacks(Game game) {

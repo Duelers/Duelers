@@ -9,34 +9,15 @@ import java.util.List;
 
 public class OldDataBase implements DataBase {
     private Collection originalCards = new Collection();
-    private List<Card> collectibleItems = new ArrayList<>();
-    private Card originalFlag;
 
     public Collection getOriginalCards() {
         return originalCards;
     }
 
-    public List<Card> getCollectibleItems() {
-        return collectibleItems;
-    }
-
-    public Card getOriginalFlag() {
-        return originalFlag;
-    }
 
     @Override
     public void addOriginalCard(Card card) {
         originalCards.addCard(card);
-    }
-
-    @Override
-    public void addNewCollectible(Card card) {
-        collectibleItems.add(card);
-    }
-
-    @Override
-    public void setOriginalFlag(Card originalFlag) {
-        this.originalFlag = originalFlag;
     }
 
     @Override

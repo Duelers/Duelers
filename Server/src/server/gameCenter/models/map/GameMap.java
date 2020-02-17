@@ -12,30 +12,17 @@ public class GameMap {
     private Cell[][] cells;
     private List<Troop> troops = new ArrayList<>();
 
-    public GameMap(List<Card> items, int numberOfFlags, Card originalFlag) {
+    public GameMap() {
         cells = new Cell[ROW_NUMBER][COLUMN_NUMBER];
         for (int i = 0; i < ROW_NUMBER; i++) {
             for (int j = 0; j < COLUMN_NUMBER; j++) {
                 cells[i][j] = new Cell(i, j);
             }
         }
-        LinkedList<Card> newItems = new LinkedList<>(items);
-        Collections.shuffle(newItems);
 
+        // If we want to add items to the board on startup (eg terrain, mana springs, etc)
+        // If can be placed here by setting cell[x][y] as the item
         // (0,4) | (2,5) | (4,4) are the correct coordinates for mana springs.
-        //cells[0][4].addItem(newItems.poll());
-        //cells[2][5].addItem(newItems.poll());
-        //cells[4][4].addItem(newItems.poll());
-
-        for (int i = 0; i < numberOfFlags; i++) {
-            int row = new Random().nextInt(ROW_NUMBER);
-            int column = new Random().nextInt(COLUMN_NUMBER);
-            while (!cells[row][column].getItems().isEmpty()) {
-                row = new Random().nextInt(ROW_NUMBER);
-                column = new Random().nextInt(COLUMN_NUMBER);
-            }
-            cells[row][column].addItem(new Card(originalFlag, "Flag", i));
-        }
     }
 
     public static int getRowNumber() {
@@ -105,17 +92,8 @@ public class GameMap {
         return null;
     }
 
-    public void removeTroop(Player player, Troop troop) {
+    public void removeTroop(Troop troop) {
         troops.remove(troop);
-        throwFlags(player, troop);
-        player.removeFlagCarrier(troop);
-    }
-
-    private void throwFlags(Player player, Troop troop) {
-        for (Card flag : troop.getFlags()) {
-            troop.getCell().addItem(flag);
-            player.decreaseNumberOfCollectedFlags();
-        }
     }
 
     public List<Troop> getTroops() {

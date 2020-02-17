@@ -30,8 +30,6 @@ class CardBackground extends StackPane {
             background.put(CardType.HERO, troopBackground);
             background.put(CardType.MINION, troopBackground);
             background.put(CardType.SPELL, spellBackground);
-            background.put(CardType.COLLECTIBLE_ITEM, itemBackground);
-            background.put(CardType.USABLE_ITEM, itemBackground);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

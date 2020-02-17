@@ -1,16 +1,8 @@
 package models.game.map;
 
-
-import models.card.Card;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class Cell {
     private int row;
     private int column;
-    private List<Card> items = new ArrayList<>();
 
     public Cell(int row, int column) {
         this.row = row;
@@ -32,25 +24,13 @@ public class Cell {
         return this.column;
     }
 
-
-    public List<Card> getItems() {
-        return Collections.unmodifiableList(items);
+    public boolean isNextTo(Cell otherCell) {
+        return Math.abs(otherCell.row - row) < 2 && Math.abs(otherCell.column - column) < 2;
     }
 
-    public void clearItems() {
-        items.clear();
-    }
+    public int manhattanDistance(Cell otherCell) {
 
-    public void addItem(Card item) {
-        this.items.add(item);
-    }
-
-    public boolean isNextTo(Cell cell) {
-        return Math.abs(cell.row - row) < 2 && Math.abs(cell.column - column) < 2;
-    }
-
-    public int manhattanDistance(Cell cell) {
-        return Math.abs(cell.row - row) + Math.abs(cell.column - column);
+        return Math.abs(otherCell.row - row) + Math.abs(otherCell.column - column);
     }
 
     public int manhattanDistance(int selectedRow, int selectedColumn) {

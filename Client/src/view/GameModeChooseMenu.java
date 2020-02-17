@@ -32,7 +32,6 @@ public abstract class GameModeChooseMenu extends PlayMenu {
         private final DialogBox box;
         private final DialogContainer container;
         private NormalField usernameField;
-        private FlagSpinner flagNumSpinner;
 
         DialogWrapper(boolean username, boolean spinner) {
             box = new DialogBox();
@@ -42,11 +41,6 @@ public abstract class GameModeChooseMenu extends PlayMenu {
                 usernameField = new NormalField("opponent username");
                 box.getChildren().addAll(usernameText, usernameField);
             }
-            if (spinner) {
-                DialogText flagNumText = new DialogText("Please set number of flags in the game");
-                flagNumSpinner = new FlagSpinner();
-                box.getChildren().addAll(flagNumText, flagNumSpinner);
-            }
         }
 
         void show() {
@@ -54,12 +48,11 @@ public abstract class GameModeChooseMenu extends PlayMenu {
             box.makeClosable(container);
         }
 
-        void makeButton(GameType type, int numberOfFlags) {
+        void makeButton(GameType type) {
             box.makeButton("START", buttonEvent -> {
                 if (usernameField != null && "".equals(usernameField.getText())) return;
                 MultiPlayerMenuController.getInstance().startGame(
                         type,
-                        flagNumSpinner == null ? numberOfFlags : flagNumSpinner.getValue(),
                         usernameField == null ? null : usernameField.getText()
                 );
                 container.close();

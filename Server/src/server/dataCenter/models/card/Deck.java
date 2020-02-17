@@ -79,11 +79,6 @@ public class Deck {
                     throw new ClientException("you can't have more than 1 hero!");
                 hero = card;
                 break;
-            case USABLE_ITEM:
-                if (item != null)
-                    throw new ClientException("you can't have more than 1 item!");
-                item = card;
-                break;
             case MINION:
             case SPELL:
                 others.add(card);
@@ -114,10 +109,6 @@ public class Deck {
         if (hero != null) {
             this.hero = new Card(hero);
             this.hero.setCardId(makeId(hero, 1));
-        }
-        if (item != null) {
-            this.item = new Card(item);
-            this.item.setCardId(makeId(item, 1));
         }
 
         List<Card> oldOthers = this.others;

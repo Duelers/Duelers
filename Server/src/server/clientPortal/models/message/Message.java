@@ -124,12 +124,11 @@ public class Message {
         return message;
     }
 
-    public static Message makeGameUpdateMessage(String receiver, int turnNumber, int player1CurrentMP,
-                                                int player1NumberOfCollectedFlags, int player2CurrentMP,
-                                                int player2NumberOfCollectedFlags, List<CellEffect> cellEffects) {
+    public static Message makeGameUpdateMessage(String receiver, int turnNumber, int player1CurrentMP, int player2CurrentMP,
+                                                List<CellEffect> cellEffects) {
         Message message = new Message(receiver);
-        message.gameUpdateMessage = new GameUpdateMessage(turnNumber, player1CurrentMP, player1NumberOfCollectedFlags,
-                player2CurrentMP, player2NumberOfCollectedFlags, cellEffects);
+        message.gameUpdateMessage = new GameUpdateMessage(turnNumber, player1CurrentMP,
+                player2CurrentMP,  cellEffects);
         message.messageType = MessageType.GAME_UPDATE;
         return message;
     }
@@ -163,10 +162,10 @@ public class Message {
         return message;
     }
 
-    public static Message makeInvitationMessage(String receiver, String inviterUsername, GameType gameType, int numberOfFlags) {
+    public static Message makeInvitationMessage(String receiver, String inviterUsername, GameType gameType) {
         Message message = new Message(receiver);
         message.messageType = MessageType.INVITATION;
-        message.newGameFields = new NewGameFields(gameType, numberOfFlags, 0, null, inviterUsername);
+        message.newGameFields = new NewGameFields(gameType, 0, null, inviterUsername);
         return message;
     }
 

@@ -345,9 +345,7 @@ public class Server {
                 continue;
             }
             addToSendingMessages(Message.makeGameUpdateMessage(
-                    clientName, game.getTurnNumber(), game.getPlayerOne().getCurrentMP(),
-                    game.getPlayerOne().getNumberOfCollectedFlags(), game.getPlayerTwo().getCurrentMP(),
-                    game.getPlayerTwo().getNumberOfCollectedFlags(), cellEffects));
+                    clientName, game.getTurnNumber(), game.getPlayerOne().getCurrentMP(), game.getPlayerTwo().getCurrentMP(), cellEffects));
         }
     }
 

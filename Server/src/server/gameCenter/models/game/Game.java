@@ -367,17 +367,10 @@ public abstract class Game {
                         troop,
                         gameMap.getCell(position)
                 );
-                for (Card item : gameMap.getCell(position).getItems()) {
-                    if (item.getType() == CardType.FLAG) {
-                        catchFlag(troop, item);
-                    } else if (item.getType() == CardType.COLLECTIBLE_ITEM) {
-                        catchItem(item);
-                    }
-                }
+
                 Server.getInstance().sendTroopUpdateMessage(this, troop);
-                gameMap.getCell(position).clearItems();
             }
-            if (card.getType() == CardType.SPELL || card.getType() == CardType.COLLECTIBLE_ITEM) {
+            if (card.getType() == CardType.SPELL) {
                 player.addToGraveYard(card);
                 Server.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
             }
@@ -465,27 +458,7 @@ public abstract class Game {
         troop.setCell(cell);
         troop.setCanMove(false);
 
-        for (Card item : cell.getItems()) {
-            if (item.getType() == CardType.FLAG) {
-                catchFlag(troop, item);
-            } else if (item.getType() == CardType.COLLECTIBLE_ITEM) {
-                catchItem(item);
-            }
-        }
         Server.getInstance().sendTroopUpdateMessage(this, troop);
-        cell.clearItems();
-    }
-
-    void catchFlag(Troop troop, Card item) throws ServerException {
-        troop.addFlag(item);
-        getCurrentTurnPlayer().increaseNumberOfCollectedFlags();
-        getCurrentTurnPlayer().addFlagCarrier(troop);
-        Server.getInstance().sendGameUpdateMessage(this);
-    }
-
-    private void catchItem(Card item) {
-        getCurrentTurnPlayer().collectItem(item);
-        Server.getInstance().sendChangeCardPositionMessage(this, item, CardPosition.COLLECTED);
     }
 
     public void attack(String username, String attackerCardId, String defenderCardId) throws LogicException {
@@ -782,10 +755,10 @@ public abstract class Game {
         applyOnDeathSpells(troop);
         if (troop.getPlayerNumber() == 1) {
             playerOne.killTroop(this, troop);
-            gameMap.removeTroop(playerOne, troop);
+            gameMap.removeTroop(troop);
         } else if (troop.getPlayerNumber() == 2) {
             playerTwo.killTroop(this, troop);
-            gameMap.removeTroop(playerTwo, troop);
+            gameMap.removeTroop(troop);
         }
         Server.getInstance().sendChangeCardPositionMessage(this, troop.getCard(), CardPosition.GRAVE_YARD);
     }

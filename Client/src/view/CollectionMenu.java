@@ -184,12 +184,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         DefaultLabel spellsLabel = new DefaultLabel("SPELLS", TITLE_FONT, Color.WHITE);
         CollectionCardsGrid spellsGrid = new CollectionCardsGrid(showingCards.getSpells());
 
-        DefaultLabel itemsLabel = new DefaultLabel("ITEMS", TITLE_FONT, Color.WHITE);
-        CollectionCardsGrid itemsGrid = new CollectionCardsGrid(showingCards.getItems());
-
         cardsBox.getChildren().addAll(
-                heroesLabel, heroesGrid, minionsLabel, minionsGrid, spellsLabel, spellsGrid, itemsLabel, itemsGrid
-        );
+                heroesLabel, heroesGrid, minionsLabel, minionsGrid, spellsLabel, spellsGrid);
         cardsBox.setMinSize(COLLECTION_WIDTH * 0.95, SCROLL_HEIGHT * 0.95);
         cardsBox.setAlignment(Pos.TOP_CENTER);
     }
@@ -233,7 +229,6 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
                     cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getHeroes()));
                     cardsBox.getChildren().set(3, new CollectionCardsGrid(showingCards.getMinions()));
                     cardsBox.getChildren().set(5, new CollectionCardsGrid(showingCards.getSpells()));
-                    cardsBox.getChildren().set(7, new CollectionCardsGrid(showingCards.getItems()));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -269,10 +264,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
             DefaultLabel spellsLabel = new DefaultLabel("SPELLS", TITLE_FONT, Color.WHITE);
             DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
 
-            DefaultLabel itemsLabel = new DefaultLabel("ITEMS", TITLE_FONT, Color.WHITE);
-            DeckCardsGrid itemsGrid = new DeckCardsGrid(showingCards.getItems(), deck);
             cardsBox.getChildren().addAll(
-                    heroesLabel, heroesGrid, minionsLabel, minionsGrid, spellsLabel, spellsGrid, itemsLabel, itemsGrid
+                    heroesLabel, heroesGrid, minionsLabel, minionsGrid, spellsLabel, spellsGrid
             );
         } catch (FileNotFoundException e) {
             e.printStackTrace();

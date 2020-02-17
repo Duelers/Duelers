@@ -18,9 +18,8 @@ public class CustomGameMenuController {
         return ourInstance;
     }
 
-    public void startGame(String deckName, GameType gameType, int numberOfFlags) {
+    public void startGame(String deckName, GameType gameType) {
         Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeNewCustomGameMessage(Constants.SERVER_NAME, gameType,
-                        numberOfFlags, deckName));
+                Message.makeNewCustomGameMessage(Constants.SERVER_NAME, gameType, deckName));
     }
 }

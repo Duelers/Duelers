@@ -14,12 +14,10 @@ public class CompressedTroop {
     private boolean canAttack = true;
     private boolean isDisarm;
     private boolean noAttackFromWeakerOnes;
-    private int numberOfCollectedFlags;
     private int playerNumber;
 
     public CompressedTroop(Card card, int currentAp, int currentHp, int enemyHitChanges, Cell cell,
-                           boolean canMove, boolean canAttack, boolean isDisarm, boolean noAttackFromWeakerOnes,
-                           int numberOfCollectedFlags, int playerNumber) {
+                           boolean canMove, boolean canAttack, boolean isDisarm, boolean noAttackFromWeakerOnes, int playerNumber) {
         this.card = card.toCompressedCard();
         this.currentAp = currentAp;
         this.currentHp = currentHp;
@@ -29,7 +27,6 @@ public class CompressedTroop {
         this.canAttack = canAttack;
         this.isDisarm = isDisarm;
         this.noAttackFromWeakerOnes = noAttackFromWeakerOnes;
-        this.numberOfCollectedFlags = numberOfCollectedFlags;
         this.playerNumber = playerNumber;
     }
 }
