@@ -32,7 +32,7 @@ By default, we search for cards in the 'cards_to_import' directory and add them 
 * Run the script  (ideally from the command line, if you double-click the .exe you won't see error messages)
 * Assuming you have no errors, run the game and login as the account mentioned in info.json (this defaults to "duelyst").
 * Go to collection, add your new card to decks and playtest it.
-* If you are happy with the card then the next is to sumbit it:
+* If you are happy with the card then the next is to submit it:
 	* Developers can 'submit' the card by creating a pull request using Git. 
 	* Other users can post the card.json file on Discord and some friendly dev will come along and do the rest for you. 
 
@@ -54,7 +54,7 @@ Here is a (non-exhaustive) list of card creation rules:
 	"cardId": "AurynNexus"
 
 * card 'type' must be one of "HERO", "MINION", "SPELL" (case sensitive)
-* the "spellId" field should accuratly describe what the effect does. This will often be different than the card description. 
+* the "spellId" field should accurately describe what the effect does. This will often be different than the card description. 
 
 ## Card Creation Tips
 
