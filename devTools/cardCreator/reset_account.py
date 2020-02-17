@@ -22,12 +22,12 @@ if __name__ == "__main__":
 
     main_deck = decks = None 
     if os.path.exists(account_path):
-        with open() as f:
-        ac_data = json.load(account_path)
-        
-        main_deck = ac_data["mainDeckName"]
-        decks = ac_data["decks"]
-        
+        with open(account_path, "r") as f:
+            ac_data = json.load(f)
+
+            main_deck = ac_data.get("mainDeckName", None)
+            decks = ac_data.get("decks", None)
+
         os.remove(account_path)
 
 
