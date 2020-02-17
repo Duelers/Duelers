@@ -31,16 +31,4 @@ public class GlobalGameMenu extends GameModeChooseMenu {
         new WaitingMenu(this).show();
     }
 
-    @Override
-    void startSingleFlag() {
-        MultiPlayerMenuController.getInstance().startGame(GameType.A_FLAG, 1, null);
-        new WaitingMenu(this).show();
-    }
-
-    @Override
-    void startMultiFlag() {
-        DialogWrapper dialog = new DialogWrapper(false, true);
-        dialog.makeButton(GameType.SOME_FLAG, 0);
-        dialog.show();
-    }
 }
