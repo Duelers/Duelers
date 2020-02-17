@@ -12,6 +12,8 @@ ROOT_DIR = os.path.abspath(os.path.join(__file__ ,"..",".."))
 CLIENT_DIR = os.path.join(ROOT_DIR, "Client")
 SERVER_DIR = os.path.join(ROOT_DIR, "Server")
 
+JRE_PATH = os.path.join(SCRIPT_DIR, "application", "jre")
+
 LAUNCH4J_CONFIGS = os.path.join(SCRIPT_DIR, "launch4j_build_configs.xml")
 
 def read_output_path(xml_file):
@@ -50,7 +52,8 @@ if __name__ == "__main__":
     output_dir = os.path.abspath(os.path.join(os.path.dirname(read_output_path(LAUNCH4J_CONFIGS)), ".."))
     assert os.path.exists(output_dir), f"ERROR: bad path {output_dir}"
 
-    jre_path = read_jre_path(LAUNCH4J_CONFIGS)
+    #jre_path = read_jre_path(LAUNCH4J_CONFIGS)
+    jre_path = JRE_PATH
     assert os.path.exists(jre_path), f"ERROR: bad path {jre_path}"
     assert len(os.listdir(jre_path)) > 3, "ERROR: jre files are missing! Please ensure that '/application/jre/bin' is a valid path"
 

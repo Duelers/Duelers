@@ -296,30 +296,6 @@ public class MapBox implements PropertyChangeListener {
             resetSelection();
             return;
         }
-        if (selectionType == SelectionType.COMBO) {
-            if (currentTroop != null && currentTroop.getPlayerNumber() == battleScene.getMyPlayerNumber()
-                    && currentTroop.getCard().isHasCombo()) {
-                if (comboTroops.contains(currentTroop)) {
-                    comboTroops.remove(currentTroop);
-                    System.out.println("remove " + currentTroop.getCard().getCardId() + " from combos");
-                    SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
-                } else {
-                    comboTroops.add(currentTroop);
-                    System.out.println("add " + currentTroop.getCard().getCardId() + " to combos");
-                    SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
-                }
-                updateMapColors();
-            } else if (GameController.getInstance().getAvailableActions().canAttack(
-                    selectedTroop, row, column)) {
-                comboTroops.add(selectedTroop);
-                battleScene.getController().comboAttack(comboTroops, currentTroop);
-                battleScene.getHandBox().resetSelection();
-                resetSelection();
-                System.out.println("combo attack");
-                SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.attack);
-            }
-            return;
-        }
         if (selectionType == SelectionType.NORMAL) {
             if (GameController.getInstance().getAvailableActions().canAttack(
                     selectedTroop, row, column)) {
@@ -374,17 +350,9 @@ public class MapBox implements PropertyChangeListener {
                     cells[row][column].setFill(Constants.SELECTED_COLOR);//not important
                     continue;
                 }
-                if (selectionType == SelectionType.COMBO) {
-                    if (currentTroop != null && currentTroop.getPlayerNumber() == battleScene.getMyPlayerNumber()
-                            && currentTroop.getCard().isHasCombo()) {
-                        if (comboTroops.contains(currentTroop))
-                            cells[row][column].setFill(Constants.SELECTED_COLOR);
-                        else
-                            cells[row][column].setFill(Constants.CAN_SELECT_COLOR);
-                    } else if (GameController.getInstance().getAvailableActions().canAttack(selectedTroop, row, column))
-                        cells[row][column].setFill(Constants.ATTACK_COLOR);
-                    else
-                        cells[row][column].setFill(Constants.defaultColor);
+
+                if (selectionType == SelectionType.SPELL) {
+                    cells[row][column].setFill(Constants.defaultColor);
                     continue;
                 }
                 if (selectionType == SelectionType.NORMAL) {

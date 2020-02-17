@@ -111,7 +111,6 @@ buildNumber.properties
 ## Resources
 
 /exported_decks/*
-/Server/resources/accounts/
 /resources/accounts/
 
 ## Windows Exe
@@ -119,9 +118,16 @@ buildNumber.properties
 /Build_exe/Application/Client/*.exe
 /Build_exe/Application/Client/Resources
 /Build_exe/Application/Client/Classes
+/Build_exe/Application/devTools
+/Build_exe/Application/jre
 /Build_exe/Application/resources
 /Build_exe/Application/Server
+/Build_exe/application/exported_decks/*
+
+## DevTools
+
+devTools/cardCreator/AddJsonCardToGame.exe
 
 ## white list 
-!/Server/resources/accounts/john_doe.account.json
 !.keep
+!/Server/resources/accounts/template.account.json

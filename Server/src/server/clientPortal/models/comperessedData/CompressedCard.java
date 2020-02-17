@@ -18,12 +18,11 @@ public class CompressedCard {
     private int mannaPoint;
     private AttackType attackType;
     private int range;
-    private boolean hasCombo;
     private int remainingNumber;
 
     public CompressedCard(String name, String description, String cardId, String spriteName, CardType type,
                           List<Spell> spells, int defaultAp, int defaultHp, int mannaPoint,
-                          AttackType attackType, int range, boolean hasCombo, int remainingNumber) {
+                          AttackType attackType, int range, int remainingNumber) {
         this.name = name;
         this.description = description;
         this.cardId = cardId;
@@ -34,8 +33,6 @@ public class CompressedCard {
         this.mannaPoint = mannaPoint;
         this.attackType = attackType;
         this.range = range;
-        this.hasCombo = hasCombo;
-
         this.remainingNumber = remainingNumber;
     }
 }

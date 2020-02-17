@@ -22,10 +22,9 @@ public class Card implements ICard {
     private int price;
     private AttackType attackType;
     private int range;
-    private boolean hasCombo;
     private int remainingNumber;
 
-    public Card(String name, String cardId, String description, String spriteName, CardType type, ArrayList<Spell> spells, int defaultAp, int defaultHp, int mannaPoint, int price, AttackType attackType, int range, boolean hasCombo) {
+    public Card(String name, String cardId, String description, String spriteName, CardType type, ArrayList<Spell> spells, int defaultAp, int defaultHp, int mannaPoint, int price, AttackType attackType, int range) {
         this.name = name;
         this.cardId = cardId;
         this.description = description;
@@ -38,7 +37,6 @@ public class Card implements ICard {
         this.price = price;
         this.attackType = attackType;
         this.range = range;
-        this.hasCombo = hasCombo;
     }
 
     public Card() {
@@ -104,10 +102,6 @@ public class Card implements ICard {
         return price;
     }
 
-    public boolean hasCombo() {
-        return hasCombo;
-    }
-
     public boolean nameContains(String cardName) {
         return name.toLowerCase().contains(cardName.toLowerCase());
     }
@@ -129,4 +123,6 @@ public class Card implements ICard {
     public void addListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
+
+
 }

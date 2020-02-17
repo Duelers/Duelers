@@ -27,17 +27,13 @@ public class MainMenu extends Show {
     );
     private final List<MenuItem> items = new ArrayList<>();
     private int itemIndex = 0;
-    private boolean inLeaderBoard = false;
     private boolean inOnlineGames = false;
     private final MenuItem[] itemsArray = {
             new MenuItem(itemIndex++, "PLAY", "Single player, multiplayer", event -> PlayMenu.getInstance().show()),
             new MenuItem(itemIndex++, "PROFILE", "See you profile information", event -> menu.showProfileDialog()),
-            //disabled for now. General consensus is that we do not want it
-            //new MenuItem(itemIndex++, "SHOP", "Buy or sell every card you want", event -> new ShopMenu().show()),
             new MenuItem(itemIndex++, "COLLECTION", "View your cards or build a deck", event -> new CollectionMenu().show()),
             new MenuItem(itemIndex++, "CUSTOM CARD", "Design your card with your own taste", event -> new CustomCardMenu().show()),
             new MenuItem(itemIndex++, "GLOBAL CHAT", "chat with other players", event -> GlobalChatDialog.getInstance().show()),
-            new MenuItem(itemIndex++, "LEADERBOARD", "See other people and their place", event -> menu.showLeaderboard()),
             new MenuItem(itemIndex++, "QUIT GAME", "Exit the game", event -> System.exit(0))
 
     };
@@ -131,37 +127,6 @@ public class MainMenu extends Show {
         }).start();
 
         onlineGamesDialog.show();
-    }
-
-    private void showLeaderboard() {
-        BackgroundMaker.makeMenuBackgroundFrozen();
-        DialogBox dialogBox = new DialogBox();
-        LeaderboardScroll leaderboardScroll = new LeaderboardScroll(Collections.emptyList());
-        dialogBox.getChildren().add(leaderboardScroll);
-
-        inLeaderBoard = true;
-        new Thread(() -> {
-            try {
-                while (inLeaderBoard) {
-                    MainMenuController.getInstance().requestLeaderboard();
-                    synchronized (MainMenuController.getInstance()) {
-                        MainMenuController.getInstance().wait();
-                    }
-                    AccountInfo[] leaderboard = MainMenuController.getInstance().getLeaderBoard();
-                    Platform.runLater(() -> leaderboardScroll.setItems(leaderboard));
-                    Thread.sleep(4000);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
-        DialogContainer dialogContainer = new DialogContainer(root, dialogBox);
-        dialogContainer.show();
-        dialogBox.makeClosable(dialogContainer, closeEvent -> {
-            BackgroundMaker.makeMenuBackgroundUnfrozen();
-            inLeaderBoard = false;
-        });
     }
 
 
