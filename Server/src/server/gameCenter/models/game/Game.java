@@ -215,7 +215,7 @@ public abstract class Game {
                 int currentMana = getCurrentTurnPlayer().getCurrentMP();
 
                 // Pick a playable minion in the hand at random.
-                // By "playable" we simply check availible mana relative to minion cost.
+                // By "playable" we simply check available mana relative to minion cost.
                 ArrayList<Card> minionOptions = new ArrayList<Card>();
                 for (Insert i : actions.getHandInserts()) {
                     if (i.getCard().getMannaPoint() <= currentMana && i.getCard().getType() == CardType.MINION) {
@@ -383,7 +383,7 @@ public abstract class Game {
     private void putMinion(int playerNumber, Troop troop, Cell cell) {
 
         if (!(troop.getCard().getType() == CardType.HERO)) {
-            // This function is also used to place heros at start of game, hence this check.
+            // This function is also used to place heroes at start of game, hence this check.
             if (!isLegalCellForMinion(cell, troop.getCard())) {
                 // Note: there is a bug where is you target an illegal square the game gets in an unplayable state
                 return;
