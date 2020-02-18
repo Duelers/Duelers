@@ -207,7 +207,7 @@ public class GameCenter extends Thread {//synchronize
             throw new ClientException("you have online game!");
         }
         Deck deck = new Deck(myAccount.getDeck(message.getNewGameFields().getCustomDeckName()));
-        if (deck == null || !deck.isValid()) {
+        if (!deck.isValid()) {
             throw new ClientException("selected deck is not valid");
         }
         deck.makeCustomGameDeck();
@@ -354,10 +354,6 @@ public class GameCenter extends Thread {//synchronize
         try {
             Game game = getGame(sender);
 
-            if (game == null) {
-                Server.getInstance().serverPrint("Error forceGameFinish!");
-                return;
-            }
             DataCenter.getInstance().loginCheck(sender);
             String username = DataCenter.getInstance().getClients().get(sender).getUsername();
 
