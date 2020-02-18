@@ -42,7 +42,7 @@ Once you hit the cog icon you should get a log message:
 
 You can then press the blue arrow to check the process worked.
 	
-### Sucess !?
+### Success !?
 
 If this all works, you should be able to double-click the .exe in the application folder and having a working game.   
 If something failed, you can always try again. The cleanup.py should help you get back to where you started.

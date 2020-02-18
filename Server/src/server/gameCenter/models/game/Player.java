@@ -38,13 +38,6 @@ public class Player {
     }
 
     public CompressedPlayer toCompressedPlayer() {
-        Card firstItem = deck.getItem();
-        CompressedCard useableItem = null;
-
-        if (firstItem != null) {
-            useableItem = firstItem.toCompressedCard();
-        }
-
         return new CompressedPlayer(
                 userName, currentMP, hand, graveyard, nextCard, playerNumber);
     }
