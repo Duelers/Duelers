@@ -65,7 +65,7 @@ public class Rest implements DataBase {
 
     private int put(String name, String key, String value) {
         final String path = "put";
-        HttpResponse<String> response = null;
+        HttpResponse<String> response;
         HashMap<String, Object> parameters = new HashMap<>();
         parameters.put("name", name);
         parameters.put("key", key);
@@ -83,7 +83,7 @@ public class Rest implements DataBase {
 
     private int createMap(String name) {
         final String path = "init_DB";
-        HttpResponse<String> response = null;
+        HttpResponse<String> response;
         HashMap<String, Object> parameters = new HashMap<>();
         parameters.put("name", name);
         try {
@@ -103,7 +103,7 @@ public class Rest implements DataBase {
     }
 
     private ArrayList getList(String name, String path) {
-        HttpResponse<String> response = null;
+        HttpResponse<String> response;
         HashMap<String, Object> parameters = new HashMap<>();
         parameters.put("name", name);
         try {
@@ -126,7 +126,7 @@ public class Rest implements DataBase {
 
     private String getFromDataBase(String name, String key) {
         final String path = "get";
-        HttpResponse<String> response = null;
+        HttpResponse<String> response;
         HashMap<String, Object> parameters = new HashMap<>();
         parameters.put("name", name);
         parameters.put("key", key);
@@ -143,7 +143,7 @@ public class Rest implements DataBase {
 
     private int delete(String name, String key) {
         final String path = "del_from_DB";
-        HttpResponse<String> response = null;
+        HttpResponse<String> response;
         HashMap<String, Object> parameters = new HashMap<>();
         parameters.put("name", name);
         parameters.put("key", key);
