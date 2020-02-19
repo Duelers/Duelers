@@ -1,6 +1,5 @@
 package server.gameCenter.models.map;
 
-import server.clientPortal.models.comperessedData.CompressedCell;
 import java.util.ArrayList;
 
 public class Cell {
@@ -10,10 +9,6 @@ public class Cell {
     public Cell(int row, int column) {
         this.row = row;
         this.column = column;
-    }
-
-    public CompressedCell toCompressedCell() {
-        return new CompressedCell(row, column);
     }
 
     @Override
