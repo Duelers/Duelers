@@ -1,6 +1,9 @@
 package models.game.map;
 
 import models.comperessedData.CompressedCell;
+import server.gameCenter.models.map.Cell;
+
+import java.util.ArrayList;
 
 public class Position {
     private int row;
@@ -48,4 +51,36 @@ public class Position {
     public String toString() {
         return "(" + row + ", " + column + ")";
     }
+
+    public ArrayList<Position> getNeighbourCells(int numRows, int numCols) {
+        /**
+         * Gets the 3x3 Neigbours of a cell.
+         * Note that this function assumes a finite plane (i.e there are edges and corners)
+         * All indexes >= 0 and less than the number of Rows/Columns
+         * Also note that this function does not return the cell itself.
+         */
+
+        ArrayList<Position> positions = new ArrayList<>();
+
+        short[] offsets = {-1, 0, 1};
+        for (short i : offsets) {
+            for (short j : offsets) {
+
+                int r2 = i + row;
+                int c2 = j + column;
+
+                // Check cells bounds, we want all index to be positive and less than the upper bound.
+                boolean checkRow = (r2 >= 0) ? r2 < numRows : false;
+                boolean checkCol = (c2 >= 0) ? c2 < numCols : false;
+                boolean checkIdentity = (r2 == row) ? c2 == column : false; // don't add the current cell itself
+
+                if (checkRow && checkCol && !checkIdentity) {
+                    positions.add(new Position(row + i, column + j));
+                }
+            }
+        }
+        return positions;
+    }
+
+
 }
