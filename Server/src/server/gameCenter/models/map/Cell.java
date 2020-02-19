@@ -52,7 +52,7 @@ public class Cell {
                 int r2 = i + row;
                 int c2 = j + column;
 
-                // Check cells bounds, we want all index to be positive and lew than the upper bound.
+                // Check cells bounds, we want all index to be positive and less than the upper bound.
                 boolean checkRow = (r2 >= 0) ? r2 < numRows : false;
                 boolean checkCol = (c2 >= 0) ? c2 < numCols : false;
                 boolean checkIdentity = (r2 == row) ? c2 == column : false; // don't add the current cell itself
