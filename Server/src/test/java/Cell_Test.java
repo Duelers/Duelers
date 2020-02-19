@@ -113,7 +113,7 @@ public class Cell_Test {
     @Test
     public void getNeighbourCells_ReturnsEightCells_WhenInCentre(){
 
-        Cell bottomRight = new Cell(1, 1);
+        Cell centre = new Cell(1, 1);
 
         ArrayList<Cell> expected = new ArrayList<>();
         expected.add(new Cell(0, 0));
@@ -125,7 +125,7 @@ public class Cell_Test {
         expected.add(new Cell(0, 2));
         expected.add(new Cell(2, 0));
 
-        ArrayList<Cell> actual = bottomRight.getNeighbourCells(10, 10);
+        ArrayList<Cell> actual = centre.getNeighbourCells(10, 10);
 
         Assert.assertEquals(8, actual.size());
         expected.forEach(n -> Assert.assertTrue(n.toString() + "not in actual",  actual.contains(n)));

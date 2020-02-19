@@ -42,6 +42,12 @@ public class Cell {
 
 
     public ArrayList<Cell> getNeighbourCells(int numRows, int numCols) {
+        /**
+         * Gets the 3x3 Neigbours of a cell.
+         * Note that this function assumes a finite plane (i.e there are edges and corners)
+         * All indexes >= 0 and less than the number of Rows/Columns
+         * Also note that this function does not return the cell itself.
+         */
 
         ArrayList<Cell> cells = new ArrayList<>();
 
