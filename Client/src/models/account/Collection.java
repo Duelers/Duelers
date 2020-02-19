@@ -4,7 +4,7 @@ import models.card.Card;
 import models.card.Deck;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Collection {
@@ -12,17 +12,24 @@ public class Collection {
     private List<Card> minions = new ArrayList<>();
     private List<Card> spells = new ArrayList<>();
 
+    // When two cards cost the same mana, sort alphabetically by name.
+    // Note that the current implementation only sorts by first character.
+    // Thus Az could appear before Ab, but Cz is always before Da.
+    private Comparator<Card> compareCostThenName = Comparator.comparingInt(Card::getMannaPoint).thenComparingInt(c -> c.getCardId().charAt(0));
 
     public List<Card> getHeroes() {
-        return Collections.unmodifiableList(heroes);
+        heroes.sort(compareCostThenName);
+        return heroes;
     }
 
     public List<Card> getMinions() {
-        return Collections.unmodifiableList(minions);
+        minions.sort(compareCostThenName);
+        return minions;
     }
 
     public List<Card> getSpells() {
-        return Collections.unmodifiableList(spells);
+        spells.sort(compareCostThenName);
+        return spells;
     }
 
     public Collection searchCollection(String cardName) {
