@@ -1,6 +1,7 @@
 package models.game.availableActions;
 
 
+import com.sun.xml.internal.bind.v2.TODO;
 import models.card.AttackType;
 import models.comperessedData.*;
 import models.game.map.Position;
@@ -27,6 +28,10 @@ public class AvailableActions {
     }
 
     private void calculateCardInserts(CompressedPlayer ownPlayer) {
+
+        // TODO I think we need to change this function such that it works similar to the movement one below.
+        // If we have a spell, or a minion we need to check what the valid squares are. 
+
         for (CompressedCard card : ownPlayer.getHand()) {
             handInserts.add(new Insert(card));
         }
