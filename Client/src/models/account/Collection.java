@@ -1,10 +1,12 @@
 package models.account;
 
+import javafx.collections.transformation.SortedList;
 import models.card.Card;
 import models.card.Deck;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Collection {
@@ -12,17 +14,32 @@ public class Collection {
     private List<Card> minions = new ArrayList<>();
     private List<Card> spells = new ArrayList<>();
 
+    private Comparator<Card> compareCostThenName = new Comparator<Card>() {
+        public int compare(Card c1, Card c2) {
+            int result = Integer.compare(c1.getMannaPoint(), c2.getMannaPoint());
+            if ( result == 0 ) {
+                // When two cards cost the same mana, sort alphabetically by name.
+                // Note that the current implementation only sorts by first character.
+                // Thus Az could appear before Ab, but Cz is always before Da.
+                result = Character.compare(c1.getCardId().charAt(0), c2.getCardId().charAt(0));
+            }
+            return result;
+        }
+    };
 
     public List<Card> getHeroes() {
-        return Collections.unmodifiableList(heroes);
+        heroes.sort(compareCostThenName);
+        return heroes;
     }
 
     public List<Card> getMinions() {
-        return Collections.unmodifiableList(minions);
+        minions.sort(compareCostThenName);
+        return minions;
     }
 
     public List<Card> getSpells() {
-        return Collections.unmodifiableList(spells);
+        spells.sort(compareCostThenName);
+        return spells;
     }
 
     public Collection searchCollection(String cardName) {
