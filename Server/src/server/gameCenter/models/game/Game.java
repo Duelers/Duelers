@@ -440,19 +440,25 @@ public abstract class Game {
         }
 
         if (!gameMap.isInMap(position)) {
-            throw new ClientException("coordination is not valid");
+            throw new ClientException("given coordinate is not valid");
         }
 
         Troop troop = gameMap.getTroop(cardId);
         if (troop == null) {
             throw new ClientException("select a valid card");
         }
-        if (troop.getCell().manhattanDistance(position) > 2) {
-            throw new ClientException("too far to go");
-        }
+
         if (!troop.canMove()) {
             throw new ClientException("troop can not move");
         }
+
+        // TODO: Check if position is under provoke of enemy minion. If yes, raise exception
+        // TODO: Check for Flying. If yes, skip distance check and set cell.
+
+        if (troop.getCell().manhattanDistance(position) > 2) {
+            throw new ClientException("too far to go");
+        }
+
 
         Cell cell = gameMap.getCell(position);
         troop.setCell(cell);
