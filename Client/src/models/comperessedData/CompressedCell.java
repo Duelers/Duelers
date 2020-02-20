@@ -1,6 +1,7 @@
 package models.comperessedData;
 
-import models.game.map.Position;
+import models.game.map.Cell;
+import server.gameCenter.models.map.Cell.*;
 
 public class CompressedCell {
     private int row;
@@ -26,7 +27,7 @@ public class CompressedCell {
         return Math.abs(cell.row - row) + Math.abs(cell.column - column);
     }
 
-    public Position toPosition() {
-        return new Position(row, column);
+    public Cell toCell() {
+        return new Cell(row, column);
     }
 }

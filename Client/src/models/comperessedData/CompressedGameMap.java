@@ -1,7 +1,7 @@
 package models.comperessedData;
 
 import models.game.CellEffect;
-import models.game.map.Position;
+import models.game.map.Cell;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -84,9 +84,9 @@ public class CompressedGameMap {
         return null;
     }
 
-    public CompressedTroop getTroop(Position cell) {
+    public CompressedTroop getTroop(Cell cell) {
         for (CompressedTroop troop : troops) {
-            if (troop.getPosition().equals(cell)) {
+            if (troop.getCell().equals(cell)) {
                 return troop;
             }
         }
@@ -139,7 +139,7 @@ public class CompressedGameMap {
         if (cellEffects == null)
             return 0;
         for (CellEffect cellEffect : cellEffects) {
-            if (cellEffect.getPosition().getRow() == j && cellEffect.getPosition().getColumn() == i) {
+            if (cellEffect.getCell().getRow() == j && cellEffect.getCell().getColumn() == i) {
                 if (cellEffect.isPositive())
                     return +1;
                 else
