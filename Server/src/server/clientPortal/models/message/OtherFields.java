@@ -1,6 +1,6 @@
 package server.clientPortal.models.message;
 
-import server.gameCenter.models.map.Position;
+import server.gameCenter.models.map.Cell;
 
 public class OtherFields {
     private String deckName;
@@ -8,7 +8,7 @@ public class OtherFields {
     private String myCardId;
     private String opponentCardId;
     private String[] myCardIds;
-    private Position position;
+    private Cell cell;
     private String sudoCommand;
 
     public String getDeckName() {
@@ -31,8 +31,8 @@ public class OtherFields {
         return myCardIds;
     }
 
-    public Position getPosition() {
-        return position;
+    public Cell getCell() {
+        return cell;
     }
 
     public String getSudoCommand() {

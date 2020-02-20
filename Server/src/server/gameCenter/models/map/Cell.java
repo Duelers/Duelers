@@ -69,9 +69,4 @@ public class Cell {
     public int manhattanDistance(Cell otherCell) {
         return Math.abs(otherCell.row - row) + Math.abs(otherCell.column - column);
     }
-
-    public int manhattanDistance(Position position) {
-        return Math.abs(position.getRow() - this.row) + Math.abs(position.getColumn() - this.column);
-
-    }
 }
