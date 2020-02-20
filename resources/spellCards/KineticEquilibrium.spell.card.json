@@ -43,7 +43,7 @@
           "enemy": true
         },
         "cardType": {
-          "cell": false,
+          "cell": true,
           "hero": false,
           "minion": true,
           "player": false
