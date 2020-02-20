@@ -2,8 +2,8 @@ package models.gui;
 
 import controller.OnlineGamesListController;
 import javafx.scene.control.Button;
-import models.game.GameType;
-import models.message.OnlineGame;
+import localGameCenter.models.game.GameType;
+import message.OnlineGame;
 import view.MainMenu;
 
 public class OnlineGameView {

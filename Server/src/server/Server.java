@@ -336,7 +336,7 @@ public class Server {
         }
     }
 
-    public void sendGameUpdateMessage(Game game) {
+    public void sendGameUpdateMessage(Game game) { //TODO: reproduce this method for local, in the meantime the logic of this function is duplicated when the gamecenter / game wants to update the game for the client
         List<CellEffect> cellEffects = game.getCellEffects();
         for (Account account : game.getObservers()) {
             String clientName = DataCenter.getInstance().getAccounts().get(account);

@@ -11,7 +11,9 @@ import models.card.spell.AvailabilityType;
 import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedPlayer;
 import models.game.GameActions;
+import models.game.GameType;
 import models.game.map.Position;
+import models.game.GameType;
 import view.Show;
 
 import java.io.File;
@@ -30,13 +32,15 @@ public class BattleScene extends Show {
     );
     private static final Map<SpellType, String> spellSpriteNames = new HashMap();
     private final GameActions controller;
-    private final CompressedGame game;
+    private final CompressedGame game; // for local we can perhaps directly communicate with the localGameCenter ?
     private final MapBox mapBox;
-    private final HandBox handBox;
-    private final PlayerBox playerBox;
-    private final int myPlayerNumber;
-    private CompressedPlayer myPlayer;
-    private CompressedPlayer oppPlayer;
+    private final HandBox handBox; // have two for local ?
+    // private final HandBox handBox2; // only for local non AI ?
+    private final PlayerBox playerBox; // have two for local ?
+    // private final PlayerBox playerBox2; // only for local non AI ?
+    private final int myPlayerNumber; // relevant only for online
+    private CompressedPlayer myPlayer; // perhaps rename ? And myPlayerNumber will point to either of them
+    private CompressedPlayer oppPlayer; // perhaps rename ?
 
     static {
         spellSpriteNames.put(SpellType.ATTACK, "fx_f4_shadownova");
@@ -51,14 +55,21 @@ public class BattleScene extends Show {
         this.controller = controller;
         this.game = game;
         this.myPlayerNumber = myPlayerNumber;
+
         addBackGround(mapName);
-        if (myPlayerNumber == 1) {
-            myPlayer = game.getPlayerOne();
-            oppPlayer = game.getPlayerTwo();
-        } else if (myPlayerNumber == 2){
-            myPlayer = game.getPlayerTwo();
-            oppPlayer = game.getPlayerOne();
-        }
+		if (game.getGameType() == GameType.LOCAL_HOTSEAT) {
+			// Change global behavior and appearance of board, as in:
+			// - change player's hand and graveyard depending on turn
+			// - change possible actions depending on turn
+		} else {
+	        if (myPlayerNumber == 1) {
+    	        myPlayer = game.getPlayerOne();
+        	    oppPlayer = game.getPlayerTwo();
+        	} else if (myPlayerNumber == 2){
+	            myPlayer = game.getPlayerTwo();
+    	        oppPlayer = game.getPlayerOne();
+        	}
+		}
 
         handBox = new HandBox(this, myPlayer, Constants.HAND_X, Constants.HAND_Y);
         playerBox = new PlayerBox(this, game);
@@ -137,7 +148,7 @@ public class BattleScene extends Show {
         return myPlayerNumber;
     }
 
-    boolean isMyTurn() {
+    boolean isMyTurn() { // irrelevant in local non AI
         return (game.getTurnNumber() % 2 == 1 && myPlayerNumber == 1) || (game.getTurnNumber() % 2 == 0 && myPlayerNumber == 2);
     }
 

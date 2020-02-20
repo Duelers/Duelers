@@ -1,8 +1,8 @@
 package controller;
 
 import models.Constants;
-import models.game.GameType;
-import models.message.Message;
+import localGameCenter.models.game.GameType;
+import message.Message;
 
 public class CustomGameMenuController {
     private static CustomGameMenuController ourInstance;

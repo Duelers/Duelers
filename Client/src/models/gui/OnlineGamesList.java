@@ -7,7 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.game.GameType;
-import models.message.OnlineGame;
+import message.OnlineGame;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

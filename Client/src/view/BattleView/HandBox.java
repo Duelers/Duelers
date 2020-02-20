@@ -17,7 +17,7 @@ import javafx.scene.paint.Color;
 import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedPlayer;
 import models.gui.*;
-import models.message.OnlineGame;
+import message.OnlineGame;
 import view.MainMenu;
 
 import java.beans.PropertyChangeEvent;
@@ -191,10 +191,10 @@ public class HandBox implements PropertyChangeListener {
             imageView.setFitWidth(endTurnImage.getWidth() * Constants.SCALE * 0.5);
             imageView.setFitHeight(endTurnImage.getHeight() * Constants.SCALE * 0.5);
             endTurnLabel = new DefaultLabel("END TURN", Constants.END_TURN_FONT, Color.WHITE);
-          
+
             if ((battleScene.getGame().getTurnNumber() + 1) % 2 == battleScene.getMyPlayerNumber() % 2) {
-                endTurnLabel.setText("ENEMY TURN");
-                endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);
+                endTurnLabel.setText("ENEMY TURN"); // Player number
+                endTurnButton.setEffect(DISABLE_BUTTON_EFFECT); // remove this, as the end turn should be accessible for both turns on local game, just add a temp window
             }
             endTurnButton.setLayoutX(1400 * Constants.SCALE);
             endTurnButton.setLayoutY(5 * Constants.SCALE);
@@ -297,7 +297,7 @@ public class HandBox implements PropertyChangeListener {
                 if (((int) evt.getNewValue() + 1) % 2 == battleScene.getMyPlayerNumber() % 2) {
                     Platform.runLater(() -> {
                         endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);
-                        endTurnLabel.setText("ENEMY TURN");
+                        endTurnLabel.setText("ENEMY TURN"); // Should remove this if local game
                     });
                 } else {
                     Platform.runLater(() -> {

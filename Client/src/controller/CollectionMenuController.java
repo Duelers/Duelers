@@ -1,11 +1,11 @@
 package controller;
 
 import models.Constants;
-import models.account.Collection;
-import models.card.Card;
-import models.card.Deck;
-import models.card.ExportedDeck;
-import models.message.Message;
+import localDataCenter.models.account.Collection;
+import localDataCenter.models.card.Card;
+import localDataCenter.models.card.Deck;
+import localDataCenter.models.card.ExportedDeck;
+import message.Message;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

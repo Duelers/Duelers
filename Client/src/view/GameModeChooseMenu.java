@@ -7,6 +7,7 @@ import models.game.GameType;
 import models.gui.*;
 
 import java.io.FileNotFoundException;
+import java.util.*;
 
 public abstract class GameModeChooseMenu extends PlayMenu {
     private static final EventHandler<? super MouseEvent> BACK_EVENT = event -> PlayMenu.getInstance().show();
@@ -51,7 +52,7 @@ public abstract class GameModeChooseMenu extends PlayMenu {
         void makeButton(GameType type) {
             box.makeButton("START", buttonEvent -> {
                 if (usernameField != null && "".equals(usernameField.getText())) return;
-                MultiPlayerMenuController.getInstance().startGame(
+                MultiPlayerMenuController.getInstance().startGame( // This is the make button used by FriendGameMenu to start a game
                         type,
                         usernameField == null ? null : usernameField.getText()
                 );

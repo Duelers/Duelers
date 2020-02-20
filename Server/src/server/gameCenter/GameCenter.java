@@ -250,7 +250,7 @@ public class GameCenter extends Thread {//synchronize
                 (DataCenter.getInstance().getClientName(account1.getUsername()), game));
         Server.getInstance().addToSendingMessages(Message.makeGameCopyMessage
                 (DataCenter.getInstance().getClientName(account2.getUsername()), game));
-        game.startGame();
+        game.startGame(); // this starts the game
     }
 
     private void removeGame(Game game) {

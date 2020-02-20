@@ -7,11 +7,15 @@ import models.account.Account;
 import models.card.Card;
 import models.card.DeckInfo;
 import models.game.map.Position;
-import models.message.CardPosition;
-import models.message.GameUpdateMessage;
-import models.message.Message;
+import message.CardPosition;
+import message.GameUpdateMessage;
+import message.Message;
 import view.BattleView.BattleScene;
 import view.*;
+
+import server.gameCenter.models.game.*;
+
+import localGameCenter.GameCenter;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -38,6 +42,7 @@ public class Client {
     private BufferedReader bufferedReader;
 
     private Client() {
+        GameCenter.getInstance().start();
     }
 
     public static Client getInstance() {
@@ -145,7 +150,9 @@ public class Client {
         }
     }
 
-    private void handleMessage(Message message) {
+    public void handleMessage(Message message) {
+		// TODO: if a global variable set to imply there is a local game running, ignore the message from server
+		// TODO: When refactoring, make this independent via an agent
         switch (message.getMessageType()) {
             case SEND_EXCEPTION:
                 showError(message);
@@ -153,7 +160,7 @@ public class Client {
             case ACCOUNT_COPY:
                 updateAccount(message);
                 break;
-            case GAME_COPY:
+            case GAME_COPY: // this starts the game
                 GameController.getInstance().setCurrentGame(message.getGameCopyMessage().getCompressedGame());
                 GameController.getInstance().calculateAvailableActions();
                 break;

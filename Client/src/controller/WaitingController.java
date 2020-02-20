@@ -1,6 +1,6 @@
 package controller;
 
-import models.message.Message;
+import message.Message;
 
 import static models.Constants.SERVER_NAME;
 

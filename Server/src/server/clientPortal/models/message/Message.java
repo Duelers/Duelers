@@ -49,7 +49,7 @@ public class Message {
     private CompressedCard compressedCard;
 
 
-    private Message(String receiver) {
+    public Message(String receiver) {
         this.sender = Server.getInstance().serverName;
         this.receiver = receiver;
     }

@@ -4,7 +4,7 @@ import server.gameCenter.models.game.CellEffect;
 
 import java.util.List;
 
-class GameUpdateMessage {
+public class GameUpdateMessage {
     private final int turnNumber;
     private final int player1CurrentMP;
     private final int player2CurrentMP;
