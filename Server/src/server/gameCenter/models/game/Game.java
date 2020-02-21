@@ -217,7 +217,7 @@ public abstract class Game {
                 // By "playable" we simply check available mana relative to minion cost.
                 ArrayList<Card> minionOptions = new ArrayList<Card>();
                 for (Insert i : actions.getHandInserts()) {
-                    if (i.getCard().getMannaPoint() <= currentMana && i.getCard().getType() == CardType.MINION) {
+                    if (i.getCard().getManaCost() <= currentMana && i.getCard().getType() == CardType.MINION) {
                         minionOptions.add(i.getCard());
                     }
                 }

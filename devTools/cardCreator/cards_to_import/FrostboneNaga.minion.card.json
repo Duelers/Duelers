@@ -123,13 +123,13 @@
         "onDefend": false
       },
       "coolDown": 0,
-      "mannaPoint": 0,
+      "manaCost": 0,
       "lastTurnUsed": 0
     }
   ],
   "defaultAp": 3,
   "defaultHp": 3,
-  "mannaPoint": 4,
+  "manaCost": 4,
   "price": 100,
   "attackType": "MELEE",
   "range": 0,

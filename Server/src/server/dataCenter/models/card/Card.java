@@ -16,7 +16,7 @@ public class Card {
     private List<Spell> spells = new ArrayList<>();
     private int defaultAp;
     private int defaultHp;
-    private int mannaPoint;
+    private int manaCost;
     private int price;
     private AttackType attackType;
     private int range;
@@ -41,21 +41,21 @@ public class Card {
         }
         this.defaultAp = referenceCard.defaultAp;
         this.defaultHp = referenceCard.defaultHp;
-        this.mannaPoint = referenceCard.mannaPoint;
+        this.manaCost = referenceCard.manaCost;
         this.price = referenceCard.price;
         this.attackType = referenceCard.attackType;
         this.range = referenceCard.range;
     }
 
     public Card(String name, String description, CardType cardType, ArrayList<Spell> spells, int defaultAp,
-			int defaultHp, int mannaPoint, int price, AttackType attackType, int range) {
+			int defaultHp, int manaCost, int price, AttackType attackType, int range) {
 		this.name = name;
 		this.description = description;
 		this.type = cardType;
 		this.spells = spells;
 		this.defaultAp = defaultAp;
 		this.defaultHp = defaultHp;
-		this.mannaPoint = mannaPoint;
+		this.manaCost = manaCost;
 		this.price = price;
 		this.attackType = attackType;
 		this.range = range;
@@ -65,7 +65,7 @@ public class Card {
         return new CompressedCard(
                 name, description, cardId,
                 spriteName, type, spells,
-                defaultAp, defaultHp, mannaPoint,
+                defaultAp, defaultHp, manaCost,
                 attackType, range, remainingNumber
         );
     }
@@ -109,8 +109,8 @@ public class Card {
         return this.defaultHp;
     }
 
-    public int getMannaPoint() {
-        return this.mannaPoint;
+    public int getManaCost() {
+        return this.manaCost;
     }
 
     public AttackType getAttackType() {

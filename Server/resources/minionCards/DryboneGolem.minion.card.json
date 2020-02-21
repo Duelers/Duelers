@@ -6,7 +6,7 @@
   "type": "MINION",
   "defaultAp": 10,
   "defaultHp": 10,
-  "mannaPoint": 7,
+  "manaCost": 7,
   "price": 100,
   "attackType": "MELEE",
   "range": 0,

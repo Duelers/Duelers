@@ -40,7 +40,7 @@
 	}],
 	"defaultAp": 4,
 	"defaultHp": 5,
-	"mannaPoint": 3,
+	"manaCost": 3,
 	"price": 100,
 	"attackType": "MELEE",
 	"remainingNumber": 20

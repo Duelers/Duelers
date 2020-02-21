@@ -54,13 +54,13 @@
         "onDefend": false                                      # ???
       },
       "coolDown": 0,                                           # ???
-      "mannaPoint": 0,                                         # ???
+      "manaCost": 0,                                         # ???
       "lastTurnUsed": 0                                        # ???
     }
   ],
   "defaultAp": 0,                                              # Unit base attack
   "defaultHp": 0,                                              # Unit Base health.
-  "mannaPoint": 0,                                             # Mana cost.
+  "manaCost": 0,                                             # Mana cost.
   "price": 100,                                                # Ignore just set to 100.
   "attackType": "MELEE",                                       # MELEE, HYBRID, RANGED where 'hybrid' works like range in Duelyst.
   "range": 0,                                                  # Ranged units can only shoot X squares away.
