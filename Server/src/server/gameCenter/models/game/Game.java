@@ -404,7 +404,7 @@ public abstract class Game {
         // Minion Placement rules: nearby ally <Hero, Minion>
         // Note, hard-coded the AIRDROP keyword ability
         if (card.getDescription().contains("Airdrop")) {
-            System.out.println(cell.toString() + "Is a legal square because " + card.getCardId() + "has AIRDROP keyword.");
+            System.out.println(cell.toString() + " Is a legal square because " + card.getCardId() + " has AIRDROP keyword.");
             return true;
         }
 
@@ -417,7 +417,7 @@ public abstract class Game {
             boolean checkColumn = Math.abs(cell.getColumn() - allyPosition.getColumn()) <= 1;
 
             if (checkRow && checkColumn) {
-                System.out.println(cell.toString() + "Is a legal square because Ally UNIT: " + troop.getCard().getCardId()
+                System.out.println(cell.toString() + " Is a legal square because Ally UNIT: " + troop.getCard().getCardId()
                         + " Is on " + allyPosition.toString());
                 return true;
             }

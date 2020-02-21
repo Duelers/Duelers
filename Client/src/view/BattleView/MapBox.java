@@ -8,7 +8,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import models.card.CardType;
+import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedGameMap;
+import models.comperessedData.CompressedPlayer;
 import models.comperessedData.CompressedTroop;
 import models.gui.CardPane;
 
@@ -190,10 +192,17 @@ public class MapBox implements PropertyChangeListener {
         CompressedTroop currentTroop = getTroop(row, column);
         if (selectionType == SelectionType.INSERTION) {
             if (GameController.getInstance().getAvailableActions().canInsertCard(battleScene.getHandBox().getSelectedCard())) {
-                battleScene.getController().insert(battleScene.getHandBox().getSelectedCard(), row, column);
-                System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
-                battleScene.getHandBox().resetSelection();
-                resetSelection();
+
+                CompressedCard card = battleScene.getHandBox().getSelectedCard();
+                CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
+                if (card.getType() == CardType.MINION){
+                    if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)){
+                        battleScene.getController().insert(card, row, column);
+                        System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
+                        battleScene.getHandBox().resetSelection();
+                        resetSelection();
+                    }
+                }
             }
             return;
         }
@@ -235,7 +244,7 @@ public class MapBox implements PropertyChangeListener {
 
     void updateMapColors() {
         updateSelectionType();
-        for (int row = 0; row < 5; row++) {
+        for (int row = 0; row < 5; row++) { // ToDo: 5, 9 should be constants
             for (int column = 0; column < 9; column++) {
                 if (!battleScene.isMyTurn()) {
                     cells[row][column].setFill(Constants.defaultColor);
@@ -247,7 +256,16 @@ public class MapBox implements PropertyChangeListener {
                             battleScene.getHandBox().getSelectedCard())) {
                         if (battleScene.getHandBox().getSelectedCard().getType() == CardType.HERO ||
                                 battleScene.getHandBox().getSelectedCard().getType() == CardType.MINION) {
-                            cells[row][column].setFill(Constants.MOVE_COLOR);
+
+                            CompressedCard card = battleScene.getHandBox().getSelectedCard();
+                            CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
+                            if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)){
+                                cells[row][column].setFill(Constants.MOVE_COLOR);
+                            }
+                            else {
+                                cells[row][column].setFill(Constants.defaultColor);
+                            }
+
                         } else {
                             cells[row][column].setFill(Constants.SPELL_COLOR);
                         }

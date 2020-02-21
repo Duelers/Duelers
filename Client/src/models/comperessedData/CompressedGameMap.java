@@ -32,7 +32,6 @@ public class CompressedGameMap {
 
     public static boolean isInMap(int row, int column) {
         return row >= 0 && row < ROW_NUMBER && column >= 0 && column < COLUMN_NUMBER;
-
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
