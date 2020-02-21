@@ -6,7 +6,6 @@ import server.gameCenter.models.game.Game;
 import server.gameCenter.models.game.Player;
 import server.gameCenter.models.game.Troop;
 import server.gameCenter.models.map.Cell;
-import server.gameCenter.models.map.Position;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -64,20 +63,20 @@ public class AvailableActions {
         for (Troop troop : ownPlayer.getTroops()) {
             if (!troop.canMove()) continue;
 
-            Position currentPosition = new Position(troop.getCell());
-            ArrayList<Position> targets = new ArrayList<>();
+            Cell currentCell = new Cell(troop.getCell().getRow(), troop.getCell().getColumn());
+            ArrayList<Cell> targets = new ArrayList<>();
 
-            for (int column = currentPosition.getColumn() - 2; column <= currentPosition.getColumn() + 2; column++) {
-                int rowDown = currentPosition.getRow() + (2 - Math.abs(column - currentPosition.getColumn()));
-                int rowUp = currentPosition.getRow() - (2 - Math.abs(column - currentPosition.getColumn()));
+            for (int column = currentCell.getColumn() - 2; column <= currentCell.getColumn() + 2; column++) {
+                int rowDown = currentCell.getRow() + (2 - Math.abs(column - currentCell.getColumn()));
+                int rowUp = currentCell.getRow() - (2 - Math.abs(column - currentCell.getColumn()));
 
                 for (int row = rowUp; row <= rowDown; row++) {
                     if (game.getGameMap().isInMap(row, column)) {
                         Cell cell = game.getGameMap().getCell(row, column);
-                        if (currentPosition.equals(cell)) continue;
+                        if (currentCell.equals(cell)) continue;
 
                         if (game.getGameMap().getTroop(cell) == null) {
-                            targets.add(new Position(cell));
+                            targets.add(new Cell(cell.getRow(), cell.getColumn()));
                         }
                     }
                 }

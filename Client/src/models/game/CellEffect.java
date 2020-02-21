@@ -1,18 +1,18 @@
 package models.game;
 
-import models.game.map.Position;
+import models.game.map.Cell;
 
 public class CellEffect {
-    private Position position;
+    private Cell cell;
     private boolean positive;
 
     public CellEffect(int row, int column, boolean positive) {
         this.positive = positive;
-        position = new Position(row, column);
+        cell = new Cell(row, column);
     }
 
-    public Position getPosition() {
-        return position;
+    public Cell getCell() {
+        return cell;
     }
 
     public boolean isPositive() {

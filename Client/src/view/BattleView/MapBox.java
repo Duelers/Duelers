@@ -100,11 +100,11 @@ public class MapBox implements PropertyChangeListener {
             troopAnimationHashMap.remove(oldTroop);
             troopAnimationHashMap.put(newTroop, animation);
             animation.updateApHp(newTroop.getCurrentAp(), newTroop.getCurrentHp());
-            animation.moveTo(newTroop.getPosition().getRow(), newTroop.getPosition().getColumn());
+            animation.moveTo(newTroop.getCell().getRow(), newTroop.getCell().getColumn());
         } else {
             try {
                 animation = new TroopAnimation(mapGroup, cellsX, cellsY, newTroop.getCard().getSpriteName(),
-                        newTroop.getPosition().getRow(), newTroop.getPosition().getColumn(),
+                        newTroop.getCell().getRow(), newTroop.getCell().getColumn(),
                         newTroop.getPlayerNumber() == 1,
                         newTroop.getPlayerNumber() == battleScene.getMyPlayerNumber());
                 animation.updateApHp(newTroop.getCurrentAp(), newTroop.getCurrentHp());
@@ -206,8 +206,8 @@ public class MapBox implements PropertyChangeListener {
             }
             return;
         }
-        if (selectedTroop != null && selectedTroop.getPosition().getRow() == row &&
-                selectedTroop.getPosition().getColumn() == column) {
+        if (selectedTroop != null && selectedTroop.getCell().getRow() == row &&
+                selectedTroop.getCell().getColumn() == column) {
             System.out.println("DiSelect");
             SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
             battleScene.getHandBox().resetSelection();
@@ -262,8 +262,8 @@ public class MapBox implements PropertyChangeListener {
                         cells[row][column].setFill(Constants.defaultColor);
                     continue;
                 }
-                if (selectedTroop != null && selectedTroop.getPosition().getRow() == row &&
-                        selectedTroop.getPosition().getColumn() == column) {
+                if (selectedTroop != null && selectedTroop.getCell().getRow() == row &&
+                        selectedTroop.getCell().getColumn() == column) {
                     cells[row][column].setFill(Constants.SELECTED_COLOR);//not important
                     continue;
                 }
@@ -317,7 +317,7 @@ public class MapBox implements PropertyChangeListener {
 
     private CompressedTroop getTroop(int j, int i) {
         for (CompressedTroop troop : troopAnimationHashMap.keySet()) {
-            if (troop.getPosition().getRow() == j && troop.getPosition().getColumn() == i)
+            if (troop.getCell().getRow() == j && troop.getCell().getColumn() == i)
                 return troop;
         }
         return null;
@@ -351,7 +351,7 @@ public class MapBox implements PropertyChangeListener {
             if (animation == null)
                 System.out.println("Error2 MapBox");
             else
-                animation.attack(defenderTroop.getPosition().getColumn());
+                animation.attack(defenderTroop.getCell().getColumn());
         }
     }
 
@@ -365,7 +365,7 @@ public class MapBox implements PropertyChangeListener {
             if (animation == null)
                 System.out.println("Error4 MapBox");
             else
-                animation.hit(attackerTroop.getPosition().getColumn());
+                animation.hit(attackerTroop.getCell().getColumn());
         }
     }
 

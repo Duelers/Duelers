@@ -1,13 +1,13 @@
 package models.comperessedData;
 
-import models.game.map.Position;
+import models.game.map.Cell;
 
 public class CompressedTroop {
     private CompressedCard card;
     private int currentAp;
     private int currentHp;
     private int enemyHitChanges;
-    private Position position;
+    private Cell cell;
     private boolean canMove;
     private boolean canAttack;
     private boolean isDisarm;
@@ -22,7 +22,7 @@ public class CompressedTroop {
         this.currentAp = troop.getCurrentAp();
         this.currentHp = troop.getCurrentHp();
         this.enemyHitChanges = troop.getEnemyHitChanges();
-        this.position = new Position(row, column);
+        this.cell = new Cell(row, column);
         this.canMove = troop.canMove;
         this.canAttack = troop.canAttack;
         this.isDisarm = troop.isDisarm;
@@ -30,13 +30,13 @@ public class CompressedTroop {
         this.playerNumber = troop.playerNumber;
     }
 
-    public CompressedTroop(CompressedCard card, int currentAp, int currentHp, int enemyHitChanges, Position position,
+    public CompressedTroop(CompressedCard card, int currentAp, int currentHp, int enemyHitChanges, Cell cell,
                            boolean canMove, boolean canAttack, boolean isDisarm, boolean noAttackFromWeakerOnes, int playerNumber) {
         this.card = card;
         this.currentAp = currentAp;
         this.currentHp = currentHp;
         this.enemyHitChanges = enemyHitChanges;
-        this.position = position;
+        this.cell = cell;
         this.canMove = canMove;
         this.canAttack = canAttack;
         this.isDisarm = isDisarm;
@@ -60,8 +60,8 @@ public class CompressedTroop {
         return enemyHitChanges;
     }
 
-    public Position getPosition() {
-        return position;
+    public Cell getCell() {
+        return cell;
     }
 
     public boolean canMove() {

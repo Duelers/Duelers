@@ -16,7 +16,7 @@ import server.exceptions.LogicException;
 import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
 import server.gameCenter.models.game.*;
-import server.gameCenter.models.map.Position;
+import server.gameCenter.models.map.Cell;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -324,15 +324,15 @@ public class Server {
     }
 
     public void sendSpellMessage(Game game, TargetData target, AvailabilityType availabilityType) {
-        Set<Position> positions = target.getPositions();
-        if (positions.size() == 0) return;
+        Set<Cell> cells = target.getPositions();
+        if (cells.size() == 0) return;
         for (Account account : game.getObservers()) {
             String clientName = DataCenter.getInstance().getAccounts().get(account);
             if (clientName == null) {
                 serverPrint("*Error");
                 continue;
             }
-            addToSendingMessages(Message.makeSpellMessage(clientName, positions, availabilityType));
+            addToSendingMessages(Message.makeSpellMessage(clientName, cells, availabilityType));
         }
     }
 
