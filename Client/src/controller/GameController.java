@@ -6,7 +6,7 @@ import server.dataCenter.models.card.CardType;
 import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedTroop;
-import models.exceptions.InputException;
+import server.exceptions.InputException;
 import models.game.GameActions;
 import models.game.availableActions.AvailableActions;
 import models.game.map.Cell;

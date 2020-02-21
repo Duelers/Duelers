@@ -2,7 +2,7 @@ package controller;
 
 import javafx.application.Platform;
 import models.Constants;
-import models.exceptions.InputException;
+import server.exceptions.InputException;
 import models.message.Message;
 
 public class LoginMenuController {
