@@ -15,19 +15,17 @@ import static models.gui.UIConstants.SCALE;
 
 
 public class GlobalChatDialog {
-    private static GlobalChatDialog ourInstance = new GlobalChatDialog();
+    private static final GlobalChatDialog ourInstance = new GlobalChatDialog();
 
-    private VBox chatMessages = new VBox();
-    private DialogBox dialogBox = new DialogBox();
-    private NormalField normalField = new NormalField("Message");
+    private final VBox chatMessages = new VBox();
+    private final DialogBox dialogBox = new DialogBox();
+    private final NormalField normalField = new NormalField("Message");
     private boolean isOpen;
 
     private GlobalChatDialog() {
         ScrollPane scrollPane = new ScrollPane(chatMessages);
         OrangeButton sendButton = new OrangeButton("send",
-                event -> {
-                    sendMessage();
-                },
+                event -> sendMessage(),
                 SoundEffectPlayer.SoundName.select);
         dialogBox.getChildren().addAll(scrollPane, new HBox(normalField, sendButton));
         normalField.setMinSize(500, 50);

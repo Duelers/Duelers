@@ -55,7 +55,7 @@ public class TroopAnimation extends Transition {
     private DefaultLabel apLabel;
     private DefaultLabel hpLabel;
 
-    private Group mapGroup;
+    private final Group mapGroup;
     private Group troopGroup;
 
     TroopAnimation(Group mapGroup, double[][] cellsX, double[][] cellsY, String fileName, int j, int i,

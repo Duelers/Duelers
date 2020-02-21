@@ -33,7 +33,7 @@ public class WaitingMenu extends Show {
     private static final double HERO_WIDTH = 3800 * SCALE;
     private static final double HERO_HEIGHT = 2875 * SCALE;
     private static final Font FONT = Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 100 * SCALE);
-    private static Media backgroundMusic = new Media(
+    private static final Media backgroundMusic = new Media(
             new File("Client/resources/music/waiting.m4a").toURI().toString()
     );
     private final Show previousShow;
@@ -69,10 +69,6 @@ public class WaitingMenu extends Show {
 
     private void addShadowAnimation(DefaultLabel waitLabel) {
         AnimationTimer animation = new AnimationTimer() {
-            private final double spread = 0.7;
-            private final int red = 115;
-            private final int green = 210;
-            private final int blue = 255;
             private int currentOpacity = 50;
             private boolean ascending = false;
 
@@ -94,6 +90,10 @@ public class WaitingMenu extends Show {
             }
 
             private void setEffect(int opacity) {
+                double spread = 0.7;
+                int blue = 255;
+                int green = 210;
+                int red = 115;
                 waitLabel.setEffect(
                         new DropShadow(
                                 BlurType.THREE_PASS_BOX,

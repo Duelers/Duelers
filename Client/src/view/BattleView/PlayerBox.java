@@ -45,8 +45,6 @@ public class PlayerBox implements PropertyChangeListener {
     private ImageView player2Image;
     private ColorAdjust player1ImageEffect;
     private ColorAdjust player2ImageEffect;
-    private DefaultLabel player1Name;
-    private DefaultLabel player2Name;
 
     PlayerBox(BattleScene battleScene, CompressedGame game) throws Exception {
         this.battleScene = battleScene;
@@ -76,7 +74,7 @@ public class PlayerBox implements PropertyChangeListener {
 
     private HashMap<String, String> MapGeneralToPortrait() {
         // Note that this is a quick hack; a better solution is to have "portraitId" defined in the Hero's json file.
-        HashMap<String, String> nameToPortrait = new HashMap<String, String>();
+        HashMap<String, String> nameToPortrait = new HashMap<>();
         nameToPortrait.put("Reva Eventide", "Client/resources/photo/general_portrait_image_hex_f2-alt@2x.png");
         nameToPortrait.put("Vaath The Immortal", "Client/resources/photo/general_portrait_image_hex_f5@2x.png");
         nameToPortrait.put("Argeon Highmayne", "Client/resources/photo/general_portrait_image_hex_f1@2x.png");
@@ -133,10 +131,10 @@ public class PlayerBox implements PropertyChangeListener {
         player1Image.setY(-Constants.SCREEN_HEIGHT * 0.02);
         player2Image.setX(Constants.SCREEN_WIDTH * 0.85);
         player2Image.setY(-Constants.SCREEN_HEIGHT * 0.02);
-        player1Name = new DefaultLabel("", Constants.NAME_FONT, Color.WHITE, 290 * SCALE, 75 * SCALE);
+        DefaultLabel player1Name = new DefaultLabel("", Constants.NAME_FONT, Color.WHITE, 290 * SCALE, 75 * SCALE);
         player1Name.setBackground(new Background(new BackgroundFill(Color.rgb(155, 82, 100, 0.7), new CornerRadii(3), Insets.EMPTY)));
         player1Name.setPadding(Constants.NAME_PADDING);
-        player2Name = new DefaultLabel("", Constants.NAME_FONT, Color.WHITE, SCREEN_WIDTH - 600 * SCALE, 75 * SCALE);
+        DefaultLabel player2Name = new DefaultLabel("", Constants.NAME_FONT, Color.WHITE, SCREEN_WIDTH - 600 * SCALE, 75 * SCALE);
         player2Name.setBackground(new Background(new BackgroundFill(Color.rgb(155, 82, 100, 0.7), new CornerRadii(3), Insets.EMPTY)));
         player2Name.setPadding(Constants.NAME_PADDING);
         player1Name.setText(player1.getUserName());
@@ -247,15 +245,13 @@ public class PlayerBox implements PropertyChangeListener {
     class MessageShow extends AnimationTimer {
         private final long showTime = (long) (4 * pow(10, 9));
         private final DefaultText text = new DefaultText("", CHAT_BUBBLE_SIZE * 0.9, UIConstants.DEFAULT_FONT, Color.BLACK);
-        private final ImageView chatView = ImageLoader.makeImageView(chatImage, CHAT_BUBBLE_SIZE, CHAT_BUBBLE_SIZE);
         private final StackPane stackPane;
-        private final double x;
-        private final double y;
         private long initialTime = -1;
 
         MessageShow(ImageView playerImage) {
-            x = playerImage.getX() + (playerImage.getFitWidth() - CHAT_BUBBLE_SIZE) / 2;
-            y = playerImage.getY() + playerImage.getFitHeight();
+            double x = playerImage.getX() + (playerImage.getFitWidth() - CHAT_BUBBLE_SIZE) / 2;
+            double y = playerImage.getY() + playerImage.getFitHeight();
+            ImageView chatView = ImageLoader.makeImageView(chatImage, CHAT_BUBBLE_SIZE, CHAT_BUBBLE_SIZE);
             stackPane = new StackPane(chatView, text);
             stackPane.relocate(x, y);
         }
