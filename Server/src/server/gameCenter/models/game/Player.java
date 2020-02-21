@@ -136,7 +136,7 @@ public class Player {
         currentMP += change;
     }
 
-    int getPlayerNumber() {
+    public int getPlayerNumber() {
         return playerNumber;
     }
 

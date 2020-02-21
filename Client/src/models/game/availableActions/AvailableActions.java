@@ -68,6 +68,15 @@ public class AvailableActions {
                     Cell cell = game.getGameMap().getCell(row, column);
                     if (currentPosition.equals(cell)) continue;
 
+                    // Check is an enemy unit is blocking the current path from current position to new position
+                    // Note that current implementation only works for movement range of 2.
+                    Cell midPoint = new Cell( (cell.getRow() + currentPosition.getRow()) / 2, (cell.getColumn() + currentPosition.getColumn()) / 2 );
+                    if (midPoint.getRow() != 0 || midPoint.getColumn() != 0) {
+                        if (game.getGameMap().getTroop(midPoint) != null && game.getGameMap().getTroop(midPoint).getPlayerNumber() != ownPlayer.getPlayerNumber()){
+                           continue;
+                        }
+                    }
+
                     if (game.getGameMap().getTroop(cell) == null) {
                         targets.add(cell);
                     }

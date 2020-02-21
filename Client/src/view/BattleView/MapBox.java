@@ -208,7 +208,8 @@ public class MapBox implements PropertyChangeListener {
                     System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
                     battleScene.getHandBox().resetSelection();
                     resetSelection();
-                } 
+
+                }
             }
             return;
         }
