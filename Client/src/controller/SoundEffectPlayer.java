@@ -12,7 +12,7 @@ public class SoundEffectPlayer {
     private static final Map<SoundName, Media> mediaFiles = new HashMap<>();
     private static final String directory = "Client/resources/sfx/";
     private static final String format = ".m4a";
-    private static SoundEffectPlayer SEP = new SoundEffectPlayer();
+    private static final SoundEffectPlayer SEP = new SoundEffectPlayer();
 
     static {
         Arrays.stream(SoundName.values()).forEach(soundName ->
