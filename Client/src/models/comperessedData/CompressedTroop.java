@@ -15,8 +15,6 @@ public class CompressedTroop {
     private int playerNumber;
 
     //just for testing BattleView
-
-
     public CompressedTroop(CompressedTroop troop, int row, int column) {
         this.card = troop.getCard();
         this.currentAp = troop.getCurrentAp();
