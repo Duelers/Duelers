@@ -32,8 +32,8 @@ public class EditableCardPane extends CardPane {
             case "defaultHp":
                 setDefaultHp((Integer) evt.getNewValue());
                 break;
-            case "mannaPoint":
-                setMannaPoint((Integer) evt.getNewValue());
+            case "manaCost":
+                setManaCost((Integer) evt.getNewValue());
                 break;
             case "price":
                 setPrice((Integer) evt.getNewValue());

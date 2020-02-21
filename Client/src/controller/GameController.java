@@ -21,7 +21,7 @@ public class GameController implements GameActions {
     private static GameController ourInstance;
     BattleScene battleScene;
     private CompressedGame currentGame;
-    private AvailableActions availableActions = new AvailableActions();
+    private final AvailableActions availableActions = new AvailableActions();
 
     private GameController() {
     }

@@ -6,7 +6,6 @@ import models.message.Message;
 
 public class CustomGameMenuController {
     private static CustomGameMenuController ourInstance;
-    private String help;
 
     private CustomGameMenuController() {
     }

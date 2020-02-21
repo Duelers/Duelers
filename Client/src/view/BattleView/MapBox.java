@@ -35,12 +35,12 @@ public class MapBox implements PropertyChangeListener {
     private SelectionType selectionType;
 
 
-    MapBox(BattleScene battleScene, CompressedGameMap gameMap, double x, double y) throws Exception {
+    MapBox(BattleScene battleScene, CompressedGameMap gameMap) {
         this.battleScene = battleScene;
         this.gameMap = gameMap;
         mapGroup = new Group();
-        mapGroup.setLayoutY(y);
-        mapGroup.setLayoutX(x);
+        mapGroup.setLayoutY(Constants.MAP_Y);
+        mapGroup.setLayoutX(Constants.MAP_X);
         makePolygons();
         resetSelection();
         for (CompressedTroop troop : gameMap.getTroops()) {

@@ -29,7 +29,7 @@ public class AvailableActions {
         handInserts.clear();
 
         for (Card card : ownPlayer.getHand()) {
-            if (ownPlayer.getCurrentMP() >= card.getMannaPoint()) {
+            if (ownPlayer.getCurrentMP() >= card.getManaCost()) {
                 handInserts.add(new Insert(card));
             }
         }

@@ -15,10 +15,26 @@ public class CompressedCard implements ICard {
     private CompressedSpell spell;//just for hero
     private int defaultAp;
     private int defaultHp;
-    private int mannaPoint;
+    private int manaCost;
     private AttackType attackType;
     private int range;
 
+    //just for testing BattleView
+    public CompressedCard(String spriteName, String description, String cardId, CardType type, CompressedSpell spell,
+                          int defaultAp, int defaultHp, int manaCost, AttackType attackType, int range) {
+        name = "...";
+        this.spriteName = spriteName;
+        this.description = description;
+        this.cardId = cardId;
+        this.type = type;
+        this.spell = spell;
+        this.defaultAp = defaultAp;
+        this.defaultHp = defaultHp;
+        this.manaCost = manaCost;
+        this.attackType = attackType;
+        this.range = range;
+    }
+  
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,8 +84,8 @@ public class CompressedCard implements ICard {
         return 0;
     }
 
-    public int getMannaPoint() {
-        return mannaPoint;
+    public int getManaCost() {
+        return manaCost;
     }
 
     public AttackType getAttackType() {

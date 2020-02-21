@@ -15,7 +15,7 @@ public class Collection {
     // When two cards cost the same mana, sort alphabetically by name.
     // Note that the current implementation only sorts by first character.
     // Thus Az could appear before Ab, but Cz is always before Da.
-    private Comparator<Card> compareCostThenName = Comparator.comparingInt(Card::getMannaPoint).thenComparingInt(c -> c.getCardId().charAt(0));
+    private Comparator<Card> compareCostThenName = Comparator.comparingInt(Card::getManaCost).thenComparingInt(c -> c.getCardId().charAt(0));
 
     public List<Card> getHeroes() {
         heroes.sort(compareCostThenName);

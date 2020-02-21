@@ -7,7 +7,7 @@ import models.game.GameType;
 import models.message.Message;
 
 public class MultiPlayerMenuController {
-    private static MultiPlayerMenuController ourInstance = new MultiPlayerMenuController();
+    private static final MultiPlayerMenuController ourInstance = new MultiPlayerMenuController();
 
     private MultiPlayerMenuController() {
     }

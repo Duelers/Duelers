@@ -4,9 +4,6 @@ import com.google.gson.Gson;
 import javafx.application.Platform;
 import models.Constants;
 import models.account.Account;
-import models.card.Card;
-import models.card.DeckInfo;
-import models.game.map.Cell;
 import models.message.CardPosition;
 import models.message.GameUpdateMessage;
 import models.message.Message;
@@ -25,16 +22,9 @@ public class Client {
     private String clientName;
     private Account account;
     private Show currentShow;
-    private LinkedList<Message> receivingMessages = new LinkedList<>();
-    private DeckInfo[] customDecks;
-    private Card selected;
-    private Cell[] positions;
-    private boolean validation = true;
-    private String errorMessage;
     private Socket socket;
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
     private Thread sendMessageThread;
-    private Thread receiveMessageThread;
     private BufferedReader bufferedReader;
 
     private Client() {
@@ -248,8 +238,6 @@ public class Client {
     }
 
     private void showError(Message message) {
-        validation = false;
-        errorMessage = message.getExceptionMessage().getExceptionString();
         Platform.runLater(() -> currentShow.showError(message.getExceptionMessage().getExceptionString()));
     }
 

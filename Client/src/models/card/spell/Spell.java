@@ -6,16 +6,16 @@ public class Spell {
     private Target target;
     private AvailabilityType availabilityType;
     private int coolDown;
-    private int mannaPoint;
+    private int manaCost;
     private int lastTurnUsed;
 
-    public Spell(String spellId, SpellAction action, Target target, AvailabilityType availabilityType, int coolDown, int mannaPoint) {
+    public Spell(String spellId, SpellAction action, Target target, AvailabilityType availabilityType, int coolDown, int manaCost) {
         this.spellId = spellId;
         this.action = action;
         this.target = target;
         this.availabilityType = availabilityType;
         this.coolDown = coolDown;
-        this.mannaPoint = mannaPoint;
+        this.manaCost = manaCost;
     }
 
     public Spell(String spellId, Spell referenceSpell) {
@@ -38,8 +38,8 @@ public class Spell {
         return this.coolDown;
     }
 
-    public int getMannaPoint() {
-        return this.mannaPoint;
+    public int getManaCost() {
+        return this.manaCost;
     }
 
     public int getLastTurnUsed() {
