@@ -110,7 +110,7 @@ public class Troop {
         return disableHolyBuff;
     }
 
-    int getPlayerNumber() {
+    public int getPlayerNumber() {
         return playerNumber;
     }
 
