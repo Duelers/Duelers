@@ -1,18 +1,18 @@
 package models.card.spell;
 
-import models.game.map.Position;
+import models.game.map.Cell;
 
 public class Target {
     private boolean isRelatedToCardOwnerPosition;
     private boolean isForAroundOwnHero;
     private boolean isRandom;
     private boolean isForDeckCards;
-    private Position dimensions;
+    private Cell dimensions;
     private Owner owner;
     private TargetCardType cardType;
     private CardAttackType attackType;
 
-    public Target(boolean isRelatedToCardOwnerPosition, boolean isForAroundOwnHero, Position dimensions, boolean isRandom, Owner owner, TargetCardType cardType, CardAttackType attackType, boolean isForDeckCards) {
+    public Target(boolean isRelatedToCardOwnerPosition, boolean isForAroundOwnHero, Cell dimensions, boolean isRandom, Owner owner, TargetCardType cardType, CardAttackType attackType, boolean isForDeckCards) {
         this.isRelatedToCardOwnerPosition = isRelatedToCardOwnerPosition;
         this.isForAroundOwnHero = isForAroundOwnHero;
         this.dimensions = dimensions;

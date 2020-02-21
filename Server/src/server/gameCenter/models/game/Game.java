@@ -20,7 +20,6 @@ import server.gameCenter.models.game.availableActions.Insert;
 import server.gameCenter.models.game.availableActions.Move;
 import server.gameCenter.models.map.Cell;
 import server.gameCenter.models.map.GameMap;
-import server.gameCenter.models.map.Position;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -251,7 +250,7 @@ public abstract class Game {
                     Cell c = new Cell(x2, y2);
 
                     if (isLegalCellForMinion(c, minion)) {
-                        insert("AI", minion.getCardId(), new Position(c.getRow(), c.getColumn()));
+                        insert("AI", minion.getCardId(), new Cell(c.getRow(), c.getColumn()));
                         Thread.sleep(delay);
                         break;
                     }
@@ -342,13 +341,13 @@ public abstract class Game {
         }
     }
 
-    public void insert(String username, String cardId, Position position) throws LogicException {
+    public void insert(String username, String cardId, Cell cell) throws LogicException {
         try {
             if (!canCommand(username)) {
                 throw new ClientException("it's not your turn");
             }
 
-            if (!gameMap.isInMap(position)) {
+            if (!gameMap.isInMap(cell)) {
                 throw new ClientException("target cell is not in map");
             }
 
@@ -356,7 +355,7 @@ public abstract class Game {
             Card card = player.insert(cardId);
 
             if (card.getType() == CardType.MINION) {
-                if (gameMap.getTroop(position) != null) {
+                if (gameMap.getTroop(cell) != null) {
                     throw new ClientException("another troop is here.");
                 }
                 Server.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.MAP);
@@ -365,7 +364,7 @@ public abstract class Game {
                 putMinion(
                         player.getPlayerNumber(),
                         troop,
-                        gameMap.getCell(position)
+                        gameMap.getCell(cell)
                 );
 
                 Server.getInstance().sendTroopUpdateMessage(this, troop);
@@ -374,7 +373,7 @@ public abstract class Game {
                 player.addToGraveYard(card);
                 Server.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
             }
-            applyOnPutSpells(card, gameMap.getCell(position));
+            applyOnPutSpells(card, gameMap.getCell(cell));
         } finally {
             GameCenter.getInstance().checkGameFinish(this);
         }
@@ -434,7 +433,7 @@ public abstract class Game {
         }
     }
 
-    public void moveTroop(String username, String cardId, Position position) throws LogicException {
+    public void moveTroop(String username, String cardId, Cell cell) throws LogicException {
         if (!canCommand(username)) {
             throw new ClientException("its not your turn");
         }
@@ -459,9 +458,9 @@ public abstract class Game {
             throw new ClientException("too far to go");
         }
 
+        Cell newCell = gameMap.getCell(cell);
+        troop.setCell(newCell);
 
-        Cell cell = gameMap.getCell(position);
-        troop.setCell(cell);
         troop.setCanMove(false);
 
         Server.getInstance().sendTroopUpdateMessage(this, troop);
@@ -834,23 +833,23 @@ public abstract class Game {
             addCardToTargetData(spell, targetData, player.getDeck().getHero());
         }
         if (spell.getTarget().getDimensions() != null) {
-            Position centerPosition = getCenterPosition(spell, cardCell, clickCell, heroCell);
-            ArrayList<Cell> targetCells = detectCells(centerPosition, spell.getTarget().getDimensions());
+            Cell centerCell = getCenterPosition(spell, cardCell, clickCell, heroCell);
+            ArrayList<Cell> targetCells = detectCells(centerCell, spell.getTarget().getDimensions());
             addTroopsAndCellsToTargetData(spell, targetData, player, targetCells);
         }
 
     }
 
-    private Position getCenterPosition(Spell spell, Cell cardCell, Cell clickCell, Cell heroCell) {
-        Position centerPosition;
+    private Cell getCenterPosition(Spell spell, Cell cardCell, Cell clickCell, Cell heroCell) {
+        Cell centerCell;
         if (spell.getTarget().isRelatedToCardOwnerPosition()) {
-            centerPosition = new Position(cardCell);
+            centerCell = new Cell(cardCell.getRow(), cardCell.getColumn());
         } else if (spell.getTarget().isForAroundOwnHero()) {
-            centerPosition = new Position(heroCell);
+            centerCell = new Cell(heroCell.getRow(), heroCell.getColumn());
         } else {
-            centerPosition = new Position(clickCell);
+            centerCell = new Cell(clickCell.getRow(), clickCell.getColumn());
         }
-        return centerPosition;
+        return centerCell;
     }
 
     private <T> void randomizeList(List<T> list) {
@@ -900,18 +899,18 @@ public abstract class Game {
         }
     }
 
-    private ArrayList<Cell> detectCells(Position centerPosition, Position dimensions) {
+    private ArrayList<Cell> detectCells(Cell centerCell, Cell dimensions) {
 
         ArrayList<Cell> targetCells = new ArrayList<>();
 
         // This fixes a bug in the previous logic;
         // Previously 3x3 square on the edges/corners of the board gave incorrect result.
         if (dimensions.getRow() % 2 != 0 && dimensions.getColumn() % 2 != 0) {
-            int rowMin = centerPosition.getRow() - (dimensions.getRow() / 2);
-            int rowMax = centerPosition.getRow() + (dimensions.getRow() / 2);
+            int rowMin = centerCell.getRow() - (dimensions.getRow() / 2);
+            int rowMax = centerCell.getRow() + (dimensions.getRow() / 2);
 
-            int colMin = centerPosition.getColumn() - (dimensions.getColumn() / 2);
-            int colMax = centerPosition.getColumn() + (dimensions.getColumn() / 2);
+            int colMin = centerCell.getColumn() - (dimensions.getColumn() / 2);
+            int colMax = centerCell.getColumn() + (dimensions.getColumn() / 2);
 
             for (int i = rowMin; i <= rowMax; i++) {
                 for (int j = colMin; j <= colMax; j++) {
@@ -921,8 +920,8 @@ public abstract class Game {
                 }
             }
         } else {
-            int firstRow = calculateFirstCoordinate(centerPosition.getRow(), dimensions.getRow());
-            int firstColumn = calculateFirstCoordinate(centerPosition.getColumn(), dimensions.getColumn());
+            int firstRow = calculateFirstCoordinate(centerCell.getRow(), dimensions.getRow());
+            int firstColumn = calculateFirstCoordinate(centerCell.getColumn(), dimensions.getColumn());
 
             int lastRow = calculateLastCoordinate(firstRow, dimensions.getRow(), GameMap.getRowNumber());
             int lastColumn = calculateLastCoordinate(firstColumn, dimensions.getColumn(), GameMap.getColumnNumber());
@@ -978,7 +977,7 @@ public abstract class Game {
         List<CellEffect> result = new ArrayList<>();
 
         buffs.forEach(buff -> buff.getTarget().getCells()
-                .forEach(cell -> result.add(new CellEffect(new Position(cell), buff.isPositive())))
+                .forEach(cell -> result.add(new CellEffect(new Cell(cell.getRow(), cell.getColumn()), buff.isPositive())))
         );
         return Collections.unmodifiableList(result);
     }

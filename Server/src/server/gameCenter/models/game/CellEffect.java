@@ -1,13 +1,13 @@
 package server.gameCenter.models.game;
 
-import server.gameCenter.models.map.Position;
+import server.gameCenter.models.map.Cell;
 
 public class CellEffect {
-    private Position position;
+    private Cell cell;
     private boolean positive;
 
-    public CellEffect(Position position, boolean positive) {
-        this.position = position;
+    public CellEffect(Cell cell, boolean positive) {
+        this.cell = cell;
         this.positive = positive;
     }
 }

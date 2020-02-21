@@ -9,7 +9,7 @@ import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.ExportedDeck;
 import server.dataCenter.models.card.spell.AvailabilityType;
 import server.gameCenter.models.game.*;
-import server.gameCenter.models.map.Position;
+import server.gameCenter.models.map.Cell;
 
 import java.util.List;
 import java.util.Set;
@@ -109,10 +109,10 @@ public class Message {
         return message;
     }
 
-    public static Message makeSpellMessage(String receiver, Set<Position> positions, AvailabilityType availabilityType) {
+    public static Message makeSpellMessage(String receiver, Set<Cell> cells, AvailabilityType availabilityType) {
         Message message = new Message(receiver);
         message.gameAnimations = new GameAnimations();
-        message.gameAnimations.addSpellAnimation(positions, availabilityType);
+        message.gameAnimations.addSpellAnimation(cells, availabilityType);
         message.messageType = MessageType.ANIMATION;
         return message;
     }

@@ -2,7 +2,7 @@ package server.clientPortal.models.message;
 
 
 import server.dataCenter.models.card.spell.AvailabilityType;
-import server.gameCenter.models.map.Position;
+import server.gameCenter.models.map.Cell;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -20,7 +20,7 @@ class GameAnimations {
         counterAttacks.add(new CardAnimation(cardID, defenderCardID));
     }
 
-    void addSpellAnimation(Set<Position> positions, AvailabilityType availabilityType) {
-        spellAnimations.add(new SpellAnimation(positions, availabilityType));
+    void addSpellAnimation(Set<Cell> cells, AvailabilityType availabilityType) {
+        spellAnimations.add(new SpellAnimation(cells, availabilityType));
     }
 }

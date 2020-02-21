@@ -2,7 +2,6 @@ package server.gameCenter.models.game;
 
 import server.dataCenter.models.card.Card;
 import server.gameCenter.models.map.Cell;
-import server.gameCenter.models.map.Position;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -36,9 +35,9 @@ public class TargetData {
         return players;
     }
 
-    public Set<Position> getPositions() {
-        Set<Position> positions = cells.stream().map(Position::new).collect(Collectors.toSet());
-        positions.addAll(troops.stream().map(Troop::getCell).map(Position::new).collect(Collectors.toSet()));
-        return Collections.unmodifiableSet(positions);
+    public Set<Cell> getPositions() {
+        Set<Cell> cells = this.cells.stream().map(n -> new Cell(n.getRow(), n.getColumn())).collect(Collectors.toSet());
+        cells.addAll(troops.stream().map(Troop::getCell).map(n -> new Cell(n.getRow(), n.getColumn())).collect(Collectors.toSet()));
+        return Collections.unmodifiableSet(cells);
     }
 }

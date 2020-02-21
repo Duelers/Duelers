@@ -1,13 +1,13 @@
 package server.dataCenter.models.card.spell;
 
-import server.gameCenter.models.map.Position;
+import server.gameCenter.models.map.Cell;
 
 public class Target {
     private boolean isRelatedToCardOwnerPosition;
     private boolean isForAroundOwnHero;
     private boolean isRandom;
     private boolean isForDeckCards;
-    private Position dimensions;
+    private Cell dimensions;
     private Owner owner;
     private TargetCardType cardType;
     private CardAttackType attackType;
@@ -16,7 +16,7 @@ public class Target {
         this.isRelatedToCardOwnerPosition = referenceTarget.isRelatedToCardOwnerPosition;
         this.isForAroundOwnHero = referenceTarget.isForAroundOwnHero;
         if (referenceTarget.dimensions != null)
-            this.dimensions = new Position(referenceTarget.dimensions);
+            this.dimensions = new Cell(referenceTarget.dimensions.getRow(), referenceTarget.dimensions.getColumn());
 
         this.isRandom = referenceTarget.isRandom;
         if (referenceTarget.owner != null)
@@ -31,7 +31,7 @@ public class Target {
         this.isForDeckCards = referenceTarget.isForDeckCards;
     }
 
-    public Target(boolean isRelatedToCardOwnerPosition, boolean isForAroundOwnHero, Position dimensions, boolean isRandom, Owner owner, TargetCardType cardType, CardAttackType attackType, boolean isForDeckCards) {
+    public Target(boolean isRelatedToCardOwnerPosition, boolean isForAroundOwnHero, Cell dimensions, boolean isRandom, Owner owner, TargetCardType cardType, CardAttackType attackType, boolean isForDeckCards) {
         this.isRelatedToCardOwnerPosition = isRelatedToCardOwnerPosition;
         this.isForAroundOwnHero = isForAroundOwnHero;
         this.dimensions = dimensions;
@@ -58,7 +58,7 @@ public class Target {
         return isForDeckCards;
     }
 
-    public Position getDimensions() {
+    public Cell getDimensions() {
         return dimensions;
     }
 

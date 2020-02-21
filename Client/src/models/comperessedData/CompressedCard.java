@@ -19,22 +19,6 @@ public class CompressedCard implements ICard {
     private AttackType attackType;
     private int range;
 
-    //just for testing BattleView
-    public CompressedCard(String spriteName, String description, String cardId, CardType type, CompressedSpell spell,
-                          int defaultAp, int defaultHp, int mannaPoint, AttackType attackType, int range) {
-        name = "...";
-        this.spriteName = spriteName;
-        this.description = description;
-        this.cardId = cardId;
-        this.type = type;
-        this.spell = spell;
-        this.defaultAp = defaultAp;
-        this.defaultHp = defaultHp;
-        this.mannaPoint = mannaPoint;
-        this.attackType = attackType;
-        this.range = range;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
