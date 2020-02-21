@@ -404,7 +404,7 @@ public abstract class Game {
         // Minion Placement rules: nearby ally <Hero, Minion>
         // Note, hard-coded the AIRDROP keyword ability
         if (card.getDescription().contains("Airdrop")) {
-            System.out.println(cell.toString() + "Is a legal square because " + card.getCardId() + "has AIRDROP keyword.");
+            System.out.println(cell.toString() + " Is a legal square because " + card.getCardId() + " has AIRDROP keyword.");
             return true;
         }
 
@@ -417,7 +417,7 @@ public abstract class Game {
             boolean checkColumn = Math.abs(cell.getColumn() - allyPosition.getColumn()) <= 1;
 
             if (checkRow && checkColumn) {
-                System.out.println(cell.toString() + "Is a legal square because Ally UNIT: " + troop.getCard().getCardId()
+                System.out.println(cell.toString() + " Is a legal square because Ally UNIT: " + troop.getCard().getCardId()
                         + " Is on " + allyPosition.toString());
                 return true;
             }
@@ -439,18 +439,23 @@ public abstract class Game {
         }
 
         if (!gameMap.isInMap(cell)) {
-            throw new ClientException("coordination is not valid");
+            throw new ClientException("given coordinate is not valid");
         }
 
         Troop troop = gameMap.getTroop(cardId);
         if (troop == null) {
             throw new ClientException("select a valid card");
         }
-        if (troop.getCell().manhattanDistance(cell) > 2) {
-            throw new ClientException("too far to go");
-        }
+      
         if (!troop.canMove()) {
             throw new ClientException("troop can not move");
+        }
+
+        // TODO: Check if position is under provoke of enemy minion. If yes, raise exception
+        // TODO: Check for Flying. If yes, skip distance check and set cell.
+
+        if (troop.getCell().manhattanDistance(cell) > 2) {
+            throw new ClientException("too far to go");
         }
 
         Cell newCell = gameMap.getCell(cell);

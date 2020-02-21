@@ -1,6 +1,5 @@
 package models.game.availableActions;
 
-
 import models.card.AttackType;
 import models.comperessedData.*;
 import models.game.map.Cell;
@@ -12,7 +11,6 @@ import java.util.stream.Collectors;
 
 public class AvailableActions {
     private List<Insert> handInserts = new ArrayList<>();
-    private List<Insert> collectibleInserts = new ArrayList<>();
     private List<Attack> attacks = new ArrayList<>();
     private List<Move> moves = new ArrayList<>();
 
@@ -84,7 +82,6 @@ public class AvailableActions {
 
     private void clearEverything() {
         handInserts.clear();
-        collectibleInserts.clear();
         attacks.clear();
         moves.clear();
     }
@@ -102,10 +99,6 @@ public class AvailableActions {
 
     public List<Insert> getHandInserts() {
         return Collections.unmodifiableList(handInserts);
-    }
-
-    public List<Insert> getCollectibleInserts() {
-        return Collections.unmodifiableList(collectibleInserts);
     }
 
     public List<Attack> getAttacks() {
@@ -135,14 +128,42 @@ public class AvailableActions {
     }
 
     public boolean canInsertCard(CompressedCard card) {
-        if (handInserts.stream().map(Insert::getCard).collect(Collectors.toList()).contains(card)) return true;
-        return collectibleInserts.stream().map(Insert::getCard).collect(Collectors.toList()).contains(card);
+        return handInserts.stream().map(Insert::getCard).collect(Collectors.toList()).contains(card);
     }
 
     public boolean canMove(CompressedTroop troop, int row, int column) {
         return getMovePositions(troop).contains(new Cell(row, column));
     }
 
+
+    // ToDo fix UI targeting for Spells
+    // public boolean canDeploySpellOnSquare(CompressedGame gameMap, CompressedPlayer player, CompressedCard card, int row, int column){
+    //}
+
+    public boolean canDeployMinionOnSquare(CompressedGameMap gameMap, CompressedPlayer player, CompressedCard card, int row, int column){
+        // ToDo this duplicates the logic found in Server's "isLegalCellForMinion" function
+        Cell cell = new Cell(row, column);
+
+        if (gameMap.getTroop(cell) != null) { // square is occupied
+            return false;
+        }
+
+        if (card.getDescription().contains("Airdrop")) {
+            return true;
+        }
+
+        for (CompressedTroop troop : player.getTroops()) {
+            Cell allyPosition = troop.getCell();
+
+            boolean checkRow = Math.abs(cell.getRow() - allyPosition.getRow()) <= 1;
+            boolean checkColumn = Math.abs(cell.getColumn() - allyPosition.getColumn()) <= 1;
+
+            if (checkRow && checkColumn) {
+                return true;
+            }
+        }
+        return false;
+    }
     public boolean canAttack(CompressedTroop troop, int row, int column) {
         return getAttackPositions(troop).contains(new Cell(row, column));
     }
