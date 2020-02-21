@@ -1,6 +1,7 @@
 package models.game.availableActions;
 
-import models.card.AttackType;
+
+import server.dataCenter.models.card.AttackType;
 import models.comperessedData.*;
 import models.game.map.Cell;
 

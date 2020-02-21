@@ -1,7 +1,7 @@
 package controller;
 
 import javafx.application.Platform;
-import models.card.AttackType;
+import server.dataCenter.models.card.AttackType;
 import models.card.CardType;
 import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedGame;

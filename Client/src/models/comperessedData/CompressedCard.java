@@ -1,7 +1,7 @@
 package models.comperessedData;
 
 import models.ICard;
-import models.card.AttackType;
+import server.dataCenter.models.card.AttackType;
 import models.card.CardType;
 
 import java.util.Objects;
