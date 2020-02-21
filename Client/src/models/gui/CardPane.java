@@ -33,7 +33,7 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
     private final CardAnimation cardAnimation;
     private final DefaultLabel apLabel;
     private final DefaultLabel hpLabel;
-    private final MannaIcon mannaPane;
+    private final ManaIcon manaPane;
     private final PriceBox priceBox;
 
     Deck deck;
@@ -61,9 +61,9 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
             getChildren().addAll(apLabel, hpLabel);
         }
 
-        mannaPane = new MannaIcon(card.getMannaPoint());
+        manaPane = new ManaIcon(card.getManaCost());
         if (card.getType() == CardType.SPELL || card.getType() == CardType.MINION) {
-            getChildren().add(mannaPane);
+            getChildren().add(manaPane);
         }
 
         priceBox = new PriceBox(card.getPrice());
@@ -127,23 +127,23 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
         detailBox.setType(newValue);
         switch (newValue) {
             case HERO:
-                getChildren().remove(mannaPane);
+                getChildren().remove(manaPane);
                 if (!getChildren().contains(apLabel)) {
                     getChildren().addAll(apLabel, hpLabel);
                 }
                 break;
             case SPELL:
                 getChildren().removeAll(apLabel, hpLabel);
-                if (!getChildren().contains(mannaPane)) {
-                    getChildren().add(mannaPane);
+                if (!getChildren().contains(manaPane)) {
+                    getChildren().add(manaPane);
                 }
                 break;
             case MINION:
                 if (!getChildren().contains(apLabel)) {
                     getChildren().addAll(apLabel, hpLabel);
                 }
-                if (!getChildren().contains(mannaPane)) {
-                    getChildren().add(mannaPane);
+                if (!getChildren().contains(manaPane)) {
+                    getChildren().add(manaPane);
                 }
         }
     }
@@ -164,8 +164,8 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
         hpLabel.setText(String.valueOf(newValue));
     }
 
-    void setMannaPoint(int newValue) {
-        mannaPane.setManna(newValue);
+    void setManaCost(int newValue) {
+        manaPane.setMana(newValue);
     }
 
     void setPrice(int newValue) {

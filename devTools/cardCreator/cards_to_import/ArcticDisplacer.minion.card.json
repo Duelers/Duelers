@@ -7,7 +7,7 @@
   "spells": [],
   "defaultAp": 10,
   "defaultHp": 4,
-  "mannaPoint": 5,
+  "manaCost": 5,
   "price": 100,
   "attackType": "MELEE",
   "range": 0,

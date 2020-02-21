@@ -7,7 +7,7 @@
   "spells": [],
   "defaultAp": 1,
   "defaultHp": 2,
-  "mannaPoint": 2,
+  "manaCost": 2,
   "price": 100,
   "attackType": "HYBRID",
   "range": 99,

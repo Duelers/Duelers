@@ -8,16 +8,16 @@ public class Spell {
     private Target target;
     private AvailabilityType availabilityType;
     private int coolDown;
-    private int mannaPoint;
+    private int manaCost;
     private int lastTurnUsed;
 
-    public Spell(String spellId, SpellAction action, Target target, AvailabilityType availabilityType, int coolDown, int mannaPoint) {
+    public Spell(String spellId, SpellAction action, Target target, AvailabilityType availabilityType, int coolDown, int manaCost) {
         this.spellId = spellId;
         this.action = action;
         this.target = target;
         this.availabilityType = availabilityType;
         this.coolDown = coolDown;
-        this.mannaPoint = mannaPoint;
+        this.manaCost = manaCost;
     }
 
     public Spell(Spell referenceSpell) {
@@ -29,12 +29,12 @@ public class Spell {
         if (referenceSpell.availabilityType != null)
             this.availabilityType = new AvailabilityType(referenceSpell.availabilityType);
         this.coolDown = referenceSpell.coolDown;
-        this.mannaPoint = referenceSpell.mannaPoint;
+        this.manaCost = referenceSpell.manaCost;
         this.lastTurnUsed = referenceSpell.lastTurnUsed;
     }
 
     public CompressedSpell toCompressedSpell() {
-        return new CompressedSpell(spellId, target, availabilityType, coolDown, mannaPoint, lastTurnUsed);
+        return new CompressedSpell(spellId, target, availabilityType, coolDown, manaCost, lastTurnUsed);
     }
 
     public String getSpellId() {
@@ -53,8 +53,8 @@ public class Spell {
         return this.coolDown;
     }
 
-    public int getMannaPoint() {
-        return this.mannaPoint;
+    public int getManaCost() {
+        return this.manaCost;
     }
 
     public int getLastTurnUsed() {

@@ -8,16 +8,16 @@ public class CompressedSpell {
     private Target target;
     private AvailabilityType availabilityType;
     private int coolDown;
-    private int mannaPoint;
+    private int manaCost;
     private int lastTurnUsed;
 
     //just for testing BattleView
-    public CompressedSpell(String spellId, Target target, AvailabilityType availabilityType, int coolDown, int mannaPoint, int lastTurnUsed) {
+    public CompressedSpell(String spellId, Target target, AvailabilityType availabilityType, int coolDown, int manaCost, int lastTurnUsed) {
         this.spellId = spellId;
         this.target = target;
         this.availabilityType = availabilityType;
         this.coolDown = coolDown;
-        this.mannaPoint = mannaPoint;
+        this.manaCost = manaCost;
         this.lastTurnUsed = lastTurnUsed;
     }
 
@@ -37,8 +37,8 @@ public class CompressedSpell {
         return coolDown;
     }
 
-    public int getMannaPoint() {
-        return mannaPoint;
+    public int getManaCost() {
+        return manaCost;
     }
 
     public int getLastTurnUsed() {

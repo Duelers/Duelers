@@ -60,11 +60,11 @@ public class Player {
         if (card == null)
             throw new ClientException("card id is not valid");
 
-        if (card.getMannaPoint() > currentMP)
-            throw new ClientException("not enough manna point");
+        if (card.getManaCost() > currentMP)
+            throw new ClientException("not enough mana");
 
         iterator.remove();
-        currentMP -= card.getMannaPoint();
+        currentMP -= card.getManaCost();
 
         return card;
     }
