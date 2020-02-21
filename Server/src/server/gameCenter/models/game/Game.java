@@ -446,7 +446,7 @@ public abstract class Game {
         if (troop == null) {
             throw new ClientException("select a valid card");
         }
-
+      
         if (!troop.canMove()) {
             throw new ClientException("troop can not move");
         }
@@ -460,7 +460,6 @@ public abstract class Game {
 
         Cell newCell = gameMap.getCell(cell);
         troop.setCell(newCell);
-
         troop.setCanMove(false);
 
         Server.getInstance().sendTroopUpdateMessage(this, troop);
