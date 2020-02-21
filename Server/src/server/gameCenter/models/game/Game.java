@@ -438,7 +438,7 @@ public abstract class Game {
             throw new ClientException("its not your turn");
         }
 
-        if (!gameMap.isInMap(position)) {
+        if (!gameMap.isInMap(cell)) {
             throw new ClientException("given coordinate is not valid");
         }
 
@@ -454,7 +454,7 @@ public abstract class Game {
         // TODO: Check if position is under provoke of enemy minion. If yes, raise exception
         // TODO: Check for Flying. If yes, skip distance check and set cell.
 
-        if (troop.getCell().manhattanDistance(position) > 2) {
+        if (troop.getCell().manhattanDistance(cell) > 2) {
             throw new ClientException("too far to go");
         }
 
