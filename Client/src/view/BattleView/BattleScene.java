@@ -25,7 +25,7 @@ import static controller.SoundEffectPlayer.SoundName.victory_match;
 
 public class BattleScene extends Show {
     private static final String WINNER_SPRITE_NAME = "fx_winner";
-    private static Media backgroundMusic = new Media(
+    private static final Media backgroundMusic = new Media(
             new File("Client/resources/music/music_battlemap_vetruv.m4a").toURI().toString()
     );
     private static final Map<SpellType, String> spellSpriteNames = new HashMap();
@@ -60,9 +60,9 @@ public class BattleScene extends Show {
             oppPlayer = game.getPlayerOne();
         }
 
-        handBox = new HandBox(this, myPlayer, Constants.HAND_X, Constants.HAND_Y);
+        handBox = new HandBox(this, myPlayer);
         playerBox = new PlayerBox(this, game);
-        mapBox = new MapBox(this, game.getGameMap(), Constants.MAP_X, Constants.MAP_Y);
+        mapBox = new MapBox(this, game.getGameMap());
 
         root.getChildren().addAll(mapBox.getMapGroup(), playerBox.getGroup(), handBox.getHandGroup());
     }
@@ -199,6 +199,6 @@ public class BattleScene extends Show {
     }
 
     private enum SpellType {
-        ATTACK, PUT, DEATH, CONTINUOUS, DEFEND, DEFAULT, WINNER
+        ATTACK, PUT, DEATH, CONTINUOUS, DEFEND, DEFAULT
     }
 }

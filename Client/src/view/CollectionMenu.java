@@ -47,7 +47,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         menu.searchBox.clear();
         new MainMenu().show();
     };
-    private static Media backgroundMusic = new Media(
+    private static final Media backgroundMusic = new Media(
             new File("Client/resources/music/collection_menu.m4a").toURI().toString()
     );
     private VBox collectionBox;

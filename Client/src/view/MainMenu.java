@@ -20,12 +20,11 @@ import static models.account.AccountType.ADMIN;
 
 public class MainMenu extends Show {
     private static MainMenu menu;
-    private static Media backgroundMusic = new Media(
+    private static final Media backgroundMusic = new Media(
             new File("Client/resources/music/main_menu.m4a").toURI().toString()
     );
     private final List<MenuItem> items = new ArrayList<>();
     private int itemIndex = 0;
-    private boolean inOnlineGames = false;
     private final MenuItem[] itemsArray = {
             new MenuItem(itemIndex++, "PLAY", "Single player, multiplayer", event -> PlayMenu.getInstance().show()),
             new MenuItem(itemIndex++, "PROFILE", "See you profile information", event -> menu.showProfileDialog()),
@@ -88,10 +87,8 @@ public class MainMenu extends Show {
         onlineGamesDialog = new DialogContainer(root, dialogBox);
         dialogBox.makeClosable(onlineGamesDialog, closeEvent -> {
             BackgroundMaker.makeMenuBackgroundUnfrozen();
-            inOnlineGames = false;
         });
 
-        inOnlineGames = true;
         new Thread(() -> {
             try {
                 OnlineGamesListController.getInstance().requestOnlineGamesList();

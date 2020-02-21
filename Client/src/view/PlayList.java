@@ -9,7 +9,7 @@ public class PlayList {
     int frameDuration;
     double extraX;
     double extraY;
-    private HashMap<String, ArrayList<FramePosition>> lists = new HashMap<>();
+    private final HashMap<String, ArrayList<FramePosition>> lists = new HashMap<>();
 
     public FramePosition[] getHitFrames() {
         return lists.get("hit").toArray(new FramePosition[1]);

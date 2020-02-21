@@ -71,7 +71,7 @@ public class SpellAnimation extends Transition {
         int frameDuration;
         double extraX;
         double extraY;
-        private HashMap<String, ArrayList<FramePosition>> lists = new HashMap<>();
+        private final HashMap<String, ArrayList<FramePosition>> lists = new HashMap<>();
 
         FramePosition[] getFrames() {
             return lists.get("frames").toArray(new FramePosition[1]);
