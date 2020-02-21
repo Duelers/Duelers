@@ -137,9 +137,14 @@ public class AvailableActions {
     public boolean canMove(CompressedTroop troop, int row, int column) {
         return getMovePositions(troop).contains(new Cell(row, column));
     }
-    
-    public boolean canDeployMinionOnSquare(CompressedGameMap gameMap, CompressedPlayer player, CompressedCard card, int row, int column){
 
+
+    // ToDo fix UI targeting for Spells
+    // public boolean canDeploySpellOnSquare(CompressedGame gameMap, CompressedPlayer player, CompressedCard card, int row, int column){
+    //}
+
+    public boolean canDeployMinionOnSquare(CompressedGameMap gameMap, CompressedPlayer player, CompressedCard card, int row, int column){
+        // ToDo this duplicates the logic found in Server's "isLegalCellForMinion" function
         Cell cell = new Cell(row, column);
 
         if (gameMap.getTroop(cell) != null) { // square is occupied
