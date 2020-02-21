@@ -67,7 +67,7 @@ public class AvailableActions {
                 for (int row = rowUp; row <= rowDown; row++) {
                     if (!CompressedGameMap.isInMap(row, column)) continue;
 
-                    Cell cell = game.getGameMap().getCell(row, column).toCell();
+                    Cell cell = game.getGameMap().getCell(row, column);
                     if (currentPosition.equals(cell)) continue;
 
                     if (game.getGameMap().getTroop(cell) == null) {

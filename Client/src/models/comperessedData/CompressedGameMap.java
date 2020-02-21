@@ -11,13 +11,13 @@ import java.util.List;
 
 public class CompressedGameMap {
     private static final int ROW_NUMBER = 5, COLUMN_NUMBER = 9;
-    private final CompressedCell[][] cells;
+    private final Cell[][] cells;
     private final ArrayList<CompressedTroop> troops;
     private CellEffect[] cellEffects;
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     //just for testing BattleView
-    public CompressedGameMap(CompressedCell[][] cells, ArrayList<CompressedTroop> troops) {
+    public CompressedGameMap(Cell[][] cells, ArrayList<CompressedTroop> troops) {
         this.cells = cells;
         this.troops = troops;
     }
@@ -46,7 +46,7 @@ public class CompressedGameMap {
         support.removePropertyChangeListener(pcl);
     }
 
-    public CompressedCell[][] getCells() {
+    public Cell[][] getCells() {
         return cells;
     }
 
@@ -76,11 +76,10 @@ public class CompressedGameMap {
         return compressedTroops;
     }
 
-    public CompressedCell getCell(int row, int column) {
+    public Cell getCell(int row, int column) {
         if (isInMap(row, column)) {
             return cells[row][column];
         }
-
         return null;
     }
 
