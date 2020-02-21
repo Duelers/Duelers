@@ -3,12 +3,9 @@ package models.game.availableActions;
 import models.card.AttackType;
 import models.comperessedData.*;
 import models.game.map.Cell;
-import server.gameCenter.models.game.Player;
-import server.gameCenter.models.game.Troop;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
