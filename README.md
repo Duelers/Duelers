@@ -1,4 +1,13 @@
-# DUELERS
+# CardBoard
+
+CardBoard is an open-source project to build a multiplayer collectable-card-game with units that move freely on a battlefield. 
+The name is a terrible pun; the game has cards, and its played on a board.
+
+The core tech-stack is Java8(Fx) with Python used for scripting, and Maven for our build automation. If you are interested in contributing please drop us a message.
+
+### Screenshot
+
+![Gameplay Screenshot](promoScreenshot.png)
 
 ### Building and installing with Maven
 
@@ -7,13 +16,13 @@
 3. In Client/target there should be a file ending with "...jar-with-dependencies.jar". 
 4. Run the above file and enjoy playing the game!
 
-### Building and Installing an Executable (Windows)
+### Building an Executable (Windows)
 
 * Please see the readme in the 'build_exe' directory for instructions.
 
 ### Original Project
 
-The Original Project was created by:
+The Original 'Duelers' Project was created by:
 
 	1. Ahmad Salimi
 	2. MohammadMahdi Jarrahi
