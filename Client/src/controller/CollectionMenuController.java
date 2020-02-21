@@ -13,7 +13,7 @@ import java.beans.PropertyChangeSupport;
 
 public class CollectionMenuController implements PropertyChangeListener {
     private static CollectionMenuController ourInstance;
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
     private Collection allShowingCards;
     private Collection currentShowingCards;
 
