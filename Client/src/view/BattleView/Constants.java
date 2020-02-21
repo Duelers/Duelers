@@ -35,7 +35,7 @@ public class Constants {
     static final Color CAN_SELECT_COLOR = Color.rgb(255, 255, 255, 0.7);
     static final Color ATTACK_COLOR = Color.rgb(255, 157, 0);
 
-    static final Color defaultColor = Color.rgb(255, 255, 255, 0.5);
+    static final Color defaultColor = Color.rgb(20, 255, 255, 0.5);
 
     static final ColorAdjust POSITIVE_BUFF_EFFECT = new ColorAdjust(-0.5, 1, -0.5, 0);
     static final ColorAdjust NEGATIVE_BUFF_EFFECT = new ColorAdjust(0.5, 1, -0.5, 0);
