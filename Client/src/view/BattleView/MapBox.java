@@ -195,13 +195,19 @@ public class MapBox implements PropertyChangeListener {
 
                 CompressedCard card = battleScene.getHandBox().getSelectedCard();
                 CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
-                if (card.getType() == CardType.MINION){
+                if (card.getType() == CardType.MINION || card.getType() == CardType.HERO){
                     if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)){
                         battleScene.getController().insert(card, row, column);
                         System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
                         battleScene.getHandBox().resetSelection();
                         resetSelection();
                     }
+                }
+                else if (card.getType() == CardType.SPELL){
+                    battleScene.getController().insert(card, row, column);
+                    System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
+                    battleScene.getHandBox().resetSelection();
+                    resetSelection();
                 }
             }
             return;
