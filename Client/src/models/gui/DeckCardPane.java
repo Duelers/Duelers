@@ -2,8 +2,8 @@ package models.gui;
 
 import controller.Client;
 import javafx.application.Platform;
-import models.ICard;
-import models.card.Deck;
+import server.dataCenter.models.card.ICard;
+import server.dataCenter.models.card.Deck;
 
 import java.beans.PropertyChangeEvent;
 import java.io.FileNotFoundException;

@@ -6,8 +6,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import models.ICard;
-import models.card.CardType;
+import server.dataCenter.models.card.CardType;
+import server.dataCenter.models.card.ICard;
 
 import static models.gui.CardBackground.GLOW_WIDTH;
 import static models.gui.UIConstants.SCALE;

@@ -15,9 +15,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import models.card.Deck;
-import models.card.DeckExporter;
+// import server.dataCenter.models.card.Deck;
+import server.dataCenter.models.card.DeckExporter;
 import view.CollectionMenu;
+
+import server.dataCenter.models.card.Deck;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -127,7 +129,7 @@ public class DeckBox extends GridPane {
             add(valid, 12, 0, 1, 2);
         }
 
-        if (deck.isMain()) {
+        if (/* deck.isMain() */true) { // isMain relies on Client Instance
             ImageView main = ImageLoader.makeImageView(mainIcon, ICON_SIZE, ICON_SIZE);
             add(main, 12, 2, 1, 1);
         } else {

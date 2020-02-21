@@ -3,11 +3,18 @@ package server.dataCenter.models.card;
 import server.clientPortal.models.comperessedData.CompressedCard;
 import server.dataCenter.models.card.spell.Spell;
 
+import server.dataCenter.models.card.CardType;
+import server.dataCenter.models.card.ICard;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Card {
+import java.beans.PropertyChangeSupport;
+
+
+public class Card implements ICard {
+    private transient PropertyChangeSupport support = new PropertyChangeSupport(this);
     private String name;
     private String description;
     private String cardId;
@@ -47,6 +54,21 @@ public class Card {
         this.range = referenceCard.range;
     }
 
+    public Card(String name, String cardId, String description, String spriteName, CardType type, ArrayList<Spell> spells, int defaultAp, int defaultHp, int mannaPoint, int price, AttackType attackType, int range) {
+        this.name = name;
+        this.cardId = cardId;
+        this.description = description;
+        this.spriteName = spriteName;
+        this.type = type;
+        this.spells = spells;
+        this.defaultAp = defaultAp;
+        this.defaultHp = defaultHp;
+        this.mannaPoint = mannaPoint;
+        this.price = price;
+        this.attackType = attackType;
+        this.range = range;
+    }
+
     public Card(String name, String description, CardType cardType, ArrayList<Spell> spells, int defaultAp,
 			int defaultHp, int manaCost, int price, AttackType attackType, int range) {
 		this.name = name;
@@ -77,6 +99,7 @@ public class Card {
         return this.cardId.equalsIgnoreCase(card.cardId);
     }
 
+	@Override
     public String getName() {
         return this.name;
     }
@@ -99,6 +122,10 @@ public class Card {
 
     public List<Spell> getSpells() {
         return Collections.unmodifiableList(spells);
+    }
+
+    public String getSpriteName() {
+        return spriteName;
     }
 
     public int getDefaultAp() {
@@ -143,5 +170,13 @@ public class Card {
 
     public void addSpell(Spell spell) {
         spells.add(spell);
+    }
+
+	public boolean isSameAs(String cardName) {
+        return name.equalsIgnoreCase(cardName);
+    }
+
+    public boolean nameContains(String cardName) {
+        return name.toLowerCase().contains(cardName.toLowerCase());
     }
 }

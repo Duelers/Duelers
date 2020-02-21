@@ -2,7 +2,7 @@ package view;
 
 import controller.Client;
 import controller.CustomGameMenuController;
-import models.card.Deck;
+import server.dataCenter.models.card.Deck;
 import models.game.GameType;
 import models.gui.*;
 

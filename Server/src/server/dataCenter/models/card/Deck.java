@@ -5,6 +5,10 @@ import server.dataCenter.models.account.Collection;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 
+import server.dataCenter.models.card.CardType;
+
+import server.dataCenter.models.card.ICard;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +24,36 @@ public class Deck {
         this.hero = hero;
         this.item = item;
         this.others = others;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj instanceof Deck) {
+            Deck deck = (Deck) obj;
+            if (!deckName.equals(deck.getName())) return false;
+            if (hero == null ^ deck.hero == null) return false;
+            if (hero != null && !hero.equals(deck.hero)) return false;
+
+            if (others.size() != deck.others.size()) return false;
+            for (Card other : others) {
+                if (!deck.others.contains(other)) return false;
+            }
+            return true;
+        }
+        if (obj instanceof TempDeck) {
+            TempDeck deck = (TempDeck) obj;
+            if (!deckName.equals(deck.getDeckName())) return false;
+            if (hero == null ^ deck.getHeroId() == null) return false;
+            if (hero != null && !hero.getCardId().equalsIgnoreCase(deck.getHeroId())) return false;
+
+            if (others.size() != deck.getOthersIds().size()) return false;
+            for (Card other : others) {
+                if (!deck.getOthersIds().contains(other.getCardId())) return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     public Deck(Deck deck) {
@@ -62,6 +96,15 @@ public class Deck {
         return false;
     }
 
+    public boolean hasCard(Card other) {
+        for (Card card : others) {
+            if (card.equals(other)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addCard(String cardId, Collection collection) throws LogicException {
         if (hasCard(cardId)) {
             throw new ClientException("deck had this card.");
@@ -98,6 +141,10 @@ public class Deck {
         if (item == card)
             item = null;
         others.remove(card);
+    }
+
+    public boolean areSame(String deckName) {
+        return this.deckName.equalsIgnoreCase(deckName);
     }
 
     public boolean isValid() {
@@ -163,5 +210,36 @@ public class Deck {
 
     public String getName() {
         return deckName;
+    }
+
+    public boolean hasHero(Card hero) {
+        if (this.hero == null) return false;
+        return this.hero.equals(hero);
+    }
+
+    public int count(ICard card) {
+        switch (card.getType()) {
+            case HERO:
+                if (hero != null && hero.isSameAs(card.getName())) return 1;
+                return 0;
+            case MINION:
+            case SPELL:
+                int count = 0;
+                for (Card other : others) {
+                    if (other.isSameAs(card.getName())) count++;
+                }
+                return count;
+            default:
+                return 0;
+        }
+    }
+
+    public Card getCard(String cardName) {
+        if (hero != null && hero.isSameAs(cardName)) return hero;
+
+        for (Card other : others) {
+            if (other.isSameAs(cardName)) return other;
+        }
+        return null;
     }
 }

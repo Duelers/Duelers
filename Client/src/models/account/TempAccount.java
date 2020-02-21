@@ -1,6 +1,8 @@
 package models.account;
 
-import models.card.TempDeck;
+import server.dataCenter.models.card.Deck;
+import server.dataCenter.models.card.TempDeck;
+import server.dataCenter.models.account.Collection;
 
 import java.util.ArrayList;
 import java.util.Collections;

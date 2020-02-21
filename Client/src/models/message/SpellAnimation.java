@@ -1,7 +1,7 @@
 package models.message;
 
-import models.card.spell.AvailabilityType;
-import models.game.map.Cell;
+import server.dataCenter.models.card.spell.AvailabilityType;
+import models.game.map.Position;
 
 import java.util.Set;
 

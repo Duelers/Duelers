@@ -25,15 +25,15 @@ public class TempDeck {
         return deckName;
     }
 
-    String getHeroId() {
+    public String getHeroId() {
         return heroId;
     }
 
-    String getItemId() {
+    public String getItemId() {
         return itemId;
     }
 
-    List<String> getOthersIds() {
+    public List<String> getOthersIds() {
         return Collections.unmodifiableList(othersIds);
     }
 }

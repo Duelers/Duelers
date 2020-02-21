@@ -4,6 +4,7 @@ public class AvailabilityType {
     private boolean onPut;
     private boolean onAttack;
     private boolean onDeath;
+    private boolean continuous;
     private boolean onDefend;
 
     public AvailabilityType(AvailabilityType availabilityType) {
@@ -11,12 +12,22 @@ public class AvailabilityType {
         this.onAttack = availabilityType.onAttack;
         this.onDeath = availabilityType.onDeath;
         this.onDefend = availabilityType.onDefend;
+        this.continuous = availabilityType.continuous;
+    }
+
+    public AvailabilityType(boolean onPut, boolean onAttack, boolean onDeath, boolean continuous, boolean onDefend) {
+        this.onPut = onPut;
+        this.onAttack = onAttack;
+        this.onDeath = onDeath;
+        this.continuous = continuous;
+        this.onDefend = onDefend;
     }
 
     public AvailabilityType(boolean onPut, boolean onAttack, boolean onDeath, boolean continuous) {
         this.onPut = onPut;
         this.onAttack = onAttack;
         this.onDeath = onDeath;
+        this.continuous = continuous;
     }
 
     public boolean isOnPut() {
@@ -29,6 +40,10 @@ public class AvailabilityType {
 
     public boolean isOnDeath() {
         return onDeath;
+    }
+
+    public boolean isContinuous() {
+        return continuous;
     }
 
     public boolean isOnDefend() {

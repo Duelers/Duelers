@@ -1,6 +1,6 @@
 package models.comperessedData;
 
-import models.card.CardType;
+import server.dataCenter.models.card.CardType;
 import view.BattleView.Constants;
 
 import java.beans.PropertyChangeListener;

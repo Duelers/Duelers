@@ -4,6 +4,12 @@ import com.google.gson.Gson;
 import javafx.application.Platform;
 import models.Constants;
 import models.account.Account;
+<<<<<<< HEAD
+=======
+import server.dataCenter.models.card.Card;
+import server.dataCenter.models.card.DeckInfo;
+import models.game.map.Position;
+>>>>>>> Shifted Client's Card dependencies to Server
 import models.message.CardPosition;
 import models.message.GameUpdateMessage;
 import models.message.Message;

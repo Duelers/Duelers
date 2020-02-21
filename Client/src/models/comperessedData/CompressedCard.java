@@ -1,8 +1,8 @@
 package models.comperessedData;
 
-import models.ICard;
+import server.dataCenter.models.card.ICard;
 import server.dataCenter.models.card.AttackType;
-import models.card.CardType;
+import server.dataCenter.models.card.CardType;
 
 import java.util.Objects;
 

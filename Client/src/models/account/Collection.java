@@ -1,7 +1,7 @@
 package models.account;
 
-import models.card.Card;
-import models.card.Deck;
+import server.dataCenter.models.card.Card;
+import server.dataCenter.models.card.Deck;
 
 import java.util.ArrayList;
 import java.util.Comparator;

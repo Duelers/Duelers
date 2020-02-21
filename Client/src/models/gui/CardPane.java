@@ -6,10 +6,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import models.ICard;
 import models.account.Collection;
-import models.card.CardType;
-import models.card.Deck;
+import server.dataCenter.models.card.ICard;
+import server.dataCenter.models.card.Card;
+import server.dataCenter.models.card.CardType;
+import server.dataCenter.models.card.Deck;
 import view.BattleView.CardAnimation;
 
 import java.beans.PropertyChangeEvent;

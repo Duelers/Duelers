@@ -1,6 +1,7 @@
-package models.card;
+package server.dataCenter.models.card;
 
-import models.game.GameType;
+// import models.game.GameType;
+import server.gameCenter.models.game.GameType;
 
 public class DeckInfo {
     private String deckName;

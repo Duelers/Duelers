@@ -1,6 +1,6 @@
 package models.comperessedData;
 
-import models.card.CardType;
+import server.dataCenter.models.card.CardType;
 import models.game.CellEffect;
 import models.game.GameType;
 

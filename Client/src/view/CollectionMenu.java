@@ -15,10 +15,13 @@ import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import models.account.Collection;
-import models.card.Deck;
-import models.card.ExportedDeck;
+import models.Constants;
+import server.dataCenter.models.account.Collection;
+// import server.dataCenter.models.card.Deck;
+import server.dataCenter.models.card.ExportedDeck;
 import models.gui.*;
+
+import server.dataCenter.models.card.Deck;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;

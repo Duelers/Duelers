@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
-import models.card.spell.AvailabilityType;
+import server.dataCenter.models.card.spell.AvailabilityType;
 import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedPlayer;
 import models.game.GameActions;

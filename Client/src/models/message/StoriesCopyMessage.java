@@ -1,6 +1,6 @@
 package models.message;
 
-import models.card.DeckInfo;
+import server.dataCenter.models.card.DeckInfo;
 
 public class StoriesCopyMessage {
     private DeckInfo[] stories;

@@ -1,9 +1,11 @@
-package models.card;
+package server.dataCenter.models.card;
 
-import models.ICard;
-import models.card.spell.Spell;
-import models.exceptions.InputException;
+import server.dataCenter.models.card.ICard;
+import server.dataCenter.models.card.Card;
+import server.dataCenter.models.card.spell.Spell; //
+import server.exceptions.InputException; //
 import server.dataCenter.models.card.AttackType;
+import server.dataCenter.models.card.CardType;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

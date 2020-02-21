@@ -11,8 +11,8 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import models.card.EditableCard;
-import models.card.spell.Spell;
+import server.dataCenter.models.card.EditableCard;
+import server.dataCenter.models.card.spell.Spell;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package models;
+package server.dataCenter.models.card;
 
 import server.dataCenter.models.card.CardType;
 
@@ -17,5 +17,5 @@ public interface ICard {
 
     String getDescription();
 
-    int getManaCost();
+    int getMannaPoint();
 }

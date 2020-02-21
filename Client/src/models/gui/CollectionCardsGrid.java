@@ -1,7 +1,7 @@
 package models.gui;
 
 import javafx.scene.layout.GridPane;
-import models.card.Card;
+import server.dataCenter.models.card.Card;
 
 import java.io.FileNotFoundException;
 import java.util.List;

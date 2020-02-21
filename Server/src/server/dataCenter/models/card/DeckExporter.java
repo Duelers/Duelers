@@ -1,6 +1,8 @@
-package models.card;
+package server.dataCenter.models.card;
 
 import models.JsonConverter;
+import server.dataCenter.models.card.ExportedDeck;
+import server.dataCenter.models.card.Deck;
 
 import java.io.File;
 import java.io.FileWriter;
