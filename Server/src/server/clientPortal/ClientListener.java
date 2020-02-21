@@ -44,10 +44,7 @@ public class ClientListener extends Thread {
                 ClientPortal.getInstance().addMessage(name, message);
             }
         } catch (Exception e) {
-            try {
-                DataCenter.getInstance().forceLogout(name);
-            } catch (LogicException ex) {
-            }
+            DataCenter.getInstance().forceLogout(name);
             ClientPortal.getInstance().removeClient(name);
             Server.serverPrint("Client disConnected!");
         }
