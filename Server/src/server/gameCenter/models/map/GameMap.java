@@ -35,8 +35,8 @@ public class GameMap {
         return new CompressedGameMap(cells, troops);
     }
 
-    public Cell getCell(Position position) {
-        return cells[position.getRow()][position.getColumn()];
+    public Cell getCell(Cell cell) {
+        return cells[cell.getRow()][cell.getColumn()];
     }
 
     public Cell getCell(int row, int column) {
@@ -50,8 +50,8 @@ public class GameMap {
         return row >= 0 && row < ROW_NUMBER && column >= 0 && column < COLUMN_NUMBER;
     }
 
-    public boolean isInMap(Position position) {
-        return position.getRow() >= 0 && position.getRow() < ROW_NUMBER && position.getColumn() >= 0 && position.getColumn() < COLUMN_NUMBER;
+    public boolean isInMap(Cell cell) {
+        return cell.getRow() >= 0 && cell.getRow() < ROW_NUMBER && cell.getColumn() >= 0 && cell.getColumn() < COLUMN_NUMBER;
     }
 
 
@@ -77,9 +77,6 @@ public class GameMap {
         return getTroop(cell.getRow(), cell.getColumn());
     }
 
-    public Troop getTroop(Position cell) {
-        return getTroop(cell.getRow(), cell.getColumn());
-    }
 
     public Troop getTroop(String cardId) {
         for (Troop troop : troops) {

@@ -1,16 +1,16 @@
 package server.clientPortal.models.message;
 
 import server.dataCenter.models.card.spell.AvailabilityType;
-import server.gameCenter.models.map.Position;
+import server.gameCenter.models.map.Cell;
 
 import java.util.Set;
 
 class SpellAnimation {
-    private final Set<Position> positions;
+    private final Set<Cell> cells;
     private final AvailabilityType availabilityType;
 
-    SpellAnimation(Set<Position> positions, AvailabilityType availabilityType) {
-        this.positions = positions;
+    SpellAnimation(Set<Cell> cells, AvailabilityType availabilityType) {
+        this.cells = cells;
         this.availabilityType = availabilityType;
     }
 }

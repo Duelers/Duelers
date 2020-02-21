@@ -8,7 +8,7 @@ import models.card.Card;
 import models.card.ExportedDeck;
 import models.comperessedData.CompressedCard;
 import models.game.GameType;
-import models.game.map.Position;
+import models.game.map.Cell;
 
 public class Message {
     private MessageType messageType;
@@ -153,20 +153,20 @@ public class Message {
         return message;
     }
 
-    public static Message makeMoveTroopMessage(String receiver, String cardId, Position position) {
+    public static Message makeMoveTroopMessage(String receiver, String cardId, Cell cell) {
         Message message = new Message(receiver);
         message.otherFields = new OtherFields();
         message.otherFields.setMyCardId(cardId);
-        message.otherFields.setPosition(position);
+        message.otherFields.setCell(cell);
         message.messageType = MessageType.MOVE_TROOP;
         return message;
     }
 
-    public static Message makeInsertMessage(String receiver, String cardId, Position position) {
+    public static Message makeInsertMessage(String receiver, String cardId, Cell cell) {
         Message message = new Message(receiver);
         message.otherFields = new OtherFields();
         message.otherFields.setMyCardId(cardId);
-        message.otherFields.setPosition(position);
+        message.otherFields.setCell(cell);
         message.messageType = MessageType.INSERT;
         return message;
     }

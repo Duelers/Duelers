@@ -34,7 +34,7 @@ public class CompressedCard implements ICard {
         this.attackType = attackType;
         this.range = range;
     }
-
+  
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

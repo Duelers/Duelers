@@ -281,7 +281,7 @@ public class GameCenter extends Thread {//synchronize
         Game game = getGame(message.getSender());
         game.insert(
                 DataCenter.getInstance().getClients().get(message.getSender()).getUsername(),
-                message.getOtherFields().getMyCardId(), message.getOtherFields().getPosition()
+                message.getOtherFields().getMyCardId(), message.getOtherFields().getCell()
         );
         Server.getInstance().sendGameUpdateMessage(game);
     }
@@ -298,7 +298,7 @@ public class GameCenter extends Thread {//synchronize
         Game game = getGame(message.getSender());
         game.moveTroop(
                 DataCenter.getInstance().getClients().get(message.getSender()).getUsername(),
-                message.getOtherFields().getMyCardId(), message.getOtherFields().getPosition()
+                message.getOtherFields().getMyCardId(), message.getOtherFields().getCell()
         );
     }
 

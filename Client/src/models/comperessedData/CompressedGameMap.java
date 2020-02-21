@@ -1,7 +1,7 @@
 package models.comperessedData;
 
 import models.game.CellEffect;
-import models.game.map.Position;
+import models.game.map.Cell;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -11,13 +11,13 @@ import java.util.List;
 
 public class CompressedGameMap {
     private static final int ROW_NUMBER = 5, COLUMN_NUMBER = 9;
-    private final CompressedCell[][] cells;
+    private final Cell[][] cells;
     private final ArrayList<CompressedTroop> troops;
     private CellEffect[] cellEffects;
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     //just for testing BattleView
-    public CompressedGameMap(CompressedCell[][] cells, ArrayList<CompressedTroop> troops) {
+    public CompressedGameMap(Cell[][] cells, ArrayList<CompressedTroop> troops) {
         this.cells = cells;
         this.troops = troops;
     }
@@ -32,7 +32,6 @@ public class CompressedGameMap {
 
     public static boolean isInMap(int row, int column) {
         return row >= 0 && row < ROW_NUMBER && column >= 0 && column < COLUMN_NUMBER;
-
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
@@ -46,7 +45,7 @@ public class CompressedGameMap {
         support.removePropertyChangeListener(pcl);
     }
 
-    public CompressedCell[][] getCells() {
+    public Cell[][] getCells() {
         return cells;
     }
 
@@ -76,17 +75,16 @@ public class CompressedGameMap {
         return compressedTroops;
     }
 
-    public CompressedCell getCell(int row, int column) {
+    public Cell getCell(int row, int column) {
         if (isInMap(row, column)) {
             return cells[row][column];
         }
-
         return null;
     }
 
-    public CompressedTroop getTroop(Position cell) {
+    public CompressedTroop getTroop(Cell cell) {
         for (CompressedTroop troop : troops) {
-            if (troop.getPosition().equals(cell)) {
+            if (troop.getCell().equals(cell)) {
                 return troop;
             }
         }
@@ -139,7 +137,7 @@ public class CompressedGameMap {
         if (cellEffects == null)
             return 0;
         for (CellEffect cellEffect : cellEffects) {
-            if (cellEffect.getPosition().getRow() == j && cellEffect.getPosition().getColumn() == i) {
+            if (cellEffect.getCell().getRow() == j && cellEffect.getCell().getColumn() == i) {
                 if (cellEffect.isPositive())
                     return +1;
                 else

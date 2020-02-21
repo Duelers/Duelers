@@ -6,7 +6,7 @@ import models.Constants;
 import models.account.Account;
 import models.card.Card;
 import models.card.DeckInfo;
-import models.game.map.Position;
+import models.game.map.Cell;
 import models.message.CardPosition;
 import models.message.GameUpdateMessage;
 import models.message.Message;
@@ -28,7 +28,7 @@ public class Client {
     private LinkedList<Message> receivingMessages = new LinkedList<>();
     private DeckInfo[] customDecks;
     private Card selected;
-    private Position[] positions;
+    private Cell[] positions;
     private boolean validation = true;
     private String errorMessage;
     private Socket socket;

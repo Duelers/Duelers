@@ -11,7 +11,7 @@ import models.card.spell.AvailabilityType;
 import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedPlayer;
 import models.game.GameActions;
-import models.game.map.Position;
+import models.game.map.Cell;
 import view.Show;
 
 import java.io.File;
@@ -94,8 +94,8 @@ public class BattleScene extends Show {
         mapBox.showDefend(defender, attacker);
     }
 
-    public void spell(AvailabilityType availabilityType, Position position) {
-        mapBox.showSpell(getSpellSpriteName(availabilityType), position.getRow(), position.getColumn());
+    public void spell(AvailabilityType availabilityType, Cell cell) {
+        mapBox.showSpell(getSpellSpriteName(availabilityType), cell.getRow(), cell.getColumn());
     }
 
     private String getSpellSpriteName(AvailabilityType availabilityType) {
@@ -170,14 +170,14 @@ public class BattleScene extends Show {
             if (myPlayer.getHero() == null) {
                 mapBox.showSpell(
                         WINNER_SPRITE_NAME,
-                        myPlayer.getTroops().get(0).getPosition().getRow(),
-                        myPlayer.getTroops().get(0).getPosition().getColumn()
+                        myPlayer.getTroops().get(0).getCell().getRow(),
+                        myPlayer.getTroops().get(0).getCell().getColumn()
                 );
             } else {
                 mapBox.showSpell(
                         WINNER_SPRITE_NAME,
-                        myPlayer.getHero().getPosition().getRow(),
-                        myPlayer.getHero().getPosition().getColumn()
+                        myPlayer.getHero().getCell().getRow(),
+                        myPlayer.getHero().getCell().getColumn()
                 );
             }
         } else {
@@ -185,14 +185,14 @@ public class BattleScene extends Show {
             if (oppPlayer.getHero() == null) {
                 mapBox.showSpell(
                         WINNER_SPRITE_NAME,
-                        oppPlayer.getTroops().get(0).getPosition().getRow(),
-                        oppPlayer.getTroops().get(0).getPosition().getColumn()
+                        oppPlayer.getTroops().get(0).getCell().getRow(),
+                        oppPlayer.getTroops().get(0).getCell().getColumn()
                 );
             } else {
                 mapBox.showSpell(
                         WINNER_SPRITE_NAME,
-                        oppPlayer.getHero().getPosition().getRow(),
-                        oppPlayer.getHero().getPosition().getColumn()
+                        oppPlayer.getHero().getCell().getRow(),
+                        oppPlayer.getHero().getCell().getColumn()
                 );
             }
         }

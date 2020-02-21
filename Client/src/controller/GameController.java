@@ -9,7 +9,7 @@ import models.comperessedData.CompressedTroop;
 import models.exceptions.InputException;
 import models.game.GameActions;
 import models.game.availableActions.AvailableActions;
-import models.game.map.Position;
+import models.game.map.Cell;
 import models.message.*;
 import view.BattleView.BattleScene;
 
@@ -78,16 +78,16 @@ public class GameController implements GameActions {
             if (!attackerTroop.canAttack())
                 throw new InputException("you can not attack");
             if (attackerTroop.getCard().getAttackType() == AttackType.MELEE) {
-                if (!attackerTroop.getPosition().isNextTo(defenderTroop.getPosition())) {
+                if (!attackerTroop.getCell().isNextTo(defenderTroop.getCell())) {
                     throw new InputException("you can not attack to this target");
                 }
             } else if (attackerTroop.getCard().getAttackType() == AttackType.RANGED) {
-                if (attackerTroop.getPosition().isNextTo(defenderTroop.getPosition()) ||
-                        attackerTroop.getPosition().manhattanDistance(defenderTroop.getPosition()) > attackerTroop.getCard().getRange()) {
+                if (attackerTroop.getCell().isNextTo(defenderTroop.getCell()) ||
+                        attackerTroop.getCell().manhattanDistance(defenderTroop.getCell()) > attackerTroop.getCard().getRange()) {
                     throw new InputException("you can not attack to this target");
                 }
             } else { // HYBRID
-                if (attackerTroop.getPosition().manhattanDistance(defenderTroop.getPosition()) > attackerTroop.getCard().getRange()) {
+                if (attackerTroop.getCell().manhattanDistance(defenderTroop.getCell()) > attackerTroop.getCard().getRange()) {
                     throw new InputException("you can not attack to this target");
                 }
             }
@@ -105,16 +105,16 @@ public class GameController implements GameActions {
     @Override
     public void move(CompressedTroop selectedTroop, int row, int column) {
         try {
-            Position target = new Position(row, column);
+            Cell target = new Cell(row, column);
             if (!selectedTroop.canMove()) {
                 throw new InputException("troop can not move");
             }
 
-            if (currentGame.getGameMap().getTroop(new Position(row, column)) != null) {
+            if (currentGame.getGameMap().getTroop(new Cell(row, column)) != null) {
                 throw new InputException("cell is not empty");
             }
 
-            if (selectedTroop.getPosition().manhattanDistance(row, column) > 2) {
+            if (selectedTroop.getCell().manhattanDistance(new Cell(row, column)) > 2) {
                 throw new InputException("too far to go");
             }
 
@@ -148,11 +148,11 @@ public class GameController implements GameActions {
     public void insert(CompressedCard card, int row, int column) {
         if (validatePositionForInsert(card, row, column))
             Client.getInstance().addToSendingMessagesAndSend(
-                    Message.makeInsertMessage(SERVER_NAME, card.getCardId(), new Position(row, column)));
+                    Message.makeInsertMessage(SERVER_NAME, card.getCardId(), new Cell(row, column)));
     }
 
     private boolean validatePositionForInsert(CompressedCard card, int row, int column) {
-        return (card.getType() == CardType.SPELL) || (currentGame.getGameMap().getTroop(new Position(row, column)) == null);
+        return (card.getType() == CardType.SPELL) || (currentGame.getGameMap().getTroop(new Cell(row, column)) == null);
     }
 
 
@@ -164,7 +164,7 @@ public class GameController implements GameActions {
     public void showAnimation(GameAnimations gameAnimations) {
         new Thread(() -> {
             gameAnimations.getSpellAnimations().forEach(
-                    spellAnimation -> spellAnimation.getPositions().forEach(
+                    spellAnimation -> spellAnimation.getCells().forEach(
                             position -> battleScene.spell(spellAnimation.getAvailabilityType(), position)
                     )
             );

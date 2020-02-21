@@ -1,6 +1,6 @@
 package models.message;
 
-import models.game.map.Position;
+import models.game.map.Cell;
 
 public class OtherFields {
     private String deckName;
@@ -8,7 +8,7 @@ public class OtherFields {
     private String myCardId;
     private String opponentCardId;
     private String[] myCardIds;
-    private Position position;
+    private Cell cell;
     private String sudoCommand;
 
     void setDeckName(String deckName) {
@@ -31,8 +31,8 @@ public class OtherFields {
         this.myCardIds = myCardIds;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 
     void setSudoCommand(String sudoCommand) {

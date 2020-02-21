@@ -21,20 +21,6 @@ public class CompressedPlayer {
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
-    //just for testing BattleView
-    public CompressedPlayer(String userName, int currentMP, ArrayList<CompressedCard> hand,
-                            ArrayList<CompressedCard> graveyard, CompressedCard nextCard,
-                            int playerNumber, ArrayList<CompressedTroop> troops, CompressedTroop hero) {
-        this.userName = userName;
-        this.currentMP = currentMP;
-        this.hand = hand;
-        this.graveyard = graveyard;
-        this.nextCard = nextCard;
-        this.playerNumber = playerNumber;
-        this.troops = troops;
-        this.hero = hero;
-    }
-
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         if (support == null) {
             support = new PropertyChangeSupport(this);
