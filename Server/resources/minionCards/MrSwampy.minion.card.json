@@ -1,0 +1,16 @@
+{
+  "name": "Mr Swampy",
+  "description": "Provoke, Ranged",
+  "cardId": "MrSwampy",
+  "spriteName": "neutral_beastswamp",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 0,
+  "defaultHp": 3,
+  "manaCost": 1,
+  "price": 100,
+  "attackType": "HYBRID",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
