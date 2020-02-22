@@ -9,7 +9,7 @@ import java.util.Formatter;
 import java.util.Scanner;
 
 public class ClientListener extends Thread {
-    private Socket socket;
+    private final Socket socket;
 
     public ClientListener(Socket socket) {
         this.socket = socket;

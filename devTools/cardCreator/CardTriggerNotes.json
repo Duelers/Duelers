@@ -1,69 +1,69 @@
 {
-  "name": "",                                                  # Name, as printed on card
-  "description": "",                                           # Card text
-  "cardId": "",                                                # card id should be same as name, just without spaces.
-  "spriteName": "artifact_f2_crescentspear",                   # card art, Looks in ./Client/Resources/TroopAnimations for minions and ./Client/Resources/Icons for spells.
-  "type": "MINION",                                            # Type of card, eg general ("HERO"), minion ("MINION"), or spell ("SPELL")
-  "spells": [                                                  # List of effects. Note that cards can have multiple effects, each with different triggers.
+  "name": "",                                                  // Name, as printed on card
+  "description": "",                                           // Card text
+  "cardId": "",                                                // card id should be same as name, just without spaces.
+  "spriteName": "artifact_f2_crescentspear",                   // card art, Looks in ./Client/Resources/TroopAnimations for minions and ./Client/Resources/Icons for spells.
+  "type": "MINION",                                            // Type of card, eg general ("HERO"), minion ("MINION"), or spell ("SPELL")
+  "spells": [                                                  // List of effects. Note that cards can have multiple effects, each with different triggers.
     {
-      "spellId": "",                                           # Name of the effect
+      "spellId": "",                                           // Name of the effect
       "action": {
-        "enemyHitChanges": 0,                                  # ???
-        "apChange": 0,                                         # add/subtract attack
-        "hpChange": 0,                                         # add/subtract health
-        "mpChange": 0,                                         # change available mana ? 
-        "poison": false,                                       # can poison, what is poison ?
-        "makeStun": false,                                     # can stun, works like stun in Duelyst
-        "makeDisarm": false,                                   # can disarm. What is disarm ?
-        "noDisarm": false,                                     # ? cannot be disarmed ?
-        "noPoison": false,                                     # ? cannot be posioned ?
-        "noStun": false,                                       # ? cannot be stunned
-        "noBadEffect": false,                                  # ??? presumably this means cannot be poisoned, stunned, disarmed, etc
-        "noAttackFromWeakerOnes": false,                       # ??? possibly works like "beastclad hunter" 
-        "disableHolyBuff": false,                              # ???
-        "addSpell": false,                                     # ???
-        "killsTarget": false,                                  # ??? possibly Destroy
-        "isForGladiator": false,                               # ???
-        "durable": true,                                       # ??? maybe false is used to temporary effects (eg, until end of turn)
-        "removeBuffs": 0,                                      # ??? possibly dispell
-        "duration": 0,                                         # How long the effect lasts, toDo: test if -1 means "forever"
-        "delay": 0                                             # ???
+        "enemyHitChanges": 0,                                  // ???
+        "apChange": 0,                                         // add/subtract attack
+        "hpChange": 0,                                         // add/subtract health
+        "mpChange": 0,                                         // change available mana ? 
+        "poison": false,                                       // can poison, what is poison ?
+        "makeStun": false,                                     // can stun, works like stun in Duelyst
+        "makeDisarm": false,                                   // can disarm. What is disarm ?
+        "noDisarm": false,                                     // ? cannot be disarmed ?
+        "noPoison": false,                                     // ? cannot be posioned ?
+        "noStun": false,                                       // ? cannot be stunned
+        "noBadEffect": false,                                  // ??? presumably this means cannot be poisoned, stunned, disarmed, etc
+        "noAttackFromWeakerOnes": false,                       // ??? possibly works like "beastclad hunter" 
+        "disableHolyBuff": false,                              // ???
+        "addSpell": false,                                     // ???
+        "killsTarget": false,                                  // ??? possibly Destroy
+        "isForGladiator": false,                               // ???
+        "durable": true,                                       // ??? maybe false is used to temporary effects (eg, until end of turn)
+        "removeBuffs": 0,                                      // ??? possibly dispell
+        "duration": 0,                                         // How long the effect lasts, toDo: test if -1 means "forever"
+        "delay": 0                                             // ???
       },
-      "target": {                                              # What/How is a target selected? 
-        "isRelatedToCardOwnerPosition": false,                 # ? possibly todo with affects related to the position of the minion. Eg. Naga, Mirkblood, shiro, bonereaper, etc.
-        "isForAroundOwnHero": false,                           # ? possibly todo with affects related to the position of general. eg entropic decay, zeal, etc
-        "isRandom": false,                                     # ???
-        "isForDeckCards": false,                               # ???
-        "owner": {                                             # set which player can be affected by the spell 
-          "own": true,                                         # Your stuff
-          "enemy": false                                       # Enemies stuff
+      "target": {                                              // What/How is a target selected? 
+        "isRelatedToCardOwnerPosition": false,                 // ? possibly todo with affects related to the position of the minion. Eg. Naga, Mirkblood, shiro, bonereaper, etc.
+        "isForAroundOwnHero": false,                           // ? possibly todo with affects related to the position of general. eg entropic decay, zeal, etc
+        "isRandom": false,                                     // ???
+        "isForDeckCards": false,                               // ???
+        "owner": {                                             // set which player can be affected by the spell 
+          "own": true,                                         // Your stuff
+          "enemy": false                                       // Enemies stuff
         },
-        "cardType": {                                          # 
-          "cell": false,                                       # spell targets a square on the board (e.g. creep)
-          "hero": false,                                       # targets general
-          "minion": false,                                     # targets minion
-          "player": true                                       # ???
+        "cardType": {                                          // 
+          "cell": false,                                       // spell targets a square on the board (e.g. creep)
+          "hero": false,                                       // targets general
+          "minion": false,                                     // targets minion
+          "player": true                                       // ???
         }
       },
-      "availabilityType": {                                    # When the above ability triggers. 
-        "onPut": false,                                        # When Played, eg opening gambit
-        "onAttack": false,                                     # When minion attacks  / to test: procs on counterattack?
-        "onDeath": false,                                      # When killed, eg dying wish
-        "specialPower": false,                                 # ???
-        "onStart": false,                                      # One start of the game, NOT turn. 
-        "onDefend": false                                      # ???
+      "availabilityType": {                                    // When the above ability triggers. 
+        "onPut": false,                                        // When Played, eg opening gambit
+        "onAttack": false,                                     // When minion attacks  / to test: procs on counterattack?
+        "onDeath": false,                                      // When killed, eg dying wish
+        "specialPower": false,                                 // ???
+        "onStart": false,                                      // One start of the game, NOT turn. 
+        "onDefend": false                                      // ???
       },
-      "coolDown": 0,                                           # ???
-      "manaCost": 0,                                         # ???
-      "lastTurnUsed": 0                                        # ???
+      "coolDown": 0,                                           // ???
+      "manaCost": 0,                                         // ???
+      "lastTurnUsed": 0                                        // ???
     }
   ],
-  "defaultAp": 0,                                              # Unit base attack
-  "defaultHp": 0,                                              # Unit Base health.
-  "manaCost": 0,                                             # Mana cost.
-  "price": 100,                                                # Ignore just set to 100.
-  "attackType": "MELEE",                                       # MELEE, HYBRID, RANGED where 'hybrid' works like range in Duelyst.
-  "range": 0,                                                  # Ranged units can only shoot X squares away.
-  "hasCombo": false,                                           # ??? not the same as celerity
-  "remainingNumber": 20                                        # Ingore, just set to 20
+  "defaultAp": 0,                                              // Unit base attack
+  "defaultHp": 0,                                              // Unit Base health.
+  "manaCost": 0,                                             // Mana cost.
+  "price": 100,                                                // Ignore just set to 100.
+  "attackType": "MELEE",                                       // MELEE, HYBRID, RANGED where 'hybrid' works like range in Duelyst.
+  "range": 0,                                                  // Ranged units can only shoot X squares away.
+  "hasCombo": false,                                           // ??? not the same as celerity
+  "remainingNumber": 20                                        // Ingore, just set to 20
 }

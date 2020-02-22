@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class GameCenter extends Thread {//synchronize
-    private static GameCenter ourInstance = new GameCenter();
+    private static final GameCenter ourInstance = new GameCenter();
     private final HashMap<Account, Game> onlineGames = new HashMap<>();//Account -> Game
     private final LinkedList<GlobalRequest> globalRequests = new LinkedList<>();
     private final LinkedList<UserInvitation> userInvitations = new LinkedList<>();
@@ -35,7 +35,7 @@ public class GameCenter extends Thread {//synchronize
 
     @Override
     public void run() {
-        Server.getInstance().serverPrint("Starting GameCenter...");
+        Server.serverPrint("Starting GameCenter...");
     }
 
     private Game getGame(String clientName) throws ClientException {
@@ -100,7 +100,7 @@ public class GameCenter extends Thread {//synchronize
         removeAllGameRequests(inviter);
         synchronized (userInvitations) {
             userInvitations.addLast(new UserInvitation(inviter, invited, gameType));
-            Server.getInstance().addToSendingMessages(Message.makeInvitationMessage(
+            Server.addToSendingMessages(Message.makeInvitationMessage(
                     DataCenter.getInstance().getAccounts().get(invited), inviter.getUsername(),
                     gameType));
         }
@@ -150,7 +150,7 @@ public class GameCenter extends Thread {//synchronize
             if (invitation == null)
                 throw new ClientException("The Invitation was not found!");
             userInvitations.remove(invitation);
-            Server.getInstance().addToSendingMessages(Message.makeAcceptRequestMessage(
+            Server.addToSendingMessages(Message.makeAcceptRequestMessage(
                     DataCenter.getInstance().getAccounts().get(inviter)));
             newMultiplayerGame(inviter, invited, invitation.getGameType());
         }
@@ -169,7 +169,7 @@ public class GameCenter extends Thread {//synchronize
             if (invitation == null)
                 throw new ClientException("The Invitation was not found!");
             userInvitations.remove(invitation);
-            Server.getInstance().addToSendingMessages(Message.makeDeclineRequestMessage(
+            Server.addToSendingMessages(Message.makeDeclineRequestMessage(
                     DataCenter.getInstance().getAccounts().get(inviter)));
         }
     }
@@ -222,7 +222,7 @@ public class GameCenter extends Thread {//synchronize
         game.setReward(Game.getDefaultReward());
         onlineGames.put(myAccount, game);
         gameInfos.add(new OnlineGame(game));
-        Server.getInstance().addToSendingMessages(Message.makeGameCopyMessage
+        Server.addToSendingMessages(Message.makeGameCopyMessage
                 (message.getSender(), game));
         game.startGame();
     }
@@ -246,9 +246,9 @@ public class GameCenter extends Thread {//synchronize
         onlineGames.put(account1, game);
         onlineGames.put(account2, game);
         gameInfos.add(new OnlineGame(game));
-        Server.getInstance().addToSendingMessages(Message.makeGameCopyMessage
+        Server.addToSendingMessages(Message.makeGameCopyMessage
                 (DataCenter.getInstance().getClientName(account1.getUsername()), game));
-        Server.getInstance().addToSendingMessages(Message.makeGameCopyMessage
+        Server.addToSendingMessages(Message.makeGameCopyMessage
                 (DataCenter.getInstance().getClientName(account2.getUsername()), game));
         game.startGame();
     }
@@ -331,7 +331,7 @@ public class GameCenter extends Thread {//synchronize
         if (!game.getPlayerOne().getUserName().equalsIgnoreCase("AI")) {
             Account account = DataCenter.getInstance().getAccount(game.getPlayerOne().getUserName());
             if (account == null)
-                Server.getInstance().serverPrint("Error");
+                Server.serverPrint("Error");
             else {
                 account.addMatchHistory(playerOneHistory, game.getReward());
                 DataCenter.getInstance().saveAccount(account);
@@ -340,7 +340,7 @@ public class GameCenter extends Thread {//synchronize
         if (!game.getPlayerTwo().getUserName().equalsIgnoreCase("AI")) {
             Account account = DataCenter.getInstance().getAccount(game.getPlayerTwo().getUserName());
             if (account == null)
-                Server.getInstance().serverPrint("Error");
+                Server.serverPrint("Error");
             else {
                 account.addMatchHistory(playerTwoHistory, game.getReward());
                 DataCenter.getInstance().saveAccount(account);
@@ -372,7 +372,7 @@ public class GameCenter extends Thread {//synchronize
         Game game = getGame(message.getOnlineGame());
         if (game == null)
             throw new ClientException("Invalid Game");
-        Server.getInstance().addToSendingMessages(Message.makeGameCopyMessage(message.getSender(), game));
+        Server.addToSendingMessages(Message.makeGameCopyMessage(message.getSender(), game));
         game.addObserver(account);
     }
 
