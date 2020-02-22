@@ -14,8 +14,8 @@ import java.util.*;
 public class ClientPortal extends Thread {
     private static final String CONFIG_PATH = "config";
     private static final int DEFAULT_PORT = 8888;
-    private static ClientPortal ourInstance = new ClientPortal();
-    private HashMap<String, Formatter> clients = new HashMap<>();
+    private static final ClientPortal ourInstance = new ClientPortal();
+    private final HashMap<String, Formatter> clients = new HashMap<>();
 
     private ClientPortal() {
     }
@@ -26,7 +26,7 @@ public class ClientPortal extends Thread {
 
     @Override
     public void run() {
-        Server.getInstance().serverPrint("Starting ClientPortal...");
+        Server.serverPrint("Starting ClientPortal...");
         try {
             ServerSocket serverSocket = makeServerSocket();
             while (true) {
@@ -37,7 +37,7 @@ public class ClientPortal extends Thread {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Server.getInstance().serverPrint("Error Making ServerSocket!");
+            Server.serverPrint("Error Making ServerSocket!");
             System.exit(-1);
         }
     }
@@ -68,7 +68,7 @@ public class ClientPortal extends Thread {
     }
 
     void addMessage(String clientName, String message) {
-        Server.getInstance().addToReceivingMessages(Message.convertJsonToMessage(message));
+        Server.addToReceivingMessages(Message.convertJsonToMessage(message));
     }
 
     synchronized public void sendMessage(String clientName, String message) {//TODO:Change Synchronization
@@ -76,7 +76,7 @@ public class ClientPortal extends Thread {
             clients.get(clientName).format(message + "\n");
             clients.get(clientName).flush();
         } else {
-            Server.getInstance().serverPrint("Client Not Found!");
+            Server.serverPrint("Client Not Found!");
         }
     }
 

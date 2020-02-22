@@ -8,7 +8,7 @@ import server.dataCenter.models.account.Account;
 import java.util.ArrayList;
 
 public class ChatCenter {
-    private static ChatCenter ourInstance = new ChatCenter();
+    private static final ChatCenter ourInstance = new ChatCenter();
     private ArrayList<String> globalMessages = new ArrayList<>();
 
     private ChatCenter() {
@@ -49,9 +49,9 @@ public class ChatCenter {
 
     private void sendMessage(String receiverClientName, String senderUsername, String receiverUsername, String text) {
         if (receiverClientName == null) {
-            Server.getInstance().serverPrint("Chat Receiver Error!");
+            Server.serverPrint("Chat Receiver Error!");
         }
         Message message = Message.makeChatMessage(receiverClientName, senderUsername, receiverUsername, text);
-        Server.getInstance().addToSendingMessages(message);
+        Server.addToSendingMessages(message);
     }
 }
