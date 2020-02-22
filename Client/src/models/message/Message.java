@@ -378,4 +378,6 @@ public class Message {
     public CompressedCard getCompressedCard() {
         return compressedCard;
     }
+
+    public OtherFields getOtherFields() {return otherFields;}
 }
