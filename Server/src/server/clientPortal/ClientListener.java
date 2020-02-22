@@ -21,7 +21,7 @@ public class ClientListener extends Thread {
         Formatter formatter;
         String name = null;
         try {
-            Server.getInstance().serverPrint("New Socket Is Accepted!");
+            Server.serverPrint("New Socket Is Accepted!");
             scanner = new Scanner(socket.getInputStream());
             formatter = new Formatter(socket.getOutputStream());
             formatter.format("#Listening#\n");
@@ -38,7 +38,7 @@ public class ClientListener extends Thread {
                     formatter.flush();
                 }
             }
-            Server.getInstance().serverPrint("New Client Is Accepted!");
+            Server.serverPrint("New Client Is Accepted!");
             while (true) {
                 String message = scanner.nextLine();
                 ClientPortal.getInstance().addMessage(name, message);
@@ -47,9 +47,10 @@ public class ClientListener extends Thread {
             try {
                 DataCenter.getInstance().forceLogout(name);
             } catch (LogicException ex) {
+                ex.printStackTrace();
             }
             ClientPortal.getInstance().removeClient(name);
-            Server.getInstance().serverPrint("Client disConnected!");
+            Server.serverPrint("Client disConnected!");
         }
     }
 }

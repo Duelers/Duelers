@@ -85,9 +85,7 @@ public class MainMenu extends Show {
         OnlineGamesList onlineGamesList = new OnlineGamesList();
         dialogBox.getChildren().add(onlineGamesList);
         onlineGamesDialog = new DialogContainer(root, dialogBox);
-        dialogBox.makeClosable(onlineGamesDialog, closeEvent -> {
-            BackgroundMaker.makeMenuBackgroundUnfrozen();
-        });
+        dialogBox.makeClosable(onlineGamesDialog, closeEvent -> BackgroundMaker.makeMenuBackgroundUnfrozen());
 
         new Thread(() -> {
             try {
