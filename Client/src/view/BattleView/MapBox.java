@@ -189,12 +189,12 @@ public class MapBox implements PropertyChangeListener {
         if (!battleScene.isMyTurn()) {
             return;
         }
+        CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
         CompressedTroop currentTroop = getTroop(row, column);
         if (selectionType == SelectionType.INSERTION) {
             if (GameController.getInstance().getAvailableActions().canInsertCard(battleScene.getHandBox().getSelectedCard())) {
 
                 CompressedCard card = battleScene.getHandBox().getSelectedCard();
-                CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
                 if (card.getType() == CardType.MINION || card.getType() == CardType.HERO){
                     if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)){
                         battleScene.getController().insert(card, row, column);
@@ -237,10 +237,10 @@ public class MapBox implements PropertyChangeListener {
                 battleScene.getHandBox().resetSelection();
                 resetSelection();
                 SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.attack);
-            } else if (GameController.getInstance().getAvailableActions().canMove(
+            } else if (GameController.getInstance().getAvailableActions().canMove(gameMap, player,
                     selectedTroop, row, column)) {
                 battleScene.getController().move(selectedTroop, row, column);
-                System.out.println(selectedTroop.getCard().getCardId() + "moved");
+                System.out.println(selectedTroop.getCard().getCardId() + " moved");
                 battleScene.getHandBox().resetSelection();
                 resetSelection();
                 SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.move);
@@ -250,6 +250,7 @@ public class MapBox implements PropertyChangeListener {
 
     void updateMapColors() {
         updateSelectionType();
+        CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
         for (int row = 0; row < 5; row++) { // ToDo: 5, 9 should be constants
             for (int column = 0; column < 9; column++) {
                 if (!battleScene.isMyTurn()) {
@@ -264,7 +265,6 @@ public class MapBox implements PropertyChangeListener {
                                 battleScene.getHandBox().getSelectedCard().getType() == CardType.MINION) {
 
                             CompressedCard card = battleScene.getHandBox().getSelectedCard();
-                            CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
                             if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)){
                                 cells[row][column].setFill(Constants.MOVE_COLOR);
                             }
@@ -299,7 +299,8 @@ public class MapBox implements PropertyChangeListener {
                 if (selectionType == SelectionType.NORMAL) {
                     if (GameController.getInstance().getAvailableActions().canAttack(selectedTroop, row, column))
                         cells[row][column].setFill(Constants.ATTACK_COLOR);
-                    else if (GameController.getInstance().getAvailableActions().canMove(selectedTroop, row, column))
+                    else if (GameController.getInstance().getAvailableActions().canMove(gameMap, player,
+                            selectedTroop, row, column))
                         cells[row][column].setFill(Constants.MOVE_COLOR);
                     else
                         cells[row][column].setFill(Constants.defaultColor);

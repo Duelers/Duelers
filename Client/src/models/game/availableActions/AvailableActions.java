@@ -140,8 +140,27 @@ public class AvailableActions {
         return handInserts.stream().map(Insert::getCard).collect(Collectors.toList()).contains(card);
     }
 
-    public boolean canMove(CompressedTroop troop, int row, int column) {
-        return getMovePositions(troop).contains(new Cell(row, column));
+    public boolean canMove(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int column) {
+        List<Cell> baseMovement = getMovePositions(troop);
+
+        Cell currentPosition = troop.getCell();
+        ArrayList<Cell> neighbourCells = currentPosition.getNeighbourCells(5, 9);  // Todo 5, 9 should be constants
+
+        //System.out.println("A " +  troop.getCell().toString());
+        //System.out.println("B " + neighbourCells.size());
+        //neighbourCells.forEach(n -> System.out.print(n.toString() + "|"));
+
+        for (Cell cell : neighbourCells){
+            if (gameMap.getTroop(cell) != null){
+                //System.out.println("C " + cell.toString());
+                CompressedTroop nearbyUnit = gameMap.getTroop(cell);
+                // is provoked?
+                if (nearbyUnit.getPlayerNumber() != player.getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")){
+                    return false;
+                }
+            }
+        }
+        return baseMovement.contains(new Cell(row, column));
     }
 
 
