@@ -58,6 +58,9 @@ public class AvailableActions {
             Cell currentPosition = troop.getCell();
             ArrayList<Cell> targets = new ArrayList<>();
 
+            int moveSpeed = 2; //Todo make this a troop property with default 2.
+
+
             for (int column = currentPosition.getColumn() - 2; column <= currentPosition.getColumn() + 2; column++) {
                 int rowDown = currentPosition.getRow() + (2 - Math.abs(column - currentPosition.getColumn()));
                 int rowUp = currentPosition.getRow() - (2 - Math.abs(column - currentPosition.getColumn()));
