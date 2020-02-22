@@ -9,7 +9,7 @@ import java.util.Formatter;
 import java.util.Scanner;
 
 public class ClientListener extends Thread {
-    private Socket socket;
+    private final Socket socket;
 
     public ClientListener(Socket socket) {
         this.socket = socket;
@@ -21,7 +21,7 @@ public class ClientListener extends Thread {
         Formatter formatter;
         String name = null;
         try {
-            Server.getInstance().serverPrint("New Socket Is Accepted!");
+            Server.serverPrint("New Socket Is Accepted!");
             scanner = new Scanner(socket.getInputStream());
             formatter = new Formatter(socket.getOutputStream());
             formatter.format("#Listening#\n");
@@ -38,18 +38,15 @@ public class ClientListener extends Thread {
                     formatter.flush();
                 }
             }
-            Server.getInstance().serverPrint("New Client Is Accepted!");
+            Server.serverPrint("New Client Is Accepted!");
             while (true) {
                 String message = scanner.nextLine();
                 ClientPortal.getInstance().addMessage(name, message);
             }
         } catch (Exception e) {
-            try {
-                DataCenter.getInstance().forceLogout(name);
-            } catch (LogicException ex) {
-            }
+            DataCenter.getInstance().forceLogout(name);
             ClientPortal.getInstance().removeClient(name);
-            Server.getInstance().serverPrint("Client disConnected!");
+            Server.serverPrint("Client disConnected!");
         }
     }
 }
