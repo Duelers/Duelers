@@ -3100,7 +3100,7 @@
                 "name": "Phoenix Fire",
                 "description": "Deal 3 damage to anything.",
                 "cardId": "duelyst_PhoenixFire_1",
-                "spriteName": "generalspell_f2_phoenixfire",
+                "spriteName": "icon_f2_phoenixfire02",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -3177,7 +3177,7 @@
                 "name": "Phoenix Fire",
                 "description": "Deal 3 damage to anything.",
                 "cardId": "duelyst_PhoenixFire_2",
-                "spriteName": "generalspell_f2_phoenixfire",
+                "spriteName": "icon_f2_phoenixfire02",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -3254,7 +3254,7 @@
                 "name": "Phoenix Fire",
                 "description": "Deal 3 damage to anything.",
                 "cardId": "duelyst_PhoenixFire_3",
-                "spriteName": "generalspell_f2_phoenixfire",
+                "spriteName": "icon_f2_phoenixfire02",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -3793,7 +3793,7 @@
                 "name": "Tempest",
                 "description": "Deal 2 Damage to ALL characters",
                 "cardId": "duelyst_Tempest_1",
-                "spriteName": "generalspell_f1_tesmpest",
+                "spriteName": "icon_f1_tempest",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -3870,7 +3870,7 @@
                 "name": "Tempest",
                 "description": "Deal 2 Damage to ALL characters",
                 "cardId": "duelyst_Tempest_2",
-                "spriteName": "generalspell_f1_tesmpest",
+                "spriteName": "icon_f1_tempest",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -3947,7 +3947,7 @@
                 "name": "Tempest",
                 "description": "Deal 2 Damage to ALL characters",
                 "cardId": "duelyst_Tempest_3",
-                "spriteName": "generalspell_f1_tesmpest",
+                "spriteName": "icon_f1_tempest",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -4100,9 +4100,54 @@
                 "duelyst_BlisteringSkorn_1",
                 "duelyst_BloodshardGolem_1"
             ]
+        },
+        {
+            "deckName": "test 1",
+            "heroId": "duelyst_FaieBloodwing_1",
+            "othersIds": [
+                "duelyst_FlamebloodWarlock_1",
+                "duelyst_FlamebloodWarlock_2",
+                "duelyst_FlamebloodWarlock_3",
+                "duelyst_PiercingMantis_1",
+                "duelyst_PiercingMantis_2",
+                "duelyst_PiercingMantis_3",
+                "duelyst_SkyrockGolem_1",
+                "duelyst_SkyrockGolem_2",
+                "duelyst_SkyrockGolem_3",
+                "duelyst_ValeHunter_1",
+                "duelyst_ValeHunter_2",
+                "duelyst_ValeHunter_3",
+                "duelyst_BloodshardGolem_1",
+                "duelyst_BloodshardGolem_2",
+                "duelyst_BloodshardGolem_3",
+                "duelyst_CelestialPhantom_1",
+                "duelyst_CelestialPhantom_2",
+                "duelyst_Serpenti_1",
+                "duelyst_Serpenti_2",
+                "duelyst_Serpenti_3"
+            ]
         }
     ],
-    "mainDeckName": "starterDeck Golem",
-    "matchHistories": [],
-    "money": 82000
+    "mainDeckName": "starterDeck Aggro",
+    "matchHistories": [
+        {
+            "oppName": "customGame_starterDeck Golem",
+            "amIWinner": true,
+            "date": "Feb 21, 2020 10:27:42 PM"
+        },
+        {
+            "oppName": "customGame_test 1",
+            "date": "Feb 21, 2020 11:17:12 PM"
+        },
+        {
+            "oppName": "customGame_test 1",
+            "date": "Feb 21, 2020 11:17:28 PM"
+        },
+        {
+            "oppName": "customGame_test 1",
+            "amIWinner": true,
+            "date": "Feb 21, 2020 11:19:10 PM"
+        }
+    ],
+    "money": 84000
 }
