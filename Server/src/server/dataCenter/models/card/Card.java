@@ -24,6 +24,7 @@ public class Card implements ICard {
     private int defaultAp;
     private int defaultHp;
     private int manaCost;
+    // private int manaPoint;
     private int price;
     private AttackType attackType;
     private int range;
@@ -54,7 +55,7 @@ public class Card implements ICard {
         this.range = referenceCard.range;
     }
 
-    public Card(String name, String cardId, String description, String spriteName, CardType type, ArrayList<Spell> spells, int defaultAp, int defaultHp, int mannaPoint, int price, AttackType attackType, int range) {
+    public Card(String name, String cardId, String description, String spriteName, CardType type, ArrayList<Spell> spells, int defaultAp, int defaultHp, int manaPoint, int price, AttackType attackType, int range) {
         this.name = name;
         this.cardId = cardId;
         this.description = description;
@@ -63,7 +64,7 @@ public class Card implements ICard {
         this.spells = spells;
         this.defaultAp = defaultAp;
         this.defaultHp = defaultHp;
-        this.mannaPoint = mannaPoint;
+        this.manaCost = manaPoint;
         this.price = price;
         this.attackType = attackType;
         this.range = range;
@@ -136,9 +137,15 @@ public class Card implements ICard {
         return this.defaultHp;
     }
 
+	@Override
     public int getManaCost() {
         return this.manaCost;
     }
+
+	// @Override
+    // public int getManaPoint() {
+    //     return this.manaPoint;
+    // }
 
     public AttackType getAttackType() {
         return this.attackType;

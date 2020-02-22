@@ -1,6 +1,6 @@
 package models.game;
 
-import models.game.map.Cell;
+import server.gameCenter.models.map.Cell;
 
 public class CellEffect {
     private Cell cell;

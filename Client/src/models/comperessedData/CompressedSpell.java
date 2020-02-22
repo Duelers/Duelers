@@ -10,7 +10,7 @@ public class CompressedSpell {
     private int coolDown;
     private int manaCost;
     private int lastTurnUsed;
-  
+
     //just for testing BattleView
     public CompressedSpell(String spellId, Target target, AvailabilityType availabilityType, int coolDown, int manaCost, int lastTurnUsed) {
         this.spellId = spellId;

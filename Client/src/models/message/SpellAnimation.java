@@ -1,7 +1,8 @@
 package models.message;
 
 import server.dataCenter.models.card.spell.AvailabilityType;
-import models.game.map.Position;
+import server.gameCenter.models.map.Cell;
+// import models.game.map.Position;
 
 import java.util.Set;
 

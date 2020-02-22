@@ -8,7 +8,7 @@ import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.ExportedDeck;
 import models.comperessedData.CompressedCard;
 import models.game.GameType;
-import models.game.map.Cell;
+import server.gameCenter.models.map.Cell;
 
 public class Message {
     private MessageType messageType;

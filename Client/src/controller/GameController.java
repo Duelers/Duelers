@@ -9,7 +9,7 @@ import models.comperessedData.CompressedTroop;
 import server.exceptions.InputException;
 import models.game.GameActions;
 import models.game.availableActions.AvailableActions;
-import models.game.map.Cell;
+import server.gameCenter.models.map.Cell;
 import models.message.*;
 import view.BattleView.BattleScene;
 

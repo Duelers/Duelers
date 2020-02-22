@@ -1,6 +1,6 @@
 package models.message;
 
-import models.game.map.Cell;
+import server.gameCenter.models.map.Cell;
 
 public class OtherFields {
     private String deckName;
