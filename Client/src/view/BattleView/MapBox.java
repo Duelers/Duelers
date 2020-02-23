@@ -230,7 +230,7 @@ public class MapBox implements PropertyChangeListener {
             return;
         }
         if (selectionType == SelectionType.NORMAL) {
-            if (GameController.getInstance().getAvailableActions().canAttack(
+            if (GameController.getInstance().getAvailableActions().canAttack(gameMap, player,
                     selectedTroop, row, column)) {
                 battleScene.getController().attack(selectedTroop, currentTroop);
                 System.out.println(selectedTroop + " attacked to " + currentTroop);
@@ -251,8 +251,8 @@ public class MapBox implements PropertyChangeListener {
     void updateMapColors() {
         updateSelectionType();
         CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
-        for (int row = 0; row < 5; row++) { // ToDo: 5, 9 should be constants
-            for (int column = 0; column < 9; column++) {
+        for (int row = 0; row < gameMap.getRowNumber(); row++) {
+            for (int column = 0; column < gameMap.getColumnNumber(); column++) {
                 if (!battleScene.isMyTurn()) {
                     cells[row][column].setFill(Constants.defaultColor);
                     continue;
@@ -297,7 +297,7 @@ public class MapBox implements PropertyChangeListener {
                     continue;
                 }
                 if (selectionType == SelectionType.NORMAL) {
-                    if (GameController.getInstance().getAvailableActions().canAttack(selectedTroop, row, column))
+                    if (GameController.getInstance().getAvailableActions().canAttack(gameMap, player, selectedTroop, row, column))
                         cells[row][column].setFill(Constants.ATTACK_COLOR);
                     else if (GameController.getInstance().getAvailableActions().canMove(gameMap, player,
                             selectedTroop, row, column))

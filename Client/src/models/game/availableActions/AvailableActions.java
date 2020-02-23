@@ -141,26 +141,35 @@ public class AvailableActions {
     }
 
     public boolean canMove(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int column) {
+        if (isTroopProvoked(gameMap, player, troop)) {return false; }
+
         List<Cell> baseMovement = getMovePositions(troop);
+        return baseMovement.contains(new Cell(row, column));
+    }
 
+    public boolean canAttack(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int col) {
+
+        if (isTroopProvoked(gameMap, player, troop)){
+            return getAttackPositions(troop).contains(new Cell(row, col))
+                    && gameMap.getTroop(new Cell(row, col)).getCard().getDescription().contains("Provoke");
+        }
+        return getAttackPositions(troop).contains(new Cell(row, col));
+    }
+
+
+    private boolean isTroopProvoked(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop) {
         Cell currentPosition = troop.getCell();
-        ArrayList<Cell> neighbourCells = currentPosition.getNeighbourCells(5, 9);  // Todo 5, 9 should be constants
+        ArrayList<Cell> neighbourCells = currentPosition.getNeighbourCells(gameMap.getRowNumber(), gameMap.getColumnNumber());
 
-        //System.out.println("A " +  troop.getCell().toString());
-        //System.out.println("B " + neighbourCells.size());
-        //neighbourCells.forEach(n -> System.out.print(n.toString() + "|"));
-
-        for (Cell cell : neighbourCells){
-            if (gameMap.getTroop(cell) != null){
-                //System.out.println("C " + cell.toString());
+        for (Cell cell : neighbourCells) {
+            if (gameMap.getTroop(cell) != null) {
                 CompressedTroop nearbyUnit = gameMap.getTroop(cell);
-                // is provoked?
-                if (nearbyUnit.getPlayerNumber() != player.getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")){
-                    return false;
+                if (nearbyUnit.getPlayerNumber() != player.getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
+                    return true;
                 }
             }
         }
-        return baseMovement.contains(new Cell(row, column));
+        return false;
     }
 
 
@@ -192,8 +201,4 @@ public class AvailableActions {
         }
         return false;
     }
-    public boolean canAttack(CompressedTroop troop, int row, int column) {
-        return getAttackPositions(troop).contains(new Cell(row, column));
-    }
-
 }
