@@ -38,4 +38,8 @@ public class OtherFields {
     void setSudoCommand(String sudoCommand) {
         this.sudoCommand = sudoCommand;
     }
+
+    public String getMyCardId(){ return myCardId; }
+
+    public Cell getCell(){ return cell; }
 }
