@@ -13,7 +13,6 @@ import java.util.List;
 
 public class AvailableActions {
     private List<Insert> handInserts = new ArrayList<>();
-    private List<Insert> collectibleInserts = new ArrayList<>();
     private List<Attack> attacks = new ArrayList<>();
     private List<Move> moves = new ArrayList<>();
 
@@ -25,7 +24,6 @@ public class AvailableActions {
 
     public void calculateAvailableInsets(Game game) {
         Player ownPlayer = game.getCurrentTurnPlayer();
-        collectibleInserts.clear();
         handInserts.clear();
 
         for (Card card : ownPlayer.getHand()) {
@@ -66,24 +64,40 @@ public class AvailableActions {
             Cell currentCell = new Cell(troop.getCell().getRow(), troop.getCell().getColumn());
             ArrayList<Cell> targets = new ArrayList<>();
 
-            for (int column = currentCell.getColumn() - 2; column <= currentCell.getColumn() + 2; column++) {
-                int rowDown = currentCell.getRow() + (2 - Math.abs(column - currentCell.getColumn()));
-                int rowUp = currentCell.getRow() - (2 - Math.abs(column - currentCell.getColumn()));
+            // Provoke check
+            boolean isProvoked = false;
+            List<Cell> neighbourCells = currentCell.getNeighbourCells(5, 9); // Todo 5,9 should be constants
+            for (Cell nCell : neighbourCells) {
+                if (game.getGameMap().getTroop(nCell) != null) {
+                    Troop nearbyUnit = game.getGameMap().getTroop(nCell);
+                    // is provoked?
+                    if (nearbyUnit.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
+                        isProvoked = true;
+                        break;
+                    }
+                }
+            }
 
-                for (int row = rowUp; row <= rowDown; row++) {
-                    if (game.getGameMap().isInMap(row, column)) {
-                        Cell cell = game.getGameMap().getCell(row, column);
-                        if (currentCell.equals(cell)) continue;
+            if(!isProvoked) {
 
-                        // Check is an enemy unit is blocking the current path from current position to new position
-                        // Note that current implementation only works for movement range of 2.
-                        Cell midPoint = new Cell( (cell.getRow() + currentCell.getRow()) / 2, (cell.getColumn() + currentCell.getColumn()) / 2 );
-                        if (midPoint.getRow() != 0 || midPoint.getColumn() != 0) {
-                             if(game.getGameMap().getTroop(midPoint) != null && game.getGameMap().getTroop(midPoint).getPlayerNumber() != ownPlayer.getPlayerNumber()){
-                                continue;
+                for (int column = currentCell.getColumn() - 2; column <= currentCell.getColumn() + 2; column++) {
+                    int rowDown = currentCell.getRow() + (2 - Math.abs(column - currentCell.getColumn()));
+                    int rowUp = currentCell.getRow() - (2 - Math.abs(column - currentCell.getColumn()));
+
+                    for (int row = rowUp; row <= rowDown; row++) {
+                        if (game.getGameMap().isInMap(row, column)) {
+                            Cell cell = game.getGameMap().getCell(row, column);
+                            if (currentCell.equals(cell)) continue; // skip own square.
+                            if (game.getGameMap().getTroop(cell) != null) continue; // An only move to an empty square
+
+                            // Check is an enemy unit is blocking the current path from current position to new position
+                            // Note that current implementation only works for movement range of 2.
+                            Cell midPoint = new Cell((cell.getRow() + currentCell.getRow()) / 2, (cell.getColumn() + currentCell.getColumn()) / 2);
+                            if (midPoint.getRow() != 0 || midPoint.getColumn() != 0) {
+                                if (game.getGameMap().getTroop(midPoint) != null && game.getGameMap().getTroop(midPoint).getPlayerNumber() != ownPlayer.getPlayerNumber()) {
+                                    continue;
+                                }
                             }
-                        }
-                        if (game.getGameMap().getTroop(cell) == null) {
                             targets.add(new Cell(cell.getRow(), cell.getColumn()));
                         }
                     }
@@ -111,8 +125,15 @@ public class AvailableActions {
         return Collections.unmodifiableList(handInserts);
     }
 
-    public List<Insert> getCollectibleInserts() {
-        return Collections.unmodifiableList(collectibleInserts);
+    public String printHand(){
+        StringBuilder strBuilder = new StringBuilder("| ");
+
+        if (getHandInserts().size() < 1){
+            return "| <EMPTY> |";
+        }
+
+        getHandInserts().forEach(n -> strBuilder.append(n.getCard().getCardId() + " | "));
+        return strBuilder.toString();
     }
 
     public List<Attack> getAttacks() {
