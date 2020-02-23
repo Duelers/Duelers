@@ -66,7 +66,7 @@ public class AvailableActions {
 
             // Provoke check
             boolean isProvoked = false;
-            List<Cell> neighbourCells = currentCell.getNeighbourCells(5, 9); // Todo 5,9 should be constants
+            List<Cell> neighbourCells = game.getGameMap().getNearbyCells(currentCell);
             for (Cell nCell : neighbourCells) {
                 if (game.getGameMap().getTroop(nCell) != null) {
                     Troop nearbyUnit = game.getGameMap().getTroop(nCell);
