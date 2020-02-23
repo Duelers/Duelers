@@ -55,7 +55,7 @@ public class GameMap {
     }
 
     /**
-     * Get the 3x3 Neighbours of a cell.
+     * Get the 3x3 neighbours of a cell.
      * Do not return the cell itself.
      */
     public ArrayList<Cell> getNearbyCells(Cell cell) {
@@ -78,6 +78,23 @@ public class GameMap {
         return cells;
     }
 
+    /**
+     * Get the manhattan adjacent neighbours cell, not including diagonals..
+     * Do not return the cell itself.
+     */
+    public ArrayList<Cell> getManhattanAdjacentCells(Cell cell) {
+        ArrayList<Cell> cells = new ArrayList<>();
+
+        short[][] offsets = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        for (short[] offset : offsets) {
+            int new_row = offset[0] + cell.getRow();
+            int new_column = offset[1] + cell.getColumn();
+            if (isInMap(new_row, new_column)) {
+                cells.add(new Cell(new_row, new_column));
+            }
+        }
+        return cells;
+    }
 
     public Cell[][] getCells() {
         return this.cells;
