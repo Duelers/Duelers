@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import javafx.application.Platform;
 import models.Constants;
 import models.account.Account;
-import models.message.CardPosition;
-import models.message.GameUpdateMessage;
-import models.message.Message;
+import server.clientPortal.models.message.CardPosition;
+import server.clientPortal.models.message.GameUpdateMessage;
+import server.clientPortal.models.message.Message;
 import view.BattleView.BattleScene;
 import view.*;
 

@@ -5,7 +5,7 @@ import models.account.Collection;
 import models.card.Card;
 import models.card.Deck;
 import models.card.ExportedDeck;
-import models.message.Message;
+import server.clientPortal.models.message.Message;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

@@ -17,7 +17,7 @@ import javafx.scene.paint.Color;
 import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedPlayer;
 import models.gui.*;
-import models.message.OnlineGame;
+import server.clientPortal.models.message.OnlineGame;
 import view.MainMenu;
 
 import java.beans.PropertyChangeEvent;
@@ -184,7 +184,7 @@ public class HandBox implements PropertyChangeListener {
             imageView.setFitWidth(endTurnImage.getWidth() * Constants.SCALE * 0.5);
             imageView.setFitHeight(endTurnImage.getHeight() * Constants.SCALE * 0.5);
             endTurnLabel = new DefaultLabel("END TURN", Constants.END_TURN_FONT, Color.WHITE);
-          
+
             if ((battleScene.getGame().getTurnNumber() + 1) % 2 == battleScene.getMyPlayerNumber() % 2) {
                 endTurnLabel.setText("ENEMY TURN");
                 endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);

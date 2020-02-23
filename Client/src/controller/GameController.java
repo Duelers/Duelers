@@ -10,7 +10,7 @@ import models.exceptions.InputException;
 import models.game.GameActions;
 import models.game.availableActions.AvailableActions;
 import models.game.map.Cell;
-import models.message.*;
+import server.clientPortal.models.message.*;
 import view.BattleView.BattleScene;
 
 

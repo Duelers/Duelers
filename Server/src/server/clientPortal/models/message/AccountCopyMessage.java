@@ -9,4 +9,8 @@ public class AccountCopyMessage {
     public AccountCopyMessage(Account account) {
         this.account = new TempAccount(account);
     }
+
+    public TempAccount getAccount() {
+        return account;
+    }
 }

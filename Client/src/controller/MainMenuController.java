@@ -4,8 +4,8 @@ package controller;
 import javafx.application.Platform;
 import models.Constants;
 import models.account.AccountType;
-import models.message.ChatMessage;
-import models.message.Message;
+import server.clientPortal.models.message.ChatMessage;
+import server.clientPortal.models.message.Message;
 import view.GlobalChatDialog;
 
 import static models.Constants.SERVER_NAME;

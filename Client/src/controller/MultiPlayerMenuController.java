@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import models.Constants;
 import models.exceptions.InputException;
 import models.game.GameType;
-import models.message.Message;
+import server.clientPortal.models.message.Message;
 
 public class MultiPlayerMenuController {
     private static final MultiPlayerMenuController ourInstance = new MultiPlayerMenuController();

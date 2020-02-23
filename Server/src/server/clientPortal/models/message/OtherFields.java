@@ -38,4 +38,32 @@ public class OtherFields {
     public String getSudoCommand() {
         return sudoCommand;
     }
+
+    void setDeckName(String deckName) {
+        this.deckName = deckName;
+    }
+
+    void setCardName(String cardName) {
+        this.cardName = cardName;
+    }
+
+    void setMyCardId(String myCardId) {
+        this.myCardId = myCardId;
+    }
+
+    void setOpponentCardId(String opponentCardId) {
+        this.opponentCardId = opponentCardId;
+    }
+
+    void setMyCardIds(String[] myCardIds) {
+        this.myCardIds = myCardIds;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
+    void setSudoCommand(String sudoCommand) {
+        this.sudoCommand = sudoCommand;
+    }
 }

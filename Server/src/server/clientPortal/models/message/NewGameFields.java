@@ -8,6 +8,8 @@ public class NewGameFields {
     private String customDeckName;
     private String opponentUsername;
 
+    public NewGameFields() {}
+
     public NewGameFields(GameType gameType, int stage, String customDeckName, String opponentUsername) {
         this.gameType = gameType;
         this.stage = stage;
@@ -19,15 +21,31 @@ public class NewGameFields {
         return gameType;
     }
 
+    void setGameType(GameType gameType) {
+        this.gameType = gameType;
+    }
+
     public int getStage() {
         return stage;
+    }
+
+    void setStage(int stage) {
+        this.stage = stage;
     }
 
     public String getCustomDeckName() {
         return customDeckName;
     }
 
+    void setCustomDeckName(String customDeckName) {
+        this.customDeckName = customDeckName;
+    }
+
     public String getOpponentUsername() {
         return opponentUsername;
+    }
+
+    void setOpponentUsername(String opponentUsername) {
+        this.opponentUsername = opponentUsername;
     }
 }

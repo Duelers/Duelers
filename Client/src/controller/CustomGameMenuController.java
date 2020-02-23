@@ -2,7 +2,7 @@ package controller;
 
 import models.Constants;
 import models.game.GameType;
-import models.message.Message;
+import server.clientPortal.models.message.Message;
 
 public class CustomGameMenuController {
     private static CustomGameMenuController ourInstance;

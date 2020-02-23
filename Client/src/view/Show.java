@@ -6,7 +6,7 @@ import controller.SoundEffectPlayer;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import models.message.NewGameFields;
+import server.clientPortal.models.message.NewGameFields;
 
 public abstract class Show {
     final public AnchorPane root = new AnchorPane();
