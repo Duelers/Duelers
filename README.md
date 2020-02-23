@@ -3,7 +3,7 @@
 CardBoard is an open-source project to build a multiplayer collectable-card-game with units that move freely on a battlefield. 
 The name is a terrible pun; the game has cards, and its played on a board.
 
-The core tech-stack is Java8(Fx) with Python used for scripting, and Maven for our build automation. If you are interested in contributing please drop us a message.
+The core tech-stack is Java8(Fx) with Python used for scripting and Maven for our build automation. If you are interested in contributing please drop us a message.
 
 ### Screenshot
 
@@ -28,7 +28,7 @@ The Original 'Duelers' Project was created by:
 	2. MohammadMahdi Jarrahi
 	3. Mohammad Hadi Esnaashari
 
-..And has been copied under the MIT license:
+...And has been copied under the MIT license.
 
 The original repo can be found here: https://github.com/aps2019project/Duelers
 
