@@ -6,6 +6,7 @@ import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
 import models.message.Message;
+import server.clientPortal.models.message.Message;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

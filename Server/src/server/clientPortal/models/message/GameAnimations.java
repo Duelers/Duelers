@@ -7,7 +7,7 @@ import server.gameCenter.models.map.Cell;
 import java.util.ArrayList;
 import java.util.Set;
 
-class GameAnimations {
+public class GameAnimations {
     private ArrayList<CardAnimation> attacks = new ArrayList<>();
     private ArrayList<CardAnimation> counterAttacks = new ArrayList<>();
     private ArrayList<SpellAnimation> spellAnimations = new ArrayList<>();
@@ -22,5 +22,17 @@ class GameAnimations {
 
     void addSpellAnimation(Set<Cell> cells, AvailabilityType availabilityType) {
         spellAnimations.add(new SpellAnimation(cells, availabilityType));
+    }
+
+    public ArrayList<CardAnimation> getAttacks() {
+        return attacks;
+    }
+
+    public ArrayList<CardAnimation> getCounterAttacks() {
+        return counterAttacks;
+    }
+
+    public ArrayList<SpellAnimation> getSpellAnimations() {
+        return spellAnimations;
     }
 }

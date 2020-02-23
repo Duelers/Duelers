@@ -3,7 +3,7 @@ package models.gui;
 import controller.OnlineGamesListController;
 import javafx.scene.control.Button;
 import models.game.GameType;
-import models.message.OnlineGame;
+import server.clientPortal.models.message.OnlineGame;
 import view.MainMenu;
 
 public class OnlineGameView {

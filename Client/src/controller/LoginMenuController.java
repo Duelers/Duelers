@@ -3,7 +3,7 @@ package controller;
 import javafx.application.Platform;
 import models.Constants;
 import server.exceptions.InputException;
-import models.message.Message;
+import server.clientPortal.models.message.Message;
 
 public class LoginMenuController {
     private static LoginMenuController ourInstance;

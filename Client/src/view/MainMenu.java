@@ -7,7 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import models.gui.*;
-import models.message.OnlineGame;
+import server.clientPortal.models.message.OnlineGame;
 
 import java.io.File;
 import java.io.FileNotFoundException;

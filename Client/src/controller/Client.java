@@ -6,10 +6,10 @@ import models.Constants;
 import models.account.Account;
 import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.DeckInfo;
-import models.message.CardPosition;
-import models.message.GameUpdateMessage;
-import models.message.Message;
 import server.dataCenter.DataCenter;
+import server.clientPortal.models.message.CardPosition;
+import server.clientPortal.models.message.GameUpdateMessage;
+import server.clientPortal.models.message.Message;
 import view.BattleView.BattleScene;
 import view.*;
 

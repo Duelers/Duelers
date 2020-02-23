@@ -1,8 +1,8 @@
 package controller;
 
-import models.message.DataName;
-import models.message.Message;
-import models.message.OnlineGame;
+import server.clientPortal.models.message.DataName;
+import server.clientPortal.models.message.Message;
+import server.clientPortal.models.message.OnlineGame;
 
 import static models.Constants.SERVER_NAME;
 
