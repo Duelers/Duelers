@@ -1,0 +1,16 @@
+{
+  "name": "Ironcliffe Guardian",
+  "description": "Provoke, Airdrop",
+  "cardId": "IroncliffeGuardian",
+  "spriteName": "f1_ironcliffeguardian",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 3,
+  "defaultHp": 10,
+  "manaCost": 5,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
