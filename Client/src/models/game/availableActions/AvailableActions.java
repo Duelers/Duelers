@@ -162,7 +162,7 @@ public class AvailableActions {
 
     private boolean isTroopProvoked(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop) {
         Cell currentPosition = troop.getCell();
-        ArrayList<Cell> neighbourCells = currentPosition.getNeighbourCells(gameMap.getRowNumber(), gameMap.getColumnNumber());
+        ArrayList<Cell> neighbourCells = gameMap.getNearbyCells(currentPosition);
 
         for (Cell cell : neighbourCells) {
             if (gameMap.getTroop(cell) != null) {

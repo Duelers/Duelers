@@ -38,8 +38,8 @@ public class CompressedGameMap {
      * Get the 3x3 neighbours of a cell.
      * Do not return the cell itself.
      */
-    public ArrayList<server.gameCenter.models.map.Cell> getNearbyCells(server.gameCenter.models.map.Cell cell) {
-        ArrayList<server.gameCenter.models.map.Cell> cells = new ArrayList<>();
+    public ArrayList<Cell> getNearbyCells(Cell cell) {
+        ArrayList<Cell> cells = new ArrayList<>();
 
         short[] offsets = {-1, 0, 1};
         for (short row_offset : offsets) {
@@ -51,7 +51,7 @@ public class CompressedGameMap {
                 int new_column = column_offset + cell.getColumn();
 
                 if (isInMap(new_row, new_column)) {
-                    cells.add(new server.gameCenter.models.map.Cell(new_row, new_column));
+                    cells.add(new Cell(new_row, new_column));
                 }
             }
         }
@@ -62,15 +62,15 @@ public class CompressedGameMap {
      * Get the manhattan adjacent neighbours cell, not including diagonals..
      * Do not return the cell itself.
      */
-    public ArrayList<server.gameCenter.models.map.Cell> getManhattanAdjacentCells(server.gameCenter.models.map.Cell cell) {
-        ArrayList<server.gameCenter.models.map.Cell> cells = new ArrayList<>();
+    public ArrayList<Cell> getManhattanAdjacentCells(Cell cell) {
+        ArrayList<Cell> cells = new ArrayList<>();
 
         short[][] offsets = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         for (short[] offset : offsets) {
             int new_row = offset[0] + cell.getRow();
             int new_column = offset[1] + cell.getColumn();
             if (isInMap(new_row, new_column)) {
-                cells.add(new server.gameCenter.models.map.Cell(new_row, new_column));
+                cells.add(new Cell(new_row, new_column));
             }
         }
         return cells;
