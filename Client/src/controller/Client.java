@@ -7,6 +7,7 @@ import models.account.Account;
 import models.message.CardPosition;
 import models.message.GameUpdateMessage;
 import models.message.Message;
+import server.dataCenter.DataCenter;
 import view.BattleView.BattleScene;
 import view.*;
 
@@ -100,8 +101,29 @@ public class Client {
         }
     }
 
+    private String simplifyLogMessage(Message message, String sender){
+
+        final String header = String.format("%s says: ", sender);
+
+        switch (message.getMessageType()) {
+            case TROOP_UPDATE:
+
+                int currentAttack = message.getTroopUpdateMessage().getCompressedTroop().getCurrentAp();
+                int currentHealth = message.getTroopUpdateMessage().getCompressedTroop().getCurrentHp();
+
+                return header + message.getTroopUpdateMessage().getCompressedTroop().getCard().getCardId()
+                        + String.format(" is %d/%d and at location: ", currentAttack, currentHealth)
+                        + message.getTroopUpdateMessage().getCompressedTroop().getCell();
+
+            case CARD_POSITION:
+                return header + message.getCardPositionMessage().getCompressedCard().getCardId() + " has been moved to: " + message.getCardPositionMessage().getCardPosition();
+
+            default:
+                return null;
+        }
+    }
+
     private void sendMessages() throws IOException {
-        System.out.println("sending messages started");
         while (true) {
             Message message;
             synchronized (sendingMessages) {
@@ -112,6 +134,7 @@ public class Client {
                 socket.getOutputStream().write((json + "\n").getBytes());
 
                 System.out.println("message sent: " + json);
+
             } else {
                 try {
                     synchronized (sendingMessages) {
@@ -124,16 +147,20 @@ public class Client {
     }
 
     private void receiveMessages() throws IOException {
-        System.out.println("receiving messages started.");
         while (true) {
             String json = bufferedReader.readLine();
             Message message = gson.fromJson(json, Message.class);
 
-            System.out.println("message received: " + json);
-
+            String msg = simplifyLogMessage(message, "Server");
+            if (msg != null) {
+                System.out.println(msg);
+            } else {
+                System.out.println(json);
+            }
             handleMessage(message);
         }
     }
+
 
     private void handleMessage(Message message) {
         switch (message.getMessageType()) {

@@ -2,7 +2,7 @@
   "name": "Tempest",
   "description": "Deal 2 Damage to ALL characters",
   "cardId": "Tempest",
-  "spriteName": "generalspell_f1_tesmpest",
+  "spriteName": "icon_f1_tempest",
   "type": "SPELL",
   "spells": [
     {
