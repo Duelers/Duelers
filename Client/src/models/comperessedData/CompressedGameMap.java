@@ -34,6 +34,48 @@ public class CompressedGameMap {
         return row >= 0 && row < ROW_NUMBER && column >= 0 && column < COLUMN_NUMBER;
     }
 
+    /**
+     * Get the 3x3 neighbours of a cell.
+     * Do not return the cell itself.
+     */
+    public ArrayList<Cell> getNearbyCells(Cell cell) {
+        ArrayList<Cell> cells = new ArrayList<>();
+
+        short[] offsets = {-1, 0, 1};
+        for (short row_offset : offsets) {
+            for (short column_offset : offsets) {
+                if (row_offset == 0 && column_offset == 0) {
+                    continue; // This is the starting cell.
+                }
+                int new_row = row_offset + cell.getRow();
+                int new_column = column_offset + cell.getColumn();
+
+                if (isInMap(new_row, new_column)) {
+                    cells.add(new Cell(new_row, new_column));
+                }
+            }
+        }
+        return cells;
+    }
+
+    /**
+     * Get the manhattan adjacent neighbours cell, not including diagonals..
+     * Do not return the cell itself.
+     */
+    public ArrayList<Cell> getManhattanAdjacentCells(Cell cell) {
+        ArrayList<Cell> cells = new ArrayList<>();
+
+        short[][] offsets = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        for (short[] offset : offsets) {
+            int new_row = offset[0] + cell.getRow();
+            int new_column = offset[1] + cell.getColumn();
+            if (isInMap(new_row, new_column)) {
+                cells.add(new Cell(new_row, new_column));
+            }
+        }
+        return cells;
+    }
+
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         if (support == null) {
             support = new PropertyChangeSupport(this);
