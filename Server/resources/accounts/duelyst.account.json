@@ -1252,7 +1252,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "attackType": "HYBRID",
-                "range": 0,
+                "range": 99,
                 "hasCombo": false,
                 "remainingNumber": 20
             },
@@ -1268,7 +1268,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "attackType": "HYBRID",
-                "range": 0,
+                "range": 99,
                 "hasCombo": false,
                 "remainingNumber": 20
             },
@@ -1284,7 +1284,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "attackType": "HYBRID",
-                "range": 0,
+                "range": 99,
                 "hasCombo": false,
                 "remainingNumber": 20
             },
