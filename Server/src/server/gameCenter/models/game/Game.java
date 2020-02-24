@@ -360,6 +360,12 @@ public abstract class Game {
                 }
                 Server.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.MAP);
                 Troop troop = new Troop(card, getCurrentTurnPlayer().getPlayerNumber());
+
+                if (troop.getCard().getDescription().contains("Rush")){
+                    troop.setCanAttack(true);
+                    troop.setCanMove(true);
+                }
+
                 player.addTroop(troop);
                 putMinion(
                         player.getPlayerNumber(),
