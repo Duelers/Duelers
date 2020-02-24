@@ -208,7 +208,7 @@ public abstract class Game {
                 Thread.sleep(delay);
                 actions.calculateAvailableAttacks(this);
             }
-            actions.calculateAvailableInsets(this);
+            actions.calculateAvailableInserts(this);
             while (actions.getHandInserts().size() > 0) {
 
                 int currentMana = getCurrentTurnPlayer().getCurrentMP();
@@ -255,7 +255,7 @@ public abstract class Game {
                         break;
                     }
                 }
-                actions.calculateAvailableInsets(this);
+                actions.calculateAvailableInserts(this);
             }
         } catch (InterruptedException ignored) {
         } finally {

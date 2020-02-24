@@ -1,5 +1,6 @@
 package server.gameCenter.models.game.availableActions;
 
+import javafx.util.Pair;
 import server.dataCenter.models.card.AttackType;
 import server.dataCenter.models.card.Card;
 import server.gameCenter.models.game.Game;
@@ -17,12 +18,12 @@ public class AvailableActions {
     private List<Move> moves = new ArrayList<>();
 
     public void calculateAvailableActions(Game game) {
-        calculateAvailableInsets(game);
+        calculateAvailableInserts(game);
         calculateAvailableAttacks(game);
         calculateAvailableMoves(game);
     }
 
-    public void calculateAvailableInsets(Game game) {
+    public void calculateAvailableInserts(Game game) {
         Player ownPlayer = game.getCurrentTurnPlayer();
         handInserts.clear();
 
@@ -55,59 +56,79 @@ public class AvailableActions {
             attacks.add(new Attack(myTroop, targets));
         }
     }
+
+
     public void calculateAvailableMoves(Game game) {
         Player ownPlayer = game.getCurrentTurnPlayer();
         moves.clear();
         for (Troop troop : ownPlayer.getTroops()) {
-            if (!troop.canMove()) continue;
+            ArrayList<Cell> troopMoves = calculateAvailableMovesForTroop(game, troop);
 
-            Cell currentCell = new Cell(troop.getCell().getRow(), troop.getCell().getColumn());
-            ArrayList<Cell> targets = new ArrayList<>();
-
-            // Provoke check
-            boolean isProvoked = false;
-            List<Cell> neighbourCells = game.getGameMap().getNearbyCells(currentCell);
-            for (Cell nCell : neighbourCells) {
-                if (game.getGameMap().getTroop(nCell) != null) {
-                    Troop nearbyUnit = game.getGameMap().getTroop(nCell);
-                    // is provoked?
-                    if (nearbyUnit.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
-                        isProvoked = true;
-                        break;
-                    }
-                }
+            if (troopMoves.size() > 0) {
+                moves.add(new Move(troop, troopMoves));
             }
+        }
+    }
 
-            if(!isProvoked) {
 
-                for (int column = currentCell.getColumn() - 2; column <= currentCell.getColumn() + 2; column++) {
-                    int rowDown = currentCell.getRow() + (2 - Math.abs(column - currentCell.getColumn()));
-                    int rowUp = currentCell.getRow() - (2 - Math.abs(column - currentCell.getColumn()));
+    private ArrayList<Cell> calculateAvailableMovesForTroop(Game game, Troop troop) {
+        Cell troopCell = new Cell(troop.getCell().getRow(), troop.getCell().getColumn());
 
-                    for (int row = rowUp; row <= rowDown; row++) {
-                        if (game.getGameMap().isInMap(row, column)) {
-                            Cell cell = game.getGameMap().getCell(row, column);
-                            if (currentCell.equals(cell)) continue; // skip own square.
-                            if (game.getGameMap().getTroop(cell) != null) continue; // An only move to an empty square
+        ArrayList<Cell> walkableCells = new ArrayList<>(); //Cells which the unit can move to.
+        walkableCells.add(troop.getCell());
 
-                            // Check is an enemy unit is blocking the current path from current position to new position
-                            // Note that current implementation only works for movement range of 2.
-                            Cell midPoint = new Cell((cell.getRow() + currentCell.getRow()) / 2, (cell.getColumn() + currentCell.getColumn()) / 2);
-                            if (midPoint.getRow() != 0 || midPoint.getColumn() != 0) {
-                                if (game.getGameMap().getTroop(midPoint) != null && game.getGameMap().getTroop(midPoint).getPlayerNumber() != ownPlayer.getPlayerNumber()) {
-                                    continue;
-                                }
-                            }
-                            targets.add(new Cell(cell.getRow(), cell.getColumn()));
+        boolean isProvoked = getIsProvoked(game, troopCell);
+
+        if (!isProvoked && !troop.canMove()) {
+            int moveSpeed = 2; // Todo make a troop property.
+
+            //Cells which the unit can move through.
+            //Pair of <Cell>, <Remaining move spaces>
+            ArrayList<Pair<Cell, Integer>> pathableFrontier = new ArrayList<>();
+            pathableFrontier.add(new Pair<>(troop.getCell(), moveSpeed));
+
+
+            while (pathableFrontier.size() > 0) {
+                Pair<Cell, Integer> currentCellMove = pathableFrontier.remove(0);
+                Cell currentCell = currentCellMove.getKey();
+                Integer remainingMovement = currentCellMove.getValue();
+
+                if (remainingMovement > 0) {
+                    ArrayList<Cell> manhattanAdjacentCells = game.getGameMap().getManhattanAdjacentCells(currentCell);
+                    for (Cell adjacentCell : manhattanAdjacentCells) {
+                        Troop troopInSpace = game.getGameMap().getTroop(adjacentCell);
+
+                        boolean blockedByAnything = troopInSpace != null;
+                        if (!blockedByAnything) {
+                            walkableCells.add(currentCell);
+                        }
+
+                        boolean blockedByEnemy = blockedByAnything
+                                && troopInSpace.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber();
+                        if (!blockedByEnemy) {
+                            pathableFrontier.add(new Pair<>(adjacentCell, remainingMovement - 1));
                         }
                     }
                 }
             }
-
-            if (targets.size() == 0) continue;
-
-            moves.add(new Move(troop, targets));
         }
+        return walkableCells;
+    }
+
+    private boolean getIsProvoked(Game game, Cell troopCell) {
+        boolean isProvoked = false;
+        List<Cell> neighbourCells = game.getGameMap().getNearbyCells(troopCell);
+        for (Cell nCell : neighbourCells) {
+            if (game.getGameMap().getTroop(nCell) != null) {
+                Troop nearbyUnit = game.getGameMap().getTroop(nCell);
+                // is provoked?
+                if (nearbyUnit.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
+                    isProvoked = true;
+                    break;
+                }
+            }
+        }
+        return isProvoked;
     }
 
     private boolean checkRangeForAttack(Troop myTroop, Troop enemyTroop) {
@@ -125,10 +146,10 @@ public class AvailableActions {
         return Collections.unmodifiableList(handInserts);
     }
 
-    public String printHand(){
+    public String printHand() {
         StringBuilder strBuilder = new StringBuilder("| ");
 
-        if (getHandInserts().size() < 1){
+        if (getHandInserts().size() < 1) {
             return "| <EMPTY> |";
         }
 
