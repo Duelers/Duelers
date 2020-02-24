@@ -244,8 +244,8 @@ public abstract class Game {
                     int y = offsets[new Random().nextInt(offsets.length)];
 
                     // Get a random square, force it to be within bounds.
-                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), gameMap.getRowNumber()));
-                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getColumnNumber()));
+                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), gameMap.getNumRows()));
+                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getNumColumns()));
 
                     Cell c = new Cell(x2, y2);
 
@@ -452,10 +452,11 @@ public abstract class Game {
         }
 
         // TODO: Check if position is under provoke of enemy minion. If yes, raise exception
-        // TODO: Check for Flying. If yes, skip distance check and set cell.
 
-        if (troop.getCell().manhattanDistance(cell) > 2) {
-            throw new ClientException("too far to go");
+        if (!troop.getCard().getDescription().contains("Flying")){
+            if (troop.getCell().manhattanDistance(cell) > 2){
+                throw new ClientException("too far to go");
+            }
         }
 
         Cell newCell = gameMap.getCell(cell);
@@ -922,8 +923,8 @@ public abstract class Game {
             int firstRow = calculateFirstCoordinate(centerCell.getRow(), dimensions.getRow());
             int firstColumn = calculateFirstCoordinate(centerCell.getColumn(), dimensions.getColumn());
 
-            int lastRow = calculateLastCoordinate(firstRow, dimensions.getRow(), GameMap.getRowNumber());
-            int lastColumn = calculateLastCoordinate(firstColumn, dimensions.getColumn(), GameMap.getColumnNumber());
+            int lastRow = calculateLastCoordinate(firstRow, dimensions.getRow(), GameMap.getNumRows());
+            int lastColumn = calculateLastCoordinate(firstColumn, dimensions.getColumn(), GameMap.getNumColumns());
             for (int i = firstRow; i < lastRow; i++) {
                 for (int j = firstColumn; j < lastColumn; j++) {
                     if (gameMap.isInMap(i, j))

@@ -39,7 +39,7 @@ public class AvailableActions {
                 if (enemyTroop.isNoAttackFromWeakerOnes() && myTroop.getCurrentAp() < enemyTroop.getCurrentAp())
                     continue;
 
-                if (checkRangeForAttack(myTroop, enemyTroop)) continue;
+                if (!isTargetInRange(myTroop, enemyTroop)) continue;
 
                 targets.add(enemyTroop);
             }
@@ -57,6 +57,9 @@ public class AvailableActions {
 
             Cell currentPosition = troop.getCell();
             ArrayList<Cell> targets = new ArrayList<>();
+
+            int moveSpeed = 2; //Todo make this a troop property with default 2.
+
 
             for (int column = currentPosition.getColumn() - 2; column <= currentPosition.getColumn() + 2; column++) {
                 int rowDown = currentPosition.getRow() + (2 - Math.abs(column - currentPosition.getColumn()));
@@ -95,14 +98,14 @@ public class AvailableActions {
         moves.clear();
     }
 
-    private boolean checkRangeForAttack(CompressedTroop myTroop, CompressedTroop enemyTroop) {
+    private boolean isTargetInRange(CompressedTroop myTroop, CompressedTroop enemyTroop) {
         if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
-            return !myTroop.getCell().isNextTo(enemyTroop.getCell());
+            return myTroop.getCell().isNextTo(enemyTroop.getCell());
         } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {
             return myTroop.getCell().isNextTo(enemyTroop.getCell()) ||
-                    myTroop.getCell().manhattanDistance(enemyTroop.getCell()) > myTroop.getCard().getRange();
+                    myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         } else { // HYBRID
-            return myTroop.getCell().manhattanDistance(enemyTroop.getCell()) > myTroop.getCard().getRange();
+            return myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         }
     }
 
@@ -140,8 +143,37 @@ public class AvailableActions {
         return handInserts.stream().map(Insert::getCard).collect(Collectors.toList()).contains(card);
     }
 
-    public boolean canMove(CompressedTroop troop, int row, int column) {
-        return getMovePositions(troop).contains(new Cell(row, column));
+    public boolean canMove(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int column) {
+        if (isTroopProvoked(gameMap, player, troop)) {return false; }
+        if (troop.getCard().getDescription().contains("Flying")){ return true; }
+
+        List<Cell> baseMovement = getMovePositions(troop);
+        return baseMovement.contains(new Cell(row, column));
+    }
+
+    public boolean canAttack(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int col) {
+
+        if (isTroopProvoked(gameMap, player, troop)){
+            return getAttackPositions(troop).contains(new Cell(row, col))
+                    && gameMap.getTroop(new Cell(row, col)).getCard().getDescription().contains("Provoke");
+        }
+        return getAttackPositions(troop).contains(new Cell(row, col));
+    }
+
+
+    private boolean isTroopProvoked(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop) {
+        Cell currentPosition = troop.getCell();
+        ArrayList<Cell> neighbourCells = gameMap.getNearbyCells(currentPosition);
+
+        for (Cell cell : neighbourCells) {
+            if (gameMap.getTroop(cell) != null) {
+                CompressedTroop nearbyUnit = gameMap.getTroop(cell);
+                if (nearbyUnit.getPlayerNumber() != player.getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 
@@ -173,8 +205,4 @@ public class AvailableActions {
         }
         return false;
     }
-    public boolean canAttack(CompressedTroop troop, int row, int column) {
-        return getAttackPositions(troop).contains(new Cell(row, column));
-    }
-
 }
