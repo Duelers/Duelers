@@ -1,0 +1,16 @@
+{
+  "name": "Emberwyrm",
+  "description": "Flying",
+  "cardId": "Emberwyrm",
+  "spriteName": "neutral_veteranflamewing",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 10,
+  "defaultHp": 7,
+  "manaCost": 7,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
