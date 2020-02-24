@@ -1362,7 +1362,7 @@
                             "addSpell": false,
                             "killsTarget": false,
                             "isForGladiator": false,
-                            "durable": false,
+                            "durable": true,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -1440,7 +1440,7 @@
                             "addSpell": false,
                             "killsTarget": false,
                             "isForGladiator": false,
-                            "durable": false,
+                            "durable": true,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -1518,7 +1518,7 @@
                             "addSpell": false,
                             "killsTarget": false,
                             "isForGladiator": false,
-                            "durable": false,
+                            "durable": true,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -1737,7 +1737,7 @@
                             "addSpell": false,
                             "killsTarget": false,
                             "isForGladiator": false,
-                            "durable": false,
+                            "durable": true,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -1815,7 +1815,7 @@
                             "addSpell": false,
                             "killsTarget": false,
                             "isForGladiator": false,
-                            "durable": false,
+                            "durable": true,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -1893,7 +1893,7 @@
                             "addSpell": false,
                             "killsTarget": false,
                             "isForGladiator": false,
-                            "durable": false,
+                            "durable": true,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -2088,49 +2088,235 @@
             },
             {
                 "name": "War Talon",
-                "description": "Provoke",
+                "description": "Provoke, After attacking, deal 4 damage to all surrounding enemies",
                 "cardId": "duelyst_WarTalon_1",
                 "spriteName": "neutral_wartalon",
                 "type": "MINION",
-                "spells": [],
+                "spells": [
+                    {
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -4,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": true,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
                 "defaultAp": 4,
                 "defaultHp": 9,
                 "manaCost": 7,
                 "price": 100,
-                "attackType": "MEELE",
-                "range": 99,
+                "attackType": "MELEE",
+                "range": 0,
                 "hasCombo": false,
                 "remainingNumber": 20
             },
             {
                 "name": "War Talon",
-                "description": "Provoke",
+                "description": "Provoke, After attacking, deal 4 damage to all surrounding enemies",
                 "cardId": "duelyst_WarTalon_2",
                 "spriteName": "neutral_wartalon",
                 "type": "MINION",
-                "spells": [],
+                "spells": [
+                    {
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -4,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": true,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
                 "defaultAp": 4,
                 "defaultHp": 9,
                 "manaCost": 7,
                 "price": 100,
-                "attackType": "MEELE",
-                "range": 99,
+                "attackType": "MELEE",
+                "range": 0,
                 "hasCombo": false,
                 "remainingNumber": 20
             },
             {
                 "name": "War Talon",
-                "description": "Provoke",
+                "description": "Provoke, After attacking, deal 4 damage to all surrounding enemies",
                 "cardId": "duelyst_WarTalon_3",
                 "spriteName": "neutral_wartalon",
                 "type": "MINION",
-                "spells": [],
+                "spells": [
+                    {
+                        "spellId": "dmg_on_atk",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -4,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 3,
+                                "column": 3
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": true,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
                 "defaultAp": 4,
                 "defaultHp": 9,
                 "manaCost": 7,
                 "price": 100,
-                "attackType": "MEELE",
-                "range": 99,
+                "attackType": "MELEE",
+                "range": 0,
                 "hasCombo": false,
                 "remainingNumber": 20
             },
@@ -2221,54 +2407,6 @@
                 "defaultAp": 25,
                 "defaultHp": 25,
                 "manaCost": 9,
-                "price": 100,
-                "attackType": "MELEE",
-                "range": 0,
-                "hasCombo": false,
-                "remainingNumber": 20
-            },
-            {
-                "name": "Emberwyrm",
-                "description": "Flying",
-                "cardId": "duelyst_Emberwyrm_1",
-                "spriteName": "neutral_veteranflamewing",
-                "type": "MINION",
-                "spells": [],
-                "defaultAp": 10,
-                "defaultHp": 7,
-                "manaCost": 7,
-                "price": 100,
-                "attackType": "MELEE",
-                "range": 0,
-                "hasCombo": false,
-                "remainingNumber": 20
-            },
-            {
-                "name": "Emberwyrm",
-                "description": "Flying",
-                "cardId": "duelyst_Emberwyrm_2",
-                "spriteName": "neutral_veteranflamewing",
-                "type": "MINION",
-                "spells": [],
-                "defaultAp": 10,
-                "defaultHp": 7,
-                "manaCost": 7,
-                "price": 100,
-                "attackType": "MELEE",
-                "range": 0,
-                "hasCombo": false,
-                "remainingNumber": 20
-            },
-            {
-                "name": "Emberwyrm",
-                "description": "Flying",
-                "cardId": "duelyst_Emberwyrm_3",
-                "spriteName": "neutral_veteranflamewing",
-                "type": "MINION",
-                "spells": [],
-                "defaultAp": 10,
-                "defaultHp": 7,
-                "manaCost": 7,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -4389,9 +4527,35 @@
                 "duelyst_StormArtha_2",
                 "duelyst_StormArtha_3"
             ]
+        },
+        {
+            "deckName": "yui",
+            "heroId": "duelyst_VaathTheImmortal_1",
+            "othersIds": [
+                "duelyst_MrSwampy_1",
+                "duelyst_MrSwampy_2",
+                "duelyst_MrSwampy_3",
+                "duelyst_PlanarScout_1",
+                "duelyst_PlanarScout_2",
+                "duelyst_PlanarScout_3",
+                "duelyst_DragonLark_1",
+                "duelyst_DragonLark_2",
+                "duelyst_DragonLark_3",
+                "duelyst_RockPulverizer_2",
+                "duelyst_RockPulverizer_3",
+                "duelyst_WarTalon_1",
+                "duelyst_WarTalon_2",
+                "duelyst_WarTalon_3",
+                "duelyst_PiercingMantis_1",
+                "duelyst_PiercingMantis_2",
+                "duelyst_PiercingMantis_3",
+                "duelyst_Serpenti_1",
+                "duelyst_Serpenti_2",
+                "duelyst_Serpenti_3"
+            ]
         }
     ],
-    "mainDeckName": "AI_Friendly",
+    "mainDeckName": "yui",
     "matchHistories": [],
     "money": 9543289
 }
