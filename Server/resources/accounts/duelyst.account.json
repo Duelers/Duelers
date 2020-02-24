@@ -1991,6 +1991,54 @@
                 "remainingNumber": 20
             },
             {
+                "name": "Storm Artha",
+                "description": "Flying",
+                "cardId": "duelyst_StormArtha_1",
+                "spriteName": "neutral_monsterlightningbeetle",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 6,
+                "defaultHp": 5,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Storm Artha",
+                "description": "Flying",
+                "cardId": "duelyst_StormArtha_2",
+                "spriteName": "neutral_monsterlightningbeetle",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 6,
+                "defaultHp": 5,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Storm Artha",
+                "description": "Flying",
+                "cardId": "duelyst_StormArtha_3",
+                "spriteName": "neutral_monsterlightningbeetle",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 6,
+                "defaultHp": 5,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
                 "name": "Vale Hunter",
                 "description": "Ranged",
                 "cardId": "duelyst_ValeHunter_1",
@@ -4462,9 +4510,6 @@
                 "duelyst_SkyrockGolem_1",
                 "duelyst_SkyrockGolem_2",
                 "duelyst_SkyrockGolem_3",
-                "duelyst_Serpenti_1",
-                "duelyst_Serpenti_2",
-                "duelyst_Serpenti_3",
                 "duelyst_PiercingMantis_1",
                 "duelyst_PiercingMantis_2",
                 "duelyst_PiercingMantis_3",
@@ -4477,7 +4522,10 @@
                 "duelyst_WorldcoreGolem_1",
                 "duelyst_PlanarScout_2",
                 "duelyst_BlisteringSkorn_1",
-                "duelyst_BloodshardGolem_1"
+                "duelyst_BloodshardGolem_1",
+                "duelyst_StormArtha_1",
+                "duelyst_StormArtha_2",
+                "duelyst_StormArtha_3"
             ]
         },
         {
