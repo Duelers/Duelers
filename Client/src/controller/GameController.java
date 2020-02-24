@@ -75,7 +75,7 @@ public class GameController implements GameActions {
     @Override
     public void attack(CompressedTroop attackerTroop, CompressedTroop defenderTroop) {
         try {
-            if (!attackerTroop.canAttack())
+            if (!attackerTroop.canAttack() && attackerTroop.getCurrentAp() <= 0)
                 throw new InputException("you can not attack");
             if (attackerTroop.getCard().getAttackType() == AttackType.MELEE) {
                 if (!attackerTroop.getCell().isNextTo(defenderTroop.getCell())) {
