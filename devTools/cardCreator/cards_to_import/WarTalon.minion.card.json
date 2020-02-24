@@ -1,0 +1,16 @@
+{
+  "name": "War Talon",
+  "description": "Provoke",
+  "cardId": "WarTalon",
+  "spriteName": "neutral_wartalon",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 4,
+  "defaultHp": 9,
+  "manaCost": 7,
+  "price": 100,
+  "attackType": "MEELE",
+  "range": 99,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
