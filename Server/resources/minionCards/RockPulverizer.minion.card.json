@@ -1,0 +1,16 @@
+{
+  "name": "Rock Pulverizer",
+  "description": "Provoke",
+  "cardId": "RockPulverizer",
+  "spriteName": "neutral_monsterexplodingdemon",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 1,
+  "defaultHp": 4,
+  "manaCost": 2,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
