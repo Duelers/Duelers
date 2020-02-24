@@ -1,0 +1,16 @@
+{
+  "name": "Storm Artha",
+  "description": "Flying",
+  "cardId": "StormArtha",
+  "spriteName": "neutral_monsterlightningbeetle",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 6,
+  "defaultHp": 5,
+  "manaCost": 6,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
