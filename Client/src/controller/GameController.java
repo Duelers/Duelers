@@ -114,8 +114,10 @@ public class GameController implements GameActions {
                 throw new InputException("cell is not empty");
             }
 
-            if (selectedTroop.getCell().manhattanDistance(new Cell(row, column)) > 2) {
-                throw new InputException("too far to go");
+            if (!selectedTroop.getCard().getDescription().contains("Flying")){
+                if (selectedTroop.getCell().manhattanDistance(new Cell(row, column)) > 2){
+                    throw new InputException("too far to go");
+                }
             }
 
             Message message = Message.makeMoveTroopMessage(SERVER_NAME, selectedTroop.getCard().getCardId(), target);

@@ -1391,6 +1391,48 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "remainingNumber": 20
+            }, {
+                "name": "Dragon Lark",
+                "description": "Flying, Ranged (2)",
+                "cardId": "duelyst_DragonLark_1",
+                "spriteName": "neutral_monsterdragonhawk",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 1,
+                "manaCost": 1,
+                "price": 100,
+                "attackType": "HYBRID",
+                "range": 2,
+                "remainingNumber": 20
+            }, {
+                "name": "Dragon Lark",
+                "description": "Flying, Ranged (2)",
+                "cardId": "duelyst_DragonLark_2",
+                "spriteName": "neutral_monsterdragonhawk",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 1,
+                "manaCost": 1,
+                "price": 100,
+                "attackType": "HYBRID",
+                "range": 2,
+                "remainingNumber": 20
+            }, {
+                "name": "Dragon Lark",
+                "description": "Flying, Ranged (2)",
+                "cardId": "duelyst_DragonLark_3",
+                "spriteName": "neutral_monsterdragonhawk",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 1,
+                "manaCost": 1,
+                "price": 100,
+                "attackType": "HYBRID",
+                "range": 2,
+                "remainingNumber": 20
             }
         ],
         "spells": [{
@@ -2427,7 +2469,7 @@
             "othersIds": ["duelyst_WorldcoreGolem_3", "duelyst_SkyrockGolem_1", "duelyst_SkyrockGolem_2", "duelyst_SkyrockGolem_3", "duelyst_Serpenti_1", "duelyst_Serpenti_2", "duelyst_Serpenti_3", "duelyst_PiercingMantis_1", "duelyst_PiercingMantis_2", "duelyst_PiercingMantis_3", "duelyst_CelestialPhantom_1", "duelyst_CelestialPhantom_2", "duelyst_CelestialPhantom_3", "duelyst_HailstoneGolem_1", "duelyst_HailstoneGolem_2", "duelyst_PlanarScout_1", "duelyst_WorldcoreGolem_1", "duelyst_PlanarScout_2", "duelyst_BlisteringSkorn_1", "duelyst_BloodshardGolem_1"]
         }
     ],
-    "mainDeckName": "starterDeck Aggro",
+    "mainDeckName": "starterDeck Golem",
     "matchHistories": [],
     "money": 9543289
 }
