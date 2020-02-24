@@ -452,10 +452,11 @@ public abstract class Game {
         }
 
         // TODO: Check if position is under provoke of enemy minion. If yes, raise exception
-        // TODO: Check for Flying. If yes, skip distance check and set cell.
 
-        if (troop.getCell().manhattanDistance(cell) > 2) {
-            throw new ClientException("too far to go");
+        if (!troop.getCard().getDescription().contains("Flying")){
+            if (troop.getCell().manhattanDistance(cell) > 2){
+                throw new ClientException("too far to go");
+            }
         }
 
         Cell newCell = gameMap.getCell(cell);

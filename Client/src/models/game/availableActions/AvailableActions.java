@@ -39,7 +39,7 @@ public class AvailableActions {
                 if (enemyTroop.isNoAttackFromWeakerOnes() && myTroop.getCurrentAp() < enemyTroop.getCurrentAp())
                     continue;
 
-                if (checkRangeForAttack(myTroop, enemyTroop)) continue;
+                if (!isTargetInRange(myTroop, enemyTroop)) continue;
 
                 targets.add(enemyTroop);
             }
@@ -98,14 +98,14 @@ public class AvailableActions {
         moves.clear();
     }
 
-    private boolean checkRangeForAttack(CompressedTroop myTroop, CompressedTroop enemyTroop) {
+    private boolean isTargetInRange(CompressedTroop myTroop, CompressedTroop enemyTroop) {
         if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
-            return !myTroop.getCell().isNextTo(enemyTroop.getCell());
+            return myTroop.getCell().isNextTo(enemyTroop.getCell());
         } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {
             return myTroop.getCell().isNextTo(enemyTroop.getCell()) ||
-                    myTroop.getCell().manhattanDistance(enemyTroop.getCell()) > myTroop.getCard().getRange();
+                    myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         } else { // HYBRID
-            return myTroop.getCell().manhattanDistance(enemyTroop.getCell()) > myTroop.getCard().getRange();
+            return myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         }
     }
 
@@ -145,6 +145,7 @@ public class AvailableActions {
 
     public boolean canMove(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int column) {
         if (isTroopProvoked(gameMap, player, troop)) {return false; }
+        if (troop.getCard().getDescription().contains("Flying")){ return true; }
 
         List<Cell> baseMovement = getMovePositions(troop);
         return baseMovement.contains(new Cell(row, column));

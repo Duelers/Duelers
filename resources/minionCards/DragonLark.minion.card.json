@@ -1,6 +1,6 @@
 {
   "name": "Dragon Lark",
-  "description": "Flying, Ranged(1)",
+  "description": "Flying, Ranged (2)",
   "cardId": "DragonLark",
   "spriteName": "neutral_monsterdragonhawk",
   "type": "MINION",
@@ -10,7 +10,7 @@
   "manaCost": 1,
   "price": 100,
   "attackType": "HYBRID",
-  "range": 1,
+  "range": 2,
   "hasCombo": false,
   "remainingNumber": 20
 }
