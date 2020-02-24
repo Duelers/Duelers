@@ -10,7 +10,7 @@
   "manaCost": 7,
   "price": 100,
   "attackType": "MELEE",
-  "range": 99,
+  "range": 0,
   "hasCombo": false,
   "remainingNumber": 20
 }
