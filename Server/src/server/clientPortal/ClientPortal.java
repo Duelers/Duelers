@@ -3,7 +3,7 @@ package server.clientPortal;
 import server.Server;
 import server.clientPortal.models.message.Message;
 import server.dataCenter.DataCenter;
-import Config.Config.Config;
+import Config.Config;
 
 import java.io.IOException;
 import java.net.ServerSocket;

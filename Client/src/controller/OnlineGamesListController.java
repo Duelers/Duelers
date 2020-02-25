@@ -3,7 +3,7 @@ package controller;
 import models.message.DataName;
 import models.message.Message;
 import models.message.OnlineGame;
-import Config.Config.Config;
+import Config.Config;
 
 public class OnlineGamesListController {
     private static OnlineGamesListController controller;

@@ -1,7 +1,7 @@
 package controller;
 
 import models.message.Message;
-import Config.Config.Config;
+import Config.Config;
 
 public class WaitingController {
     private static WaitingController controller;

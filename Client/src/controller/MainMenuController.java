@@ -2,12 +2,11 @@ package controller;
 
 
 import javafx.application.Platform;
-import models.Constants;
 import models.account.AccountType;
 import models.message.ChatMessage;
 import models.message.Message;
 import view.GlobalChatDialog;
-import Config.Config.Config;
+import Config.Config;
 
 public class MainMenuController {
     private static MainMenuController ourInstance;

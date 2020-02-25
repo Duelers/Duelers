@@ -1,6 +1,6 @@
 package controller;
 
-import Config.Config.Config;
+import Config.Config;
 import models.account.Collection;
 import models.card.Card;
 import models.card.Deck;

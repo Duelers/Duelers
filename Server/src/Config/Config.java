@@ -1,4 +1,4 @@
-package Config.Config;
+package Config;
 
 import java.io.*;
 import java.util.Properties;
@@ -11,7 +11,7 @@ public class Config{
 
     private Config(){
         try {
-            file = new FileInputStream("resources/Configuration/Config/Config/config.properties");
+            file = new FileInputStream("Server/src/Config/config.properties");
             config = new Properties();
             config.load(file);
         }

@@ -12,7 +12,7 @@ import models.game.availableActions.AvailableActions;
 import models.game.map.Cell;
 import models.message.*;
 import view.BattleView.BattleScene;
-import Config.Config.Config;
+import Config.Config;
 
 
 public class GameController implements GameActions {

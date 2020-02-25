@@ -1,6 +1,6 @@
 package controller;
 
-import Config.Config.Config;
+import Config.Config;
 import models.game.GameType;
 import models.message.Message;
 

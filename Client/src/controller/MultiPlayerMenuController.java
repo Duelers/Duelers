@@ -1,6 +1,6 @@
 package controller;
 
-import Config.Config.Config;
+import Config.Config;
 import javafx.application.Platform;
 import models.exceptions.InputException;
 import models.game.GameType;

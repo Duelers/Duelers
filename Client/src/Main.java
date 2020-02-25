@@ -1,4 +1,4 @@
-import Config.Config.Config;
+import Config.Config;
 import controller.Client;
 import controller.GraphicalUserInterface;
 import javafx.application.Application;

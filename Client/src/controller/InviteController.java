@@ -1,6 +1,6 @@
 package controller;
 
-import Config.Config.Config;
+import Config.Config;
 import models.message.Message;
 
 public class InviteController {
