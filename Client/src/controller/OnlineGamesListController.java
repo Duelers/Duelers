@@ -3,12 +3,12 @@ package controller;
 import models.message.DataName;
 import models.message.Message;
 import models.message.OnlineGame;
-
-import static models.Constants.SERVER_NAME;
+import Config.Config.Config;
 
 public class OnlineGamesListController {
     private static OnlineGamesListController controller;
     private OnlineGame[] onlineGames;
+    private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
 
     private OnlineGamesListController() {
     }

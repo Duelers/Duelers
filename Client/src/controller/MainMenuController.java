@@ -7,11 +7,11 @@ import models.account.AccountType;
 import models.message.ChatMessage;
 import models.message.Message;
 import view.GlobalChatDialog;
-
-import static models.Constants.SERVER_NAME;
+import Config.Config.Config;
 
 public class MainMenuController {
     private static MainMenuController ourInstance;
+    private static final String serverName = Config.getInstance().getProperty("SERVER_NAME");
 
     public static MainMenuController getInstance() {
         if (ourInstance == null) {
@@ -22,7 +22,7 @@ public class MainMenuController {
 
     public void logout() {
         Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeLogOutMessage(SERVER_NAME));
+                Message.makeLogOutMessage(serverName));
     }
 
 
@@ -32,10 +32,10 @@ public class MainMenuController {
 
     public void sendChatMessage(String text) {
         Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeChatMessage(Constants.SERVER_NAME, Client.getInstance().getAccount().getUsername(), null, text));
+                Message.makeChatMessage(serverName, Client.getInstance().getAccount().getUsername(), null, text));
     }
 
     public void changeAccountTypeRequest(String username, AccountType newValue) {
-        Client.getInstance().addToSendingMessagesAndSend(Message.makeChangeAccountTypeMessage(SERVER_NAME, username, newValue));
+        Client.getInstance().addToSendingMessagesAndSend(Message.makeChangeAccountTypeMessage(serverName, username, newValue));
     }
 }

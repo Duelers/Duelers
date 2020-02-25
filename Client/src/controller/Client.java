@@ -1,5 +1,6 @@
 package controller;
 
+import Config.Config.Config;
 import com.google.gson.Gson;
 import javafx.application.Platform;
 import models.Constants;
@@ -17,7 +18,6 @@ import java.net.Socket;
 import java.util.LinkedList;
 
 public class Client {
-    private static final String CONFIG_PATH = "config";
     private static Client client;
     private final LinkedList<Message> sendingMessages = new LinkedList<>();
     private String clientName;
@@ -79,19 +79,11 @@ public class Client {
     }
 
     private Socket makeSocket() throws IOException {
-        File file = new File(CONFIG_PATH);
-        if (file.exists()) {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            try {
-                String ip = reader.readLine();
-                int port = Integer.parseInt(reader.readLine());
-                return new Socket(ip, port);
-            } catch (NumberFormatException e) {
-                System.out.println("wrong format for port in config");
-                System.exit(0);
-            }
-        }
-        return new Socket(Constants.SERVER_IP, Constants.PORT);
+
+        String serverIP = Config.getInstance().getProperty("SERVER_IP");
+        String port = Config.getInstance().getProperty("PORT");
+        int portConverted = Integer.parseInt(port);
+        return new Socket(serverIP, portConverted);
     }
 
     void addToSendingMessagesAndSend(Message message) {

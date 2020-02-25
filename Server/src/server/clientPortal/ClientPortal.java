@@ -3,17 +3,16 @@ package server.clientPortal;
 import server.Server;
 import server.clientPortal.models.message.Message;
 import server.dataCenter.DataCenter;
+import Config.Config.Config;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
 
 public class ClientPortal extends Thread {
-    private static final String CONFIG_PATH = "config";
-    private static final int DEFAULT_PORT = 8888;
+    //private static final String CONFIG_PATH = "config";
+    //private static final int DEFAULT_PORT = 8888;
     private static final ClientPortal ourInstance = new ClientPortal();
     private final HashMap<String, Formatter> clients = new HashMap<>();
 
@@ -43,6 +42,7 @@ public class ClientPortal extends Thread {
     }
 
     private ServerSocket makeServerSocket() throws IOException {
+        /*
         File file = new File(CONFIG_PATH);
         if (file.exists()) {
             FileReader reader = new FileReader(file);
@@ -55,7 +55,11 @@ public class ClientPortal extends Thread {
                 return new ServerSocket(Integer.parseInt(portString.toString()));
             }
         }
-        return new ServerSocket(DEFAULT_PORT);
+         */
+
+        String port = Config.getInstance().getProperty("PORT");
+        int portConverted = Integer.parseInt(port);
+        return new ServerSocket(portConverted);
     }
 
     synchronized public boolean hasThisClient(String clientName) {

@@ -1,6 +1,6 @@
 package controller;
 
-import models.Constants;
+import Config.Config.Config;
 import models.account.Collection;
 import models.card.Card;
 import models.card.Deck;
@@ -16,6 +16,7 @@ public class CollectionMenuController implements PropertyChangeListener {
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
     private Collection allShowingCards;
     private Collection currentShowingCards;
+    private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
 
     private CollectionMenuController() {
         Client.getInstance().getAccount().addPropertyChangeListener(this);
@@ -32,7 +33,7 @@ public class CollectionMenuController implements PropertyChangeListener {
 
     public void newDeck(String deckName) {
         Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeCreateDeckMessage(Constants.SERVER_NAME, deckName));
+                Message.makeCreateDeckMessage(SERVER_NAME, deckName));
     }
 
     public void addCardToDeck(Deck deck, String cardName) {
@@ -42,7 +43,7 @@ public class CollectionMenuController implements PropertyChangeListener {
             return;
         }
         Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeAddCardToDeckMessage(Constants.SERVER_NAME, deck.getName(), cardID));
+                Message.makeAddCardToDeckMessage(SERVER_NAME, deck.getName(), cardID));
     }
 
     public void removeCardFromDeck(Deck deck, String cardName) {
@@ -53,17 +54,17 @@ public class CollectionMenuController implements PropertyChangeListener {
         }
         String cardID = card.getCardId();
         Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeRemoveCardFromDeckMessage(Constants.SERVER_NAME, deck.getName(), cardID));
+                Message.makeRemoveCardFromDeckMessage(SERVER_NAME, deck.getName(), cardID));
     }
 
     public void removeDeck(String deckName) {
         Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeRemoveDeckMessage(Constants.SERVER_NAME, deckName));
+                Message.makeRemoveDeckMessage(SERVER_NAME, deckName));
     }
 
     public void selectDeck(String deckName) {
         Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeSelectDeckMessage(Constants.SERVER_NAME, deckName));
+                Message.makeSelectDeckMessage(SERVER_NAME, deckName));
     }
 
     public void search(String cardName) {
@@ -94,6 +95,6 @@ public class CollectionMenuController implements PropertyChangeListener {
 
     public void importDeck(ExportedDeck exportedDeck) {
         Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeImportDeckMessage(Constants.SERVER_NAME, exportedDeck));
+                Message.makeImportDeckMessage(SERVER_NAME, exportedDeck));
     }
 }
