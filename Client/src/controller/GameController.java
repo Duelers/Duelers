@@ -75,20 +75,20 @@ public class GameController implements GameActions {
     @Override
     public void attack(CompressedTroop attackerTroop, CompressedTroop defenderTroop) {
         try {
-            if (!attackerTroop.canAttack())
-                throw new InputException("you can not attack");
+            if (!attackerTroop.canAttack() || attackerTroop.getCurrentAp() == 0)
+                throw new InputException("Error: troop cannot attack and/or current 'ap' is 0.");
             if (attackerTroop.getCard().getAttackType() == AttackType.MELEE) {
                 if (!attackerTroop.getCell().isNextTo(defenderTroop.getCell())) {
-                    throw new InputException("you can not attack to this target");
+                    throw new InputException("Error: target is outside of MELEE range");
                 }
             } else if (attackerTroop.getCard().getAttackType() == AttackType.RANGED) {
                 if (attackerTroop.getCell().isNextTo(defenderTroop.getCell()) ||
                         attackerTroop.getCell().manhattanDistance(defenderTroop.getCell()) > attackerTroop.getCard().getRange()) {
-                    throw new InputException("you can not attack to this target");
+                    throw new InputException(String.format("Error: target is outside of range (%d)", attackerTroop.getCard().getRange()));
                 }
             } else { // HYBRID
                 if (attackerTroop.getCell().manhattanDistance(defenderTroop.getCell()) > attackerTroop.getCard().getRange()) {
-                    throw new InputException("you can not attack to this target");
+                    throw new InputException(String.format("Error: target is outside of range (%d)", attackerTroop.getCard().getRange()));
                 }
             }
 

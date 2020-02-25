@@ -153,6 +153,8 @@ public class AvailableActions {
 
     public boolean canAttack(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int col) {
 
+        if (troop.getCurrentAp() <= 0){ return false; }
+
         if (isTroopProvoked(gameMap, player, troop)){
             return getAttackPositions(troop).contains(new Cell(row, col))
                     && gameMap.getTroop(new Cell(row, col)).getCard().getDescription().contains("Provoke");
