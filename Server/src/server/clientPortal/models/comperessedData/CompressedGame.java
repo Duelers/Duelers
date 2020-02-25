@@ -18,4 +18,16 @@ public class CompressedGame {
         this.turnNumber = turnNumber;
         this.gameType = gameType;
     }
+
+	public CompressedPlayer getPlayerOne() {
+        return playerOne;
+    }
+
+    public CompressedPlayer getPlayerTwo() {
+        return playerTwo;
+    }
+
+    public GameType getGameType() {
+        return gameType;
+    }
 }

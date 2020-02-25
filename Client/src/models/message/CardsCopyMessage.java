@@ -1,7 +1,7 @@
 package models.message;
 
 
-import models.account.Collection;
+import server.dataCenter.models.account.Collection;
 
 public class CardsCopyMessage {
     private Collection cards;

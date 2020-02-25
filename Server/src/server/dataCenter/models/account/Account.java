@@ -11,10 +11,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 import static server.dataCenter.models.account.AccountType.NORMAL;
 
 public class Account {
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
     private String username;
     private String password;
     private AccountType accountType;
@@ -46,6 +49,64 @@ public class Account {
         this.money = account.getMoney();
         this.matchHistories = account.getMatchHistories();
         this.accountType = account.getAccountType();
+    }
+
+    public void update(TempAccount account) {
+        if (!username.equals(account.getUsername())) {
+            String old = username;
+            username = account.getUsername();
+            support.firePropertyChange("username", old, username);
+        }
+        if (!password.equals(account.getPassword())) {
+            password = account.getPassword();
+        }
+        if (!collection.equals(account.getCollection())) {
+            Collection old = collection;
+            collection = account.getCollection();
+            support.firePropertyChange("collection", old, collection);
+        }
+        if (money != account.getMoney()) {
+            int old = money;
+            money = account.getMoney();
+            support.firePropertyChange("money", old, money);
+        }
+        if (!decksEqual(account.getDecks())) {
+            ArrayList<Deck> newDecks = new ArrayList<>();
+
+            for (TempDeck deck : account.getDecks()) {
+                newDecks.add(new Deck(deck, collection));
+            }
+            List<Deck> old = decks;
+            decks = newDecks;
+            support.firePropertyChange("decks", old, decks);
+            if (!mainDecksEqual(account)) {
+                Deck oldMain = mainDeck;
+                mainDeck = getDeck(account.getMainDeckName());
+                support.firePropertyChange("main_deck", oldMain, mainDeck);
+            }
+        } else if (!mainDecksEqual(account)) {
+            Deck old = mainDeck;
+            mainDeck = getDeck(account.getMainDeckName());
+            support.firePropertyChange("main_deck", old, mainDeck);
+        }
+        matchHistories = account.getMatchHistories();
+        accountType = account.getAccountType();
+    }
+
+    private boolean mainDecksEqual(TempAccount account) {
+        return (
+                (mainDeck == null && account.getMainDeckName() == null) ||
+                        (mainDeck != null && account.getMainDeckName() != null && mainDeck.getName().equals(account.getMainDeckName()))
+        );
+    }
+
+    private boolean decksEqual(List<TempDeck> decks) {
+        if (this.decks.size() != decks.size()) return false;
+
+        for (TempDeck deck : decks) {
+            if (!this.decks.contains(deck)) return false;
+        }
+        return true;
     }
 
     private boolean hasDeck(String deckName) {
@@ -176,11 +237,11 @@ public class Account {
         return mainDeck != null && mainDeck.isValid();
     }
 
-    List<MatchHistory> getMatchHistories() {
+    public List<MatchHistory> getMatchHistories() {
         return Collections.unmodifiableList(matchHistories);
     }
 
-    int getMoney() {
+    public int getMoney() {
         return money;
     }
 
@@ -188,7 +249,7 @@ public class Account {
         return matchHistories.stream().filter(MatchHistory::isAmIWinner).collect(Collectors.toList()).size();
     }
 
-    List<Deck> getDecks() {
+    public List<Deck> getDecks() {
         return Collections.unmodifiableList(decks);
     }
 
@@ -198,5 +259,13 @@ public class Account {
 
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener pcl) {
+        support.removePropertyChangeListener(pcl);
     }
 }

@@ -1,7 +1,7 @@
 package models.message;
 
 
-import models.account.AccountInfo;
+import server.dataCenter.models.account.AccountInfo;
 
 public class OpponentInfoMessage {
     private AccountInfo opponentInfo;

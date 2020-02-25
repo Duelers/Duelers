@@ -24,4 +24,8 @@ public class CompressedPlayer {
         this.nextCard = nextCard.toCompressedCard();
         this.playerNumber = playerNumber;
     }
+
+    public String getUserName() {
+        return userName;
+    }
 }

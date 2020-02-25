@@ -1,8 +1,8 @@
-package models.comperessedData;
+package server.clientPortal.models.comperessedData;
 
 import server.dataCenter.models.card.CardType;
-import models.game.CellEffect;
-import models.game.GameType;
+import server.gameCenter.models.game.CellEffect;
+import server.gameCenter.models.game.GameType;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

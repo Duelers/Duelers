@@ -1,6 +1,6 @@
 package models.game.availableActions;
 
-import models.comperessedData.CompressedTroop;
+import server.clientPortal.models.comperessedData.CompressedTroop;
 import server.gameCenter.models.map.Cell;
 
 import java.util.ArrayList;

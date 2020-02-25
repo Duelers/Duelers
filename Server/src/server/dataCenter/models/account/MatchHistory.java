@@ -30,4 +30,8 @@ public class MatchHistory {
     public boolean isAmIWinner() {
         return amIWinner;
     }
+
+    public boolean amIWinner() {
+        return amIWinner;
+    }
 }

@@ -6,7 +6,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import models.account.Collection;
+import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.ICard;
 import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.CardType;

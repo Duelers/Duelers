@@ -1,7 +1,7 @@
 package models.message;
 
 
-import models.account.TempAccount;
+import server.dataCenter.models.account.TempAccount;
 
 public class AccountCopyMessage {
     private TempAccount account;

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static models.account.AccountType.ADMIN;
+import static server.dataCenter.models.account.AccountType.ADMIN;
 
 public class MainMenu extends Show {
     private static MainMenu menu;

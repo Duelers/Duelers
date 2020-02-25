@@ -8,10 +8,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import server.dataCenter.models.card.CardType;
-import models.comperessedData.CompressedGameMap;
-import models.comperessedData.CompressedCard;
-import models.comperessedData.CompressedPlayer;
-import models.comperessedData.CompressedTroop;
+import server.clientPortal.models.comperessedData.CompressedGameMap;
+import server.clientPortal.models.comperessedData.CompressedCard;
+import server.clientPortal.models.comperessedData.CompressedPlayer;
+import server.clientPortal.models.comperessedData.CompressedTroop;
 import models.gui.CardPane;
 
 import java.beans.PropertyChangeEvent;

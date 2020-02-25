@@ -10,4 +10,17 @@ public class CellEffect {
         this.cell = cell;
         this.positive = positive;
     }
+
+    public CellEffect(int row, int column, boolean positive) {
+        this.positive = positive;
+        cell = new Cell(row, column);
+    }
+
+    public Cell getCell() {
+        return cell;
+    }
+
+    public boolean isPositive() {
+        return positive;
+    }
 }

@@ -1,4 +1,4 @@
-package models.comperessedData;
+package server.clientPortal.models.comperessedData;
 
 import server.dataCenter.models.card.spell.AvailabilityType;
 import server.dataCenter.models.card.spell.Target;

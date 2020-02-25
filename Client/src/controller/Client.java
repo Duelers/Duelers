@@ -3,7 +3,8 @@ package controller;
 import com.google.gson.Gson;
 import javafx.application.Platform;
 import models.Constants;
-import models.account.Account;
+import server.gameCenter.models.game.CellEffect;
+import server.dataCenter.models.account.Account;
 import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.DeckInfo;
 import server.dataCenter.DataCenter;
@@ -209,11 +210,14 @@ public class Client {
                 break;
             case GAME_UPDATE:
                 GameUpdateMessage gameUpdateMessage = message.getGameUpdateMessage();
+				CellEffect[] effects = new CellEffect[gameUpdateMessage.getCellEffects().size()];
+				effects = gameUpdateMessage.getCellEffects().toArray(effects);
+
                 GameController.getInstance().getCurrentGame().gameUpdate(
                         gameUpdateMessage.getTurnNumber(),
                         gameUpdateMessage.getPlayer1CurrentMP(),
                         gameUpdateMessage.getPlayer2CurrentMP(),
-                        gameUpdateMessage.getCellEffects());
+                        effects);
                 GameController.getInstance().calculateAvailableActions();
                 break;
             case Game_FINISH:

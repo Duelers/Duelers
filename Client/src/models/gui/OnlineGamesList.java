@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import models.game.GameType;
+import server.gameCenter.models.game.GameType;
 import server.clientPortal.models.message.OnlineGame;
 
 import java.util.Arrays;

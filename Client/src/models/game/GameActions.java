@@ -1,7 +1,7 @@
 package models.game;
 
-import models.comperessedData.CompressedCard;
-import models.comperessedData.CompressedTroop;
+import server.clientPortal.models.comperessedData.CompressedCard;
+import server.clientPortal.models.comperessedData.CompressedTroop;
 import server.clientPortal.models.message.OnlineGame;
 
 

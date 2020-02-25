@@ -11,7 +11,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import models.account.MatchHistory;
+import server.dataCenter.models.account.MatchHistory;
 
 import java.util.List;
 

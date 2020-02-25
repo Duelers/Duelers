@@ -3,7 +3,7 @@ package controller;
 import javafx.application.Platform;
 import models.Constants;
 import server.exceptions.InputException;
-import models.game.GameType;
+import server.gameCenter.models.game.GameType;
 import server.clientPortal.models.message.Message;
 
 public class MultiPlayerMenuController {

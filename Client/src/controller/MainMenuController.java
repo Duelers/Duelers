@@ -3,7 +3,7 @@ package controller;
 
 import javafx.application.Platform;
 import models.Constants;
-import models.account.AccountType;
+import server.dataCenter.models.account.AccountType;
 import server.clientPortal.models.message.ChatMessage;
 import server.clientPortal.models.message.Message;
 import view.GlobalChatDialog;

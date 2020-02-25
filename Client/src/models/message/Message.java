@@ -3,11 +3,11 @@ package models.message;
 
 import controller.Client;
 import models.JsonConverter;
-import models.account.AccountType;
+import server.dataCenter.models.account.AccountType;
 import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.ExportedDeck;
-import models.comperessedData.CompressedCard;
-import models.game.GameType;
+import server.clientPortal.models.comperessedData.CompressedCard;
+import server.gameCenter.models.game.GameType;
 import server.gameCenter.models.map.Cell;
 
 public class Message {

@@ -1,6 +1,6 @@
-package models.comperessedData;
+package server.clientPortal.models.comperessedData;
 
-import models.game.CellEffect;
+import server.gameCenter.models.game.CellEffect;
 import server.gameCenter.models.map.Cell;
 
 import java.beans.PropertyChangeListener;
@@ -133,7 +133,7 @@ public class CompressedGameMap {
         return null;
     }
 
-    public void updateCellEffects(CellEffect[] cellEffects) {
+    public void updateCellEffects(CellEffect[] cellEffects) { // TODO
         CellEffect[] old = this.cellEffects;
         this.cellEffects = cellEffects;
         if (support == null) support = new PropertyChangeSupport(this);

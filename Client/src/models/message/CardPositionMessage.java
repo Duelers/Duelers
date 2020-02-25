@@ -1,6 +1,6 @@
 package models.message;
 
-import models.comperessedData.CompressedCard;
+import server.clientPortal.models.comperessedData.CompressedCard;
 
 public class CardPositionMessage {
     private CompressedCard compressedCard;

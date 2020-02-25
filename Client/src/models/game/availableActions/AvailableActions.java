@@ -2,7 +2,7 @@ package models.game.availableActions;
 
 
 import server.dataCenter.models.card.AttackType;
-import models.comperessedData.*;
+import server.clientPortal.models.comperessedData.*;
 import server.gameCenter.models.map.Cell;
 
 import java.util.ArrayList;

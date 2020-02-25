@@ -1,7 +1,7 @@
 package controller;
 
 import models.Constants;
-import models.game.GameType;
+import server.gameCenter.models.game.GameType;
 import server.clientPortal.models.message.Message;
 
 public class CustomGameMenuController {

@@ -1,6 +1,7 @@
 package server.clientPortal.models.message;
 
 import server.gameCenter.models.game.Game;
+import server.clientPortal.models.comperessedData.CompressedGame;
 import server.gameCenter.models.game.GameType;
 
 public class OnlineGame {
@@ -9,6 +10,12 @@ public class OnlineGame {
     private GameType gameType;
 
     public OnlineGame(Game game) {
+        player1 = game.getPlayerOne().getUserName();
+        player2 = game.getPlayerTwo().getUserName();
+        gameType = game.getGameType();
+    }
+
+    public OnlineGame(CompressedGame game) {
         player1 = game.getPlayerOne().getUserName();
         player2 = game.getPlayerTwo().getUserName();
         gameType = game.getGameType();

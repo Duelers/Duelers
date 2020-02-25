@@ -2,7 +2,7 @@ package view;
 
 
 import controller.MultiPlayerMenuController;
-import models.game.GameType;
+import server.gameCenter.models.game.GameType;
 
 import java.io.FileNotFoundException;
 

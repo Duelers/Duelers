@@ -1,4 +1,4 @@
-package models.comperessedData;
+package server.clientPortal.models.comperessedData;
 
 import server.dataCenter.models.card.ICard;
 import server.dataCenter.models.card.AttackType;

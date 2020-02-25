@@ -1,6 +1,6 @@
 package models.message;
 
-import models.account.AccountType;
+import server.dataCenter.models.account.AccountType;
 
 public class ChangeAccountType {
     private final String username;

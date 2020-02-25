@@ -2,7 +2,7 @@ package models.gui;
 
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
-import models.account.Account;
+import server.dataCenter.models.account.Account;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
