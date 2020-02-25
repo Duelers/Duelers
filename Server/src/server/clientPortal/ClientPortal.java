@@ -11,8 +11,6 @@ import java.net.Socket;
 import java.util.*;
 
 public class ClientPortal extends Thread {
-    //private static final String CONFIG_PATH = "config";
-    //private static final int DEFAULT_PORT = 8888;
     private static final ClientPortal ourInstance = new ClientPortal();
     private final HashMap<String, Formatter> clients = new HashMap<>();
 
@@ -42,21 +40,6 @@ public class ClientPortal extends Thread {
     }
 
     private ServerSocket makeServerSocket() throws IOException {
-        /*
-        File file = new File(CONFIG_PATH);
-        if (file.exists()) {
-            FileReader reader = new FileReader(file);
-            StringBuilder portString = new StringBuilder();
-            int b;
-            while (-1 != (b = reader.read())) {
-                portString.append((char) b);
-            }
-            if (portString.toString().matches("^\\d+$")) {
-                return new ServerSocket(Integer.parseInt(portString.toString()));
-            }
-        }
-         */
-
         String port = Config.getInstance().getProperty("PORT");
         int portConverted = Integer.parseInt(port);
         return new ServerSocket(portConverted);
