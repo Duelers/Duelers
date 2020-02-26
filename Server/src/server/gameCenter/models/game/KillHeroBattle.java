@@ -14,6 +14,10 @@ public class KillHeroBattle extends Game {
         super(account1, deck, "AI", gameMap, GameType.KILL_HERO);
     }
 
+	public KillHeroBattle(Account account, GameMap gameMap) {
+		super(account, account.getMainDeck(), "Player 2", gameMap, GameType.KILL_HERO, 1);
+	}
+
     @Override
     public boolean finishCheck() {
         if ((getPlayerOne().getHero() == null || getPlayerOne().getHero().getCurrentHp() <= 0) && (getPlayerTwo().getHero() == null || getPlayerTwo().getHero().getCurrentHp() <= 0)) {

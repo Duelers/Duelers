@@ -67,6 +67,9 @@ public class GameCenter extends Thread {//synchronize
     public void getMultiPlayerGameRequest(Message message) throws LogicException {
         DataCenter.getInstance().loginCheck(message.getSender());
         Account account1 = DataCenter.getInstance().getClients().get(message.getSender());
+		if (message.getSender() == "duelyst") {
+			newLocalHotseatGame(account1);
+		} else {
         if (onlineGames.get(account1) != null)
             throw new ClientException("You have online game!");
         if (!account1.hasValidMainDeck())
@@ -80,6 +83,7 @@ public class GameCenter extends Thread {//synchronize
             checkOpponentAccountValidation(account2);
             addUserInvitation(account1, account2, message.getNewGameFields().getGameType());
         }
+		}
     }
 
     private void addGlobalRequest(Account account, GameType gameType) {
@@ -227,6 +231,19 @@ public class GameCenter extends Thread {//synchronize
         game.startGame();
     }
 
+	public void newLocalHotseatGame(Account account1) { //TODO
+		// only KILL_HERO for now
+
+		removeAllGameRequests(account1);
+
+		GameMap map = new GameMap();
+		Game game = new KillHeroBattle(account1, map);
+		game.addObserver(account1);
+		game.setReward(0);
+
+		// replace sending messages
+		game.startGame();
+	}
 
     private void newMultiplayerGame(Account account1, Account account2, GameType gameType) {
 

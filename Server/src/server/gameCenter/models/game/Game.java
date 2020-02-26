@@ -40,13 +40,23 @@ public abstract class Game {
     private int reward;
     private boolean isFinished;
     private ArrayList<Account> observers = new ArrayList<>();
+	private int isLocal;
 
-    protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType) {
+    protected Game(Account account, Deck p2Deck, String p2UserName, GameMap gameMap, GameType gameType) {
         this.gameType = gameType;
         this.gameMap = gameMap;
         this.playerOne = new Player(account.getMainDeck(), account.getUsername(), 1);
-        this.playerTwo = new Player(secondDeck, userName, 2);
+        this.playerTwo = new Player(p2Deck, p2UserName, 2);
     }
+
+    protected Game(Account account, Deck p2Deck, String p2UserName, GameMap gameMap, GameType gameType, int isLocal) {
+        this.gameType = gameType;
+        this.gameMap = gameMap;
+        this.playerOne = new Player(account.getMainDeck(), account.getUsername(), 1);
+        this.playerTwo = new Player(p2Deck, p2UserName, 2);
+		this.isLocal = isLocal;
+    }
+
 
     public static int getDefaultReward() {
         return DEFAULT_REWARD;
@@ -108,7 +118,7 @@ public abstract class Game {
                 || (turnNumber % 2 == 1 && username.equalsIgnoreCase(playerOne.getUserName()));
     }
 
-    public void changeTurn(String username) throws LogicException {
+    public void changeTurn(String username) throws LogicException { // TODO: change logic for local games
         try {
             if (canCommand(username)) {
                 getCurrentTurnPlayer().setCurrentMP(0);
@@ -140,7 +150,7 @@ public abstract class Game {
         }
     }
 
-    private void startTurnTimeLimit() {
+    private void startTurnTimeLimit() {// TODO: PLEASE INSTANTIATE THE THREAD IN AN OBJECT AND INTERRUPT IT WHEN NEEDED, PLEASE.
         final int currentTurn = turnNumber;
         new Thread(() -> {
             try {
@@ -452,7 +462,7 @@ public abstract class Game {
         if (troop == null) {
             throw new ClientException("select a valid card");
         }
-      
+
         if (!troop.canMove()) {
             throw new ClientException("troop can not move");
         }
