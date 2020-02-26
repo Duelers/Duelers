@@ -172,6 +172,10 @@ public class HandBox implements PropertyChangeListener {
                         clickOnCard(I);
                     }
                 });
+
+                // Grey out cards in hand when its the opponents turn
+                Effect nullOrGrayscale = battleScene.isMyTurn() ? null : DISABLE_BUTTON_EFFECT;
+                cards[i].setEffect(nullOrGrayscale);
             }
         }
     }
