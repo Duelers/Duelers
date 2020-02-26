@@ -216,7 +216,7 @@ public class AvailableActions {
         if (player.getPlayerNumber() != GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().getPlayerNumber()){
             return false;
         }
-        // ToDo Other checks to see if replace is valid (e.g. false is already replaced this turn).
+        // ToDo Other checks to see if replace is valid (e.g. false if already replaced this turn).
         return true;
     }
 }
