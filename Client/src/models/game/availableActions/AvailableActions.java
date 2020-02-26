@@ -1,8 +1,10 @@
 package models.game.availableActions;
 
+import controller.GameController;
 import models.card.AttackType;
 import models.comperessedData.*;
 import models.game.map.Cell;
+import server.gameCenter.models.game.Game;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -206,5 +208,15 @@ public class AvailableActions {
             }
         }
         return false;
+    }
+
+    public Boolean canReplace(CompressedPlayer player) {
+
+        // Cannot replace on enemy turn.
+        if (player.getPlayerNumber() != GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().getPlayerNumber()){
+            return false;
+        }
+        // ToDo Other checks to see if replace is valid (e.g. false is already replaced this turn).
+        return true;
     }
 }
