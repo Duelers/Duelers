@@ -1,5 +1,6 @@
 package models.game.availableActions;
 
+import controller.GameController;
 import models.card.AttackType;
 import models.comperessedData.*;
 import models.game.map.Cell;
@@ -206,5 +207,13 @@ public class AvailableActions {
             }
         }
         return false;
+    }
+
+    public boolean canReplace(CompressedPlayer player){
+        if (GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().getPlayerNumber() != player.getPlayerNumber()){
+            return false;
+        }
+        // Todo add addtional logic (i.e. can only replace once per turn).
+        return true;
     }
 }
