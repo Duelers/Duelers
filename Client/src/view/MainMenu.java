@@ -2,7 +2,6 @@ package view;
 
 import controller.*;
 import javafx.application.Platform;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -67,7 +66,7 @@ public class MainMenu extends Show {
 
     private void showGlobalChatDialog(AnchorPane sceneContents) {
         sceneContents.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.T)) {
+            if (event.getCode().equals(KeyboardShortcutConstants.KEY_FOR_CHAT)) {
                 GlobalChatDialog.getInstance().show();
             }
         });
