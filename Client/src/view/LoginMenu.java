@@ -3,12 +3,16 @@ package view;
 import controller.GraphicalUserInterface;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import models.gui.BackgroundMaker;
-import models.gui.DefaultContainer;
-import models.gui.LoginMenuContainer;
-import models.gui.UIConstants;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import models.gui.*;
 
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+import static models.gui.UIConstants.SCALE;
 
 public class LoginMenu extends Show {
 
@@ -22,9 +26,28 @@ public class LoginMenu extends Show {
             AnchorPane sceneContents = new AnchorPane(background, container);
 
             root.getChildren().addAll(sceneContents);
-        } catch (FileNotFoundException e) {
+
+
+            String versionInfo = getVersionInfo();
+            if (versionInfo != null) {
+                DefaultLabel versionLabel = new DefaultLabel(String.format("Version: %s", versionInfo), Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.WHITE);
+                root.getChildren().add(versionLabel);
+            }
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getVersionInfo() throws IOException {
+        final String versionPath = "./resources/version.txt";
+
+         FileInputStream file = new FileInputStream(versionPath);
+         Scanner scanner =new Scanner(file);
+         String versionInfo = scanner.nextLine();
+         file.close();
+
+         return versionInfo;
     }
 
     @Override

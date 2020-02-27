@@ -1,0 +1,15 @@
+{
+  "name": "Saberspine Alpha",
+  "description": "Rush",
+  "cardId": "SaberspineAlpha",
+  "spriteName": "f6_eldersaberspine",
+  "type": "MINION",
+  "defaultAp": 5,
+  "defaultHp": 5,
+  "manaCost": 7,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

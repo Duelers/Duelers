@@ -1,0 +1,16 @@
+{
+  "name": "Dragonlark",
+  "description": "Flying, Ranged (2)",
+  "cardId": "Dragonlark",
+  "spriteName": "neutral_monsterdragonhawk",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 2,
+  "defaultHp": 1,
+  "manaCost": 1,
+  "price": 100,
+  "attackType": "HYBRID",
+  "range": 2,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

@@ -1,16 +1,16 @@
 {
-  "name": "Piercing Mantis",
-  "description": "After attacking, deal 2 damage to all surrounding enemies",
-  "cardId": "PiercingMantis",
-  "spriteName": "neutral_monstershreddingmantis",
+  "name": "War Talon",
+  "description": "Provoke, After attacking, deal 4 damage to all surrounding enemies",
+  "cardId": "WarTalon",
+  "spriteName": "neutral_wartalon",
   "type": "MINION",
-  "spells": [ 
+    "spells": [ 
     {
       "spellId": "dmg_on_atk",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": -2,
+        "hpChange": -4,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -67,9 +67,9 @@
       "lastTurnUsed": 0
     }
   ],
-  "defaultAp": 2,
-  "defaultHp": 2,
-  "manaCost": 2,
+  "defaultAp": 4,
+  "defaultHp": 9,
+  "manaCost": 7,
   "price": 100,
   "attackType": "MELEE",
   "range": 0,

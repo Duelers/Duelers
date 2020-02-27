@@ -7,7 +7,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
-import models.Constants;
 import models.gui.*;
 
 import java.io.File;
@@ -55,14 +54,6 @@ public class PlayMenu extends Show {
             }
         }
         return menu;
-    }
-
-    private void showGlobalChatDialog(AnchorPane sceneContents) {
-        sceneContents.setOnKeyPressed(event -> {
-            if (event.getCode().equals(Constants.KEY_FOR_CHAT)) {
-                GlobalChatDialog.getInstance().show();
-            }
-        });
     }
 
     @Override

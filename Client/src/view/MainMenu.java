@@ -2,7 +2,6 @@ package view;
 
 import controller.*;
 import javafx.application.Platform;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -57,20 +56,10 @@ public class MainMenu extends Show {
             MainMenuBox menuBox = new MainMenuBox(items);
 
             AnchorPane sceneContents = new AnchorPane(background, menuBox);
-            showGlobalChatDialog(sceneContents);
-
             root.getChildren().addAll(sceneContents);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    private void showGlobalChatDialog(AnchorPane sceneContents) {
-        sceneContents.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.T)) {
-                GlobalChatDialog.getInstance().show();
-            }
-        });
     }
 
     public void closeOnlineGamesList() {

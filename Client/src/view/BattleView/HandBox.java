@@ -38,8 +38,6 @@ public class HandBox implements PropertyChangeListener {
     private final Image cardBack = new Image(new FileInputStream("Client/resources/ui/card_background@2x.png"));
     private final Image cardBackGlow = new Image(new FileInputStream("Client/resources/ui/card_background_highlight@2x.png"));
     private final Image nextBack = new Image(new FileInputStream("Client/resources/ui/replace_background@2x.png"));
-    private final Image nextRingSmoke = new Image(new FileInputStream("Client/resources/ui/replace_outer_ring_smoke@2x.png"));
-    private final Image nextRingShine = new Image(new FileInputStream("Client/resources/ui/replace_outer_ring_shine@2x.png"));
     private final Image endTurnImage = new Image(new FileInputStream("Client/resources/ui/button_end_turn_finished@2x.png"));
     private final Image endTurnImageGlow = new Image(new FileInputStream("Client/resources/ui/button_end_turn_finished_glow@2x.png"));
     private DefaultLabel endTurnLabel;
@@ -82,26 +80,14 @@ public class HandBox implements PropertyChangeListener {
 
     private void updateNext() {
         next.getChildren().clear();
-        final ImageView imageView1 = new ImageView();
-        next.getChildren().add(imageView1);
-        imageView1.setFitWidth(Constants.SCREEN_WIDTH * 0.11);
-        imageView1.setFitHeight(Constants.SCREEN_WIDTH * 0.11);
-        imageView1.setImage(nextBack);
+        final ImageView replaceIcon = new ImageView();
+        next.getChildren().add(replaceIcon);
+        replaceIcon.setFitWidth(Constants.SCREEN_WIDTH * 0.11);
+        replaceIcon.setFitHeight(Constants.SCREEN_WIDTH * 0.11);
+        replaceIcon.setImage(nextBack);
 
-        final ImageView imageView2 = new ImageView();
-        next.getChildren().add(imageView2);
-        imageView2.setFitWidth(Constants.SCREEN_WIDTH * 0.11);
-        imageView2.setFitHeight(Constants.SCREEN_WIDTH * 0.11);
-
-        imageView2.setImage(nextRingSmoke);
-
-        next.setOnMouseEntered(mouseEvent -> {
-            if (battleScene.isMyTurn()) {
-                imageView2.setImage(nextRingShine);
-            }
-        });
-
-        next.setOnMouseExited(mouseEvent -> imageView2.setImage(nextRingSmoke));
+        Effect nullOrGrayscale = GameController.getInstance().getAvailableActions().canReplace(player) ? null : DISABLE_BUTTON_EFFECT;
+        replaceIcon.setEffect(nullOrGrayscale);
 
         next.setOnMouseClicked(mouseEvent -> replaceSelectedCard());
     }
@@ -172,6 +158,10 @@ public class HandBox implements PropertyChangeListener {
                         clickOnCard(I);
                     }
                 });
+
+                // Grey out cards in hand when its the opponents turn
+                Effect nullOrGrayscale = battleScene.isMyTurn() ? null : DISABLE_BUTTON_EFFECT;
+                cards[i].setEffect(nullOrGrayscale);
             }
         }
     }

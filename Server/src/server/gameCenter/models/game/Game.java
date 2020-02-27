@@ -29,7 +29,7 @@ import java.util.Random;
 
 public abstract class Game {
     private static final int DEFAULT_REWARD = 1000;
-    private static final long TURN_TIME_LIMIT = 60000;
+    private static final long TURN_TIME_LIMIT = 120000;
     private Player playerOne;
     private Player playerTwo;
     private GameType gameType;
@@ -360,6 +360,12 @@ public abstract class Game {
                 }
                 Server.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.MAP);
                 Troop troop = new Troop(card, getCurrentTurnPlayer().getPlayerNumber());
+
+                if (troop.getCard().getDescription().contains("Rush")){
+                    troop.setCanAttack(true);
+                    troop.setCanMove(true);
+                }
+
                 player.addTroop(troop);
                 putMinion(
                         player.getPlayerNumber(),
@@ -452,10 +458,11 @@ public abstract class Game {
         }
 
         // TODO: Check if position is under provoke of enemy minion. If yes, raise exception
-        // TODO: Check for Flying. If yes, skip distance check and set cell.
 
-        if (troop.getCell().manhattanDistance(cell) > 2) {
-            throw new ClientException("too far to go");
+        if (!troop.getCard().getDescription().contains("Flying")){
+            if (troop.getCell().manhattanDistance(cell) > 2){
+                throw new ClientException("too far to go");
+            }
         }
 
         Cell newCell = gameMap.getCell(cell);

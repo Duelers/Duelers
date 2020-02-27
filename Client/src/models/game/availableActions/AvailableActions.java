@@ -1,8 +1,10 @@
 package models.game.availableActions;
 
+import controller.GameController;
 import models.card.AttackType;
 import models.comperessedData.*;
 import models.game.map.Cell;
+import server.gameCenter.models.game.Game;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,7 +41,7 @@ public class AvailableActions {
                 if (enemyTroop.isNoAttackFromWeakerOnes() && myTroop.getCurrentAp() < enemyTroop.getCurrentAp())
                     continue;
 
-                if (checkRangeForAttack(myTroop, enemyTroop)) continue;
+                if (!isTargetInRange(myTroop, enemyTroop)) continue;
 
                 targets.add(enemyTroop);
             }
@@ -98,14 +100,14 @@ public class AvailableActions {
         moves.clear();
     }
 
-    private boolean checkRangeForAttack(CompressedTroop myTroop, CompressedTroop enemyTroop) {
+    private boolean isTargetInRange(CompressedTroop myTroop, CompressedTroop enemyTroop) {
         if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
-            return !myTroop.getCell().isNextTo(enemyTroop.getCell());
+            return myTroop.getCell().isNextTo(enemyTroop.getCell());
         } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {
             return myTroop.getCell().isNextTo(enemyTroop.getCell()) ||
-                    myTroop.getCell().manhattanDistance(enemyTroop.getCell()) > myTroop.getCard().getRange();
+                    myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         } else { // HYBRID
-            return myTroop.getCell().manhattanDistance(enemyTroop.getCell()) > myTroop.getCard().getRange();
+            return myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         }
     }
 
@@ -145,12 +147,15 @@ public class AvailableActions {
 
     public boolean canMove(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int column) {
         if (isTroopProvoked(gameMap, player, troop)) {return false; }
+        if (troop.getCard().getDescription().contains("Flying")){ return true; }
 
         List<Cell> baseMovement = getMovePositions(troop);
         return baseMovement.contains(new Cell(row, column));
     }
 
     public boolean canAttack(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int col) {
+
+        if (troop.getCurrentAp() <= 0){ return false; }
 
         if (isTroopProvoked(gameMap, player, troop)){
             return getAttackPositions(troop).contains(new Cell(row, col))
@@ -203,5 +208,15 @@ public class AvailableActions {
             }
         }
         return false;
+    }
+
+    public Boolean canReplace(CompressedPlayer player) {
+
+        // Cannot replace on enemy turn.
+        if (player.getPlayerNumber() != GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().getPlayerNumber()){
+            return false;
+        }
+        // ToDo Other checks to see if replace is valid (e.g. false if already replaced this turn).
+        return true;
     }
 }

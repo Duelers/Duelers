@@ -38,6 +38,7 @@ public class AvailableActions {
         attacks.clear();
         for (Troop myTroop : ownPlayer.getTroops()) {
             if (!myTroop.canAttack()) continue;
+            if (myTroop.getCurrentAp() <= 0){ continue;}
 
             ArrayList<Troop> targets = new ArrayList<>();
             for (Troop enemyTroop : otherPlayer.getTroops()) {

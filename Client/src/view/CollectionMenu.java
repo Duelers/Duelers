@@ -15,7 +15,6 @@ import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import models.Constants;
 import models.account.Collection;
 import models.card.Deck;
 import models.card.ExportedDeck;
@@ -121,8 +120,6 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
             AnchorPane sceneContents = new AnchorPane(background, collectionPane, backButton);
 
-            showGlobalChatDialog(sceneContents);
-
             root.getChildren().addAll(sceneContents);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -131,14 +128,6 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
     public static CollectionMenu getInstance() {
         return menu;
-    }
-
-    private void showGlobalChatDialog(AnchorPane sceneContents) {
-        sceneContents.setOnKeyPressed(event -> {
-            if (event.getCode().equals(Constants.KEY_FOR_CHAT)) {
-                GlobalChatDialog.getInstance().show();
-            }
-        });
     }
 
     private void importDeck() {
