@@ -12,6 +12,7 @@ import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedGameMap;
 import models.comperessedData.CompressedPlayer;
 import models.comperessedData.CompressedTroop;
+import models.game.map.Cell;
 import models.gui.CardPane;
 
 import java.beans.PropertyChangeEvent;
@@ -102,7 +103,12 @@ public class MapBox implements PropertyChangeListener {
             troopAnimationHashMap.remove(oldTroop);
             troopAnimationHashMap.put(newTroop, animation);
             animation.updateApHp(newTroop.getCurrentAp(), newTroop.getCurrentHp());
-            animation.moveTo(newTroop.getCell().getRow(), newTroop.getCell().getColumn());
+
+            Cell oldCell = oldTroop.getCell();
+            Cell newCell = newTroop.getCell();
+
+            if (!newCell.equals(oldCell))
+                animation.moveTo(newCell.getRow(), newCell.getColumn());
         } else {
             try {
                 animation = new TroopAnimation(mapGroup, cellsX, cellsY, newTroop.getCard().getSpriteName(),

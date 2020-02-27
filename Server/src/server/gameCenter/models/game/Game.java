@@ -29,7 +29,7 @@ import java.util.Random;
 
 public abstract class Game {
     private static final int DEFAULT_REWARD = 1000;
-    private static final long TURN_TIME_LIMIT = 60000;
+    private static final long TURN_TIME_LIMIT = 120000;
     private Player playerOne;
     private Player playerTwo;
     private GameType gameType;
