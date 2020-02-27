@@ -11,7 +11,7 @@ public class Config{
 
     private Config(){
         try {
-            file = new FileInputStream("Server/src/Config/config.properties");
+            file = new FileInputStream("resources/config.properties");
             config = new Properties();
             config.load(file);
         }
