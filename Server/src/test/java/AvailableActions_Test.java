@@ -28,7 +28,7 @@ public class AvailableActions_Test {
     }
 
     private Troop addFriendlyMinion(Game game, Cell cell) {
-        int friendlyPlayerNumber = 0;
+        int friendlyPlayerNumber = 1;
         Troop troop = new Troop(makeMinionCard(), cell, friendlyPlayerNumber);
         troop.setCanMove(true);
         game.getGameMap().addTroop(friendlyPlayerNumber, troop);
@@ -37,7 +37,7 @@ public class AvailableActions_Test {
     }
 
     private Troop addEnemyMinion(Game game, Cell cell) {
-        int enemyPlayerNumber = 1;
+        int enemyPlayerNumber = 2;
         Troop troop = new Troop(makeMinionCard(), cell, enemyPlayerNumber);
         troop.setCanMove(true);
         game.getGameMap().addTroop(enemyPlayerNumber, troop);

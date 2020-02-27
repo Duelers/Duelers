@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class GameMap_Test {
 
     @Test
-    public void getNeighbourCells_ReturnsThreeCells_WhenInTopLeftCorner() {
+    public void getNearbyCells_ReturnsThreeCells_WhenInTopLeftCorner() {
         GameMap map = new GameMap();
 
         Cell topLeft = new Cell(0, 0);
@@ -28,7 +28,7 @@ public class GameMap_Test {
     }
 
     @Test
-    public void getNeighbourCells_ReturnsThreeCells_WhenInBottomRightCorner() {
+    public void getNearbyCells_ReturnsThreeCells_WhenInBottomRightCorner() {
         GameMap map = new GameMap();
         Cell bottomRight = new Cell(GameMap.getNumRows()-1, GameMap.getNumColumns()-1);
 
@@ -44,7 +44,7 @@ public class GameMap_Test {
     }
 
     @Test
-    public void getNeighbourCells_ReturnsFiveCells_WhenOnEdge() {
+    public void getNearbyCells_ReturnsFiveCells_WhenOnEdge() {
         GameMap map = new GameMap();
         Cell edge = new Cell(0, 1);
 
@@ -62,7 +62,7 @@ public class GameMap_Test {
     }
 
     @Test
-    public void getNeighbourCells_ReturnsEightCells_WhenInCentre() {
+    public void getNearbyCells_ReturnsEightCells_WhenInCentre() {
         GameMap map = new GameMap();
         Cell centre = new Cell(1, 1);
 
