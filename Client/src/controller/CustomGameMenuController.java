@@ -1,11 +1,12 @@
 package controller;
 
-import models.Constants;
+import Config.Config;
 import models.game.GameType;
 import models.message.Message;
 
 public class CustomGameMenuController {
     private static CustomGameMenuController ourInstance;
+    private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
 
     private CustomGameMenuController() {
     }
@@ -19,6 +20,6 @@ public class CustomGameMenuController {
 
     public void startGame(String deckName, GameType gameType) {
         Client.getInstance().addToSendingMessagesAndSend(
-                Message.makeNewCustomGameMessage(Constants.SERVER_NAME, gameType, deckName));
+                Message.makeNewCustomGameMessage(SERVER_NAME, gameType, deckName));
     }
 }

@@ -1,8 +1,7 @@
 package controller;
 
 import models.message.Message;
-
-import static models.Constants.SERVER_NAME;
+import Config.Config;
 
 public class WaitingController {
     private static WaitingController controller;
@@ -18,6 +17,7 @@ public class WaitingController {
     }
 
     public void cancel() {
-        Client.getInstance().addToSendingMessagesAndSend(Message.makeCancelRequestMessage(SERVER_NAME));
+        String serverName = Config.getInstance().getProperty("SERVER_NAME");
+        Client.getInstance().addToSendingMessagesAndSend(Message.makeCancelRequestMessage(serverName));
     }
 }

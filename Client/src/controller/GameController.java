@@ -12,9 +12,7 @@ import models.game.availableActions.AvailableActions;
 import models.game.map.Cell;
 import models.message.*;
 import view.BattleView.BattleScene;
-
-
-import static models.Constants.SERVER_NAME;
+import Config.Config;
 
 
 public class GameController implements GameActions {
@@ -22,6 +20,7 @@ public class GameController implements GameActions {
     BattleScene battleScene;
     private CompressedGame currentGame;
     private final AvailableActions availableActions = new AvailableActions();
+    private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
 
     private GameController() {
     }
