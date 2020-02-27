@@ -1,9 +1,5 @@
 package models.game.map;
 
-import models.Constants;
-
-import java.util.ArrayList;
-
 public class Cell {
     private int row;
     private int column;
