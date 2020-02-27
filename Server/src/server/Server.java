@@ -229,11 +229,10 @@ public class Server {
             if (message != null) {
                 sendException("server has error:(", message.getSender());
             }
-        } catch (ClientException e) {
-            sendException(e.getMessage(), message.getSender());
         } catch (LogicException e) {
             serverPrint(e.getMessage());
             sendException(e.getMessage(), message.getSender());
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }

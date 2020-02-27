@@ -74,7 +74,7 @@ public class AvailableActions {
         Cell troopCell = troop.getCell();
 
         HashSet<Cell> walkableCells = new HashSet<>(); //Cells which the unit can move to.
-        walkableCells.add(troopCell);
+//        walkableCells.add(troopCell);
 
         boolean isProvoked = getIsProvoked(game, troopCell);
         if (isProvoked || !troop.canMove()) {

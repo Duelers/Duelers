@@ -53,6 +53,9 @@ public class AvailableActions_Test {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
+
+        when(mockPlayer.getPlayerNumber()).thenReturn(1);
+
         GameMap map = new GameMap();
         when(mockGame.getGameMap()).thenReturn(map);
         when(mockGame.getCurrentTurnPlayer()).thenReturn(mockPlayer);
@@ -73,7 +76,7 @@ public class AvailableActions_Test {
         sut.calculateAvailableMoves(game);
 
         ArrayList<Cell> expected = new ArrayList<>();
-        expected.add(new Cell(0, 0));
+//        expected.add(new Cell(0, 0));
         expected.add(new Cell(0, 1));
         expected.add(new Cell(0, 2));
         expected.add(new Cell(1, 0));
@@ -104,7 +107,7 @@ public class AvailableActions_Test {
         expected.add(new Cell(1, 0));
         expected.add(new Cell(1, 1));
 
-        expected.add(new Cell(2, 0));
+//        expected.add(new Cell(2, 0));
         expected.add(new Cell(2, 1));
         expected.add(new Cell(2, 2));
 
@@ -141,7 +144,7 @@ public class AvailableActions_Test {
 
         expected.add(new Cell(2, 1));
         expected.add(new Cell(2, 2));
-        expected.add(new Cell(2, 3));
+//        expected.add(new Cell(2, 3));
         expected.add(new Cell(2, 4));
         expected.add(new Cell(2, 5));
 
@@ -183,7 +186,7 @@ public class AvailableActions_Test {
         expected.add(new Cell(1, 3));
 
         expected.add(new Cell(2, 2));
-        expected.add(new Cell(2, 3));
+//        expected.add(new Cell(2, 3));
         expected.add(new Cell(2, 4));
 
         expected.add(new Cell(3, 3));
@@ -219,7 +222,7 @@ public class AvailableActions_Test {
         expected.add(new Cell(1, 4));
 
         expected.add(new Cell(2, 1));
-        expected.add(new Cell(2, 3));
+//        expected.add(new Cell(2, 3));
         expected.add(new Cell(2, 5));
 
         expected.add(new Cell(3, 2));
@@ -250,13 +253,17 @@ public class AvailableActions_Test {
 
         sut.calculateAvailableMoves(game);
 
-        ArrayList<Cell> expected = new ArrayList<>();
-        expected.add(new Cell(2, 3));
+//        ArrayList<Cell> expected = new ArrayList<>();
+//        expected.add(new Cell(2, 3));
+
+        int expected = 0;
 
         List<Move> moves = sut.getMoves();
-        List<Cell> actual = moves.get(0).getTargets();
+//        List<Cell> actual = moves.get(0).getTargets();
+        int actual = moves.size();
 
-        Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -280,7 +287,7 @@ public class AvailableActions_Test {
 
         expected.add(new Cell(2, 1));
         expected.add(new Cell(2, 2));
-        expected.add(new Cell(2, 3));
+//        expected.add(new Cell(2, 3));
         expected.add(new Cell(2, 4));
         expected.add(new Cell(2, 5));
 
@@ -317,7 +324,7 @@ public class AvailableActions_Test {
         expected.add(new Cell(1, 3));
         expected.add(new Cell(1, 4));
 
-        expected.add(new Cell(2, 3));
+//        expected.add(new Cell(2, 3));
         expected.add(new Cell(2, 4));
         expected.add(new Cell(2, 5));
 
@@ -356,7 +363,7 @@ public class AvailableActions_Test {
 
         expected.add(new Cell(2, 1));
         expected.add(new Cell(2, 2));
-        expected.add(new Cell(2, 3));
+//        expected.add(new Cell(2, 3));
         expected.add(new Cell(2, 4));
         expected.add(new Cell(2, 5));
 
@@ -392,7 +399,7 @@ public class AvailableActions_Test {
 
         expected.add(new Cell(2, 1));
         expected.add(new Cell(2, 2));
-        expected.add(new Cell(2, 3));
+//        expected.add(new Cell(2, 3));
 
         expected.add(new Cell(3, 2));
         expected.add(new Cell(3, 3));

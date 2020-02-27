@@ -258,6 +258,7 @@ public abstract class Game {
                 actions.calculateAvailableInserts(this);
             }
         } catch (InterruptedException ignored) {
+            ignored.printStackTrace();
         } finally {
             changeTurn("AI");
         }
