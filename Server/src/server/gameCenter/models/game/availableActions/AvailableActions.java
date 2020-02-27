@@ -8,9 +8,7 @@ import server.gameCenter.models.game.Player;
 import server.gameCenter.models.game.Troop;
 import server.gameCenter.models.map.Cell;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class AvailableActions {
     private List<Insert> handInserts = new ArrayList<>();
@@ -72,47 +70,56 @@ public class AvailableActions {
 
 
     private ArrayList<Cell> calculateAvailableMovesForTroop(Game game, Troop troop) {
-        Cell troopCell = new Cell(troop.getCell().getRow(), troop.getCell().getColumn());
+        Cell troopCell = troop.getCell();
 
-        ArrayList<Cell> walkableCells = new ArrayList<>(); //Cells which the unit can move to.
-        walkableCells.add(troop.getCell());
+        HashSet<Cell> walkableCells = new HashSet<>(); //Cells which the unit can move to.
+        walkableCells.add(troopCell);
 
         boolean isProvoked = getIsProvoked(game, troopCell);
+        if (isProvoked || !troop.canMove()) {
+            ArrayList<Cell> walkableCellsList = new ArrayList<>(walkableCells);
+            return walkableCellsList;
+        }
 
-        if (!isProvoked && !troop.canMove()) {
-            int moveSpeed = 2; // Todo make a troop property.
+        HashSet<Cell> seenCells = new HashSet<>();
+        seenCells.add(troopCell);
 
-            //Cells which the unit can move through.
-            //Pair of <Cell>, <Remaining move spaces>
-            ArrayList<Pair<Cell, Integer>> pathableFrontier = new ArrayList<>();
-            pathableFrontier.add(new Pair<>(troop.getCell(), moveSpeed));
+        int moveSpeed = 2; // Todo make a troop property.
 
+        //Cells which the unit can move through.
+        //Pair of <Cell>, <Remaining move spaces>
+        ArrayList<Pair<Cell, Integer>> pathableFrontier = new ArrayList<>();
+        pathableFrontier.add(new Pair<>(troop.getCell(), moveSpeed));
 
-            while (pathableFrontier.size() > 0) {
-                Pair<Cell, Integer> currentCellMove = pathableFrontier.remove(0);
-                Cell currentCell = currentCellMove.getKey();
-                Integer remainingMovement = currentCellMove.getValue();
+        while (pathableFrontier.size() > 0) {
+            Pair<Cell, Integer> currentCellMove = pathableFrontier.remove(0);
+            Cell currentCell = currentCellMove.getKey();
+            Integer remainingMovement = currentCellMove.getValue();
 
-                if (remainingMovement > 0) {
-                    ArrayList<Cell> manhattanAdjacentCells = game.getGameMap().getManhattanAdjacentCells(currentCell);
-                    for (Cell adjacentCell : manhattanAdjacentCells) {
-                        Troop troopInSpace = game.getGameMap().getTroop(adjacentCell);
+            if (remainingMovement > 0) {
+                ArrayList<Cell> manhattanAdjacentCells = game.getGameMap().getManhattanAdjacentCells(currentCell);
+                for (Cell adjacentCell : manhattanAdjacentCells) {
+                    Troop troopInSpace = game.getGameMap().getTroop(adjacentCell);
 
-                        boolean blockedByAnything = troopInSpace != null;
-                        if (!blockedByAnything) {
-                            walkableCells.add(currentCell);
-                        }
-
-                        boolean blockedByEnemy = blockedByAnything
-                                && troopInSpace.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber();
-                        if (!blockedByEnemy) {
-                            pathableFrontier.add(new Pair<>(adjacentCell, remainingMovement - 1));
+                    boolean blockedByAnything = troopInSpace != null;
+                    if (!blockedByAnything) {
+                        if (!seenCells.contains(adjacentCell)) {
+                            walkableCells.add(adjacentCell);
                         }
                     }
+
+                    boolean blockedByEnemy = blockedByAnything
+                            && troopInSpace.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber();
+                    if (!blockedByEnemy) {
+                        pathableFrontier.add(new Pair<>(adjacentCell, remainingMovement - 1));
+                    }
+                    seenCells.add(adjacentCell);
                 }
             }
         }
-        return walkableCells;
+
+        ArrayList<Cell> walkableCellsList = new ArrayList<>(walkableCells);
+        return walkableCellsList;
     }
 
     private boolean getIsProvoked(Game game, Cell troopCell) {

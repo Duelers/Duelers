@@ -63,7 +63,7 @@ public class Troop {
         return this.canMove;
     }
 
-    void setCanMove(boolean can) {
+    public void setCanMove(boolean can) {
         this.canMove = can;
         //TODO:Send Message
     }
