@@ -120,8 +120,6 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
             AnchorPane sceneContents = new AnchorPane(background, collectionPane, backButton);
 
-            showGlobalChatDialog(sceneContents);
-
             root.getChildren().addAll(sceneContents);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -130,14 +128,6 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
     public static CollectionMenu getInstance() {
         return menu;
-    }
-
-    private void showGlobalChatDialog(AnchorPane sceneContents) {
-        sceneContents.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyboardShortcutConstants.KEY_FOR_CHAT)) {
-                GlobalChatDialog.getInstance().show();
-            }
-        });
     }
 
     private void importDeck() {

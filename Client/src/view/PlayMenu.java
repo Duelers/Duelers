@@ -56,14 +56,6 @@ public class PlayMenu extends Show {
         return menu;
     }
 
-    private void showGlobalChatDialog(AnchorPane sceneContents) {
-        sceneContents.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyboardShortcutConstants.KEY_FOR_CHAT)) {
-                GlobalChatDialog.getInstance().show();
-            }
-        });
-    }
-
     @Override
     public void show() {
         super.show();
