@@ -209,7 +209,7 @@ public class Player {
         this.matchHistory = matchHistory;
     }
 
-    void addTroop(Troop troop) {
+    public void addTroop(Troop troop) {
         troops.add(troop);
     }
 
