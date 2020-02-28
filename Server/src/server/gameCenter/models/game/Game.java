@@ -42,7 +42,7 @@ public abstract class Game {
     private int reward;
     private boolean isFinished;
     private ArrayList<Account> observers = new ArrayList<>();
-	private Timer timer;
+    private Timer timer;
 
     protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType) {
         this.gameType = gameType;
@@ -113,8 +113,8 @@ public abstract class Game {
 
     public void changeTurn(String username, boolean forced) throws LogicException {
         try {
-			if (!forced)
-				this.timer.cancel();
+            if (!forced)
+                this.timer.cancel();
             if (canCommand(username)) {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
@@ -147,17 +147,17 @@ public abstract class Game {
 
     private void startTurnTimeLimit() {
         final int currentTurn = turnNumber;
-		TimerTask task = new TimerTask() {
-			public void run() {
-            	try {
-                	if (isFinished)
-						return;
-                	if (turnNumber == currentTurn)
-                    	changeTurn(getCurrentTurnPlayer().getUserName(), true);
-            	} catch (LogicException ignored) {}
-			}
-		};
-		this.timer.schedule(task, TURN_TIME_LIMIT);
+        TimerTask task = new TimerTask() {
+            public void run() {
+                try {
+                    if (isFinished)
+                        return;
+                    if (turnNumber == currentTurn)
+                        changeTurn(getCurrentTurnPlayer().getUserName(), true);
+                } catch (LogicException ignored) {}
+            }
+        };
+        this.timer.schedule(task, TURN_TIME_LIMIT);
     }
 
     private void addNextCardToHand() {
