@@ -24,7 +24,7 @@ public class AvailableActions {
 
         calculateCardInserts(ownPlayer);
         calculateAttacks(ownPlayer, otherPlayer);
-        calculateMoves(game, ownPlayer);
+        calculateMoves(game);
     }
 
     private void calculateCardInserts(CompressedPlayer ownPlayer) {
@@ -53,49 +53,7 @@ public class AvailableActions {
         }
     }
 
-
-    private void calculateMoves(CompressedGame game, CompressedPlayer ownPlayer) {
-        for (CompressedTroop troop : ownPlayer.getTroops()) {
-            if (!troop.canMove()) continue;
-
-            Cell currentPosition = troop.getCell();
-            ArrayList<Cell> targets = new ArrayList<>();
-
-            int moveSpeed = 2; //Todo make this a troop property with default 2.
-
-
-            for (int column = currentPosition.getColumn() - 2; column <= currentPosition.getColumn() + 2; column++) {
-                int rowDown = currentPosition.getRow() + (2 - Math.abs(column - currentPosition.getColumn()));
-                int rowUp = currentPosition.getRow() - (2 - Math.abs(column - currentPosition.getColumn()));
-
-                for (int row = rowUp; row <= rowDown; row++) {
-                    if (!CompressedGameMap.isInMap(row, column)) continue;
-
-                    Cell cell = game.getGameMap().getCell(row, column);
-                    if (currentPosition.equals(cell)) continue;
-
-                    // Check is an enemy unit is blocking the current path from current position to new position
-                    // Note that current implementation only works for movement range of 2.
-                    Cell midPoint = new Cell((cell.getRow() + currentPosition.getRow()) / 2, (cell.getColumn() + currentPosition.getColumn()) / 2);
-                    if (midPoint.getRow() != 0 || midPoint.getColumn() != 0) {
-                        if (game.getGameMap().getTroop(midPoint) != null && game.getGameMap().getTroop(midPoint).getPlayerNumber() != ownPlayer.getPlayerNumber()) {
-                            continue;
-                        }
-                    }
-
-                    if (game.getGameMap().getTroop(cell) == null) {
-                        targets.add(cell);
-                    }
-                }
-            }
-
-            if (targets.size() == 0) continue;
-
-            moves.add(new Move(troop, targets));
-        }
-    }
-
-    public void calculateAvailableMoves(CompressedGame game) {
+    public void calculateMoves(CompressedGame game) {
         CompressedPlayer ownPlayer = game.getCurrentTurnPlayer();
         moves.clear();
         for (CompressedTroop troop : ownPlayer.getTroops()) {
