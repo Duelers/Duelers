@@ -2,7 +2,7 @@ package models.comperessedData;
 
 import models.card.CardType;
 import shared.models.game.map.CellEffect;
-import models.game.GameType;
+import shared.models.game.GameType;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

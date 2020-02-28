@@ -18,6 +18,7 @@ import server.gameCenter.models.game.availableActions.Attack;
 import server.gameCenter.models.game.availableActions.AvailableActions;
 import server.gameCenter.models.game.availableActions.Insert;
 import server.gameCenter.models.game.availableActions.Move;
+import shared.models.game.GameType;
 import shared.models.game.map.Cell;
 import server.gameCenter.models.map.GameMap;
 import shared.models.game.map.CellEffect;

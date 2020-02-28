@@ -3,7 +3,7 @@ package view;
 import controller.Client;
 import controller.CustomGameMenuController;
 import models.card.Deck;
-import models.game.GameType;
+import shared.models.game.GameType;
 import models.gui.*;
 
 import java.io.FileNotFoundException;
