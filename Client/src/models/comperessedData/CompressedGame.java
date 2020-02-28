@@ -1,7 +1,7 @@
 package models.comperessedData;
 
 import models.card.CardType;
-import models.game.CellEffect;
+import shared.models.game.map.CellEffect;
 import models.game.GameType;
 
 import java.beans.PropertyChangeListener;

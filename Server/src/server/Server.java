@@ -17,6 +17,7 @@ import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
 import server.gameCenter.models.game.*;
 import shared.models.game.map.Cell;
+import shared.models.game.map.CellEffect;
 
 import java.util.LinkedList;
 import java.util.List;
