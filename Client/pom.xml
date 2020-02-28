@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <project.java.version>1.8</project.java.version>
+        <project.java.version>1.11</project.java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -23,35 +23,6 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
-        <!--
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx</artifactId>
-            <version>11</version>
-            <type>pom</type>
-        </dependency>
-        -->
-
-        <!-- https://mvnrepository.com/artifact/jdk.tools/jdk.tools -->
-        <!--
-        <dependency>
-            <groupId>jdk.tools</groupId>
-            <artifactId>jdk.tools</artifactId>
-            <version>1.8.0_221</version>
-            <scope>system</scope>
-        </dependency>
-        -->
-
-        <!-- https://mvnrepository.com/artifact/com.oracle.java/jre -->
-        <!--
-        <dependency>
-            <groupId>com.oracle.java</groupId>
-            <artifactId>jre</artifactId>
-            <version>1.8.0_221</version>
-        </dependency>
-        -->
-
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -64,6 +35,11 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>11</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -76,8 +52,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
 
@@ -106,7 +82,14 @@
                 </executions>
             </plugin>
 
-
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.4</version>
+                <configuration>
+                    <mainClass>Main</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
