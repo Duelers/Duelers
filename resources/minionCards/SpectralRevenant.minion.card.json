@@ -48,7 +48,7 @@
   ],
   "defaultAp": 6,
   "defaultHp": 6,
-  "manaCost": 1,
+  "manaCost": 7,
   "price": 100,
   "attackType": "MELEE",
   "range": 0,
