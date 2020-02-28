@@ -1,6 +1,6 @@
 {
   "name": "Azure Herald",
-  "description": "Opening Gambit: Restore 3 Health to your General",
+  "description": "Opening Gambit: Add 3 Health to your General",
   "cardId": "AzureHerald",
   "spriteName": "neutral_azureherald",
   "type": "MINION",
