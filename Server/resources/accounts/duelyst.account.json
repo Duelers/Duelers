@@ -2504,7 +2504,7 @@
                 "remainingNumber": 20
             },
             {
-                "name": "DragonLark",
+                "name": "Dragonlark",
                 "description": "Flying, Ranged (2)",
                 "cardId": "duelyst_Dragonlark_1",
                 "spriteName": "neutral_monsterdragonhawk",
@@ -2520,7 +2520,7 @@
                 "remainingNumber": 20
             },
             {
-                "name": "DragonLark",
+                "name": "Dragonlark",
                 "description": "Flying, Ranged (2)",
                 "cardId": "duelyst_Dragonlark_2",
                 "spriteName": "neutral_monsterdragonhawk",
@@ -2536,7 +2536,7 @@
                 "remainingNumber": 20
             },
             {
-                "name": "DragonLark",
+                "name": "Dragonlark",
                 "description": "Flying, Ranged (2)",
                 "cardId": "duelyst_Dragonlark_3",
                 "spriteName": "neutral_monsterdragonhawk",
@@ -4586,7 +4586,7 @@
             },
             {
                 "name": "Void Pulse",
-                "description": "Deal 2 damage to the enemy General. Restore 3 Health to your general.",
+                "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
                 "cardId": "duelyst_VoidPulse_1",
                 "spriteName": "icon_f4_voidpulse",
                 "type": "SPELL",
@@ -4724,7 +4724,7 @@
             },
             {
                 "name": "Void Pulse",
-                "description": "Deal 2 damage to the enemy General. Restore 3 Health to your general.",
+                "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
                 "cardId": "duelyst_VoidPulse_2",
                 "spriteName": "icon_f4_voidpulse",
                 "type": "SPELL",
@@ -4862,7 +4862,7 @@
             },
             {
                 "name": "Void Pulse",
-                "description": "Deal 2 damage to the enemy General. Restore 3 Health to your general.",
+                "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
                 "cardId": "duelyst_VoidPulse_3",
                 "spriteName": "icon_f4_voidpulse",
                 "type": "SPELL",

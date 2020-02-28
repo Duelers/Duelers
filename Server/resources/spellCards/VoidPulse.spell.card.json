@@ -1,6 +1,6 @@
 {
   "name": "Void Pulse",
-  "description": "Deal 2 damage to the enemy General. Restore 3 Health to your general.",
+  "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
   "cardId": "VoidPulse",
   "spriteName": "icon_f4_voidpulse",
   "type": "SPELL",
