@@ -1,5 +1,6 @@
 package models.card.spell;
 
+import shared.models.card.spell.Owner;
 import shared.models.game.map.Cell;
 
 public class Target {
