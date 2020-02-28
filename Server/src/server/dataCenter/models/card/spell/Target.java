@@ -1,6 +1,6 @@
 package server.dataCenter.models.card.spell;
 
-import server.gameCenter.models.map.Cell;
+import shared.models.game.map.Cell;
 
 public class Target {
     private boolean isRelatedToCardOwnerPosition;

@@ -12,7 +12,7 @@ import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedGameMap;
 import models.comperessedData.CompressedPlayer;
 import models.comperessedData.CompressedTroop;
-import models.game.map.Cell;
+import shared.models.game.map.Cell;
 import models.gui.CardPane;
 
 import java.beans.PropertyChangeEvent;
