@@ -11,7 +11,7 @@ import models.card.spell.AvailabilityType;
 import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedPlayer;
 import models.game.GameActions;
-import models.game.map.Cell;
+import shared.models.game.map.Cell;
 import view.Show;
 
 import java.io.File;

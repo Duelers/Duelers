@@ -1,6 +1,6 @@
 package models.card.spell;
 
-import models.game.map.Cell;
+import shared.models.game.map.Cell;
 
 public class Target {
     private boolean isRelatedToCardOwnerPosition;
