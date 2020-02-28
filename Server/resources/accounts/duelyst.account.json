@@ -4586,7 +4586,7 @@
             },
             {
                 "name": "Earth Sphere",
-                "description": "Restore 8 Health to your general.",
+                "description": "Add 8 Health to your general.",
                 "cardId": "duelyst_EarthSphere_1",
                 "spriteName": "icon_f5_earthsphere",
                 "type": "SPELL",
@@ -4663,7 +4663,7 @@
             },
             {
                 "name": "Earth Sphere",
-                "description": "Restore 8 Health to your general.",
+                "description": "Add 8 Health to your general.",
                 "cardId": "duelyst_EarthSphere_2",
                 "spriteName": "icon_f5_earthsphere",
                 "type": "SPELL",
@@ -4740,7 +4740,7 @@
             },
             {
                 "name": "Earth Sphere",
-                "description": "Restore 8 Health to your general.",
+                "description": "Add 8 Health to your general.",
                 "cardId": "duelyst_EarthSphere_3",
                 "spriteName": "icon_f5_earthsphere",
                 "type": "SPELL",

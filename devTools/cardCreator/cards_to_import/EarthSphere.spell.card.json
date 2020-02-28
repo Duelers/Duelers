@@ -1,6 +1,6 @@
 {
   "name": "Earth Sphere",
-  "description": "Restore 8 Health to your general.",
+  "description": "Add 8 Health to your general.",
   "cardId": "EarthSphere",
   "spriteName": "icon_f5_earthsphere",
   "type": "SPELL",
