@@ -1,6 +1,6 @@
 {
   "name": "Sun Seer",
-  "description": "When this minion attacks, restore 2 Health to your General",
+  "description": "When this minion attacks,  your General gains 2 Health",
   "cardId": "SunSeer",
   "spriteName": "neutral_mercsunseer",
   "type": "MINION",

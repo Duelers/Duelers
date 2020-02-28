@@ -1,7 +1,7 @@
 {
-  "name": "Dragonlark",
+  "name": "Dragon Lark",
   "description": "Flying, Ranged (2)",
-  "cardId": "Dragonlark",
+  "cardId": "DragonLark",
   "spriteName": "neutral_monsterdragonhawk",
   "type": "MINION",
   "spells": [],
