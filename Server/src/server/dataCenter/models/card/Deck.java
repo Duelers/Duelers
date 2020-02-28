@@ -1,6 +1,6 @@
 package server.dataCenter.models.card;
 
-import server.GameServer;
+import server.Server;
 import server.dataCenter.models.account.Collection;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
@@ -84,7 +84,7 @@ public class Deck {
                 others.add(card);
                 break;
             default:
-                GameServer.getInstance().serverPrint("Error!");
+                Server.getInstance().serverPrint("Error!");
                 break;
         }
     }

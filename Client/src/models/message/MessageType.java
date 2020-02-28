@@ -47,6 +47,5 @@ public enum MessageType {
     ACCEPT_REQUEST,
     DECLINE_REQUEST,
     CHANGE_CARD_NUMBER,
-    REPLACE_CARD,
-    CLIENT_ID
+    REPLACE_CARD
 }

@@ -13,60 +13,20 @@ import view.*;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.LinkedList;
-import java.util.concurrent.CountDownLatch;
-import java.util.logging.Logger;
 
-import javax.websocket.ClientEndpoint;
-import javax.websocket.CloseReason;
-import javax.websocket.DeploymentException;
-import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
-
-import org.glassfish.tyrus.client.ClientManager;
-
-@ClientEndpoint
 public class Client {
     private static Client client;
     private final LinkedList<Message> sendingMessages = new LinkedList<>();
-    private static Session clientSession;
-    private static String clientName;
-    private static Account account;
-    private static Show currentShow;
+    private String clientName;
+    private Account account;
+    private Show currentShow;
+    private Socket socket;
     private final Gson gson = new Gson();
-    private static Thread sendMessageThread;
+    private Thread sendMessageThread;
+    private BufferedReader bufferedReader;
 
-    private Logger logger = Logger.getLogger(this.getClass().getName());
-    private static CountDownLatch latch;
-
-
-    @OnOpen
-    public void onOpen(Session session) {
-        clientSession = session;
-        logger.info("Connected ... " + session.getId());
-        sendMessageThread.start();
-    }
-
-    @OnMessage
-    public void onMessage(String message, Session session) {
-        Message messageObject = gson.fromJson(message, Message.class);
-
-        String msg = simplifyLogMessage(messageObject, "Server");
-        if (msg != null) {
-            System.out.println(msg);
-        } else {
-            System.out.println(messageObject);
-        }
-        handleMessage(messageObject);
-    }
-
-    @OnClose
-    public void onClose(Session session, CloseReason closeReason) {
-        logger.info(String.format("Session %s close because of %s", session.getId(), closeReason));
+    private Client() {
     }
 
     public static Client getInstance() {
@@ -77,9 +37,8 @@ public class Client {
     }
 
     private void connect() throws IOException, NullPointerException {
-        String serverIP = Config.getInstance().getProperty("SERVER_IP");
-        String port = Config.getInstance().getProperty("PORT");
-
+        socket = getSocketReady();
+        sendClientNameToServer(socket);
         sendMessageThread = new Thread(() -> {
             try {
                 sendMessages();
@@ -87,14 +46,42 @@ public class Client {
                 e.printStackTrace();
             }
         });
+        sendMessageThread.start();
+        receiveMessages();
+    }
 
-        ClientManager client = ClientManager.createClient();
-        try {
-            client.connectToServer(Client.class, new URI("ws://" + serverIP + ":" + port + "/websockets/game"));
-        } catch (DeploymentException | URISyntaxException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+    private void sendClientNameToServer(Socket socket) throws IOException {
+        while (!bufferedReader.readLine().equals("#Listening#")) ;
+        System.out.println("server is listening to me");
+
+        clientName = InetAddress.getLocalHost().getHostName();
+        socket.getOutputStream().write(("#" + clientName + "#\n").getBytes());
+        int x = 1;
+        String finalClientName = clientName;
+        while (!bufferedReader.readLine().equals("#Valid#")) {
+            x++;
+            finalClientName = clientName + x;
+            socket.getOutputStream().write(("#" + finalClientName + "#\n").getBytes());
         }
+        clientName = finalClientName;
+        System.out.println("server accepted me.");
+    }
+
+    private Socket getSocketReady() throws IOException {
+        Socket socket = makeSocket();
+        bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+        System.out.println("network connected.");
+
+        return socket;
+    }
+
+    private Socket makeSocket() throws IOException {
+
+        String serverIP = Config.getInstance().getProperty("SERVER_IP");
+        String port = Config.getInstance().getProperty("PORT");
+        int portConverted = Integer.parseInt(port);
+        return new Socket(serverIP, portConverted);
     }
 
     void addToSendingMessagesAndSend(Message message) {
@@ -132,9 +119,9 @@ public class Client {
             synchronized (sendingMessages) {
                 message = sendingMessages.poll();
             }
-            if (message != null && clientSession != null) {
+            if (message != null) {
                 String json = message.toJson();
-                clientSession.getBasicRemote().sendText(json);
+                socket.getOutputStream().write((json + "\n").getBytes());
 
                 System.out.println("message sent: " + json);
 
@@ -146,6 +133,21 @@ public class Client {
                 } catch (InterruptedException ignored) {
                 }
             }
+        }
+    }
+
+    private void receiveMessages() throws IOException {
+        while (true) {
+            String json = bufferedReader.readLine();
+            Message message = gson.fromJson(json, Message.class);
+
+            String msg = simplifyLogMessage(message, "Server");
+            if (msg != null) {
+                System.out.println(msg);
+            } else {
+                System.out.println(json);
+            }
+            handleMessage(message);
         }
     }
 
@@ -239,9 +241,6 @@ public class Client {
             case ONLINE_GAMES_COPY:
                 OnlineGamesListController.getInstance().setOnlineGames(message.getOnlineGames());
                 break;
-
-            case CLIENT_ID:
-                clientName = message.getClientIDMessage().getID();
         }
     }
 
@@ -284,7 +283,10 @@ public class Client {
 
     void close() {
         try {
-            clientSession.close(new CloseReason(CloseReason.CloseCodes.NORMAL_CLOSURE, "Game ended"));
+            if (socket != null) {
+                socket.close();
+                System.out.println("socket closed");
+            }
             System.exit(0);
         } catch (IOException e) {
             e.printStackTrace();
