@@ -23,26 +23,24 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-import org.glassfish.tyrus.server.Server;
-
-public class GameServer {
-    private static GameServer server;
+public class Server {
+    private static Server server;
     public static String serverName;
 
     private final static Queue<Message> sendingMessages = new LinkedList<>();
     private final static Queue<Message> receivingMessages = new LinkedList<>();
 
-    private GameServer(String serverName) {
-        GameServer.serverName = serverName;
+    private Server(String serverName) {
+        Server.serverName = serverName;
         serverPrint("Server Was Created!");
     }
 
-    public static GameServer getInstance() {
+    public static Server getInstance() {
         return server;
     }
 
     public static void start() {
-        server = new GameServer("Server");
+        server = new Server("Server");
         DataCenter.getInstance().run();//no thread
         GameCenter.getInstance().start();
         ClientPortal.getInstance().start();

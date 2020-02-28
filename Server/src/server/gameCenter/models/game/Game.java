@@ -1,6 +1,6 @@
 package server.gameCenter.models.game;
 
-import server.GameServer;
+import server.Server;
 import server.clientPortal.models.comperessedData.CompressedGame;
 import server.clientPortal.models.message.CardPosition;
 import server.dataCenter.models.account.Account;
@@ -72,7 +72,7 @@ public abstract class Game {
 
         startTurnTimeLimit();
 
-        GameServer.getInstance().sendGameUpdateMessage(this);
+        Server.getInstance().sendGameUpdateMessage(this);
     }
 
     public CompressedGame toCompressedGame() {
@@ -125,7 +125,7 @@ public abstract class Game {
                     getCurrentTurnPlayer().increaseMP(turnNumber / 2 + 2);
                 else
                     getCurrentTurnPlayer().increaseMP(9);
-                GameServer.getInstance().sendGameUpdateMessage(this);
+                Server.getInstance().sendGameUpdateMessage(this);
 
                 startTurnTimeLimit();
 
@@ -162,15 +162,15 @@ public abstract class Game {
         for (int i = 0; i < 2; i++) {
             Card nextCard = getCurrentTurnPlayer().getNextCard();
             if (getCurrentTurnPlayer().addNextCardToHand()) {
-                GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
-                GameServer.getInstance().sendChangeCardPositionMessage(this, getCurrentTurnPlayer().getNextCard(), CardPosition.NEXT);
+                Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
+                Server.getInstance().sendChangeCardPositionMessage(this, getCurrentTurnPlayer().getNextCard(), CardPosition.NEXT);
             }
         }
     }
 
     public void setNewNextCard() {
         getCurrentTurnPlayer().setNewNextCard();
-        GameServer.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard().toCompressedCard());
+        Server.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard().toCompressedCard());
     }
 
     public void replaceCard(String cardID) throws LogicException {
@@ -180,9 +180,9 @@ public abstract class Game {
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 getCurrentTurnPlayer().setCanReplaceCard(false);
                 Card nextCard = getCurrentTurnPlayer().getNextCard();
-                GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
-                GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
-                GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
+                Server.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
+                Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
+                Server.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
             }
         } else {
             System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
@@ -273,7 +273,7 @@ public abstract class Game {
         for (Troop troop : gameMap.getTroops()) {
             troop.setCanAttack(true);
             troop.setCanMove(true);
-            GameServer.getInstance().sendTroopUpdateMessage(this, troop);
+            Server.getInstance().sendTroopUpdateMessage(this, troop);
         }
     }
 
@@ -338,7 +338,7 @@ public abstract class Game {
             if (action.isDisableHolyBuff()) {
                 troop.setDisableHolyBuff(false);
             }
-            GameServer.getInstance().sendTroopUpdateMessage(this, troop);
+            Server.getInstance().sendTroopUpdateMessage(this, troop);
         }
     }
 
@@ -359,7 +359,7 @@ public abstract class Game {
                 if (gameMap.getTroop(cell) != null) {
                     throw new ClientException("another troop is here.");
                 }
-                GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.MAP);
+                Server.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.MAP);
                 Troop troop = new Troop(card, getCurrentTurnPlayer().getPlayerNumber());
 
                 if (troop.getCard().getDescription().contains("Rush")){
@@ -374,11 +374,11 @@ public abstract class Game {
                         gameMap.getCell(cell)
                 );
 
-                GameServer.getInstance().sendTroopUpdateMessage(this, troop);
+                Server.getInstance().sendTroopUpdateMessage(this, troop);
             }
             if (card.getType() == CardType.SPELL) {
                 player.addToGraveYard(card);
-                GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
+                Server.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
             }
             applyOnPutSpells(card, gameMap.getCell(cell));
         } finally {
@@ -398,7 +398,7 @@ public abstract class Game {
 
         troop.setCell(cell);
         gameMap.addTroop(playerNumber, troop);
-        GameServer.getInstance().sendTroopUpdateMessage(this, troop);
+        Server.getInstance().sendTroopUpdateMessage(this, troop);
     }
 
     private boolean isLegalCellForMinion(Cell cell, Card card) {
@@ -470,7 +470,7 @@ public abstract class Game {
         troop.setCell(newCell);
         troop.setCanMove(false);
 
-        GameServer.getInstance().sendTroopUpdateMessage(this, troop);
+        Server.getInstance().sendTroopUpdateMessage(this, troop);
     }
 
     public void attack(String username, String attackerCardId, String defenderCardId) throws LogicException {
@@ -495,16 +495,16 @@ public abstract class Game {
 
                 attackerTroop.setCanAttack(false);
                 attackerTroop.setCanMove(false);
-                GameServer.getInstance().sendTroopUpdateMessage(this, attackerTroop);
+                Server.getInstance().sendTroopUpdateMessage(this, attackerTroop);
                 applyOnAttackSpells(attackerTroop, defenderTroop);
                 applyOnDefendSpells(defenderTroop, attackerTroop);
                 try {
                     counterAttack(defenderTroop, attackerTroop);
                 } catch (LogicException e) {
-                    GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, false);
+                    Server.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, false);
                     throw e;
                 }
-                GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, true);
+                Server.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, true);
             }
         } finally {
             GameCenter.getInstance().checkGameFinish(this);
@@ -553,7 +553,7 @@ public abstract class Game {
         if (defenderTroop.getCurrentHp() <= 0) {
             killTroop(defenderTroop);
         } else {
-            GameServer.getInstance().sendTroopUpdateMessage(this, defenderTroop);
+            Server.getInstance().sendTroopUpdateMessage(this, defenderTroop);
         }
     }
 
@@ -621,7 +621,7 @@ public abstract class Game {
 
                 attackerTroop.setCanAttack(false);
                 attackerTroop.setCanMove(false);
-                GameServer.getInstance().sendTroopUpdateMessage(this, attackerTroop);
+                Server.getInstance().sendTroopUpdateMessage(this, attackerTroop);
 
                 applyOnAttackSpells(attackerTroop, defenderTroop);
             }
@@ -637,7 +637,7 @@ public abstract class Game {
     private void applySpell(Spell spell, TargetData target) {
         spell.setLastTurnUsed(turnNumber);
         Buff buff = new Buff(spell.getAction(), target);
-        GameServer.getInstance().sendSpellMessage(this, target, spell.getAvailabilityType());
+        Server.getInstance().sendSpellMessage(this, target, spell.getAvailabilityType());
         buffs.add(buff);
         applyBuff(buff);
     }
@@ -658,7 +658,7 @@ public abstract class Game {
         SpellAction action = buff.getAction();
         for (Player player : players) {
             player.changeCurrentMP(action.getMpChange());
-            GameServer.getInstance().sendGameUpdateMessage(this);
+            Server.getInstance().sendGameUpdateMessage(this);
         }
     }
 
@@ -743,7 +743,7 @@ public abstract class Game {
                 removeNegativeBuffs(troop);
             }
 
-            GameServer.getInstance().sendTroopUpdateMessage(this, troop);
+            Server.getInstance().sendTroopUpdateMessage(this, troop);
         }
     }
 
@@ -772,7 +772,7 @@ public abstract class Game {
             playerTwo.killTroop(this, troop);
             gameMap.removeTroop(troop);
         }
-        GameServer.getInstance().sendChangeCardPositionMessage(this, troop.getCard(), CardPosition.GRAVE_YARD);
+        Server.getInstance().sendChangeCardPositionMessage(this, troop.getCard(), CardPosition.GRAVE_YARD);
     }
 
     private void applyOnDeathSpells(Troop troop) {
@@ -941,7 +941,7 @@ public abstract class Game {
         }
 
         // Debugging print statements
-        //GameServer.serverPrint("( " + centerPosition.toString() + ") (" + dimensions.toString() + ")");
+        //Server.serverPrint("( " + centerPosition.toString() + ") (" + dimensions.toString() + ")");
         //targetCells.forEach((n) -> System.out.print("[" + n.getRow() + n.getColumn() + "] "));
         //System.out.println();
         return targetCells;

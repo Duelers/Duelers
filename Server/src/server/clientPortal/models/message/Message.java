@@ -1,6 +1,6 @@
 package server.clientPortal.models.message;
 
-import server.GameServer;
+import server.Server;
 import server.clientPortal.models.JsonConverter;
 import server.clientPortal.models.comperessedData.CompressedCard;
 import server.dataCenter.models.account.Account;
@@ -27,7 +27,6 @@ public class Message {
     private CardPositionMessage cardPositionMessage;
     private TroopUpdateMessage troopUpdateMessage;
     private GameUpdateMessage gameUpdateMessage;
-    private ClientIDMessage clientIDMessage;
     private ExceptionMessage exceptionMessage;
     private OpponentInfoMessage opponentInfoMessage;
     private GameFinishMessage gameFinishMessage;
@@ -51,7 +50,7 @@ public class Message {
 
 
     private Message(String receiver) {
-        this.sender = GameServer.getInstance().serverName;
+        this.sender = Server.getInstance().serverName;
         this.receiver = receiver;
     }
 
@@ -200,13 +199,6 @@ public class Message {
         Message message = new Message(receiver);
         message.onlineGames = onlines;
         message.messageType = MessageType.ONLINE_GAMES_COPY;
-        return message;
-    }
-
-    public static Message makeClientIDMessage(String receiver, String clientID) {
-        Message message = new Message(receiver);
-        message.clientIDMessage = new ClientIDMessage(clientID);
-        message.messageType = MessageType.CLIENT_ID;
         return message;
     }
 
