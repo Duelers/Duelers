@@ -1,11 +1,11 @@
 package controller;
 
+import Config.Config;
 import models.message.Message;
-
-import static models.Constants.SERVER_NAME;
 
 public class InviteController {
     private static InviteController controller;
+    private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
 
     private InviteController() {
     }
