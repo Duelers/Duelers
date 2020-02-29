@@ -11,7 +11,9 @@ import java.nio.file.Paths;
 
 public class LanguageData {
     private static LanguageData languageDataInstance = null;
+
     private final String languageFolder = "resources/configurations/Languages";
+
     private final String defaultLanguage = "english";
 
     private final String selectedLanguage;
@@ -35,8 +37,9 @@ public class LanguageData {
     public static LanguageData getInstance(){
         if(languageDataInstance == null){
 
-            String selectedLanguage = "german";
-            languageDataInstance = new LanguageData(selectedLanguage);
+            // ToDo load language from user settings.
+            String l = "korean";
+            languageDataInstance = new LanguageData(l);
         }
         return languageDataInstance;
     }
