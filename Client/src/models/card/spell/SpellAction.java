@@ -1,5 +1,7 @@
 package models.card.spell;
 
+import shared.models.card.spell.Spell;
+
 public class SpellAction {
     private int enemyHitChanges;
     private int apChange;
