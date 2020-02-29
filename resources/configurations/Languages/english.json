@@ -5,6 +5,7 @@
         'WELCOME_MESSAGE': 'The Community tries to save Duelyst.',
         'VERSION': 'version',
         'LOGIN': 'login',
+		'USERNAME': 'username',
         'REGISTER': 'register',
         'PASSWORD': 'password',
         'ERROR_SHORT_PASSWORD': 'Error! Password is too short.',
