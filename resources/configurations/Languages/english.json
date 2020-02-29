@@ -8,12 +8,13 @@
 		'USERNAME': 'username',
         'REGISTER': 'register',
         'PASSWORD': 'password',
-        'ERROR_SHORT_PASSWORD': 'Error! Password is too short.',
-        'ERROR_SHORT_USERNAME': 'Error! Username is too short.',
+        'ERROR_SHORT_PASSWORD': 'Password is too short.',
+        'ERROR_SHORT_USERNAME': 'Username is too short.',
         'ERROR_INCORRECT_PASSWORD': 'Error! Incorrect Password.'
     },
     'BUTTON_TEXT': {
         'OK': 'ok',
         'CANCEL': 'cancel'
+		'ERROR': 'Error!'
     }
 }
