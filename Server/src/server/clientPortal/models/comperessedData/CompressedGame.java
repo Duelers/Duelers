@@ -1,6 +1,6 @@
 package server.clientPortal.models.comperessedData;
 
-import server.gameCenter.models.game.GameType;
+import shared.models.game.GameType;
 import server.gameCenter.models.game.Player;
 import server.gameCenter.models.map.GameMap;
 

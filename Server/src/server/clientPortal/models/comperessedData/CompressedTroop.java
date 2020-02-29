@@ -1,7 +1,7 @@
 package server.clientPortal.models.comperessedData;
 
 import server.dataCenter.models.card.Card;
-import server.gameCenter.models.map.Cell;
+import shared.models.game.map.Cell;
 
 public class CompressedTroop {
     private CompressedCard card;
@@ -21,7 +21,7 @@ public class CompressedTroop {
         this.currentAp = currentAp;
         this.currentHp = currentHp;
         this.enemyHitChanges = enemyHitChanges;
-        this.cell = new server.gameCenter.models.map.Cell(cell.getRow(), cell.getColumn());
+        this.cell = new Cell(cell.getRow(), cell.getColumn());
         this.canMove = canMove;
         this.canAttack = canAttack;
         this.isDisarm = isDisarm;

@@ -2516,7 +2516,6 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 2,
-                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2532,7 +2531,6 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 2,
-                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2548,12 +2546,182 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 2,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Spectral Revenant",
+                "description": "Rush \n Whenever this minion attacks an enemy minion, deal 4 damage to the enemy General",
+                "cardId": "duelyst_SpectralRevenant_1",
+                "spriteName": "f4_daemonvoid",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "4_dmg_on_attack",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -4,
+                            "mpChange": 0,
+                            "removeBuffs": 0,
+                            "durable": true,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 6,
+                "defaultHp": 6,
+                "manaCost": 7,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Spectral Revenant",
+                "description": "Rush \n Whenever this minion attacks an enemy minion, deal 4 damage to the enemy General",
+                "cardId": "duelyst_SpectralRevenant_2",
+                "spriteName": "f4_daemonvoid",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "4_dmg_on_attack",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -4,
+                            "mpChange": 0,
+                            "removeBuffs": 0,
+                            "durable": true,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 6,
+                "defaultHp": 6,
+                "manaCost": 7,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Spectral Revenant",
+                "description": "Rush \n Whenever this minion attacks an enemy minion, deal 4 damage to the enemy General",
+                "cardId": "duelyst_SpectralRevenant_3",
+                "spriteName": "f4_daemonvoid",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "4_dmg_on_attack",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -4,
+                            "mpChange": 0,
+                            "removeBuffs": 0,
+                            "durable": true,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 6,
+                "defaultHp": 6,
+                "manaCost": 7,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
                 "hasCombo": false,
                 "remainingNumber": 20
             },
             {
                 "name": "Sun Seer",
-                "description": "When this minion attacks,  your General gains 2 Health",
+                "description": "When this minion attacks, restore 2 Health to your General",
                 "cardId": "duelyst_SunSeer_1",
                 "spriteName": "neutral_mercsunseer",
                 "type": "MINION",
@@ -2610,7 +2778,7 @@
             },
             {
                 "name": "Sun Seer",
-                "description": "When this minion attacks,  your General gains 2 Health",
+                "description": "When this minion attacks, restore 2 Health to your General",
                 "cardId": "duelyst_SunSeer_2",
                 "spriteName": "neutral_mercsunseer",
                 "type": "MINION",
@@ -2667,7 +2835,7 @@
             },
             {
                 "name": "Sun Seer",
-                "description": "When this minion attacks,  your General gains 2 Health",
+                "description": "When this minion attacks, restore 2 Health to your General",
                 "cardId": "duelyst_SunSeer_3",
                 "spriteName": "neutral_mercsunseer",
                 "type": "MINION",
@@ -3341,10 +3509,199 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Frostburn",
-                "description": "Deal 3 damage to all enemy minions",
-                "cardId": "duelyst_Frostburn_3",
-                "spriteName": "icon_f6_frostburn",
+                "name": "Dragonlark",
+                "description": "Flying, Ranged (2)",
+                "cardId": "duelyst_Dragonlark_3",
+                "spriteName": "neutral_monsterdragonhawk",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 1,
+                "manaCost": 1,
+                "price": 100,
+                "attackType": "HYBRID",
+                "range": 2,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Sun Seer",
+                "description": "When this minion attacks,  your General gains 2 Health",
+                "cardId": "duelyst_SunSeer_1",
+                "spriteName": "neutral_mercsunseer",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "heal_on_attack",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 2,
+                            "mpChange": 0,
+                            "removeBuffs": 0,
+                            "durable": true,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 1,
+                "defaultHp": 5,
+                "manaCost": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Sun Seer",
+                "description": "When this minion attacks,  your General gains 2 Health",
+                "cardId": "duelyst_SunSeer_2",
+                "spriteName": "neutral_mercsunseer",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "heal_on_attack",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 2,
+                            "mpChange": 0,
+                            "removeBuffs": 0,
+                            "durable": true,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 1,
+                "defaultHp": 5,
+                "manaCost": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Sun Seer",
+                "description": "When this minion attacks,  your General gains 2 Health",
+                "cardId": "duelyst_SunSeer_3",
+                "spriteName": "neutral_mercsunseer",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "heal_on_attack",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 2,
+                            "mpChange": 0,
+                            "removeBuffs": 0,
+                            "durable": true,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 1,
+                "defaultHp": 5,
+                "manaCost": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            }
+        ],
+        "spells": [
+            {
+                "name": "Auryn Nexus",
+                "description": "Give a friendly minion +3 Health",
+                "cardId": "duelyst_AurynNexus_1",
+                "spriteName": "icon_f1_aurynnexus",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -4754,9 +5111,653 @@
                 "range": 0,
                 "hasCombo": false,
                 "remainingNumber": 20
+            },
+            {
+                "name": "Void Pulse",
+                "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
+                "cardId": "duelyst_VoidPulse_1",
+                "spriteName": "icon_f4_voidpulse",
+                "type": "SPELL",
+                "spells": [
+                    {
+                        "spellId": "2_damage",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -2,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    },
+                    {
+                        "spellId": "3_health_self",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 3,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 0,
+                "defaultHp": 0,
+                "manaCost": 1,
+                "price": 100,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Void Pulse",
+                "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
+                "cardId": "duelyst_VoidPulse_2",
+                "spriteName": "icon_f4_voidpulse",
+                "type": "SPELL",
+                "spells": [
+                    {
+                        "spellId": "2_damage",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -2,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    },
+                    {
+                        "spellId": "3_health_self",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 3,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 0,
+                "defaultHp": 0,
+                "manaCost": 1,
+                "price": 100,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Void Pulse",
+                "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
+                "cardId": "duelyst_VoidPulse_3",
+                "spriteName": "icon_f4_voidpulse",
+                "type": "SPELL",
+                "spells": [
+                    {
+                        "spellId": "2_damage",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -2,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    },
+                    {
+                        "spellId": "3_health_self",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 3,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 0,
+                "defaultHp": 0,
+                "manaCost": 1,
+                "price": 100,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Earth Sphere",
+                "description": "Add 8 Health to your general.",
+                "cardId": "duelyst_EarthSphere_1",
+                "spriteName": "icon_f5_earthsphere",
+                "type": "SPELL",
+                "spells": [
+                    {
+                        "spellId": "8_health_self",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 8,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 0,
+                "defaultHp": 0,
+                "manaCost": 4,
+                "price": 100,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Earth Sphere",
+                "description": "Add 8 Health to your general.",
+                "cardId": "duelyst_EarthSphere_2",
+                "spriteName": "icon_f5_earthsphere",
+                "type": "SPELL",
+                "spells": [
+                    {
+                        "spellId": "8_health_self",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 8,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 0,
+                "defaultHp": 0,
+                "manaCost": 4,
+                "price": 100,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Earth Sphere",
+                "description": "Add 8 Health to your general.",
+                "cardId": "duelyst_EarthSphere_3",
+                "spriteName": "icon_f5_earthsphere",
+                "type": "SPELL",
+                "spells": [
+                    {
+                        "spellId": "8_health_self",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 8,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 0,
+                "defaultHp": 0,
+                "manaCost": 4,
+                "price": 100,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
             }
-        ],
-        "items": []
+        ]
     },
     "decks": [
         {
@@ -4862,9 +5863,35 @@
                 "duelyst_Serpenti_2",
                 "duelyst_Serpenti_3"
             ]
+        },
+        {
+            "deckName": "gg",
+            "heroId": "duelyst_RevaEventide_1",
+            "othersIds": [
+                "duelyst_SpectralRevenant_1",
+                "duelyst_SpectralRevenant_2",
+                "duelyst_SpectralRevenant_3",
+                "duelyst_Dragonlark_1",
+                "duelyst_Dragonlark_2",
+                "duelyst_Dragonlark_3",
+                "duelyst_PlanarScout_1",
+                "duelyst_PlanarScout_2",
+                "duelyst_PlanarScout_3",
+                "duelyst_MrSwampy_1",
+                "duelyst_MrSwampy_2",
+                "duelyst_MrSwampy_3",
+                "duelyst_SkyrockGolem_1",
+                "duelyst_SkyrockGolem_2",
+                "duelyst_SkyrockGolem_3",
+                "duelyst_RockPulverizer_1",
+                "duelyst_RockPulverizer_2",
+                "duelyst_RockPulverizer_3",
+                "duelyst_PiercingMantis_1",
+                "duelyst_PiercingMantis_2"
+            ]
         }
     ],
-    "mainDeckName": "yui",
+    "mainDeckName": "gg",
     "matchHistories": [],
     "money": 9543289
 }

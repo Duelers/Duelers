@@ -3,7 +3,7 @@ package view;
 import controller.MultiPlayerMenuController;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import models.game.GameType;
+import shared.models.game.GameType;
 import models.gui.*;
 
 import java.io.FileNotFoundException;

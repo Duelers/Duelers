@@ -1,6 +1,6 @@
 package models.card;
 
-import models.game.GameType;
+import shared.models.game.GameType;
 
 public class DeckInfo {
     private String deckName;
