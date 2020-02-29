@@ -19,12 +19,13 @@ public class ErrorView {
         this.root = root;
     }
 
-    public void show(String error, String buttonText, EventHandler<? super MouseEvent> event) {
+    public void show(String errorMsg, String buttonText, EventHandler<? super MouseEvent> event) {
         SoundEffectPlayer.getInstance().playSound(SoundName.error);
 
-        String errMgs = LanguageData.getInstance().getValue(new String[] {"BUTTON_TEXT", "ERROR"});
-        DialogText errorLabel = new DialogText(errMgs);
-        DialogText errorMessage = new DialogText(error);
+        String error = LanguageData.getInstance().getValue(new String[] {"BUTTON_TEXT", "ERROR"});
+        
+        DialogText errorLabel = new DialogText(error);
+        DialogText errorMessage = new DialogText(errorMsg);
 
         DialogBox dialogBox = new DialogBox(errorLabel, errorMessage);
         dialogContainer = new DialogContainer(root, dialogBox);
