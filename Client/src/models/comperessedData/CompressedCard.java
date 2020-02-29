@@ -1,8 +1,8 @@
 package models.comperessedData;
 
 import models.ICard;
-import models.card.AttackType;
 import models.card.CardType;
+import shared.models.card.AttackType;
 
 import java.util.Objects;
 

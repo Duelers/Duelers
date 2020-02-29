@@ -1,6 +1,6 @@
 package server.clientPortal.models.comperessedData;
 
-import server.dataCenter.models.card.AttackType;
+import shared.models.card.AttackType;
 import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.spell.Spell;
 

@@ -3,6 +3,7 @@ package models.card;
 import models.ICard;
 import models.card.spell.Spell;
 import models.exceptions.InputException;
+import shared.models.card.AttackType;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

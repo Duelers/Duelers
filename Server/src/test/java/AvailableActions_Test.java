@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import server.dataCenter.models.card.AttackType;
+import shared.models.card.AttackType;
 import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.spell.Spell;

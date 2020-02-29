@@ -5,7 +5,7 @@ import server.clientPortal.models.comperessedData.CompressedGame;
 import server.clientPortal.models.message.CardPosition;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
-import server.dataCenter.models.card.AttackType;
+import shared.models.card.AttackType;
 import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.CardType;
 import server.dataCenter.models.card.Deck;

@@ -1,7 +1,7 @@
 package server.gameCenter.models.game.availableActions;
 
 import javafx.util.Pair;
-import server.dataCenter.models.card.AttackType;
+import shared.models.card.AttackType;
 import server.dataCenter.models.card.Card;
 import server.gameCenter.models.game.Game;
 import server.gameCenter.models.game.Player;
