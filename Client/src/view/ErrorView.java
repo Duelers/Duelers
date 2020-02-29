@@ -23,7 +23,7 @@ public class ErrorView {
         SoundEffectPlayer.getInstance().playSound(SoundName.error);
 
         String error = LanguageData.getInstance().getValue(new String[] {"BUTTON_TEXT", "ERROR"});
-        
+
         DialogText errorLabel = new DialogText(error);
         DialogText errorMessage = new DialogText(errorMsg);
 
