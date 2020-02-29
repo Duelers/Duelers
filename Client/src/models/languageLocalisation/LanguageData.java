@@ -63,7 +63,7 @@ public class LanguageData {
             try {
                 value = getValue(languageMapDefault, keys);
             } catch (IllegalAccessException | NoSuchFieldException e2) {
-                System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", Arrays.deepToString(keys), selectedLanguage));
+                System.out.println(String.format("Language Error: failed to find value for keys '%s' for DEFAULT language: '%s'", Arrays.deepToString(keys), defaultLanguage));
                 e2.printStackTrace();
             }
         }
