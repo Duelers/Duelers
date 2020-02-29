@@ -1,7 +1,7 @@
 package models.message;
 
 
-import models.game.GameType;
+import shared.models.game.GameType;
 
 public class NewGameFields {
     private GameType gameType;

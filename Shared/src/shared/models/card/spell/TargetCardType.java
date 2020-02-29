@@ -1,4 +1,4 @@
-package models.card.spell;
+package shared.models.card.spell;
 
 public class TargetCardType {
     private boolean cell;
@@ -19,7 +19,6 @@ public class TargetCardType {
         this.minion = minion;
         this.player = player;
     }
-
 
     public boolean isCell() {
         return cell;

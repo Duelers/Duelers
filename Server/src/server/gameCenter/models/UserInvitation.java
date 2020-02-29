@@ -1,7 +1,7 @@
 package server.gameCenter.models;
 
 import server.dataCenter.models.account.Account;
-import server.gameCenter.models.game.GameType;
+import shared.models.game.GameType;
 
 public class UserInvitation {
     private final Account inviter;

@@ -3,7 +3,7 @@ package view;
 import controller.InviteController;
 import controller.SoundEffectPlayer;
 import javafx.scene.layout.AnchorPane;
-import models.game.GameType;
+import shared.models.game.GameType;
 import models.gui.DialogBox;
 import models.gui.DialogContainer;
 import models.gui.DialogText;

@@ -1,5 +1,7 @@
 package models.card.spell;
 
+import shared.models.card.spell.Target;
+
 public class Spell {
     private String spellId;
     private SpellAction action;
