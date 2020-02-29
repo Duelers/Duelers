@@ -1,6 +1,6 @@
 package server.clientPortal.models.comperessedData;
 
-import server.dataCenter.models.card.spell.AvailabilityType;
+import shared.models.card.spell.AvailabilityType;
 import shared.models.card.spell.Target;
 
 

@@ -1,4 +1,4 @@
-package server.dataCenter.models.card.spell;
+package shared.models.card.spell;
 
 public class AvailabilityType {
     private boolean onPut;

@@ -1,6 +1,7 @@
 package server.dataCenter.models.card.spell;
 
 import server.clientPortal.models.comperessedData.CompressedSpell;
+import shared.models.card.spell.AvailabilityType;
 import shared.models.card.spell.Target;
 
 public class Spell {
