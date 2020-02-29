@@ -9,7 +9,7 @@ import org.mockito.MockitoAnnotations;
 import shared.models.card.AttackType;
 import server.dataCenter.models.card.Card;
 import shared.models.card.CardType;
-import server.dataCenter.models.card.spell.Spell;
+import shared.models.card.spell.Spell;
 import server.gameCenter.models.game.*;
 import server.gameCenter.models.game.availableActions.AvailableActions;
 import server.gameCenter.models.game.availableActions.Move;

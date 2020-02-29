@@ -1,4 +1,4 @@
-package server.clientPortal.models.comperessedData;
+package shared.models.card;
 
 import shared.models.card.spell.AvailabilityType;
 import shared.models.card.spell.Target;

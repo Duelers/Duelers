@@ -1,6 +1,6 @@
 package server.gameCenter.models.game;
 
-import server.dataCenter.models.card.spell.SpellAction;
+import shared.models.card.spell.SpellAction;
 
 public class Buff {
     private SpellAction action;
