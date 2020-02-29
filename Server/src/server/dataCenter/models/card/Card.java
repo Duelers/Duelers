@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Card {
+public class Card{
     private String name;
     private String description;
     private String cardId;
@@ -143,5 +143,15 @@ public class Card {
 
     public void addSpell(Spell spell) {
         spells.add(spell);
+    }
+
+    public boolean checkIfSameIDs(Card card){
+        int thisCardIDLength = this.getCardId().length();
+        String thisCardID = this.getCardId().substring(0, thisCardIDLength - 2);
+
+        int cardIDLength = card.getCardId().length();
+        String cardID = card.getCardId().substring(0, cardIDLength - 2);
+
+        return cardID.equals(thisCardID);
     }
 }
