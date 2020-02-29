@@ -1,0 +1,7 @@
+shared\models\card\spell\TargetCardType.class
+shared\models\card\spell\CardAttackType.class
+shared\models\card\spell\Target.class
+shared\models\game\map\Cell.class
+shared\models\card\spell\Owner.class
+shared\models\game\GameType.class
+shared\models\game\map\CellEffect.class
