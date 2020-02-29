@@ -180,8 +180,8 @@ public abstract class Game {
             Card nextCard = getCurrentTurnPlayer().getNextCard();
             Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
             if( removedCard.checkIfSameIDs(nextCard)) {
-                getCurrentTurnPlayer().addCardToDeck(nextCard);
                 getCurrentTurnPlayer().setNewNextCard();
+                getCurrentTurnPlayer().addCardToDeck(nextCard);
                 Card nonDupeNextCard = getCurrentTurnPlayer().getNextCard();
                 Server.getInstance().sendChangeCardPositionMessage(this, nonDupeNextCard, CardPosition.DUPLICATE);
             }
