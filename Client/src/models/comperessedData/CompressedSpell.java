@@ -1,6 +1,6 @@
 package models.comperessedData;
 
-import models.card.spell.AvailabilityType;
+import shared.models.card.spell.AvailabilityType;
 import shared.models.card.spell.Target;
 
 public class CompressedSpell {
