@@ -2,6 +2,10 @@ package controller;
 
 import Config.Config;
 import com.google.gson.Gson;
+import com.neovisionaries.ws.client.WebSocket;
+import com.neovisionaries.ws.client.WebSocketAdapter;
+import com.neovisionaries.ws.client.WebSocketException;
+import com.neovisionaries.ws.client.WebSocketFactory;
 import javafx.application.Platform;
 import models.account.Account;
 import models.message.CardPosition;
@@ -13,21 +17,23 @@ import view.*;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.LinkedList;
+import java.util.concurrent.CountDownLatch;
+import java.util.logging.Logger;
+
 
 public class Client {
+    private static WebSocket ws;
     private static Client client;
     private final LinkedList<Message> sendingMessages = new LinkedList<>();
-    private String clientName;
-    private Account account;
-    private Show currentShow;
-    private Socket socket;
+    private static String clientName;
+    private static Account account;
+    private static Show currentShow;
     private final Gson gson = new Gson();
-    private Thread sendMessageThread;
-    private BufferedReader bufferedReader;
+    private static Thread sendMessageThread;
 
-    private Client() {
-    }
 
     public static Client getInstance() {
         if (client == null) {
@@ -37,8 +43,9 @@ public class Client {
     }
 
     private void connect() throws IOException, NullPointerException {
-        socket = getSocketReady();
-        sendClientNameToServer(socket);
+        String serverIP = Config.getInstance().getProperty("SERVER_IP");
+        String port = Config.getInstance().getProperty("PORT");
+
         sendMessageThread = new Thread(() -> {
             try {
                 sendMessages();
@@ -46,42 +53,28 @@ public class Client {
                 e.printStackTrace();
             }
         });
-        sendMessageThread.start();
-        receiveMessages();
-    }
 
-    private void sendClientNameToServer(Socket socket) throws IOException {
-        while (!bufferedReader.readLine().equals("#Listening#")) ;
-        System.out.println("server is listening to me");
+        ws = new WebSocketFactory().createSocket("ws://" + serverIP + ":" + port + "/websockets/game");
+        ws.addListener(new WebSocketAdapter() {
+            @Override
+            public void onTextMessage(WebSocket websocket, String message) throws Exception {
+                Message messageObject = gson.fromJson(message, Message.class);
 
-        clientName = InetAddress.getLocalHost().getHostName();
-        socket.getOutputStream().write(("#" + clientName + "#\n").getBytes());
-        int x = 1;
-        String finalClientName = clientName;
-        while (!bufferedReader.readLine().equals("#Valid#")) {
-            x++;
-            finalClientName = clientName + x;
-            socket.getOutputStream().write(("#" + finalClientName + "#\n").getBytes());
+                String msg = simplifyLogMessage(messageObject, "Server");
+                if (msg != null) {
+                    System.out.println(msg);
+                } else {
+                    System.out.println(message);
+                }
+                handleMessage(messageObject);
+            }
+        });
+        try {
+            ws.connect();
+        } catch (WebSocketException e) {
+            throw new RuntimeException(e);
         }
-        clientName = finalClientName;
-        System.out.println("server accepted me.");
-    }
-
-    private Socket getSocketReady() throws IOException {
-        Socket socket = makeSocket();
-        bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-        System.out.println("network connected.");
-
-        return socket;
-    }
-
-    private Socket makeSocket() throws IOException {
-
-        String serverIP = Config.getInstance().getProperty("SERVER_IP");
-        String port = Config.getInstance().getProperty("PORT");
-        int portConverted = Integer.parseInt(port);
-        return new Socket(serverIP, portConverted);
+        sendMessageThread.start();
     }
 
     void addToSendingMessagesAndSend(Message message) {
@@ -121,7 +114,7 @@ public class Client {
             }
             if (message != null) {
                 String json = message.toJson();
-                socket.getOutputStream().write((json + "\n").getBytes());
+                ws.sendText(json);
 
                 System.out.println("message sent: " + json);
 
@@ -133,21 +126,6 @@ public class Client {
                 } catch (InterruptedException ignored) {
                 }
             }
-        }
-    }
-
-    private void receiveMessages() throws IOException {
-        while (true) {
-            String json = bufferedReader.readLine();
-            Message message = gson.fromJson(json, Message.class);
-
-            String msg = simplifyLogMessage(message, "Server");
-            if (msg != null) {
-                System.out.println(msg);
-            } else {
-                System.out.println(json);
-            }
-            handleMessage(message);
         }
     }
 
@@ -241,6 +219,9 @@ public class Client {
             case ONLINE_GAMES_COPY:
                 OnlineGamesListController.getInstance().setOnlineGames(message.getOnlineGames());
                 break;
+
+            case CLIENT_ID:
+                clientName = message.getClientIDMessage().getID();
         }
     }
 
@@ -282,15 +263,8 @@ public class Client {
     }
 
     void close() {
-        try {
-            if (socket != null) {
-                socket.close();
-                System.out.println("socket closed");
-            }
-            System.exit(0);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ws.disconnect();
+        System.exit(0);
     }
 
     public synchronized Show getCurrentShow() {
