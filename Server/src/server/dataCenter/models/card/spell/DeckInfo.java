@@ -1,7 +1,7 @@
 package server.dataCenter.models.card.spell;
 
 import server.dataCenter.models.card.Deck;
-import server.gameCenter.models.game.GameType;
+import shared.models.game.GameType;
 
 public class DeckInfo {
     private String deckName;

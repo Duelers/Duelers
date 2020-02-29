@@ -14,6 +14,7 @@ import server.gameCenter.models.GlobalRequest;
 import server.gameCenter.models.UserInvitation;
 import server.gameCenter.models.game.*;
 import server.gameCenter.models.map.GameMap;
+import shared.models.game.GameType;
 
 import java.util.ArrayList;
 import java.util.HashMap;

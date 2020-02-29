@@ -1,7 +1,7 @@
 package models.message;
 
 import models.comperessedData.CompressedGame;
-import models.game.GameType;
+import shared.models.game.GameType;
 
 public class OnlineGame {
     private String player1;

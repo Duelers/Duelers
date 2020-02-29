@@ -4,7 +4,7 @@ import controller.GameController;
 import javafx.util.Pair;
 import models.card.AttackType;
 import models.comperessedData.*;
-import models.game.map.Cell;
+import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,6 +1,6 @@
 package models.message;
 
-import models.game.CellEffect;
+import shared.models.game.map.CellEffect;
 
 
 public class GameUpdateMessage {
