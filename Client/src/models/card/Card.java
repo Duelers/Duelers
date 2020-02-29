@@ -4,6 +4,7 @@ package models.card;
 import models.ICard;
 import models.card.spell.Spell;
 import shared.models.card.AttackType;
+import shared.models.card.CardType;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

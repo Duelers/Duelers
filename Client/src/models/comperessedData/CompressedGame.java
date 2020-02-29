@@ -1,6 +1,6 @@
 package models.comperessedData;
 
-import models.card.CardType;
+import shared.models.card.CardType;
 import shared.models.game.map.CellEffect;
 import shared.models.game.GameType;
 

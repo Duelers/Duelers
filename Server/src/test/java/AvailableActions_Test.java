@@ -8,7 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import shared.models.card.AttackType;
 import server.dataCenter.models.card.Card;
-import server.dataCenter.models.card.CardType;
+import shared.models.card.CardType;
 import server.dataCenter.models.card.spell.Spell;
 import server.gameCenter.models.game.*;
 import server.gameCenter.models.game.availableActions.AvailableActions;

@@ -1,7 +1,6 @@
 package controller;
 
 import javafx.application.Platform;
-import models.card.CardType;
 import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedTroop;
@@ -9,6 +8,7 @@ import models.exceptions.InputException;
 import models.game.GameActions;
 import models.game.availableActions.AvailableActions;
 import shared.models.card.AttackType;
+import shared.models.card.CardType;
 import shared.models.game.map.Cell;
 import models.message.*;
 import view.BattleView.BattleScene;

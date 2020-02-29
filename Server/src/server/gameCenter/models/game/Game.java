@@ -7,7 +7,7 @@ import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
 import shared.models.card.AttackType;
 import server.dataCenter.models.card.Card;
-import server.dataCenter.models.card.CardType;
+import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.spell.Spell;
 import server.dataCenter.models.card.spell.SpellAction;
