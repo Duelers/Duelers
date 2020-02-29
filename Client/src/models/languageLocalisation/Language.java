@@ -1,4 +1,4 @@
-package models.languages;
+package models.languageLocalisation;
 
 public class Language {
 

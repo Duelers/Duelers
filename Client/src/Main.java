@@ -5,7 +5,7 @@ import controller.GraphicalUserInterface;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import models.LoadLanguage;
-import models.languages.Language;
+import models.languageLocalisation.Language;
 import server.Server;
 
 import java.io.FileNotFoundException;
