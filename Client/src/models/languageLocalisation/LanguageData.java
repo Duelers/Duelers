@@ -9,7 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
-public class LoadLanguage {
+public class LanguageData {
+    private static LanguageData languageDataInstance = null;
     private final String languageFolder = "resources/configurations/Languages";
     private final String defaultLanguage = "english";
 
@@ -18,7 +19,7 @@ public class LoadLanguage {
     private Language languageMapDefault;
     private Language languageMapSelected;
 
-    public LoadLanguage(String selectedLanguage) {
+    private LanguageData(String selectedLanguage) {
         this.selectedLanguage = selectedLanguage;
 
         try {
@@ -29,6 +30,19 @@ public class LoadLanguage {
             System.out.println(String.format("Language Localisation Error! Could not find language files in dir: '%s'", languageFolder));
             e.printStackTrace();
         }
+    }
+
+    public static LanguageData getInstance(){
+        if(languageDataInstance == null){
+
+            String selectedLanguage = "german";
+            languageDataInstance = new LanguageData(selectedLanguage);
+        }
+        return languageDataInstance;
+    }
+
+    public String getSelectedLanguage() {
+        return selectedLanguage;
     }
 
     public String getValue(String[] keys) {
@@ -72,4 +86,6 @@ public class LoadLanguage {
 
         return loadedLanguage;
     }
+
+
 }
