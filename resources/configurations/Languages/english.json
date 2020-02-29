@@ -1,18 +1,18 @@
 {
-    "LANGUAGE_ENGLISH_TITLE": "english",
-    "LANGUAGE_NATIVE_TITLE": "english",
-    "LOGIN_MENU": {
-        "WELCOME_MESSAGE": "The Community tries to save Duelyst.",
-        "VERSION": "version",
-        "LOGIN": "login",
-        "REGISTER": "register",
-        "PASSWORD": "password",
-        "ERROR_SHORT_PASSWORD": "Error! Password is too short.",
-        "ERROR_SHORT_USERNAME": "Error! Username is too short.",
-        "ERROR_INCORRECT_PASSWORD": "Error! Incorrect Password."
+    'LANGUAGE_ENGLISH_TITLE': 'english',
+    'LANGUAGE_NATIVE_TITLE': 'english',
+    'LOGIN_MENU': {
+        'WELCOME_MESSAGE': 'The Community tries to save Duelyst.',
+        'VERSION': 'version',
+        'LOGIN': 'login',
+        'REGISTER': 'register',
+        'PASSWORD': 'password',
+        'ERROR_SHORT_PASSWORD': 'Error! Password is too short.',
+        'ERROR_SHORT_USERNAME': 'Error! Username is too short.',
+        'ERROR_INCORRECT_PASSWORD': 'Error! Incorrect Password.'
     },
-    "BUTTON_TEXT": {
-        "OK": "ok",
-        "CANCEL": "cancel"
+    'BUTTON_TEXT': {
+        'OK': 'ok',
+        'CANCEL': 'cancel'
     }
 }
