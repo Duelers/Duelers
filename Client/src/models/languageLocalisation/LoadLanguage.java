@@ -1,9 +1,12 @@
 package models.languageLocalisation;
 
 import com.google.gson.Gson;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
+import java.io.*;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
 public class LoadLanguage {
@@ -15,14 +18,14 @@ public class LoadLanguage {
     private Language languageMapDefault;
     private Language languageMapSelected;
 
-    public LoadLanguage(String selectedLanguage){
+    public LoadLanguage(String selectedLanguage) {
         this.selectedLanguage = selectedLanguage;
 
         try {
             languageMapDefault = loadJson(defaultLanguage);
             languageMapSelected = loadJson(this.selectedLanguage);
 
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.out.println(String.format("Language Localisation Error! Could not find language files in dir: '%s'", languageFolder));
             e.printStackTrace();
         }
@@ -45,7 +48,6 @@ public class LoadLanguage {
                 e2.printStackTrace();
             }
         }
-
         return (value != null) ? value.toString() : "Missing Language Value";
     }
 
@@ -58,15 +60,15 @@ public class LoadLanguage {
             Field field = obj.getClass().getDeclaredField(key);
             obj = field.get(obj);
         }
-
         return obj.toString();
     }
 
-    private Language  loadJson(String language) throws FileNotFoundException {
+    private Language  loadJson(String language) throws IOException {
         String filename = language + ".json";
         String filepath = languageFolder + "/" + filename;
 
-        Language loadedLanguage = new Gson().fromJson(new FileReader( filepath), Language.class);
+        Reader reader = Files.newBufferedReader(Paths.get(filepath), StandardCharsets.UTF_8);
+        Language loadedLanguage = new Gson().fromJson(reader, Language.class);
 
         return loadedLanguage;
     }
