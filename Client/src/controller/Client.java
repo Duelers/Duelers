@@ -2,6 +2,10 @@ package controller;
 
 import Config.Config;
 import com.google.gson.Gson;
+import com.neovisionaries.ws.client.WebSocket;
+import com.neovisionaries.ws.client.WebSocketAdapter;
+import com.neovisionaries.ws.client.WebSocketException;
+import com.neovisionaries.ws.client.WebSocketFactory;
 import javafx.application.Platform;
 import models.account.Account;
 import models.message.CardPosition;
@@ -19,55 +23,17 @@ import java.util.LinkedList;
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.Logger;
 
-import javax.websocket.ClientEndpoint;
-import javax.websocket.CloseReason;
-import javax.websocket.DeploymentException;
-import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
 
-import org.glassfish.tyrus.client.ClientManager;
-
-@ClientEndpoint
 public class Client {
+    private static WebSocket ws;
     private static Client client;
     private final LinkedList<Message> sendingMessages = new LinkedList<>();
-    private static Session clientSession;
     private static String clientName;
     private static Account account;
     private static Show currentShow;
     private final Gson gson = new Gson();
     private static Thread sendMessageThread;
 
-    private Logger logger = Logger.getLogger(this.getClass().getName());
-    private static CountDownLatch latch;
-
-
-    @OnOpen
-    public void onOpen(Session session) {
-        clientSession = session;
-        logger.info("Connected ... " + session.getId());
-        sendMessageThread.start();
-    }
-
-    @OnMessage
-    public void onMessage(String message, Session session) {
-        Message messageObject = gson.fromJson(message, Message.class);
-
-        String msg = simplifyLogMessage(messageObject, "Server");
-        if (msg != null) {
-            System.out.println(msg);
-        } else {
-            System.out.println(messageObject);
-        }
-        handleMessage(messageObject);
-    }
-
-    @OnClose
-    public void onClose(Session session, CloseReason closeReason) {
-        logger.info(String.format("Session %s close because of %s", session.getId(), closeReason));
-    }
 
     public static Client getInstance() {
         if (client == null) {
@@ -88,13 +54,27 @@ public class Client {
             }
         });
 
-        ClientManager client = ClientManager.createClient();
+        ws = new WebSocketFactory().createSocket("ws://" + serverIP + ":" + port + "/websockets/game");
+        ws.addListener(new WebSocketAdapter() {
+            @Override
+            public void onTextMessage(WebSocket websocket, String message) throws Exception {
+                Message messageObject = gson.fromJson(message, Message.class);
+
+                String msg = simplifyLogMessage(messageObject, "Server");
+                if (msg != null) {
+                    System.out.println(msg);
+                } else {
+                    System.out.println(message);
+                }
+                handleMessage(messageObject);
+            }
+        });
         try {
-            client.connectToServer(Client.class, new URI("ws://" + serverIP + ":" + port + "/websockets/game"));
-        } catch (DeploymentException | URISyntaxException e) {
-            e.printStackTrace();
+            ws.connect();
+        } catch (WebSocketException e) {
             throw new RuntimeException(e);
         }
+        sendMessageThread.start();
     }
 
     void addToSendingMessagesAndSend(Message message) {
@@ -132,9 +112,9 @@ public class Client {
             synchronized (sendingMessages) {
                 message = sendingMessages.poll();
             }
-            if (message != null && clientSession != null) {
+            if (message != null) {
                 String json = message.toJson();
-                clientSession.getBasicRemote().sendText(json);
+                ws.sendText(json);
 
                 System.out.println("message sent: " + json);
 
@@ -283,12 +263,8 @@ public class Client {
     }
 
     void close() {
-        try {
-            clientSession.close(new CloseReason(CloseReason.CloseCodes.NORMAL_CLOSURE, "Game ended"));
-            System.exit(0);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ws.disconnect();
+        System.exit(0);
     }
 
     public synchronized Show getCurrentShow() {
