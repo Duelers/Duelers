@@ -155,12 +155,8 @@ public class Card{
             So to make sure that the two cards we're comparing are the same, we need
             to remove these numbers from the cardID strings before comparing.
          */
-        int thisCardIDLength = this.getCardId().length();
-        int ignoreLastTwoDigits = 2;
-        String thisCardID = this.getCardId().substring(0, thisCardIDLength - ignoreLastTwoDigits);
-
-        int cardIDLength = card.getCardId().length();
-        String cardID = card.getCardId().substring(0, cardIDLength - ignoreLastTwoDigits);
+        String thisCardID = this.getCardId().substring(0, this.getCardId().indexOf("_"));
+        String cardID = card.getCardId().substring(0, card.getCardId().indexOf("_"));
 
         return cardID.equals(thisCardID);
     }
