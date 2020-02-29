@@ -1,21 +1,17 @@
 import Config.Config;
-import com.google.gson.Gson;
 import controller.Client;
 import controller.GraphicalUserInterface;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import models.LoadLanguage;
-import models.languageLocalisation.Language;
+import models.languageLocalisation.LanguageData;
 import server.Server;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.lang.reflect.InvocationTargetException;
 
 public class Main extends Application {
 
     public static void main(String[] args){
 
+        LanguageData.getInstance(); // Initialise
 
         String hostServer = Config.getInstance().getProperty("HOST_SERVER");
         boolean shouldHostServer = Boolean.parseBoolean(hostServer);
