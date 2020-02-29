@@ -3,10 +3,12 @@ package models.languageLocalisation;
 import com.google.gson.Gson;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 
 public class LanguageData {
@@ -54,14 +56,14 @@ public class LanguageData {
         try {
             value = getValue(languageMapSelected, keys);
         } catch (IllegalAccessException | NoSuchFieldException e) {
-            System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", keys.toString(), selectedLanguage));
+            System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", Arrays.deepToString(keys), selectedLanguage));
             e.printStackTrace();
 
             // If we fail to find a translation, see if we can add default text.
             try {
                 value = getValue(languageMapDefault, keys);
             } catch (IllegalAccessException | NoSuchFieldException e2) {
-                System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", keys.toString(), selectedLanguage));
+                System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", Arrays.deepToString(keys), selectedLanguage));
                 e2.printStackTrace();
             }
         }

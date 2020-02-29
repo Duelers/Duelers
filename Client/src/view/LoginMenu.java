@@ -7,6 +7,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import models.gui.*;
+import models.languageLocalisation.Language;
+import models.languageLocalisation.LanguageData;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,7 +32,8 @@ public class LoginMenu extends Show {
 
             String versionInfo = getVersionInfo();
             if (versionInfo != null) {
-                DefaultLabel versionLabel = new DefaultLabel(String.format("Version: %s", versionInfo), Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.WHITE);
+                String version = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "VERSION"});
+                DefaultLabel versionLabel = new DefaultLabel(String.format("%s: %s", version, versionInfo), Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.WHITE);
                 root.getChildren().add(versionLabel);
             }
 

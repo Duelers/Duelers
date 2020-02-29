@@ -3,6 +3,7 @@ package controller;
 import Config.Config;
 import javafx.application.Platform;
 import models.exceptions.InputException;
+import models.languageLocalisation.LanguageData;
 import models.message.Message;
 
 public class LoginMenuController {
@@ -28,9 +29,11 @@ public class LoginMenuController {
 
     private void validateUsernameAndPassword(String userName, String password) throws InputException {
         if (userName == null || userName.length() < 2) {
-            throw new InputException("Username is too short!(at least 3 characters)");
+            String errMsg = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "ERROR_SHORT_USERNAME"});
+            throw new InputException(errMsg);
         } else if (password == null || password.length() < 4) {
-            throw new InputException("Password is too short!(at least 5 characters)");
+            String errMsg = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "ERROR_SHORT_PASSWORD"});
+            throw new InputException(errMsg);
         }
     }
 
