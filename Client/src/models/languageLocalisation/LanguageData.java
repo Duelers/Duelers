@@ -55,20 +55,20 @@ public class LanguageData {
 
         try {
             value = getValue(languageMapSelected, keys);
-        } catch (IllegalAccessException | NoSuchFieldException e1) {
+        } catch (IllegalAccessException | NoSuchFieldException | NullPointerException e1) {
             System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", Arrays.deepToString(keys), selectedLanguage));
 
             // If we fail to find a translation, see if we can add default text.
             try {
                 value = getValue(languageMapDefault, keys);
-            } catch (IllegalAccessException | NoSuchFieldException e2) {
+            } catch (IllegalAccessException | NoSuchFieldException | NullPointerException e2) {
                 System.out.println(String.format("Language Error: failed to find value for keys '%s' for DEFAULT language: '%s'", Arrays.deepToString(keys), defaultLanguage));
             }
         }
         return (value != null) ? value.toString() : "Missing Language Value";
     }
 
-    private String getValue(Object languageData, String[] keys) throws NoSuchFieldException, IllegalAccessException {
+    private String getValue(Object languageData, String[] keys) throws NoSuchFieldException, IllegalAccessException, NullPointerException {
 
         // Tries to use reflection to convert string keys into Fields.
         // E.g: Calling this function with keys ["LOGIN_MENU", "WELCOME_MESSAGE"] should be equivalent to: obj.LOGIN_MENU.WELCOME_MESSAGE
