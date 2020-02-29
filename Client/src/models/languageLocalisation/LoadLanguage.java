@@ -50,12 +50,15 @@ public class LoadLanguage {
     }
 
     private String getValue(Object languageData, String[] keys) throws NoSuchFieldException, IllegalAccessException {
-        Object obj = null;
-        for (String key: keys){
-            Field field = languageData.getClass().getDeclaredField(key);
-            obj = field.get(languageData);
 
+        // Tries to use reflection to convert string keys into Fields.
+        // E.g: Calling this function with keys ["LOGIN_MENU", "WELCOME_MESSAGE"] should be equivalent to: obj.LOGIN_MENU.WELCOME_MESSAGE
+        Object obj = languageData;
+        for (String key: keys){
+            Field field = obj.getClass().getDeclaredField(key);
+            obj = field.get(obj);
         }
+
         return obj.toString();
     }
 
