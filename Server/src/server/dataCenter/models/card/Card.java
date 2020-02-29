@@ -156,10 +156,11 @@ public class Card{
             to remove these numbers from the cardID strings before comparing.
          */
         int thisCardIDLength = this.getCardId().length();
-        String thisCardID = this.getCardId().substring(0, thisCardIDLength - 2);
+        int ignoreLastTwoDigits = 2;
+        String thisCardID = this.getCardId().substring(0, thisCardIDLength - ignoreLastTwoDigits);
 
         int cardIDLength = card.getCardId().length();
-        String cardID = card.getCardId().substring(0, cardIDLength - 2);
+        String cardID = card.getCardId().substring(0, cardIDLength - ignoreLastTwoDigits);
 
         return cardID.equals(thisCardID);
     }
