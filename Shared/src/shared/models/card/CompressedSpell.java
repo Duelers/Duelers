@@ -20,4 +20,35 @@ public class CompressedSpell {
         this.manaCost = manaCost;
         this.lastTurnUsed = lastTurnUsed;
     }
+
+    public String getSpellId() {
+        return spellId;
+    }
+
+    public Target getTarget() {
+        return target;
+    }
+
+    public AvailabilityType getAvailabilityType() {
+        return availabilityType;
+    }
+
+    public int getCoolDown() {
+        return coolDown;
+    }
+
+    public int getManaCost() {
+        return manaCost;
+    }
+
+    public int getLastTurnUsed() {
+        return lastTurnUsed;
+    }
+
+    public boolean isCoolDown(int turnNumber) {
+        if (lastTurnUsed == 0) {
+            return false;
+        }
+        return lastTurnUsed + coolDown * 2 >= turnNumber;
+    }
 }

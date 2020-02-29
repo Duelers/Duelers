@@ -24,6 +24,54 @@ public class SpellAction {
     private int delay;
     private Spell carryingSpell;
 
+    public SpellAction(int enemyHitChanges, int apChange, int hpChange, int mpChange, boolean poison, boolean makeStun, boolean makeDisarm, boolean actionAtTheEndOfTurn, boolean noDisarm, boolean noPoison, boolean noStun, boolean noBadEffect, boolean noAttackFromWeakerOnes, boolean disableHolyBuff, boolean addSpell, boolean killsTarget, boolean isForGladiator, boolean durable, int removeBuffs, int duration, int delay, Spell carryingSpell) {
+        this.enemyHitChanges = enemyHitChanges;
+        this.apChange = apChange;
+        this.hpChange = hpChange;
+        this.mpChange = mpChange;
+        this.poison = poison;
+        this.makeStun = makeStun;
+        this.makeDisarm = makeDisarm;
+        this.noDisarm = noDisarm;
+        this.noPoison = noPoison;
+        this.noStun = noStun;
+        this.noBadEffect = noBadEffect;
+        this.noAttackFromWeakerOnes = noAttackFromWeakerOnes;
+        this.disableHolyBuff = disableHolyBuff;
+        this.addSpell = addSpell;
+        this.killsTarget = killsTarget;
+        this.isForGladiator = isForGladiator;
+        this.durable = durable;
+        this.removeBuffs = removeBuffs;
+        this.delay = delay;
+        this.carryingSpell = carryingSpell;
+        if (duration == -1) {
+            this.duration = Integer.MAX_VALUE;
+            return;
+        }
+        this.duration = duration;
+    }
+
+    public SpellAction(int enemyHitChanges, int apChange, int hpChange, int mpChange, boolean poison, boolean makeStun, boolean makeDisarm, boolean noDisarm, boolean noPoison, boolean noStun, boolean noBadEffect, boolean noAttackFromWeakerOnes, boolean killsTarget, boolean durable, int duration, int delay) {
+        this.enemyHitChanges = enemyHitChanges;
+        this.apChange = apChange;
+        this.hpChange = hpChange;
+        this.mpChange = mpChange;
+        this.poison = poison;
+        this.makeStun = makeStun;
+        this.makeDisarm = makeDisarm;
+        this.noDisarm = noDisarm;
+        this.noPoison = noPoison;
+        this.noStun = noStun;
+        this.noBadEffect = noBadEffect;
+        this.noAttackFromWeakerOnes = noAttackFromWeakerOnes;
+        this.killsTarget = killsTarget;
+        this.durable = durable;
+        this.duration = duration;
+        this.delay = delay;
+    }
+
+
     public SpellAction(SpellAction referenceAction) { // copy constructor
         this.enemyHitChanges = referenceAction.enemyHitChanges;
         this.apChange = referenceAction.apChange;
