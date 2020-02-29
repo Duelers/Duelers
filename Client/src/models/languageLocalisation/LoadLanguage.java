@@ -40,9 +40,9 @@ public class LoadLanguage {
             // If we fail to find a translation, see if we can add default text.
             try {
                 value = getValue(languageMapDefault, keys);
-            } catch (IllegalAccessException | NoSuchFieldException e) {
+            } catch (IllegalAccessException | NoSuchFieldException e2) {
                 System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", keys.toString(), selectedLanguage));
-                e.printStackTrace();
+                e2.printStackTrace();
             }
         }
 
