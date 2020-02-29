@@ -36,14 +36,14 @@ public class LoadLanguage {
         } catch (IllegalAccessException | NoSuchFieldException e) {
             System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", keys.toString(), selectedLanguage));
             e.printStackTrace();
-        }
 
-        // If we fail to find a translation, see if we can add default text.
-        try {
-            value = getValue(languageMapDefault, keys);
-        } catch (IllegalAccessException | NoSuchFieldException e) {
-            System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", keys.toString(), selectedLanguage));
-            e.printStackTrace();
+            // If we fail to find a translation, see if we can add default text.
+            try {
+                value = getValue(languageMapDefault, keys);
+            } catch (IllegalAccessException | NoSuchFieldException e) {
+                System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", keys.toString(), selectedLanguage));
+                e.printStackTrace();
+            }
         }
 
         return (value != null) ? value.toString() : "Missing Language Value";
