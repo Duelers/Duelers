@@ -55,16 +55,14 @@ public class LanguageData {
 
         try {
             value = getValue(languageMapSelected, keys);
-        } catch (IllegalAccessException | NoSuchFieldException e) {
+        } catch (IllegalAccessException | NoSuchFieldException _) {
             System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", Arrays.deepToString(keys), selectedLanguage));
-            e.printStackTrace();
 
             // If we fail to find a translation, see if we can add default text.
             try {
                 value = getValue(languageMapDefault, keys);
-            } catch (IllegalAccessException | NoSuchFieldException e2) {
+            } catch (IllegalAccessException | NoSuchFieldException _) {
                 System.out.println(String.format("Language Error: failed to find value for keys '%s' for DEFAULT language: '%s'", Arrays.deepToString(keys), defaultLanguage));
-                e2.printStackTrace();
             }
         }
         return (value != null) ? value.toString() : "Missing Language Value";
