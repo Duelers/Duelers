@@ -1,6 +1,6 @@
 {
     'LANGUAGE_ENGLISH_TITLE': 'russian',
-    'LANGUAGE_NATIVE_TITLE': 'Руссикий',
+    'LANGUAGE_NATIVE_TITLE': 'pуссикий',
     'LOGIN_MENU': {
         'WELCOME_MESSAGE': 'Сообщество пытается спасти Duelyst.',
         'VERSION': 'Версия',
