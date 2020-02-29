@@ -2,7 +2,7 @@ package server.gameCenter.models.game;
 
 import server.clientPortal.models.comperessedData.CompressedTroop;
 import server.dataCenter.models.card.Card;
-import server.gameCenter.models.map.Cell;
+import shared.models.game.map.Cell;
 
 
 public class Troop {

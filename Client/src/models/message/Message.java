@@ -7,8 +7,8 @@ import models.account.AccountType;
 import models.card.Card;
 import models.card.ExportedDeck;
 import models.comperessedData.CompressedCard;
-import models.game.GameType;
-import models.game.map.Cell;
+import shared.models.game.GameType;
+import shared.models.game.map.Cell;
 
 public class Message {
     private MessageType messageType;

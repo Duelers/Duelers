@@ -1,4 +1,6 @@
-package models.game.map;
+package shared.models.game.map;
+
+import java.util.Objects;
 
 public class Cell {
     private int row;
@@ -9,17 +11,6 @@ public class Cell {
         this.column = column;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj.getClass() != this.getClass()) return false;
-        Cell cell = (Cell) obj;
-        return row == cell.row && column == cell.column;
-    }
-
-    @Override
-    public String toString() {
-        return "Cell: (" + this.getRow() + "," + this.getColumn() + ")";
-    }
 
     public int getRow() {
         return this.row;
@@ -36,4 +27,22 @@ public class Cell {
     public int manhattanDistance(Cell otherCell) {
         return Math.abs(otherCell.row - row) + Math.abs(otherCell.column - column);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, column);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj.getClass() != this.getClass()) return false;
+        Cell cell = (Cell) obj;
+        return row == cell.row && column == cell.column;
+    }
+
+    @Override
+    public String toString() {
+        return "Cell: (" + this.getRow() + "," + this.getColumn() + ")";
+    }
+
 }

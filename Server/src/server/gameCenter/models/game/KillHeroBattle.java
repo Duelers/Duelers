@@ -3,6 +3,7 @@ package server.gameCenter.models.game;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.card.Deck;
 import server.gameCenter.models.map.GameMap;
+import shared.models.game.GameType;
 
 public class KillHeroBattle extends Game {
 

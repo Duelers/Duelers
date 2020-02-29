@@ -1,7 +1,7 @@
 package controller;
 
 import Config.Config;
-import models.game.GameType;
+import shared.models.game.GameType;
 import models.message.Message;
 
 public class CustomGameMenuController {

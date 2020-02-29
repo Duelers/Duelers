@@ -1,4 +1,4 @@
-package models.card.spell;
+package shared.models.card.spell;
 
 public class Owner {
     private boolean own;
@@ -7,6 +7,11 @@ public class Owner {
     public Owner(boolean own, boolean enemy) {
         this.own = own;
         this.enemy = enemy;
+    }
+
+    public Owner(Owner referenceOwner) {
+        this.own = referenceOwner.own;
+        this.enemy = referenceOwner.enemy;
     }
 
     public boolean isOwn() {

@@ -1,6 +1,6 @@
-package server.dataCenter.models.card.spell;
+package shared.models.card.spell;
 
-import server.gameCenter.models.map.Cell;
+import shared.models.game.map.Cell;
 
 public class Target {
     private boolean isRelatedToCardOwnerPosition;
@@ -11,6 +11,17 @@ public class Target {
     private Owner owner;
     private TargetCardType cardType;
     private CardAttackType attackType;
+
+    public Target(boolean isRelatedToCardOwnerPosition, boolean isForAroundOwnHero, Cell dimensions, boolean isRandom, Owner owner, TargetCardType cardType, CardAttackType attackType, boolean isForDeckCards) {
+        this.isRelatedToCardOwnerPosition = isRelatedToCardOwnerPosition;
+        this.isForAroundOwnHero = isForAroundOwnHero;
+        this.dimensions = dimensions;
+        this.isRandom = isRandom;
+        this.owner = owner;
+        this.cardType = cardType;
+        this.attackType = attackType;
+        this.isForDeckCards = isForDeckCards;
+    }
 
     public Target(Target referenceTarget) {
         this.isRelatedToCardOwnerPosition = referenceTarget.isRelatedToCardOwnerPosition;
@@ -29,17 +40,6 @@ public class Target {
             this.attackType = new CardAttackType(referenceTarget.attackType);
 
         this.isForDeckCards = referenceTarget.isForDeckCards;
-    }
-
-    public Target(boolean isRelatedToCardOwnerPosition, boolean isForAroundOwnHero, Cell dimensions, boolean isRandom, Owner owner, TargetCardType cardType, CardAttackType attackType, boolean isForDeckCards) {
-        this.isRelatedToCardOwnerPosition = isRelatedToCardOwnerPosition;
-        this.isForAroundOwnHero = isForAroundOwnHero;
-        this.dimensions = dimensions;
-        this.isRandom = isRandom;
-        this.owner = owner;
-        this.cardType = cardType;
-        this.attackType = attackType;
-        this.isForDeckCards = isForDeckCards;
     }
 
     public boolean isRelatedToCardOwnerPosition() {
