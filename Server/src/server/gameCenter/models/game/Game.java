@@ -176,26 +176,19 @@ public abstract class Game {
     }
 
     public void replaceCard(String cardID) throws LogicException {
-        boolean informClientAboutDuplicate = false;
         if (getCurrentTurnPlayer().getCanReplaceCard()) {
             Card nextCard = getCurrentTurnPlayer().getNextCard();
             Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
             if( removedCard.checkIfSameIDs(nextCard)) {
-                System.out.println("replacedCard and nextCard are the same" + removedCard.getCardId() + " " + nextCard.getCardId());
                 getCurrentTurnPlayer().addCardToDeck(nextCard);
                 getCurrentTurnPlayer().setNewNextCard();
-                informClientAboutDuplicate = true;
+                Card nonDupeNextCard = getCurrentTurnPlayer().getNextCard();
+                Server.getInstance().sendChangeCardPositionMessage(this, nonDupeNextCard, CardPosition.DUPLICATE);
             }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 getCurrentTurnPlayer().setCanReplaceCard(false);
                 Card newNextCard = getCurrentTurnPlayer().getNextCard();
-
-                if(informClientAboutDuplicate){
-                    Server.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
-                    Server.getInstance().sendChangeCardPositionMessage(this, newNextCard, CardPosition.NEXT);
-                    Server.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.HAND);
-                }
                 Server.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
                 Server.getInstance().sendChangeCardPositionMessage(this, newNextCard, CardPosition.HAND);
                 Server.getInstance().sendChangeCardPositionMessage(this, newNextCard, CardPosition.NEXT);

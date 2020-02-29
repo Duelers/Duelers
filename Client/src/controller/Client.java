@@ -182,6 +182,9 @@ public class Client {
                         GameController.getInstance().getCurrentGame().moveCardToNext(message.getCardPositionMessage().getCompressedCard());
                         GameController.getInstance().calculateAvailableActions();
                         break;
+                    case DUPLICATE:
+                        GameController.getInstance().getCurrentGame().replaceNextCard(message.getCardPositionMessage().getCompressedCard());
+                        GameController.getInstance().calculateAvailableActions();
                     case GRAVE_YARD:
                         GameController.getInstance().getCurrentGame().moveCardToGraveYard(message.getCardPositionMessage().getCompressedCard());
                         GameController.getInstance().calculateAvailableActions();

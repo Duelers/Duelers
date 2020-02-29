@@ -44,7 +44,7 @@ public class CompressedPlayer {
 
     public void addCardToNext(CompressedCard card) {
         if (nextCard != null)
-            System.out.println("Client Game Error!");
+            System.out.println("Client Game Error! addCardToNext: Attempting to set nextCard but nextCard is not null");
         else {
             nextCard = card;
             if (support == null) {
@@ -54,13 +54,16 @@ public class CompressedPlayer {
         }
     }
 
-    public void replaceSelectedCard(int selectedCardIndex) {
-        hand.set(selectedCardIndex, nextCard);
-        removeCardFromNext();
-        if (support == null) {
-            support = new PropertyChangeSupport(this);
+    public void replaceNextCard(CompressedCard compressedCard) {
+        if (nextCard == null)
+            System.out.println("Client Game Error! replaceNextCard: Attempting to set nextCard but nextCard is null");
+        else {
+            nextCard = compressedCard;
+            if (support == null) {
+                support = new PropertyChangeSupport(this);
+            }
+            support.firePropertyChange("next", null, null);
         }
-        support.firePropertyChange("replace", null, null);
     }
 
     void addCardToGraveYard(CompressedCard card) {
@@ -156,4 +159,6 @@ public class CompressedPlayer {
     public int getPlayerNumber() {
         return playerNumber;
     }
+
+
 }

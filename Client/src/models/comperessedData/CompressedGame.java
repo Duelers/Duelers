@@ -38,6 +38,11 @@ public class CompressedGame {
         player.addCardToNext(card);
     }
 
+    public void replaceNextCard(CompressedCard compressedCard) {
+        CompressedPlayer player = getCurrentTurnPlayer();
+        player.replaceNextCard(compressedCard);
+    }
+
     public void moveCardToMap(CompressedCard card) {
         CompressedPlayer player = getCurrentTurnPlayer();
         player.removeCardFromHand(card.getCardId());
@@ -48,7 +53,7 @@ public class CompressedGame {
         if (card.getType() == CardType.HERO || card.getType() == CardType.MINION) {
             CompressedTroop troop = gameMap.getTroop(card.getCardId());
             if (troop == null) {
-                System.out.println("Client Game Error!!");
+                System.out.println("Client Game Error!! Attempting to move troop to graveyard but troop is null");
             } else {
                 player = getPlayer(troop.getPlayerNumber());
                 player.removeTroop(card.getCardId());
@@ -134,5 +139,6 @@ public class CompressedGame {
             return playerTwo;
         }
     }
+
 
 }
