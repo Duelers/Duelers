@@ -245,9 +245,9 @@ public abstract class Game {
                     int x = offsets[new Random().nextInt(offsets.length)];
                     int y = offsets[new Random().nextInt(offsets.length)];
 
-                    // Get a random square, force it to be within bounds.
-                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), gameMap.getNumRows()));
-                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getNumColumns()));
+                    // Get a random square, force it to be within index bounds.
+                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), gameMap.getNumRows() - 1));
+                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getNumColumns() -1));
 
                     Cell c = new Cell(x2, y2);
 
@@ -273,6 +273,7 @@ public abstract class Game {
 
     private void setAllTroopsCanAttackAndCanMove() {
         for (Troop troop : gameMap.getTroops()) {
+
             troop.setCanAttack(true);
             troop.setCanMove(true);
             GameServer.getInstance().sendTroopUpdateMessage(this, troop);
@@ -318,6 +319,7 @@ public abstract class Game {
             }
             if (action.isMakeStun() && troop.canGetStun()) {
                 troop.setCanMove(true);
+                troop.setCanAttack(true);
             }
             if (action.isMakeDisarm() && troop.canGetDisarm()) {
                 troop.setDisarm(false);
@@ -351,7 +353,7 @@ public abstract class Game {
             }
 
             if (!gameMap.isInMap(cell)) {
-                throw new ClientException("target cell is not in map");
+                throw new ClientException(cell.toString() + " is not in map");
             }
 
             Player player = getCurrentTurnPlayer();
@@ -713,6 +715,7 @@ public abstract class Game {
             }
             if (action.isMakeStun() && troop.canGetStun()) {
                 troop.setCanMove(false);
+                troop.setCanAttack(false);
             }
             if (action.isMakeDisarm() && troop.canGetDisarm()) {
                 troop.setDisarm(true);
