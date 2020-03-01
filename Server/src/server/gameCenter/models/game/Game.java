@@ -21,6 +21,11 @@ import server.gameCenter.models.game.availableActions.Move;
 import server.gameCenter.models.map.Cell;
 import server.gameCenter.models.map.GameMap;
 
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledFuture;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,7 +47,10 @@ public abstract class Game {
     private int reward;
     private boolean isFinished;
     private ArrayList<Account> observers = new ArrayList<>();
-	private Timer timer;
+
+    private ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+    private Runnable task;
+    private ScheduledFuture<?> future;
 
     protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType) {
         this.gameType = gameType;
@@ -113,8 +121,8 @@ public abstract class Game {
 
     public void changeTurn(String username, boolean forced) throws LogicException {
         try {
-			if (!forced)
-				this.timer.cancel();
+            if (!forced)
+                this.cancelTimeLimit();
             if (canCommand(username)) {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
@@ -145,19 +153,20 @@ public abstract class Game {
         }
     }
 
+    void cancelTimeLimit() {
+        this.future.cancel(true);
+    }
+
     private void startTurnTimeLimit() {
         final int currentTurn = turnNumber;
-		TimerTask task = new TimerTask() {
-			public void run() {
-            	try {
-                	if (isFinished)
-						return;
-                	if (turnNumber == currentTurn)
-                    	changeTurn(getCurrentTurnPlayer().getUserName(), true);
-            	} catch (LogicException ignored) {}
-			}
-		};
-		this.timer.schedule(task, TURN_TIME_LIMIT);
+
+        this.task = () -> {
+            try {
+                if (this.turnNumber == currentTurn)
+                    changeTurn(getCurrentTurnPlayer().getUserName(), true);
+            } catch (LogicException ignored) {}
+        };
+        this.future = this.timer.schedule(this.task, 120, TimeUnit.SECONDS);
     }
 
     private void addNextCardToHand() {
@@ -635,7 +644,8 @@ public abstract class Game {
     public abstract boolean finishCheck();
 
     void finish() {
-        isFinished = true;
+        this.cancelTimeLimit();
+        this.isFinished = true;
     }
 
     private void applySpell(Spell spell, TargetData target) {
