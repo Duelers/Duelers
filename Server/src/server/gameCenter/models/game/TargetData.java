@@ -1,6 +1,7 @@
 package server.gameCenter.models.game;
 
 import shared.models.card.Card;
+import shared.models.game.Troop;
 import shared.models.game.map.Cell;
 
 import java.util.*;
