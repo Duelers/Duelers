@@ -102,23 +102,12 @@ public class Card implements ICard {
         this.range = referenceCard.range;
     }
 
-
-//    public CompressedCard toCompressedCard() {
-//        return new CompressedCard(
-//                name, description, cardId,
-//                spriteName, type, spells,
-//                defaultAp, defaultHp, manaCost,
-//                attackType, range, remainingNumber
-//        );
-//    }
-
     @Override
     public boolean equals(Object obj) {
         if (!this.getClass().getName().equals(obj.getClass().getName())) return false;
         Card card = (Card) obj;
         return this.cardId.equalsIgnoreCase(card.cardId);
     }
-
 
     @Override
     public String getName() {

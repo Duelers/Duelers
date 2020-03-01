@@ -106,7 +106,7 @@ public class Message {
     public static Message makeNewNextCardSetMessage(String receiver, Card nextCard) {
         Message message = new Message(receiver);
         message.messageType = MessageType.SET_NEW_NEXT_CARD;
-        message.card = nextCard; // Used to set message.compressedCard
+        message.card = nextCard; // Used to set message.compressedCard. This could potentially alter behaviour.
         return message;
     }
 
@@ -129,7 +129,7 @@ public class Message {
                                                 List<CellEffect> cellEffects) {
         Message message = new Message(receiver);
         message.gameUpdateMessage = new GameUpdateMessage(turnNumber, player1CurrentMP,
-                player2CurrentMP,  cellEffects);
+                player2CurrentMP, cellEffects);
         message.messageType = MessageType.GAME_UPDATE;
         return message;
     }
