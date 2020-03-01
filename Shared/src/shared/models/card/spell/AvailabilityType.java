@@ -1,10 +1,12 @@
-package server.dataCenter.models.card.spell;
+package shared.models.card.spell;
 
 public class AvailabilityType {
     private boolean onPut;
     private boolean onAttack;
     private boolean onDeath;
     private boolean onDefend;
+    private boolean continuous;
+
 
     public AvailabilityType(AvailabilityType availabilityType) {
         this.onPut = availabilityType.onPut;
@@ -17,7 +19,17 @@ public class AvailabilityType {
         this.onPut = onPut;
         this.onAttack = onAttack;
         this.onDeath = onDeath;
+        this.continuous = continuous;
     }
+
+    public AvailabilityType(boolean onPut, boolean onAttack, boolean onDeath, boolean continuous, boolean onDefend) {
+        this.onPut = onPut;
+        this.onAttack = onAttack;
+        this.onDeath = onDeath;
+        this.continuous = continuous;
+        this.onDefend = onDefend; //Todo Kill unneeded constructors.
+    }
+
 
     public boolean isOnPut() {
         return onPut;
@@ -34,4 +46,10 @@ public class AvailabilityType {
     public boolean isOnDefend() {
         return onDefend;
     }
+
+    public boolean isContinuous() {
+        return continuous;
+    }
+
+
 }

@@ -1,7 +1,4 @@
-package server.dataCenter.models.card.spell;
-
-import server.clientPortal.models.comperessedData.CompressedSpell;
-import shared.models.card.spell.Target;
+package shared.models.card.spell;
 
 public class Spell {
     private String spellId;
@@ -32,10 +29,6 @@ public class Spell {
         this.coolDown = referenceSpell.coolDown;
         this.manaCost = referenceSpell.manaCost;
         this.lastTurnUsed = referenceSpell.lastTurnUsed;
-    }
-
-    public CompressedSpell toCompressedSpell() {
-        return new CompressedSpell(spellId, target, availabilityType, coolDown, manaCost, lastTurnUsed);
     }
 
     public String getSpellId() {

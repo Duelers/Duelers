@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import models.languageLocalisation.LanguageData;
 
 class NormalPasswordField extends PasswordField {
     private static final Background TEXT_FIELD_BACKGROUND = new Background(
@@ -18,7 +19,9 @@ class NormalPasswordField extends PasswordField {
         setBackground(TEXT_FIELD_BACKGROUND);
         setBorder(DEFAULT_BORDER);
         setPadding(new Insets(UIConstants.DEFAULT_SPACING * 2));
-        setPromptText("password");
+
+        String password = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "PASSWORD"});
+        setPromptText(password);
         setStyle("-fx-text-inner-color: #fffbfd;");
     }
 }

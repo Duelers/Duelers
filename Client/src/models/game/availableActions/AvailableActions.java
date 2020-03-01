@@ -2,8 +2,8 @@ package models.game.availableActions;
 
 import controller.GameController;
 import javafx.util.Pair;
-import models.card.AttackType;
 import models.comperessedData.*;
+import shared.models.card.AttackType;
 import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
