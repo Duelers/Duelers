@@ -76,6 +76,7 @@ public class Client {
                 if (connectionAttempts == 0) {
                     throw new RuntimeException(e);
                 }
+                ws = ws.recreate();
             }
             try {
                 Thread.sleep(5000);
