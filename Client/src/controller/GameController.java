@@ -8,7 +8,7 @@ import models.game.GameActions;
 import models.game.availableActions.AvailableActions;
 import shared.models.card.AttackType;
 import shared.models.card.CardType;
-import shared.models.card.CompressedCard;
+import shared.models.card.Card;
 import shared.models.game.map.Cell;
 import models.message.*;
 import view.BattleView.BattleScene;
@@ -146,13 +146,13 @@ public class GameController implements GameActions {
     }
 
     @Override
-    public void insert(CompressedCard card, int row, int column) {
+    public void insert(Card card, int row, int column) {
         if (validatePositionForInsert(card, row, column))
             Client.getInstance().addToSendingMessagesAndSend(
                     Message.makeInsertMessage(SERVER_NAME, card.getCardId(), new Cell(row, column)));
     }
 
-    private boolean validatePositionForInsert(CompressedCard card, int row, int column) {
+    private boolean validatePositionForInsert(Card card, int row, int column) {
         return (card.getType() == CardType.SPELL) || (currentGame.getGameMap().getTroop(new Cell(row, column)) == null);
     }
 

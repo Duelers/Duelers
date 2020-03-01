@@ -17,13 +17,12 @@ import javafx.scene.paint.Color;
 import models.comperessedData.CompressedPlayer;
 import models.gui.*;
 import models.message.OnlineGame;
-import shared.models.card.CompressedCard;
+import shared.models.card.Card;
 import view.MainMenu;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.List;
 
 public class HandBox implements PropertyChangeListener {
@@ -117,7 +116,7 @@ public class HandBox implements PropertyChangeListener {
                 imageView.setImage(cardBack);
 
             if (cardAnimation != null) {
-                final CompressedCard card = player.getHand().get(I);
+                final Card card = player.getHand().get(I);
                 cards[i].setOnMouseEntered(mouseEvent -> {
                     if (cardPane != null) {
                         handGroup.getChildren().remove(cardPane);
@@ -243,9 +242,9 @@ public class HandBox implements PropertyChangeListener {
         cardsPane.setVgap(UIConstants.DEFAULT_SPACING * 2);
         cardsPane.setHgap(UIConstants.DEFAULT_SPACING * 2);
 
-        List<CompressedCard> graveyard = player.getGraveyard();
+        List<Card> graveyard = player.getGraveyard();
         for (int i = 0; i < graveyard.size(); i++) {
-            CompressedCard card = graveyard.get(i);
+            Card card = graveyard.get(i);
             CardPane cardPane = new CardPane(card, false, false, null);
             cardsPane.add(cardPane, i % 3, i / 3);
         }
@@ -298,7 +297,7 @@ public class HandBox implements PropertyChangeListener {
         return handGroup;
     }
 
-    CompressedCard getSelectedCard() {
+    Card getSelectedCard() {
         if (selectedCard >= 0)
             return player.getHand().get(selectedCard);
         return null;

@@ -1,7 +1,7 @@
 package models.comperessedData;
 
 import shared.models.card.CardType;
-import shared.models.card.CompressedCard;
+import shared.models.card.Card;
 import shared.models.game.map.CellEffect;
 import shared.models.game.GameType;
 
@@ -34,17 +34,17 @@ public class CompressedGame {
         player.removeCardFromNext();
     }
 
-    public void moveCardToNext(CompressedCard card) {
+    public void moveCardToNext(Card card) {
         CompressedPlayer player = getCurrentTurnPlayer();
         player.addCardToNext(card);
     }
 
-    public void moveCardToMap(CompressedCard card) {
+    public void moveCardToMap(Card card) {
         CompressedPlayer player = getCurrentTurnPlayer();
         player.removeCardFromHand(card.getCardId());
     }
 
-    public void moveCardToGraveYard(CompressedCard card) {
+    public void moveCardToGraveYard(Card card) {
         CompressedPlayer player;
         if (card.getType() == CardType.HERO || card.getType() == CardType.MINION) {
             CompressedTroop troop = gameMap.getTroop(card.getCardId());

@@ -2,7 +2,7 @@ package models.game;
 
 import models.comperessedData.CompressedTroop;
 import models.message.OnlineGame;
-import shared.models.card.CompressedCard;
+import shared.models.card.Card;
 
 
 public interface GameActions {
@@ -15,7 +15,7 @@ public interface GameActions {
 
     void forceFinish();
 
-    void insert(CompressedCard card, int row, int column);
+    void insert(Card card, int row, int column);
 
     void exitGameShow(OnlineGame onlineGame);
 

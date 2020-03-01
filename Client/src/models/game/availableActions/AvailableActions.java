@@ -4,7 +4,7 @@ import controller.GameController;
 import javafx.util.Pair;
 import models.comperessedData.*;
 import shared.models.card.AttackType;
-import shared.models.card.CompressedCard;
+import shared.models.card.Card;
 import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class AvailableActions {
     }
 
     private void calculateCardInserts(CompressedPlayer ownPlayer) {
-        for (CompressedCard card : ownPlayer.getHand()) {
+        for (Card card : ownPlayer.getHand()) {
             handInserts.add(new Insert(card));
         }
     }
@@ -184,7 +184,7 @@ public class AvailableActions {
         return Collections.emptyList();
     }
 
-    public boolean canInsertCard(CompressedCard card) {
+    public boolean canInsertCard(Card card) {
         return handInserts.stream().map(Insert::getCard).collect(Collectors.toList()).contains(card);
     }
 
@@ -234,7 +234,7 @@ public class AvailableActions {
     // public boolean canDeploySpellOnSquare(CompressedGame gameMap, CompressedPlayer player, CompressedCard card, int row, int column){
     //}
 
-    public boolean canDeployMinionOnSquare(CompressedGameMap gameMap, CompressedPlayer player, CompressedCard card, int row, int column) {
+    public boolean canDeployMinionOnSquare(CompressedGameMap gameMap, CompressedPlayer player, Card card, int row, int column) {
         // ToDo this duplicates the logic found in Server's "isLegalCellForMinion" function
         Cell cell = new Cell(row, column);
 

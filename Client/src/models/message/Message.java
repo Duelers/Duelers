@@ -6,7 +6,6 @@ import models.JsonConverter;
 import models.account.AccountType;
 import shared.models.card.Card;
 import models.card.ExportedDeck;
-import shared.models.card.CompressedCard;
 import shared.models.game.GameType;
 import shared.models.game.map.Cell;
 
@@ -40,7 +39,6 @@ public class Message {
     //SENDER:DUAL
     private Card card;
     private String cardID;
-    private CompressedCard compressedCard;
     private ChatMessage chatMessage;
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
@@ -378,10 +376,6 @@ public class Message {
 
     public OnlineGame[] getOnlineGames() {
         return onlineGames;
-    }
-
-    public CompressedCard getCompressedCard() {
-        return compressedCard;
     }
 
     public OtherFields getOtherFields() {return otherFields;}
