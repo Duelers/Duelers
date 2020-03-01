@@ -41,6 +41,10 @@ public class GameServer {
         return server;
     }
 
+    public static void main(String[] args){
+        start();
+    }
+
     public static void start() {
         server = new GameServer("Server");
         DataCenter.getInstance().run();//no thread
