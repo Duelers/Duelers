@@ -31,10 +31,11 @@ public class GameEndpoint {
 
     @OnClose
     public void onClose(Session session) {
+        LOGGER.log(Level.INFO, "Connection closed for client: {0}", session.getId());
         try {
             DataCenter.getInstance().logout(session);
         } catch (LogicException e) {
-            //TODO: log this once we have it set up
+            LOGGER.log(Level.WARNING, "Error on forced logout: {0}", e);
         }
         ClientPortal.getInstance().removeClient(session);
     }
