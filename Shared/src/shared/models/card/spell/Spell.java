@@ -31,10 +31,6 @@ public class Spell {
         this.lastTurnUsed = referenceSpell.lastTurnUsed;
     }
 
-    public CompressedSpell toCompressedSpell() {
-        return new CompressedSpell(spellId, target, availabilityType, coolDown, manaCost, lastTurnUsed);
-    }
-
     public String getSpellId() {
         return this.spellId;
     }
