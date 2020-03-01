@@ -268,4 +268,8 @@ public class AvailableActions {
         // ToDo Other checks to see if replace is valid (e.g. false if already replaced this turn).
         return true;
     }
+
+    public boolean haveSufficientMana(CompressedPlayer player, Card card){
+        return player.getCurrentMP() >= card.getManaCost();
+    }
 }

@@ -153,7 +153,8 @@ public class HandBox implements PropertyChangeListener {
                 });
 
                 // Grey out cards in hand when its the opponents turn
-                Effect nullOrGrayscale = battleScene.isMyTurn() ? null : DISABLE_BUTTON_EFFECT;
+                boolean haveSufficientManaForCard = GameController.getInstance().getAvailableActions().haveSufficientMana(player, card);
+                Effect nullOrGrayscale = battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card) && haveSufficientManaForCard ? null : DISABLE_BUTTON_EFFECT;
                 cards[i].setEffect(nullOrGrayscale);
             }
         }
