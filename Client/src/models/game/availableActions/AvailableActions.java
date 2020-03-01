@@ -16,6 +16,8 @@ public class AvailableActions {
     private List<Insert> handInserts = new ArrayList<>();
     private List<Attack> attacks = new ArrayList<>();
     private List<Move> moves = new ArrayList<>();
+    private int NumTimesReplacedThisTurn = 0;
+    private int MaxNumReplacePerTurn = 1;
 
     public void calculate(CompressedGame game) {
         clearEverything();
@@ -140,6 +142,7 @@ public class AvailableActions {
         handInserts.clear();
         attacks.clear();
         moves.clear();
+        setNumTimesReplacedThisTurn(0);
     }
 
     private boolean isTargetInRange(CompressedTroop myTroop, CompressedTroop enemyTroop) {
@@ -264,7 +267,26 @@ public class AvailableActions {
         if (player.getPlayerNumber() != GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().getPlayerNumber()) {
             return false;
         }
+        if(getNumTimesReplacedThisTurn() >= getMaxNumReplacePerTurn()){
+            return false;
+        }
         // ToDo Other checks to see if replace is valid (e.g. false if already replaced this turn).
         return true;
+    }
+
+    public void setNumTimesReplacedThisTurn(int number){
+        this.NumTimesReplacedThisTurn = number;
+    }
+
+    public int getNumTimesReplacedThisTurn(){
+        return this.NumTimesReplacedThisTurn;
+    }
+
+    public void setMaxNumReplacePerTurn(int number){
+        this.MaxNumReplacePerTurn = number;
+    }
+
+    public int getMaxNumReplacePerTurn(){
+        return this.MaxNumReplacePerTurn;
     }
 }
