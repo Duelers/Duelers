@@ -11,7 +11,7 @@ import models.comperessedData.CompressedGameMap;
 import models.comperessedData.CompressedPlayer;
 import models.comperessedData.CompressedTroop;
 import shared.models.card.CardType;
-import shared.models.card.CompressedCard;
+import shared.models.card.Card;
 import shared.models.game.map.Cell;
 import models.gui.CardPane;
 
@@ -200,16 +200,15 @@ public class MapBox implements PropertyChangeListener {
         if (selectionType == SelectionType.INSERTION) {
             if (GameController.getInstance().getAvailableActions().canInsertCard(battleScene.getHandBox().getSelectedCard())) {
 
-                CompressedCard card = battleScene.getHandBox().getSelectedCard();
-                if (card.getType() == CardType.MINION || card.getType() == CardType.HERO){
-                    if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)){
+                Card card = battleScene.getHandBox().getSelectedCard();
+                if (card.getType() == CardType.MINION || card.getType() == CardType.HERO) {
+                    if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)) {
                         battleScene.getController().insert(card, row, column);
                         System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
                         battleScene.getHandBox().resetSelection();
                         resetSelection();
                     }
-                }
-                else if (card.getType() == CardType.SPELL){
+                } else if (card.getType() == CardType.SPELL) {
                     battleScene.getController().insert(card, row, column);
                     System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
                     battleScene.getHandBox().resetSelection();
@@ -270,11 +269,10 @@ public class MapBox implements PropertyChangeListener {
                         if (battleScene.getHandBox().getSelectedCard().getType() == CardType.HERO ||
                                 battleScene.getHandBox().getSelectedCard().getType() == CardType.MINION) {
 
-                            CompressedCard card = battleScene.getHandBox().getSelectedCard();
-                            if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)){
+                            Card card = battleScene.getHandBox().getSelectedCard();
+                            if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)) {
                                 cells[row][column].setFill(Constants.MOVE_COLOR);
-                            }
-                            else {
+                            } else {
                                 cells[row][column].setFill(Constants.defaultColor);
                             }
 

@@ -1,7 +1,7 @@
 package models.comperessedData;
 
 import shared.models.card.CardType;
-import shared.models.card.CompressedCard;
+import shared.models.card.Card;
 import view.BattleView.Constants;
 
 import java.beans.PropertyChangeListener;
@@ -13,9 +13,9 @@ import java.util.List;
 public class CompressedPlayer {
     private String userName;
     private int currentMP;
-    private List<CompressedCard> hand;
-    private List<CompressedCard> graveyard;
-    private CompressedCard nextCard;
+    private List<Card> hand;
+    private List<Card> graveyard;
+    private Card nextCard;
     private int playerNumber;
     private List<CompressedTroop> troops;
     private CompressedTroop hero;
@@ -43,7 +43,7 @@ public class CompressedPlayer {
             System.out.println("Client Game Error! - current card hand exceeds max card hand size size");
     }
 
-    public void addCardToNext(CompressedCard card) {
+    public void addCardToNext(Card card) {
         if (nextCard != null)
             System.out.println("Client Game Error!");
         else {
@@ -64,7 +64,7 @@ public class CompressedPlayer {
         support.firePropertyChange("replace", null, null);
     }
 
-    void addCardToGraveYard(CompressedCard card) {
+    void addCardToGraveYard(Card card) {
         graveyard.add(card);
     }
 
@@ -80,7 +80,7 @@ public class CompressedPlayer {
     }
 
     void removeCardFromHand(String cardId) {
-        hand.removeIf(compressedCard -> compressedCard.getCardId().equalsIgnoreCase(cardId));
+        hand.removeIf(card -> card.getCardId().equalsIgnoreCase(cardId));
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }
@@ -121,8 +121,8 @@ public class CompressedPlayer {
         return hero;
     }
 
-    public CompressedCard searchGraveyard(String cardId) {
-        for (CompressedCard card : graveyard) {
+    public Card searchGraveyard(String cardId) {
+        for (Card card : graveyard) {
             if (card.getCardId().equalsIgnoreCase(cardId)) {
                 return card;
             }
@@ -142,15 +142,15 @@ public class CompressedPlayer {
         this.currentMP = currentMP;
     }
 
-    public List<CompressedCard> getHand() {
+    public List<Card> getHand() {
         return Collections.unmodifiableList(hand);
     }
 
-    public List<CompressedCard> getGraveyard() {
+    public List<Card> getGraveyard() {
         return Collections.unmodifiableList(graveyard);
     }
 
-    public CompressedCard getNextCard() {
+    public Card getNextCard() {
         return nextCard;
     }
 

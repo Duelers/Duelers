@@ -172,7 +172,7 @@ public abstract class Game {
 
     public void setNewNextCard() {
         getCurrentTurnPlayer().setNewNextCard();
-        GameServer.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard().toCompressedCard());
+        GameServer.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard());
     }
 
     public void replaceCard(String cardID) throws LogicException {

@@ -103,14 +103,14 @@ public class Card implements ICard {
     }
 
 
-    public CompressedCard toCompressedCard() {
-        return new CompressedCard(
-                name, description, cardId,
-                spriteName, type, spells,
-                defaultAp, defaultHp, manaCost,
-                attackType, range, remainingNumber
-        );
-    }
+//    public CompressedCard toCompressedCard() {
+//        return new CompressedCard(
+//                name, description, cardId,
+//                spriteName, type, spells,
+//                defaultAp, defaultHp, manaCost,
+//                attackType, range, remainingNumber
+//        );
+//    }
 
     @Override
     public boolean equals(Object obj) {

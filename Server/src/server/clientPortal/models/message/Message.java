@@ -3,7 +3,6 @@ package server.clientPortal.models.message;
 import server.GameServer;
 import server.clientPortal.models.JsonConverter;
 import shared.models.card.Card;
-import shared.models.card.CompressedCard;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.ExportedDeck;
@@ -49,7 +48,6 @@ public class Message {
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
     private ChangeAccountType changeAccountType;
-    private CompressedCard compressedCard;
 
 
     private Message(String receiver) {
@@ -105,10 +103,10 @@ public class Message {
         return message;
     }
 
-    public static Message makeNewNextCardSetMessage(String receiver, CompressedCard nextCard) {
+    public static Message makeNewNextCardSetMessage(String receiver, Card nextCard) {
         Message message = new Message(receiver);
         message.messageType = MessageType.SET_NEW_NEXT_CARD;
-        message.compressedCard = nextCard;
+        message.card = nextCard; // Used to set message.compressedCard
         return message;
     }
 
