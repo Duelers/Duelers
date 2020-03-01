@@ -2,6 +2,7 @@ package models.comperessedData;
 
 import shared.models.card.CardType;
 import shared.models.card.Card;
+import shared.models.card.CompressedTroop;
 import view.BattleView.Constants;
 
 import java.beans.PropertyChangeListener;

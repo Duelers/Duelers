@@ -1,7 +1,7 @@
 package models.message;
 
 
-import models.comperessedData.CompressedTroop;
+import shared.models.card.CompressedTroop;
 
 public class TroopUpdateMessage {
     private CompressedTroop compressedTroop;

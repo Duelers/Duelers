@@ -1,4 +1,4 @@
-package models.comperessedData;
+package shared.models.card;
 
 import shared.models.card.Card;
 import shared.models.game.map.Cell;
@@ -9,11 +9,34 @@ public class CompressedTroop {
     private int currentHp;
     private int enemyHitChanges;
     private Cell cell;
-    private boolean canMove;
-    private boolean canAttack;
+    private boolean canMove = true;
+    private boolean canAttack = true;
     private boolean isDisarm;
     private boolean noAttackFromWeakerOnes;
     private int playerNumber;
+
+    public CompressedTroop(Card card,
+                           int currentAp,
+                           int currentHp,
+                           int enemyHitChanges,
+                           Cell cell,
+                           boolean canMove,
+                           boolean canAttack,
+                           boolean isDisarm,
+                           boolean noAttackFromWeakerOnes,
+                           int playerNumber) {
+        this.card = card;
+        this.currentAp = currentAp;
+        this.currentHp = currentHp;
+        this.enemyHitChanges = enemyHitChanges;
+        this.cell = cell; // Client version used to have new Cell(cell.getRow(), cell.getColumn())
+        this.canMove = canMove;
+        this.canAttack = canAttack;
+        this.isDisarm = isDisarm;
+        this.noAttackFromWeakerOnes = noAttackFromWeakerOnes;
+        this.playerNumber = playerNumber;
+    }
+
 
     //just for testing BattleView
     public CompressedTroop(CompressedTroop troop, int row, int column) {
@@ -27,20 +50,6 @@ public class CompressedTroop {
         this.isDisarm = troop.isDisarm;
         this.noAttackFromWeakerOnes = troop.noAttackFromWeakerOnes;
         this.playerNumber = troop.playerNumber;
-    }
-
-    public CompressedTroop(Card card, int currentAp, int currentHp, int enemyHitChanges, Cell cell,
-                           boolean canMove, boolean canAttack, boolean isDisarm, boolean noAttackFromWeakerOnes, int playerNumber) {
-        this.card = card;
-        this.currentAp = currentAp;
-        this.currentHp = currentHp;
-        this.enemyHitChanges = enemyHitChanges;
-        this.cell = cell;
-        this.canMove = canMove;
-        this.canAttack = canAttack;
-        this.isDisarm = isDisarm;
-        this.noAttackFromWeakerOnes = noAttackFromWeakerOnes;
-        this.playerNumber = playerNumber;
     }
 
     public Card getCard() {
@@ -82,4 +91,5 @@ public class CompressedTroop {
     public int getPlayerNumber() {
         return playerNumber;
     }
+
 }

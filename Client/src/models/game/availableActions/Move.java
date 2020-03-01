@@ -1,6 +1,6 @@
 package models.game.availableActions;
 
-import models.comperessedData.CompressedTroop;
+import shared.models.card.CompressedTroop;
 import shared.models.game.map.Cell;
 
 import java.util.ArrayList;

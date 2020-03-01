@@ -2,13 +2,13 @@ package controller;
 
 import javafx.application.Platform;
 import models.comperessedData.CompressedGame;
-import models.comperessedData.CompressedTroop;
 import models.exceptions.InputException;
 import models.game.GameActions;
 import models.game.availableActions.AvailableActions;
 import shared.models.card.AttackType;
 import shared.models.card.CardType;
 import shared.models.card.Card;
+import shared.models.card.CompressedTroop;
 import shared.models.game.map.Cell;
 import models.message.*;
 import view.BattleView.BattleScene;
@@ -113,8 +113,8 @@ public class GameController implements GameActions {
                 throw new InputException("cell is not empty");
             }
 
-            if (!selectedTroop.getCard().getDescription().contains("Flying")){
-                if (selectedTroop.getCell().manhattanDistance(new Cell(row, column)) > 2){
+            if (!selectedTroop.getCard().getDescription().contains("Flying")) {
+                if (selectedTroop.getCell().manhattanDistance(new Cell(row, column)) > 2) {
                     throw new InputException("too far to go");
                 }
             }

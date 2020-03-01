@@ -1,6 +1,6 @@
 package server.gameCenter.models.game;
 
-import server.clientPortal.models.comperessedData.CompressedTroop;
+import shared.models.card.CompressedTroop;
 import shared.models.card.Card;
 import shared.models.game.map.Cell;
 

@@ -1,7 +1,7 @@
 package models.game.availableActions;
 
 
-import models.comperessedData.CompressedTroop;
+import shared.models.card.CompressedTroop;
 
 import java.util.ArrayList;
 import java.util.Collections;

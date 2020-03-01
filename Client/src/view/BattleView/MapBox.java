@@ -9,9 +9,9 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import models.comperessedData.CompressedGameMap;
 import models.comperessedData.CompressedPlayer;
-import models.comperessedData.CompressedTroop;
 import shared.models.card.CardType;
 import shared.models.card.Card;
+import shared.models.card.CompressedTroop;
 import shared.models.game.map.Cell;
 import models.gui.CardPane;
 

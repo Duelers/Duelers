@@ -5,6 +5,7 @@ import javafx.util.Pair;
 import models.comperessedData.*;
 import shared.models.card.AttackType;
 import shared.models.card.Card;
+import shared.models.card.CompressedTroop;
 import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
