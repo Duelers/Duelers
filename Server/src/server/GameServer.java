@@ -247,8 +247,6 @@ public class GameServer {
     private static void sendOnlineGames(Message message) throws LogicException {
         DataCenter.getInstance().loginCheck(message);
         Account account = DataCenter.getInstance().getClients().get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
-            throw new ClientException("You don't have admin access!");
         OnlineGame[] onlines = GameCenter.getInstance().getOnlineGames();
         addToSendingMessages(Message.makeOnlineGamesCopyMessage(message.getSender(), onlines));
     }

@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 class LoginBox extends HBox {
 
     LoginBox() throws FileNotFoundException {
-        AbabeelLogoBox logoBox = new AbabeelLogoBox();
+        LoginMenuLogoBox logoBox = new LoginMenuLogoBox();
         LoginFieldsContainer loginBox = new LoginFieldsContainer();
 
         getChildren().addAll(logoBox, loginBox);

@@ -116,7 +116,7 @@ public abstract class Game {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
                 addNextCardToHand();
-                getCurrentTurnPlayer().setCanReplaceCard(true);
+                getCurrentTurnPlayer().setNumTimesReplacedThisTurn(0);
 
                 revertNotDurableBuffs();
                 removeFinishedBuffs();
@@ -178,10 +178,14 @@ public abstract class Game {
     public void replaceCard(String cardID) throws LogicException {
         if (getCurrentTurnPlayer().getCanReplaceCard()) {
             Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
+            if(removedCard == null){
+                return;
+            }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             if (getCurrentTurnPlayer().addNextCardToHand()) {
-                getCurrentTurnPlayer().setCanReplaceCard(false);
                 Card nextCard = getCurrentTurnPlayer().getNextCard();
+                int numTimesReplacedThisTurn = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
+                getCurrentTurnPlayer().setNumTimesReplacedThisTurn(numTimesReplacedThisTurn + 1);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
@@ -245,9 +249,9 @@ public abstract class Game {
                     int x = offsets[new Random().nextInt(offsets.length)];
                     int y = offsets[new Random().nextInt(offsets.length)];
 
-                    // Get a random square, force it to be within bounds.
-                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), gameMap.getNumRows()));
-                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getNumColumns()));
+                    // Get a random square, force it to be within index bounds.
+                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), gameMap.getNumRows() - 1));
+                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getNumColumns() -1));
 
                     Cell c = new Cell(x2, y2);
 
@@ -273,6 +277,7 @@ public abstract class Game {
 
     private void setAllTroopsCanAttackAndCanMove() {
         for (Troop troop : gameMap.getTroops()) {
+
             troop.setCanAttack(true);
             troop.setCanMove(true);
             GameServer.getInstance().sendTroopUpdateMessage(this, troop);
@@ -318,6 +323,7 @@ public abstract class Game {
             }
             if (action.isMakeStun() && troop.canGetStun()) {
                 troop.setCanMove(true);
+                troop.setCanAttack(true);
             }
             if (action.isMakeDisarm() && troop.canGetDisarm()) {
                 troop.setDisarm(false);
@@ -351,7 +357,7 @@ public abstract class Game {
             }
 
             if (!gameMap.isInMap(cell)) {
-                throw new ClientException("target cell is not in map");
+                throw new ClientException(cell.toString() + " is not in map");
             }
 
             Player player = getCurrentTurnPlayer();
@@ -713,6 +719,7 @@ public abstract class Game {
             }
             if (action.isMakeStun() && troop.canGetStun()) {
                 troop.setCanMove(false);
+                troop.setCanAttack(false);
             }
             if (action.isMakeDisarm() && troop.canGetDisarm()) {
                 troop.setDisarm(true);

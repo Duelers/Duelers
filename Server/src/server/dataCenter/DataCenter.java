@@ -18,6 +18,7 @@ import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
 import shared.models.card.Card;
 
+import javax.websocket.Session;
 import java.io.*;
 import java.util.*;
 
@@ -193,6 +194,13 @@ public class DataCenter extends Thread {
         clients.replace(message.getSender(), null);
         GameServer.serverPrint(message.getSender() + " Is Logged Out.");
         GameServer.addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+    }
+
+    public void logout(Session session) throws LogicException {
+        String id = session.getId();
+        loginCheck(id);
+        forceLogout(id);
+        GameServer.serverPrint(id + " Is Logged Out.");
     }
 
     public void createDeck(Message message) throws LogicException {

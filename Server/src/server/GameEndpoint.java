@@ -3,11 +3,10 @@ package server;
 import server.clientPortal.ClientPortal;
 import server.clientPortal.models.message.Message;
 import server.dataCenter.DataCenter;
+import server.exceptions.LogicException;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
-import java.util.Formatter;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,6 +31,13 @@ public class GameEndpoint {
 
     @OnClose
     public void onClose(Session session) {
+        LOGGER.log(Level.INFO, "Connection closed for client: {0}", session.getId());
+        try {
+            DataCenter.getInstance().logout(session);
+        } catch (LogicException e) {
+            LOGGER.log(Level.WARNING, "Error on forced logout for client: {0}", session.getId());
+            LOGGER.log(Level.WARNING, "Error on forced logout: {0}", e.getMessage());
+        }
         ClientPortal.getInstance().removeClient(session);
     }
 

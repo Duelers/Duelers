@@ -368,8 +368,6 @@ public class GameCenter extends Thread {//synchronize
     public void addOnlineShowRequest(Message message) throws LogicException {
         DataCenter.getInstance().loginCheck(message);
         Account account = DataCenter.getInstance().getClients().get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
-            throw new ClientException("You don't have admin access!");
         Game game = getGame(message.getOnlineGame());
         if (game == null)
             throw new ClientException("Invalid Game");
@@ -380,8 +378,6 @@ public class GameCenter extends Thread {//synchronize
     public void removeOnlineShowGame(Message message) throws LogicException {
         DataCenter.getInstance().loginCheck(message);
         Account account = DataCenter.getInstance().getClients().get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
-            throw new ClientException("You don't have admin access!");
         Game game = getGame(message.getOnlineGame());
         if (game == null)
             throw new ClientException("Invalid Game");

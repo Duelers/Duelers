@@ -23,7 +23,8 @@ public class Player {
     private Card nextCard;
     private int playerNumber;
     private MatchHistory matchHistory;
-    private boolean canReplaceCard;
+    private int numTimesReplacedThisTurn;
+    private int maxNumReplacePerTurn;
 
     Player(Deck mainDeck, String userName, int playerNumber) {
         this.playerNumber = playerNumber;
@@ -33,7 +34,8 @@ public class Player {
         for (int i = 0; i < 3; i++) {
             addNextCardToHand();
         }
-        this.canReplaceCard = true;
+        this.numTimesReplacedThisTurn = 0;
+        this.maxNumReplacePerTurn = 1;
     }
 
     public CompressedPlayer toCompressedPlayer() {
@@ -213,10 +215,22 @@ public class Player {
     }
 
     public boolean getCanReplaceCard() {
-        return this.canReplaceCard;
+        return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn();
     }
 
-    public void setCanReplaceCard(boolean state) {
-        this.canReplaceCard = state;
+    public void setNumTimesReplacedThisTurn(int number){
+        this.numTimesReplacedThisTurn = number;
+    }
+
+    public int getNumTimesReplacedThisTurn(){
+        return this.numTimesReplacedThisTurn;
+    }
+
+    public void setMaxNumReplacePerTurn(int number){
+        this.maxNumReplacePerTurn = number;
+    }
+
+    public int getMaxNumReplacePerTurn(){
+        return this.maxNumReplacePerTurn;
     }
 }
