@@ -1,8 +1,9 @@
 package models.comperessedData;
 
 import models.ICard;
-import models.card.AttackType;
-import models.card.CardType;
+import shared.models.card.AttackType;
+import shared.models.card.CardType;
+import shared.models.card.CompressedSpell;
 
 import java.util.Objects;
 

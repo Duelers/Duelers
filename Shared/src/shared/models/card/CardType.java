@@ -1,4 +1,4 @@
-package server.dataCenter.models.card;
+package shared.models.card;
 
 public enum CardType {
     HERO,

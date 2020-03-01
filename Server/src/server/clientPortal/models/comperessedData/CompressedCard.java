@@ -1,8 +1,9 @@
 package server.clientPortal.models.comperessedData;
 
-import server.dataCenter.models.card.AttackType;
-import server.dataCenter.models.card.CardType;
-import server.dataCenter.models.card.spell.Spell;
+import shared.models.card.AttackType;
+import shared.models.card.CardType;
+import shared.models.card.CompressedSpell;
+import shared.models.card.spell.Spell;
 
 import java.util.List;
 

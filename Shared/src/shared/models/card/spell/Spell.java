@@ -1,7 +1,6 @@
-package server.dataCenter.models.card.spell;
+package shared.models.card.spell;
 
-import server.clientPortal.models.comperessedData.CompressedSpell;
-import shared.models.card.spell.Target;
+import shared.models.card.CompressedSpell;
 
 public class Spell {
     private String spellId;

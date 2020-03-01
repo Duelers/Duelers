@@ -1,7 +1,8 @@
-package models.comperessedData;
+package shared.models.card;
 
-import models.card.spell.AvailabilityType;
+import shared.models.card.spell.AvailabilityType;
 import shared.models.card.spell.Target;
+
 
 public class CompressedSpell {
     private String spellId;
@@ -10,8 +11,7 @@ public class CompressedSpell {
     private int coolDown;
     private int manaCost;
     private int lastTurnUsed;
-  
-    //just for testing BattleView
+
     public CompressedSpell(String spellId, Target target, AvailabilityType availabilityType, int coolDown, int manaCost, int lastTurnUsed) {
         this.spellId = spellId;
         this.target = target;

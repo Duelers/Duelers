@@ -7,7 +7,7 @@ import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.ExportedDeck;
-import server.dataCenter.models.card.spell.AvailabilityType;
+import shared.models.card.spell.AvailabilityType;
 import server.gameCenter.models.game.*;
 import shared.models.game.GameType;
 import shared.models.game.map.Cell;
