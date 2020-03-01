@@ -31,11 +31,18 @@ import server.gameCenter.models.map.GameMap;
 
 import shared.models.game.map.CellEffect;
 
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledFuture;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import java.util.TimerTask;
+import java.util.Timer;
 
 public abstract class Game {
     private static final int DEFAULT_REWARD = 1000;
@@ -50,6 +57,10 @@ public abstract class Game {
     private int reward;
     private boolean isFinished;
     private ArrayList<Account> observers = new ArrayList<>();
+
+    private ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+    private Runnable task;
+    private ScheduledFuture<?> future;
 
     protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType) {
         this.gameType = gameType;
@@ -118,8 +129,10 @@ public abstract class Game {
                 || (turnNumber % 2 == 1 && username.equalsIgnoreCase(playerOne.getUserName()));
     }
 
-    public void changeTurn(String username) throws LogicException {
+    public void changeTurn(String username, boolean forced) throws LogicException {
         try {
+            if (!forced)
+                this.cancelTimeLimit();
             if (canCommand(username)) {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
@@ -150,20 +163,20 @@ public abstract class Game {
         }
     }
 
+    void cancelTimeLimit() {
+        this.future.cancel(true);
+    }
+
     private void startTurnTimeLimit() {
         final int currentTurn = turnNumber;
-        new Thread(() -> {
+
+        this.task = () -> {
             try {
-                Thread.sleep(TURN_TIME_LIMIT);
-                if (isFinished) return;
-                if (turnNumber == currentTurn) {
-                    changeTurn(getCurrentTurnPlayer().getUserName());
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (LogicException ignored) {
-            }
-        }).start();
+                if (this.turnNumber == currentTurn)
+                    changeTurn(getCurrentTurnPlayer().getUserName(), true);
+            } catch (LogicException ignored) {}
+        };
+        this.future = this.timer.schedule(this.task, 120, TimeUnit.SECONDS);
     }
 
     private void addNextCardToHand() {
@@ -274,7 +287,7 @@ public abstract class Game {
         } catch (InterruptedException ignored) {
             ignored.printStackTrace();
         } finally {
-            changeTurn("AI");
+            changeTurn("AI", false);
         }
 
     }
@@ -647,7 +660,8 @@ public abstract class Game {
     public abstract boolean finishCheck();
 
     void finish() {
-        isFinished = true;
+        this.cancelTimeLimit();
+        this.isFinished = true;
     }
 
     private void applySpell(Spell spell, TargetData target) {
