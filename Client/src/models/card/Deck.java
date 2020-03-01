@@ -2,6 +2,7 @@ package models.card;
 
 
 import controller.Client;
+import shared.models.card.Card;
 import shared.models.card.ICard;
 import models.account.Collection;
 

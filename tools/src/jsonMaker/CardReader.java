@@ -1,7 +1,7 @@
 package jsonMaker;
 
 import com.google.gson.GsonBuilder;
-import server.dataCenter.models.card.Card;
+import shared.models.card.Card;
 
 import java.io.*;
 import java.util.regex.Matcher;

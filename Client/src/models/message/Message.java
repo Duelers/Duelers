@@ -4,7 +4,7 @@ package models.message;
 import controller.Client;
 import models.JsonConverter;
 import models.account.AccountType;
-import models.card.Card;
+import shared.models.card.Card;
 import models.card.ExportedDeck;
 import shared.models.card.CompressedCard;
 import shared.models.game.GameType;

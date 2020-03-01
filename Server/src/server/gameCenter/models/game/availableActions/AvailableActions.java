@@ -2,10 +2,10 @@ package server.gameCenter.models.game.availableActions;
 
 import javafx.util.Pair;
 import shared.models.card.AttackType;
-import server.dataCenter.models.card.Card;
 import server.gameCenter.models.game.Game;
 import server.gameCenter.models.game.Player;
 import server.gameCenter.models.game.Troop;
+import shared.models.card.Card;
 import shared.models.game.map.Cell;
 
 import java.util.*;

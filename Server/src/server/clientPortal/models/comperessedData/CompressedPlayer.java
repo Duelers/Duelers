@@ -1,6 +1,6 @@
 package server.clientPortal.models.comperessedData;
 
-import server.dataCenter.models.card.Card;
+import shared.models.card.Card;
 import shared.models.card.CompressedCard;
 
 import java.util.ArrayList;

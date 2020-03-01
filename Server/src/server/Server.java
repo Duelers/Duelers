@@ -2,6 +2,7 @@ package server;
 
 import server.chatCenter.ChatCenter;
 import server.clientPortal.ClientPortal;
+import shared.models.card.Card;
 import shared.models.card.CompressedCard;
 import server.clientPortal.models.message.CardPosition;
 import server.clientPortal.models.message.Message;
@@ -9,7 +10,6 @@ import server.clientPortal.models.message.OnlineGame;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.AccountType;
-import server.dataCenter.models.card.Card;
 import shared.models.card.spell.AvailabilityType;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;

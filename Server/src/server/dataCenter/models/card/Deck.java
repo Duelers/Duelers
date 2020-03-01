@@ -4,6 +4,7 @@ import server.Server;
 import server.dataCenter.models.account.Collection;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.card.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;
