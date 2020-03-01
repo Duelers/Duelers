@@ -85,7 +85,6 @@ public class HandBox implements PropertyChangeListener {
         replaceIcon.setFitWidth(Constants.SCREEN_WIDTH * 0.11);
         replaceIcon.setFitHeight(Constants.SCREEN_WIDTH * 0.11);
         replaceIcon.setImage(nextBack);
-
         Effect nullOrGrayscale = GameController.getInstance().getAvailableActions().canReplace(player) ? null : DISABLE_BUTTON_EFFECT;
         replaceIcon.setEffect(nullOrGrayscale);
 
@@ -271,9 +270,11 @@ public class HandBox implements PropertyChangeListener {
                     Platform.runLater(() -> {
                         endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);
                         endTurnLabel.setText("ENEMY TURN");
+
                     });
                 } else {
                     Platform.runLater(() -> {
+                        updateNext();
                         endTurnButton.setEffect(null);
                         endTurnLabel.setText("END TURN");
                     });
@@ -308,7 +309,6 @@ public class HandBox implements PropertyChangeListener {
         if (player != null) {
             selectedCard = -1;
             updateCards();
-            updateNext();
         }
     }
 
@@ -316,7 +316,10 @@ public class HandBox implements PropertyChangeListener {
         if (selectedCard != -1) {
             String cardID = player.getHand().get(selectedCard).getCardId();
             battleScene.getController().replaceCard(cardID);
+            int currentTimesReplacedThisTurn = GameController.getInstance().getAvailableActions().getNumTimesReplacedThisTurn();
+            GameController.getInstance().getAvailableActions().setNumTimesReplacedThisTurn( currentTimesReplacedThisTurn++ );
             clickOnCard(selectedCard);
+            updateNext();
         }
     }
 }
