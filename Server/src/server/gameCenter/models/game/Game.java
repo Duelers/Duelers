@@ -6,7 +6,7 @@ import server.clientPortal.models.message.CardPosition;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
 import shared.models.card.AttackType;
-import server.dataCenter.models.card.Card;
+import shared.models.card.Card;
 import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import shared.models.card.spell.Spell;

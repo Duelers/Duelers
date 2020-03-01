@@ -9,7 +9,6 @@ import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.AccountType;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.account.TempAccount;
-import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
 import server.dataCenter.models.db.OldDataBase;
@@ -17,6 +16,7 @@ import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
+import shared.models.card.Card;
 
 import java.io.*;
 import java.util.*;

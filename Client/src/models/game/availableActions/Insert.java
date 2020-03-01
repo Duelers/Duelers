@@ -1,7 +1,7 @@
 package models.game.availableActions;
 
 
-import models.comperessedData.CompressedCard;
+import shared.models.card.CompressedCard;
 
 public class Insert {
     private CompressedCard card;

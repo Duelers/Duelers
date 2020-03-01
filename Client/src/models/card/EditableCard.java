@@ -1,6 +1,7 @@
 package models.card;
 
-import models.ICard;
+import shared.models.card.Card;
+import shared.models.card.ICard;
 import models.exceptions.InputException;
 import shared.models.card.AttackType;
 import shared.models.card.CardType;

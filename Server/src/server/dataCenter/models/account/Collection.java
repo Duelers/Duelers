@@ -2,11 +2,11 @@ package server.dataCenter.models.account;
 
 import server.GameServer;
 import server.dataCenter.DataCenter;
-import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.card.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -2,10 +2,10 @@ package server.clientPortal.models.message;
 
 import server.GameServer;
 import server.clientPortal.models.JsonConverter;
-import server.clientPortal.models.comperessedData.CompressedCard;
+import shared.models.card.Card;
+import shared.models.card.CompressedCard;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.Collection;
-import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.ExportedDeck;
 import shared.models.card.spell.AvailabilityType;
 import server.gameCenter.models.game.*;

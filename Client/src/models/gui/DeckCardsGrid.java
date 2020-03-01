@@ -5,7 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import models.ICard;
+import shared.models.card.ICard;
 import models.card.Deck;
 
 import java.io.FileNotFoundException;
