@@ -1,8 +1,4 @@
-package shared.models.card;
-
-import shared.models.card.spell.AvailabilityType;
-import shared.models.card.spell.Target;
-
+package shared.models.card.spell;
 
 public class CompressedSpell {
     private String spellId;

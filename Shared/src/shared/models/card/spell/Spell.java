@@ -1,7 +1,5 @@
 package shared.models.card.spell;
 
-import shared.models.card.CompressedSpell;
-
 public class Spell {
     private String spellId;
     private SpellAction action;

@@ -2,7 +2,7 @@ package server.clientPortal.models.comperessedData;
 
 import shared.models.card.AttackType;
 import shared.models.card.CardType;
-import shared.models.card.CompressedSpell;
+import shared.models.card.spell.CompressedSpell;
 import shared.models.card.spell.Spell;
 
 import java.util.List;
