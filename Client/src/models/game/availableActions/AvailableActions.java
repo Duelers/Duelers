@@ -5,6 +5,7 @@ import javafx.util.Pair;
 import models.comperessedData.*;
 import shared.models.card.AttackType;
 import shared.models.card.Card;
+import shared.models.game.Troop;
 import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
@@ -37,11 +38,11 @@ public class AvailableActions {
     }
 
     private void calculateAttacks(CompressedPlayer ownPlayer, CompressedPlayer otherPlayer) {
-        for (CompressedTroop myTroop : ownPlayer.getTroops()) {
+        for (Troop myTroop : ownPlayer.getTroops()) {
             if (!myTroop.canAttack()) continue;
 
-            ArrayList<CompressedTroop> targets = new ArrayList<>();
-            for (CompressedTroop enemyTroop : otherPlayer.getTroops()) {
+            ArrayList<Troop> targets = new ArrayList<>();
+            for (Troop enemyTroop : otherPlayer.getTroops()) {
                 if (enemyTroop.isNoAttackFromWeakerOnes() && myTroop.getCurrentAp() < enemyTroop.getCurrentAp())
                     continue;
 
@@ -59,7 +60,7 @@ public class AvailableActions {
     public void calculateMoves(CompressedGame game) {
         CompressedPlayer ownPlayer = game.getCurrentTurnPlayer();
         moves.clear();
-        for (CompressedTroop troop : ownPlayer.getTroops()) {
+        for (Troop troop : ownPlayer.getTroops()) {
             ArrayList<Cell> troopMoves = calculateAvailableMovesForTroop(game, troop);
 
             if (troopMoves.size() > 0) {
@@ -69,7 +70,7 @@ public class AvailableActions {
     }
 
 
-    private ArrayList<Cell> calculateAvailableMovesForTroop(CompressedGame game, CompressedTroop troop) {
+    private ArrayList<Cell> calculateAvailableMovesForTroop(CompressedGame game, Troop troop) {
         Cell troopCell = troop.getCell();
 
         HashSet<Cell> walkableCells = new HashSet<>(); //Cells which the unit can move to.
@@ -99,7 +100,7 @@ public class AvailableActions {
             if (remainingMovement > 0) {
                 ArrayList<Cell> manhattanAdjacentCells = game.getGameMap().getManhattanAdjacentCells(currentCell);
                 for (Cell adjacentCell : manhattanAdjacentCells) {
-                    CompressedTroop troopInSpace = game.getGameMap().getTroop(adjacentCell);
+                    Troop troopInSpace = game.getGameMap().getTroop(adjacentCell);
 
                     boolean blockedByAnything = troopInSpace != null;
                     if (!blockedByAnything) {
@@ -127,7 +128,7 @@ public class AvailableActions {
         List<Cell> neighbourCells = game.getGameMap().getNearbyCells(troopCell);
         for (Cell nCell : neighbourCells) {
             if (game.getGameMap().getTroop(nCell) != null) {
-                CompressedTroop nearbyUnit = game.getGameMap().getTroop(nCell);
+                Troop nearbyUnit = game.getGameMap().getTroop(nCell);
                 // is provoked?
                 if (nearbyUnit.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
                     isProvoked = true;
@@ -146,7 +147,7 @@ public class AvailableActions {
         setNumTimesReplacedThisTurn(0);
     }
 
-    private boolean isTargetInRange(CompressedTroop myTroop, CompressedTroop enemyTroop) {
+    private boolean isTargetInRange(Troop myTroop, Troop enemyTroop) {
         if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
             return myTroop.getCell().isNextTo(enemyTroop.getCell());
         } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {
@@ -169,7 +170,7 @@ public class AvailableActions {
         return Collections.unmodifiableList(moves);
     }
 
-    private List<Cell> getMovePositions(CompressedTroop troop) {
+    private List<Cell> getMovePositions(Troop troop) {
         for (Move move : moves) {
             if (move.getTroop().equals(troop)) {
                 return move.getTargets();
@@ -178,10 +179,10 @@ public class AvailableActions {
         return Collections.emptyList();
     }
 
-    private List<Cell> getAttackPositions(CompressedTroop troop) {
+    private List<Cell> getAttackPositions(Troop troop) {
         for (Attack attack : attacks) {
             if (attack.getAttackerTroop().equals(troop)) {
-                return attack.getDefenders().stream().map(CompressedTroop::getCell).collect(Collectors.toList());
+                return attack.getDefenders().stream().map(Troop::getCell).collect(Collectors.toList());
             }
         }
         return Collections.emptyList();
@@ -191,7 +192,7 @@ public class AvailableActions {
         return handInserts.stream().map(Insert::getCard).collect(Collectors.toList()).contains(card);
     }
 
-    public boolean canMove(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int column) {
+    public boolean canMove(CompressedGameMap gameMap, CompressedPlayer player, Troop troop, int row, int column) {
         if (isTroopProvoked(gameMap, player, troop)) {
             return false;
         }
@@ -203,7 +204,7 @@ public class AvailableActions {
         return baseMovement.contains(new Cell(row, column));
     }
 
-    public boolean canAttack(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop, int row, int col) {
+    public boolean canAttack(CompressedGameMap gameMap, CompressedPlayer player, Troop troop, int row, int col) {
 
         if (troop.getCurrentAp() <= 0) {
             return false;
@@ -217,13 +218,13 @@ public class AvailableActions {
     }
 
 
-    private boolean isTroopProvoked(CompressedGameMap gameMap, CompressedPlayer player, CompressedTroop troop) {
+    private boolean isTroopProvoked(CompressedGameMap gameMap, CompressedPlayer player, Troop troop) {
         Cell currentPosition = troop.getCell();
         ArrayList<Cell> neighbourCells = gameMap.getNearbyCells(currentPosition);
 
         for (Cell cell : neighbourCells) {
             if (gameMap.getTroop(cell) != null) {
-                CompressedTroop nearbyUnit = gameMap.getTroop(cell);
+                Troop nearbyUnit = gameMap.getTroop(cell);
                 if (nearbyUnit.getPlayerNumber() != player.getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
                     return true;
                 }
@@ -249,7 +250,7 @@ public class AvailableActions {
             return true;
         }
 
-        for (CompressedTroop troop : player.getTroops()) {
+        for (Troop troop : player.getTroops()) {
             Cell allyPosition = troop.getCell();
 
             boolean checkRow = Math.abs(cell.getRow() - allyPosition.getRow()) <= 1;

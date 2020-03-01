@@ -2,6 +2,7 @@ package models.comperessedData;
 
 import shared.models.card.CardType;
 import shared.models.card.Card;
+import shared.models.game.Troop;
 import shared.models.game.map.CellEffect;
 import shared.models.game.GameType;
 
@@ -47,7 +48,7 @@ public class CompressedGame {
     public void moveCardToGraveYard(Card card) {
         CompressedPlayer player;
         if (card.getType() == CardType.HERO || card.getType() == CardType.MINION) {
-            CompressedTroop troop = gameMap.getTroop(card.getCardId());
+            Troop troop = gameMap.getTroop(card.getCardId());
             if (troop == null) {
                 System.out.println("Client Game Error!!");
             } else {
@@ -63,7 +64,7 @@ public class CompressedGame {
         }
     }
 
-    public void troopUpdate(CompressedTroop troop) {
+    public void troopUpdate(Troop troop) {
         CompressedPlayer player;
         player = getPlayer(troop.getPlayerNumber());
         if (player.searchGraveyard(troop.getCard().getCardId()) == null) {

@@ -2,13 +2,13 @@ package controller;
 
 import javafx.application.Platform;
 import models.comperessedData.CompressedGame;
-import models.comperessedData.CompressedTroop;
 import models.exceptions.InputException;
 import models.game.GameActions;
 import models.game.availableActions.AvailableActions;
 import shared.models.card.AttackType;
 import shared.models.card.CardType;
 import shared.models.card.Card;
+import shared.models.game.Troop;
 import shared.models.game.map.Cell;
 import models.message.*;
 import view.BattleView.BattleScene;
@@ -72,7 +72,7 @@ public class GameController implements GameActions {
     }
 
     @Override
-    public void attack(CompressedTroop attackerTroop, CompressedTroop defenderTroop) {
+    public void attack(Troop attackerTroop, Troop defenderTroop) {
         try {
             if (!attackerTroop.canAttack() || attackerTroop.getCurrentAp() == 0)
                 throw new InputException("Error: troop cannot attack and/or current 'ap' is 0.");
@@ -102,7 +102,7 @@ public class GameController implements GameActions {
 
 
     @Override
-    public void move(CompressedTroop selectedTroop, int row, int column) {
+    public void move(Troop selectedTroop, int row, int column) {
         try {
             Cell target = new Cell(row, column);
             if (!selectedTroop.canMove()) {
@@ -113,8 +113,8 @@ public class GameController implements GameActions {
                 throw new InputException("cell is not empty");
             }
 
-            if (!selectedTroop.getCard().getDescription().contains("Flying")){
-                if (selectedTroop.getCell().manhattanDistance(new Cell(row, column)) > 2){
+            if (!selectedTroop.getCard().getDescription().contains("Flying")) {
+                if (selectedTroop.getCell().manhattanDistance(new Cell(row, column)) > 2) {
                     throw new InputException("too far to go");
                 }
             }

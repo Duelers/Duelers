@@ -102,12 +102,12 @@ public class Client {
         switch (message.getMessageType()) {
             case TROOP_UPDATE:
 
-                int currentAttack = message.getTroopUpdateMessage().getCompressedTroop().getCurrentAp();
-                int currentHealth = message.getTroopUpdateMessage().getCompressedTroop().getCurrentHp();
+                int currentAttack = message.getTroopUpdateMessage().getTroop().getCurrentAp();
+                int currentHealth = message.getTroopUpdateMessage().getTroop().getCurrentHp();
 
-                return header + message.getTroopUpdateMessage().getCompressedTroop().getCard().getCardId()
+                return header + message.getTroopUpdateMessage().getTroop().getCard().getCardId()
                         + String.format(" is %d/%d and at location: ", currentAttack, currentHealth)
-                        + message.getTroopUpdateMessage().getCompressedTroop().getCell();
+                        + message.getTroopUpdateMessage().getTroop().getCell();
 
             case CARD_POSITION:
                 return header + message.getCardPositionMessage().getCard().getCardId() + " has been moved to: " + message.getCardPositionMessage().getCardPosition();
@@ -178,7 +178,7 @@ public class Client {
                 }
                 break;
             case TROOP_UPDATE:
-                GameController.getInstance().getCurrentGame().troopUpdate(message.getTroopUpdateMessage().getCompressedTroop());
+                GameController.getInstance().getCurrentGame().troopUpdate(message.getTroopUpdateMessage().getTroop());
                 GameController.getInstance().calculateAvailableActions();
                 break;
             case SET_NEW_NEXT_CARD:

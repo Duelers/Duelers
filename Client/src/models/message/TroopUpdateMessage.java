@@ -1,12 +1,12 @@
 package models.message;
 
 
-import models.comperessedData.CompressedTroop;
+import shared.models.game.Troop;
 
 public class TroopUpdateMessage {
-    private CompressedTroop compressedTroop;
+    private Troop troop;
 
-    public CompressedTroop getCompressedTroop() {
-        return compressedTroop;
+    public Troop getTroop() {
+        return troop;
     }
 }

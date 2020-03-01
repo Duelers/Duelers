@@ -1,6 +1,6 @@
 package server.gameCenter.models.game.availableActions;
 
-import server.gameCenter.models.game.Troop;
+import shared.models.game.Troop;
 import shared.models.game.map.Cell;
 
 import java.util.Collections;

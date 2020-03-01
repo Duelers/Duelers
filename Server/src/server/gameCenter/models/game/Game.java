@@ -5,12 +5,16 @@ import server.clientPortal.models.comperessedData.CompressedGame;
 import server.clientPortal.models.message.CardPosition;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
+
 import shared.models.card.AttackType;
 import shared.models.card.Card;
 import shared.models.card.CardType;
+
 import server.dataCenter.models.card.Deck;
+
 import shared.models.card.spell.Spell;
 import shared.models.card.spell.SpellAction;
+
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import server.gameCenter.GameCenter;
@@ -18,9 +22,13 @@ import server.gameCenter.models.game.availableActions.Attack;
 import server.gameCenter.models.game.availableActions.AvailableActions;
 import server.gameCenter.models.game.availableActions.Insert;
 import server.gameCenter.models.game.availableActions.Move;
+
 import shared.models.game.GameType;
+import shared.models.game.Troop;
 import shared.models.game.map.Cell;
+
 import server.gameCenter.models.map.GameMap;
+
 import shared.models.game.map.CellEffect;
 
 import java.util.concurrent.ScheduledExecutorService;
@@ -191,7 +199,7 @@ public abstract class Game {
     public void replaceCard(String cardID) throws LogicException {
         if (getCurrentTurnPlayer().getCanReplaceCard()) {
             Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
-            if(removedCard == null){
+            if (removedCard == null) {
                 return;
             }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
@@ -264,7 +272,7 @@ public abstract class Game {
 
                     // Get a random square, force it to be within index bounds.
                     int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), gameMap.getNumRows() - 1));
-                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getNumColumns() -1));
+                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getNumColumns() - 1));
 
                     Cell c = new Cell(x2, y2);
 
@@ -383,7 +391,7 @@ public abstract class Game {
                 GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.MAP);
                 Troop troop = new Troop(card, getCurrentTurnPlayer().getPlayerNumber());
 
-                if (troop.getCard().getDescription().contains("Rush")){
+                if (troop.getCard().getDescription().contains("Rush")) {
                     troop.setCanAttack(true);
                     troop.setCanMove(true);
                 }
@@ -481,8 +489,8 @@ public abstract class Game {
 
         // TODO: Check if position is under provoke of enemy minion. If yes, raise exception
 
-        if (!troop.getCard().getDescription().contains("Flying")){
-            if (troop.getCell().manhattanDistance(cell) > 2){
+        if (!troop.getCard().getDescription().contains("Flying")) {
+            if (troop.getCell().manhattanDistance(cell) > 2) {
                 throw new ClientException("too far to go");
             }
         }

@@ -1,26 +1,26 @@
 package models.game.availableActions;
 
 
-import models.comperessedData.CompressedTroop;
+import shared.models.game.Troop;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Attack {
-    private CompressedTroop attackerTroop;
-    private List<CompressedTroop> defenders;
+    private Troop attackerTroop;
+    private List<Troop> defenders;
 
-    Attack(CompressedTroop attackerTroop, ArrayList<CompressedTroop> defenders) {
+    Attack(Troop attackerTroop, ArrayList<Troop> defenders) {
         this.attackerTroop = attackerTroop;
         this.defenders = defenders;
     }
 
-    public CompressedTroop getAttackerTroop() {
+    public Troop getAttackerTroop() {
         return attackerTroop;
     }
 
-    public List<CompressedTroop> getDefenders() {
+    public List<Troop> getDefenders() {
         return Collections.unmodifiableList(defenders);
     }
 }

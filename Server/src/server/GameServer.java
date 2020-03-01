@@ -15,6 +15,7 @@ import server.exceptions.LogicException;
 import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
 import server.gameCenter.models.game.*;
+import shared.models.game.Troop;
 import shared.models.game.map.Cell;
 import shared.models.game.map.CellEffect;
 
@@ -22,8 +23,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
-
-import org.glassfish.tyrus.server.Server;
 
 public class GameServer {
     private static GameServer server;

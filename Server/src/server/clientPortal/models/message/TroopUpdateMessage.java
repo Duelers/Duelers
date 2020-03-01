@@ -1,12 +1,11 @@
 package server.clientPortal.models.message;
 
-import server.clientPortal.models.comperessedData.CompressedTroop;
-import server.gameCenter.models.game.Troop;
+import shared.models.game.Troop;
 
 class TroopUpdateMessage {
-    private CompressedTroop compressedTroop;
+    private Troop troop;
 
     TroopUpdateMessage(Troop troop) {
-        this.compressedTroop = troop.toCompressedTroop();
+        this.troop = troop;
     }
 }
