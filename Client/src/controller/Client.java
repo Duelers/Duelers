@@ -264,6 +264,7 @@ public class Client {
 
     void close() {
         ws.disconnect();
+        MainMenuController.getInstance().logout();
         System.exit(0);
     }
 
