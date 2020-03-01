@@ -2,7 +2,7 @@ package server.gameCenter.models.game;
 
 import server.clientPortal.models.comperessedData.CompressedPlayer;
 import server.dataCenter.models.account.MatchHistory;
-import server.dataCenter.models.card.Card;
+import shared.models.card.Card;
 import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;

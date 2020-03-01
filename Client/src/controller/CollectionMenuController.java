@@ -2,7 +2,7 @@ package controller;
 
 import Config.Config;
 import models.account.Collection;
-import models.card.Card;
+import shared.models.card.Card;
 import models.card.Deck;
 import models.card.ExportedDeck;
 import models.message.Message;

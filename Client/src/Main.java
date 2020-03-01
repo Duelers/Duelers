@@ -4,7 +4,7 @@ import controller.GraphicalUserInterface;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import models.languageLocalisation.LanguageData;
-import server.Server;
+import server.GameServer;
 
 
 public class Main extends Application {
@@ -16,8 +16,8 @@ public class Main extends Application {
         String hostServer = Config.getInstance().getProperty("HOST_SERVER");
         boolean shouldHostServer = Boolean.parseBoolean(hostServer);
         if(shouldHostServer) {
-            System.out.println("Launching Server...");
-            Server.start();
+            System.out.println("Launching GameServer...");
+            GameServer.start();
         }
 
         Client.getInstance().makeConnection();

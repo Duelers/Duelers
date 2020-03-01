@@ -2,7 +2,7 @@ package server.dataCenter.models.db;
 
 import server.dataCenter.DataBase;
 import server.dataCenter.models.account.Collection;
-import server.dataCenter.models.card.Card;
+import shared.models.card.Card;
 
 public class OldDataBase implements DataBase {
     private Collection originalCards = new Collection();

@@ -1,7 +1,4 @@
-package models;
-
-
-import shared.models.card.CardType;
+package shared.models.card;
 
 public interface ICard {
     CardType getType();

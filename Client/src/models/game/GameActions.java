@@ -1,8 +1,8 @@
 package models.game;
 
-import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedTroop;
 import models.message.OnlineGame;
+import shared.models.card.CompressedCard;
 
 
 public interface GameActions {

@@ -1,5 +1,7 @@
 package server.dataCenter.models.card;
 
+import shared.models.card.Card;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;

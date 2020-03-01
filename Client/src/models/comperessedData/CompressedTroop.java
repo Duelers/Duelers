@@ -1,5 +1,6 @@
 package models.comperessedData;
 
+import shared.models.card.CompressedCard;
 import shared.models.game.map.Cell;
 
 public class CompressedTroop {
