@@ -1,7 +1,7 @@
 package models.card;
 
 
-import models.ICard;
+import shared.models.card.ICard;
 import shared.models.card.AttackType;
 import shared.models.card.CardType;
 import shared.models.card.spell.Spell;

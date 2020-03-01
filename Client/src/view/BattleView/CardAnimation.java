@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import models.ICard;
+import shared.models.card.ICard;
 import models.gui.ImageLoader;
 
 import java.io.FileNotFoundException;
