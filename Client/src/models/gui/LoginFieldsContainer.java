@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import models.languageLocalisation.LanguageData;
 
 import static controller.SoundEffectPlayer.SoundName.select;
 import static models.gui.UIConstants.SCALE;
@@ -22,7 +23,9 @@ class LoginFieldsContainer extends VBox {
 
     LoginFieldsContainer() {
         super(UIConstants.DEFAULT_SPACING * 2);
-        usernameField = new NormalField("username");
+
+        String username = LanguageData.getInstance().getValue(new String[]{"LOGIN_MENU", "USERNAME"});
+        usernameField = new NormalField(username);
         passwordField = new NormalPasswordField();
 
         Region space = new Region();
@@ -38,11 +41,14 @@ class LoginFieldsContainer extends VBox {
     }
 
     private HBox makeButtonsBox() {
-        OrangeButton loginButton = new OrangeButton("LOG IN",
+        String login = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "LOGIN"});
+        OrangeButton loginButton = new OrangeButton(login,
                 event -> LoginMenuController.getInstance().login(usernameField.getText(), passwordField.getText()),
                 select
         );
-        OrangeButton registerButton = new OrangeButton("REGISTER",
+
+        String register = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "REGISTER"});
+        OrangeButton registerButton = new OrangeButton(register,
                 event -> LoginMenuController.getInstance().register(usernameField.getText(), passwordField.getText()),
                 select
         );

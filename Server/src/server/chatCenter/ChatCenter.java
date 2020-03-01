@@ -1,6 +1,6 @@
 package server.chatCenter;
 
-import server.Server;
+import server.GameServer;
 import server.clientPortal.models.message.Message;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
@@ -49,9 +49,9 @@ public class ChatCenter {
 
     private void sendMessage(String receiverClientName, String senderUsername, String receiverUsername, String text) {
         if (receiverClientName == null) {
-            Server.serverPrint("Chat Receiver Error!");
+            GameServer.serverPrint("Chat Receiver Error!");
         }
         Message message = Message.makeChatMessage(receiverClientName, senderUsername, receiverUsername, text);
-        Server.addToSendingMessages(message);
+        GameServer.addToSendingMessages(message);
     }
 }
