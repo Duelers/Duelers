@@ -317,7 +317,7 @@ public class GameCenter extends Thread {//synchronize
 
     public void endTurn(Message message) throws LogicException {
         Game game = getGame(message.getSender());
-        game.changeTurn(DataCenter.getInstance().getClients().get(message.getSender()).getUsername());
+        game.changeTurn(DataCenter.getInstance().getClients().get(message.getSender()).getUsername(), false);
     }
 
     public void checkGameFinish(Game game) {
