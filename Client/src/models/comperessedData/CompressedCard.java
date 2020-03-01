@@ -3,7 +3,7 @@ package models.comperessedData;
 import models.ICard;
 import shared.models.card.AttackType;
 import shared.models.card.CardType;
-import shared.models.card.CompressedSpell;
+import shared.models.card.spell.Spell;
 
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ public class CompressedCard implements ICard {
     private String cardId;
     private String spriteName;
     private CardType type;
-    private CompressedSpell spell;//just for hero
+    private Spell spell;//just for hero
     private int defaultAp;
     private int defaultHp;
     private int manaCost;
@@ -21,7 +21,7 @@ public class CompressedCard implements ICard {
     private int range;
 
     //just for testing BattleView
-    public CompressedCard(String spriteName, String description, String cardId, CardType type, CompressedSpell spell,
+    public CompressedCard(String spriteName, String description, String cardId, CardType type, Spell spell,
                           int defaultAp, int defaultHp, int manaCost, AttackType attackType, int range) {
         name = "...";
         this.spriteName = spriteName;
@@ -66,7 +66,7 @@ public class CompressedCard implements ICard {
         return type;
     }
 
-    public CompressedSpell getSpell() {
+    public Spell getSpell() {
         return spell;
     }
 

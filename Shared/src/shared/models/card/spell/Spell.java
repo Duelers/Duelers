@@ -1,7 +1,5 @@
 package shared.models.card.spell;
 
-import shared.models.card.CompressedSpell;
-
 public class Spell {
     private String spellId;
     private SpellAction action;
@@ -31,10 +29,6 @@ public class Spell {
         this.coolDown = referenceSpell.coolDown;
         this.manaCost = referenceSpell.manaCost;
         this.lastTurnUsed = referenceSpell.lastTurnUsed;
-    }
-
-    public CompressedSpell toCompressedSpell() {
-        return new CompressedSpell(spellId, target, availabilityType, coolDown, manaCost, lastTurnUsed);
     }
 
     public String getSpellId() {
