@@ -27,6 +27,7 @@ public class Message {
     private ExceptionMessage exceptionMessage;
     private OpponentInfoMessage opponentInfoMessage;
     private GameFinishMessage gameFinishMessage;
+    private ClientIDMessage clientIDMessage;
     private GameAnimations gameAnimations;
     private OnlineGame[] onlineGames;
     //SENDER:CLIENT
@@ -357,6 +358,10 @@ public class Message {
 
     public ChatMessage getChatMessage() {
         return chatMessage;
+    }
+
+    public ClientIDMessage getClientIDMessage() {
+        return clientIDMessage;
     }
 
     public NewGameFields getNewGameFields() {
