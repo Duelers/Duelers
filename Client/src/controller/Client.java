@@ -2,10 +2,7 @@ package controller;
 
 import Config.Config;
 import com.google.gson.Gson;
-import com.neovisionaries.ws.client.WebSocket;
-import com.neovisionaries.ws.client.WebSocketAdapter;
-import com.neovisionaries.ws.client.WebSocketException;
-import com.neovisionaries.ws.client.WebSocketFactory;
+import com.neovisionaries.ws.client.*;
 import javafx.application.Platform;
 import models.account.Account;
 import models.message.CardPosition;
@@ -46,6 +43,7 @@ public class Client {
     private void connect() throws IOException, NullPointerException {
         String serverIP = Config.getInstance().getProperty("SERVER_IP");
         String port = Config.getInstance().getProperty("PORT");
+        int connectionAttempts = 5;
 
         sendMessageThread = new Thread(() -> {
             try {
@@ -70,10 +68,22 @@ public class Client {
                 handleMessage(messageObject);
             }
         });
-        try {
-            ws.connect();
-        } catch (WebSocketException e) {
-            throw new RuntimeException(e);
+        while (true) {
+            try {
+                ws.connect();
+                break;
+            } catch (WebSocketException e) {
+                connectionAttempts -= 1;
+                if (connectionAttempts == 0) {
+                    throw new RuntimeException(e);
+                }
+                ws = ws.recreate();
+            }
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
         sendMessageThread.start();
     }
