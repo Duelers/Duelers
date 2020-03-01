@@ -34,13 +34,8 @@ public class ClientPortal extends Thread {
         Server server = new Server("localhost", portConverted, "/websockets", GameEndpoint.class);
         try {
             server.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.print("Please press a key to stop the server.");
-            reader.readLine();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        } finally {
-            server.stop();
         }
     }
 
