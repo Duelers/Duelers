@@ -177,13 +177,15 @@ public abstract class Game {
 
     public void replaceCard(String cardID) throws LogicException {
         if (getCurrentTurnPlayer().getCanReplaceCard()) {
-            System.out.println("server allows the replace ");
             Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
+            if(removedCard == null){
+                return;
+            }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             if (getCurrentTurnPlayer().addNextCardToHand()) {
+                Card nextCard = getCurrentTurnPlayer().getNextCard();
                 int numTimesReplacedThisTurn = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(numTimesReplacedThisTurn + 1);
-                Card nextCard = getCurrentTurnPlayer().getNextCard();
                 GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
