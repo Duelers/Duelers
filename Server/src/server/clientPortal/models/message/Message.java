@@ -2,7 +2,7 @@ package server.clientPortal.models.message;
 
 import server.Server;
 import server.clientPortal.models.JsonConverter;
-import server.clientPortal.models.comperessedData.CompressedCard;
+import shared.models.card.CompressedCard;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.Card;

@@ -2,7 +2,7 @@ package server;
 
 import server.chatCenter.ChatCenter;
 import server.clientPortal.ClientPortal;
-import server.clientPortal.models.comperessedData.CompressedCard;
+import shared.models.card.CompressedCard;
 import server.clientPortal.models.message.CardPosition;
 import server.clientPortal.models.message.Message;
 import server.clientPortal.models.message.OnlineGame;

@@ -41,7 +41,7 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
     DefaultLabel countLabel;
     int oldCount;
 
-    public CardPane(ICard card, boolean showPrice, boolean showCount, Deck deck) throws FileNotFoundException {
+    public CardPane(ICard card, boolean showPrice, boolean showCount, Deck deck) {
         this.card = card;
         this.deck = deck;
         setPrefSize(GLOW_WIDTH, GLOW_HEIGHT);

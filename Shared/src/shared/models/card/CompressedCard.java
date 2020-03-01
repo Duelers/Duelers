@@ -1,10 +1,8 @@
-package models.comperessedData;
+package shared.models.card;
 
-import shared.models.card.ICard;
-import shared.models.card.AttackType;
-import shared.models.card.CardType;
 import shared.models.card.spell.Spell;
 
+import java.util.List;
 import java.util.Objects;
 
 public class CompressedCard implements ICard {
@@ -19,6 +17,7 @@ public class CompressedCard implements ICard {
     private int manaCost;
     private AttackType attackType;
     private int range;
+    private int remainingNumber;
 
     //just for testing BattleView
     public CompressedCard(String spriteName, String description, String cardId, CardType type, Spell spell,
@@ -35,13 +34,21 @@ public class CompressedCard implements ICard {
         this.attackType = attackType;
         this.range = range;
     }
-  
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CompressedCard)) return false;
-        CompressedCard that = (CompressedCard) o;
-        return Objects.equals(cardId, that.cardId);
+
+    public CompressedCard(String name, String description, String cardId, String spriteName, CardType type,
+                          List<Spell> spells, int defaultAp, int defaultHp, int manaCost,
+                          AttackType attackType, int range, int remainingNumber) {
+        this.name = name;
+        this.description = description;
+        this.cardId = cardId;
+        this.spriteName = spriteName;
+        this.type = type;
+        this.defaultAp = defaultAp;
+        this.defaultHp = defaultHp;
+        this.manaCost = manaCost;
+        this.attackType = attackType;
+        this.range = range;
+        this.remainingNumber = remainingNumber;
     }
 
     @Override
@@ -95,6 +102,14 @@ public class CompressedCard implements ICard {
 
     public int getRange() {
         return range;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CompressedCard)) return false;
+        CompressedCard that = (CompressedCard) o;
+        return Objects.equals(cardId, that.cardId);
     }
 
 }

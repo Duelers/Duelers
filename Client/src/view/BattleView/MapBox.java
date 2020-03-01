@@ -7,11 +7,11 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
-import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedGameMap;
 import models.comperessedData.CompressedPlayer;
 import models.comperessedData.CompressedTroop;
 import shared.models.card.CardType;
+import shared.models.card.CompressedCard;
 import shared.models.game.map.Cell;
 import models.gui.CardPane;
 
