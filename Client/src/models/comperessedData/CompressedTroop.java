@@ -1,10 +1,10 @@
 package models.comperessedData;
 
-import shared.models.card.CompressedCard;
+import shared.models.card.Card;
 import shared.models.game.map.Cell;
 
 public class CompressedTroop {
-    private CompressedCard card;
+    private Card card;
     private int currentAp;
     private int currentHp;
     private int enemyHitChanges;
@@ -29,7 +29,7 @@ public class CompressedTroop {
         this.playerNumber = troop.playerNumber;
     }
 
-    public CompressedTroop(CompressedCard card, int currentAp, int currentHp, int enemyHitChanges, Cell cell,
+    public CompressedTroop(Card card, int currentAp, int currentHp, int enemyHitChanges, Cell cell,
                            boolean canMove, boolean canAttack, boolean isDisarm, boolean noAttackFromWeakerOnes, int playerNumber) {
         this.card = card;
         this.currentAp = currentAp;
@@ -43,7 +43,7 @@ public class CompressedTroop {
         this.playerNumber = playerNumber;
     }
 
-    public CompressedCard getCard() {
+    public Card getCard() {
         return card;
     }
 

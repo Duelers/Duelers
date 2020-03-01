@@ -3,7 +3,6 @@ package server;
 import server.chatCenter.ChatCenter;
 import server.clientPortal.ClientPortal;
 import shared.models.card.Card;
-import shared.models.card.CompressedCard;
 import server.clientPortal.models.message.CardPosition;
 import server.clientPortal.models.message.Message;
 import server.clientPortal.models.message.OnlineGame;
@@ -292,7 +291,7 @@ public class GameServer {
         }
     }
 
-    public void sendNewNextCardSetMessage(Game game, CompressedCard nextCard) {
+    public void sendNewNextCardSetMessage(Game game, Card nextCard) {
         for (Account account : game.getObservers()) {
             String clientName = DataCenter.getInstance().getAccounts().get(account);
             if (clientName == null) {

@@ -99,7 +99,7 @@ public class Client {
                         + message.getTroopUpdateMessage().getCompressedTroop().getCell();
 
             case CARD_POSITION:
-                return header + message.getCardPositionMessage().getCompressedCard().getCardId() + " has been moved to: " + message.getCardPositionMessage().getCardPosition();
+                return header + message.getCardPositionMessage().getCard().getCardId() + " has been moved to: " + message.getCardPositionMessage().getCardPosition();
 
             default:
                 return null;
@@ -149,7 +149,7 @@ public class Client {
                 CardPosition cardPosition = message.getCardPositionMessage().getCardPosition();
                 switch (cardPosition) {
                     case MAP:
-                        GameController.getInstance().getCurrentGame().moveCardToMap(message.getCardPositionMessage().getCompressedCard());
+                        GameController.getInstance().getCurrentGame().moveCardToMap(message.getCardPositionMessage().getCard());
                         GameController.getInstance().calculateAvailableActions();
                         break;
                     case HAND:
@@ -157,11 +157,11 @@ public class Client {
                         GameController.getInstance().calculateAvailableActions();
                         break;
                     case NEXT:
-                        GameController.getInstance().getCurrentGame().moveCardToNext(message.getCardPositionMessage().getCompressedCard());
+                        GameController.getInstance().getCurrentGame().moveCardToNext(message.getCardPositionMessage().getCard());
                         GameController.getInstance().calculateAvailableActions();
                         break;
                     case GRAVE_YARD:
-                        GameController.getInstance().getCurrentGame().moveCardToGraveYard(message.getCardPositionMessage().getCompressedCard());
+                        GameController.getInstance().getCurrentGame().moveCardToGraveYard(message.getCardPositionMessage().getCard());
                         GameController.getInstance().calculateAvailableActions();
                         break;
                 }
@@ -171,7 +171,7 @@ public class Client {
                 GameController.getInstance().calculateAvailableActions();
                 break;
             case SET_NEW_NEXT_CARD:
-                GameController.getInstance().getCurrentGame().moveCardToNext( message.getCompressedCard() );
+                GameController.getInstance().getCurrentGame().moveCardToNext( message.getCard() );
                 break;
             case GAME_UPDATE:
                 GameUpdateMessage gameUpdateMessage = message.getGameUpdateMessage();
