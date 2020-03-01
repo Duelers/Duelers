@@ -18,7 +18,7 @@ import java.io.FileNotFoundException;
 
 import static models.gui.UIConstants.SCALE;
 
-class AbabeelLogoBox extends VBox {
+class LoginMenuLogoBox extends VBox {
     private static final String ABABEEL_URL = "Client/resources/ui/meme_logo.png";
     private static final Paint ABABEEL_TEXT_COLOR = Color.rgb(102, 166, 214);
     private static final Font FONT = Font.font("SansSerif", FontWeight.EXTRA_BOLD, 35 * SCALE);
@@ -29,10 +29,10 @@ class AbabeelLogoBox extends VBox {
     private static final double LOGO_HEIGHT = 425 * SCALE;
     private static final double BOX_SIZE = 800 * SCALE;
 
-    AbabeelLogoBox() throws FileNotFoundException {
+    LoginMenuLogoBox() throws FileNotFoundException {
         super(UIConstants.DEFAULT_SPACING * 10);
         ImageView logoView = ImageLoader.loadImage(ABABEEL_URL, LOGO_WIDTH, LOGO_HEIGHT);
-        Text text = makeAbabeelText();
+        Text text = WelcomeMessage();
 
         getChildren().addAll(logoView, text);
         setAlignment(Pos.CENTER);
@@ -41,7 +41,7 @@ class AbabeelLogoBox extends VBox {
         setMaxSize(BOX_SIZE, BOX_SIZE);
     }
 
-    private Text makeAbabeelText() {
+    private Text WelcomeMessage() {
         return new DefaultText(
                 LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "WELCOME_MESSAGE"}),
                 BOX_SIZE - UIConstants.DEFAULT_SPACING * 3,
