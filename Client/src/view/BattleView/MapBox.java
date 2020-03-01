@@ -11,7 +11,7 @@ import models.comperessedData.CompressedGameMap;
 import models.comperessedData.CompressedPlayer;
 import shared.models.card.CardType;
 import shared.models.card.Card;
-import shared.models.card.CompressedTroop;
+import shared.models.game.Troop;
 import shared.models.game.map.Cell;
 import models.gui.CardPane;
 
@@ -29,8 +29,8 @@ public class MapBox implements PropertyChangeListener {
     private final Polygon[][] cells = new Polygon[5][9];
     private final double[][] cellsX = new double[5][9];
     private final double[][] cellsY = new double[5][9];
-    private final HashMap<CompressedTroop, TroopAnimation> troopAnimationHashMap = new HashMap<>();
-    private CompressedTroop selectedTroop = null;
+    private final HashMap<Troop, TroopAnimation> troopAnimationHashMap = new HashMap<>();
+    private Troop selectedTroop = null;
     private boolean spellSelected = false;
     private CardPane cardPane = null;
     private SelectionType selectionType;
@@ -44,7 +44,7 @@ public class MapBox implements PropertyChangeListener {
         mapGroup.setLayoutX(Constants.MAP_X);
         makePolygons();
         resetSelection();
-        for (CompressedTroop troop : gameMap.getTroops()) {
+        for (Troop troop : gameMap.getTroops()) {
             updateTroop(null, troop);
         }
         gameMap.addPropertyChangeListener(this);
@@ -89,7 +89,7 @@ public class MapBox implements PropertyChangeListener {
         }
     }
 
-    private void updateTroop(CompressedTroop oldTroop, CompressedTroop newTroop) {
+    private void updateTroop(Troop oldTroop, Troop newTroop) {
         final TroopAnimation animation;
         if (newTroop == null) {
             animation = troopAnimationHashMap.get(oldTroop);
@@ -134,7 +134,7 @@ public class MapBox implements PropertyChangeListener {
 
     public void propertyChange(PropertyChangeEvent evt) {
         if (evt.getPropertyName().equals("troop")) {
-            Platform.runLater(() -> updateTroop((CompressedTroop) evt.getOldValue(), (CompressedTroop) evt.getNewValue()));
+            Platform.runLater(() -> updateTroop((Troop) evt.getOldValue(), (Troop) evt.getNewValue()));
         }
         if (evt.getPropertyName().equals("cellEffect")) {
             Platform.runLater(this::updateCellEffects);
@@ -156,7 +156,7 @@ public class MapBox implements PropertyChangeListener {
             mapGroup.getChildren().remove(cardPane);
             cardPane = null;
         }
-        CompressedTroop troop = getTroop(j, i);
+        Troop troop = getTroop(j, i);
         if (troop == null)
             return;
         TroopAnimation animation = troopAnimationHashMap.get(troop);
@@ -168,7 +168,7 @@ public class MapBox implements PropertyChangeListener {
     }
 
     private void hoverCell(int row, int column) {
-        CompressedTroop troop = getTroop(row, column);
+        Troop troop = getTroop(row, column);
         if (troop != null) {
             TroopAnimation animation = troopAnimationHashMap.get(troop);
             animation.select();
@@ -196,7 +196,7 @@ public class MapBox implements PropertyChangeListener {
             return;
         }
         CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
-        CompressedTroop currentTroop = getTroop(row, column);
+        Troop currentTroop = getTroop(row, column);
         if (selectionType == SelectionType.INSERTION) {
             if (GameController.getInstance().getAvailableActions().canInsertCard(battleScene.getHandBox().getSelectedCard())) {
 
@@ -262,7 +262,7 @@ public class MapBox implements PropertyChangeListener {
                     cells[row][column].setFill(Constants.defaultColor);
                     continue;
                 }
-                CompressedTroop currentTroop = getTroop(row, column);
+                Troop currentTroop = getTroop(row, column);
                 if (selectionType == SelectionType.INSERTION) {
                     if (GameController.getInstance().getAvailableActions().canInsertCard(
                             battleScene.getHandBox().getSelectedCard())) {
@@ -344,15 +344,15 @@ public class MapBox implements PropertyChangeListener {
         selectionType = SelectionType.NORMAL;
     }
 
-    private CompressedTroop getTroop(int j, int i) {
-        for (CompressedTroop troop : troopAnimationHashMap.keySet()) {
+    private Troop getTroop(int j, int i) {
+        for (Troop troop : troopAnimationHashMap.keySet()) {
             if (troop.getCell().getRow() == j && troop.getCell().getColumn() == i)
                 return troop;
         }
         return null;
     }
 
-    CompressedTroop getSelectedTroop() {
+    Troop getSelectedTroop() {
         return selectedTroop;
     }
 
@@ -371,8 +371,8 @@ public class MapBox implements PropertyChangeListener {
     void showAttack(String cardId, String defender) {
         if (cardId == null || defender == null)
             System.out.println("Error0 MapBox");
-        CompressedTroop troop = gameMap.getTroop(cardId);
-        CompressedTroop defenderTroop = gameMap.getTroop(defender);
+        Troop troop = gameMap.getTroop(cardId);
+        Troop defenderTroop = gameMap.getTroop(defender);
         if (troop == null || defenderTroop == null)
             System.out.println("Error1 MapBox");
         else {
@@ -385,8 +385,8 @@ public class MapBox implements PropertyChangeListener {
     }
 
     void showDefend(String defender, String attacker) {
-        CompressedTroop troop = gameMap.getTroop(defender);
-        CompressedTroop attackerTroop = gameMap.getTroop(attacker);
+        Troop troop = gameMap.getTroop(defender);
+        Troop attackerTroop = gameMap.getTroop(attacker);
         if (troop == null || attackerTroop == null)
             System.out.println("Error3 MapBox");
         else {

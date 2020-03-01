@@ -1,6 +1,6 @@
 package models.comperessedData;
 
-import shared.models.card.CompressedTroop;
+import shared.models.game.Troop;
 import shared.models.game.map.CellEffect;
 import shared.models.game.map.Cell;
 
@@ -13,12 +13,12 @@ import java.util.List;
 public class CompressedGameMap {
     private static final int ROW_NUMBER = 5, COLUMN_NUMBER = 9;
     private final Cell[][] cells;
-    private final ArrayList<CompressedTroop> troops;
+    private final ArrayList<Troop> troops;
     private CellEffect[] cellEffects;
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     //just for testing BattleView
-    public CompressedGameMap(Cell[][] cells, ArrayList<CompressedTroop> troops) {
+    public CompressedGameMap(Cell[][] cells, ArrayList<Troop> troops) {
         this.cells = cells;
         this.troops = troops;
     }
@@ -92,12 +92,12 @@ public class CompressedGameMap {
         return cells;
     }
 
-    public List<CompressedTroop> getTroops() {
+    public List<Troop> getTroops() {
         return Collections.unmodifiableList(troops);
     }
 
-    public CompressedTroop searchTroop(String cardID) {
-        for (CompressedTroop troop : troops) {
+    public Troop searchTroop(String cardID) {
+        for (Troop troop : troops) {
             if (troop.getCard().getCardId().equalsIgnoreCase(cardID)) {
                 return troop;
             }
@@ -105,17 +105,17 @@ public class CompressedGameMap {
         return null;
     }
 
-    public void addTroop(CompressedTroop troop) {
+    public void addTroop(Troop troop) {
         troops.add(troop);
     }
 
-    public List<CompressedTroop> getPlayerTroop(int playerNumber) {
-        ArrayList<CompressedTroop> compressedTroops = new ArrayList<>();
-        for (CompressedTroop troop : troops) {
+    public List<Troop> getPlayerTroop(int playerNumber) {
+        ArrayList<Troop> troops = new ArrayList<>();
+        for (Troop troop : this.troops) {
             if (troop.getPlayerNumber() == playerNumber)
-                compressedTroops.add(troop);
+                troops.add(troop);
         }
-        return compressedTroops;
+        return troops;
     }
 
     public Cell getCell(int row, int column) {
@@ -125,8 +125,8 @@ public class CompressedGameMap {
         return null;
     }
 
-    public CompressedTroop getTroop(Cell cell) {
-        for (CompressedTroop troop : troops) {
+    public Troop getTroop(Cell cell) {
+        for (Troop troop : troops) {
             if (troop.getCell().equals(cell)) {
                 return troop;
             }
@@ -141,7 +141,7 @@ public class CompressedGameMap {
         support.firePropertyChange("cellEffect", old, cellEffects);
     }
 
-    public void updateTroop(CompressedTroop troop) {
+    public void updateTroop(Troop troop) {
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }
@@ -155,7 +155,7 @@ public class CompressedGameMap {
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }
-        for (CompressedTroop troop : troops) {
+        for (Troop troop : troops) {
             if (troop.getCard().getCardId().equalsIgnoreCase(cardId)) {
                 support.firePropertyChange("troop", troop, null);
             }
@@ -164,11 +164,11 @@ public class CompressedGameMap {
     }
 
     private void removeTroop(String cardId) {
-        troops.removeIf(compressedTroop -> compressedTroop.getCard().getCardId().equalsIgnoreCase(cardId));
+        troops.removeIf(troop -> troop.getCard().getCardId().equalsIgnoreCase(cardId));
     }
 
-    public CompressedTroop getTroop(String cardId) {
-        for (CompressedTroop troop : troops) {
+    public Troop getTroop(String cardId) {
+        for (Troop troop : troops) {
             if (troop.getCard().getCardId().equalsIgnoreCase(cardId)) {
                 return troop;
             }

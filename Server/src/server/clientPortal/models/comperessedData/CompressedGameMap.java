@@ -1,7 +1,6 @@
 package server.clientPortal.models.comperessedData;
 
 import shared.models.game.Troop;
-import shared.models.card.CompressedTroop;
 import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ public class CompressedGameMap {
     private static final int ROW_NUMBER = 5, COLUMN_NUMBER = 9;
 
     private Cell[][] cells = new Cell[ROW_NUMBER][COLUMN_NUMBER];
-    private List<CompressedTroop> troops = new ArrayList<>();
+    private List<Troop> troops = new ArrayList<>();
 
     public CompressedGameMap(Cell[][] cells, List<Troop> troops) {
         for (int i = 0; i < ROW_NUMBER; i++) {
@@ -19,8 +18,6 @@ public class CompressedGameMap {
                 this.cells[i][j] = cells[i][j];
             }
         }
-        for (Troop troop : troops) {
-            this.troops.add(troop.toCompressedTroop());
-        }
+        this.troops.addAll(troops);
     }
 }

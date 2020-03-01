@@ -2,14 +2,14 @@ package models.game;
 
 import models.message.OnlineGame;
 import shared.models.card.Card;
-import shared.models.card.CompressedTroop;
+import shared.models.game.Troop;
 
 
 public interface GameActions {
 
-    void attack(CompressedTroop selectedTroop, CompressedTroop troop);
+    void attack(Troop selectedTroop, Troop troop);
 
-    void move(CompressedTroop selectedTroop, int j, int i);
+    void move(Troop selectedTroop, int j, int i);
 
     void endTurn();
 

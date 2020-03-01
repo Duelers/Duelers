@@ -2,7 +2,7 @@ package models.comperessedData;
 
 import shared.models.card.CardType;
 import shared.models.card.Card;
-import shared.models.card.CompressedTroop;
+import shared.models.game.Troop;
 import view.BattleView.Constants;
 
 import java.beans.PropertyChangeListener;
@@ -18,8 +18,8 @@ public class CompressedPlayer {
     private List<Card> graveyard;
     private Card nextCard;
     private int playerNumber;
-    private List<CompressedTroop> troops;
-    private CompressedTroop hero;
+    private List<Troop> troops;
+    private Troop hero;
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -69,7 +69,7 @@ public class CompressedPlayer {
         graveyard.add(card);
     }
 
-    void troopUpdate(CompressedTroop troop) {
+    void troopUpdate(Troop troop) {
         if (troops == null)
             troops = new ArrayList<>();
         removeTroop(troop.getCard().getCardId());
@@ -99,26 +99,26 @@ public class CompressedPlayer {
     void removeTroop(String cardId) {
         if (troops == null)
             troops = new ArrayList<>();
-        troops.removeIf(compressedTroop -> compressedTroop.getCard().getCardId().equalsIgnoreCase(cardId));
+        troops.removeIf(troop -> troop.getCard().getCardId().equalsIgnoreCase(cardId));
         if (hero != null && hero.getCard().getCardId().equalsIgnoreCase(cardId))
             hero = null;
     }
 
-    public List<CompressedTroop> getTroops() {
+    public List<Troop> getTroops() {
         return Collections.unmodifiableList(troops);
     }
 
-    public void setTroops(List<CompressedTroop> troops) {
+    public void setTroops(List<Troop> troops) {
         this.troops = troops;
 
-        for (CompressedTroop troop : troops) {
+        for (Troop troop : troops) {
             if (troop.getCard().getType() == CardType.HERO) {
                 hero = troop;
             }
         }
     }
 
-    public CompressedTroop getHero() {
+    public Troop getHero() {
         return hero;
     }
 
