@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import models.gui.*;
+import models.languageLocalisation.LanguageData;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -54,7 +55,8 @@ public class WaitingMenu extends Show {
             DefaultLabel waitLabel = new DefaultLabel("WAITING...", FONT, Color.WHITE);
             addShadowAnimation(waitLabel);
 
-            ImageButton cancelButton = new ImageButton("CANCEL", event -> cancel());
+            String cancel = LanguageData.getInstance().getValue(new String[] {"BUTTON_TEXT", "CANCEL"});
+            ImageButton cancelButton = new ImageButton(cancel, event -> cancel());
 
             container.getChildren().addAll(new Space(SPACE_HEIGHT), waitLabel, cancelButton);
 

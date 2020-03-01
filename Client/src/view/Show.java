@@ -6,11 +6,13 @@ import controller.SoundEffectPlayer;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import models.languageLocalisation.LanguageData;
 import models.message.NewGameFields;
 
 public abstract class Show {
     final public AnchorPane root = new AnchorPane();
 
+    private String ok = LanguageData.getInstance().getValue(new String[] {"BUTTON_TEXT", "OK"});
 
     public Show() {
     }
@@ -22,7 +24,7 @@ public abstract class Show {
     }
 
     public void showError(String message, EventHandler<? super MouseEvent> event) {
-        showError(message, "OK", event);
+        showError(message, ok, event);
     }
 
     public void showError(String message, String buttonText) {
@@ -31,7 +33,7 @@ public abstract class Show {
     }
 
     public void showError(String message) {
-        showError(message, "OK", event -> {
+        showError(message, ok, event -> {
         });
     }
 
