@@ -1,8 +1,8 @@
 package server.clientPortal.models.comperessedData;
 
-import server.dataCenter.models.card.AttackType;
-import server.dataCenter.models.card.CardType;
-import server.dataCenter.models.card.spell.Spell;
+import shared.models.card.AttackType;
+import shared.models.card.CardType;
+import shared.models.card.spell.Spell;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class CompressedCard {
     private String cardId;
     private String spriteName;
     private CardType type;
-    private CompressedSpell spell;//just for hero
+    private Spell spell;//just for hero
     private int defaultAp;
     private int defaultHp;
     private int manaCost;

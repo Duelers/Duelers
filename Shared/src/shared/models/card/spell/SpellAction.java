@@ -1,4 +1,5 @@
-package models.card.spell;
+package shared.models.card.spell;
+
 
 public class SpellAction {
     private int enemyHitChanges;
@@ -68,6 +69,38 @@ public class SpellAction {
         this.durable = durable;
         this.duration = duration;
         this.delay = delay;
+    }
+
+
+    public SpellAction(SpellAction referenceAction) { // copy constructor
+        this.enemyHitChanges = referenceAction.enemyHitChanges;
+        this.apChange = referenceAction.apChange;
+        this.hpChange = referenceAction.hpChange;
+        this.mpChange = referenceAction.mpChange;
+        this.poison = referenceAction.poison;
+        this.makeStun = referenceAction.makeStun;
+        this.makeDisarm = referenceAction.makeDisarm;
+        this.noDisarm = referenceAction.noDisarm;
+        this.noPoison = referenceAction.noPoison;
+        this.noStun = referenceAction.noStun;
+        this.noBadEffect = referenceAction.noBadEffect;
+        this.noAttackFromWeakerOnes = referenceAction.noAttackFromWeakerOnes;
+        this.disableHolyBuff = referenceAction.disableHolyBuff;
+        this.addSpell = referenceAction.addSpell;
+        this.killsTarget = referenceAction.killsTarget;
+        this.isForGladiator = referenceAction.isForGladiator;
+        this.durable = referenceAction.durable;
+        this.removeBuffs = referenceAction.removeBuffs;
+        this.duration = referenceAction.duration;
+        this.delay = referenceAction.delay;
+        this.carryingSpell = referenceAction.carryingSpell;
+    }
+
+    public SpellAction makeCopyAction(int duration, int delay) {
+        SpellAction spellAction = new SpellAction(this);
+        spellAction.duration = duration;
+        spellAction.delay = delay;
+        return spellAction;
     }
 
     public int getEnemyHitChanges() {
@@ -152,5 +185,13 @@ public class SpellAction {
 
     public Spell getCarryingSpell() {
         return carryingSpell;
+    }
+
+    public void decreaseDuration() {
+        duration--;
+    }
+
+    public void decreaseDelay() {
+        delay--;
     }
 }

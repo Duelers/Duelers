@@ -12,6 +12,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import models.languageLocalisation.LanguageData;
 
 import java.io.FileNotFoundException;
 
@@ -42,7 +43,7 @@ class AbabeelLogoBox extends VBox {
 
     private Text makeAbabeelText() {
         return new DefaultText(
-                "THE COMMUNITY TRIES TO SAVE DUELYST\n\nFor Duelyst cards and decks:\nLogin: 'duelyst'\nPASSWORD: 'duel'",
+                LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "WELCOME_MESSAGE"}),
                 BOX_SIZE - UIConstants.DEFAULT_SPACING * 3,
                 FONT, ABABEEL_TEXT_COLOR
         );

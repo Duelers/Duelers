@@ -1,13 +1,13 @@
 package server.clientPortal.models.message;
 
-import server.Server;
+import server.GameServer;
 import server.clientPortal.models.JsonConverter;
 import server.clientPortal.models.comperessedData.CompressedCard;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.ExportedDeck;
-import server.dataCenter.models.card.spell.AvailabilityType;
+import shared.models.card.spell.AvailabilityType;
 import server.gameCenter.models.game.*;
 import shared.models.game.GameType;
 import shared.models.game.map.Cell;
@@ -29,6 +29,7 @@ public class Message {
     private CardPositionMessage cardPositionMessage;
     private TroopUpdateMessage troopUpdateMessage;
     private GameUpdateMessage gameUpdateMessage;
+    private ClientIDMessage clientIDMessage;
     private ExceptionMessage exceptionMessage;
     private OpponentInfoMessage opponentInfoMessage;
     private GameFinishMessage gameFinishMessage;
@@ -52,7 +53,7 @@ public class Message {
 
 
     private Message(String receiver) {
-        this.sender = Server.getInstance().serverName;
+        this.sender = GameServer.getInstance().serverName;
         this.receiver = receiver;
     }
 
@@ -201,6 +202,13 @@ public class Message {
         Message message = new Message(receiver);
         message.onlineGames = onlines;
         message.messageType = MessageType.ONLINE_GAMES_COPY;
+        return message;
+    }
+
+    public static Message makeClientIDMessage(String receiver, String clientID) {
+        Message message = new Message(receiver);
+        message.clientIDMessage = new ClientIDMessage(clientID);
+        message.messageType = MessageType.CLIENT_ID;
         return message;
     }
 

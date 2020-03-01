@@ -1,4 +1,4 @@
-package models.card;
+package shared.models.card;
 
 public enum AttackType {
     MELEE,

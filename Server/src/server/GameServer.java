@@ -10,7 +10,7 @@ import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.AccountType;
 import server.dataCenter.models.card.Card;
-import server.dataCenter.models.card.spell.AvailabilityType;
+import shared.models.card.spell.AvailabilityType;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import server.exceptions.ServerException;
@@ -24,24 +24,26 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-public class Server {
-    private static Server server;
+import org.glassfish.tyrus.server.Server;
+
+public class GameServer {
+    private static GameServer server;
     public static String serverName;
 
     private final static Queue<Message> sendingMessages = new LinkedList<>();
     private final static Queue<Message> receivingMessages = new LinkedList<>();
 
-    private Server(String serverName) {
-        Server.serverName = serverName;
+    private GameServer(String serverName) {
+        GameServer.serverName = serverName;
         serverPrint("Server Was Created!");
     }
 
-    public static Server getInstance() {
+    public static GameServer getInstance() {
         return server;
     }
 
     public static void start() {
-        server = new Server("Server");
+        server = new GameServer("Server");
         DataCenter.getInstance().run();//no thread
         GameCenter.getInstance().start();
         ClientPortal.getInstance().start();

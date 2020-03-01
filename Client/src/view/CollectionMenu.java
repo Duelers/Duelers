@@ -164,17 +164,14 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         collectionBox.getChildren().remove(showCollectionButton);
         cardsBox.getChildren().clear();
 
-        DefaultLabel heroesLabel = new DefaultLabel("HEROES", TITLE_FONT, Color.WHITE);
         CollectionCardsGrid heroesGrid = new CollectionCardsGrid(showingCards.getHeroes());
 
-        DefaultLabel minionsLabel = new DefaultLabel("MINIONS", TITLE_FONT, Color.WHITE);
         CollectionCardsGrid minionsGrid = new CollectionCardsGrid(showingCards.getMinions());
 
-        DefaultLabel spellsLabel = new DefaultLabel("SPELLS", TITLE_FONT, Color.WHITE);
         CollectionCardsGrid spellsGrid = new CollectionCardsGrid(showingCards.getSpells());
 
         cardsBox.getChildren().addAll(
-                heroesLabel, heroesGrid, minionsLabel, minionsGrid, spellsLabel, spellsGrid);
+                heroesGrid, minionsGrid, spellsGrid);
         cardsBox.setMinSize(COLLECTION_WIDTH * 0.95, SCROLL_HEIGHT * 0.95);
         cardsBox.setAlignment(Pos.TOP_CENTER);
     }
@@ -244,17 +241,14 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
             searchBox.setVisible(false);
             CollectionMenuController.getInstance().search("");
 
-            DefaultLabel heroesLabel = new DefaultLabel("HEROES", TITLE_FONT, Color.WHITE);
             DeckCardsGrid heroesGrid = new DeckCardsGrid(showingCards.getHeroes(), deck);
 
-            DefaultLabel minionsLabel = new DefaultLabel("MINIONS", TITLE_FONT, Color.WHITE);
             DeckCardsGrid minionsGrid = new DeckCardsGrid(showingCards.getMinions(), deck);
 
-            DefaultLabel spellsLabel = new DefaultLabel("SPELLS", TITLE_FONT, Color.WHITE);
             DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
 
             cardsBox.getChildren().addAll(
-                    heroesLabel, heroesGrid, minionsLabel, minionsGrid, spellsLabel, spellsGrid
+                    heroesGrid, minionsGrid, spellsGrid
             );
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -1,0 +1,57 @@
+{
+  "name": "Azure Herald",
+  "description": "Opening Gambit: Add 3 Health to your General",
+  "cardId": "AzureHerald",
+  "spriteName": "neutral_azureherald",
+  "type": "MINION",
+  "spells": [
+    {
+      "spellId": "heal_on_put",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": 3,
+        "mpChange": 0,
+        "removeBuffs": 0,
+		"durable": true,
+        "duration": 1,
+        "delay": 0
+      },
+      "target": {
+        "dimensions": {
+          "row": 20,
+          "column": 20
+        },
+        "owner": {
+          "own": true,
+          "enemy": false
+        },
+        "cardType": {
+          "cell": false,
+          "hero": true,
+          "minion": false,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+	  },
+      "availabilityType": {
+        "onPut": true
+      },
+      "coolDown": 0,
+      "manaCost": 0,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 1,
+  "defaultHp": 4,
+  "manaCost": 2,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

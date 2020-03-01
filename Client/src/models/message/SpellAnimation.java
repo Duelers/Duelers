@@ -1,6 +1,6 @@
 package models.message;
 
-import models.card.spell.AvailabilityType;
+import shared.models.card.spell.AvailabilityType;
 import shared.models.game.map.Cell;
 
 import java.util.Set;
