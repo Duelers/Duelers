@@ -317,7 +317,7 @@ public class HandBox implements PropertyChangeListener {
             String cardID = player.getHand().get(selectedCard).getCardId();
             battleScene.getController().replaceCard(cardID);
             int currentTimesReplacedThisTurn = GameController.getInstance().getAvailableActions().getNumTimesReplacedThisTurn();
-            GameController.getInstance().getAvailableActions().setNumTimesReplacedThisTurn( currentTimesReplacedThisTurn++ );
+            GameController.getInstance().getAvailableActions().setNumTimesReplacedThisTurn( currentTimesReplacedThisTurn + 1 );
             clickOnCard(selectedCard);
             updateNext();
         }

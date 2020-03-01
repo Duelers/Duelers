@@ -268,11 +268,8 @@ public class AvailableActions {
         if (player.getPlayerNumber() != GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().getPlayerNumber()) {
             return false;
         }
-        if(getNumTimesReplacedThisTurn() >= getMaxNumReplacePerTurn()){
-            return false;
-        }
+        return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn();
         // ToDo Other checks to see if replace is valid (e.g. false if already replaced this turn).
-        return true;
     }
 
     public void setNumTimesReplacedThisTurn(int number){

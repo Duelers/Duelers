@@ -116,7 +116,7 @@ public abstract class Game {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
                 addNextCardToHand();
-                getCurrentTurnPlayer().setCanReplaceCard(true);
+                getCurrentTurnPlayer().setNumTimesReplacedThisTurn(0);
 
                 revertNotDurableBuffs();
                 removeFinishedBuffs();
@@ -177,10 +177,12 @@ public abstract class Game {
 
     public void replaceCard(String cardID) throws LogicException {
         if (getCurrentTurnPlayer().getCanReplaceCard()) {
+            System.out.println("server allows the replace ");
             Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             if (getCurrentTurnPlayer().addNextCardToHand()) {
-                getCurrentTurnPlayer().setCanReplaceCard(false);
+                int numTimesReplacedThisTurn = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
+                getCurrentTurnPlayer().setNumTimesReplacedThisTurn(numTimesReplacedThisTurn + 1);
                 Card nextCard = getCurrentTurnPlayer().getNextCard();
                 GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
