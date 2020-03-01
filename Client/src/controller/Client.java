@@ -33,6 +33,7 @@ public class Client {
     private static Show currentShow;
     private final Gson gson = new Gson();
     private static Thread sendMessageThread;
+    private static final String serverName = Config.getInstance().getProperty("SERVER_NAME");
 
 
     public static Client getInstance() {
@@ -262,9 +263,11 @@ public class Client {
         return account;
     }
 
-    void close() {
+    public void close() {
+        Message message = Message.makeLogOutMessage(serverName);
+        String json = message.toJson();
+        ws.sendText(json);
         ws.disconnect();
-        MainMenuController.getInstance().logout();
         System.exit(0);
     }
 
