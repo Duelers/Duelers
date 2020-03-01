@@ -29,8 +29,8 @@ public class MainMenu extends Show {
             new MenuItem(itemIndex++, "PROFILE", "See you profile information", event -> menu.showProfileDialog()),
             new MenuItem(itemIndex++, "COLLECTION", "View your cards or build a deck", event -> new CollectionMenu().show()),
             new MenuItem(itemIndex++, "GLOBAL CHAT", "chat with other players", event -> GlobalChatDialog.getInstance().show()),
+            new MenuItem(itemIndex++, "QUIT GAME", "Exit the game", event -> Client.getInstance().close()),
             new MenuItem(itemIndex++, "SHOW ONLINE GAMES", "SHOW ONLINE GAMES", event -> showOnlineGamesList()),
-            new MenuItem(itemIndex++, "QUIT GAME", "Exit the game", event -> System.exit(0)),
 
     };
 
