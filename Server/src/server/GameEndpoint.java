@@ -35,7 +35,8 @@ public class GameEndpoint {
         try {
             DataCenter.getInstance().logout(session);
         } catch (LogicException e) {
-            LOGGER.log(Level.WARNING, "Error on forced logout: {0}", e);
+            LOGGER.log(Level.WARNING, "Error on forced logout for client: {0}", session.getId());
+            LOGGER.log(Level.WARNING, "Error on forced logout: {0}", e.getMessage());
         }
         ClientPortal.getInstance().removeClient(session);
     }
