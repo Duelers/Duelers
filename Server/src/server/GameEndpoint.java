@@ -3,11 +3,10 @@ package server;
 import server.clientPortal.ClientPortal;
 import server.clientPortal.models.message.Message;
 import server.dataCenter.DataCenter;
+import server.exceptions.LogicException;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
-import java.util.Formatter;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,6 +31,11 @@ public class GameEndpoint {
 
     @OnClose
     public void onClose(Session session) {
+        try {
+            DataCenter.getInstance().logout(session);
+        } catch (LogicException e) {
+            //TODO: log this once we have it set up
+        }
         ClientPortal.getInstance().removeClient(session);
     }
 
