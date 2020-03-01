@@ -131,6 +131,8 @@ public class DataCenter extends Thread {
                     buyAllCards(message, card.getName());
                 }
             }
+            Account accountToUpdateClientSide = clients.get(message.getSender());
+            GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), accountToUpdateClientSide));
         }
     }
 
@@ -246,11 +248,8 @@ public class DataCenter extends Thread {
     }
 
     public void buyAllCards(Message message, String cardName) throws LogicException {
-
-        loginCheck(message);
         Account account = clients.get(message.getSender());
         account.buyCard(cardName, dataBase.getOriginalCards());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
 
     }
