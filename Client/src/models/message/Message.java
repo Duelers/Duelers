@@ -6,7 +6,6 @@ import models.JsonConverter;
 import models.account.AccountType;
 import shared.models.card.Card;
 import models.card.ExportedDeck;
-import shared.models.card.Card;
 import shared.models.game.GameType;
 import shared.models.game.map.Cell;
 
