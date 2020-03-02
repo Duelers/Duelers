@@ -369,16 +369,21 @@ public class MapBox implements PropertyChangeListener {
     }
 
     void showAttack(String cardId, String defender) {
-        if (cardId == null || defender == null)
-            System.out.println("Error0 MapBox");
+        if (cardId == null) {
+            System.out.println("MapBox attack cardID is null");
+        } else if (defender == null) {
+            System.out.println("MapBox defender is null");
+        }
         Troop troop = gameMap.getTroop(cardId);
         Troop defenderTroop = gameMap.getTroop(defender);
-        if (troop == null || defenderTroop == null)
-            System.out.println("Error1 MapBox");
-        else {
+        if (troop == null) {
+            System.out.println("MapBox Error attacking troop is null");
+        } else if (defenderTroop == null) {
+            System.out.println("MapBox Error troop being attacked is null");
+        } else {
             TroopAnimation animation = troopAnimationHashMap.get(troop);
             if (animation == null)
-                System.out.println("Error2 MapBox");
+                System.out.println("MapBox attack animation is null");
             else
                 animation.attack(defenderTroop.getCell().getColumn());
         }
@@ -387,12 +392,17 @@ public class MapBox implements PropertyChangeListener {
     void showDefend(String defender, String attacker) {
         Troop troop = gameMap.getTroop(defender);
         Troop attackerTroop = gameMap.getTroop(attacker);
-        if (troop == null || attackerTroop == null)
-            System.out.println("Error3 MapBox");
+        if (troop == null){
+            System.out.println("MapBox Error showDefend defending troop is null");
+        }
+        else if (attackerTroop == null){
+            System.out.println("MapBox Error showDefend attacking troop is null");
+        }
+
         else {
             TroopAnimation animation = troopAnimationHashMap.get(troop);
             if (animation == null)
-                System.out.println("Error4 MapBox");
+                System.out.println("MapBox Error defending animation is null");
             else
                 animation.hit(attackerTroop.getCell().getColumn());
         }

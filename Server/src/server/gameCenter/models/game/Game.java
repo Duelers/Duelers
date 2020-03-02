@@ -520,7 +520,7 @@ public abstract class Game {
             if (defenderTroop.canGiveBadEffect() &&
                     (defenderTroop.canBeAttackedFromWeakerOnes() || attackerTroop.getCurrentAp() > defenderTroop.getCurrentAp())
             ) {
-                damage(attackerTroop, defenderTroop);
+
 
                 attackerTroop.setCanAttack(false);
                 attackerTroop.setCanMove(false);
@@ -534,6 +534,8 @@ public abstract class Game {
                     throw e;
                 }
                 GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, true);
+
+                damage(attackerTroop, defenderTroop);
             }
         } finally {
             GameCenter.getInstance().checkGameFinish(this);
