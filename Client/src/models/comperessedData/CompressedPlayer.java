@@ -46,7 +46,7 @@ public class CompressedPlayer {
 
     public void addCardToNext(Card card) {
         if (nextCard != null)
-            System.out.println("Client Game Error!");
+            System.out.println("Compressed Player, addCardToNext, card is null");
         else {
             nextCard = card;
             if (support == null) {
