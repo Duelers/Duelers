@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "project-cardboard-documentation",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "gatsby": "^2.15.24",
+    "gatsby-theme-documentation": "^0.0.27",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
+  }
+}
