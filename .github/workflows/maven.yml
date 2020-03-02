@@ -16,4 +16,4 @@ jobs:
         java-package: jdk
         architecture: x64
     - name: Build with Maven
-      run: mvn -B clean package test --file pom.xml
+      run: mvn -B clean test package --file pom.xml
