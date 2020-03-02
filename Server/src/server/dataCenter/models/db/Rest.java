@@ -5,8 +5,7 @@ import io.joshworks.restclient.http.Unirest;
 import server.clientPortal.models.JsonConverter;
 import server.dataCenter.DataBase;
 import server.dataCenter.models.account.Collection;
-import server.dataCenter.models.card.Card;
-
+import shared.models.card.Card;
 
 import java.io.File;
 import java.util.ArrayList;

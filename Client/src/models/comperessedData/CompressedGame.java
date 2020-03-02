@@ -1,8 +1,10 @@
 package models.comperessedData;
 
-import models.card.CardType;
-import models.game.CellEffect;
-import models.game.GameType;
+import shared.models.card.CardType;
+import shared.models.card.Card;
+import shared.models.game.Troop;
+import shared.models.game.map.CellEffect;
+import shared.models.game.GameType;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -33,20 +35,20 @@ public class CompressedGame {
         player.removeCardFromNext();
     }
 
-    public void moveCardToNext(CompressedCard card) {
+    public void moveCardToNext(Card card) {
         CompressedPlayer player = getCurrentTurnPlayer();
         player.addCardToNext(card);
     }
 
-    public void moveCardToMap(CompressedCard card) {
+    public void moveCardToMap(Card card) {
         CompressedPlayer player = getCurrentTurnPlayer();
         player.removeCardFromHand(card.getCardId());
     }
 
-    public void moveCardToGraveYard(CompressedCard card) {
+    public void moveCardToGraveYard(Card card) {
         CompressedPlayer player;
         if (card.getType() == CardType.HERO || card.getType() == CardType.MINION) {
-            CompressedTroop troop = gameMap.getTroop(card.getCardId());
+            Troop troop = gameMap.getTroop(card.getCardId());
             if (troop == null) {
                 System.out.println("Client Game Error!!");
             } else {
@@ -62,7 +64,7 @@ public class CompressedGame {
         }
     }
 
-    public void troopUpdate(CompressedTroop troop) {
+    public void troopUpdate(Troop troop) {
         CompressedPlayer player;
         player = getPlayer(troop.getPlayerNumber());
         if (player.searchGraveyard(troop.getCard().getCardId()) == null) {

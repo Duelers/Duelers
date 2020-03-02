@@ -1,7 +1,7 @@
 package server.clientPortal.models.message;
 
 import server.gameCenter.models.game.Game;
-import server.gameCenter.models.game.GameType;
+import shared.models.game.GameType;
 
 public class OnlineGame {
     private String player1;

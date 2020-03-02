@@ -1,6 +1,6 @@
 package view;
 
-import models.game.GameType;
+import shared.models.game.GameType;
 
 import java.io.FileNotFoundException;
 

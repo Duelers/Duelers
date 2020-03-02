@@ -7,11 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
-import models.card.spell.AvailabilityType;
 import models.comperessedData.CompressedGame;
 import models.comperessedData.CompressedPlayer;
 import models.game.GameActions;
-import models.game.map.Cell;
+import shared.models.card.spell.AvailabilityType;
+import shared.models.game.map.Cell;
 import view.Show;
 
 import java.io.File;
@@ -55,7 +55,7 @@ public class BattleScene extends Show {
         if (myPlayerNumber == 1) {
             myPlayer = game.getPlayerOne();
             oppPlayer = game.getPlayerTwo();
-        } else if (myPlayerNumber == 2){
+        } else if (myPlayerNumber == 2) {
             myPlayer = game.getPlayerTwo();
             oppPlayer = game.getPlayerOne();
         }

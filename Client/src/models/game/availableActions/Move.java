@@ -1,22 +1,22 @@
 package models.game.availableActions;
 
-import models.comperessedData.CompressedTroop;
-import models.game.map.Cell;
+import shared.models.game.Troop;
+import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Move {
-    private CompressedTroop troop;
+    private Troop troop;
     private List<Cell> targets;
 
-    Move(CompressedTroop troop, ArrayList<Cell> targets) {
+    Move(Troop troop, ArrayList<Cell> targets) {
         this.troop = troop;
         this.targets = targets;
     }
 
-    public CompressedTroop getTroop() {
+    public Troop getTroop() {
         return troop;
     }
 

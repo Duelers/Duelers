@@ -1,7 +1,7 @@
 package server.gameCenter.models.game.availableActions;
 
 
-import server.dataCenter.models.card.Card;
+import shared.models.card.Card;
 
 public class Insert {
     private Card card;

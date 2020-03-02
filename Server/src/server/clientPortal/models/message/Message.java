@@ -1,15 +1,17 @@
 package server.clientPortal.models.message;
 
-import server.Server;
+import server.GameServer;
 import server.clientPortal.models.JsonConverter;
-import server.clientPortal.models.comperessedData.CompressedCard;
+import shared.models.card.Card;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.Collection;
-import server.dataCenter.models.card.Card;
 import server.dataCenter.models.card.ExportedDeck;
-import server.dataCenter.models.card.spell.AvailabilityType;
+import shared.models.card.spell.AvailabilityType;
 import server.gameCenter.models.game.*;
-import server.gameCenter.models.map.Cell;
+import shared.models.game.GameType;
+import shared.models.game.Troop;
+import shared.models.game.map.Cell;
+import shared.models.game.map.CellEffect;
 
 import java.util.List;
 import java.util.Set;
@@ -27,6 +29,7 @@ public class Message {
     private CardPositionMessage cardPositionMessage;
     private TroopUpdateMessage troopUpdateMessage;
     private GameUpdateMessage gameUpdateMessage;
+    private ClientIDMessage clientIDMessage;
     private ExceptionMessage exceptionMessage;
     private OpponentInfoMessage opponentInfoMessage;
     private GameFinishMessage gameFinishMessage;
@@ -46,11 +49,10 @@ public class Message {
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
     private ChangeAccountType changeAccountType;
-    private CompressedCard compressedCard;
 
 
     private Message(String receiver) {
-        this.sender = Server.getInstance().serverName;
+        this.sender = GameServer.getInstance().serverName;
         this.receiver = receiver;
     }
 
@@ -102,10 +104,10 @@ public class Message {
         return message;
     }
 
-    public static Message makeNewNextCardSetMessage(String receiver, CompressedCard nextCard) {
+    public static Message makeNewNextCardSetMessage(String receiver, Card nextCard) {
         Message message = new Message(receiver);
         message.messageType = MessageType.SET_NEW_NEXT_CARD;
-        message.compressedCard = nextCard;
+        message.card = nextCard; // Used to set message.compressedCard. This could potentially alter behaviour.
         return message;
     }
 
@@ -128,7 +130,7 @@ public class Message {
                                                 List<CellEffect> cellEffects) {
         Message message = new Message(receiver);
         message.gameUpdateMessage = new GameUpdateMessage(turnNumber, player1CurrentMP,
-                player2CurrentMP,  cellEffects);
+                player2CurrentMP, cellEffects);
         message.messageType = MessageType.GAME_UPDATE;
         return message;
     }
@@ -199,6 +201,13 @@ public class Message {
         Message message = new Message(receiver);
         message.onlineGames = onlines;
         message.messageType = MessageType.ONLINE_GAMES_COPY;
+        return message;
+    }
+
+    public static Message makeClientIDMessage(String receiver, String clientID) {
+        Message message = new Message(receiver);
+        message.clientIDMessage = new ClientIDMessage(clientID);
+        message.messageType = MessageType.CLIENT_ID;
         return message;
     }
 

@@ -3,8 +3,8 @@ package models.gui;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import models.ICard;
-import models.card.CardType;
+import shared.models.card.ICard;
+import shared.models.card.CardType;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

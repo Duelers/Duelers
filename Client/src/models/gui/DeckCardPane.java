@@ -2,7 +2,7 @@ package models.gui;
 
 import controller.Client;
 import javafx.application.Platform;
-import models.ICard;
+import shared.models.card.ICard;
 import models.card.Deck;
 
 import java.beans.PropertyChangeEvent;

@@ -1,21 +1,21 @@
 package models.game;
 
-import models.comperessedData.CompressedCard;
-import models.comperessedData.CompressedTroop;
 import models.message.OnlineGame;
+import shared.models.card.Card;
+import shared.models.game.Troop;
 
 
 public interface GameActions {
 
-    void attack(CompressedTroop selectedTroop, CompressedTroop troop);
+    void attack(Troop selectedTroop, Troop troop);
 
-    void move(CompressedTroop selectedTroop, int j, int i);
+    void move(Troop selectedTroop, int j, int i);
 
     void endTurn();
 
     void forceFinish();
 
-    void insert(CompressedCard card, int row, int column);
+    void insert(Card card, int row, int column);
 
     void exitGameShow(OnlineGame onlineGame);
 

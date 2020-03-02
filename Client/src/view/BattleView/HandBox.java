@@ -14,16 +14,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import models.comperessedData.CompressedCard;
 import models.comperessedData.CompressedPlayer;
 import models.gui.*;
 import models.message.OnlineGame;
+import shared.models.card.Card;
 import view.MainMenu;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.List;
 
 public class HandBox implements PropertyChangeListener {
@@ -85,7 +84,6 @@ public class HandBox implements PropertyChangeListener {
         replaceIcon.setFitWidth(Constants.SCREEN_WIDTH * 0.11);
         replaceIcon.setFitHeight(Constants.SCREEN_WIDTH * 0.11);
         replaceIcon.setImage(nextBack);
-
         Effect nullOrGrayscale = GameController.getInstance().getAvailableActions().canReplace(player) ? null : DISABLE_BUTTON_EFFECT;
         replaceIcon.setEffect(nullOrGrayscale);
 
@@ -110,8 +108,6 @@ public class HandBox implements PropertyChangeListener {
             }
 
 
-
-
             if (selectedCard == i && cardAnimation != null) {
                 imageView.setImage(cardBackGlow);
                 cardAnimation.inActive();
@@ -119,7 +115,7 @@ public class HandBox implements PropertyChangeListener {
                 imageView.setImage(cardBack);
 
             if (cardAnimation != null) {
-                final CompressedCard card = player.getHand().get(I);
+                final Card card = player.getHand().get(I);
                 cards[i].setOnMouseEntered(mouseEvent -> {
                     if (cardPane != null) {
                         handGroup.getChildren().remove(cardPane);
@@ -130,14 +126,10 @@ public class HandBox implements PropertyChangeListener {
                         cardAnimation.inActive();
                         imageView.setImage(cardBackGlow);
                     }
-                    try {
-                        cardPane = new CardPane(card, false, false, null);
-                        cardPane.setLayoutY(-300 * Constants.SCALE + cards[I].getLayoutY());
-                        cardPane.setLayoutX(150 * Constants.SCALE + cards[I].getLayoutX());
-                        handGroup.getChildren().add(cardPane);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    cardPane = new CardPane(card, false, false, null);
+                    cardPane.setLayoutY(-300 * Constants.SCALE + cards[I].getLayoutY());
+                    cardPane.setLayoutX(150 * Constants.SCALE + cards[I].getLayoutX());
+                    handGroup.getChildren().add(cardPane);
                 });
 
                 cards[i].setOnMouseExited(mouseEvent -> {
@@ -160,7 +152,8 @@ public class HandBox implements PropertyChangeListener {
                 });
 
                 // Grey out cards in hand when its the opponents turn
-                Effect nullOrGrayscale = battleScene.isMyTurn() ? null : DISABLE_BUTTON_EFFECT;
+                boolean haveSufficientManaForCard = GameController.getInstance().getAvailableActions().haveSufficientMana(player, card);
+                Effect nullOrGrayscale = battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card) && haveSufficientManaForCard ? null : DISABLE_BUTTON_EFFECT;
                 cards[i].setEffect(nullOrGrayscale);
             }
         }
@@ -174,7 +167,7 @@ public class HandBox implements PropertyChangeListener {
             imageView.setFitWidth(endTurnImage.getWidth() * Constants.SCALE * 0.5);
             imageView.setFitHeight(endTurnImage.getHeight() * Constants.SCALE * 0.5);
             endTurnLabel = new DefaultLabel("END TURN", Constants.END_TURN_FONT, Color.WHITE);
-          
+
             if ((battleScene.getGame().getTurnNumber() + 1) % 2 == battleScene.getMyPlayerNumber() % 2) {
                 endTurnLabel.setText("ENEMY TURN");
                 endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);
@@ -205,8 +198,8 @@ public class HandBox implements PropertyChangeListener {
             if (player == null) {
                 imageButton = new ImageButton(
                         "EXIT", event -> {
-                            battleScene.getController().exitGameShow(new OnlineGame(battleScene.getGame()));
-                            new MainMenu().show();
+                    battleScene.getController().exitGameShow(new OnlineGame(battleScene.getGame()));
+                    new MainMenu().show();
                 },
                         new Image(new FileInputStream("Client/resources/ui/button_primary_left@2x.png")),
                         new Image(new FileInputStream("Client/resources/ui/button_primary_left_glow@2x.png"))
@@ -249,15 +242,11 @@ public class HandBox implements PropertyChangeListener {
         cardsPane.setVgap(UIConstants.DEFAULT_SPACING * 2);
         cardsPane.setHgap(UIConstants.DEFAULT_SPACING * 2);
 
-        List<CompressedCard> graveyard = player.getGraveyard();
+        List<Card> graveyard = player.getGraveyard();
         for (int i = 0; i < graveyard.size(); i++) {
-            CompressedCard card = graveyard.get(i);
-            try {
-                CardPane cardPane = new CardPane(card, false, false, null);
-                cardsPane.add(cardPane, i % 3, i / 3);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            Card card = graveyard.get(i);
+            CardPane cardPane = new CardPane(card, false, false, null);
+            cardsPane.add(cardPane, i % 3, i / 3);
         }
         scrollPane.setContent(cardsPane);
         scrollPane.setId("background_transparent");
@@ -281,9 +270,11 @@ public class HandBox implements PropertyChangeListener {
                     Platform.runLater(() -> {
                         endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);
                         endTurnLabel.setText("ENEMY TURN");
+
                     });
                 } else {
                     Platform.runLater(() -> {
+                        updateNext();
                         endTurnButton.setEffect(null);
                         endTurnLabel.setText("END TURN");
                     });
@@ -308,7 +299,7 @@ public class HandBox implements PropertyChangeListener {
         return handGroup;
     }
 
-    CompressedCard getSelectedCard() {
+    Card getSelectedCard() {
         if (selectedCard >= 0)
             return player.getHand().get(selectedCard);
         return null;
@@ -318,15 +309,17 @@ public class HandBox implements PropertyChangeListener {
         if (player != null) {
             selectedCard = -1;
             updateCards();
-            updateNext();
         }
     }
 
-    public void replaceSelectedCard(){
-        if(selectedCard != -1 ) {
+    public void replaceSelectedCard() {
+        if (selectedCard != -1) {
             String cardID = player.getHand().get(selectedCard).getCardId();
             battleScene.getController().replaceCard(cardID);
+            int currentTimesReplacedThisTurn = GameController.getInstance().getAvailableActions().getNumTimesReplacedThisTurn();
+            GameController.getInstance().getAvailableActions().setNumTimesReplacedThisTurn( currentTimesReplacedThisTurn + 1 );
             clickOnCard(selectedCard);
+            updateNext();
         }
     }
 }

@@ -1,16 +1,16 @@
 package models.game.availableActions;
 
 
-import models.comperessedData.CompressedCard;
+import shared.models.card.Card;
 
 public class Insert {
-    private CompressedCard card;
+    private Card card;
 
-    Insert(CompressedCard card) {
+    Insert(Card card) {
         this.card = card;
     }
 
-    public CompressedCard getCard() {
+    public Card getCard() {
         return card;
     }
 }

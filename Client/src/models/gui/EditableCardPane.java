@@ -1,7 +1,7 @@
 package models.gui;
 
-import models.card.CardType;
 import models.card.EditableCard;
+import shared.models.card.CardType;
 
 import java.beans.PropertyChangeEvent;
 import java.io.FileNotFoundException;

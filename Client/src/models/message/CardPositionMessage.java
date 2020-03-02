@@ -1,13 +1,14 @@
 package models.message;
 
-import models.comperessedData.CompressedCard;
+
+import shared.models.card.Card;
 
 public class CardPositionMessage {
-    private CompressedCard compressedCard;
+    private Card card;
     private CardPosition cardPosition;
 
-    public CompressedCard getCompressedCard() {
-        return compressedCard;
+    public Card getCard() {
+        return card;
     }
 
     public CardPosition getCardPosition() {

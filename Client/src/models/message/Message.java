@@ -4,11 +4,10 @@ package models.message;
 import controller.Client;
 import models.JsonConverter;
 import models.account.AccountType;
-import models.card.Card;
+import shared.models.card.Card;
 import models.card.ExportedDeck;
-import models.comperessedData.CompressedCard;
-import models.game.GameType;
-import models.game.map.Cell;
+import shared.models.game.GameType;
+import shared.models.game.map.Cell;
 
 public class Message {
     private MessageType messageType;
@@ -27,6 +26,7 @@ public class Message {
     private ExceptionMessage exceptionMessage;
     private OpponentInfoMessage opponentInfoMessage;
     private GameFinishMessage gameFinishMessage;
+    private ClientIDMessage clientIDMessage;
     private GameAnimations gameAnimations;
     private OnlineGame[] onlineGames;
     //SENDER:CLIENT
@@ -39,7 +39,6 @@ public class Message {
     //SENDER:DUAL
     private Card card;
     private String cardID;
-    private CompressedCard compressedCard;
     private ChatMessage chatMessage;
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
@@ -359,6 +358,10 @@ public class Message {
         return chatMessage;
     }
 
+    public ClientIDMessage getClientIDMessage() {
+        return clientIDMessage;
+    }
+
     public NewGameFields getNewGameFields() {
         return newGameFields;
     }
@@ -373,10 +376,6 @@ public class Message {
 
     public OnlineGame[] getOnlineGames() {
         return onlineGames;
-    }
-
-    public CompressedCard getCompressedCard() {
-        return compressedCard;
     }
 
     public OtherFields getOtherFields() {return otherFields;}

@@ -1,7 +1,7 @@
 package models.gui;
 
 import javafx.scene.layout.GridPane;
-import models.card.Card;
+import shared.models.card.Card;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -21,7 +21,7 @@ public class CollectionCardsGrid extends GridPane {
 
         for (int i = 0; i < cards.size(); i++) {
             final Card card = cards.get(i);
-            CardPane cardPane = new CardPane(card, false, true, null);
+            CardPane cardPane = new CardPane(card, false, false, null);
             add(
                     cardPane, i % COLUMN_NUMBER, i / COLUMN_NUMBER
             );

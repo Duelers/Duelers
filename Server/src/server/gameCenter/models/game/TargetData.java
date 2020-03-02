@@ -1,7 +1,8 @@
 package server.gameCenter.models.game;
 
-import server.dataCenter.models.card.Card;
-import server.gameCenter.models.map.Cell;
+import shared.models.card.Card;
+import shared.models.game.Troop;
+import shared.models.game.map.Cell;
 
 import java.util.*;
 import java.util.stream.Collectors;

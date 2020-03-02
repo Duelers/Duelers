@@ -1,6 +1,6 @@
 package models.account;
 
-import models.card.Card;
+import shared.models.card.Card;
 import models.card.Deck;
 
 import java.util.ArrayList;

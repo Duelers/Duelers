@@ -1,8 +1,8 @@
 package server.clientPortal.models.message;
 
 
-import server.dataCenter.models.card.spell.AvailabilityType;
-import server.gameCenter.models.map.Cell;
+import shared.models.card.spell.AvailabilityType;
+import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
 import java.util.Set;

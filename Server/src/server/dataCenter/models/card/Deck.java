@@ -1,9 +1,10 @@
 package server.dataCenter.models.card;
 
-import server.Server;
+import server.GameServer;
 import server.dataCenter.models.account.Collection;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.card.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -84,7 +85,7 @@ public class Deck {
                 others.add(card);
                 break;
             default:
-                Server.getInstance().serverPrint("Error!");
+                GameServer.getInstance().serverPrint("Error!");
                 break;
         }
     }
