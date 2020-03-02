@@ -13,8 +13,9 @@ The core tech-stack is Java8(Fx) with Python used for scripting and Maven for ou
 
 1. Import as a mavan project (you will need the maven-plugin to do this)
 2. Run the command: `mvn clean test package`
-3. In `Client/target` there should be a file ending with `Client-*-jar-with-dependencies.jar` 
+3. In `Client/target` there should be a file `Client-*-shaded.jar` 
 4. Run the above file and enjoy playing the game!
+	* from the command line the run command is `java -jar Client/target/Client-*-shaded.jar`
 
 ### Building an Executable (Windows)
 
