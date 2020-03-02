@@ -134,7 +134,7 @@ devTools/cardCreator/AddJsonCardToGame.exe
 !/Server/resources/accounts/template.account.json
 
 ## VSCode
-.vscode/*
+.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
