@@ -30,7 +30,7 @@ public class LanguageData {
             languageMapSelected = loadJson(this.selectedLanguage);
 
         } catch (IOException e) {
-            System.out.println(String.format("Language Localisation Error! Could not find language files in dir: '%s'", languageFolder));
+            System.out.println(String.format("Language Localisation Error: Could not find language files in dir: '%s'", languageFolder));
             e.printStackTrace();
         }
     }
@@ -55,13 +55,13 @@ public class LanguageData {
         try {
             value = getValue(languageMapSelected, keys);
         } catch (IllegalAccessException | NoSuchFieldException | NullPointerException e1) {
-            System.out.println(String.format("Language Error: failed to find value for keys '%s' for selected language: '%s'", Arrays.deepToString(keys), selectedLanguage));
+            System.out.println(String.format("Language Localisation Error:: failed to find value for keys '%s' for selected language: '%s'. Will use default value.", Arrays.deepToString(keys), selectedLanguage));
 
             // If we fail to find a translation, see if we can add default text.
             try {
                 value = getValue(languageMapDefault, keys);
             } catch (IllegalAccessException | NoSuchFieldException | NullPointerException e2) {
-                System.out.println(String.format("Language Error: failed to find value for keys '%s' for DEFAULT language: '%s'", Arrays.deepToString(keys), defaultLanguage));
+                System.out.println(String.format("Language Localisation Error:: failed to find value for keys '%s' for DEFAULT language: '%s'", Arrays.deepToString(keys), defaultLanguage));
             }
         }
         return (value != null) ? value.toString() : "Missing Language Value";
