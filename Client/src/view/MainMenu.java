@@ -31,7 +31,6 @@ public class MainMenu extends Show {
     private final String logoutText = LanguageData.getInstance().getValue(new String[] {"PROFILE", "LOGOUT"});
 
     private final String onlineGamesText = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "ONLINE_GAMES"});
-    private final String onlineGamesHintText = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "ONLINE_GAMES_HINT"});
 
     private static final Media backgroundMusic = new Media(
             new File("Client/resources/music/main_menu.m4a").toURI().toString()
@@ -39,12 +38,12 @@ public class MainMenu extends Show {
     private final List<MenuItem> items = new ArrayList<>();
     private int itemIndex = 0;
     private final MenuItem[] itemsArray = {
-            new MenuItem(itemIndex++, playText,"", event -> PlayMenu.getInstance().show()),
-            new MenuItem(itemIndex++, collectionText, "", event -> new CollectionMenu().show()),
-            new MenuItem(itemIndex++, chatText, "", event -> GlobalChatDialog.getInstance().show()),
-            new MenuItem(itemIndex++, spectateText, "", event -> showOnlineGamesList()),
-            new MenuItem(itemIndex++, profileText, "", event -> menu.showProfileDialog()),
-            new MenuItem(itemIndex++, quitText, "", event -> Client.getInstance().close()),
+            new MenuItem(itemIndex++, playText,null, event -> PlayMenu.getInstance().show()),
+            new MenuItem(itemIndex++, collectionText, null, event -> new CollectionMenu().show()),
+            new MenuItem(itemIndex++, chatText, null, event -> GlobalChatDialog.getInstance().show()),
+            new MenuItem(itemIndex++, spectateText, null, event -> showOnlineGamesList()),
+            new MenuItem(itemIndex++, profileText, null, event -> menu.showProfileDialog()),
+            new MenuItem(itemIndex++, quitText, null, event -> Client.getInstance().close()),
 
     };
 
@@ -55,7 +54,7 @@ public class MainMenu extends Show {
         if (Client.getInstance().getAccount().getAccountType() == ADMIN) {
             System.out.println(Client.getInstance().getAccount().getUsername());
             items.addAll(Arrays.asList(
-                    new MenuItem(itemIndex++, onlineGamesText, onlineGamesHintText, event -> menu.showOnlineGamesList())
+                    new MenuItem(itemIndex++, onlineGamesText, null, event -> menu.showOnlineGamesList())
             ));
         }
     }
