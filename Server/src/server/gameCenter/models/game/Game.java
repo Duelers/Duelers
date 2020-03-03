@@ -41,9 +41,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import java.util.TimerTask;
-import java.util.Timer;
-
 public abstract class Game {
     private static final int DEFAULT_REWARD = 1000;
     private static final long TURN_TIME_LIMIT = 120000;
@@ -626,11 +623,11 @@ public abstract class Game {
 
     private void checkRangeForAttack(Troop attackerTroop, Troop defenderTroop) throws ClientException {
         if (attackerTroop.getCard().getAttackType() == AttackType.MELEE) {
-            if (!attackerTroop.getCell().isNextTo(defenderTroop.getCell())) {
+            if (!attackerTroop.getCell().isNearbyCell(defenderTroop.getCell())) {
                 throw new ClientException(attackerTroop.getCard().getCardId() + " can not attack to this target");
             }
         } else if (attackerTroop.getCard().getAttackType() == AttackType.RANGED) {
-            if (attackerTroop.getCell().isNextTo(defenderTroop.getCell()) ||
+            if (attackerTroop.getCell().isNearbyCell(defenderTroop.getCell()) ||
                     attackerTroop.getCell().manhattanDistance(defenderTroop.getCell()) > attackerTroop.getCard().getRange()) {
                 throw new ClientException(attackerTroop.getCard().getCardId() + " can not attack to this target");
             }

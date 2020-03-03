@@ -77,11 +77,11 @@ public class GameController implements GameActions {
             if (!attackerTroop.canAttack() || attackerTroop.getCurrentAp() == 0)
                 throw new InputException("Error: troop cannot attack and/or current 'ap' is 0.");
             if (attackerTroop.getCard().getAttackType() == AttackType.MELEE) {
-                if (!attackerTroop.getCell().isNextTo(defenderTroop.getCell())) {
+                if (!attackerTroop.getCell().isNearbyCell(defenderTroop.getCell())) {
                     throw new InputException("Error: target is outside of MELEE range");
                 }
             } else if (attackerTroop.getCard().getAttackType() == AttackType.RANGED) {
-                if (attackerTroop.getCell().isNextTo(defenderTroop.getCell()) ||
+                if (attackerTroop.getCell().isNearbyCell(defenderTroop.getCell()) ||
                         attackerTroop.getCell().manhattanDistance(defenderTroop.getCell()) > attackerTroop.getCard().getRange()) {
                     throw new InputException(String.format("Error: target is outside of range (%d)", attackerTroop.getCard().getRange()));
                 }
