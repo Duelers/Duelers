@@ -15,7 +15,7 @@ import server.exceptions.LogicException;
 import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
 import server.gameCenter.models.game.*;
-import shared.models.game.Troop;
+import shared.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 import shared.models.game.map.CellEffect;
 
@@ -299,7 +299,7 @@ public class GameServer {
         }
     }
 
-    public void sendTroopUpdateMessage(Game game, Troop troop) {
+    public void sendTroopUpdateMessage(Game game, ServerTroop troop) {
         for (Account account : game.getObservers()) {
             String clientName = DataCenter.getInstance().getAccounts().get(account);
             if (clientName == null) {
@@ -310,7 +310,7 @@ public class GameServer {
         }
     }
 
-    public void sendAttackMessage(Game game, Troop attacker, Troop defender, boolean counterAttack) {
+    public void sendAttackMessage(Game game, ServerTroop attacker, ServerTroop defender, boolean counterAttack) {
         for (Account account : game.getObservers()) {
             String clientName = DataCenter.getInstance().getAccounts().get(account);
             if (clientName == null) {

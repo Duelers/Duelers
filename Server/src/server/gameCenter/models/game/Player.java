@@ -7,7 +7,8 @@ import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
-import shared.models.game.Troop;
+import shared.models.game.ServerTroop;
+import shared.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 import server.dataCenter.models.Constants;
 
@@ -17,9 +18,9 @@ public class Player {
     private String userName;
     private int currentMP;
     private Deck deck;
-    private Troop hero;
+    private ServerTroop hero;
     private List<Card> hand = new ArrayList<>();
-    private List<Troop> troops = new ArrayList<>();
+    private List<ServerTroop> troops = new ArrayList<>();
     private List<Card> graveyard = new ArrayList<>();
     private Card nextCard;
     private int playerNumber;
@@ -146,7 +147,7 @@ public class Player {
         return this.deck;
     }
 
-    public List<Troop> getTroops() {
+    public List<ServerTroop> getTroops() {
         return Collections.unmodifiableList(troops);
     }
 
@@ -158,8 +159,8 @@ public class Player {
         return this.nextCard;
     }
 
-    Troop getTroop(Cell cell) {
-        for (Troop troop : troops) {
+    ServerTroop getTroop(Cell cell) {
+        for (ServerTroop troop : troops) {
             if (troop.getCell().equals(cell)) {
                 return troop;
             }
@@ -167,8 +168,8 @@ public class Player {
         return null;
     }
 
-    Troop getTroop(String cardId) {
-        for (Troop troop : troops) {
+    ServerTroop getTroop(String cardId) {
+        for (ServerTroop troop : troops) {
             if (troop.getCard().getCardId().equalsIgnoreCase(cardId)) {
                 return troop;
             }
@@ -176,9 +177,9 @@ public class Player {
         return null;
     }
 
-    public Troop createHero() {
+    public ServerTroop createHero() {
         if (hero == null) {
-            hero = new Troop(deck.getHero(), playerNumber);
+            hero = new ServerTroop(deck.getHero(), playerNumber);
             hero.setCanMove(true);
             hero.setCanAttack(true);
             troops.add(hero);
@@ -186,15 +187,15 @@ public class Player {
         return hero;
     }
 
-    public Troop getHero() {
+    public ServerTroop getHero() {
         return hero;
     }
 
-    public void setHero(Troop hero) {
+    public void setHero(ServerTroop hero) {
         this.hero = hero;
     }
 
-    void killTroop(Game game, Troop troop) {
+    void killTroop(Game game, ServerTroop troop) {
         addToGraveYard(troop.getCard());
 //        Server.getInstance().sendChangeCardPositionMessage(game, troop.getCard(), CardPosition.GRAVE_YARD);
         troops.remove(troop);
@@ -211,7 +212,7 @@ public class Player {
         this.matchHistory = matchHistory;
     }
 
-    public void addTroop(Troop troop) {
+    public void addTroop(ServerTroop troop) {
         troops.add(troop);
     }
 

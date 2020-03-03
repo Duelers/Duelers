@@ -6,19 +6,19 @@ import shared.models.game.map.Cell;
 
 public class Troop {
     private final Card card;
-    private int currentAp;
-    private int currentHp;
-    private int enemyHitChanges;
-    private Cell cell;
-    private boolean canMove;
-    private boolean canAttack;
-    private boolean isDisarm;
-    private boolean cantGetPoison;
-    private boolean cantGetDisarm;
-    private boolean cantGetStun;
-    private boolean dontGiveBadEffect;
-    private boolean noAttackFromWeakerOnes;
-    private boolean disableHolyBuff;
+    protected int currentAp;
+    protected int currentHp;
+    protected int enemyHitChanges;
+    protected Cell cell;
+    protected boolean canMove;
+    protected boolean canAttack;
+    protected boolean isDisarm;
+    protected boolean cantGetPoison;
+    protected boolean cantGetDisarm;
+    protected boolean cantGetStun;
+    protected boolean dontGiveBadEffect;
+    protected boolean noAttackFromWeakerOnes;
+    protected boolean disableHolyBuff;
     private final int playerNumber;
 
     public Troop(Card card, int playerNumber) {
@@ -44,35 +44,16 @@ public class Troop {
         return this.cell;
     }
 
-    public void setCell(Cell cell) {
-        this.cell = cell;
-    }
-
     public boolean canMove() {
         return this.canMove;
-    }
-
-    public void setCanMove(boolean can) {
-        this.canMove = can;
-        //TODO:Send Message
     }
 
     public boolean canAttack() {
         return this.canAttack;
     }
 
-    public void setCanAttack(boolean can) {
-        this.canAttack = can;
-        //TODO:Send Message
-    }
-
     public boolean isDisarm() {
         return this.isDisarm;
-    }
-
-    public void setDisarm(boolean disarm) {
-        this.isDisarm = disarm;
-        //TODO:Send Message
     }
 
     public boolean canGetPoison() {
@@ -105,45 +86,6 @@ public class Troop {
 
     public int getEnemyHitChanges() {
         return enemyHitChanges;
-    }
-
-    public void changeCurrentAp(int change) {
-        currentAp += change;
-        if (currentAp < 0) {
-            currentAp = 0;
-        }
-    }
-
-    public void changeCurrentHp(int change) {
-        currentHp += change;
-    }
-
-    public void changeEnemyHit(int change) {
-        enemyHitChanges += change;
-    }
-
-    public void setCantGetPoison(boolean cantGetPoison) {
-        this.cantGetPoison = cantGetPoison;
-    }
-
-    public void setCantGetDisarm(boolean cantGetDisarm) {
-        this.cantGetDisarm = cantGetDisarm;
-    }
-
-    public void setCantGetStun(boolean cantGetStun) {
-        this.cantGetStun = cantGetStun;
-    }
-
-    public void setDontGiveBadEffect(boolean dontGiveBadEffect) {
-        this.dontGiveBadEffect = dontGiveBadEffect;
-    }
-
-    public void setNoAttackFromWeakerOnes(boolean noAttackFromWeakerOnes) {
-        this.noAttackFromWeakerOnes = noAttackFromWeakerOnes;
-    }
-
-    public void setDisableHolyBuff(boolean disableHolyBuff) {
-        this.disableHolyBuff = disableHolyBuff;
     }
 
     public boolean isNoAttackFromWeakerOnes() {

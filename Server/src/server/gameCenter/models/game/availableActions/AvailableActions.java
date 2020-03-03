@@ -4,7 +4,7 @@ import javafx.util.Pair;
 import shared.models.card.AttackType;
 import server.gameCenter.models.game.Game;
 import server.gameCenter.models.game.Player;
-import shared.models.game.Troop;
+import shared.models.game.ServerTroop;
 import shared.models.card.Card;
 import shared.models.game.map.Cell;
 
@@ -36,12 +36,12 @@ public class AvailableActions {
         Player ownPlayer = game.getCurrentTurnPlayer();
         Player otherPlayer = game.getOtherTurnPlayer();
         attacks.clear();
-        for (Troop myTroop : ownPlayer.getTroops()) {
+        for (ServerTroop myTroop : ownPlayer.getTroops()) {
             if (!myTroop.canAttack()) continue;
             if (myTroop.getCurrentAp() <= 0){ continue;}
 
-            ArrayList<Troop> targets = new ArrayList<>();
-            for (Troop enemyTroop : otherPlayer.getTroops()) {
+            ArrayList<ServerTroop> targets = new ArrayList<>();
+            for (ServerTroop enemyTroop : otherPlayer.getTroops()) {
                 if (enemyTroop.canBeAttackedFromWeakerOnes() && myTroop.getCurrentAp() < enemyTroop.getCurrentAp())
                     continue;
 
@@ -60,7 +60,7 @@ public class AvailableActions {
     public void calculateAvailableMoves(Game game) {
         Player ownPlayer = game.getCurrentTurnPlayer();
         moves.clear();
-        for (Troop troop : ownPlayer.getTroops()) {
+        for (ServerTroop troop : ownPlayer.getTroops()) {
             ArrayList<Cell> troopMoves = calculateAvailableMovesForTroop(game, troop);
 
             if (troopMoves.size() > 0) {
@@ -70,7 +70,7 @@ public class AvailableActions {
     }
 
 
-    private ArrayList<Cell> calculateAvailableMovesForTroop(Game game, Troop troop) {
+    private ArrayList<Cell> calculateAvailableMovesForTroop(Game game, ServerTroop troop) {
         Cell troopCell = troop.getCell();
 
         HashSet<Cell> walkableCells = new HashSet<>(); //Cells which the unit can move to.
@@ -100,7 +100,7 @@ public class AvailableActions {
             if (remainingMovement > 0) {
                 ArrayList<Cell> manhattanAdjacentCells = game.getGameMap().getManhattanAdjacentCells(currentCell);
                 for (Cell adjacentCell : manhattanAdjacentCells) {
-                    Troop troopInSpace = game.getGameMap().getTroop(adjacentCell);
+                    ServerTroop troopInSpace = game.getGameMap().getTroop(adjacentCell);
 
                     boolean blockedByAnything = troopInSpace != null;
                     if (!blockedByAnything) {
@@ -128,7 +128,7 @@ public class AvailableActions {
         List<Cell> neighbourCells = game.getGameMap().getNearbyCells(troopCell);
         for (Cell nCell : neighbourCells) {
             if (game.getGameMap().getTroop(nCell) != null) {
-                Troop nearbyUnit = game.getGameMap().getTroop(nCell);
+                ServerTroop nearbyUnit = game.getGameMap().getTroop(nCell);
                 // is provoked?
                 if (nearbyUnit.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
                     isProvoked = true;
@@ -139,7 +139,7 @@ public class AvailableActions {
         return isProvoked;
     }
 
-    private boolean checkRangeForAttack(Troop myTroop, Troop enemyTroop) {
+    private boolean checkRangeForAttack(ServerTroop myTroop, ServerTroop enemyTroop) {
         if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
             return !myTroop.getCell().isNearbyCell(enemyTroop.getCell());
         } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {

@@ -24,7 +24,8 @@ import server.gameCenter.models.game.availableActions.Insert;
 import server.gameCenter.models.game.availableActions.Move;
 
 import shared.models.game.GameType;
-import shared.models.game.Troop;
+import shared.models.game.ServerTroop;
+import shared.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 
 import server.gameCenter.models.map.GameMap;
@@ -294,7 +295,7 @@ public abstract class Game {
     }
 
     private void setAllTroopsCanAttackAndCanMove() {
-        for (Troop troop : gameMap.getTroops()) {
+        for (ServerTroop troop : gameMap.getTroops()) {
 
             troop.setCanAttack(true);
             troop.setCanMove(true);
@@ -313,7 +314,7 @@ public abstract class Game {
     }
 
     private void checkKills() {
-        for (Troop troop : gameMap.getTroops()) {
+        for (ServerTroop troop : gameMap.getTroops()) {
             if (troop.getCurrentHp() <= 0) {
                 killTroop(troop);
             }
@@ -331,7 +332,7 @@ public abstract class Game {
     private void revertBuff(Buff buff) {
         SpellAction action = buff.getAction();
 
-        for (Troop troop : buff.getTarget().getTroops()) {
+        for (ServerTroop troop : buff.getTarget().getTroops()) {
             if (!(buff.isPositive() || troop.canGiveBadEffect())) continue;
 
             troop.changeEnemyHit(-action.getEnemyHitChanges());
@@ -386,7 +387,7 @@ public abstract class Game {
                     throw new ClientException("another troop is here.");
                 }
                 GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.MAP);
-                Troop troop = new Troop(card, getCurrentTurnPlayer().getPlayerNumber());
+                ServerTroop troop = new ServerTroop(card, getCurrentTurnPlayer().getPlayerNumber());
 
                 if (troop.getCard().getDescription().contains("Rush")) {
                     troop.setCanAttack(true);
@@ -412,7 +413,7 @@ public abstract class Game {
         }
     }
 
-    private void putMinion(int playerNumber, Troop troop, Cell cell) {
+    private void putMinion(int playerNumber, ServerTroop troop, Cell cell) {
 
         if (!(troop.getCard().getType() == CardType.HERO)) {
             // This function is also used to place heroes at start of game, hence this check.
@@ -443,7 +444,7 @@ public abstract class Game {
 
         Player player = getCurrentTurnPlayer();
 
-        for (Troop troop : player.getTroops()) {
+        for (ServerTroop troop : player.getTroops()) {
             Cell allyPosition = troop.getCell();
 
             boolean checkRow = Math.abs(cell.getRow() - allyPosition.getRow()) <= 1;
@@ -475,7 +476,7 @@ public abstract class Game {
             throw new ClientException("given coordinate is not valid");
         }
 
-        Troop troop = gameMap.getTroop(cardId);
+        ServerTroop troop = gameMap.getTroop(cardId);
         if (troop == null) {
             throw new ClientException("select a valid card");
         }
@@ -505,8 +506,8 @@ public abstract class Game {
                 throw new ClientException("its not your turn");
             }
 
-            Troop attackerTroop = getAndValidateTroop(attackerCardId, getCurrentTurnPlayer());
-            Troop defenderTroop = getAndValidateTroop(defenderCardId, getOtherTurnPlayer());
+            ServerTroop attackerTroop = getAndValidateTroop(attackerCardId, getCurrentTurnPlayer());
+            ServerTroop defenderTroop = getAndValidateTroop(defenderCardId, getOtherTurnPlayer());
 
             if (!attackerTroop.canAttack()) {
                 throw new ClientException("attacker can not attack");
@@ -537,7 +538,7 @@ public abstract class Game {
         }
     }
 
-    private void applyOnAttackSpells(Troop attackerTroop, Troop defenderTroop) {
+    private void applyOnAttackSpells(ServerTroop attackerTroop, ServerTroop defenderTroop) {
         for (Spell spell : attackerTroop.getCard().getSpells()) {
             if (spell.getAvailabilityType().isOnAttack())
                 applySpell(
@@ -547,7 +548,7 @@ public abstract class Game {
         }
     }
 
-    private void applyOnDefendSpells(Troop defenderTroop, Troop attackerTroop) {
+    private void applyOnDefendSpells(ServerTroop defenderTroop, ServerTroop attackerTroop) {
         for (Spell spell : defenderTroop.getCard().getSpells()) {
             if (spell.getAvailabilityType().isOnDefend())
                 applySpell(
@@ -557,7 +558,7 @@ public abstract class Game {
         }
     }
 
-    private void counterAttack(Troop defenderTroop, Troop attackerTroop) throws LogicException {
+    private void counterAttack(ServerTroop defenderTroop, ServerTroop attackerTroop) throws LogicException {
         if (defenderTroop.isDisarm()) {
             throw new ClientException("defender is disarm");
         }
@@ -571,7 +572,7 @@ public abstract class Game {
         }
     }
 
-    private void damage(Troop attackerTroop, Troop defenderTroop) {
+    private void damage(ServerTroop attackerTroop, ServerTroop defenderTroop) {
         int attackPower = calculateAp(attackerTroop, defenderTroop);
 
         defenderTroop.changeCurrentHp(-attackPower);
@@ -583,7 +584,7 @@ public abstract class Game {
         }
     }
 
-    private int calculateAp(Troop attackerTroop, Troop defenderTroop) {
+    private int calculateAp(ServerTroop attackerTroop, ServerTroop defenderTroop) {
         int attackPower = attackerTroop.getCurrentAp();
         if (!attackerTroop.isHolyBuffDisabling() || defenderTroop.getEnemyHitChanges() > 0) {
             attackPower += defenderTroop.getEnemyHitChanges();
@@ -592,24 +593,24 @@ public abstract class Game {
     }
 
 
-    private Troop getAndValidateHero(String cardId) throws ClientException {
-        Troop hero = getCurrentTurnPlayer().getHero();
+    private ServerTroop getAndValidateHero(String cardId) throws ClientException {
+        ServerTroop hero = getCurrentTurnPlayer().getHero();
         if (hero == null || !hero.getCard().getCardId().equalsIgnoreCase(cardId)) {
             throw new ClientException("hero id is not valid");
         }
         return hero;
     }
 
-    private Troop getAndValidateTroop(String defenderCardId, Player otherTurnPlayer) throws ClientException {
-        Troop troop = otherTurnPlayer.getTroop(defenderCardId);
+    private ServerTroop getAndValidateTroop(String defenderCardId, Player otherTurnPlayer) throws ClientException {
+        ServerTroop troop = otherTurnPlayer.getTroop(defenderCardId);
         if (troop == null) {
             throw new ClientException("card id is not valid");
         }
         return troop;
     }
 
-    private Troop[] getAndValidateAttackerTroops(String[] attackerCardIds, Troop defenderTroop) throws ClientException {
-        Troop[] attackerTroops = new Troop[attackerCardIds.length];
+    private ServerTroop[] getAndValidateAttackerTroops(String[] attackerCardIds, ServerTroop defenderTroop) throws ClientException {
+        ServerTroop[] attackerTroops = new ServerTroop[attackerCardIds.length];
         for (int i = 0; i < attackerTroops.length; i++) {
             attackerTroops[i] = getCurrentTurnPlayer().getTroop(attackerCardIds[i]);
             if (attackerTroops[i] == null) {
@@ -621,7 +622,7 @@ public abstract class Game {
         return attackerTroops;
     }
 
-    private void checkRangeForAttack(Troop attackerTroop, Troop defenderTroop) throws ClientException {
+    private void checkRangeForAttack(ServerTroop attackerTroop, ServerTroop defenderTroop) throws ClientException {
         if (attackerTroop.getCard().getAttackType() == AttackType.MELEE) {
             if (!attackerTroop.getCell().isNearbyCell(defenderTroop.getCell())) {
                 throw new ClientException(attackerTroop.getCard().getCardId() + " can not attack to this target");
@@ -638,8 +639,8 @@ public abstract class Game {
         }
     }
 
-    private void damageFromAllAttackers(Troop defenderTroop, Troop[] attackerTroops) {
-        for (Troop attackerTroop : attackerTroops) {
+    private void damageFromAllAttackers(ServerTroop defenderTroop, ServerTroop[] attackerTroops) {
+        for (ServerTroop attackerTroop : attackerTroops) {
             if (defenderTroop.canGiveBadEffect() &&
                     (defenderTroop.canBeAttackedFromWeakerOnes() || attackerTroop.getCurrentAp() > defenderTroop.getCurrentAp())
             ) {
@@ -715,7 +716,7 @@ public abstract class Game {
     }
 
     private void applyBuffOnCellTroops(Buff buff, List<Cell> cells) {
-        ArrayList<Troop> inCellTroops = getInCellTargetTroops(cells);
+        ArrayList<ServerTroop> inCellTroops = getInCellTargetTroops(cells);
         Buff troopBuff = new Buff(
                 buff.getAction().makeCopyAction(1, 0), new TargetData(inCellTroops)
         );
@@ -723,9 +724,9 @@ public abstract class Game {
         applyBuffOnTroops(troopBuff, inCellTroops);
     }
 
-    private void applyBuffOnTroops(Buff buff, List<Troop> targetTroops) {
+    private void applyBuffOnTroops(Buff buff, List<ServerTroop> targetTroops) {
         SpellAction action = buff.getAction();
-        for (Troop troop : targetTroops) {
+        for (ServerTroop troop : targetTroops) {
             if (!(buff.isPositive() || troop.canGiveBadEffect())) continue;
 
             troop.changeEnemyHit(action.getEnemyHitChanges());
@@ -775,7 +776,7 @@ public abstract class Game {
         }
     }
 
-    private void removePositiveBuffs(Troop troop) {
+    private void removePositiveBuffs(ServerTroop troop) {
         for (Buff buff : buffs) {
             if (buff.isPositive() && buff.getAction().getDuration() >= 0) {
                 buff.getTarget().getTroops().remove(troop);
@@ -783,7 +784,7 @@ public abstract class Game {
         }
     }
 
-    private void removeNegativeBuffs(Troop troop) {
+    private void removeNegativeBuffs(ServerTroop troop) {
         for (Buff buff : buffs) {
             if (!buff.isPositive() && buff.getAction().getDuration() >= 0) {
                 buff.getTarget().getTroops().remove(troop);
@@ -791,7 +792,7 @@ public abstract class Game {
         }
     }
 
-    void killTroop(Troop troop) {
+    void killTroop(ServerTroop troop) {
         applyOnDeathSpells(troop);
         if (troop.getPlayerNumber() == 1) {
             playerOne.killTroop(this, troop);
@@ -803,7 +804,7 @@ public abstract class Game {
         GameServer.getInstance().sendChangeCardPositionMessage(this, troop.getCard(), CardPosition.GRAVE_YARD);
     }
 
-    private void applyOnDeathSpells(Troop troop) {
+    private void applyOnDeathSpells(ServerTroop troop) {
         for (Spell spell : troop.getCard().getSpells()) {
             if (spell.getAvailabilityType().isOnDeath())
                 applySpell(
@@ -813,10 +814,10 @@ public abstract class Game {
         }
     }
 
-    private ArrayList<Troop> getInCellTargetTroops(List<Cell> cells) {
-        ArrayList<Troop> inCellTroops = new ArrayList<>();
+    private ArrayList<ServerTroop> getInCellTargetTroops(List<Cell> cells) {
+        ArrayList<ServerTroop> inCellTroops = new ArrayList<>();
         for (Cell cell : cells) {
-            Troop troop = playerOne.getTroop(cell);
+            ServerTroop troop = playerOne.getTroop(cell);
             if (troop == null) {
                 troop = playerTwo.getTroop(cell);
             }
@@ -906,7 +907,7 @@ public abstract class Game {
     private void addTroopsAndCellsToTargetData(Spell spell, TargetData targetData, Player player, ArrayList<Cell> targetCells) {
         for (Cell cell : targetCells) {
             if (player != null) {
-                Troop troop = player.getTroop(cell);
+                ServerTroop troop = player.getTroop(cell);
                 if (troop != null) {
                     if (spell.getTarget().getAttackType().isHybrid() && troop.getCard().getAttackType() == AttackType.HYBRID) {
                         addTroopToTargetData(spell, targetData, troop);
@@ -925,7 +926,7 @@ public abstract class Game {
         }
     }
 
-    private void addTroopToTargetData(Spell spell, TargetData targetData, Troop troop) {
+    private void addTroopToTargetData(Spell spell, TargetData targetData, ServerTroop troop) {
         if (spell.getTarget().getCardType().isHero() && troop.getCard().getType() == CardType.HERO) {
             targetData.getTroops().add(troop);
         }
