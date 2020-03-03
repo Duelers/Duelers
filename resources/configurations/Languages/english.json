@@ -28,7 +28,8 @@
 	},
 	
 	'PROFILE': {
-		'LOGOUT': 'Logout'
+		'LOGOUT': 'Logout',
+		'MATCH_HISTORY': 'match history'
 	},
 	
     'BUTTON_TEXT': {

@@ -3,6 +3,7 @@ package models.gui;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import models.account.Account;
+import models.languageLocalisation.LanguageData;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,8 +16,10 @@ public class ProfileGrid extends GridPane {
     private static final String GENERAL_ICON_URL = "Client/resources/ui/icon_general.png";
     private static final String GOLD_ICON_URL = "Client/resources/ui/icon_gold.png";
     private static final String HISTORY_ICON_URL = "Client/resources/ui/icon_history.png";
-    private static final String USERNAME_TEXT = "Username:";
-    private static final String MATCH_HISTORY_TEXT = "Match Histories:";
+
+
+    private static final String USERNAME_TEXT = LanguageData.getInstance().getValue(new String[]{"LOGIN_MENU", "USERNAME"});
+    private static final String MATCH_HISTORY_TEXT = LanguageData.getInstance().getValue(new String[]{"PROFILE", "MATCH_HISTORY"});
     public static Image goldIcon;
     public static Image generalIcon;
     private static Image defaultProfilePic;
