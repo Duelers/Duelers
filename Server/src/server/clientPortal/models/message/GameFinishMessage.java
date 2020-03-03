@@ -3,11 +3,7 @@ package server.clientPortal.models.message;
 class GameFinishMessage {
     private boolean youWon;
 
-    private int reward;
-
-
-    GameFinishMessage(boolean youWon, int reward) {
+    GameFinishMessage(boolean youWon) {
         this.youWon = youWon;
-        this.reward = reward;
     }
 }

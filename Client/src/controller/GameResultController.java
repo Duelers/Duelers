@@ -3,7 +3,6 @@ package controller;
 public class GameResultController {
     private static GameResultController gameResultController;
     private boolean amIWinner;
-    private int reward;
 
     public static GameResultController getInstance() {
         if (gameResultController == null) {
@@ -12,16 +11,11 @@ public class GameResultController {
         return gameResultController;
     }
 
-    void setWinnerInfo(boolean amIWinner, int reward) {
+    void setWinnerInfo(boolean amIWinner) {
         this.amIWinner = amIWinner;
-        this.reward = reward;
     }
 
     public boolean amInWinner() {
         return amIWinner;
-    }
-
-    public int getReward() {
-        return reward;
     }
 }

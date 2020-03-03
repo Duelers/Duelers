@@ -14,7 +14,6 @@ public class TempAccount {
     private List<TempDeck> decks = new ArrayList<>();
     private String mainDeckName;
     private List<MatchHistory> matchHistories = new ArrayList<>();
-    private int money;
     private int wins;
 
     public String getUsername() {
@@ -39,10 +38,6 @@ public class TempAccount {
 
     List<MatchHistory> getMatchHistories() {
         return Collections.unmodifiableList(matchHistories);
-    }
-
-    int getMoney() {
-        return money;
     }
 
     public int getWins() {

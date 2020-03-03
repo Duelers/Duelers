@@ -157,9 +157,9 @@ public class Message {
         return message;
     }
 
-    public static Message makeGameFinishMessage(String receiver, boolean youWon, int reward) {
+    public static Message makeGameFinishMessage(String receiver, boolean youWon) {
         Message message = new Message(receiver);
-        message.gameFinishMessage = new GameFinishMessage(youWon, reward);
+        message.gameFinishMessage = new GameFinishMessage(youWon);
         message.messageType = MessageType.Game_FINISH;
         return message;
     }
