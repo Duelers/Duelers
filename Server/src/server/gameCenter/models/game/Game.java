@@ -45,7 +45,6 @@ import java.util.TimerTask;
 import java.util.Timer;
 
 public abstract class Game {
-    private static final int DEFAULT_REWARD = 1000;
     private static final long TURN_TIME_LIMIT = 120000;
     private Player playerOne;
     private Player playerTwo;
@@ -54,7 +53,6 @@ public abstract class Game {
     private ArrayList<Buff> tempBuffs = new ArrayList<>();
     private GameMap gameMap;
     private int turnNumber = 1;
-    private int reward;
     private boolean isFinished;
     private ArrayList<Account> observers = new ArrayList<>();
 
@@ -67,10 +65,6 @@ public abstract class Game {
         this.gameMap = gameMap;
         this.playerOne = new Player(account.getMainDeck(), account.getUsername(), 1);
         this.playerTwo = new Player(secondDeck, userName, 2);
-    }
-
-    public static int getDefaultReward() {
-        return DEFAULT_REWARD;
     }
 
     public int getTurnNumber() {
@@ -1001,14 +995,6 @@ public abstract class Game {
         playerTwo.setMatchHistory(
                 new MatchHistory(playerOne, resultTwo)
         );
-    }
-
-    public int getReward() {
-        return reward;
-    }
-
-    public void setReward(int reward) {
-        this.reward = reward;
     }
 
     public List<CellEffect> getCellEffects() {
