@@ -9,6 +9,9 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import models.comperessedData.CompressedGameMap;
 import models.comperessedData.CompressedPlayer;
+import models.gui.DefaultText;
+import net.bytebuddy.implementation.auxiliary.TypeProxy;
+import server.gameCenter.models.game.Player;
 import shared.models.card.CardType;
 import shared.models.card.Card;
 import shared.models.game.Troop;
@@ -258,59 +261,92 @@ public class MapBox implements PropertyChangeListener {
         CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
         for (int row = 0; row < gameMap.getRowNumber(); row++) {
             for (int column = 0; column < gameMap.getColumnNumber(); column++) {
-                if (!battleScene.isMyTurn()) {
-                    cells[row][column].setFill(Constants.defaultColor);
-                    continue;
-                }
-                Troop currentTroop = getTroop(row, column);
+
+                cells[row][column].setFill(Constants.defaultColor);
+
                 if (selectionType == SelectionType.INSERTION) {
-                    if (GameController.getInstance().getAvailableActions().canInsertCard(
-                            battleScene.getHandBox().getSelectedCard())) {
-                        if (battleScene.getHandBox().getSelectedCard().getType() == CardType.HERO ||
-                                battleScene.getHandBox().getSelectedCard().getType() == CardType.MINION) {
-
-                            Card card = battleScene.getHandBox().getSelectedCard();
-                            if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)) {
-                                cells[row][column].setFill(Constants.MOVE_COLOR);
-                            } else {
-                                cells[row][column].setFill(Constants.defaultColor);
-                            }
-
-                        } else {
-                            cells[row][column].setFill(Constants.SPELL_COLOR);
-                        }
-                    } else
-                        cells[row][column].setFill(Constants.defaultColor);
-                    continue;
+                    Boolean update = updateMapColoursOnInsertion(row, column, player);
+                    //if (update) { continue; }
                 }
-                if (selectionType == SelectionType.SELECTION) {
-                    if (currentTroop != null && currentTroop.getPlayerNumber() == battleScene.getMyPlayerNumber()) {
-                        cells[row][column].setFill(Constants.CAN_SELECT_COLOR);
-                    } else
-                        cells[row][column].setFill(Constants.defaultColor);
-                    continue;
+                if (selectionType == SelectionType.NORMAL){
+                    boolean updateNormal = updateMapColoursOnNormal(row, column, player);
+                    if (updateNormal) { continue;}
                 }
-                if (selectedTroop != null && selectedTroop.getCell().getRow() == row &&
-                        selectedTroop.getCell().getColumn() == column) {
-                    cells[row][column].setFill(Constants.SELECTED_COLOR);//not important
+
+                if (selectedTroop != null && selectedTroop.getCell() == new Cell(row, column)){
+                    cells[row][column].setFill(Constants.SELECTED_COLOR);
                     continue;
                 }
 
-                if (selectionType == SelectionType.SPELL) {
-                    cells[row][column].setFill(Constants.defaultColor);
-                    continue;
-                }
-                if (selectionType == SelectionType.NORMAL) {
-                    if (GameController.getInstance().getAvailableActions().canAttack(gameMap, player, selectedTroop, row, column))
-                        cells[row][column].setFill(Constants.ATTACK_COLOR);
-                    else if (GameController.getInstance().getAvailableActions().canMove(gameMap, player,
-                            selectedTroop, row, column))
-                        cells[row][column].setFill(Constants.MOVE_COLOR);
-                    else
-                        cells[row][column].setFill(Constants.defaultColor);
-                }
+                updateMapColourHighlightEnemyUnits(row, column, player);
+                updateMapColoursHighlightUnitActions(row, column, player);
             }
         }
+    }
+
+    private void updateMapColoursHighlightUnitActions(int row, int column, CompressedPlayer player){
+        Troop troop = getTroop(row, column);
+        if (troop == null){ return; }
+        if (!battleScene.isMyTurn()) { return; }
+        if (troop.getPlayerNumber() != player.getPlayerNumber()) { return;}
+
+        if (troop.canMove()){
+            cells[row][column].setFill(Constants.CAN_MOVE);
+        }
+        //if (troop.canAttack()){
+        //    cells[row][column].setFill(Constants.CAN_ATTACK);
+        //}
+    }
+
+    private void updateMapColourHighlightEnemyUnits(int row, int column, CompressedPlayer player){
+        Troop troop = getTroop(row, column);
+        if (troop == null){ return; }
+
+        if (battleScene.isMyTurn()){
+            if (troop.getPlayerNumber() != player.getPlayerNumber()){
+                cells[row][column].setFill(Constants.ENEMY_UNIT);
+            }
+        }
+        else{
+            if (troop.getPlayerNumber() == player.getPlayerNumber())
+                cells[row][column].setFill(Constants.ENEMY_UNIT);
+        }
+    }
+
+    private Boolean updateMapColoursOnInsertion(int row, int column, CompressedPlayer player){
+
+        Card card = battleScene.getHandBox().getSelectedCard();
+
+        if (GameController.getInstance().getAvailableActions().canInsertCard(card)) {
+
+            if (card.getType() == CardType.SPELL) {
+                cells[row][column].setFill(Constants.SPELL_COLOR);
+            } else { // MINION or HERO
+                if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)) {
+                    cells[row][column].setFill(Constants.DEPLOY_TROOP);
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private Boolean updateMapColoursOnNormal(int row, int column, CompressedPlayer player){
+
+        boolean canAttack = GameController.getInstance().getAvailableActions().canAttack(gameMap, player, selectedTroop, row, column);
+        boolean canMove = GameController.getInstance().getAvailableActions().canMove(gameMap, player, selectedTroop, row, column);
+
+        if (!canAttack && !canMove){
+            return false;
+        }
+
+        if (canAttack) {
+            cells[row][column].setFill(Constants.ATTACK_COLOR);
+        }
+        else if (canMove) {
+            cells[row][column].setFill(Constants.MOVE_COLOR);
+        }
+        return true;
     }
 
     private void updateCellEffects() {
