@@ -395,6 +395,10 @@ public abstract class Game {
                     troop.setCanAttack(true);
                     troop.setCanMove(true);
                 }
+                else{
+                    troop.setCanAttack(false);
+                    troop.setCanMove(false);
+                }
 
                 player.addTroop(troop);
                 putMinion(
