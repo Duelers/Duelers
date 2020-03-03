@@ -21,9 +21,14 @@ import static models.account.AccountType.ADMIN;
 public class MainMenu extends Show {
     private static MainMenu menu;
 
-    private final String playButtonText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "PLAY"});
-    private final String collectionButtonText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "COLLECTION"});
-    private final String
+    private final String playText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "PLAY"});
+    private final String collectionText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "COLLECTION"});
+    private final String chatText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "CHAT"});
+    private final String spectateText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "SPECTATE"});
+    private final String profileText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "PROFILE"});
+    private final String quitText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "QUIT"});
+
+    private final String logoutText = LanguageData.getInstance().getValue(new String[] {"PROFILE", "LOGOUT"});
 
     private static final Media backgroundMusic = new Media(
             new File("Client/resources/music/main_menu.m4a").toURI().toString()
@@ -31,12 +36,12 @@ public class MainMenu extends Show {
     private final List<MenuItem> items = new ArrayList<>();
     private int itemIndex = 0;
     private final MenuItem[] itemsArray = {
-            new MenuItem(itemIndex++, "PLAY","", event -> PlayMenu.getInstance().show()),
-            new MenuItem(itemIndex++, "COLLECTION", "", event -> new CollectionMenu().show()),
-            new MenuItem(itemIndex++, "CHAT", "", event -> GlobalChatDialog.getInstance().show()),
-            new MenuItem(itemIndex++, "Spectate", "", event -> showOnlineGamesList()),
-            new MenuItem(itemIndex++, "PROFILE", "", event -> menu.showProfileDialog()),
-            new MenuItem(itemIndex++, "QUIT", "", event -> Client.getInstance().close()),
+            new MenuItem(itemIndex++, playText,"", event -> PlayMenu.getInstance().show()),
+            new MenuItem(itemIndex++, collectionText, "", event -> new CollectionMenu().show()),
+            new MenuItem(itemIndex++, chatText, "", event -> GlobalChatDialog.getInstance().show()),
+            new MenuItem(itemIndex++, spectateText, "", event -> showOnlineGamesList()),
+            new MenuItem(itemIndex++, profileText, "", event -> menu.showProfileDialog()),
+            new MenuItem(itemIndex++, quitText, "", event -> Client.getInstance().close()),
 
     };
 
@@ -110,7 +115,7 @@ public class MainMenu extends Show {
 
         dialogContainer.show();
 
-        dialogBox.makeButton("LOGOUT", event -> {
+        dialogBox.makeButton(logoutText, event -> {
             dialogContainer.close();
             MainMenuController.getInstance().logout();
             new LoginMenu().show();
