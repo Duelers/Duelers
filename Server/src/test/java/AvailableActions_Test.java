@@ -30,7 +30,8 @@ public class AvailableActions_Test {
 
     private Troop addFriendlyMinion(Game game, Cell cell) {
         int friendlyPlayerNumber = 1;
-        Troop troop = new Troop(makeMinionCard(), cell, friendlyPlayerNumber);
+        Troop troop = new Troop(makeMinionCard(), friendlyPlayerNumber);
+        troop.setCell(cell);
         troop.setCanMove(true);
         game.getGameMap().addTroop(friendlyPlayerNumber, troop);
         game.getCurrentTurnPlayer().addTroop(troop);
@@ -39,7 +40,8 @@ public class AvailableActions_Test {
 
     private Troop addEnemyMinion(Game game, Cell cell) {
         int enemyPlayerNumber = 2;
-        Troop troop = new Troop(makeMinionCard(), cell, enemyPlayerNumber);
+        Troop troop = new Troop(makeMinionCard(), enemyPlayerNumber);
+        troop.setCell(cell);
         troop.setCanMove(true);
         game.getGameMap().addTroop(enemyPlayerNumber, troop);
         return troop;

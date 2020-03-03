@@ -28,11 +28,6 @@ public class Troop {
         this.playerNumber = playerNumber;
     }
 
-    public Troop(Card card, Cell cell, int playerNumber) {
-        this(card, playerNumber);
-        this.cell = cell;
-    }
-
     public Card getCard() {
         return this.card;
     }
