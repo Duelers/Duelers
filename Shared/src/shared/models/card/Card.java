@@ -5,8 +5,6 @@ import shared.models.card.spell.Spell;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Card implements ICard {
     private transient PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -48,32 +46,6 @@ public class Card implements ICard {
         this.price = price;
         this.attackType = attackType;
         this.range = range;
-    }
-
-    public Card(String name,
-                String description,
-                CardType cardType,
-                ArrayList<Spell> spells,
-                int defaultAp,
-                int defaultHp,
-                int manaCost,
-                int price,
-                AttackType attackType,
-                int range) {
-        this.name = name;
-        this.description = description;
-        this.type = cardType;
-        this.spells = spells;
-        this.defaultAp = defaultAp;
-        this.defaultHp = defaultHp;
-        this.manaCost = manaCost;
-        this.price = price;
-        this.attackType = attackType;
-        this.range = range;
-    }
-
-
-    public Card() {
     }
 
     public Card(Card referenceCard, String username, int number) {
@@ -182,24 +154,6 @@ public class Card implements ICard {
         int old = this.remainingNumber;
         this.remainingNumber = remainingNumber;
         support.firePropertyChange("new_value", old, remainingNumber);
-    }
-
-//    public void setRemainingNumber(int number) { //From old server version
-//        remainingNumber = number;
-//    }
-
-
-    public void addListener(PropertyChangeListener pcl) {
-        support.addPropertyChangeListener(pcl);
-    }
-
-
-    public void increaseRemainingNumber() {
-        remainingNumber++;
-    }
-
-    public void decreaseRemainingNumber() {
-        remainingNumber--;
     }
 
     public void addSpell(Spell spell) {
