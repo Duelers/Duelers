@@ -1,6 +1,7 @@
-package shared.models.game;
+package server.gameCenter.models.game;
 
 import shared.models.card.Card;
+import shared.models.game.Troop;
 import shared.models.game.map.Cell;
 
 public class ServerTroop extends Troop {

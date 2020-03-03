@@ -1,6 +1,6 @@
 package server.clientPortal.models.message;
 
-import shared.models.game.ServerTroop;
+import server.gameCenter.models.game.ServerTroop;
 
 class TroopUpdateMessage {
     private ServerTroop troop;

@@ -4,7 +4,7 @@ import javafx.util.Pair;
 import shared.models.card.AttackType;
 import server.gameCenter.models.game.Game;
 import server.gameCenter.models.game.Player;
-import shared.models.game.ServerTroop;
+import server.gameCenter.models.game.ServerTroop;
 import shared.models.card.Card;
 import shared.models.game.map.Cell;
 

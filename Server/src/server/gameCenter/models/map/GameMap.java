@@ -1,7 +1,7 @@
 package server.gameCenter.models.map;
 
 import server.clientPortal.models.comperessedData.CompressedGameMap;
-import shared.models.game.ServerTroop;
+import server.gameCenter.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 
 import java.util.*;

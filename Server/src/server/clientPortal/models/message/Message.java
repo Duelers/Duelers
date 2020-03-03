@@ -9,7 +9,7 @@ import server.dataCenter.models.card.ExportedDeck;
 import shared.models.card.spell.AvailabilityType;
 import server.gameCenter.models.game.*;
 import shared.models.game.GameType;
-import shared.models.game.ServerTroop;
+import server.gameCenter.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 import shared.models.game.map.CellEffect;
 

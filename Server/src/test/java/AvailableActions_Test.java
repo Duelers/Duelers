@@ -13,7 +13,7 @@ import shared.models.card.spell.Spell;
 import server.gameCenter.models.game.*;
 import server.gameCenter.models.game.availableActions.AvailableActions;
 import server.gameCenter.models.game.availableActions.Move;
-import shared.models.game.ServerTroop;
+import server.gameCenter.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 import server.gameCenter.models.map.GameMap;
 

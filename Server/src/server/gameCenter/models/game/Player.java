@@ -7,8 +7,6 @@ import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
-import shared.models.game.ServerTroop;
-import shared.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 import server.dataCenter.models.Constants;
 
