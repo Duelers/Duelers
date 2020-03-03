@@ -3,7 +3,7 @@
 CardBoard is an open-source project to build a multiplayer collectable-card-game with units that move freely on a battlefield. 
 The name is a terrible pun; the game has cards, and its played on a board.
 
-The core tech-stack is Java8(Fx) with Python used for scripting and Maven for our build automation. If you are interested in contributing please drop us a message.
+The core tech-stack is Java (with Fx) with Python used for scripting and Maven for our build automation. If you are interested in contributing please drop us a message.
 
 ### Screenshot
 
@@ -11,8 +11,8 @@ The core tech-stack is Java8(Fx) with Python used for scripting and Maven for ou
 
 ### Building and installing with Maven
 
-1. Import as a mavan project (you will need the maven-plugin to do this)
-2. Run the command: `mvn clean test package`
+1. Import as a maven project (you will need the maven-plugin to do this)
+2. Run the command: `mvn clean package`
 3. In `Client/target` there should be a file `Client-*-shaded.jar` 
 4. Run the above file and enjoy playing the game!
 	* from the command line the run command is `java -jar Client/target/Client-*-shaded.jar`

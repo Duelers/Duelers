@@ -31,12 +31,12 @@ public class MainMenu extends Show {
     private final List<MenuItem> items = new ArrayList<>();
     private int itemIndex = 0;
     private final MenuItem[] itemsArray = {
-            new MenuItem(itemIndex++, "PLAY", "Single player, multiplayer", event -> PlayMenu.getInstance().show()),
-            new MenuItem(itemIndex++, "COLLECTION", "View your cards or build a deck", event -> new CollectionMenu().show()),
-            new MenuItem(itemIndex++, "GLOBAL CHAT", "chat with other players", event -> GlobalChatDialog.getInstance().show()),
-            new MenuItem(itemIndex++, "SHOW ONLINE GAMES", "SHOW ONLINE GAMES", event -> showOnlineGamesList()),
-            new MenuItem(itemIndex++, "PROFILE", "See you profile information", event -> menu.showProfileDialog()),
-            new MenuItem(itemIndex++, "QUIT GAME", "Exit the game", event -> Client.getInstance().close()),
+            new MenuItem(itemIndex++, "PLAY","", event -> PlayMenu.getInstance().show()),
+            new MenuItem(itemIndex++, "COLLECTION", "", event -> new CollectionMenu().show()),
+            new MenuItem(itemIndex++, "CHAT", "", event -> GlobalChatDialog.getInstance().show()),
+            new MenuItem(itemIndex++, "Spectate", "", event -> showOnlineGamesList()),
+            new MenuItem(itemIndex++, "PROFILE", "", event -> menu.showProfileDialog()),
+            new MenuItem(itemIndex++, "QUIT", "", event -> Client.getInstance().close()),
 
     };
 

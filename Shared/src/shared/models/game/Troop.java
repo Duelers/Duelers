@@ -10,8 +10,8 @@ public class Troop {
     private int currentHp;
     private int enemyHitChanges;
     private Cell cell;
-    private boolean canMove = true;
-    private boolean canAttack = true;
+    private boolean canMove;
+    private boolean canAttack;
     private boolean isDisarm;
     private boolean cantGetPoison;
     private boolean cantGetDisarm;
