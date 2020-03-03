@@ -1,6 +1,7 @@
 {
     'LANGUAGE_ENGLISH_TITLE': 'english',
     'LANGUAGE_NATIVE_TITLE': 'english',
+	
     'LOGIN_MENU': {
         'WELCOME_MESSAGE': 'The Community tries to save Duelyst.',
         'VERSION': 'version',
@@ -13,10 +14,28 @@
         'ERROR_INCORRECT_PASSWORD': 'Incorrect Password.'
     },
 	
+	'MAIN_MENU':{
+		'PLAY': 'PLAY',
+		'COLLECTION': 'COLLECTION',
+		'CHAT': 'CHAT',
+		'SPECTATE': 'SPECTATE',
+		'PROFILE': 'PROFILE'
+		'QUIT': 'QUIT'
+	},
+	
+	'SPECTATE': {
+		'ONLINE_GAMES': 'Online Games'
+		'ONLINE_GAMES_HINT': 'View online games in real time'
+	},
+	
+	'PROFILE': {
+		'LOGOUT': 'Logout'
+	},
+	
     'BUTTON_TEXT': {
         'OK': 'ok',
+		'START': 'start',
         'CANCEL': 'cancel',
 		'ERROR': 'Error!'
     }
-	
 }
