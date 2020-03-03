@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import models.gui.*;
+import models.languageLocalisation.LanguageData;
 import models.message.OnlineGame;
 
 import java.io.File;
@@ -19,6 +20,11 @@ import static models.account.AccountType.ADMIN;
 
 public class MainMenu extends Show {
     private static MainMenu menu;
+
+    private final String playButtonText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "PLAY"});
+    private final String collectionButtonText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "COLLECTION"});
+    private final String
+
     private static final Media backgroundMusic = new Media(
             new File("Client/resources/music/main_menu.m4a").toURI().toString()
     );
