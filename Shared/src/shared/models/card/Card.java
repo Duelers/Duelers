@@ -48,27 +48,27 @@ public class Card implements ICard {
         this.range = range;
     }
 
-    public Card(String name,
-                String description,
-                CardType cardType,
-                ArrayList<Spell> spells,
-                int defaultAp,
-                int defaultHp,
-                int manaCost,
-                int price,
-                AttackType attackType,
-                int range) {
-        this.name = name;
-        this.description = description;
-        this.type = cardType;
-        this.spells = spells;
-        this.defaultAp = defaultAp;
-        this.defaultHp = defaultHp;
-        this.manaCost = manaCost;
-        this.price = price;
-        this.attackType = attackType;
-        this.range = range;
-    }
+//    public Card(String name,
+//                String description,
+//                CardType cardType,
+//                ArrayList<Spell> spells,
+//                int defaultAp,
+//                int defaultHp,
+//                int manaCost,
+//                int price,
+//                AttackType attackType,
+//                int range) {
+//        this.name = name;
+//        this.description = description;
+//        this.type = cardType;
+//        this.spells = spells;
+//        this.defaultAp = defaultAp;
+//        this.defaultHp = defaultHp;
+//        this.manaCost = manaCost;
+//        this.price = price;
+//        this.attackType = attackType;
+//        this.range = range;
+//    }
 
     public Card(Card referenceCard, String username, int number) {
         this(referenceCard);

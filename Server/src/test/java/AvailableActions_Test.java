@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 public class AvailableActions_Test {
 
     private Card makeMinionCard() {
-        Card card = new Card(" ", " ", CardType.MINION, new ArrayList<Spell>(), 1, 1, 1, 1, AttackType.MELEE, 1);
+        Card card = new Card(" ", " ", " ", " ", CardType.MINION, new ArrayList<Spell>(), 1, 1, 1, 1, AttackType.MELEE, 1);
         return card;
     }
 
