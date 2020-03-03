@@ -5,8 +5,6 @@ import shared.models.card.spell.Spell;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Card implements ICard {
     private transient PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -70,10 +68,6 @@ public class Card implements ICard {
         this.price = price;
         this.attackType = attackType;
         this.range = range;
-    }
-
-
-    public Card() {
     }
 
     public Card(Card referenceCard, String username, int number) {
