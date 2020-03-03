@@ -74,25 +74,11 @@ public class GameResultMenu extends Show {
             VBox resultBox = new VBox(DEFAULT_SPACING * 3);
             resultBox.setAlignment(Pos.CENTER);
 
-            if (GameResultController.getInstance().amInWinner()) {
-                data.middleText = GameResultController.getInstance().getReward() + "$";
-            } else {
-                data.middleText = "TRY AGAIN";
-            }
-
             DefaultLabel resultLabel = new DefaultLabel(data.message, RESULT_FONT, Color.WHITE);
             resultLabel.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, data.color, 100 * SCALE, 0.7, 0, 0));
 
-            HBox rewardBox = new HBox(DEFAULT_SPACING * 2);
-
-            rewardBox.setAlignment(Pos.CENTER);
-            ImageView icon = ImageLoader.makeImageView(data.middleIcon, ICON_SIZE, ICON_SIZE);
-            DefaultLabel reward = new DefaultLabel(data.middleText, MIDDLE_FONT, Color.WHITE);
-
-            rewardBox.getChildren().addAll(icon, reward);
-
             ImageButton playMenuButton = new ImageButton("PLAY MENU", event -> PlayMenu.getInstance().show());
-            resultBox.getChildren().addAll(resultLabel, rewardBox, playMenuButton);
+            resultBox.getChildren().addAll(resultLabel, playMenuButton);
 
 
             VBox resultContainer = new VBox(resultBox);

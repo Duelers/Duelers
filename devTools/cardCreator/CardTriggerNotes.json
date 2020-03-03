@@ -22,7 +22,7 @@
         "noAttackFromWeakerOnes": false,                       // ??? possibly works like "beastclad hunter" 
         "disableHolyBuff": false,                              // ???
         "addSpell": false,                                     // ???
-        "killsTarget": false,                                  // ??? possibly Destroy
+        "killsTarget": false,                                  // Destroy
         "isForGladiator": false,                               // ???
         "durable": true,                                       // ??? maybe false is used to temporary effects (eg, until end of turn)
         "removeBuffs": 0,                                      // ??? possibly dispell
@@ -49,21 +49,19 @@
         "onPut": false,                                        // When Played, eg opening gambit
         "onAttack": false,                                     // When minion attacks  / to test: procs on counterattack?
         "onDeath": false,                                      // When killed, eg dying wish
-        "specialPower": false,                                 // ???
         "onStart": false,                                      // One start of the game, NOT turn. 
-        "onDefend": false                                      // ???
+        "onDefend": false                                      // on counterattack ?
       },
       "coolDown": 0,                                           // ???
-      "manaCost": 0,                                         // ???
+      "manaCost": 0,                                           // ???
       "lastTurnUsed": 0                                        // ???
     }
   ],
   "defaultAp": 0,                                              // Unit base attack
   "defaultHp": 0,                                              // Unit Base health.
-  "manaCost": 0,                                             // Mana cost.
+  "manaCost": 0,                                               // Mana cost.
   "price": 100,                                                // Ignore just set to 100.
   "attackType": "MELEE",                                       // MELEE, HYBRID, RANGED where 'hybrid' works like range in Duelyst.
   "range": 0,                                                  // Ranged units can only shoot X squares away.
-  "hasCombo": false,                                           // ??? not the same as celerity
   "remainingNumber": 20                                        // Ingore, just set to 20
 }

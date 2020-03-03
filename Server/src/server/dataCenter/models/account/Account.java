@@ -22,12 +22,10 @@ public class Account {
     private List<Deck> decks = new ArrayList<>();
     private Deck mainDeck;
     private List<MatchHistory> matchHistories = new ArrayList<>();
-    private int money;
 
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
-        this.money = 9999999;
         this.collection = new Collection();
         this.accountType = NORMAL;
     }
@@ -43,7 +41,6 @@ public class Account {
         }
         if (account.getMainDeckName() != null)
             this.mainDeck = getDeck(account.getMainDeckName());
-        this.money = account.getMoney();
         this.matchHistories = account.getMatchHistories();
         this.accountType = account.getAccountType();
     }
@@ -95,15 +92,11 @@ public class Account {
         if (card == null) {
             throw new ClientException("invalid card name");
         }
-        if (card.getPrice() > money) {
-            throw new ClientException("account's money isn't enough.");
-        }
         //removed so we can buy as many cards as we want
         //if (card.getRemainingNumber() <= 0) {
             //throw new ClientException("Shop doesn't have any of this card.");
         //}
         collection.addCard(cardName, originalCards, username);
-        money -= card.getPrice();
         //removed, no longer needed
         //DataCenter.getInstance().changeCardNumber(cardName, -1);
     }
@@ -113,7 +106,7 @@ public class Account {
         if (card == null) {
             throw new ClientException("invalid card id");
         }
-        money += card.getPrice();
+
         collection.removeCard(card);
         for (Deck deck : decks) {
             if (deck.hasCard(cardId)) {
@@ -149,11 +142,8 @@ public class Account {
         }
     }
 
-    public void addMatchHistory(MatchHistory matchHistory, int reward) {
+    public void addMatchHistory(MatchHistory matchHistory) {
         matchHistories.add(matchHistory);
-        if (matchHistory.isAmIWinner()) {
-            money += reward;
-        }
     }
 
     public String getUsername() {
@@ -178,10 +168,6 @@ public class Account {
 
     List<MatchHistory> getMatchHistories() {
         return Collections.unmodifiableList(matchHistories);
-    }
-
-    int getMoney() {
-        return money;
     }
 
     public int getWins() {

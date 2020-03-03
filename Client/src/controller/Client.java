@@ -194,7 +194,7 @@ public class Client {
                 GameController.getInstance().calculateAvailableActions();
                 break;
             case Game_FINISH:
-                GameResultController.getInstance().setWinnerInfo(message.getGameFinishMessage().amIWinner(), message.getGameFinishMessage().getReward());
+                GameResultController.getInstance().setWinnerInfo(message.getGameFinishMessage().amIWinner());
                 if (currentShow instanceof BattleScene) {
                     ((BattleScene) currentShow).finish(message.getGameFinishMessage().amIWinner());
                 }

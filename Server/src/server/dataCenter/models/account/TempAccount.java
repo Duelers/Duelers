@@ -15,7 +15,6 @@ public class TempAccount {
     private List<TempDeck> decks = new ArrayList<>();
     private String mainDeckName;
     private List<MatchHistory> matchHistories;
-    private int money;
 
     public TempAccount(Account account) {
         this.username = account.getUsername();
@@ -28,7 +27,6 @@ public class TempAccount {
             this.mainDeckName = account.getMainDeck().getDeckName();
         }
         this.matchHistories = account.getMatchHistories();
-        this.money = account.getMoney();
         this.accountType = account.getAccountType();
     }
 
@@ -54,10 +52,6 @@ public class TempAccount {
 
     List<MatchHistory> getMatchHistories() {
         return matchHistories;
-    }
-
-    int getMoney() {
-        return money;
     }
 
     public AccountType getAccountType() {

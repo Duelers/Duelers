@@ -220,7 +220,6 @@ public class GameCenter extends Thread {//synchronize
                 game.addObserver(myAccount);
                 break;
         }
-        game.setReward(Game.getDefaultReward());
         onlineGames.put(myAccount, game);
         gameInfos.add(new OnlineGame(game));
         GameServer.addToSendingMessages(Message.makeGameCopyMessage
@@ -243,7 +242,6 @@ public class GameCenter extends Thread {//synchronize
                 break;
 
         }
-        game.setReward(Game.getDefaultReward());
         onlineGames.put(account1, game);
         onlineGames.put(account2, game);
         gameInfos.add(new OnlineGame(game));
@@ -334,7 +332,7 @@ public class GameCenter extends Thread {//synchronize
             if (account == null)
                 GameServer.serverPrint("Error");
             else {
-                account.addMatchHistory(playerOneHistory, game.getReward());
+                account.addMatchHistory(playerOneHistory);
                 DataCenter.getInstance().saveAccount(account);
             }
         }
@@ -343,7 +341,7 @@ public class GameCenter extends Thread {//synchronize
             if (account == null)
                 GameServer.serverPrint("Error");
             else {
-                account.addMatchHistory(playerTwoHistory, game.getReward());
+                account.addMatchHistory(playerTwoHistory);
                 DataCenter.getInstance().saveAccount(account);
             }
         }

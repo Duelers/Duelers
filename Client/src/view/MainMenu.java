@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import models.gui.*;
+import models.languageLocalisation.LanguageData;
 import models.message.OnlineGame;
 
 import java.io.File;
@@ -19,18 +20,30 @@ import static models.account.AccountType.ADMIN;
 
 public class MainMenu extends Show {
     private static MainMenu menu;
+
+    private final String playText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "PLAY"});
+    private final String collectionText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "COLLECTION"});
+    private final String chatText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "CHAT"});
+    private final String spectateText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "SPECTATE"});
+    private final String profileText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "PROFILE"});
+    private final String quitText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "QUIT"});
+
+    private final String logoutText = LanguageData.getInstance().getValue(new String[] {"PROFILE", "LOGOUT"});
+
+    private final String onlineGamesText = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "ONLINE_GAMES"});
+
     private static final Media backgroundMusic = new Media(
             new File("Client/resources/music/main_menu.m4a").toURI().toString()
     );
     private final List<MenuItem> items = new ArrayList<>();
     private int itemIndex = 0;
     private final MenuItem[] itemsArray = {
-            new MenuItem(itemIndex++, "PLAY", "Single player, multiplayer", event -> PlayMenu.getInstance().show()),
-            new MenuItem(itemIndex++, "COLLECTION", "View your cards or build a deck", event -> new CollectionMenu().show()),
-            new MenuItem(itemIndex++, "GLOBAL CHAT", "chat with other players", event -> GlobalChatDialog.getInstance().show()),
-            new MenuItem(itemIndex++, "SHOW ONLINE GAMES", "SHOW ONLINE GAMES", event -> showOnlineGamesList()),
-            new MenuItem(itemIndex++, "PROFILE", "See you profile information", event -> menu.showProfileDialog()),
-            new MenuItem(itemIndex++, "QUIT GAME", "Exit the game", event -> Client.getInstance().close()),
+            new MenuItem(itemIndex++, playText,null, event -> PlayMenu.getInstance().show()),
+            new MenuItem(itemIndex++, collectionText, null, event -> new CollectionMenu().show()),
+            new MenuItem(itemIndex++, chatText, null, event -> GlobalChatDialog.getInstance().show()),
+            new MenuItem(itemIndex++, spectateText, null, event -> showOnlineGamesList()),
+            new MenuItem(itemIndex++, profileText, null, event -> menu.showProfileDialog()),
+            new MenuItem(itemIndex++, quitText, null, event -> Client.getInstance().close()),
 
     };
 
@@ -41,7 +54,7 @@ public class MainMenu extends Show {
         if (Client.getInstance().getAccount().getAccountType() == ADMIN) {
             System.out.println(Client.getInstance().getAccount().getUsername());
             items.addAll(Arrays.asList(
-                    new MenuItem(itemIndex++, "ONLINE GAMES", "View online games real time", event -> menu.showOnlineGamesList())
+                    new MenuItem(itemIndex++, onlineGamesText, null, event -> menu.showOnlineGamesList())
             ));
         }
     }
@@ -104,7 +117,7 @@ public class MainMenu extends Show {
 
         dialogContainer.show();
 
-        dialogBox.makeButton("LOGOUT", event -> {
+        dialogBox.makeButton(logoutText, event -> {
             dialogContainer.close();
             MainMenuController.getInstance().logout();
             new LoginMenu().show();

@@ -149,9 +149,9 @@ public class AvailableActions {
 
     private boolean isTargetInRange(Troop myTroop, Troop enemyTroop) {
         if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
-            return myTroop.getCell().isNextTo(enemyTroop.getCell());
+            return myTroop.getCell().isNearbyCell(enemyTroop.getCell());
         } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {
-            return myTroop.getCell().isNextTo(enemyTroop.getCell()) ||
+            return myTroop.getCell().isNearbyCell(enemyTroop.getCell()) ||
                     myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         } else { // HYBRID
             return myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();

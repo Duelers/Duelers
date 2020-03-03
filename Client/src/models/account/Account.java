@@ -18,7 +18,6 @@ public class Account {
     private List<Deck> decks = new ArrayList<>();
     private Deck mainDeck;
     private List<MatchHistory> matchHistories;
-    private int money;
 
     public Account(TempAccount account) {
         this.username = account.getUsername();
@@ -31,7 +30,6 @@ public class Account {
         }
         this.matchHistories = account.getMatchHistories();
         this.mainDeck = getDeck(account.getMainDeckName());
-        this.money = account.getMoney();
         this.accountType = account.getAccountType();
     }
 
@@ -62,10 +60,6 @@ public class Account {
         return Collections.unmodifiableList(matchHistories);
     }
 
-    public int getMoney() {
-        return this.money;
-    }
-
     public Deck getDeck(String deckName) {
         for (Deck deck : decks) {
             if (deck.areSame(deckName)) {
@@ -93,11 +87,7 @@ public class Account {
             collection = account.getCollection();
             support.firePropertyChange("collection", old, collection);
         }
-        if (money != account.getMoney()) {
-            int old = money;
-            money = account.getMoney();
-            support.firePropertyChange("money", old, money);
-        }
+
         if (!decksEqual(account.getDecks())) {
             ArrayList<Deck> newDecks = new ArrayList<>();
 
