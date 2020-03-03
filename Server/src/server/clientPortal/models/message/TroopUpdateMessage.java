@@ -1,11 +1,11 @@
 package server.clientPortal.models.message;
 
-import shared.models.game.Troop;
+import server.gameCenter.models.game.ServerTroop;
 
 class TroopUpdateMessage {
-    private Troop troop;
+    private ServerTroop troop;
 
-    TroopUpdateMessage(Troop troop) {
+    TroopUpdateMessage(ServerTroop troop) {
         this.troop = troop;
     }
 }

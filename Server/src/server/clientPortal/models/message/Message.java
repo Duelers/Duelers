@@ -9,7 +9,7 @@ import server.dataCenter.models.card.ExportedDeck;
 import shared.models.card.spell.AvailabilityType;
 import server.gameCenter.models.game.*;
 import shared.models.game.GameType;
-import shared.models.game.Troop;
+import server.gameCenter.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 import shared.models.game.map.CellEffect;
 
@@ -94,7 +94,7 @@ public class Message {
         return message;
     }
 
-    public static Message makeAttackMessage(String receiver, Troop attacker, Troop defender, boolean counterAttack) {
+    public static Message makeAttackMessage(String receiver, ServerTroop attacker, ServerTroop defender, boolean counterAttack) {
         Message message = new Message(receiver);
         message.gameAnimations = new GameAnimations();
         message.gameAnimations.addAttacks(attacker.getCard().getCardId(), defender.getCard().getCardId());
@@ -119,7 +119,7 @@ public class Message {
         return message;
     }
 
-    public static Message makeTroopUpdateMessage(String receiver, Troop troop) {
+    public static Message makeTroopUpdateMessage(String receiver, ServerTroop troop) {
         Message message = new Message(receiver);
         message.troopUpdateMessage = new TroopUpdateMessage(troop);
         message.messageType = MessageType.TROOP_UPDATE;
