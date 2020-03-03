@@ -72,6 +72,7 @@ public class Card implements ICard {
         this.price = referenceCard.price;
         this.attackType = referenceCard.attackType;
         this.range = referenceCard.range;
+        this.remainingNumber = referenceCard.remainingNumber;
     }
 
     @Override
