@@ -19,12 +19,12 @@
 		'COLLECTION': 'COLLECTION',
 		'CHAT': 'CHAT',
 		'SPECTATE': 'SPECTATE',
-		'PROFILE': 'PROFILE'
+		'PROFILE': 'PROFILE',
 		'QUIT': 'QUIT'
 	},
 	
 	'SPECTATE': {
-		'ONLINE_GAMES': 'Online Games'
+		'ONLINE_GAMES': 'Online Games',
 		'ONLINE_GAMES_HINT': 'View online games in real time'
 	},
 	
