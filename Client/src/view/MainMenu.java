@@ -30,6 +30,9 @@ public class MainMenu extends Show {
 
     private final String logoutText = LanguageData.getInstance().getValue(new String[] {"PROFILE", "LOGOUT"});
 
+    private final String onlineGamesText = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "ONLINE_GAMES"});
+    private final String onlineGamesHintText = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "ONLINE_GAMES_HINT"});
+
     private static final Media backgroundMusic = new Media(
             new File("Client/resources/music/main_menu.m4a").toURI().toString()
     );
@@ -52,7 +55,7 @@ public class MainMenu extends Show {
         if (Client.getInstance().getAccount().getAccountType() == ADMIN) {
             System.out.println(Client.getInstance().getAccount().getUsername());
             items.addAll(Arrays.asList(
-                    new MenuItem(itemIndex++, "ONLINE GAMES", "View online games real time", event -> menu.showOnlineGamesList())
+                    new MenuItem(itemIndex++, onlineGamesText, onlineGamesHintText, event -> menu.showOnlineGamesList())
             ));
         }
     }
