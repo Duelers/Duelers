@@ -554,7 +554,7 @@
                 "name": "Celestial Phantom",
                 "description": "Destroy any enemy minion that Celestial Phantom attacks",
                 "cardId": "duelyst_CelestialPhantom_1",
-                "spriteName": "boss_spelleater",
+                "spriteName": "f2_deathphantom",
                 "type": "MINION",
                 "spells": [
                     {
@@ -614,7 +614,7 @@
                 "name": "Celestial Phantom",
                 "description": "Destroy any enemy minion that Celestial Phantom attacks",
                 "cardId": "duelyst_CelestialPhantom_2",
-                "spriteName": "boss_spelleater",
+                "spriteName": "f2_deathphantom",
                 "type": "MINION",
                 "spells": [
                     {
@@ -674,7 +674,7 @@
                 "name": "Celestial Phantom",
                 "description": "Destroy any enemy minion that Celestial Phantom attacks",
                 "cardId": "duelyst_CelestialPhantom_3",
-                "spriteName": "boss_spelleater",
+                "spriteName": "f2_deathphantom",
                 "type": "MINION",
                 "spells": [
                     {
