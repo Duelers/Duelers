@@ -24,8 +24,7 @@
 	},
 	
 	'SPECTATE': {
-		'ONLINE_GAMES': 'Online Games',
-		'ONLINE_GAMES_HINT': 'View online games in real time'
+		'ONLINE_GAMES': 'Online Games'
 	},
 	
 	'PROFILE': {
