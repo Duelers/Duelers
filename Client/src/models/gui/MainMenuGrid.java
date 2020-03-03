@@ -60,7 +60,7 @@ class MainMenuGrid extends GridPane {
             label.setCursor(UIConstants.SELECT_CURSOR);
             label.setEffect(SHADOW);
             rotate.play();
-            textWrapper.setVisible(true);
+            textWrapper.setVisible(item.hint != null);
         });
 
         label.setOnMouseExited(event -> {
