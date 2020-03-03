@@ -147,7 +147,7 @@ public class DataCenter extends Thread {
         } else if (account == null) {
             throw new ClientException("Username Not Found!");
         } else if (!account.getPassword().equalsIgnoreCase(message.getAccountFields().getPassword())) {
-            throw new ClientException("Incorrect PassWord!");
+            throw new ClientException("Incorrect Password!");
         } else if (accounts.get(account) != null) {
             throw new ClientException("Selected Username Is Online!");
         } else if (clients.get(message.getSender()) != null) {
