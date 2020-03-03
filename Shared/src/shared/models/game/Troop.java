@@ -5,7 +5,7 @@ import shared.models.game.map.Cell;
 
 
 public class Troop {
-    private Card card;
+    private final Card card;
     private int currentAp;
     private int currentHp;
     private int enemyHitChanges;
@@ -19,44 +19,7 @@ public class Troop {
     private boolean dontGiveBadEffect;
     private boolean noAttackFromWeakerOnes;
     private boolean disableHolyBuff;
-    private int playerNumber;
-
-
-    public Troop(Card card,
-                 int currentAp,
-                 int currentHp,
-                 int enemyHitChanges,
-                 Cell cell,
-                 boolean canMove,
-                 boolean canAttack,
-                 boolean isDisarm,
-                 boolean noAttackFromWeakerOnes,
-                 int playerNumber) {
-        this.card = card;
-        this.currentAp = currentAp;
-        this.currentHp = currentHp;
-        this.enemyHitChanges = enemyHitChanges;
-        this.cell = cell; // Client version used to have new Cell(cell.getRow(), cell.getColumn())
-        this.canMove = canMove;
-        this.canAttack = canAttack;
-        this.isDisarm = isDisarm;
-        this.noAttackFromWeakerOnes = noAttackFromWeakerOnes;
-        this.playerNumber = playerNumber;
-    }
-
-    //just for testing BattleView
-    public Troop(Troop troop, int row, int column) {
-        this.card = troop.getCard();
-        this.currentAp = troop.getCurrentAp();
-        this.currentHp = troop.getCurrentHp();
-        this.enemyHitChanges = troop.getEnemyHitChanges();
-        this.cell = new Cell(row, column);
-        this.canMove = troop.canMove;
-        this.canAttack = troop.canAttack;
-        this.isDisarm = troop.isDisarm;
-        this.noAttackFromWeakerOnes = troop.noAttackFromWeakerOnes;
-        this.playerNumber = troop.playerNumber;
-    }
+    private final int playerNumber;
 
     public Troop(Card card, int playerNumber) {
         this.card = card;
@@ -69,7 +32,6 @@ public class Troop {
         this(card, playerNumber);
         this.cell = cell;
     }
-
 
     public Card getCard() {
         return this.card;
@@ -192,6 +154,4 @@ public class Troop {
     public boolean isNoAttackFromWeakerOnes() {
         return noAttackFromWeakerOnes;
     }
-
-
 }
