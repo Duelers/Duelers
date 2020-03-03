@@ -24,7 +24,11 @@
 	},
 	
 	'SPECTATE': {
-		'ONLINE_GAMES': 'Online Games'
+		'ONLINE_GAMES': 'Online Games',
+		'INDEX': 'index',
+		'PLAYER_ONE': 'player 1',
+		'PLAYER_TWO': 'player 2',
+		'GAME_TYPE' : 'game type'
 	},
 	
 	'PROFILE': {
