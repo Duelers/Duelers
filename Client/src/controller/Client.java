@@ -42,7 +42,7 @@ public class Client {
 
     private void connect() throws IOException, NullPointerException {
         String serverUri = Config.getInstance().getProperty("SERVER_URI");
-        if (serverUri.isEmpty()) {
+        if (serverUri == null) {
             String serverIp = Config.getInstance().getProperty("SERVER_IP");
             String port = Config.getInstance().getProperty("PORT");
             serverUri = "ws://" + serverIp + ":" + port;
