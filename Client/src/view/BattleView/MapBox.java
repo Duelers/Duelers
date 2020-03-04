@@ -272,13 +272,12 @@ public class MapBox implements PropertyChangeListener {
                     if (updateNormal) { continue;}
                 }
 
-                if (selectedTroop != null && selectedTroop.getCell() == new Cell(row, column)){
-                    cells[row][column].setFill(Constants.SELECTED_COLOR);
-                    continue;
-                }
-
                 updateMapColourHighlightEnemyUnits(row, column, player);
                 updateMapColoursHighlightUnitActions(row, column, player);
+
+                if (selectedTroop != null && selectedTroop.getCell().equals(new Cell(row, column))){
+                    cells[row][column].setFill(Constants.SELECTED_COLOR);
+                }
             }
         }
     }
@@ -289,12 +288,13 @@ public class MapBox implements PropertyChangeListener {
         if (!battleScene.isMyTurn()) { return; }
         if (troop.getPlayerNumber() != player.getPlayerNumber()) { return;}
 
+        if (troop.canAttack()){
+            cells[row][column].setFill(Constants.CAN_ATTACK);
+        }
+
         if (troop.canMove()){
             cells[row][column].setFill(Constants.CAN_MOVE);
         }
-        //if (troop.canAttack()){
-        //    cells[row][column].setFill(Constants.CAN_ATTACK);
-        //}
     }
 
     private void updateMapColourHighlightEnemyUnits(int row, int column, CompressedPlayer player){
