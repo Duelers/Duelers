@@ -1,4 +1,4 @@
-name: "Default Project"
+name: default project
 
 on:
   issues:
@@ -6,7 +6,7 @@ on:
       - opened
 
 jobs:
-  add_to_project:
+  add_to_default_project:
     runs-on: ubuntu-latest
     steps:
       - uses: skeet70/default-project-board-action@v1
