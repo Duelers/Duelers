@@ -12,13 +12,7 @@ import view.BattleView.BattleScene;
 import view.*;
 
 import java.io.*;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.LinkedList;
-import java.util.concurrent.CountDownLatch;
-import java.util.logging.Logger;
 
 
 public class Client {
