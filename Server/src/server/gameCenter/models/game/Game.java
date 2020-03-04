@@ -288,7 +288,7 @@ public abstract class Game {
 
     private void setAllTroopsCanAttackAndCanMove() {
         for (ServerTroop troop : gameMap.getTroops()) {
-
+            troop.resetRemainingMovesAndAttacks();
             troop.setCanAttack(true);
             troop.setCanMove(true);
             GameServer.getInstance().sendTroopUpdateMessage(this, troop);
@@ -487,7 +487,15 @@ public abstract class Game {
 
         Cell newCell = gameMap.getCell(cell);
         troop.setCell(newCell);
-        troop.setCanMove(false);
+
+        if (troop.getRemainingMoves() < troop.getRemainingAttacks()) {
+            troop.reduceRemainingAttacks();
+        }
+
+        troop.reduceRemainingMoves();
+        if (troop.noMovesRemaining()) {
+            troop.setCanMove(false);
+        }
 
         GameServer.getInstance().sendTroopUpdateMessage(this, troop);
     }
@@ -510,8 +518,16 @@ public abstract class Game {
             if (defenderTroop.canGiveBadEffect() &&
                     (defenderTroop.canBeAttackedFromWeakerOnes() || attackerTroop.getCurrentAp() > defenderTroop.getCurrentAp())
             ) {
-                attackerTroop.setCanAttack(false);
-                attackerTroop.setCanMove(false);
+                attackerTroop.reduceRemainingAttacks();
+                if (attackerTroop.noAttacksRemaining()) {
+                    attackerTroop.setCanAttack(false);
+                    attackerTroop.setCanMove(false);
+                }
+
+                if (attackerTroop.getRemainingAttacks() < attackerTroop.getRemainingMoves()) {
+                    attackerTroop.reduceRemainingMoves();
+                }
+
                 GameServer.getInstance().sendTroopUpdateMessage(this, attackerTroop);
                 applyOnAttackSpells(attackerTroop, defenderTroop);
                 applyOnDefendSpells(defenderTroop, attackerTroop);
