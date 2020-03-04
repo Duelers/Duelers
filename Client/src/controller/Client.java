@@ -41,8 +41,12 @@ public class Client {
     }
 
     private void connect() throws IOException, NullPointerException {
-        String serverIP = Config.getInstance().getProperty("SERVER_IP");
-        String port = Config.getInstance().getProperty("PORT");
+        String serverUri = Config.getInstance().getProperty("SERVER_URI");
+        if (serverUri == null) {
+            String serverIp = Config.getInstance().getProperty("SERVER_IP");
+            String port = Config.getInstance().getProperty("PORT");
+            serverUri = "ws://" + serverIp + ":" + port;
+        }
         int connectionAttempts = 5;
 
         sendMessageThread = new Thread(() -> {
@@ -53,7 +57,7 @@ public class Client {
             }
         });
 
-        ws = new WebSocketFactory().createSocket("ws://" + serverIP + ":" + port + "/websockets/game");
+        ws = new WebSocketFactory().createSocket(serverUri + "/websockets/game");
         ws.addListener(new WebSocketAdapter() {
             @Override
             public void onTextMessage(WebSocket websocket, String message) throws Exception {
@@ -73,6 +77,7 @@ public class Client {
                 ws.connect();
                 break;
             } catch (WebSocketException e) {
+                System.out.println(e.getMessage());
                 connectionAttempts -= 1;
                 if (connectionAttempts == 0) {
                     throw new RuntimeException(e);
