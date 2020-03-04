@@ -2301,7 +2301,7 @@
             },
             {
                 "name": "Spectral Revenant",
-                "description": "Rush \n Whenever this minion attacks an enemy minion, deal 4 damage to the enemy General",
+                "description": "Rush \n After attacking or counterattacking deal 4 damage to the enemy General",
                 "cardId": "duelyst_SpectralRevenant_1",
                 "spriteName": "f4_daemonvoid",
                 "type": "MINION",
@@ -2340,7 +2340,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onAttack": true
+                            "onAttack": true,
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -2349,7 +2350,7 @@
                 ],
                 "defaultAp": 6,
                 "defaultHp": 6,
-                "manaCost": 7,
+                "manaCost": 9,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -2358,7 +2359,7 @@
             },
             {
                 "name": "Spectral Revenant",
-                "description": "Rush \n Whenever this minion attacks an enemy minion, deal 4 damage to the enemy General",
+                "description": "Rush \n After attacking or counterattacking deal 4 damage to the enemy General",
                 "cardId": "duelyst_SpectralRevenant_2",
                 "spriteName": "f4_daemonvoid",
                 "type": "MINION",
@@ -2397,7 +2398,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onAttack": true
+                            "onAttack": true,
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -2406,7 +2408,7 @@
                 ],
                 "defaultAp": 6,
                 "defaultHp": 6,
-                "manaCost": 7,
+                "manaCost": 9,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -2415,7 +2417,7 @@
             },
             {
                 "name": "Spectral Revenant",
-                "description": "Rush \n Whenever this minion attacks an enemy minion, deal 4 damage to the enemy General",
+                "description": "Rush \n After attacking or counterattacking deal 4 damage to the enemy General",
                 "cardId": "duelyst_SpectralRevenant_3",
                 "spriteName": "f4_daemonvoid",
                 "type": "MINION",
@@ -2454,7 +2456,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onAttack": true
+                            "onAttack": true,
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -2463,7 +2466,7 @@
                 ],
                 "defaultAp": 6,
                 "defaultHp": 6,
-                "manaCost": 7,
+                "manaCost": 9,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
