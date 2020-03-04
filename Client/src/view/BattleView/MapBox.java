@@ -265,8 +265,7 @@ public class MapBox implements PropertyChangeListener {
                 cells[row][column].setFill(Constants.defaultColor);
 
                 if (selectionType == SelectionType.INSERTION) {
-                    Boolean update = updateMapColoursOnInsertion(row, column, player);
-                    //if (update) { continue; }
+                    updateMapColoursOnInsertion(row, column, player);
                 }
                 if (selectionType == SelectionType.NORMAL){
                     boolean updateNormal = updateMapColoursOnNormal(row, column, player);
@@ -326,7 +325,7 @@ public class MapBox implements PropertyChangeListener {
                     cells[row][column].setFill(Constants.DEPLOY_TROOP);
                 }
             }
-            return true;
+            return true; // has/has not updated
         }
         return false;
     }
