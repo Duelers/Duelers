@@ -3063,6 +3063,141 @@
                 "range": 0,
                 "hasCombo": false,
                 "remainingNumber": 20
+            },
+            {
+                "name": "Sellsoul",
+                "description": "Dying Wish: Deal 4 damage to YOUR General.",
+                "cardId": "duelyst_Sellsoul_1",
+                "spriteName": "neutral_masteroftheseven",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "deal_4_to_general",
+                        "action": {
+                            "hpChange": -4,
+                            "durable": true,
+                            "duration": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "hero": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onDeath": true
+                        }
+                    }
+                ],
+                "defaultAp": 4,
+                "defaultHp": 5,
+                "manaCost": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            },
+            {
+                "name": "Sellsoul",
+                "description": "Dying Wish: Deal 4 damage to YOUR General.",
+                "cardId": "duelyst_Sellsoul_2",
+                "spriteName": "neutral_masteroftheseven",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "deal_4_to_general",
+                        "action": {
+                            "hpChange": -4,
+                            "durable": true,
+                            "duration": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "hero": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onDeath": true
+                        }
+                    }
+                ],
+                "defaultAp": 4,
+                "defaultHp": 5,
+                "manaCost": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            },
+            {
+                "name": "Sellsoul",
+                "description": "Dying Wish: Deal 4 damage to YOUR General.",
+                "cardId": "duelyst_Sellsoul_3",
+                "spriteName": "neutral_masteroftheseven",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "deal_4_to_general",
+                        "action": {
+                            "hpChange": -4,
+                            "durable": true,
+                            "duration": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "hero": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onDeath": true
+                        }
+                    }
+                ],
+                "defaultAp": 4,
+                "defaultHp": 5,
+                "manaCost": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
             }
         ],
         "spells": [
@@ -5742,8 +5877,7 @@
                 "hasCombo": false,
                 "remainingNumber": 20
             }
-        ],
-        "items": []
+        ]
     },
     "decks": [
         {
@@ -5854,9 +5988,6 @@
             "deckName": "gg",
             "heroId": "duelyst_RevaEventide_1",
             "othersIds": [
-                "duelyst_SpectralRevenant_1",
-                "duelyst_SpectralRevenant_2",
-                "duelyst_SpectralRevenant_3",
                 "duelyst_Dragonlark_1",
                 "duelyst_Dragonlark_2",
                 "duelyst_Dragonlark_3",
@@ -5873,11 +6004,46 @@
                 "duelyst_RockPulverizer_2",
                 "duelyst_RockPulverizer_3",
                 "duelyst_PiercingMantis_1",
-                "duelyst_PiercingMantis_2"
+                "duelyst_PiercingMantis_2",
+                "duelyst_Sellsoul_1",
+                "duelyst_Sellsoul_2",
+                "duelyst_Sellsoul_3"
             ]
         }
     ],
     "mainDeckName": "gg",
-    "matchHistories": [],
-    "money": 9543289
+    "matchHistories": [
+        {
+            "oppName": "customGame_AI_Friendly",
+            "date": "Mar 4, 2020, 1:47:45 AM"
+        },
+        {
+            "oppName": "customGame_AI_Friendly",
+            "date": "Mar 4, 2020, 1:52:04 AM"
+        },
+        {
+            "oppName": "customGame_AI_Friendly",
+            "date": "Mar 4, 2020, 1:52:04 AM"
+        },
+        {
+            "oppName": "customGame_AI_Friendly",
+            "date": "Mar 4, 2020, 1:52:04 AM"
+        },
+        {
+            "oppName": "customGame_AI_Friendly",
+            "date": "Mar 4, 2020, 1:54:13 AM"
+        },
+        {
+            "oppName": "customGame_AI_Friendly",
+            "date": "Mar 4, 2020, 1:54:14 AM"
+        },
+        {
+            "oppName": "customGame_AI_Friendly",
+            "date": "Mar 4, 2020, 1:54:15 AM"
+        },
+        {
+            "oppName": "customGame_AI_Friendly",
+            "date": "Mar 4, 2020, 1:54:15 AM"
+        }
+    ]
 }
