@@ -5823,61 +5823,9 @@
                 "duelyst_StormArtha_2",
                 "duelyst_StormArtha_3"
             ]
-        },
-        {
-            "deckName": "yui",
-            "heroId": "duelyst_VaathTheImmortal_1",
-            "othersIds": [
-                "duelyst_MrSwampy_1",
-                "duelyst_MrSwampy_2",
-                "duelyst_MrSwampy_3",
-                "duelyst_PlanarScout_1",
-                "duelyst_PlanarScout_2",
-                "duelyst_PlanarScout_3",
-                "duelyst_Dragonlark_1",
-                "duelyst_Dragonlark_2",
-                "duelyst_Dragonlark_3",
-                "duelyst_RockPulverizer_2",
-                "duelyst_RockPulverizer_3",
-                "duelyst_WarTalon_1",
-                "duelyst_WarTalon_2",
-                "duelyst_WarTalon_3",
-                "duelyst_PiercingMantis_1",
-                "duelyst_PiercingMantis_2",
-                "duelyst_PiercingMantis_3",
-                "duelyst_Serpenti_1",
-                "duelyst_Serpenti_2",
-                "duelyst_Serpenti_3"
-            ]
-        },
-        {
-            "deckName": "gg",
-            "heroId": "duelyst_RevaEventide_1",
-            "othersIds": [
-                "duelyst_SpectralRevenant_1",
-                "duelyst_SpectralRevenant_2",
-                "duelyst_SpectralRevenant_3",
-                "duelyst_Dragonlark_1",
-                "duelyst_Dragonlark_2",
-                "duelyst_Dragonlark_3",
-                "duelyst_PlanarScout_1",
-                "duelyst_PlanarScout_2",
-                "duelyst_PlanarScout_3",
-                "duelyst_MrSwampy_1",
-                "duelyst_MrSwampy_2",
-                "duelyst_MrSwampy_3",
-                "duelyst_SkyrockGolem_1",
-                "duelyst_SkyrockGolem_2",
-                "duelyst_SkyrockGolem_3",
-                "duelyst_RockPulverizer_1",
-                "duelyst_RockPulverizer_2",
-                "duelyst_RockPulverizer_3",
-                "duelyst_PiercingMantis_1",
-                "duelyst_PiercingMantis_2"
-            ]
         }
     ],
-    "mainDeckName": "gg",
+    "mainDeckName": "starterDeck Golem",
     "matchHistories": [],
-    "money": 9543289
+    "money": 0
 }
