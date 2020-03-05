@@ -301,15 +301,10 @@ public class MapBox implements PropertyChangeListener {
         Troop troop = getTroop(row, column);
         if (troop == null){ return; }
 
-        if (battleScene.isMyTurn()){
-            if (troop.getPlayerNumber() != player.getPlayerNumber()){
-                cells[row][column].setFill(Constants.ENEMY_UNIT);
-            }
+        if (troop.getPlayerNumber() != this.battleScene.getMyPlayerNumber()) {
+            cells[row][column].setFill(Constants.ENEMY_UNIT);
         }
-        else{
-            if (troop.getPlayerNumber() == player.getPlayerNumber())
-                cells[row][column].setFill(Constants.ENEMY_UNIT);
-        }
+
     }
 
     private Boolean updateMapColoursOnInsertion(int row, int column, CompressedPlayer player){
