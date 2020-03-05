@@ -5,6 +5,8 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 import shared.models.card.ICard;
 import models.card.Deck;
 
@@ -20,6 +22,9 @@ public class DeckCardsGrid extends GridPane {
     private static final int COLUMN_NUMBER = 4;
     private static final double WIDTH = 2350 * SCALE;
 
+    private final String addText = LanguageData.getInstance().getValue(new String[]{LanguageKeys.BUTTON_TEXT, LanguageKeys.ADD});
+    private final String removeText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.BUTTON_TEXT, LanguageKeys.REMOVE});
+
     public DeckCardsGrid(List<? extends ICard> cards, Deck deck) throws FileNotFoundException {
         setHgap(DEFAULT_SPACING * 5);
         setVgap(DEFAULT_SPACING * 5);
@@ -33,11 +38,11 @@ public class DeckCardsGrid extends GridPane {
             DeckCardPane cardPane = new DeckCardPane(card, deck);
 
             HBox buttonsBox = new HBox(UIConstants.DEFAULT_SPACING,
-                    new OrangeButton("ADD", event ->
+                    new OrangeButton(addText, event ->
                             CollectionMenuController.getInstance().addCardToDeck(cardPane.getDeck(), card.getName()),
                             select
                     ),
-                    new OrangeButton("REMOVE", event ->
+                    new OrangeButton(removeText, event ->
                             CollectionMenuController.getInstance().removeCardFromDeck(cardPane.getDeck(), card.getName()),
                             select
                     )
