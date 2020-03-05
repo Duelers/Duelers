@@ -8,6 +8,7 @@ import models.gui.DialogBox;
 import models.gui.DialogContainer;
 import models.gui.DialogText;
 import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 
 import static controller.SoundEffectPlayer.SoundName;
 
@@ -22,7 +23,7 @@ public class ErrorView {
     public void show(String errorMsg, String buttonText, EventHandler<? super MouseEvent> event) {
         SoundEffectPlayer.getInstance().playSound(SoundName.error);
 
-        String error = LanguageData.getInstance().getValue(new String[] {"BUTTON_TEXT", "ERROR"});
+        String error = LanguageData.getInstance().getValue(new String[] {LanguageKeys.BUTTON_TEXT, LanguageKeys.ERROR});
 
         DialogText errorLabel = new DialogText(error);
         DialogText errorMessage = new DialogText(errorMsg);

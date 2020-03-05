@@ -1,6 +1,6 @@
 package models.languageLocalisation;
 
-public class loginMenu{
+public class LoginMenu{
     public String WELCOME_MESSAGE;
     public String VERSION;
     public String LOGIN;
