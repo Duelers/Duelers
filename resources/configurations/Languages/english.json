@@ -51,7 +51,7 @@
     'BUTTON_TEXT': {
         'OK': 'ok',
 		'START': 'start',
-		'ADD': 'add'
+		'ADD': 'add',
 		'CREATE': 'create',
         'CANCEL': 'cancel',
 		'REMOVE': 'remove',
