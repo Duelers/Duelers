@@ -1,0 +1,15 @@
+{
+    "name": "Azurite Lion",
+    "description": "Celerity",
+    "cardId": "AzuriteLion",
+    "spriteName": "f1_azuritelion",
+    "type": "MINION",
+    "defaultAp": 2,
+    "defaultHp": 3,
+    "manaCost": 2,
+    "price": 100,
+    "attackType": "MELEE",
+    "range": 0,
+    "hasCombo": false,
+    "remainingNumber": 20
+}
