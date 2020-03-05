@@ -212,14 +212,13 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
             showingCards = (Collection) evt.getNewValue();
             Platform.runLater(() -> {
                 try {
-                    cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getHeroes()));
-                    cardsBox.getChildren().set(3, new CollectionCardsGrid(showingCards.getMinions()));
-                    cardsBox.getChildren().set(5, new CollectionCardsGrid(showingCards.getSpells()));
+                    cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards.getHeroes()));
+                    cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
+                    cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
             });
-
         }
 
         if (evt.getPropertyName().equals("decks") || evt.getPropertyName().equals("main_deck")) {
