@@ -115,7 +115,7 @@ public class GameServer {
                 case AUTHENTICATE:
                     TokenService.getInstance().verifyAuthenticationToken(message.token)
                     .thenAccept(r -> {
-                        if (r.error == null) {
+                        if (r.error.isEmpty()) {
                             DataCenter.getInstance().loginOrRegister(r.username, message.getSender());
                         } else {
                             serverPrint(r.error);

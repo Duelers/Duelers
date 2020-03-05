@@ -58,7 +58,7 @@ public final class TokenService {
             return new AuthenticationTokenResponse("Token API error: " + status);
         }
         AuthenticationTokenResponse authenticationTokenResponse = new Gson().fromJson(response.body(), AuthenticationTokenResponse.class);
-        authenticationTokenResponse.error = null;
+        authenticationTokenResponse.error = "";
         return authenticationTokenResponse;
 
     }
