@@ -9,6 +9,7 @@ import javafx.scene.text.FontWeight;
 import models.gui.*;
 import models.languageLocalisation.Language;
 import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -32,7 +33,7 @@ public class LoginMenu extends Show {
 
             String versionInfo = getVersionInfo();
             if (versionInfo != null) {
-                String version = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "VERSION"});
+                String version = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.VERSION});
                 DefaultLabel versionLabel = new DefaultLabel(String.format("%s: %s", version, versionInfo), Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.WHITE);
                 root.getChildren().add(versionLabel);
             }

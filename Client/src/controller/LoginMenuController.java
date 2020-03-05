@@ -4,6 +4,7 @@ import Config.Config;
 import javafx.application.Platform;
 import models.exceptions.InputException;
 import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 import models.message.Message;
 
 public class LoginMenuController {
@@ -29,10 +30,10 @@ public class LoginMenuController {
 
     private void validateUsernameAndPassword(String userName, String password) throws InputException {
         if (userName == null || userName.length() < 2) {
-            String errMsg = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "ERROR_SHORT_USERNAME"});
+            String errMsg = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.ERROR_SHORT_USERNAME});
             throw new InputException(errMsg);
         } else if (password == null || password.length() < 4) {
-            String errMsg = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "ERROR_SHORT_PASSWORD"});
+            String errMsg = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.ERROR_SHORT_PASSWORD});
             throw new InputException(errMsg);
         }
     }

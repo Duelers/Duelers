@@ -6,6 +6,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 
 import static controller.SoundEffectPlayer.SoundName.select;
 import static models.gui.UIConstants.SCALE;
@@ -24,7 +25,7 @@ class LoginFieldsContainer extends VBox {
     LoginFieldsContainer() {
         super(UIConstants.DEFAULT_SPACING * 2);
 
-        String username = LanguageData.getInstance().getValue(new String[]{"LOGIN_MENU", "USERNAME"});
+        String username = LanguageData.getInstance().getValue(new String[]{LanguageKeys.LOGIN_MENU, LanguageKeys.USERNAME});
         usernameField = new NormalField(username);
         passwordField = new NormalPasswordField();
 
@@ -41,13 +42,13 @@ class LoginFieldsContainer extends VBox {
     }
 
     private HBox makeButtonsBox() {
-        String login = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "LOGIN"});
+        String login = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.LOGIN});
         OrangeButton loginButton = new OrangeButton(login,
                 event -> LoginMenuController.getInstance().login(usernameField.getText(), passwordField.getText()),
                 select
         );
 
-        String register = LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "REGISTER"});
+        String register = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.REGISTER});
         OrangeButton registerButton = new OrangeButton(register,
                 event -> LoginMenuController.getInstance().register(usernameField.getText(), passwordField.getText()),
                 select
