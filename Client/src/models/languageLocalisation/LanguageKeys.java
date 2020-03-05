@@ -36,6 +36,8 @@ public final class LanguageKeys {
     // Collection subkeys...
     public static final String NEW_DECK = "NEW_DECK";
     public static final String IMPORT_DECK = "IMPORT_DECK";
+    public static final String CARDS = "CARDS";
+    public static final String HERO = "HERO";
     public static final String DECK_NAME_PROMPT = "DECK_NAME_PROMPT";
     public static final String DECK_NAME = "DECK_NAME";
     public static final String DECK_CARD_ADD_ERROR = "DECK_CARD_ADD_ERROR";
