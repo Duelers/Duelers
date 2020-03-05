@@ -2,6 +2,8 @@ package controller;
 
 import Config.Config;
 import models.account.Collection;
+import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 import shared.models.card.Card;
 import models.card.Deck;
 import models.card.ExportedDeck;
@@ -17,6 +19,9 @@ public class CollectionMenuController implements PropertyChangeListener {
     private Collection allShowingCards;
     private Collection currentShowingCards;
     private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
+
+    private final String cardAddError = LanguageData.getInstance().getValue(new String[] {LanguageKeys.COLLECTION_MENU, LanguageKeys.DECK_CARD_ADD_ERROR});
+    private final String cardRemoveError = LanguageData.getInstance().getValue(new String[] {LanguageKeys.COLLECTION_MENU, LanguageKeys.DECK_CARD_REMOVE_ERROR});
 
     private CollectionMenuController() {
         Client.getInstance().getAccount().addPropertyChangeListener(this);
@@ -39,7 +44,7 @@ public class CollectionMenuController implements PropertyChangeListener {
     public void addCardToDeck(Deck deck, String cardName) {
         String cardID = Client.getInstance().getAccount().getCollection().canAddCardTo(cardName, deck);
         if (cardID == null) {
-            Client.getInstance().getCurrentShow().showError("Can not add this card");
+            Client.getInstance().getCurrentShow().showError(cardAddError);
             return;
         }
         Client.getInstance().addToSendingMessagesAndSend(
@@ -49,7 +54,7 @@ public class CollectionMenuController implements PropertyChangeListener {
     public void removeCardFromDeck(Deck deck, String cardName) {
         Card card = deck.getCard(cardName);
         if (card == null) {
-            Client.getInstance().getCurrentShow().showError("This card is not in this deck");
+            Client.getInstance().getCurrentShow().showError(cardRemoveError);
             return;
         }
         String cardID = card.getCardId();
