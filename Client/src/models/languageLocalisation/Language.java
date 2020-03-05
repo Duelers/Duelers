@@ -7,7 +7,7 @@ public class Language {
 
     public LoginMenu LOGIN_MENU;
     public MainMenu MAIN_MENU;
-    public Spectate SPECTATE;
-    public Profile PROFILE;
+    public Spectate SPECTATE_MENU;
+    public Profile PROFILE_MENU;
     public ButtonText BUTTON_TEXT;
 }
