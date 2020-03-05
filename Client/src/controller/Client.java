@@ -86,7 +86,7 @@ public class Client {
         sendMessageThread.start();
     }
 
-    void addToSendingMessagesAndSend(Message message) {
+    public void addToSendingMessagesAndSend(Message message) {
         synchronized (sendingMessages) {
             sendingMessages.add(message);
             sendingMessages.notify();
@@ -246,6 +246,10 @@ public class Client {
 
     private void showError(Message message) {
         Platform.runLater(() -> this.currentShow.showError(message.getExceptionMessage().getExceptionString()));
+    }
+
+    public void showError(String error) {
+        Platform.runLater(() -> this.currentShow.showError(error));
     }
 
     private void updateAccount(Message message) {

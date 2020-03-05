@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import models.exceptions.InputException;
 import models.languageLocalisation.LanguageData;
 import models.message.Message;
+import services.RegistrationService;
 
 public class LoginMenuController {
     private static LoginMenuController ourInstance;
@@ -20,8 +21,7 @@ public class LoginMenuController {
     public void register(String userName, String password) {
         try {
             validateUsernameAndPassword(userName, password);
-            Client.getInstance().addToSendingMessagesAndSend(
-                    Message.makeRegisterMessage(SERVER_NAME, userName, password));
+            RegistrationService.getInstance().signUp(userName, password);
         } catch (InputException e) {
             Platform.runLater(() -> Client.getInstance().getCurrentShow().showError(e.getMessage()));
         }
