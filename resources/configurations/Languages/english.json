@@ -26,6 +26,8 @@
 	'COLLECTION_MENU': {
 		'NEW_DECK': 'new deck',
 		'IMPORT_DECK': 'import deck',
+		'CARDS': 'cards',
+		'HERO': 'hero',
 		'DECK_NAME_PROMPT': 'Please name your new deck',
 		'DECK_NAME': 'deck name',
 		'DECK_CARD_ADD_ERROR' : 'Cannot add this card to deck',
