@@ -1,6 +1,6 @@
 package models.languageLocalisation;
 
-public class mainMenu {
+public class MainMenu {
     public String PLAY;
     public String COLLECTION;
     public String CHAT;

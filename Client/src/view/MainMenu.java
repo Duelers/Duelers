@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import models.gui.*;
 import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 import models.message.OnlineGame;
 
 import java.io.File;
@@ -21,16 +22,16 @@ import static models.account.AccountType.ADMIN;
 public class MainMenu extends Show {
     private static MainMenu menu;
 
-    private final String playText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "PLAY"});
-    private final String collectionText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "COLLECTION"});
-    private final String chatText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "CHAT"});
-    private final String spectateText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "SPECTATE"});
-    private final String profileText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "PROFILE"});
-    private final String quitText = LanguageData.getInstance().getValue(new String[] {"MAIN_MENU", "QUIT"});
+    private final String playText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.MAIN_MENU, LanguageKeys.PLAY});
+    private final String collectionText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.MAIN_MENU, LanguageKeys.COLLECTION});
+    private final String chatText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.MAIN_MENU, LanguageKeys.CHAT});
+    private final String spectateText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.MAIN_MENU, LanguageKeys.SPECTATE});
+    private final String profileText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.MAIN_MENU, LanguageKeys.PROFILE});
+    private final String quitText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.MAIN_MENU, LanguageKeys.QUIT});
 
-    private final String logoutText = LanguageData.getInstance().getValue(new String[] {"PROFILE", "LOGOUT"});
+    private final String logoutText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.PROFILE_MENU, LanguageKeys.LOGOUT});
 
-    private final String onlineGamesText = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "ONLINE_GAMES"});
+    private final String onlineGamesText = LanguageData.getInstance().getValue(new String[]{LanguageKeys.SPECTATE_MENU, LanguageKeys.ONLINE_GAMES});
 
     private static final Media backgroundMusic = new Media(
             new File("Client/resources/music/main_menu.m4a").toURI().toString()

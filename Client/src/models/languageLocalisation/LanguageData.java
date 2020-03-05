@@ -14,8 +14,8 @@ public class LanguageData {
     private static LanguageData languageDataInstance = null;
 
     private final String languageFolder = "resources/configurations/Languages";
-
     private final String defaultLanguage = "english";
+    private final String missingValue = "???";
 
     private final String selectedLanguage;
 
@@ -61,10 +61,10 @@ public class LanguageData {
             try {
                 value = getValue(languageMapDefault, keys);
             } catch (IllegalAccessException | NoSuchFieldException | NullPointerException e2) {
-                System.out.println(String.format("Language Localisation Error:: failed to find value for keys '%s' for DEFAULT language: '%s'", Arrays.deepToString(keys), defaultLanguage));
+                System.out.println(String.format("Language Localisation Error:: failed to find value for keys '%s' for DEFAULT language: '%s'. Inserting '%s'", Arrays.deepToString(keys), defaultLanguage, missingValue));
             }
         }
-        return (value != null) ? value.toString() : "Missing Language Value";
+        return (value != null) ? value.toString() : missingValue;
     }
 
     private String getValue(Object languageData, String[] keys) throws NoSuchFieldException, IllegalAccessException, NullPointerException {
