@@ -5,11 +5,11 @@ import javafx.application.Platform;
 import models.exceptions.InputException;
 import models.languageLocalisation.LanguageData;
 import models.message.Message;
+import services.AuthenticationService;
 import services.RegistrationService;
 
 public class LoginMenuController {
     private static LoginMenuController ourInstance;
-    private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
 
     public static LoginMenuController getInstance() {
         if (ourInstance == null) {
@@ -38,11 +38,6 @@ public class LoginMenuController {
     }
 
     public void login(String userName, String password) {
-        try {
-            validateUsernameAndPassword(userName, password);
-            Client.getInstance().addToSendingMessagesAndSend(Message.makeLogInMessage(SERVER_NAME, userName, password));
-        } catch (InputException e) {
-            Platform.runLater(() -> Client.getInstance().getCurrentShow().showError(e.getMessage()));
-        }
+        AuthenticationService.getInstance().signIn(userName, password);
     }
 }
