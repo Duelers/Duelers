@@ -12,24 +12,17 @@ import view.BattleView.BattleScene;
 import view.*;
 
 import java.io.*;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.LinkedList;
-import java.util.concurrent.CountDownLatch;
-import java.util.logging.Logger;
 
 
 public class Client {
-    private static WebSocket ws;
+    private WebSocket ws;
     private static Client client;
     private final LinkedList<Message> sendingMessages = new LinkedList<>();
-    private static String clientName;
-    private static Account account;
-    private static Show currentShow;
+    private String clientName;
+    private Account account;
+    private Show currentShow;
     private final Gson gson = new Gson();
-    private static Thread sendMessageThread;
     private static final String serverName = Config.getInstance().getProperty("SERVER_NAME");
 
 
@@ -41,11 +34,15 @@ public class Client {
     }
 
     private void connect() throws IOException, NullPointerException {
-        String serverIP = Config.getInstance().getProperty("SERVER_IP");
-        String port = Config.getInstance().getProperty("PORT");
+        String serverUri = Config.getInstance().getProperty("SERVER_URI");
+        if (serverUri == null) {
+            String serverIp = Config.getInstance().getProperty("SERVER_IP");
+            String port = Config.getInstance().getProperty("PORT");
+            serverUri = "ws://" + serverIp + ":" + port;
+        }
         int connectionAttempts = 5;
 
-        sendMessageThread = new Thread(() -> {
+        Thread sendMessageThread = new Thread(() -> {
             try {
                 sendMessages();
             } catch (IOException e) {
@@ -53,8 +50,8 @@ public class Client {
             }
         });
 
-        ws = new WebSocketFactory().createSocket("ws://" + serverIP + ":" + port + "/websockets/game");
-        ws.addListener(new WebSocketAdapter() {
+        this.ws = new WebSocketFactory().createSocket(serverUri + "/websockets/game");
+        this.ws.addListener(new WebSocketAdapter() {
             @Override
             public void onTextMessage(WebSocket websocket, String message) throws Exception {
                 Message messageObject = gson.fromJson(message, Message.class);
@@ -70,14 +67,15 @@ public class Client {
         });
         while (true) {
             try {
-                ws.connect();
+                this.ws.connect();
                 break;
             } catch (WebSocketException e) {
+                System.out.println(e.getMessage());
                 connectionAttempts -= 1;
                 if (connectionAttempts == 0) {
                     throw new RuntimeException(e);
                 }
-                ws = ws.recreate();
+                this.ws = this.ws.recreate();
             }
             try {
                 Thread.sleep(5000);
@@ -125,7 +123,7 @@ public class Client {
             }
             if (message != null) {
                 String json = message.toJson();
-                ws.sendText(json);
+                this.ws.sendText(json);
 
                 System.out.println("message sent: " + json);
 
@@ -195,15 +193,15 @@ public class Client {
                 break;
             case Game_FINISH:
                 GameResultController.getInstance().setWinnerInfo(message.getGameFinishMessage().amIWinner());
-                if (currentShow instanceof BattleScene) {
-                    ((BattleScene) currentShow).finish(message.getGameFinishMessage().amIWinner());
+                if (this.currentShow instanceof BattleScene) {
+                    ((BattleScene) this.currentShow).finish(message.getGameFinishMessage().amIWinner());
                 }
                 new Thread(() -> {
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException ignored) {
                     }
-                    if (((BattleScene) currentShow).getMyPlayerNumber() == -1) {
+                    if (((BattleScene) this.currentShow).getMyPlayerNumber() == -1) {
                         Platform.runLater(() -> new MainMenu().show());
                     } else
                         Platform.runLater(() -> new GameResultMenu().show());
@@ -216,14 +214,14 @@ public class Client {
                 showOrSaveMessage(message);
                 break;
             case INVITATION:
-                Platform.runLater(() -> currentShow.showInvite(message.getNewGameFields()));
+                Platform.runLater(() -> this.currentShow.showInvite(message.getNewGameFields()));
                 break;
             case ACCEPT_REQUEST:
                 //think...
                 break;
             case DECLINE_REQUEST:
-                if (currentShow instanceof WaitingMenu) {
-                    ((WaitingMenu) currentShow).close();
+                if (this.currentShow instanceof WaitingMenu) {
+                    ((WaitingMenu) this.currentShow).close();
                 }
                 break;
 
@@ -240,24 +238,24 @@ public class Client {
         if (message.getChatMessage().getReceiverUsername() == null) {
             MainMenuController.getInstance().addChatMessage(message.getChatMessage());
         } else {
-            if (currentShow instanceof BattleScene) {
-                ((BattleScene) currentShow).showOpponentMessage(message.getChatMessage().getText());
+            if (this.currentShow instanceof BattleScene) {
+                ((BattleScene) this.currentShow).showOpponentMessage(message.getChatMessage().getText());
             }
         }
     }
 
     private void showError(Message message) {
-        Platform.runLater(() -> currentShow.showError(message.getExceptionMessage().getExceptionString()));
+        Platform.runLater(() -> this.currentShow.showError(message.getExceptionMessage().getExceptionString()));
     }
 
     private void updateAccount(Message message) {
-        if (account == null) {
-            account = new Account(message.getAccountCopyMessage().getAccount());
+        if (this.account == null) {
+            this.account = new Account(message.getAccountCopyMessage().getAccount());
         } else {
-            account.update(message.getAccountCopyMessage().getAccount());
+            this.account.update(message.getAccountCopyMessage().getAccount());
         }
 
-        if (currentShow instanceof LoginMenu) {
+        if (this.currentShow instanceof LoginMenu) {
             Platform.runLater(() -> new MainMenu().show());
         }
     }
@@ -266,30 +264,30 @@ public class Client {
     }
 
     public String getClientName() {
-        return clientName;
+        return this.clientName;
     }
 
     public Account getAccount() {
-        return account;
+        return this.account;
     }
 
     public void close() {
         Message message = Message.makeLogOutMessage(serverName);
         String json = message.toJson();
-        ws.sendText(json);
-        ws.disconnect();
+        this.ws.sendText(json);
+        this.ws.disconnect();
         System.exit(0);
     }
 
     public synchronized Show getCurrentShow() {
-        if (currentShow == null) {
+        if (this.currentShow == null) {
             try {
                 wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        return currentShow;
+        return this.currentShow;
     }
 
     public synchronized void setShow(Show show) {
