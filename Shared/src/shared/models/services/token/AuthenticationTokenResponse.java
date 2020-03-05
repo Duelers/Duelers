@@ -4,7 +4,7 @@ import shared.models.services.WebApiResponse;
 
 public class AuthenticationTokenResponse implements WebApiResponse {
     
-    public String error;
+    public String error = null;
     public String username;
 
     public AuthenticationTokenResponse() {
