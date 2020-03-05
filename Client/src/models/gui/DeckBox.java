@@ -17,6 +17,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import models.card.Deck;
 import models.card.DeckExporter;
+import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 import view.CollectionMenu;
 
 import java.io.FileInputStream;
@@ -47,6 +49,9 @@ public class DeckBox extends GridPane {
     private static Image mainIcon;
     private static Image disableMainIcon;
 
+    private final String cardsText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.COLLECTION_MENU, LanguageKeys.CARDS});
+    private final String heroText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.COLLECTION_MENU, LanguageKeys.HERO});
+
     static {
         try {
             checkIcon = new Image(new FileInputStream("Client/resources/ui/icon_check.png"));
@@ -71,8 +76,8 @@ public class DeckBox extends GridPane {
         ImageView modify = ImageLoader.makeImageView(modifyIcon, ICON_SIZE, ICON_SIZE);
         ImageView remove = ImageLoader.makeImageView(removeIcon, ICON_SIZE, ICON_SIZE);
         ImageView export = ImageLoader.makeImageView(saveIcon, ICON_SIZE, ICON_SIZE);
-        DefaultLabel cardsNumber = new DefaultLabel(deck.getOthers().size() + " Cards", DETAILS_FONT, Color.WHITE);
-        DefaultLabel heroNumber = new DefaultLabel((deck.getHero() != null ? "1" : "0") + " Hero", DETAILS_FONT, Color.WHITE);
+        DefaultLabel cardsNumber = new DefaultLabel(deck.getOthers().size() + " " + cardsText, DETAILS_FONT, Color.WHITE);
+        DefaultLabel heroNumber = new DefaultLabel((deck.getHero() != null ? "1" : "0") + " " + heroText, DETAILS_FONT, Color.WHITE);
 
         modify.setOnMouseEntered(event -> {
             modify.setEffect(ICON_SHADOW);
