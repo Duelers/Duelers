@@ -19,6 +19,8 @@ import models.account.Collection;
 import models.card.Deck;
 import models.card.ExportedDeck;
 import models.gui.*;
+import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -56,6 +58,14 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     private VBox decksBox;
     private Collection showingCards;
 
+    private final String newDeckText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.COLLECTION_MENU, LanguageKeys.NEW_DECK});
+    private final String importDeckText = LanguageData.getInstance().getValue(new String[] {LanguageKeys.COLLECTION_MENU, LanguageKeys.IMPORT_DECK});
+    private final String newDeckNamePrompt = LanguageData.getInstance().getValue(new String[]{LanguageKeys.COLLECTION_MENU, LanguageKeys.DECK_NAME_PROMPT});
+    private final String deckNameText = LanguageData.getInstance().getValue(new String[]{LanguageKeys.COLLECTION_MENU, LanguageKeys.DECK_NAME});
+    private final String createText = LanguageData.getInstance().getValue(new String[]{ LanguageKeys.BUTTON_TEXT, LanguageKeys.CREATE});
+    private final String backText = LanguageData.getInstance().getValue(new String[]{LanguageKeys.BUTTON_TEXT, LanguageKeys.BACK});
+
+
     CollectionMenu() {
         menu = this;
         setCollectionCards();
@@ -74,8 +84,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
             decksPane.setAlignment(Pos.TOP_CENTER);
             decksPane.setBackground(DECKS_BACKGROUND);
 
-            StackPane newDeckButton = new ImageButton("NEW DECK", event -> showNewDeckDialog());
-            StackPane importDeckButton = new ImageButton("IMPORT DECK", event -> importDeck());
+            StackPane newDeckButton = new ImageButton(newDeckText, event -> showNewDeckDialog());
+            StackPane importDeckButton = new ImageButton(importDeckText, event -> importDeck());
 
             decksBox = new VBox(DEFAULT_SPACING);
             decksBox.setAlignment(Pos.TOP_CENTER);
@@ -106,7 +116,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
             cardsScroll.setMaxWidth(COLLECTION_WIDTH);
             cardsScroll.setId("background_transparent");
 
-            showCollectionButton = new ImageButton("BACK", event -> {
+            showCollectionButton = new ImageButton(backText, event -> {
                 try {
                     showCollectionCards();
                 } catch (FileNotFoundException e) {
@@ -177,12 +187,12 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     }
 
     private void showNewDeckDialog() {
-        DialogText name = new DialogText("Please enter deck's name");
-        NormalField nameField = new NormalField("deck name");
+        DialogText name = new DialogText(newDeckNamePrompt);
+        NormalField nameField = new NormalField(deckNameText);
         DialogBox dialogBox = new DialogBox(name, nameField);
         DialogContainer dialogContainer = new DialogContainer(root, dialogBox);
 
-        dialogBox.makeButton("CREATE", buttonEvent -> {
+        dialogBox.makeButton(createText, buttonEvent -> {
             if (nameField.getText().equals("")) return;
             CollectionMenuController.getInstance().newDeck(nameField.getText());
             dialogContainer.close();
