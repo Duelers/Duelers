@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import models.languageLocalisation.Language;
+import models.languageLocalisation.LanguageKeys;
 import shared.models.game.GameType;
 import models.message.OnlineGame;
 import models.languageLocalisation.LanguageData;
@@ -20,10 +22,10 @@ public class OnlineGamesList extends TableView {
     public OnlineGamesList() {
         super();
 
-        String indexText = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "INDEX"});
-        String playerOne = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "PLAYER_ONE"});
-        String playerTwo = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "PLAYER_TWO"});
-        String gameTypeText = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "GAME_TYPE"});
+        String indexText = LanguageData.getInstance().getValue(new String[]{LanguageKeys.SPECTATE_MENU, LanguageKeys.INDEX});
+        String playerOne = LanguageData.getInstance().getValue(new String[]{LanguageKeys.SPECTATE_MENU, LanguageKeys.PLAYER_ONE});
+        String playerTwo = LanguageData.getInstance().getValue(new String[]{LanguageKeys.SPECTATE_MENU, LanguageKeys.PLAYER_TWO});
+        String gameTypeText = LanguageData.getInstance().getValue(new String[]{LanguageKeys.SPECTATE_MENU, LanguageKeys.GAME_TYPE});
 
         TableColumn<OnlineGameView, Integer> index = new TableColumn(indexText);
         index.setSortable(false);
