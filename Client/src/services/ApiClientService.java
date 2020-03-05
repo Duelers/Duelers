@@ -1,7 +1,7 @@
 package services;
 
 import com.google.gson.Gson;
-import models.services.WebApiRequest;
+import shared.models.services.WebApiRequest;
 
 import java.net.URI;
 import java.net.http.HttpClient;
