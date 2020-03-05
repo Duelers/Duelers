@@ -117,6 +117,8 @@ public class GameServer {
                     .thenAccept(r -> {
                         if (r.error == null) {
                             DataCenter.getInstance().loginOrRegister(r.username, message.getSender());
+                        } else {
+                            serverPrint(r.error);
                         }
                     });
                     break;
