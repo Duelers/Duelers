@@ -293,7 +293,7 @@ public class Message {
 
     public static Message makeAuthenticationTokenMessage(String serverName, String token) {
         Message message = new Message(serverName);
-        message.messageType = MessageType.TOKEN;
+        message.messageType = MessageType.AUTHENTICATE;
         message.token = token;
         return message;
     }

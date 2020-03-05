@@ -49,5 +49,5 @@ public enum MessageType {
     CHANGE_CARD_NUMBER,
     REPLACE_CARD,
     CLIENT_ID,
-    TOKEN
+    AUTHENTICATE
 }
