@@ -6,11 +6,11 @@
         'WELCOME_MESSAGE': 'The Community tries to save Duelyst.',
         'VERSION': 'version',
         'LOGIN': 'login',
+		'REGISTER': 'register',
 		'USERNAME': 'username',
-        'REGISTER': 'register',
         'PASSWORD': 'password',
+		'ERROR_SHORT_USERNAME': 'Username is too short.',
         'ERROR_SHORT_PASSWORD': 'Password is too short.',
-        'ERROR_SHORT_USERNAME': 'Username is too short.',
         'ERROR_INCORRECT_PASSWORD': 'Incorrect Password.'
     },
 	
@@ -23,7 +23,17 @@
 		'QUIT': 'QUIT'
 	},
 	
-	'SPECTATE': {
+	'COLLECTION_MENU': {
+		'NEW_DECK': 'new deck',
+		'IMPORT_DECK': 'import deck',
+		'DECK_NAME_PROMPT': 'Please name your new deck',
+		'DECK_NAME': 'deck name',
+		'DECK_CARD_ADD_ERROR' : 'Cannot add this card to deck',
+		'DECK_CARD_REMOVE_ERROR': 'This card is not in the deck'
+		
+	},
+	
+	'SPECTATE_MENU': {
 		'ONLINE_GAMES': 'Online Games',
 		'INDEX': 'index',
 		'PLAYER_ONE': 'player 1',
@@ -31,15 +41,19 @@
 		'GAME_TYPE' : 'game type'
 	},
 	
-	'PROFILE': {
+	'PROFILE_MENU': {
+		'MATCH_HISTORY':  'match history',
 		'LOGOUT': 'Logout'
-									
 	},
 	
     'BUTTON_TEXT': {
         'OK': 'ok',
 		'START': 'start',
+		'ADD': 'add'
+		'CREATE': 'create',
         'CANCEL': 'cancel',
+		'REMOVE': 'remove',
+		'BACK' : 'back',
 		'ERROR': 'Error!'
     }
 }
