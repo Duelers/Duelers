@@ -1,6 +1,6 @@
 package models.services.registration;
 
-import models.services.WebApiResponse;
+import shared.models.services.WebApiResponse;
 
 public class SignUpResponse implements WebApiResponse {
     

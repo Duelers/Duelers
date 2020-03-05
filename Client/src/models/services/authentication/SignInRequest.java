@@ -1,6 +1,6 @@
 package models.services.authentication;
 
-import models.services.WebApiRequest;
+import shared.models.services.WebApiRequest;
 
 public class SignInRequest implements WebApiRequest {
     public String username;

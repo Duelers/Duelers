@@ -1,4 +1,4 @@
-package models.services;
+package shared.models.services;
 
 public interface WebApiRequest {
 }

@@ -1,6 +1,6 @@
 package models.services.authentication;
 
-import models.services.WebApiResponse;
+import shared.models.services.WebApiResponse;
 
 public class SignInResponse implements WebApiResponse {
     

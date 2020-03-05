@@ -88,8 +88,7 @@ public final class RegistrationService {
         this.sendSignUpRequestAsync(signUpRequest)
                 .thenApply(this::processSignUpResponse)
                 .thenApply(this::handleSignUpResult)
-                .thenAccept(b -> {if (b) {Client.getInstance().addToSendingMessagesAndSend(
-                        Message.makeRegisterMessage(SERVER_NAME, username, password));}}); //temporary to keep reverse compatibility
+                .thenAccept(b -> {if (b) {AuthenticationService.getInstance().signIn( username, password);}});
     }
 
 }

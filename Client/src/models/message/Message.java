@@ -39,6 +39,7 @@ public class Message {
     //SENDER:DUAL
     private Card card;
     private String cardID;
+    private String token;
     private ChatMessage chatMessage;
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
@@ -287,6 +288,13 @@ public class Message {
         Message message = new Message(serverName);
         message.messageType = MessageType.REPLACE_CARD;
         message.cardID = cardID;
+        return message;
+    }
+
+    public static Message makeAuthenticationTokenMessage(String serverName, String token) {
+        Message message = new Message(serverName);
+        message.messageType = MessageType.TOKEN;
+        message.token = token;
         return message;
     }
 

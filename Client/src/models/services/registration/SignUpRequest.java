@@ -1,6 +1,6 @@
 package models.services.registration;
 
-import models.services.WebApiRequest;
+import shared.models.services.WebApiRequest;
 
 public class SignUpRequest implements WebApiRequest {
     public String username;

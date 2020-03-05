@@ -2,6 +2,7 @@ package server;
 
 import server.chatCenter.ChatCenter;
 import server.clientPortal.ClientPortal;
+import server.services.TokenService;
 import shared.models.card.Card;
 import server.clientPortal.models.message.CardPosition;
 import server.clientPortal.models.message.Message;
@@ -111,11 +112,13 @@ public class GameServer {
                 throw new ServerException("Message's Receiver Was Not This Server.");
             }
             switch (message.getMessageType()) {
-                case REGISTER:
-                    DataCenter.getInstance().register(message);
-                    break;
-                case LOG_IN:
-                    DataCenter.getInstance().login(message);
+                case AUTHENTICATE:
+                    TokenService.getInstance().verifyAuthenticationToken(message.token)
+                    .thenAccept(r -> {
+                        if (r.error == null) {
+                            DataCenter.getInstance().loginOrRegister(r.username, message.getSender());
+                        }
+                    });
                     break;
                 case LOG_OUT:
                     DataCenter.getInstance().logout(message);

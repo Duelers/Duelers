@@ -1,14 +1,11 @@
 package services;
 
 import Config.Config;
-import com.google.gson.Gson;
 import controller.Client;
 import models.JsonConverter;
 import models.message.Message;
 import models.services.authentication.SignInRequest;
 import models.services.authentication.SignInResponse;
-import models.services.registration.SignUpRequest;
-import models.services.registration.SignUpResponse;
 
 import javax.naming.ConfigurationException;
 import java.net.URI;
@@ -71,12 +68,12 @@ public final class AuthenticationService {
 
     }
 
-    private boolean handleSignInResult(SignInResponse signInResponse) {
+    private void handleSignInResult(SignInResponse signInResponse) {
         if (signInResponse.error == null) {
-            return true;
+            Client.getInstance().addToSendingMessagesAndSend(
+                    Message.makeAuthenticationTokenMessage(SERVER_NAME, signInResponse.token));
         } else {
             Client.getInstance().showError(signInResponse.error);
-            return false;
         }
     }
 
@@ -91,9 +88,7 @@ public final class AuthenticationService {
         }
         this.sendSignInRequestAsync(signInRequest)
                 .thenApply(this::processSignInResponse)
-                .thenApply(this::handleSignInResult)
-                .thenAccept(b -> {if (b) {Client.getInstance().addToSendingMessagesAndSend(
-                        Message.makeLogInMessage(SERVER_NAME, username, password));}}); //temporary to keep reverse compatibility
+                .thenAccept(this::handleSignInResult);
     }
 
 }
