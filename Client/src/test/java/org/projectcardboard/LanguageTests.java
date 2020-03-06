@@ -1,61 +1,18 @@
 package org.projectcardboard;
 
-
 import org.junit.Assert;
 import org.junit.Test;
-
-import shared.models.game.map.Cell;
 
 public class LanguageTests {
 
     @Test
-    public void cellToStringWorks() {
+    public void placeholder() {
 
-        Cell cellx = new Cell(3, 4);
+        /**
+         * This is just a placeholder for planned tests to make sure that our english language file is always
+         * functional.
+         */
 
-        String expected = "Cell: (3,4)";
-        String actual = cellx.toString();
-
-        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(true, true);
     }
-
-    @Test
-    public void cellEqualityWorks() {
-        Cell cellx = new Cell(2, 2);
-        Cell celly = new Cell(2, 2);
-        Cell cellz = new Cell(3, 2);
-
-        Assert.assertTrue(cellx.equals(cellx));
-        Assert.assertTrue(cellx.equals(celly));
-
-        Assert.assertFalse(cellx.equals(cellz));
-    }
-
-    @Test
-    public void manhattenDistance_ReturnsTwo_WhenCellIsTwoAway() {
-        Cell cell1 = new Cell(0, 0);
-        Cell cell2 = new Cell(0, 2);
-
-        Assert.assertEquals(2, cell1.manhattanDistance(cell2));
-        Assert.assertEquals(2, cell2.manhattanDistance(cell1));
-    }
-
-    @Test
-    public void manhattenDistance_ReturnsTwo_WhenCellIsOneAwayDiagonally() {
-        Cell cell1 = new Cell(0, 0);
-        Cell cell2 = new Cell(1, 1);
-
-        Assert.assertEquals(2, cell1.manhattanDistance(cell2));
-        Assert.assertEquals(2, cell2.manhattanDistance(cell1));
-    }
-
-    @Test
-    public void manhattenDistance_ReturnsFour_WhenCellIsTwoAwayDiagonally() {
-        Cell cell1 = new Cell(2, 2);
-        Cell cell2 = new Cell(4, 4);
-
-        Assert.assertEquals(4, cell1.manhattanDistance(cell2));
-        Assert.assertEquals(4, cell2.manhattanDistance(cell1));
-    }
-
 }
