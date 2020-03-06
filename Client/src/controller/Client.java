@@ -43,11 +43,7 @@ public class Client {
         int connectionAttempts = 5;
 
         Thread sendMessageThread = new Thread(() -> {
-            try {
                 sendMessages();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         });
 
         this.ws = new WebSocketFactory().createSocket(serverUri + "/websockets/game");
