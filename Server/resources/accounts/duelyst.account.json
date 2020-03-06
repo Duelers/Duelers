@@ -3115,7 +3115,29 @@
                 "cardId": "duelyst_SunWisp_1",
                 "spriteName": "f1_sunwisp",
                 "type": "MINION",
-                "spells": [],
+                "spells": [
+                    {
+                        "spellId": "draw_a_card",
+                        "action": {
+                            "cardDraw": 1
+                        },
+                        "target": {
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "player": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
                 "defaultAp": 2,
                 "defaultHp": 1,
                 "manaCost": 2,
@@ -3131,7 +3153,29 @@
                 "cardId": "duelyst_SunWisp_2",
                 "spriteName": "f1_sunwisp",
                 "type": "MINION",
-                "spells": [],
+                "spells": [
+                    {
+                        "spellId": "draw_a_card",
+                        "action": {
+                            "cardDraw": 1
+                        },
+                        "target": {
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "player": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
                 "defaultAp": 2,
                 "defaultHp": 1,
                 "manaCost": 2,
@@ -3147,7 +3191,29 @@
                 "cardId": "duelyst_SunWisp_3",
                 "spriteName": "f1_sunwisp",
                 "type": "MINION",
-                "spells": [],
+                "spells": [
+                    {
+                        "spellId": "draw_a_card",
+                        "action": {
+                            "cardDraw": 1
+                        },
+                        "target": {
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "player": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
                 "defaultAp": 2,
                 "defaultHp": 1,
                 "manaCost": 2,

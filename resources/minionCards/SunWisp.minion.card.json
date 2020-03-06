@@ -4,7 +4,29 @@
     "cardId": "SunWisp",
     "spriteName": "f1_sunwisp",
     "type": "MINION",
-    "spells": [],
+    "spells": [
+        {
+            "spellId": "draw_a_card",
+            "action": {
+                "cardDraw": 1
+            },
+            "target": {
+                "owner": {
+                    "own": true,
+                    "enemy": false
+                },
+                "cardType": {
+                    "player": true
+                }
+            },
+            "availabilityType": {
+                "onPut": true
+            },
+            "coolDown": 0,
+            "manaCost": 0,
+            "lastTurnUsed": 0
+        }
+    ],
     "defaultAp": 2,
     "defaultHp": 1,
     "manaCost": 2,
