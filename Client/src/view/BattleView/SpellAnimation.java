@@ -78,7 +78,7 @@ public class SpellAnimation extends Transition {
         }
     }
 
-    class FramePosition {
+    static class FramePosition {
         final double x;
         final double y;
 
