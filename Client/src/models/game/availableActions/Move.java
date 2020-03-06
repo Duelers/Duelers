@@ -8,8 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Move {
-    private Troop troop;
-    private List<Cell> targets;
+    private final Troop troop;
+    private final List<Cell> targets;
 
     Move(Troop troop, ArrayList<Cell> targets) {
         this.troop = troop;

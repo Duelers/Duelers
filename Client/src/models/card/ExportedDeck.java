@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExportedDeck {
-    private String name;
+    private final String name;
     private String heroName;
-    private HashMap<String, Integer> otherCards = new HashMap<>();
+    private final HashMap<String, Integer> otherCards = new HashMap<>();
 
     public ExportedDeck(Deck deck) {
         name = deck.getName();
