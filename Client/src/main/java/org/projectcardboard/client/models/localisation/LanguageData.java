@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
@@ -87,10 +88,12 @@ public class LanguageData {
     }
 
     private Language loadJson(String language) throws IOException {
+        Path projectRootDir = Paths.get(System.getProperty("user.dir")).getParent();
         String filename = language + ".json";
         String filepath = languageFolder + "/" + filename;
+        Path jsonPath = Paths.get(filepath);
 
-        BufferedReader reader = Files.newBufferedReader(Paths.get(filepath), StandardCharsets.UTF_8);
+        BufferedReader reader = Files.newBufferedReader(projectRootDir.resolve(jsonPath), StandardCharsets.UTF_8);
 
         return new Gson().fromJson(reader, Language.class);
     }
