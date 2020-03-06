@@ -42,7 +42,7 @@ public class GameServer {
 
     public static void start() {
         server = new GameServer("Server");
-        DataCenter.getInstance().run();//no thread
+        DataCenter.getInstance().start();//no thread
         GameCenter.getInstance().start();
         ClientPortal.getInstance().start();
 
