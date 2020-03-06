@@ -78,8 +78,7 @@ public class AvailableActions {
 
         boolean isProvoked = getIsProvoked(game, troopCell);
         if (isProvoked || !troop.canMove()) {
-            ArrayList<Cell> walkableCellsList = new ArrayList<>(walkableCells);
-            return walkableCellsList;
+            return new ArrayList<>(walkableCells);
         }
 
         HashSet<Cell> seenCells = new HashSet<>();
@@ -119,8 +118,7 @@ public class AvailableActions {
             }
         }
 
-        ArrayList<Cell> walkableCellsList = new ArrayList<>(walkableCells);
-        return walkableCellsList;
+        return new ArrayList<>(walkableCells);
     }
 
     private boolean getIsProvoked(CompressedGame game, Cell troopCell) {

@@ -24,10 +24,10 @@ public class Cell_Test {
         Cell celly = new Cell(2, 2);
         Cell cellz = new Cell(3, 2);
 
-        Assert.assertTrue(cellx.equals(cellx));
-        Assert.assertTrue(cellx.equals(celly));
+        Assert.assertEquals(cellx, cellx);
+        Assert.assertEquals(cellx, celly);
 
-        Assert.assertFalse(cellx.equals(cellz));
+        Assert.assertNotEquals(cellx, cellz);
     }
 
     @Test

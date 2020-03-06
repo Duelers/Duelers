@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static models.account.AccountType.ADMIN;
@@ -54,7 +55,7 @@ public class MainMenu extends Show {
         items.addAll(Arrays.asList(itemsArray));
         if (Client.getInstance().getAccount().getAccountType() == ADMIN) {
             System.out.println(Client.getInstance().getAccount().getUsername());
-            items.addAll(Arrays.asList(
+            items.addAll(Collections.singletonList(
                     new MenuItem(itemIndex++, onlineGamesText, null, event -> menu.showOnlineGamesList())
             ));
         }

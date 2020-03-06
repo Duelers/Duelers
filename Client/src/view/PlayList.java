@@ -59,7 +59,7 @@ public class PlayList {
         return lists;
     }
 
-    public class FramePosition {
+    public static class FramePosition {
         final double x;
         final double y;
 
