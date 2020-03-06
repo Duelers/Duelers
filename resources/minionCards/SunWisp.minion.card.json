@@ -1,0 +1,16 @@
+{
+    "name": "Sun Wisp",
+    "description": "Opening Gambit: Draw a card",
+    "cardId": "SunWisp",
+    "spriteName": "f1_sunwisp",
+    "type": "MINION",
+    "spells": [],
+    "defaultAp": 2,
+    "defaultHp": 1,
+    "manaCost": 2,
+    "price": 100,
+    "attackType": "MELEE",
+    "range": 0,
+    "hasCombo": false,
+    "remainingNumber": 20
+}
