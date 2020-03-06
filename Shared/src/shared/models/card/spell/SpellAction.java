@@ -77,6 +77,7 @@ public class SpellAction {
         this.apChange = referenceAction.apChange;
         this.hpChange = referenceAction.hpChange;
         this.mpChange = referenceAction.mpChange;
+        this.cardDraw = referenceAction.cardDraw;
         this.poison = referenceAction.poison;
         this.makeStun = referenceAction.makeStun;
         this.makeDisarm = referenceAction.makeDisarm;
@@ -117,6 +118,10 @@ public class SpellAction {
 
     public int getMpChange() {
         return mpChange;
+    }
+
+    public int getCardDraw() {
+        return cardDraw;
     }
 
     public boolean isPoison() {
