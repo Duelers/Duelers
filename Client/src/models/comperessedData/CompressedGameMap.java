@@ -1,5 +1,6 @@
 package models.comperessedData;
 
+import shared.Constants;
 import shared.models.game.Troop;
 import shared.models.game.map.CellEffect;
 import shared.models.game.map.Cell;
@@ -11,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class CompressedGameMap {
-    private static final int ROW_NUMBER = 5, COLUMN_NUMBER = 9;
+    private static final int NUM_ROWS = Constants.NUMBER_OF_ROWS, NUM_COLUMNS = Constants.NUMBER_OF_COLUMNS;
     private final Cell[][] cells;
     private final ArrayList<Troop> troops;
     private CellEffect[] cellEffects;
@@ -24,15 +25,15 @@ public class CompressedGameMap {
     }
 
     public static int getRowNumber() {
-        return ROW_NUMBER;
+        return NUM_ROWS;
     }
 
     public static int getColumnNumber() {
-        return COLUMN_NUMBER;
+        return NUM_COLUMNS;
     }
 
     public static boolean isInMap(int row, int column) {
-        return row >= 0 && row < ROW_NUMBER && column >= 0 && column < COLUMN_NUMBER;
+        return row >= 0 && row < NUM_ROWS && column >= 0 && column < NUM_COLUMNS;
     }
 
     /**
