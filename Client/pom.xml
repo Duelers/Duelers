@@ -15,8 +15,8 @@
         <relativePath>../../Duelers/pom.xml</relativePath>
     </parent>
 
-    <groupId>groupId</groupId>
-    <artifactId>Client</artifactId>
+    <groupId>org.projectcardboard</groupId>
+    <artifactId>client</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -105,7 +105,7 @@
 
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
 
         <plugins>
             <plugin>
@@ -142,10 +142,7 @@
                             <outputFile>target\${project.build.finalName}-shaded.jar</outputFile>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>Launcher</mainClass>
-                                    <manifestEntries>
-                                        <Main-Class>Launcher</Main-Class>
-                                    </manifestEntries>
+                                    <mainClass>org.projectcardboard.client.Launcher</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

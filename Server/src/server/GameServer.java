@@ -16,7 +16,6 @@ import server.exceptions.LogicException;
 import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
 import server.gameCenter.models.game.*;
-import server.gameCenter.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 import shared.models.game.map.CellEffect;
 

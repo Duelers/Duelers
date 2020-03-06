@@ -24,7 +24,7 @@ public class MatchHistory {
     }
 
     public String getDate() {
-        return date.toLocaleString();
+        return date.toString();
     }
 
     public boolean isAmIWinner() {

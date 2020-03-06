@@ -171,7 +171,7 @@ public class Account {
     }
 
     public int getWins() {
-        return matchHistories.stream().filter(MatchHistory::isAmIWinner).collect(Collectors.toList()).size();
+        return (int) matchHistories.stream().filter(MatchHistory::isAmIWinner).count();
     }
 
     List<Deck> getDecks() {

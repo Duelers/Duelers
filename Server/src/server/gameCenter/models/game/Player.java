@@ -78,6 +78,7 @@ public class Player {
             if (tempCard.getCardId().equalsIgnoreCase(cardID)) {
                 hand.remove(i);
                 cardToRemove = tempCard;
+                break;
             }
         }
 

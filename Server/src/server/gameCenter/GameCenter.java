@@ -5,7 +5,6 @@ import server.clientPortal.models.message.Message;
 import server.clientPortal.models.message.OnlineGame;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
-import server.dataCenter.models.account.AccountType;
 import server.dataCenter.models.account.MatchHistory;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
@@ -214,11 +213,9 @@ public class GameCenter extends Thread {//synchronize
         deck.makeCustomGameDeck();
         Game game = null;
         GameMap gameMap = new GameMap();
-        switch (message.getNewGameFields().getGameType()) {
-            case KILL_HERO:
-                game = new KillHeroBattle(myAccount, deck, gameMap);
-                game.addObserver(myAccount);
-                break;
+        if (message.getNewGameFields().getGameType() == GameType.KILL_HERO) {
+            game = new KillHeroBattle(myAccount, deck, gameMap);
+            game.addObserver(myAccount);
         }
         onlineGames.put(myAccount, game);
         gameInfos.add(new OnlineGame(game));
@@ -234,13 +231,10 @@ public class GameCenter extends Thread {//synchronize
         removeAllGameRequests(account2);
         Game game = null;
         GameMap gameMap = new GameMap();
-        switch (gameType) {
-            case KILL_HERO:
-                game = new KillHeroBattle(account1, account2, gameMap);
-                game.addObserver(account1);
-                game.addObserver(account2);
-                break;
-
+        if (gameType == GameType.KILL_HERO) {
+            game = new KillHeroBattle(account1, account2, gameMap);
+            game.addObserver(account1);
+            game.addObserver(account2);
         }
         onlineGames.put(account1, game);
         onlineGames.put(account2, game);
