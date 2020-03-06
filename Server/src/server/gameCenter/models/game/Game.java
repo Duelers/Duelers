@@ -261,8 +261,8 @@ public abstract class Game {
                     int y = offsets[new Random().nextInt(offsets.length)];
 
                     // Get a random square, force it to be within index bounds.
-                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), gameMap.getNumRows() - 1));
-                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getNumColumns() - 1));
+                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), GameMap.getNumRows() - 1));
+                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), GameMap.getNumColumns() - 1));
 
                     Cell c = new Cell(x2, y2);
 

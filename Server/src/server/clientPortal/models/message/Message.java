@@ -52,7 +52,7 @@ public class Message {
 
 
     private Message(String receiver) {
-        this.sender = GameServer.getInstance().serverName;
+        this.sender = GameServer.serverName;
         this.receiver = receiver;
     }
 

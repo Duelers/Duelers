@@ -85,7 +85,7 @@ public class Deck {
                 others.add(card);
                 break;
             default:
-                GameServer.getInstance().serverPrint("Error!");
+                GameServer.serverPrint("Error!");
                 break;
         }
     }

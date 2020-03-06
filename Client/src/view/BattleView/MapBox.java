@@ -54,14 +54,14 @@ public class MapBox implements PropertyChangeListener {
     }
 
     private void makePolygons() {
-        for (int j = 0; j < gameMap.getRowNumber(); j++) {
+        for (int j = 0; j < CompressedGameMap.getRowNumber(); j++) {
             double upperWidth = (j * Constants.MAP_DOWNER_WIDTH + (6 - j) * Constants.MAP_UPPER_WIDTH) / 6;
             double downerWidth = ((j + 1) * Constants.MAP_DOWNER_WIDTH + (6 - (j + 1)) * Constants.MAP_UPPER_WIDTH) / 6;
             double upperY = Constants.MAP_HEIGHT * (upperWidth - Constants.MAP_UPPER_WIDTH) /
                     (Constants.MAP_DOWNER_WIDTH - Constants.MAP_UPPER_WIDTH);
             double downerY = Constants.MAP_HEIGHT * (downerWidth - Constants.MAP_UPPER_WIDTH) /
                     (Constants.MAP_DOWNER_WIDTH - Constants.MAP_UPPER_WIDTH);
-            for (int i = 0; i < gameMap.getColumnNumber(); i++) {
+            for (int i = 0; i < CompressedGameMap.getColumnNumber(); i++) {
                 double x1 = (Constants.MAP_DOWNER_WIDTH - upperWidth) / 2 + i * upperWidth / 9;
                 double x2 = (Constants.MAP_DOWNER_WIDTH - upperWidth) / 2 + (i + 1) * upperWidth / 9;
                 double x3 = (Constants.MAP_DOWNER_WIDTH - downerWidth) / 2 + (i + 1) * downerWidth / 9;
@@ -85,8 +85,8 @@ public class MapBox implements PropertyChangeListener {
     }
 
     void addCircles() {
-        for (int j = 0; j < gameMap.getRowNumber(); j++) {
-            for (int i = 0; i < gameMap.getColumnNumber(); i++) {
+        for (int j = 0; j < CompressedGameMap.getRowNumber(); j++) {
+            for (int i = 0; i < CompressedGameMap.getColumnNumber(); i++) {
                 mapGroup.getChildren().add(new Circle(cellsX[j][i], cellsY[j][i], 2));
             }
         }
@@ -259,8 +259,8 @@ public class MapBox implements PropertyChangeListener {
     void updateMapColors() {
         updateSelectionType();
         CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
-        for (int row = 0; row < gameMap.getRowNumber(); row++) {
-            for (int column = 0; column < gameMap.getColumnNumber(); column++) {
+        for (int row = 0; row < CompressedGameMap.getRowNumber(); row++) {
+            for (int column = 0; column < CompressedGameMap.getColumnNumber(); column++) {
 
                 cells[row][column].setFill(Constants.defaultColor);
 
