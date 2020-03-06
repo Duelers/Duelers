@@ -37,7 +37,7 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
     private final PriceBox priceBox;
 
     Deck deck;
-    ICard card;
+    final ICard card;
     DefaultLabel countLabel;
     int oldCount;
 

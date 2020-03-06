@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AvailableActions {
-    private List<Insert> handInserts = new ArrayList<>();
-    private List<Attack> attacks = new ArrayList<>();
-    private List<Move> moves = new ArrayList<>();
+    private final List<Insert> handInserts = new ArrayList<>();
+    private final List<Attack> attacks = new ArrayList<>();
+    private final List<Move> moves = new ArrayList<>();
     private int NumTimesReplacedThisTurn = 0;
     private int MaxNumReplacePerTurn = 1;
 

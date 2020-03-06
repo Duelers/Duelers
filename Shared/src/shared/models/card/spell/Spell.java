@@ -1,12 +1,12 @@
 package shared.models.card.spell;
 
 public class Spell {
-    private String spellId;
+    private final String spellId;
     private SpellAction action;
     private Target target;
     private AvailabilityType availabilityType;
-    private int coolDown;
-    private int manaCost;
+    private final int coolDown;
+    private final int manaCost;
     private int lastTurnUsed;
 
     public Spell(String spellId, SpellAction action, Target target, AvailabilityType availabilityType, int coolDown, int manaCost) {

@@ -13,15 +13,15 @@ import server.dataCenter.models.Constants;
 import java.util.*;
 
 public class Player {
-    private String userName;
+    private final String userName;
     private int currentMP;
-    private Deck deck;
+    private final Deck deck;
     private ServerTroop hero;
-    private List<Card> hand = new ArrayList<>();
-    private List<ServerTroop> troops = new ArrayList<>();
-    private List<Card> graveyard = new ArrayList<>();
+    private final List<Card> hand = new ArrayList<>();
+    private final List<ServerTroop> troops = new ArrayList<>();
+    private final List<Card> graveyard = new ArrayList<>();
     private Card nextCard;
-    private int playerNumber;
+    private final int playerNumber;
     private MatchHistory matchHistory;
     private int numTimesReplacedThisTurn;
     private int maxNumReplacePerTurn;

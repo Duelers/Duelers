@@ -3,10 +3,10 @@ package server.clientPortal.models.message;
 import shared.models.game.GameType;
 
 public class NewGameFields {
-    private GameType gameType;
-    private int stage;
-    private String customDeckName;
-    private String opponentUsername;
+    private final GameType gameType;
+    private final int stage;
+    private final String customDeckName;
+    private final String opponentUsername;
 
     public NewGameFields(GameType gameType, int stage, String customDeckName, String opponentUsername) {
         this.gameType = gameType;

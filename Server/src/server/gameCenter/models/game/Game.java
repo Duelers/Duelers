@@ -42,17 +42,17 @@ import java.util.Random;
 
 public abstract class Game {
     private static final long TURN_TIME_LIMIT = 120000;
-    private Player playerOne;
-    private Player playerTwo;
-    private GameType gameType;
-    private ArrayList<Buff> buffs = new ArrayList<>();
-    private ArrayList<Buff> tempBuffs = new ArrayList<>();
-    private GameMap gameMap;
+    private final Player playerOne;
+    private final Player playerTwo;
+    private final GameType gameType;
+    private final ArrayList<Buff> buffs = new ArrayList<>();
+    private final ArrayList<Buff> tempBuffs = new ArrayList<>();
+    private final GameMap gameMap;
     private int turnNumber = 1;
     private boolean isFinished;
-    private ArrayList<Account> observers = new ArrayList<>();
+    private final ArrayList<Account> observers = new ArrayList<>();
 
-    private ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+    private final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
     private Runnable task;
     private ScheduledFuture<?> future;
 

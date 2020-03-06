@@ -19,8 +19,8 @@ import java.util.Set;
 public class Message {
     private MessageType messageType;
     //serverName || clientName
-    private String sender;
-    private String receiver;
+    private final String sender;
+    private final String receiver;
 
     //SENDER:SERVER
     private GameCopyMessage gameCopyMessage;

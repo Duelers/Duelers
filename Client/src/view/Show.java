@@ -13,7 +13,7 @@ import models.message.NewGameFields;
 public abstract class Show {
     final public AnchorPane root = new AnchorPane();
 
-    private String ok = LanguageData.getInstance().getValue(new String[] {LanguageKeys.BUTTON_TEXT, LanguageKeys.OK});
+    private final String ok = LanguageData.getInstance().getValue(new String[] {LanguageKeys.BUTTON_TEXT, LanguageKeys.OK});
 
     public Show() {
     }

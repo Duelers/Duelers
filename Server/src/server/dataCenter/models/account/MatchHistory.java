@@ -5,9 +5,9 @@ import server.gameCenter.models.game.Player;
 import java.util.Date;
 
 public class MatchHistory {
-    private String oppName;
-    private boolean amIWinner;
-    private Date date;
+    private final String oppName;
+    private final boolean amIWinner;
+    private final Date date;
 
     public MatchHistory(Player player, boolean amIWinner) {
         if (player.getUserName().equals("AI")) {

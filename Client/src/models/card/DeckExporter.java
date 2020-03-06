@@ -9,7 +9,7 @@ import java.io.IOException;
 public class DeckExporter {
     private static final String DIRECTORY_NAME = "exported_decks";
     private static final String FORMAT = ".deck.json";
-    private ExportedDeck deck;
+    private final ExportedDeck deck;
 
     public DeckExporter(Deck deck) {
         this.deck = new ExportedDeck(deck);

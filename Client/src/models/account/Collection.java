@@ -8,14 +8,14 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Collection {
-    private List<Card> heroes = new ArrayList<>();
-    private List<Card> minions = new ArrayList<>();
-    private List<Card> spells = new ArrayList<>();
+    private final List<Card> heroes = new ArrayList<>();
+    private final List<Card> minions = new ArrayList<>();
+    private final List<Card> spells = new ArrayList<>();
 
     // When two cards cost the same mana, sort alphabetically by name.
     // Note that the current implementation only sorts by first character.
     // Thus Az could appear before Ab, but Cz is always before Da.
-    private Comparator<Card> compareCostThenName = Comparator.comparingInt(Card::getManaCost).thenComparingInt(c -> c.getCardId().charAt(0));
+    private final Comparator<Card> compareCostThenName = Comparator.comparingInt(Card::getManaCost).thenComparingInt(c -> c.getCardId().charAt(0));
 
     public List<Card> getHeroes() {
         heroes.sort(compareCostThenName);

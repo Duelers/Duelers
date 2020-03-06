@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Attack {
-    private ServerTroop attackerTroop;
-    private List<ServerTroop> defenders;
+    private final ServerTroop attackerTroop;
+    private final List<ServerTroop> defenders;
 
     Attack(ServerTroop attackerTroop, List<ServerTroop> defenders) {
         this.attackerTroop = attackerTroop;

@@ -4,7 +4,7 @@ package server.gameCenter.models.game.availableActions;
 import shared.models.card.Card;
 
 public class Insert {
-    private Card card;
+    private final Card card;
 
     Insert(Card card) {
         this.card = card;

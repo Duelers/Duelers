@@ -8,8 +8,8 @@ import java.util.*;
 
 public class GameMap {
     private static final int NUM_ROWS = 5, NUM_COLUMNS = 9;
-    private Cell[][] cells;
-    private List<ServerTroop> troops = new ArrayList<>();
+    private final Cell[][] cells;
+    private final List<ServerTroop> troops = new ArrayList<>();
 
     public GameMap() {
         cells = new Cell[NUM_ROWS][NUM_COLUMNS];

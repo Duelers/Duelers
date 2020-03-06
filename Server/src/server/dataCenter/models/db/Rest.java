@@ -29,7 +29,7 @@ public class Rest implements DataBase {
             path = s;
         }
 
-        String path;
+        final String path;
     }
 
     final String baseAddress = "http://127.0.0.1:8080/";

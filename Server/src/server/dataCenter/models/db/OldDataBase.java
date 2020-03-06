@@ -5,7 +5,7 @@ import server.dataCenter.models.account.Collection;
 import shared.models.card.Card;
 
 public class OldDataBase implements DataBase {
-    private Collection originalCards = new Collection();
+    private final Collection originalCards = new Collection();
 
     public Collection getOriginalCards() {
         return originalCards;

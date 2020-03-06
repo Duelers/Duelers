@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 import static server.dataCenter.models.account.AccountType.NORMAL;
 
 public class Account {
-    private String username;
-    private String password;
+    private final String username;
+    private final String password;
     private AccountType accountType;
-    private Collection collection;
-    private List<Deck> decks = new ArrayList<>();
+    private final Collection collection;
+    private final List<Deck> decks = new ArrayList<>();
     private Deck mainDeck;
     private List<MatchHistory> matchHistories = new ArrayList<>();
 

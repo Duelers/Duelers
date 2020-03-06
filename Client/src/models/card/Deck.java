@@ -11,9 +11,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-    private String deckName;
-    private Card hero;
-    private ArrayList<Card> others = new ArrayList<>();
+    private final String deckName;
+    private final Card hero;
+    private final ArrayList<Card> others = new ArrayList<>();
 
     public Deck(TempDeck tempDeck, Collection collection) {
         this.deckName = tempDeck.getDeckName();
