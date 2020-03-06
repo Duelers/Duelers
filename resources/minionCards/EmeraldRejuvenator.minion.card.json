@@ -1,0 +1,46 @@
+{
+	"name": "Emerald Rejuvenator",
+	"description": "Opening Gambit: Restore 4 Health to your General.",
+	"cardId": "EmeraldRejuvenator",
+	"spriteName": "neutral_rejuvenator",
+	"type": "MINION",
+	"spells": [{
+			"spellId": "restore_4_to_general",
+			"action": {
+				"hpChange": 4,
+				"durable": true,
+				"duration": 1
+			},
+			"target": {
+				"isRelatedToCardOwnerPosition": true,
+				"dimensions": {
+					"row": 20,
+					"column": 20
+				},
+
+				"owner": {
+					"own": true,
+					"enemy": false
+				},
+
+				"cardType": {
+					"hero": true
+				},
+
+				"attackType": {
+					"melee": true,
+					"ranged": true,
+					"hybrid": true
+				}
+			},
+			"availabilityType": {
+				"onPut": true
+			}
+	}],
+	"defaultAp": 4,
+	"defaultHp": 4,
+	"manaCost": 4,
+	"price": 100,
+	"attackType": "MELEE",
+	"remainingNumber": 20
+}
