@@ -84,9 +84,8 @@ public class LanguageData {
         String filepath = languageFolder + "/" + filename;
 
         Reader reader = Files.newBufferedReader(Paths.get(filepath), StandardCharsets.UTF_8);
-        Language loadedLanguage = new Gson().fromJson(reader, Language.class);
 
-        return loadedLanguage;
+        return new Gson().fromJson(reader, Language.class);
     }
 
 
