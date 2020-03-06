@@ -135,7 +135,6 @@ public class GameResultMenu extends Show {
         private final Image middleground;
         private final Image foreground;
         private final Image hero;
-        private final Image middleIcon;
         private final String message;
         private String middleText;
 
@@ -144,7 +143,6 @@ public class GameResultMenu extends Show {
             middleground = ImageLoader.load(getUrl(middleName));
             foreground = ImageLoader.load(getUrl(foreName));
             hero = ImageLoader.load(getUrl(heroName));
-            this.middleIcon = middleIcon;
             this.message = message;
             this.color = color;
         }

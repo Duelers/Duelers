@@ -5,16 +5,12 @@ import shared.models.game.GameType;
 
 public class NewGameFields {
     private GameType gameType;
-    private int stage;
-    private String customDeckName;
     private String opponentUsername;
 
     void setStage(int stage) {
-        this.stage = stage;
     }
 
     void setCustomDeckName(String customDeckName) {
-        this.customDeckName = customDeckName;
     }
 
     public GameType getGameType() {

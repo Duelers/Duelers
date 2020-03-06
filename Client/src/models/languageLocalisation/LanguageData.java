@@ -15,7 +15,6 @@ public class LanguageData {
 
     private final String languageFolder = "resources/configurations/Languages";
     private final String defaultLanguage = "english";
-    private final String missingValue = "???";
 
     private final String selectedLanguage;
 
@@ -52,6 +51,7 @@ public class LanguageData {
     public String getValue(String[] keys) {
         String value = null;
 
+        String missingValue = "???";
         try {
             value = getValue(languageMapSelected, keys);
         } catch (IllegalAccessException | NoSuchFieldException | NullPointerException e1) {

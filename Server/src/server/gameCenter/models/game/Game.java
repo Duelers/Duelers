@@ -49,11 +49,9 @@ public abstract class Game {
     private ArrayList<Buff> tempBuffs = new ArrayList<>();
     private GameMap gameMap;
     private int turnNumber = 1;
-    private boolean isFinished;
     private ArrayList<Account> observers = new ArrayList<>();
 
     private ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
-    private Runnable task;
     private ScheduledFuture<?> future;
 
     protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType) {
@@ -160,13 +158,14 @@ public abstract class Game {
     private void startTurnTimeLimit() {
         final int currentTurn = turnNumber;
 
-        this.task = () -> {
+        Runnable task = () -> {
             try {
                 if (this.turnNumber == currentTurn)
                     changeTurn(getCurrentTurnPlayer().getUserName(), true);
-            } catch (LogicException ignored) {}
+            } catch (LogicException ignored) {
+            }
         };
-        this.future = this.timer.schedule(this.task, 120, TimeUnit.SECONDS);
+        this.future = this.timer.schedule(task, 120, TimeUnit.SECONDS);
     }
 
     private void addNextCardToHand() {
@@ -671,7 +670,7 @@ public abstract class Game {
 
     void finish() {
         this.cancelTimeLimit();
-        this.isFinished = true;
+        boolean isFinished = true;
     }
 
     private void applySpell(Spell spell, TargetData target) {
