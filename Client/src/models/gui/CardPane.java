@@ -14,7 +14,6 @@ import view.BattleView.CardAnimation;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.FileNotFoundException;
 
 import static models.gui.CardBackground.*;
 import static models.gui.CardDetailBox.DESCRIPTION_COLOR;

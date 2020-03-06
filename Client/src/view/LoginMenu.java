@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import models.gui.*;
-import models.languageLocalisation.Language;
 import models.languageLocalisation.LanguageData;
 import models.languageLocalisation.LanguageKeys;
 

@@ -5,7 +5,6 @@ import server.clientPortal.models.message.Message;
 import server.clientPortal.models.message.OnlineGame;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
-import server.dataCenter.models.account.AccountType;
 import server.dataCenter.models.account.MatchHistory;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
