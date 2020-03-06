@@ -17,7 +17,6 @@
         <relativePath>../../Duelers/pom.xml</relativePath>
     </parent>
 
-    <groupId>groupId</groupId>
     <artifactId>tools</artifactId>
     <version>1.0-SNAPSHOT</version>
 
