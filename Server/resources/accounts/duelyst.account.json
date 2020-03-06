@@ -918,7 +918,7 @@
             },
             {
                 "name": "Emerald Rejuvenator",
-                "description": "Opening Gambit: Restore 4 Health to your General.",
+                "description": "Opening Gambit: Give 4 Health to your General.",
                 "cardId": "duelyst_EmeraldRejuvenator_1",
                 "spriteName": "neutral_rejuvenator",
                 "type": "MINION",
@@ -963,7 +963,7 @@
             },
             {
                 "name": "Emerald Rejuvenator",
-                "description": "Opening Gambit: Restore 4 Health to your General.",
+                "description": "Opening Gambit: Give 4 Health to your General.",
                 "cardId": "duelyst_EmeraldRejuvenator_2",
                 "spriteName": "neutral_rejuvenator",
                 "type": "MINION",
@@ -1008,7 +1008,7 @@
             },
             {
                 "name": "Emerald Rejuvenator",
-                "description": "Opening Gambit: Restore 4 Health to your General.",
+                "description": "Opening Gambit: Give 4 Health to your General.",
                 "cardId": "duelyst_EmeraldRejuvenator_3",
                 "spriteName": "neutral_rejuvenator",
                 "type": "MINION",
