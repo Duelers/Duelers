@@ -41,7 +41,7 @@ public class GameServer {
 
     public static void start() {
         server = new GameServer("Server");
-        DataCenter.getInstance().run();//no thread
+        DataCenter.getInstance().start();//no thread
         GameCenter.getInstance().start();
         ClientPortal.getInstance().start();
 
@@ -54,7 +54,6 @@ public class GameServer {
                 }
                 if (message != null) {
                     ClientPortal.getInstance().sendMessage(message.getReceiver(), message.toJson());
-                    //System.out.println("TO:" + message.getReceiver() + ":  " + message.toJson());//TODO:remove
                 } else {
                     try {
                         synchronized (sendingMessages) {
@@ -73,7 +72,6 @@ public class GameServer {
                     message = receivingMessages.poll();
                 }
                 if (message != null) {
-                    //System.out.println("From:" + message.getSender() + "    " + message.toJson());//TODO:remove
                     receiveMessage(message);
                 } else {
                     try {

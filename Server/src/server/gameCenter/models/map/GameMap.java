@@ -2,12 +2,13 @@ package server.gameCenter.models.map;
 
 import server.clientPortal.models.comperessedData.CompressedGameMap;
 import server.gameCenter.models.game.ServerTroop;
+import shared.Constants;
 import shared.models.game.map.Cell;
 
 import java.util.*;
 
 public class GameMap {
-    private static final int NUM_ROWS = 5, NUM_COLUMNS = 9;
+    private static final int NUM_ROWS = Constants.NUMBER_OF_ROWS, NUM_COLUMNS = Constants.NUMBER_OF_COLUMNS;
     private Cell[][] cells;
     private List<ServerTroop> troops = new ArrayList<>();
 

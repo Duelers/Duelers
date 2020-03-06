@@ -205,3 +205,4 @@ local.properties
 .project
 
 ## end Eclipse
+resources/config.properties

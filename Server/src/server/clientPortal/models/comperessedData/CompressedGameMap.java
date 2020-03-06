@@ -1,13 +1,14 @@
 package server.clientPortal.models.comperessedData;
 
 import server.gameCenter.models.game.ServerTroop;
+import shared.Constants;
 import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CompressedGameMap {
-    private static final int ROW_NUMBER = 5, COLUMN_NUMBER = 9;
+    private static final int ROW_NUMBER = Constants.NUMBER_OF_ROWS, COLUMN_NUMBER = Constants.NUMBER_OF_COLUMNS;
 
     private Cell[][] cells = new Cell[ROW_NUMBER][COLUMN_NUMBER];
     private List<ServerTroop> troops = new ArrayList<>();
