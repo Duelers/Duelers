@@ -53,7 +53,7 @@ public class Client {
         this.ws = new WebSocketFactory().createSocket(serverUri + "/websockets/game");
         this.ws.addListener(new WebSocketAdapter() {
             @Override
-            public void onTextMessage(WebSocket websocket, String message) throws Exception {
+            public void onTextMessage(WebSocket websocket, String message) {
                 Message messageObject = gson.fromJson(message, Message.class);
 
                 String msg = simplifyLogMessage(messageObject, "Server");
@@ -115,7 +115,7 @@ public class Client {
         }
     }
 
-    private void sendMessages() throws IOException {
+    private void sendMessages() {
         while (true) {
             Message message;
             synchronized (sendingMessages) {
