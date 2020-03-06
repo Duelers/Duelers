@@ -96,16 +96,7 @@ public class CompressedGameMap {
     public List<Troop> getTroops() {
         return Collections.unmodifiableList(troops);
     }
-
-    public Troop searchTroop(String cardID) {
-        for (Troop troop : troops) {
-            if (troop.getCard().getCardId().equalsIgnoreCase(cardID)) {
-                return troop;
-            }
-        }
-        return null;
-    }
-
+    
     public void addTroop(Troop troop) {
         troops.add(troop);
     }
