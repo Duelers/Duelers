@@ -13,6 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 
 import java.io.FileNotFoundException;
 
@@ -43,7 +44,7 @@ class LoginMenuLogoBox extends VBox {
 
     private Text WelcomeMessage() {
         return new DefaultText(
-                LanguageData.getInstance().getValue(new String[] {"LOGIN_MENU", "WELCOME_MESSAGE"}),
+                LanguageData.getInstance().getValue(new String[] { LanguageKeys.LOGIN_MENU, LanguageKeys.WELCOME_MESSAGE }),
                 BOX_SIZE - UIConstants.DEFAULT_SPACING * 3,
                 FONT, ABABEEL_TEXT_COLOR
         );

@@ -1,6 +1,6 @@
 package models.languageLocalisation;
 
-public class spectate {
+public class Spectate {
     public String ONLINE_GAMES;
     public String INDEX;
     public String PLAYER_ONE;

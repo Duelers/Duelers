@@ -7,12 +7,13 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import models.languageLocalisation.LanguageData;
+import models.languageLocalisation.LanguageKeys;
 import models.message.NewGameFields;
 
 public abstract class Show {
     final public AnchorPane root = new AnchorPane();
 
-    private String ok = LanguageData.getInstance().getValue(new String[] {"BUTTON_TEXT", "OK"});
+    private String ok = LanguageData.getInstance().getValue(new String[] {LanguageKeys.BUTTON_TEXT, LanguageKeys.OK});
 
     public Show() {
     }
