@@ -126,7 +126,7 @@ public abstract class Game {
             if (canCommand(username)) {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
-                addNextCardToHand();
+                addNextCardToHand(2); // TODO This probably needs a constant
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(0);
 
                 revertNotDurableBuffs();
@@ -169,10 +169,8 @@ public abstract class Game {
         this.future = this.timer.schedule(this.task, 120, TimeUnit.SECONDS);
     }
 
-    private void addNextCardToHand() {
-        //If you want to draw 2 cards at the end of your turn, set the for loop to run 2 times
-        //If you want to draw 1 card at the end of your turn, set the for loop to run 1 time or remove it.
-        for (int i = 0; i < 2; i++) {
+    private void addNextCardToHand(int cardsToDraw) {
+        for (int i = 0; i < cardsToDraw; i++) {
             Card nextCard = getCurrentTurnPlayer().getNextCard();
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
@@ -274,8 +272,8 @@ public abstract class Game {
                 }
                 actions.calculateAvailableInserts(this);
             }
-        } catch (InterruptedException ignored) {
-            ignored.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             changeTurn("AI", false);
         }
@@ -698,6 +696,7 @@ public abstract class Game {
         SpellAction action = buff.getAction();
         for (Player player : players) {
             player.changeCurrentMP(action.getMpChange());
+            addNextCardToHand(action.getCardDraw());
             GameServer.getInstance().sendGameUpdateMessage(this);
         }
     }
