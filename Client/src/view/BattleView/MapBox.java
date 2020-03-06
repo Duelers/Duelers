@@ -330,17 +330,14 @@ public class MapBox implements PropertyChangeListener {
         boolean canAttack = GameController.getInstance().getAvailableActions().canAttack(gameMap, player, selectedTroop, row, column);
         boolean canMove = GameController.getInstance().getAvailableActions().canMove(gameMap, player, selectedTroop, row, column);
 
-        if (!canAttack && !canMove){
-            return false;
-        }
-
         if (canAttack) {
             cells[row][column].setFill(Constants.ATTACK_COLOR);
         }
-        else if (canMove) {
+        if (canMove) {
             cells[row][column].setFill(Constants.MOVE_COLOR);
         }
-        return true;
+        boolean hasUpdated = canAttack || canMove;
+        return hasUpdated;
     }
 
     private void updateCellEffects() {
