@@ -22,7 +22,7 @@ class PlayButtonBox extends VBox {
 
     static {
         try {
-            PLATE_IMAGE = new Image(new FileInputStream("Client/resources/menu/playButtons/panel_trim_plate.png"));
+            PLATE_IMAGE = new Image(new FileInputStream("Client/src/main/resources/menu/playButtons/panel_trim_plate.png"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

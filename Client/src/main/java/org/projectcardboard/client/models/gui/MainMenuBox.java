@@ -11,7 +11,7 @@ import java.util.List;
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class MainMenuBox extends VBox {
-    private static final String DUELYST_LOGO_URL = "Client/resources/ui/brand_duelyst.png";
+    private static final String DUELYST_LOGO_URL = "Client/src/main/resources/ui/brand_duelyst.png";
     private static final double X = 100 * SCALE;
     private static final double Y = 400 * SCALE;
 

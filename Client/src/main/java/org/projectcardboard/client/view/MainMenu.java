@@ -35,7 +35,7 @@ public class MainMenu extends Show {
     private final String onlineGamesText = LanguageData.getInstance().getValue(new String[]{LanguageKeys.SPECTATE_MENU, LanguageKeys.ONLINE_GAMES});
 
     private static final Media backgroundMusic = new Media(
-            new File("Client/resources/music/main_menu.m4a").toURI().toString()
+            new File("Client/src/main/resources/music/main_menu.m4a").toURI().toString()
     );
     private final List<MenuItem> items = new ArrayList<>();
     private int itemIndex = 0;

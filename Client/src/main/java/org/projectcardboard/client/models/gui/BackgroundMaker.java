@@ -1,21 +1,21 @@
 package org.projectcardboard.client.models.gui;
 
+import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
+
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
-import java.io.FileNotFoundException;
-import java.util.HashMap;
-
-import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
-
 public class BackgroundMaker {
-    private static final String BACKGROUND_URL = "Client/resources/menu/background/background.jpg";
-    private static final String FOREGROUND_URL = "Client/resources/menu/background/foreground.png";
-    private static final String FAR_PILLAR_URL = "Client/resources/menu/background/far_pillars.png";
-    private static final String NEAR_PILLAR_URL = "Client/resources/menu/background/near_pillars.png";
-    private static final String VIGNETTE_URL = "Client/resources/menu/background/vignette.png";
+    private static final String BACKGROUND_URL = "Client/src/main/resources/menu/background/background.jpg";
+    private static final String FOREGROUND_URL = "Client/src/main/resources/menu/background/foreground.png";
+    private static final String FAR_PILLAR_URL = "Client/src/main/resources/menu/background/far_pillars.png";
+    private static final String NEAR_PILLAR_URL = "Client/src/main/resources/menu/background/near_pillars.png";
+    private static final String VIGNETTE_URL = "Client/src/main/resources/menu/background/vignette.png";
     private static final double FOREGROUND_WIDTH = 2400 * SCALE;
     private static final double FOREGROUND_HEIGHT = 726 * SCALE;
     private static final double NEAR_PILLARS_WIDTH = 2000 * SCALE;
@@ -31,25 +31,20 @@ public class BackgroundMaker {
     private static void makeMenuBackground() throws FileNotFoundException {
         menuBackground = new BorderPane();
 
-        ImageView backgroundView = ImageLoader.loadImage(BACKGROUND_URL, UIConstants.SCENE_WIDTH, UIConstants.SCENE_HEIGHT);
-        ImageView foregroundView = ImageLoader.loadImage(
-                FOREGROUND_URL, FOREGROUND_WIDTH, FOREGROUND_HEIGHT,
-                UIConstants.SCENE_WIDTH - FOREGROUND_WIDTH,
-                UIConstants.SCENE_HEIGHT - FOREGROUND_HEIGHT
-        );
-        ImageView farPillarsView = ImageLoader.loadImage(
-                FAR_PILLAR_URL, FAR_PILLARS_WIDTH, FAR_PILLARS_HEIGHT,
-                0, UIConstants.SCENE_HEIGHT - FAR_PILLARS_HEIGHT
-        );
-        ImageView nearPillarsView = ImageLoader.loadImage(
-                NEAR_PILLAR_URL, NEAR_PILLARS_WIDTH, NEAR_PILLARS_HEIGHT,
-                0, UIConstants.SCENE_HEIGHT - NEAR_PILLARS_HEIGHT
-        );
+        ImageView backgroundView = ImageLoader.loadImage(BACKGROUND_URL, UIConstants.SCENE_WIDTH,
+                UIConstants.SCENE_HEIGHT);
+        ImageView foregroundView = ImageLoader.loadImage(FOREGROUND_URL, FOREGROUND_WIDTH, FOREGROUND_HEIGHT,
+                UIConstants.SCENE_WIDTH - FOREGROUND_WIDTH, UIConstants.SCENE_HEIGHT - FOREGROUND_HEIGHT);
+        ImageView farPillarsView = ImageLoader.loadImage(FAR_PILLAR_URL, FAR_PILLARS_WIDTH, FAR_PILLARS_HEIGHT, 0,
+                UIConstants.SCENE_HEIGHT - FAR_PILLARS_HEIGHT);
+        ImageView nearPillarsView = ImageLoader.loadImage(NEAR_PILLAR_URL, NEAR_PILLARS_WIDTH, NEAR_PILLARS_HEIGHT, 0,
+                UIConstants.SCENE_HEIGHT - NEAR_PILLARS_HEIGHT);
         ImageView vignetteView = ImageLoader.loadImage(VIGNETTE_URL, VIGNETTE_WIDTH, VIGNETTE_HEIGHT);
 
         Cloud cloud = new Cloud();
 
-        menuBackground.getChildren().addAll(backgroundView, farPillarsView, nearPillarsView, cloud, foregroundView, vignetteView);
+        menuBackground.getChildren().addAll(backgroundView, farPillarsView, nearPillarsView, cloud, foregroundView,
+                vignetteView);
     }
 
     private static void makePlayBackground(String url) throws FileNotFoundException {
@@ -80,11 +75,13 @@ public class BackgroundMaker {
 
     public static void makeMenuBackgroundFrozen() {
         menuBackground.setEffect(new GaussianBlur(BACKGROUND_BLUR));
-        menuBackground.getChildren().stream().filter(node -> node instanceof Cloud).forEach(node -> ((Cloud) node).pause());
+        menuBackground.getChildren().stream().filter(node -> node instanceof Cloud)
+                .forEach(node -> ((Cloud) node).pause());
     }
 
     public static void makeMenuBackgroundUnfrozen() {
         menuBackground.setEffect(null);
-        menuBackground.getChildren().stream().filter(node -> node instanceof Cloud).forEach(node -> ((Cloud) node).play());
+        menuBackground.getChildren().stream().filter(node -> node instanceof Cloud)
+                .forEach(node -> ((Cloud) node).play());
     }
 }

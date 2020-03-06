@@ -1,16 +1,16 @@
 package org.projectcardboard.client.controller;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 public class SoundEffectPlayer {
     private static final Map<SoundName, Media> mediaFiles = new HashMap<>();
-    private static final String directory = "Client/resources/sfx/";
+    private static final String directory = "Client/src/main/resources/sfx/";
     private static final String format = ".m4a";
     private static final SoundEffectPlayer SEP = new SoundEffectPlayer();
 

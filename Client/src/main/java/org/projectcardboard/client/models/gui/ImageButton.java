@@ -1,6 +1,13 @@
 package org.projectcardboard.client.models.gui;
 
+import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import org.projectcardboard.client.controller.SoundEffectPlayer;
+import org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
+
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,12 +17,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-import static org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
-import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
-
 public class ImageButton extends StackPane {
     private static final Font FONT = Font.font("SansSerif", FontWeight.BOLD, 35 * SCALE);
     private static Image primaryDefault;
@@ -23,8 +24,8 @@ public class ImageButton extends StackPane {
 
     static {
         try {
-            primaryDefault = new Image(new FileInputStream("Client/resources/ui/button_primary@2x.png"));
-            primaryHover = new Image(new FileInputStream("Client/resources/ui/button_primary_glow@2x.png"));
+            primaryDefault = new Image(new FileInputStream("Client/src/main/resources/ui/button_primary@2x.png"));
+            primaryHover = new Image(new FileInputStream("Client/src/main/resources/ui/button_primary_glow@2x.png"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -35,7 +36,8 @@ public class ImageButton extends StackPane {
     }
 
     public ImageButton(String text, EventHandler<? super MouseEvent> mouseEvent, Image defaultImage, Image hoverImage) {
-        ImageView imageView = ImageLoader.makeImageView(defaultImage, defaultImage.getWidth() * SCALE, defaultImage.getHeight() * SCALE);
+        ImageView imageView = ImageLoader.makeImageView(defaultImage, defaultImage.getWidth() * SCALE,
+                defaultImage.getHeight() * SCALE);
         DefaultLabel label = new DefaultLabel(text, FONT, Color.WHITE);
 
         setOnMouseEntered(event -> {

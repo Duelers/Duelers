@@ -67,7 +67,7 @@ public class TroopAnimation extends Transition {
         this.isMyTroop = isMyTroop;
 
         //read settings
-        PlayList playlist = new Gson().fromJson(new FileReader("Client/resources/troopAnimations/" + fileName + ".plist.json"), PlayList.class);
+        PlayList playlist = new Gson().fromJson(new FileReader("Client/src/main/resources/troopAnimations/" + fileName + ".plist.json"), PlayList.class);
         attackFramePositions = playlist.getAttackFrames();
         breathingFramePositions = playlist.getBreathingFrames();
         deathFramePositions = playlist.getDeathFrames();
@@ -84,7 +84,7 @@ public class TroopAnimation extends Transition {
         currentI = i;
         currentJ = j;
 
-        Image image = cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load("Client/resources/troopAnimations/" + fileName + ".png"));
+        Image image = cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load("Client/src/main/resources/troopAnimations/" + fileName + ".png"));
         imageView = new ImageView(image);
         imageView.setFitWidth(frameWidth * Constants.TROOP_SCALE * Constants.SCALE);
         imageView.setFitHeight(frameHeight * Constants.TROOP_SCALE * Constants.SCALE);
@@ -113,11 +113,11 @@ public class TroopAnimation extends Transition {
         apLabel = new DefaultLabel("", Constants.AP_FONT, Color.WHITE, -Constants.SCALE * 29, Constants.SCALE * 15);
         hpLabel = new DefaultLabel("", Constants.AP_FONT, Color.WHITE, Constants.SCALE * 14, Constants.SCALE * 15);
         if (isMyTroop) {
-            apImage = new ImageView(new Image(new FileInputStream("Client/resources/ui/icon_atk@2x.png")));
-            hpImage = new ImageView(new Image(new FileInputStream("Client/resources/ui/icon_hp@2x.png")));
+            apImage = new ImageView(new Image(new FileInputStream("Client/src/main/resources/ui/icon_atk@2x.png")));
+            hpImage = new ImageView(new Image(new FileInputStream("Client/src/main/resources/ui/icon_hp@2x.png")));
         } else {
-            apImage = new ImageView(new Image(new FileInputStream("Client/resources/ui/icon_atk_bw@2x.png")));
-            hpImage = new ImageView(new Image(new FileInputStream("Client/resources/ui/icon_hp_bw@2x.png")));
+            apImage = new ImageView(new Image(new FileInputStream("Client/src/main/resources/ui/icon_atk_bw@2x.png")));
+            hpImage = new ImageView(new Image(new FileInputStream("Client/src/main/resources/ui/icon_hp_bw@2x.png")));
         }
         apImage.setFitHeight(apImage.getImage().getHeight() * Constants.SCALE * 0.4);
         apImage.setFitWidth(apImage.getImage().getWidth() * Constants.SCALE * 0.4);

@@ -1,18 +1,19 @@
 package org.projectcardboard.client.models.gui;
 
+import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import org.projectcardboard.client.controller.SoundEffectPlayer;
+import org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
+
 import javafx.event.EventHandler;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-import static org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
-import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class BackButton extends ImageView {
     private static final Effect HOVER_EFFECT = new ColorAdjust(0, 0.15, 0.2, 0);
@@ -21,7 +22,7 @@ public class BackButton extends ImageView {
 
     static {
         try {
-            IMAGE = new Image(new FileInputStream("Client/resources/ui/button_back.png"));
+            IMAGE = new Image(new FileInputStream("Client/src/main/resources/ui/button_back.png"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

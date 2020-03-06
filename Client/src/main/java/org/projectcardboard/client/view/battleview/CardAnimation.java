@@ -46,10 +46,10 @@ public class CardAnimation extends Transition {
         Playlist playlist;
         Image image;
         if (card.getType() == CardType.SPELL) {
-            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/resources/icons/" + card.getSpriteName() + ".png"));
+            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/icons/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
-                    return new Gson().fromJson(new FileReader("Client/resources/icons/" + card.getSpriteName() + ".plist.json"), Playlist.class);
+                    return new Gson().fromJson(new FileReader("Client/src/main/resources/icons/" + card.getSpriteName() + ".plist.json"), Playlist.class);
                 } catch (FileNotFoundException e) {
                     return new Playlist();
                 }
@@ -59,10 +59,10 @@ public class CardAnimation extends Transition {
             extraX = 38 * Constants.SCALE;
             extraY = 31 * Constants.SCALE;
         } else {
-            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/resources/troopAnimations/" + card.getSpriteName() + ".png"));
+            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/troopAnimations/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
-                    return new Gson().fromJson(new FileReader("Client/resources/troopAnimations/" + card.getSpriteName() + ".plist.json"), Playlist.class);
+                    return new Gson().fromJson(new FileReader("Client/src/main/resources/troopAnimations/" + card.getSpriteName() + ".plist.json"), Playlist.class);
                 } catch (FileNotFoundException e) {
                     return new Playlist();
                 }
@@ -169,10 +169,10 @@ public class CardAnimation extends Transition {
         Playlist playlist;
         Image image;
         if (card.getType() == CardType.SPELL) {
-            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/resources/icons/" + card.getSpriteName() + ".png"));
+            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/icons/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
-                    return new Gson().fromJson(new FileReader("Client/resources/icons/" + card.getSpriteName() + ".plist.json"), Playlist.class);
+                    return new Gson().fromJson(new FileReader("Client/src/main/resources/icons/" + card.getSpriteName() + ".plist.json"), Playlist.class);
                 } catch (FileNotFoundException e) {
                     return new Playlist();
                 }
@@ -182,10 +182,10 @@ public class CardAnimation extends Transition {
             extraX = 38 * Constants.SCALE;
             extraY = 31 * Constants.SCALE;
         } else {
-            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/resources/troopAnimations/" + card.getSpriteName() + ".png"));
+            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/troopAnimations/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
-                    return new Gson().fromJson(new FileReader("Client/resources/troopAnimations/" + card.getSpriteName() + ".plist.json"), Playlist.class);
+                    return new Gson().fromJson(new FileReader("Client/src/main/resources/troopAnimations/" + card.getSpriteName() + ".plist.json"), Playlist.class);
                 } catch (FileNotFoundException e) {
                     return new Playlist();
                 }

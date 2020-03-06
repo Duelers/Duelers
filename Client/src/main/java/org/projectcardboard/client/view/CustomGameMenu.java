@@ -14,7 +14,7 @@ import org.projectcardboard.client.models.gui.DialogText;
 import shared.models.game.GameType;
 
 class CustomGameMenu extends GameModeChooseMenu {
-    private static final String BACKGROUND_URL = "Client/resources/menu/background/custom_game_background.jpg";
+    private static final String BACKGROUND_URL = "Client/src/main/resources/menu/background/custom_game_background.jpg";
     private static CustomGameMenu menu;
 
     private String[] deckNames;

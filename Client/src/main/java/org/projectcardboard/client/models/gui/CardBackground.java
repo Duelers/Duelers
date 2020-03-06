@@ -22,10 +22,13 @@ class CardBackground extends StackPane {
 
     static {
         try {
-            Image troopBackground = new Image(new FileInputStream("Client/resources/card_backgrounds/troop.png"));
-            Image spellBackground = new Image(new FileInputStream("Client/resources/card_backgrounds/spell.png"));
-            Image itemBackground = new Image(new FileInputStream("Client/resources/card_backgrounds/item.png"));
-            glow = new Image(new FileInputStream("Client/resources/card_backgrounds/glow.png"));
+            Image troopBackground = new Image(
+                    new FileInputStream("Client/src/main/resources/card_backgrounds/troop.png"));
+            Image spellBackground = new Image(
+                    new FileInputStream("Client/src/main/resources/card_backgrounds/spell.png"));
+            Image itemBackground = new Image(
+                    new FileInputStream("Client/src/main/resources/card_backgrounds/item.png"));
+            glow = new Image(new FileInputStream("Client/src/main/resources/card_backgrounds/glow.png"));
 
             background.put(CardType.HERO, troopBackground);
             background.put(CardType.MINION, troopBackground);

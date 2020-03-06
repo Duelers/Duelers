@@ -30,8 +30,8 @@ class MainMenuGrid extends GridPane {
         setVgap(UIConstants.DEFAULT_SPACING * 3);
         setHgap(UIConstants.DEFAULT_SPACING * 3);
 
-        menuItemImage = new Image(new FileInputStream("Client/resources/ui/menu_item.png"));
-        hoverRing = new Image(new FileInputStream("Client/resources/ui/glow_ring.png"));
+        menuItemImage = new Image(new FileInputStream("Client/src/main/resources/ui/menu_item.png"));
+        hoverRing = new Image(new FileInputStream("Client/src/main/resources/ui/glow_ring.png"));
 
         items.forEach(item -> addRow(item.index, makeRow(item)));
     }

@@ -28,14 +28,14 @@ public class SpellAnimation extends Transition {
     private Group mapGroup;
 
     SpellAnimation(Group mapGroup, String fileName, double x, double y) throws Exception {
-        Playlist playlist = new Gson().fromJson(new FileReader("Client/resources/fx/" + fileName + ".plist.json"), Playlist.class);
+        Playlist playlist = new Gson().fromJson(new FileReader("Client/src/main/resources/fx/" + fileName + ".plist.json"), Playlist.class);
         framePositions = playlist.getFrames();
 
         frameWidth = playlist.frameWidth;
         frameHeight = playlist.frameHeight;
         setCycleDuration(Duration.millis(playlist.frameDuration));
 
-        Image image = cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load("Client/resources/fx/" + fileName + ".png"));
+        Image image = cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load("Client/src/main/resources/fx/" + fileName + ".png"));
         imageView = new ImageView(image);
 
         imageView.setFitWidth(frameWidth * Constants.SPELL_SCALE * Constants.SCALE);

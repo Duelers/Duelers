@@ -1,5 +1,9 @@
 package org.projectcardboard.client.models.gui;
 
+import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
+
+import java.io.FileNotFoundException;
+
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
@@ -7,10 +11,6 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-
-import java.io.FileNotFoundException;
-
-import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 class Cloud extends Pane {
     private static final Effect EFFECT = new ColorAdjust(1, 0.9, -0.7, 0.6);
@@ -22,10 +22,8 @@ class Cloud extends Pane {
 
     Cloud() throws FileNotFoundException {
         for (int i = 0; i < 3; i++) {
-            getChildren().add(ImageLoader.loadImage(
-                    "Client/resources/particles/cloud_" + i + ".png",
-                    WIDTH, HEIGHT, DISTANCE * i, 0
-            ));
+            getChildren().add(ImageLoader.loadImage("Client/src/main/resources/particles/cloud_" + i + ".png", WIDTH,
+                    HEIGHT, DISTANCE * i, 0));
         }
         moveFog();
     }

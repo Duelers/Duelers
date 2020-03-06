@@ -1,5 +1,8 @@
 package org.projectcardboard.client.models.gui;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
@@ -11,9 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class UIConstants {
     public static final Background DEFAULT_ROOT_BACKGROUND = new Background(
@@ -39,8 +39,8 @@ public class UIConstants {
     
     static{
     	try {
-            UIConstants.DEFAULT_CURSOR = new ImageCursor(new Image(new FileInputStream("Client/resources/cursors/default.png")));
-            UIConstants.SELECT_CURSOR = new ImageCursor(new Image(new FileInputStream("Client/resources/cursors/select.png")));
+            UIConstants.DEFAULT_CURSOR = new ImageCursor(new Image(new FileInputStream("Client/src/main/resources/cursors/default.png")));
+            UIConstants.SELECT_CURSOR = new ImageCursor(new Image(new FileInputStream("Client/src/main/resources/cursors/select.png")));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

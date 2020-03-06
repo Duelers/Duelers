@@ -1,7 +1,20 @@
 package org.projectcardboard.client.models.gui;
 
+import static org.projectcardboard.client.models.gui.UIConstants.DEFAULT_CURSOR;
+import static org.projectcardboard.client.models.gui.UIConstants.DEFAULT_SPACING;
+import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
+import static org.projectcardboard.client.models.gui.UIConstants.SCENE_WIDTH;
+import static org.projectcardboard.client.models.gui.UIConstants.SELECT_CURSOR;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import org.projectcardboard.client.controller.CollectionMenuController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
+import org.projectcardboard.client.models.card.Deck;
+import org.projectcardboard.client.models.card.DeckExporter;
+import org.projectcardboard.client.view.CollectionMenu;
+
 import javafx.geometry.Insets;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
@@ -15,26 +28,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import org.projectcardboard.client.models.card.Deck;
-import org.projectcardboard.client.models.card.DeckExporter;
-import org.projectcardboard.client.view.CollectionMenu;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-import static org.projectcardboard.client.models.gui.UIConstants.*;
 
 public class DeckBox extends GridPane {
     private static final Background DEFAULT_BACKGROUND = new Background(
-            new BackgroundFill(
-                    Color.rgb(43, 57, 69), CornerRadii.EMPTY, Insets.EMPTY
-            )
-    );
+            new BackgroundFill(Color.rgb(43, 57, 69), CornerRadii.EMPTY, Insets.EMPTY));
     private static final Background HOVER_BACKGROUND = new Background(
-            new BackgroundFill(
-                    Color.rgb(49, 68, 82), CornerRadii.EMPTY, Insets.EMPTY
-            )
-    );
+            new BackgroundFill(Color.rgb(49, 68, 82), CornerRadii.EMPTY, Insets.EMPTY));
     private static final double ICON_SIZE = 50 * SCALE;
     private static final double WIDTH = SCENE_WIDTH * 0.18;
     private static final Insets PADDING = new Insets(30 * SCALE);
@@ -49,12 +48,12 @@ public class DeckBox extends GridPane {
 
     static {
         try {
-            checkIcon = new Image(new FileInputStream("Client/resources/ui/icon_check.png"));
-            modifyIcon = new Image(new FileInputStream("Client/resources/ui/icon_modify.png"));
-            removeIcon = new Image(new FileInputStream("Client/resources/ui/icon_remove.png"));
-            saveIcon = new Image(new FileInputStream("Client/resources/ui/icon_save.png"));
-            mainIcon = new Image(new FileInputStream("Client/resources/ui/icon_main_deck.png"));
-            disableMainIcon = new Image(new FileInputStream("Client/resources/ui/icon_main_deck_disable.png"));
+            checkIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_check.png"));
+            modifyIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_modify.png"));
+            removeIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_remove.png"));
+            saveIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_save.png"));
+            mainIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_main_deck.png"));
+            disableMainIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_main_deck_disable.png"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -72,7 +71,8 @@ public class DeckBox extends GridPane {
         ImageView remove = ImageLoader.makeImageView(removeIcon, ICON_SIZE, ICON_SIZE);
         ImageView export = ImageLoader.makeImageView(saveIcon, ICON_SIZE, ICON_SIZE);
         DefaultLabel cardsNumber = new DefaultLabel(deck.getOthers().size() + " Cards", DETAILS_FONT, Color.WHITE);
-        DefaultLabel heroNumber = new DefaultLabel((deck.getHero() != null ? "1" : "0") + " Hero", DETAILS_FONT, Color.WHITE);
+        DefaultLabel heroNumber = new DefaultLabel((deck.getHero() != null ? "1" : "0") + " Hero", DETAILS_FONT,
+                Color.WHITE);
 
         modify.setOnMouseEntered(event -> {
             modify.setEffect(ICON_SHADOW);
@@ -135,11 +135,10 @@ public class DeckBox extends GridPane {
             add(disableMain, 12, 2, 1, 1);
 
             disableMain.setOnMouseEntered(event -> {
-                        disableMain.setEffect(new ColorAdjust(0, 0.5, 0, 0));
-                        SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
-                        setCursor(SELECT_CURSOR);
-                    }
-            );
+                disableMain.setEffect(new ColorAdjust(0, 0.5, 0, 0));
+                SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
+                setCursor(SELECT_CURSOR);
+            });
             disableMain.setOnMouseExited(event -> {
                 disableMain.setEffect(null);
                 setCursor(DEFAULT_CURSOR);

@@ -7,7 +7,7 @@ import shared.models.game.GameType;
 import java.io.FileNotFoundException;
 
 public class GlobalGameMenu extends GameModeChooseMenu {
-    private static final String BACKGROUND_URL = "Client/resources/menu/background/global_game_background.jpg";
+    private static final String BACKGROUND_URL = "Client/src/main/resources/menu/background/global_game_background.jpg";
     private static GlobalGameMenu menu;
 
     private GlobalGameMenu() throws FileNotFoundException {

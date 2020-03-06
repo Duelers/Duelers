@@ -142,10 +142,7 @@
                             <outputFile>target\${project.build.finalName}-shaded.jar</outputFile>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>Launcher</mainClass>
-                                    <manifestEntries>
-                                        <Main-Class>Launcher</Main-Class>
-                                    </manifestEntries>
+                                    <mainClass>org.projectcardboard.client.Launcher</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

@@ -7,7 +7,7 @@ import plistConverter.models.newer.Playlist;
 import java.io.*;
 
 public class TroopPlaylistChanger {
-    private static final String path = "../Client/resources/troopAnimations/";
+    private static final String path = "../Client/src/main/resources/troopAnimations/";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public static void main(String[] args) throws FileNotFoundException {

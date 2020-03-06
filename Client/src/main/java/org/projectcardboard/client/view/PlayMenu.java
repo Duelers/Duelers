@@ -18,17 +18,17 @@ public class PlayMenu extends Show {
                     Color.rgb(40, 43, 53), CornerRadii.EMPTY, Insets.EMPTY
             )
     );
-    private static final String BACKGROUND_URL = "Client/resources/menu/background/play_background.jpg";
+    private static final String BACKGROUND_URL = "Client/src/main/resources/menu/background/play_background.jpg";
     private static final EventHandler<? super MouseEvent> BACK_EVENT = event -> new MainMenu().show();
     private static final Media backgroundMusic = new Media(
-            new File("Client/resources/music/play_menu.m4a").toURI().toString()
+            new File("Client/src/main/resources/music/play_menu.m4a").toURI().toString()
     );
     private static final PlayButtonItem[] items = {
-            new PlayButtonItem("Client/resources/menu/playButtons/single_player.jpg", "SINGLE PLAYER",
+            new PlayButtonItem("Client/src/main/resources/menu/playButtons/single_player.jpg", "SINGLE PLAYER",
                     "Custom game, play with AI", event -> CustomGameMenu.getInstance().show()),
-            new PlayButtonItem("Client/resources/menu/playButtons/friend_game.jpg", "PLAY WITH FRIENDS",
+            new PlayButtonItem("Client/src/main/resources/menu/playButtons/friend_game.jpg", "PLAY WITH FRIENDS",
                     "Play with your friends", event -> FriendGameMenu.getInstance().show()),
-            new PlayButtonItem("Client/resources/menu/playButtons/global_game.jpg", "GLOBAL GAME",
+            new PlayButtonItem("Client/src/main/resources/menu/playButtons/global_game.jpg", "GLOBAL GAME",
                     "Search for an opponent an play", event -> GlobalGameMenu.getInstance().show())
     };
     private static PlayMenu menu;
