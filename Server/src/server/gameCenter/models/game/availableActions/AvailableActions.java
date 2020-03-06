@@ -161,7 +161,7 @@ public class AvailableActions {
             return "| <EMPTY> |";
         }
 
-        getHandInserts().forEach(n -> strBuilder.append(n.getCard().getCardId() + " | "));
+        getHandInserts().forEach(n -> strBuilder.append(n.getCard().getCardId()).append(" | "));
         return strBuilder.toString();
     }
 
