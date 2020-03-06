@@ -1,8 +1,6 @@
 package services;
 
 import Config.Config;
-import controller.Client;
-import models.message.Message;
 import models.services.registration.SignUpRequest;
 import models.services.registration.SignUpResponse;
 
@@ -18,7 +16,6 @@ public final class RegistrationService {
     private static RegistrationService instance;
     private ApiClientService apiClient;
     private URI signUpUri;
-    private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
     private static final String SIGN_UP_ENDPOINT = "/api/registration/v1/signup/";
     private static final String HTTPS = "https";
 
@@ -54,29 +51,7 @@ public final class RegistrationService {
         return sendSignUpRequestAsync(this.signUpUri, request);
     }
 
-    private SignUpResponse processSignUpResponse(HttpResponse<String> response) {
-        int status = response.statusCode();
-        //TODO: rework this to deserialise the actual error message if available
-        if (status == 400) {
-            return new SignUpResponse("Username already taken");
-        }
-        if (status != 201) {
-            return new SignUpResponse("Registration API error: " + status);
-        }
-        return new SignUpResponse();
-
-    }
-
-    private boolean handleSignUpResult(SignUpResponse signUpResponse) {
-        if (signUpResponse.error == null) {
-            return true;
-        } else {
-            Client.getInstance().showError(signUpResponse.error);
-            return false;
-        }
-    }
-
-    public void signUp(String username, String password) {
+    public CompletableFuture<SignUpResponse> signUp(String username, String password) {
         SignUpRequest signUpRequest;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -85,10 +60,8 @@ public final class RegistrationService {
         } catch (NoSuchAlgorithmException e) {
             signUpRequest = new SignUpRequest(username, password, SignUpRequest.SignUpType.PLAIN);
         }
-        this.sendSignUpRequestAsync(signUpRequest)
-                .thenApply(this::processSignUpResponse)
-                .thenApply(this::handleSignUpResult)
-                .thenAccept(b -> {if (b) {AuthenticationService.getInstance().signIn( username, password);}});
+        return this.sendSignUpRequestAsync(signUpRequest)
+                .thenApply(r -> this.apiClient.processResponse(r, SignUpResponse.class));
     }
 
 }

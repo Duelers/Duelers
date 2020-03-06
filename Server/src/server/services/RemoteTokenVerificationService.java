@@ -1,7 +1,6 @@
 package server.services;
 
 import Config.Config;
-import com.google.gson.Gson;
 import shared.models.services.token.AuthenticationTokenResponse;
 import shared.models.services.token.VerifyTokenRequest;
 
@@ -11,15 +10,14 @@ import java.net.URISyntaxException;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 
-public final class TokenService {
-    private static TokenService instance;
+public final class RemoteTokenVerificationService implements TokenVerificationService {
+    private static RemoteTokenVerificationService instance;
     private ApiClientService apiClient;
     private URI verifyTokenUri;
-    private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
     private static final String VERIFY_TOKEN_ENDPOINT = "/api/token/v1/verify/";
     private static final String HTTPS = "https";
 
-    private TokenService() {
+    private RemoteTokenVerificationService() {
         this.apiClient = ApiClientService.getInstance();
         String apiUri = Config.getInstance().getProperty("TOKEN_API_URI");
         String apiHost = Config.getInstance().getProperty("API_HOST");
@@ -36,9 +34,9 @@ public final class TokenService {
         }
     }
 
-    public static TokenService getInstance() {
+    public static RemoteTokenVerificationService getInstance() {
         if (instance == null) {
-            instance = new TokenService();
+            instance = new RemoteTokenVerificationService();
         }
         return instance;
     }
@@ -51,20 +49,10 @@ public final class TokenService {
         return sendVerifyTokenRequest(this.verifyTokenUri, request);
     }
 
-    private AuthenticationTokenResponse processAuthenticationTokenResponse(HttpResponse<String> response) {
-        int status = response.statusCode();
-        //TODO: rework this to deserialise the actual error message if available
-        if (status != 200) {
-            return new AuthenticationTokenResponse("Token API error: " + status);
-        }
-        return new Gson().fromJson(response.body(), AuthenticationTokenResponse.class);
-
-    }
-
     public CompletableFuture<AuthenticationTokenResponse> verifyAuthenticationToken(String token) {
         VerifyTokenRequest verifyTokenRequest = new VerifyTokenRequest(token);
         return this.sendVerifyTokenRequest(verifyTokenRequest)
-                .thenApply(this::processAuthenticationTokenResponse); //temporary to keep reverse compatibility
+                .thenApply(r -> this.apiClient.processResponse(r, AuthenticationTokenResponse.class));
     }
 
 }

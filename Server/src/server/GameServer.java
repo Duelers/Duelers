@@ -2,7 +2,7 @@ package server;
 
 import server.chatCenter.ChatCenter;
 import server.clientPortal.ClientPortal;
-import server.services.TokenService;
+import server.services.RemoteTokenVerificationService;
 import shared.models.card.Card;
 import server.clientPortal.models.message.CardPosition;
 import server.clientPortal.models.message.Message;
@@ -113,7 +113,7 @@ public class GameServer {
             }
             switch (message.getMessageType()) {
                 case AUTHENTICATE:
-                    TokenService.getInstance().verifyAuthenticationToken(message.token)
+                    RemoteTokenVerificationService.getInstance().verifyAuthenticationToken(message.token)
                     .thenAccept(r -> {
                         if (r.error == null) {
                             DataCenter.getInstance().loginOrRegister(r.username, message.getSender());

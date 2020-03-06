@@ -3,6 +3,7 @@ package server.services;
 import com.google.gson.Gson;
 import shared.models.services.WebApiRequest;
 
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -23,6 +24,10 @@ public class ApiClientService {
             instance = new ApiClientService();
         }
         return instance;
+    }
+
+    public<T> T processResponse(HttpResponse<String> httpResponse, Type T){
+        return this.gson.fromJson(httpResponse.body(), T);
     }
 
     public CompletableFuture<HttpResponse<String>> sendPostRequestAsync(URI uri, WebApiRequest request) {

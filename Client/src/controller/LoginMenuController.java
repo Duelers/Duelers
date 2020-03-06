@@ -11,6 +11,7 @@ import services.RegistrationService;
 
 public class LoginMenuController {
     private static LoginMenuController ourInstance;
+    private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
 
     public static LoginMenuController getInstance() {
         if (ourInstance == null) {
@@ -22,7 +23,14 @@ public class LoginMenuController {
     public void register(String userName, String password) {
         try {
             validateUsernameAndPassword(userName, password);
-            RegistrationService.getInstance().signUp(userName, password);
+            RegistrationService.getInstance().signUp(userName, password)
+            .thenAccept(r -> {
+                if (r.error == null) {
+                    this.login(userName, password);
+                } else {
+                    Client.getInstance().showError(r.error);
+                }
+            });
         } catch (InputException e) {
             Platform.runLater(() -> Client.getInstance().getCurrentShow().showError(e.getMessage()));
         }
@@ -39,6 +47,14 @@ public class LoginMenuController {
     }
 
     public void login(String userName, String password) {
-        AuthenticationService.getInstance().signIn(userName, password);
+        AuthenticationService.getInstance().signIn(userName, password)
+        .thenAccept(r -> {
+            if (r.token != null) {
+                Client.getInstance().addToSendingMessagesAndSend(
+                        Message.makeAuthenticationTokenMessage(SERVER_NAME, r.token));
+            } else {
+                Client.getInstance().showError(r.error);
+            }
+        });
     }
 }

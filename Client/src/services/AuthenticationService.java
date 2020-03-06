@@ -19,7 +19,6 @@ public final class AuthenticationService {
     private static AuthenticationService instance;
     private ApiClientService apiClient;
     private URI signInUri;
-    private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
     private static final String SIGN_IN_ENDPOINT = "/api/authentication/v1/signin/";
     private static final String HTTPS = "https";
 
@@ -55,29 +54,7 @@ public final class AuthenticationService {
         return sendSignInRequestAsync(this.signInUri, request);
     }
 
-    private SignInResponse processSignInResponse(HttpResponse<String> response) {
-        int status = response.statusCode();
-        //TODO: rework this to deserialise the actual error message if available
-        if (status == 403) {
-            return new SignInResponse("Invalid username or password");
-        }
-        if (status != 200) {
-            return new SignInResponse("Authentication API error: " + status);
-        }
-        return JsonConverter.fromJson(response.body(), SignInResponse.class);
-
-    }
-
-    private void handleSignInResult(SignInResponse signInResponse) {
-        if (signInResponse.error == null) {
-            Client.getInstance().addToSendingMessagesAndSend(
-                    Message.makeAuthenticationTokenMessage(SERVER_NAME, signInResponse.token));
-        } else {
-            Client.getInstance().showError(signInResponse.error);
-        }
-    }
-
-    public void signIn(String username, String password) {
+    public CompletableFuture<SignInResponse> signIn(String username, String password) {
         SignInRequest signInRequest;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -86,9 +63,8 @@ public final class AuthenticationService {
         } catch (NoSuchAlgorithmException e) {
             signInRequest = new SignInRequest(username, password, SignInRequest.SignInType.PLAIN);
         }
-        this.sendSignInRequestAsync(signInRequest)
-                .thenApply(this::processSignInResponse)
-                .thenAccept(this::handleSignInResult);
+        return this.sendSignInRequestAsync(signInRequest)
+                .thenApply(r -> this.apiClient.processResponse(r, SignInResponse.class));
     }
 
 }

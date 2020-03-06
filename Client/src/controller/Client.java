@@ -13,6 +13,7 @@ import view.*;
 
 import java.io.*;
 import java.util.LinkedList;
+import java.util.Objects;
 
 
 public class Client {
@@ -24,6 +25,7 @@ public class Client {
     private Show currentShow;
     private final Gson gson = new Gson();
     private static final String serverName = Config.getInstance().getProperty("SERVER_NAME");
+    private static final String GENERIC_ERROR = "Unknown error";
 
 
     public static Client getInstance() {
@@ -249,7 +251,7 @@ public class Client {
     }
 
     public void showError(String error) {
-        Platform.runLater(() -> this.currentShow.showError(error));
+        Platform.runLater(() -> this.currentShow.showError(Objects.requireNonNullElse(error, GENERIC_ERROR)));
     }
 
     private void updateAccount(Message message) {
