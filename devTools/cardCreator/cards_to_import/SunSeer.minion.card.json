@@ -1,6 +1,6 @@
 {
   "name": "Sun Seer",
-  "description": "When this minion attacks,  your General gains 2 Health",
+  "description": "When this minion attacks or counterattacks,  your General gains 2 Health",
   "cardId": "SunSeer",
   "spriteName": "neutral_mercsunseer",
   "type": "MINION",
@@ -39,7 +39,8 @@
         }
 	  },
       "availabilityType": {
-        "onAttack": true
+        "onAttack": true,
+		"onDefend": true
       },
       "coolDown": 0,
       "manaCost": 0,
