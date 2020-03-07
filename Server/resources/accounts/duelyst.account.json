@@ -119,6 +119,423 @@
                 "remainingNumber": 20
             },
             {
+                "name": "Aymara Healer",
+                "description": "Provoke \n Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
+                "cardId": "duelyst_AymaraHealer_1",
+                "spriteName": "f3_aymarahealer",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "5_damage_on_death",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -5,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": false,
+                            "onDeath": true,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    },
+                    {
+                        "spellId": "5_health_on_death",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 5,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": false,
+                            "onDeath": true,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 5,
+                "defaultHp": 5,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Aymara Healer",
+                "description": "Provoke \n Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
+                "cardId": "duelyst_AymaraHealer_2",
+                "spriteName": "f3_aymarahealer",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "5_damage_on_death",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -5,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": false,
+                            "onDeath": true,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    },
+                    {
+                        "spellId": "5_health_on_death",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 5,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": false,
+                            "onDeath": true,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 5,
+                "defaultHp": 5,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Aymara Healer",
+                "description": "Provoke \n Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
+                "cardId": "duelyst_AymaraHealer_3",
+                "spriteName": "f3_aymarahealer",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "5_damage_on_death",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -5,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": false,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": false,
+                            "onDeath": true,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    },
+                    {
+                        "spellId": "5_health_on_death",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": 5,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": true,
+                                "minion": false,
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": false,
+                            "onAttack": false,
+                            "onDeath": true,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 5,
+                "defaultHp": 5,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
                 "name": "Azure Herald",
                 "description": "Opening Gambit: Add 3 Health to your General",
                 "cardId": "duelyst_AzureHerald_1",
