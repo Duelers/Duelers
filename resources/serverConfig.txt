@@ -4,3 +4,4 @@ SERVER_IP = 3.123.26.96
 SERVER_URI = wss://mechaz.org
 PORT = 8888
 SERVER_NAME = Server
+API_HOST = mechaz.org
