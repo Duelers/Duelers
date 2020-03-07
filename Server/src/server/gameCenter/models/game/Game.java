@@ -563,7 +563,7 @@ public abstract class Game {
             if (spell.getAvailabilityType().isOnDefend())
                 applySpell(
                         spell,
-                        detectTarget(spell, attackerTroop.getCell(), attackerTroop.getCell(), getOtherTurnPlayer().getHero().getCell())
+                        detectTarget(spell, defenderTroop.getCell(), attackerTroop.getCell(), getOtherTurnPlayer().getHero().getCell())
                 );
         }
     }

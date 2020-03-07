@@ -552,7 +552,7 @@
             },
             {
                 "name": "Celestial Phantom",
-                "description": "Destroy any enemy minion that Celestial Phantom attacks",
+                "description": "Destroy any enemy minion that Celestial Phantom attacks or counterattacks",
                 "cardId": "duelyst_CelestialPhantom_1",
                 "spriteName": "f2_deathphantom",
                 "type": "MINION",
@@ -612,7 +612,7 @@
             },
             {
                 "name": "Celestial Phantom",
-                "description": "Destroy any enemy minion that Celestial Phantom attacks",
+                "description": "Destroy any enemy minion that Celestial Phantom attacks or counterattacks",
                 "cardId": "duelyst_CelestialPhantom_2",
                 "spriteName": "f2_deathphantom",
                 "type": "MINION",
@@ -672,7 +672,7 @@
             },
             {
                 "name": "Celestial Phantom",
-                "description": "Destroy any enemy minion that Celestial Phantom attacks",
+                "description": "Destroy any enemy minion that Celestial Phantom attacks or counterattacks",
                 "cardId": "duelyst_CelestialPhantom_3",
                 "spriteName": "f2_deathphantom",
                 "type": "MINION",
@@ -2523,7 +2523,7 @@
             },
             {
                 "name": "Sun Seer",
-                "description": "When this minion attacks,  your General gains 2 Health",
+                "description": "When this minion attacks or counterattacks,  your General gains 2 Health",
                 "cardId": "duelyst_SunSeer_1",
                 "spriteName": "neutral_mercsunseer",
                 "type": "MINION",
@@ -2562,7 +2562,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onAttack": true
+                            "onAttack": true,
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -2580,7 +2581,7 @@
             },
             {
                 "name": "Sun Seer",
-                "description": "When this minion attacks,  your General gains 2 Health",
+                "description": "When this minion attacks or counterattacks,  your General gains 2 Health",
                 "cardId": "duelyst_SunSeer_2",
                 "spriteName": "neutral_mercsunseer",
                 "type": "MINION",
@@ -2619,7 +2620,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onAttack": true
+                            "onAttack": true,
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -2637,7 +2639,7 @@
             },
             {
                 "name": "Sun Seer",
-                "description": "When this minion attacks,  your General gains 2 Health",
+                "description": "When this minion attacks or counterattacks,  your General gains 2 Health",
                 "cardId": "duelyst_SunSeer_3",
                 "spriteName": "neutral_mercsunseer",
                 "type": "MINION",
@@ -2676,7 +2678,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onAttack": true
+                            "onAttack": true,
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
