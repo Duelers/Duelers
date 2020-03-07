@@ -38,8 +38,6 @@ public class CardAnimation extends Transition {
     private final double x;
     private final double y;
 
-	private ICard card;
-
     public CardAnimation(Group group, ICard card, double y, double x) {
         this.group = group;
         this.x = x;
@@ -47,7 +45,6 @@ public class CardAnimation extends Transition {
         //file settings
         Playlist playlist;
         Image image;
-		this.card = card;
         if (card.getType() == CardType.SPELL) {
             image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/icons/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
@@ -166,18 +163,6 @@ public class CardAnimation extends Transition {
     public ImageView getImageView() {
         return imageView;
     }
-
-	public void loadView() {
-		this.group.getChildren().add(this.imageView);
-	}
-
-	public void unloadView() {
-		this.group.getChildren().remove(this.imageView);
-	}
-
-	public String getCardName() {
-		return this.card.getName();
-	}
 
     public void setSprite(ICard card) {
         this.stop();

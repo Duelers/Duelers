@@ -9,10 +9,10 @@
 			"action": {
 				"hpChange": -4,
 				"durable": true,
-				"duration": 1
+				"duration": 0
 			},
 			"target": {
-				"isRelatedToCardOwnerPosition": true,
+				"isRelatedToCardOwnerPosition": false,
 				"dimensions": {
 					"row": 20,
 					"column": 20
@@ -25,7 +25,7 @@
 
 
 				"cardType": {
-					"player": true
+					"hero": true
 				},
 
 				"attackType": {
