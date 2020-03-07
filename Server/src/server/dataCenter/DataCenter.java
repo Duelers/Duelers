@@ -104,11 +104,12 @@ public class DataCenter extends Thread {
             throw new LogicException("Client Wasn't Added!");
         } else if (account == null) {
             throw new ClientException("Username Not Found!");
-        } else if (accounts.get(account) != null) {
-            throw new ClientException("Selected Username Is Online!");
         } else if (clients.get(client) != null) {
             throw new ClientException("Your Client Has Logged In Before!");
         } else {
+            if (accounts.get(account) != null) {
+                this.forceLogout(accounts.get(account));
+            }
             accounts.replace(account, client);
             clients.replace(client, account);
             GameServer.addToSendingMessages(Message.makeAccountCopyMessage(client, account));
