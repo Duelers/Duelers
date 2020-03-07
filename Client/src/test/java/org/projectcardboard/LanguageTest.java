@@ -3,7 +3,7 @@ package org.projectcardboard;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class LanguageTests {
+public class LanguageTest {
 
     @Test
     public void placeholder() {

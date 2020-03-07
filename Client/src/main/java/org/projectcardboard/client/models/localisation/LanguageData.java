@@ -1,11 +1,9 @@
 package org.projectcardboard.client.models.localisation;
 
-import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -13,7 +11,7 @@ import com.google.gson.Gson;
 public class LanguageData {
     private static LanguageData languageDataInstance = null;
 
-    private final String languageFolder = "resources/configurations/Languages";
+    private final String languageFolder = "configurations/languages";
     private final String defaultLanguage = "english";
     private final String missingValue = "???";
 
@@ -30,8 +28,6 @@ public class LanguageData {
             languageMapSelected = loadJson(this.selectedLanguage);
 
         } catch (IOException e) {
-            System.out.println(String.format("Language Localisation Error: Could not find language files in dir: '%s'",
-                    languageFolder));
             e.printStackTrace();
         }
     }
@@ -87,12 +83,17 @@ public class LanguageData {
     }
 
     private Language loadJson(String language) throws IOException {
+        ClassLoader classLoader = LanguageData.class.getClassLoader();
         String filename = language + ".json";
         String filepath = languageFolder + "/" + filename;
+        InputStream languageResource = classLoader.getResourceAsStream(filepath);
 
-        BufferedReader reader = Files.newBufferedReader(Paths.get(filepath), StandardCharsets.UTF_8);
+        if (languageResource != null) {
+            return new Gson().fromJson(new InputStreamReader(languageResource, "UTF-8"), Language.class);
+        } else {
+            throw new IOException(String.format("Failed to read language file: %s.", filepath));
+        }
 
-        return new Gson().fromJson(reader, Language.class);
     }
 
 }
