@@ -37,7 +37,7 @@ public class LanguageData {
         if (languageDataInstance == null) {
 
             // ToDo load language from configurations.
-            String l = "korean";
+            String l = "english";
             languageDataInstance = new LanguageData(l);
         }
         return languageDataInstance;
