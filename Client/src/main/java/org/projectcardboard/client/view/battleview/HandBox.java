@@ -8,6 +8,7 @@ import java.util.List;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
+import org.projectcardboard.client.models.game.availableactions.AvailableActions;
 import org.projectcardboard.client.models.gui.CardPane;
 import org.projectcardboard.client.models.gui.DefaultLabel;
 import org.projectcardboard.client.models.gui.DialogBox;
@@ -119,7 +120,10 @@ public class HandBox implements PropertyChangeListener {
 				}
 			}
 
-            if (this.selectedCard == i && loadedCards[i] != null) {
+			if (i < player.getHand().size())
+				updateGreyScale(this.cards[i], i);
+
+            if (this.selectedCard == i && this.loadedCards[i] != null) {
                 unitSlots[i].setImage(this.cardBackGlow);
                 loadedCards[i].inActive();
             } else {
@@ -168,13 +172,32 @@ public class HandBox implements PropertyChangeListener {
                         clickOnCard(entry);
                     }
             });
+			updateGreyScale(pane, entry);
+			// Effect nullOrGrayscale = null;
+            // boolean haveSufficientManaForCard = GameController.getInstance().getAvailableActions().haveSufficientMana(this.player, card);
+			// // A card can be played if we have enough mana and if it is insertable
+			// boolean canPlayCard = haveSufficientManaForCard && GameController.getInstance().getAvailableActions().canInsertCard(card);
 
-                // Grey out cards in hand when its the opponents turn
-            boolean haveSufficientManaForCard = GameController.getInstance().getAvailableActions().haveSufficientMana(this.player, card);
-            Effect nullOrGrayscale = battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card) && haveSufficientManaForCard ? null : DISABLE_BUTTON_EFFECT;
-            pane.setEffect(nullOrGrayscale);
+			// if (!battleScene.isMyTurn() || !canPlayCard) {
+			// 	nullOrGrayscale = DISABLE_BUTTON_EFFECT;
+			// }
+
+            // // Grey out cards in hand when its the opponents turn
+            // // Effect nullOrGrayscale = battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card) && haveSufficientManaForCard ? null : DISABLE_BUTTON_EFFECT;
+            // pane.setEffect(nullOrGrayscale);
 	    }
 		return (cardAnimation);
+	}
+
+	private void updateGreyScale(Pane pane, int entry) {
+		Effect nullOrGrayscale = null;
+        Card card = this.player.getHand().get(entry);
+		AvailableActions actions = GameController.getInstance().getAvailableActions();
+		boolean canPlayCard = actions.haveSufficientMana(this.player, card) && actions.canInsertCard(card);
+
+		if (!battleScene.isMyTurn() || !canPlayCard)
+			nullOrGrayscale = DISABLE_BUTTON_EFFECT;
+        pane.setEffect(nullOrGrayscale);
 	}
 
     private void addEndTurnButton() {
