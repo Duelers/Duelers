@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -36,7 +37,7 @@ public class LanguageData {
         if (languageDataInstance == null) {
 
             // ToDo load language from configurations.
-            String l = "english";
+            String l = "korean";
             languageDataInstance = new LanguageData(l);
         }
         return languageDataInstance;
@@ -89,7 +90,7 @@ public class LanguageData {
         InputStream languageResource = classLoader.getResourceAsStream(filepath);
 
         if (languageResource != null) {
-            return new Gson().fromJson(new InputStreamReader(languageResource), Language.class);
+            return new Gson().fromJson(new InputStreamReader(languageResource, StandardCharsets.UTF_8), Language.class);
         } else {
             throw new IOException(String.format("Failed to read language file: %s.", filepath));
         }
