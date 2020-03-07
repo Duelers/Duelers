@@ -820,7 +820,7 @@ public abstract class Game {
             if (spell.getAvailabilityType().isOnDeath())
                 applySpell(
                         spell,
-                        detectTarget(spell, troop.getCell(), new Cell(0, 0), getOtherTurnPlayer().getHero().getCell())
+                        detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0), getOtherTurnPlayer().getHero().getCell())
                 );
         }
     }
@@ -840,6 +840,35 @@ public abstract class Game {
     }
 
     private TargetData detectTarget(Spell spell, Cell cardCell, Cell clickCell, Cell heroCell) {
+        TargetData targetData = new TargetData();
+        Player player;
+        if (spell.getTarget().getOwner() != null) {
+            if (spell.getTarget().getOwner().isOwn()) {
+                player = getCurrentTurnPlayer();
+                setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
+            }
+            if (spell.getTarget().getOwner().isEnemy()) {
+                player = getOtherTurnPlayer();
+                setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
+            }
+        } else {
+            setTargetData(spell, cardCell, clickCell, heroCell, null, targetData);
+        }
+        if (spell.getTarget().isRandom()) {
+            randomizeList(targetData.getTroops());
+            randomizeList(targetData.getCells());
+            randomizeList(targetData.getPlayers());
+            randomizeList(targetData.getCards());
+        }
+        return targetData;
+    }
+
+    private TargetData detectOnDeathTarget(Spell spell, Cell cardCell, Cell clickCell, Cell heroCell) {
+
+        // Dying wishes can trigger on your turn and opponents turn.
+        // This logic fixes a bug where a call like sellsoul would always damage the turn player,
+        // regardless of who cast the minion.
+
         TargetData targetData = new TargetData();
         Player player;
 
