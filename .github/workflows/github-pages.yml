@@ -1,9 +1,10 @@
 name: github pages
 
-on:
-  push:
-    branches:
-      - master
+# disabled until after discussion of if we want to use pages.
+# on:
+#   push:
+#     branches:
+#       - master
 
 jobs:
   deploy:
