@@ -1,0 +1,45 @@
+{
+  "LANGUAGE_ENGLISH_TITLE": "english",
+  "LANGUAGE_NATIVE_TITLE": "english",
+
+  "LOGIN_MENU": {
+    "WELCOME_MESSAGE": "The Community tries to save Duelyst.",
+    "VERSION": "version",
+    "LOGIN": "login",
+    "USERNAME": "username",
+    "REGISTER": "register",
+    "PASSWORD": "password",
+    "ERROR_SHORT_PASSWORD": "Password is too short.",
+    "ERROR_SHORT_USERNAME": "Username is too short.",
+    "ERROR_INCORRECT_PASSWORD": "Incorrect Password."
+  },
+
+  "MAIN_MENU": {
+    "PLAY": "PLAY",
+    "COLLECTION": "COLLECTION",
+    "CHAT": "CHAT",
+    "SPECTATE": "SPECTATE",
+    "PROFILE": "PROFILE",
+    "QUIT": "QUIT"
+  },
+
+  "SPECTATE_MENU": {
+    "ONLINE_GAMES": "Online Games",
+    "INDEX": "index",
+    "PLAYER_ONE": "player 1",
+    "PLAYER_TWO": "player 2",
+    "GAME_TYPE": "game type"
+  },
+
+  "PROFILE_MENU": {
+    "LOGOUT": "Logout",
+    "MATCH_HISTORY": "Match History"
+  },
+
+  "BUTTON_TEXT": {
+    "OK": "ok",
+    "START": "start",
+    "CANCEL": "cancel",
+    "ERROR": "Error!"
+  }
+}
