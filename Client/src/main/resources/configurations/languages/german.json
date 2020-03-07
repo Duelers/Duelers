@@ -1,0 +1,18 @@
+{
+  "LANGUAGE_ENGLISH_TITLE": "german",
+  "LANGUAGE_NATIVE_TITLE": "deutsch",
+  "LOGIN_MENU": {
+    "WELCOME_MESSAGE": "Die Gemeinschaft versucht Duelyst zu retten.",
+    "VERSION": "Version",
+    "LOGIN": "Anmelden",
+    "REGISTER": "Registrieren",
+    "PASSWORD": "Passwort",
+    "ERROR_SHORT_PASSWORD": "Error! Passwort ist zu kurz.",
+    "ERROR_SHORT_USERNAME": "Error! Benutzername ist zu kurz.",
+    "ERROR_INCORRECT_PASSWORD": "Error! Falsches Passwort."
+  },
+  "BUTTON_TEXT": {
+    "OK": "ok",
+    "CANCEL": "abbrechen"
+  }
+}

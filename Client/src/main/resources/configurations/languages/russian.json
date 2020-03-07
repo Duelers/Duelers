@@ -1,0 +1,18 @@
+{
+  "LANGUAGE_ENGLISH_TITLE": "russian",
+  "LANGUAGE_NATIVE_TITLE": "pуссикий",
+  "LOGIN_MENU": {
+    "WELCOME_MESSAGE": "Сообщество пытается спасти Duelyst.",
+    "VERSION": "Версия",
+    "LOGIN": "Логин",
+    "REGISTER": "Регистрация",
+    "PASSWORD": "Пароль",
+    "ERROR_SHORT_PASSWORD": "Ошибка! Ваш пароль слишком короткий.",
+    "ERROR_SHORT_USERNAME": "Ошибка! Имя пользователя слишком короткое.",
+    "ERROR_INCORRECT_PASSWORD": "Ошибка! Неверный пароль."
+  },
+  "BUTTON_TEXT": {
+    "OK": "ok",
+    "CANCEL": "Отмена"
+  }
+}

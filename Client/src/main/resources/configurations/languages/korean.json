@@ -1,0 +1,19 @@
+{
+  "LANGUAGE_ENGLISH_TITLE": "korean",
+  "LANGUAGE_NATIVE_TITLE": "한국어",
+  "LOGIN_MENU": {
+    "WELCOME_MESSAGE": "커뮤니티는 듀얼리스트 를 이어가려 하고 있습니다.",
+    "VERSION": "버전",
+    "LOGIN": "로그인",
+    "REGISTER": "등록",
+    "PASSWORD": "비밀번호",
+    "ERROR_SHORT_PASSWORD": "비밀번호가 너무 짧습니다.",
+    "ERROR_SHORT_USERNAME": "아이디가 너무 짧습니다.",
+    "ERROR_INCORRECT_PASSWORD": "비밀번호를 틀렸습니다."
+  },
+  "BUTTON_TEXT": {
+    "OK": "확인",
+    "CANCEL": "취소",
+    "ERROR": "에러!"
+  }
+}

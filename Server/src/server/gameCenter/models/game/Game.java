@@ -126,7 +126,7 @@ public abstract class Game {
             if (canCommand(username)) {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
-                addNextCardToHand();
+                addNextCardToHand(2); // TODO This probably needs a constant
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(0);
 
                 revertNotDurableBuffs();
@@ -169,10 +169,8 @@ public abstract class Game {
         this.future = this.timer.schedule(this.task, 120, TimeUnit.SECONDS);
     }
 
-    private void addNextCardToHand() {
-        //If you want to draw 2 cards at the end of your turn, set the for loop to run 2 times
-        //If you want to draw 1 card at the end of your turn, set the for loop to run 1 time or remove it.
-        for (int i = 0; i < 2; i++) {
+    private void addNextCardToHand(int cardsToDraw) {
+        for (int i = 0; i < cardsToDraw; i++) {
             Card nextCard = getCurrentTurnPlayer().getNextCard();
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
@@ -261,8 +259,8 @@ public abstract class Game {
                     int y = offsets[new Random().nextInt(offsets.length)];
 
                     // Get a random square, force it to be within index bounds.
-                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), gameMap.getNumRows() - 1));
-                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getNumColumns() - 1));
+                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), GameMap.getNumRows() - 1));
+                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), GameMap.getNumColumns() - 1));
 
                     Cell c = new Cell(x2, y2);
 
@@ -274,8 +272,8 @@ public abstract class Game {
                 }
                 actions.calculateAvailableInserts(this);
             }
-        } catch (InterruptedException ignored) {
-            ignored.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             changeTurn("AI", false);
         }
@@ -288,7 +286,7 @@ public abstract class Game {
 
     private void setAllTroopsCanAttackAndCanMove() {
         for (ServerTroop troop : gameMap.getTroops()) {
-
+            troop.resetRemainingMovesAndAttacks();
             troop.setCanAttack(true);
             troop.setCanMove(true);
             GameServer.getInstance().sendTroopUpdateMessage(this, troop);
@@ -384,6 +382,10 @@ public abstract class Game {
                 if (troop.getCard().getDescription().contains("Rush")) {
                     troop.setCanAttack(true);
                     troop.setCanMove(true);
+                }
+                else{
+                    troop.setCanAttack(false);
+                    troop.setCanMove(false);
                 }
 
                 player.addTroop(troop);
@@ -487,7 +489,15 @@ public abstract class Game {
 
         Cell newCell = gameMap.getCell(cell);
         troop.setCell(newCell);
-        troop.setCanMove(false);
+
+        if (troop.getRemainingMoves() < troop.getRemainingAttacks()) {
+            troop.reduceRemainingAttacks();
+        }
+
+        troop.reduceRemainingMoves();
+        if (troop.noMovesRemaining()) {
+            troop.setCanMove(false);
+        }
 
         GameServer.getInstance().sendTroopUpdateMessage(this, troop);
     }
@@ -510,8 +520,16 @@ public abstract class Game {
             if (defenderTroop.canGiveBadEffect() &&
                     (defenderTroop.canBeAttackedFromWeakerOnes() || attackerTroop.getCurrentAp() > defenderTroop.getCurrentAp())
             ) {
-                attackerTroop.setCanAttack(false);
-                attackerTroop.setCanMove(false);
+                attackerTroop.reduceRemainingAttacks();
+                if (attackerTroop.noAttacksRemaining()) {
+                    attackerTroop.setCanAttack(false);
+                    attackerTroop.setCanMove(false);
+                }
+
+                if (attackerTroop.getRemainingAttacks() < attackerTroop.getRemainingMoves()) {
+                    attackerTroop.reduceRemainingMoves();
+                }
+
                 GameServer.getInstance().sendTroopUpdateMessage(this, attackerTroop);
                 applyOnAttackSpells(attackerTroop, defenderTroop);
                 applyOnDefendSpells(defenderTroop, attackerTroop);
@@ -678,6 +696,7 @@ public abstract class Game {
         SpellAction action = buff.getAction();
         for (Player player : players) {
             player.changeCurrentMP(action.getMpChange());
+            addNextCardToHand(action.getCardDraw());
             GameServer.getInstance().sendGameUpdateMessage(this);
         }
     }
