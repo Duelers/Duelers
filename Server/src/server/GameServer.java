@@ -2,6 +2,7 @@ package server;
 
 import server.chatCenter.ChatCenter;
 import server.clientPortal.ClientPortal;
+import server.services.RemoteTokenVerificationService;
 import shared.models.card.Card;
 import server.clientPortal.models.message.CardPosition;
 import server.clientPortal.models.message.Message;
@@ -108,11 +109,15 @@ public class GameServer {
                 throw new ServerException("Message's Receiver Was Not This Server.");
             }
             switch (message.getMessageType()) {
-                case REGISTER:
-                    DataCenter.getInstance().register(message);
-                    break;
-                case LOG_IN:
-                    DataCenter.getInstance().login(message);
+                case AUTHENTICATE:
+                    RemoteTokenVerificationService.getInstance().verifyAuthenticationToken(message.token)
+                    .thenAccept(r -> {
+                        if (r.error == null) {
+                            DataCenter.getInstance().loginOrRegister(r.username, message.getSender());
+                        } else {
+                            serverPrint(r.error);
+                        }
+                    });
                     break;
                 case LOG_OUT:
                     DataCenter.getInstance().logout(message);
@@ -236,7 +241,7 @@ public class GameServer {
         }
     }
 
-    private static void sendException(String exceptionString, String receiver) {
+    public static void sendException(String exceptionString, String receiver) {
         addToSendingMessages(Message.makeExceptionMessage(receiver, exceptionString));
     }
 

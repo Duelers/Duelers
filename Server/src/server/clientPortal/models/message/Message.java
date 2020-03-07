@@ -44,6 +44,7 @@ public class Message {
     //SENDER:DUAL
     private Card card;
     private String cardID;
+    public String token;
     private ChatMessage chatMessage;
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;

@@ -22,6 +22,7 @@ import org.projectcardboard.client.view.battleview.BattleScene;
 
 import Config.Config;
 import javafx.application.Platform;
+import java.util.Objects;
 
 
 public class Client {
@@ -33,6 +34,7 @@ public class Client {
     private Show currentShow;
     private final Gson gson = new Gson();
     private static final String serverName = Config.getInstance().getProperty("SERVER_NAME");
+    private static final String GENERIC_ERROR = "Unknown error";
 
 
     public static Client getInstance() {
@@ -91,7 +93,7 @@ public class Client {
         sendMessageThread.start();
     }
 
-    void addToSendingMessagesAndSend(Message message) {
+    public void addToSendingMessagesAndSend(Message message) {
         synchronized (sendingMessages) {
             sendingMessages.add(message);
             sendingMessages.notify();
@@ -251,6 +253,10 @@ public class Client {
 
     private void showError(Message message) {
         Platform.runLater(() -> this.currentShow.showError(message.getExceptionMessage().getExceptionString()));
+    }
+
+    public void showError(String error) {
+        Platform.runLater(() -> this.currentShow.showError(Objects.requireNonNullElse(error, GENERIC_ERROR)));
     }
 
     private void updateAccount(Message message) {
