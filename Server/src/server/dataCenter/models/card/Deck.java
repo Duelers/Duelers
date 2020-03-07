@@ -4,7 +4,6 @@ import server.GameServer;
 import server.dataCenter.models.account.Collection;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
-import shared.models.card.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,11 +11,11 @@ import java.util.List;
 
 public class Deck {
     private String deckName;
-    private Card hero;
-    private Card item;
-    private List<Card> others = new ArrayList<>();
+    private ServerCard hero;
+    private ServerCard item;
+    private List<ServerCard> others = new ArrayList<>();
 
-    public Deck(String deckName, Card hero, Card item, ArrayList<Card> others) {
+    public Deck(String deckName, ServerCard hero, ServerCard item, ArrayList<ServerCard> others) {
         this.deckName = deckName;
         this.hero = hero;
         this.item = item;
@@ -26,13 +25,13 @@ public class Deck {
     public Deck(Deck deck) {
         this.deckName = deck.deckName;
         if (deck.hero != null) {
-            this.hero = new Card(deck.hero);
+            this.hero = new ServerCard(deck.hero);
         }
         if (deck.item != null) {
-            this.item = new Card(deck.item);
+            this.item = new ServerCard(deck.item);
         }
-        for (Card card : deck.others) {
-            others.add(new Card(card));
+        for (ServerCard card : deck.others) {
+            others.add(new ServerCard(card));
         }
     }
 
@@ -56,7 +55,7 @@ public class Deck {
             return true;
         if (item != null && item.getCardId().equalsIgnoreCase(cardId))
             return true;
-        for (Card card : others) {
+        for (ServerCard card : others) {
             if (card.getCardId().equalsIgnoreCase(cardId))
                 return true;
         }
@@ -71,7 +70,7 @@ public class Deck {
     }
 
 
-    public void addCard(Card card) throws LogicException {
+    public void addCard(ServerCard card) throws LogicException {
         if (card == null)
             throw new ClientException("this card isn't in your collection!");
         switch (card.getType()) {
@@ -90,7 +89,7 @@ public class Deck {
         }
     }
 
-    public void removeCard(Card card) throws ClientException {
+    public void removeCard(ServerCard card) throws ClientException {
         if (!hasCard(card.getCardId())) {
             throw new ClientException("deck doesn't have this card.");
         }
@@ -108,20 +107,20 @@ public class Deck {
 
     public void copyCards() {//TODO:reCode
         if (hero != null) {
-            this.hero = new Card(hero);
+            this.hero = new ServerCard(hero);
             this.hero.setCardId(makeId(hero, 1));
         }
 
-        List<Card> oldOthers = this.others;
+        List<ServerCard> oldOthers = this.others;
         this.others = new ArrayList<>();
-        for (Card other : oldOthers) {
-            Card card = new Card(other);
+        for (ServerCard other : oldOthers) {
+            ServerCard card = new ServerCard(other);
             card.setCardId(makeId(card, numberOf(card.getName()) + 1));
             others.add(card);
         }
     }
 
-    private String makeId(Card card, int number) {
+    private String makeId(ServerCard card, int number) {
         return deckName.replaceAll(" ", "") + "_" +
                 card.getName().replaceAll(" ", "") + "_" +
                 number;
@@ -130,7 +129,7 @@ public class Deck {
     private int numberOf(String name) {
         if (hero.getName().equalsIgnoreCase(name) || item.getName().equalsIgnoreCase(name)) return 0;
         int number = 0;
-        for (Card card : others) {
+        for (ServerCard card : others) {
             if (card.getName().equalsIgnoreCase(name)) number++;
         }
         return number;
@@ -140,15 +139,15 @@ public class Deck {
         return deckName;
     }
 
-    public Card getHero() {
+    public ServerCard getHero() {
         return hero;
     }
 
-    public List<Card> getOthers() {
+    public List<ServerCard> getOthers() {
         return Collections.unmodifiableList(others);
     }
 
-    public Card getItem() {
+    public ServerCard getItem() {
         return item;
     }
 
@@ -157,7 +156,7 @@ public class Deck {
         if (item != null)
             item.setCardId("customGame_" + item.getCardId());
         deckName = "customGame_" + deckName;
-        for (Card card : others) {
+        for (ServerCard card : others) {
             card.setCardId("customGame_" + card.getCardId());
         }
     }

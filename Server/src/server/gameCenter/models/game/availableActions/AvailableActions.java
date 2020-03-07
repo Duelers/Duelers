@@ -1,11 +1,11 @@
 package server.gameCenter.models.game.availableActions;
 
 import javafx.util.Pair;
+import server.dataCenter.models.card.ServerCard;
 import shared.models.card.AttackType;
 import server.gameCenter.models.game.Game;
 import server.gameCenter.models.game.Player;
 import server.gameCenter.models.game.ServerTroop;
-import shared.models.card.Card;
 import shared.models.game.map.Cell;
 
 import java.util.*;
@@ -25,7 +25,7 @@ public class AvailableActions {
         Player ownPlayer = game.getCurrentTurnPlayer();
         handInserts.clear();
 
-        for (Card card : ownPlayer.getHand()) {
+        for (ServerCard card : ownPlayer.getHand()) {
             if (ownPlayer.getCurrentMP() >= card.getManaCost()) {
                 handInserts.add(new Insert(card));
             }
