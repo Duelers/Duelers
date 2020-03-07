@@ -2,6 +2,8 @@ package org.projectcardboard.client.controller;
 
 import Config.Config;
 import javafx.application.Platform;
+import org.projectcardboard.client.services.AuthenticationService;
+import org.projectcardboard.client.services.RegistrationService;
 import org.projectcardboard.client.models.exceptions.InputException;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
@@ -21,8 +23,14 @@ public class LoginMenuController {
     public void register(String userName, String password) {
         try {
             validateUsernameAndPassword(userName, password);
-            Client.getInstance().addToSendingMessagesAndSend(
-                    Message.makeRegisterMessage(SERVER_NAME, userName, password));
+            RegistrationService.getInstance().signUp(userName, password)
+            .thenAccept(r -> {
+                if (r.error == null) {
+                    this.login(userName, password);
+                } else {
+                    Client.getInstance().showError(r.error);
+                }
+            });
         } catch (InputException e) {
             Platform.runLater(() -> Client.getInstance().getCurrentShow().showError(e.getMessage()));
         }
@@ -39,11 +47,14 @@ public class LoginMenuController {
     }
 
     public void login(String userName, String password) {
-        try {
-            validateUsernameAndPassword(userName, password);
-            Client.getInstance().addToSendingMessagesAndSend(Message.makeLogInMessage(SERVER_NAME, userName, password));
-        } catch (InputException e) {
-            Platform.runLater(() -> Client.getInstance().getCurrentShow().showError(e.getMessage()));
-        }
+        AuthenticationService.getInstance().signIn(userName, password)
+        .thenAccept(r -> {
+            if (r.token != null) {
+                Client.getInstance().addToSendingMessagesAndSend(
+                        Message.makeAuthenticationTokenMessage(SERVER_NAME, r.token));
+            } else {
+                Client.getInstance().showError(r.error);
+            }
+        });
     }
 }
