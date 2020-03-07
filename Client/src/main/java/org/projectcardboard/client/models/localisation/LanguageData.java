@@ -89,7 +89,7 @@ public class LanguageData {
         InputStream languageResource = classLoader.getResourceAsStream(filepath);
 
         if (languageResource != null) {
-            return new Gson().fromJson(new InputStreamReader(languageResource), Language.class);
+            return new Gson().fromJson(new InputStreamReader(languageResource, "UTF-8"), Language.class);
         } else {
             throw new IOException(String.format("Failed to read language file: %s.", filepath));
         }
