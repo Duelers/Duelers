@@ -13,7 +13,6 @@ import shared.models.card.spell.Spell;
 import server.gameCenter.models.game.*;
 import server.gameCenter.models.game.availableActions.AvailableActions;
 import server.gameCenter.models.game.availableActions.Move;
-import server.gameCenter.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 import server.gameCenter.models.map.GameMap;
 
@@ -24,8 +23,7 @@ import static org.mockito.Mockito.when;
 public class AvailableActions_Test {
 
     private Card makeMinionCard() {
-        Card card = new Card(" ", " ", " ", " ", CardType.MINION, new ArrayList<Spell>(), 1, 1, 1, 1, AttackType.MELEE, 1);
-        return card;
+        return new Card(" ", " ", " ", " ", CardType.MINION, new ArrayList<Spell>(), 1, 1, 1, 1, AttackType.MELEE, 1);
     }
 
     private ServerTroop addFriendlyMinion(Game game, Cell cell) {

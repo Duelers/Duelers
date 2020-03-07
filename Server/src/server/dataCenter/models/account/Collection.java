@@ -64,7 +64,7 @@ public class Collection {
     void addCard(String cardName, Collection originalCards, String username) throws ClientException {//for account collections
         Card card = DataCenter.getCard(cardName, originalCards);
         if (card == null) {
-            GameServer.getInstance().serverPrint("Invalid CardName!");
+            GameServer.serverPrint("Invalid CardName!");
             return;
         }
         int number = 1;
@@ -81,11 +81,11 @@ public class Collection {
 
     public void addCard(Card card) {//for shop
         if (card == null) {
-            GameServer.getInstance().serverPrint("Error: Card is null");
+            GameServer.serverPrint("Error: Card is null");
             return;
         }
         if (hasCard(card.getCardId())) {
-            GameServer.getInstance().serverPrint("Error: Account does not own '" + card.getCardId() + "'");
+            GameServer.serverPrint("Error: Account does not own '" + card.getCardId() + "'");
             return;
         }
         switch (card.getType()) {

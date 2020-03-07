@@ -259,8 +259,8 @@ public abstract class Game {
                     int y = offsets[new Random().nextInt(offsets.length)];
 
                     // Get a random square, force it to be within index bounds.
-                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), gameMap.getNumRows() - 1));
-                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), gameMap.getNumColumns() - 1));
+                    int x2 = Math.max(0, Math.min(x + HeroPosition.getRow(), GameMap.getNumRows() - 1));
+                    int y2 = Math.max(0, Math.min(y + HeroPosition.getColumn(), GameMap.getNumColumns() - 1));
 
                     Cell c = new Cell(x2, y2);
 
@@ -272,8 +272,8 @@ public abstract class Game {
                 }
                 actions.calculateAvailableInserts(this);
             }
-        } catch (InterruptedException ignored) {
-            ignored.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             changeTurn("AI", false);
         }
@@ -563,7 +563,7 @@ public abstract class Game {
             if (spell.getAvailabilityType().isOnDefend())
                 applySpell(
                         spell,
-                        detectTarget(spell, attackerTroop.getCell(), attackerTroop.getCell(), getOtherTurnPlayer().getHero().getCell())
+                        detectTarget(spell, defenderTroop.getCell(), attackerTroop.getCell(), getOtherTurnPlayer().getHero().getCell())
                 );
         }
     }
@@ -820,7 +820,7 @@ public abstract class Game {
             if (spell.getAvailabilityType().isOnDeath())
                 applySpell(
                         spell,
-                        detectTarget(spell, troop.getCell(), gameMap.getCell(0, 0), getOtherTurnPlayer().getHero().getCell())
+                        detectTarget(spell, troop.getCell(), new Cell(0, 0), getOtherTurnPlayer().getHero().getCell())
                 );
         }
     }
@@ -842,13 +842,20 @@ public abstract class Game {
     private TargetData detectTarget(Spell spell, Cell cardCell, Cell clickCell, Cell heroCell) {
         TargetData targetData = new TargetData();
         Player player;
+
+        int playerNumber = gameMap.getTroop(cardCell).getPlayerNumber();
+
         if (spell.getTarget().getOwner() != null) {
             if (spell.getTarget().getOwner().isOwn()) {
-                player = getCurrentTurnPlayer();
+
+                player = (getCurrentTurnPlayer().getPlayerNumber() == playerNumber) ? getCurrentTurnPlayer() : getOtherTurnPlayer();
+
                 setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
             }
             if (spell.getTarget().getOwner().isEnemy()) {
-                player = getOtherTurnPlayer();
+
+                player = (getCurrentTurnPlayer().getPlayerNumber() != playerNumber) ? getCurrentTurnPlayer() : getOtherTurnPlayer();
+
                 setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
             }
         } else {
