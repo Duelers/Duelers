@@ -162,6 +162,7 @@ public class DataCenter extends Thread {
             }
         } catch (LogicException e) {
             GameServer.serverPrint(e.toString());
+            GameServer.sendException(e.getMessage(), client);
             //TODO: send error message async
         }
     }

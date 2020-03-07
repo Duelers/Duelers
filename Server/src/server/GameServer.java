@@ -241,7 +241,7 @@ public class GameServer {
         }
     }
 
-    private static void sendException(String exceptionString, String receiver) {
+    public static void sendException(String exceptionString, String receiver) {
         addToSendingMessages(Message.makeExceptionMessage(receiver, exceptionString));
     }
 
