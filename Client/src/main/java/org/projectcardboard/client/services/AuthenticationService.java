@@ -1,9 +1,6 @@
 package org.projectcardboard.client.services;
 
 import Config.Config;
-import org.projectcardboard.client.controller.Client;
-import org.projectcardboard.client.models.JsonConverter;
-import org.projectcardboard.client.models.message.Message;
 import org.projectcardboard.client.models.request.SignInRequest;
 import org.projectcardboard.client.models.response.SignInResponse;
 
@@ -58,7 +55,7 @@ public final class AuthenticationService {
         SignInRequest signInRequest;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
-            String hash = new PasswordConverterService(md).convert(username, password);
+            String hash = new PasswordConverterService(md).convertToHexString(username, password);
             signInRequest = new SignInRequest(username, hash, SignInRequest.SignInType.SHA256);
         } catch (NoSuchAlgorithmException e) {
             signInRequest = new SignInRequest(username, password, SignInRequest.SignInType.PLAIN);

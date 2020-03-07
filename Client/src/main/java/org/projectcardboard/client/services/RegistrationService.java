@@ -55,7 +55,7 @@ public final class RegistrationService {
         SignUpRequest signUpRequest;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
-            String hash = new PasswordConverterService(md).convert(username, password);
+            String hash = new PasswordConverterService(md).convertToHexString(username, password);
             signUpRequest = new SignUpRequest(username, hash, SignUpRequest.SignUpType.SHA256);
         } catch (NoSuchAlgorithmException e) {
             signUpRequest = new SignUpRequest(username, password, SignUpRequest.SignUpType.PLAIN);

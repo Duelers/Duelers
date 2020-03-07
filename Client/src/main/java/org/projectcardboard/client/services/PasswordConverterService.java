@@ -11,7 +11,7 @@ public final class PasswordConverterService {
         this.digest = digest;
     }
 
-    public String convert(String login, String password) {
+    public String convertToHexString(String login, String password) {
         String originalString = login + "_" + password;
         byte[] hash = this.digest.digest(originalString.getBytes(StandardCharsets.UTF_8));
         StringBuilder hexString = new StringBuilder();
