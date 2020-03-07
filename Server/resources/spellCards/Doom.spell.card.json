@@ -10,7 +10,7 @@
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": -9999,
+        "hpChange": 0,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -22,11 +22,11 @@
         "noAttackFromWeakerOnes": false,
         "disableHolyBuff": false,
         "addSpell": false,
-        "killsTarget": false,
+        "killsTarget": true,
         "isForGladiator": false,
         "durable": true,
         "removeBuffs": 0,
-        "duration": 9999,
+        "duration": 1,
         "delay": 6
       },
       "target": {
