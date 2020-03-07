@@ -8,6 +8,7 @@ import java.util.List;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
+import org.projectcardboard.client.models.game.availableactions.AvailableActions;
 import org.projectcardboard.client.models.gui.CardPane;
 import org.projectcardboard.client.models.gui.DefaultLabel;
 import org.projectcardboard.client.models.gui.DialogBox;
@@ -37,7 +38,11 @@ public class HandBox implements PropertyChangeListener {
     private final CompressedPlayer player;
     private final Group handGroup;
     private final Pane[] cards = new Pane[Constants.MAXIMUM_CARD_HAND_SIZE];
-    private final Pane next = new Pane();
+
+	private CardAnimation[] loadedCards = new CardAnimation[Constants.MAXIMUM_CARD_HAND_SIZE];
+	private ImageView[] unitSlots = new ImageView[Constants.MAXIMUM_CARD_HAND_SIZE];
+
+	private final Pane next = new Pane();
     private int selectedCard = -1;
     private CardPane cardPane = null;
     private final Image cardBack = new Image(new FileInputStream("Client/src/main/resources/ui/card_background@2x.png"));
@@ -64,7 +69,12 @@ public class HandBox implements PropertyChangeListener {
             hBox.setSpacing(-15 * Constants.SCALE);
             handGroup.getChildren().add(hBox);
             for (int i = 0; i < Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
+				loadedCards[i] = null;
+				unitSlots[i] = new ImageView();
+	            unitSlots[i].setFitWidth(Constants.SCREEN_WIDTH * 0.085);
+    	        unitSlots[i].setFitHeight(Constants.SCREEN_WIDTH * 0.085);
                 cards[i] = new Pane();
+	            cards[i].getChildren().add(unitSlots[i]);
                 hBox.getChildren().add(cards[i]);
             }
             updateCards();
@@ -98,72 +108,97 @@ public class HandBox implements PropertyChangeListener {
 
     private void updateCards() {
         for (int i = 0; i < Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
-            final int I = i;
-            cards[i].getChildren().clear();
-            final ImageView imageView = new ImageView();
-            cards[i].getChildren().add(imageView);
-            imageView.setFitWidth(Constants.SCREEN_WIDTH * 0.085);
-            imageView.setFitHeight(Constants.SCREEN_WIDTH * 0.085);
+			if (i >= player.getHand().size() && loadedCards[i] != null) {
+				this.loadedCards[i].unloadView();
+				this.loadedCards[i] = null;
+			} else {
+				if (i < player.getHand().size() && loadedCards[i] == null) {
+					this.loadedCards[i] = createNewAnimationCard(this.cards[i], i, unitSlots[i]);
+				} else if (loadedCards[i] != null && !loadedCards[i].getCardName().equals(player.getHand().get(i).getName())) {
+					this.loadedCards[i].unloadView();
+					this.loadedCards[i] = createNewAnimationCard(this.cards[i], i, unitSlots[i]);
+				}
+			}
 
-            final CardAnimation cardAnimation;
-            if (player.getHand().size() > i) {
-                cardAnimation = new CardAnimation(cards[i], player.getHand().get(i),
-                        imageView.getFitHeight() / 2, imageView.getFitWidth() / 2);
+			if (i < player.getHand().size())
+				updateGreyScale(this.cards[i], i);
+
+            if (this.selectedCard == i && this.loadedCards[i] != null) {
+                unitSlots[i].setImage(this.cardBackGlow);
+                loadedCards[i].inActive();
             } else {
-                cardAnimation = null;
-            }
-
-
-            if (selectedCard == i && cardAnimation != null) {
-                imageView.setImage(cardBackGlow);
-                cardAnimation.inActive();
-            } else
-                imageView.setImage(cardBack);
-
-            if (cardAnimation != null) {
-                final Card card = player.getHand().get(I);
-                cards[i].setOnMouseEntered(mouseEvent -> {
-                    if (cardPane != null) {
-                        handGroup.getChildren().remove(cardPane);
-                        cardPane = null;
-                    }
-                    if (battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card)) {
-                        SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.in_game_hove);
-                        cardAnimation.inActive();
-                        imageView.setImage(cardBackGlow);
-                    }
-                    cardPane = new CardPane(card, false, false, null);
-                    cardPane.setLayoutY(-300 * Constants.SCALE + cards[I].getLayoutY());
-                    cardPane.setLayoutX(150 * Constants.SCALE + cards[I].getLayoutX());
-                    handGroup.getChildren().add(cardPane);
-                });
-
-                cards[i].setOnMouseExited(mouseEvent -> {
-                    if (cardPane != null) {
-                        handGroup.getChildren().remove(cardPane);
-                        cardPane = null;
-                    }
-                    if (selectedCard == I) {
-                        imageView.setImage(cardBackGlow);
-                    } else {
-                        imageView.setImage(cardBack);
-                        cardAnimation.pause();
-                    }
-                });
-
-                cards[i].setOnMouseClicked(mouseEvent -> {
-                    if (battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card)) {
-                        clickOnCard(I);
-                    }
-                });
-
-                // Grey out cards in hand when its the opponents turn
-                boolean haveSufficientManaForCard = GameController.getInstance().getAvailableActions().haveSufficientMana(player, card);
-                Effect nullOrGrayscale = battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card) && haveSufficientManaForCard ? null : DISABLE_BUTTON_EFFECT;
-                cards[i].setEffect(nullOrGrayscale);
-            }
+                unitSlots[i].setImage(this.cardBack);
+			}
         }
     }
+
+	private CardAnimation createNewAnimationCard(Pane pane, int entry, ImageView imageView) {
+        Card card = this.player.getHand().get(entry);
+        CardAnimation cardAnimation = new CardAnimation(pane, this.player.getHand().get(entry),
+            imageView.getFitHeight() / 2, imageView.getFitWidth() / 2);
+
+        if (cardAnimation != null) {
+            pane.setOnMouseEntered(mouseEvent -> {
+                if (this.cardPane != null) {
+                    handGroup.getChildren().remove(this.cardPane);
+                    this.cardPane = null;
+                }
+                if (battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card)) {
+                    SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.in_game_hove);
+                    cardAnimation.inActive();
+                    imageView.setImage(this.cardBackGlow);
+                }
+                this.cardPane = new CardPane(card, false, false, null);
+                this.cardPane.setLayoutY(-300 * Constants.SCALE + pane.getLayoutY());
+                this.cardPane.setLayoutX(150 * Constants.SCALE + pane.getLayoutX());
+                handGroup.getChildren().add(this.cardPane);
+            });
+
+            pane.setOnMouseExited(mouseEvent -> {
+                    if (this.cardPane != null) {
+                        handGroup.getChildren().remove(this.cardPane);
+                        this.cardPane = null;
+                    }
+                    if (this.selectedCard == entry) {
+                        imageView.setImage(this.cardBackGlow);
+                    } else {
+                        imageView.setImage(this.cardBack);
+                        cardAnimation.pause();
+                    }
+            });
+
+            pane.setOnMouseClicked(mouseEvent -> {
+                    if (battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card)) {
+                        clickOnCard(entry);
+                    }
+            });
+			updateGreyScale(pane, entry);
+			// Effect nullOrGrayscale = null;
+            // boolean haveSufficientManaForCard = GameController.getInstance().getAvailableActions().haveSufficientMana(this.player, card);
+			// // A card can be played if we have enough mana and if it is insertable
+			// boolean canPlayCard = haveSufficientManaForCard && GameController.getInstance().getAvailableActions().canInsertCard(card);
+
+			// if (!battleScene.isMyTurn() || !canPlayCard) {
+			// 	nullOrGrayscale = DISABLE_BUTTON_EFFECT;
+			// }
+
+            // // Grey out cards in hand when its the opponents turn
+            // // Effect nullOrGrayscale = battleScene.isMyTurn() && GameController.getInstance().getAvailableActions().canInsertCard(card) && haveSufficientManaForCard ? null : DISABLE_BUTTON_EFFECT;
+            // pane.setEffect(nullOrGrayscale);
+	    }
+		return (cardAnimation);
+	}
+
+	private void updateGreyScale(Pane pane, int entry) {
+		Effect nullOrGrayscale = null;
+        Card card = this.player.getHand().get(entry);
+		AvailableActions actions = GameController.getInstance().getAvailableActions();
+		boolean canPlayCard = actions.haveSufficientMana(this.player, card) && actions.canInsertCard(card);
+
+		if (!battleScene.isMyTurn() || !canPlayCard)
+			nullOrGrayscale = DISABLE_BUTTON_EFFECT;
+        pane.setEffect(nullOrGrayscale);
+	}
 
     private void addEndTurnButton() {
         try {
