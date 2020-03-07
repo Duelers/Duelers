@@ -3222,6 +3222,240 @@
                 "range": 0,
                 "hasCombo": false,
                 "remainingNumber": 20
+            },
+            {
+                "name": "Dancing Blades",
+                "description": "Opening Gambit: Deal 3 damage to ANY minion in front of this.",
+                "cardId": "duelyst_DancingBlades_1",
+                "spriteName": "neutral_monsterdancingblades",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "deal_3_on_summon",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -3,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 1,
+                                "column": 2
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": false,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 4,
+                "defaultHp": 6,
+                "manaCost": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Dancing Blades",
+                "description": "Opening Gambit: Deal 3 damage to ANY minion in front of this.",
+                "cardId": "duelyst_DancingBlades_2",
+                "spriteName": "neutral_monsterdancingblades",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "deal_3_on_summon",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -3,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 1,
+                                "column": 2
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": false,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 4,
+                "defaultHp": 6,
+                "manaCost": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Dancing Blades",
+                "description": "Opening Gambit: Deal 3 damage to ANY minion in front of this.",
+                "cardId": "duelyst_DancingBlades_3",
+                "spriteName": "neutral_monsterdancingblades",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "deal_3_on_summon",
+                        "action": {
+                            "enemyHitChanges": 0,
+                            "apChange": 0,
+                            "hpChange": -3,
+                            "mpChange": 0,
+                            "poison": false,
+                            "makeStun": false,
+                            "makeDisarm": false,
+                            "noDisarm": false,
+                            "noPoison": false,
+                            "noStun": false,
+                            "noBadEffect": false,
+                            "noAttackFromWeakerOnes": false,
+                            "disableHolyBuff": false,
+                            "addSpell": false,
+                            "killsTarget": false,
+                            "isForGladiator": false,
+                            "durable": true,
+                            "removeBuffs": 0,
+                            "duration": 1,
+                            "delay": 0
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": false,
+                            "isForAroundOwnHero": false,
+                            "isRandom": false,
+                            "isForDeckCards": false,
+                            "dimensions": {
+                                "row": 1,
+                                "column": 2
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": true
+                            },
+                            "cardType": {
+                                "cell": false,
+                                "hero": false,
+                                "minion": true,
+                                "player": false
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true,
+                            "onAttack": false,
+                            "onDeath": false,
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 4,
+                "defaultHp": 6,
+                "manaCost": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
             }
         ],
         "spells": [
