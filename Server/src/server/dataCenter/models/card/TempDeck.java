@@ -1,7 +1,5 @@
 package server.dataCenter.models.card;
 
-import shared.models.card.Card;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +16,7 @@ public class TempDeck {
             this.heroId = deck.getHero().getCardId();
         }
 
-        for (Card card : deck.getOthers()) {
+        for (ServerCard card : deck.getOthers()) {
             this.othersIds.add(card.getCardId());
         }
     }

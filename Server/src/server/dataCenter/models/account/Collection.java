@@ -7,6 +7,7 @@ import server.dataCenter.models.card.ExportedDeck;
 import server.dataCenter.models.card.ServerCard;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.card.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -2,10 +2,10 @@ package server.dataCenter.models.account;
 
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.card.Deck;
+import server.dataCenter.models.card.ServerCard;
 import server.dataCenter.models.card.TempDeck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
-import shared.models.card.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,7 +88,7 @@ public class Account {
     }
 
     public void buyCard(String cardName, Collection originalCards) throws LogicException {
-        Card card = DataCenter.getCard(cardName, originalCards);
+        ServerCard card = DataCenter.getCard(cardName, originalCards);
         if (card == null) {
             throw new ClientException("invalid card name");
         }
@@ -102,7 +102,7 @@ public class Account {
     }
 
     public void sellCard(String cardId) throws LogicException {
-        Card card = collection.getCard(cardId);
+        ServerCard card = collection.getCard(cardId);
         if (card == null) {
             throw new ClientException("invalid card id");
         }
