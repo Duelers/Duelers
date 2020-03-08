@@ -45,19 +45,20 @@ class LoginFieldsContainer extends VBox {
         String login = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.LOGIN});
         OrangeButton loginButton = new OrangeButton(login,
                 event -> LoginMenuController.getInstance().login(usernameField.getText(), passwordField.getText()),
-                select
+                select, true
         );
 
         String register = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.REGISTER});
         OrangeButton registerButton = new OrangeButton(register,
                 event -> LoginMenuController.getInstance().register(usernameField.getText(), passwordField.getText()),
-                select
+                select, true
         );
 
         setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 LoginMenuController.getInstance().login(usernameField.getText(), passwordField.getText());
             }
+
         });
 
         return new HBox(UIConstants.DEFAULT_SPACING, loginButton, registerButton);
