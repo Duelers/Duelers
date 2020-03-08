@@ -2173,8 +2173,8 @@
                         "lastTurnUsed": 0
                     }
                 ],
-                "defaultAp": 1,
-                "defaultHp": 2,
+                "defaultAp": 100,
+                "defaultHp": 100,
                 "manaCost": 3,
                 "price": 100,
                 "attackType": "MELEE",
@@ -2251,8 +2251,8 @@
                         "lastTurnUsed": 0
                     }
                 ],
-                "defaultAp": 1,
-                "defaultHp": 2,
+                "defaultAp": 100,
+                "defaultHp": 100,
                 "manaCost": 3,
                 "price": 100,
                 "attackType": "MELEE",
@@ -2329,8 +2329,8 @@
                         "lastTurnUsed": 0
                     }
                 ],
-                "defaultAp": 1,
-                "defaultHp": 2,
+                "defaultAp": 100,
+                "defaultHp": 100,
                 "manaCost": 3,
                 "price": 100,
                 "attackType": "MELEE",
@@ -2388,7 +2388,7 @@
             },
             {
                 "name": "Phalanxar",
-                "description": "",
+                "description": " ",
                 "cardId": "duelyst_Phalanxar_1",
                 "spriteName": "f5_tank",
                 "type": "MINION",
@@ -2403,7 +2403,7 @@
             },
             {
                 "name": "Phalanxar",
-                "description": "",
+                "description": " ",
                 "cardId": "duelyst_Phalanxar_2",
                 "spriteName": "f5_tank",
                 "type": "MINION",
@@ -2418,7 +2418,7 @@
             },
             {
                 "name": "Phalanxar",
-                "description": "",
+                "description": " ",
                 "cardId": "duelyst_Phalanxar_3",
                 "spriteName": "f5_tank",
                 "type": "MINION",

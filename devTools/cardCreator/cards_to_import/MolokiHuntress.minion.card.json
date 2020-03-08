@@ -67,8 +67,8 @@
       "lastTurnUsed": 0
     }
   ],
-  "defaultAp": 1,
-  "defaultHp": 2,
+  "defaultAp": 100,
+  "defaultHp": 100,
   "manaCost": 3,
   "price": 100,
   "attackType": "MELEE",
