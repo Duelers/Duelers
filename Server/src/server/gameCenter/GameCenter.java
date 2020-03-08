@@ -213,10 +213,8 @@ public class GameCenter extends Thread {//synchronize
         deck.makeCustomGameDeck();
         Game game = null;
         GameMap gameMap = new GameMap();
-        if (message.getNewGameFields().getGameType().equals(GameType.KILL_HERO)) {
-            game = new KillHeroBattle(myAccount, deck, gameMap);
-            game.addObserver(myAccount);
-        }
+        game = new KillHeroBattle(myAccount, deck, gameMap);
+        game.addObserver(myAccount);
         onlineGames.put(myAccount, game);
         gameInfos.add(new OnlineGame(game));
         GameServer.addToSendingMessages(Message.makeGameCopyMessage

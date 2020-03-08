@@ -13,6 +13,7 @@ public class AvailabilityType {
         this.onAttack = availabilityType.onAttack;
         this.onDeath = availabilityType.onDeath;
         this.onDefend = availabilityType.onDefend;
+        this.continuous = availabilityType.continuous;
     }
 
     public AvailabilityType(boolean onPut, boolean onAttack, boolean onDeath, boolean continuous) {
