@@ -93,12 +93,13 @@ public class Deck {
         if (!hasCard(card.getCardId())) {
             throw new ClientException("deck doesn't have this card.");
         }
-        if (hero.equals(card))
+        if (hero == card)
             hero = null;
-        if (item.equals(card))
+        if (item == card)
             item = null;
         others.remove(card);
     }
+
 
     public boolean isValid() {
         if (hero == null) return false;
