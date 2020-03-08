@@ -6,8 +6,8 @@ import server.clientPortal.models.message.CardPosition;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
 
+import server.dataCenter.models.card.ServerCard;
 import shared.models.card.AttackType;
-import shared.models.card.Card;
 import shared.models.card.CardType;
 
 import server.dataCenter.models.card.Deck;
@@ -171,7 +171,7 @@ public abstract class Game {
 
     private void addNextCardToHand(int cardsToDraw) {
         for (int i = 0; i < cardsToDraw; i++) {
-            Card nextCard = getCurrentTurnPlayer().getNextCard();
+            ServerCard nextCard = getCurrentTurnPlayer().getNextCard();
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, getCurrentTurnPlayer().getNextCard(), CardPosition.NEXT);
@@ -186,13 +186,13 @@ public abstract class Game {
 
     public void replaceCard(String cardID) throws LogicException {
         if (getCurrentTurnPlayer().getCanReplaceCard()) {
-            Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
+            ServerCard removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
             if (removedCard == null) {
                 return;
             }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             if (getCurrentTurnPlayer().addNextCardToHand()) {
-                Card nextCard = getCurrentTurnPlayer().getNextCard();
+                ServerCard nextCard = getCurrentTurnPlayer().getNextCard();
                 int numTimesReplacedThisTurn = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(numTimesReplacedThisTurn + 1);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
@@ -230,7 +230,7 @@ public abstract class Game {
 
                 // Pick a playable minion in the hand at random.
                 // By "playable" we simply check available mana relative to minion cost.
-                ArrayList<Card> minionOptions = new ArrayList<Card>();
+                ArrayList<ServerCard> minionOptions = new ArrayList<ServerCard>();
                 for (Insert i : actions.getHandInserts()) {
                     if (i.getCard().getManaCost() <= currentMana && i.getCard().getType() == CardType.MINION) {
                         minionOptions.add(i.getCard());
@@ -246,7 +246,7 @@ public abstract class Game {
                 System.out.print("\n");
 
                 int idx = new Random().nextInt(Math.max(1, minionOptions.size() - 1));
-                Card minion = minionOptions.get(idx);
+                ServerCard minion = minionOptions.get(idx);
 
                 // Skew probability distribution towards favoring squares closer to Hero position.
                 int[] offsets = new int[]{-3, -2, -2, -1, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 3};
@@ -370,7 +370,7 @@ public abstract class Game {
             }
 
             Player player = getCurrentTurnPlayer();
-            Card card = player.insert(cardId);
+            ServerCard card = player.insert(cardId);
 
             if (card.getType() == CardType.MINION) {
                 if (gameMap.getTroop(cell) != null) {
@@ -422,7 +422,7 @@ public abstract class Game {
         GameServer.getInstance().sendTroopUpdateMessage(this, troop);
     }
 
-    private boolean isLegalCellForMinion(Cell cell, Card card) {
+    private boolean isLegalCellForMinion(Cell cell, ServerCard card) {
 
         if (!(gameMap.getTroop(cell) == null)) {
             // square is not empty
@@ -453,7 +453,7 @@ public abstract class Game {
         return false;
     }
 
-    private void applyOnPutSpells(Card card, Cell cell) {
+    private void applyOnPutSpells(ServerCard card, Cell cell) {
         for (Spell spell : card.getSpells()) {
             if (spell.getAvailabilityType().isOnPut()) {
                 applySpell(spell, detectTarget(spell, cell, cell, getCurrentTurnPlayer().getHero().getCell()));
@@ -717,9 +717,9 @@ public abstract class Game {
         return false;
     }
 
-    private void applyBuffOnCards(Buff buff, List<Card> cards) {
+    private void applyBuffOnCards(Buff buff, List<ServerCard> cards) {
         SpellAction action = buff.getAction();
-        for (Card card : cards) {
+        for (ServerCard card : cards) {
             if (action.isAddSpell()) {
                 card.addSpell(action.getCarryingSpell());
             }
@@ -906,10 +906,10 @@ public abstract class Game {
         }
 
         if (spell.getTarget().isForDeckCards()) {
-            for (Card card : player.getDeck().getOthers()) {
+            for (ServerCard card : player.getDeck().getOthers()) {
                 addCardToTargetData(spell, targetData, card);
             }
-            for (Card card : player.getHand()) {
+            for (ServerCard card : player.getHand()) {
                 addCardToTargetData(spell, targetData, card);
             }
             addCardToTargetData(spell, targetData, player.getNextCard());
@@ -944,7 +944,7 @@ public abstract class Game {
         list.add(e);
     }
 
-    private void addCardToTargetData(Spell spell, TargetData targetData, Card card) {
+    private void addCardToTargetData(Spell spell, TargetData targetData, ServerCard card) {
         if (spell.getTarget().getCardType().isHero() && card.getType() == CardType.HERO)
             targetData.getCards().add(card);
         if (spell.getTarget().getCardType().isMinion() && card.getType() == CardType.MINION)

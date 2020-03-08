@@ -11,12 +11,12 @@ import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.account.TempAccount;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
+import server.dataCenter.models.card.ServerCard;
 import server.dataCenter.models.db.OldDataBase;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
-import shared.models.card.Card;
 
 import javax.websocket.Session;
 import java.io.*;
@@ -55,16 +55,16 @@ public class DataCenter extends Thread {
 
     }
 
-    public static Card getCard(String cardName, Collection collection) {
-        for (Card card : collection.getHeroes()) {
+    public static ServerCard getCard(String cardName, Collection collection) {
+        for (ServerCard card : collection.getHeroes()) {
             if (card.getName().equals(cardName))
                 return card;
         }
-        for (Card card : collection.getMinions()) {
+        for (ServerCard card : collection.getMinions()) {
             if (card.getName().equals(cardName))
                 return card;
         }
-        for (Card card : collection.getSpells()) {
+        for (ServerCard card : collection.getSpells()) {
             if (card.getName().equals(cardName))
                 return card;
         }
@@ -134,18 +134,18 @@ public class DataCenter extends Thread {
             Collection originalCards = dataBase.getOriginalCards();
 
             System.out.println("Starting Heroes");
-            for (Card card : originalCards.getHeroes()) {
+            for (ServerCard card : originalCards.getHeroes()) {
                 this.buyAllCards(account, card.getName());
 
             }
 
             for (int i = 0; i < 3; i++) {
                 System.out.println("Starting Minions");
-                for (Card card : originalCards.getMinions()) {
+                for (ServerCard card : originalCards.getMinions()) {
                     this.buyAllCards(account, card.getName());
                 }
                 System.out.println("Starting Spells");
-                for (Card card : originalCards.getSpells()) {
+                for (ServerCard card : originalCards.getSpells()) {
                     this.buyAllCards(account, card.getName());
                 }
             }
@@ -311,9 +311,9 @@ public class DataCenter extends Thread {
     }
 
     public void changeCardNumber(String cardName, int changeValue) throws LogicException {
-        Card card = getCard(cardName, getOriginalCards());
+        ServerCard card = getCard(cardName, getOriginalCards());
         if (card == null)
-            throw new ClientException("Invalid Card");
+            throw new ClientException("Invalid ServerCard");
         card.setRemainingNumber(card.getRemainingNumber() + changeValue);
         updateCard(card);
         GameServer.getInstance().sendChangeCardNumberMessage(card);
@@ -359,7 +359,7 @@ public class DataCenter extends Thread {
             File[] files = new File(path).listFiles();
             if (files != null) {
                 for (File file : files) {
-                    Card card = loadFile(file, Card.class);
+                    ServerCard card = loadFile(file, ServerCard.class);
                     if (card != null) {
                         dataBase.addOriginalCard(card);
                     }
@@ -380,7 +380,7 @@ public class DataCenter extends Thread {
         }
     }
 
-    private void updateCard(Card card) throws ServerException {
+    private void updateCard(ServerCard card) throws ServerException {
         String cardJson = new GsonBuilder().setPrettyPrinting().create().toJson(card);
         for (String path : CARDS_PATHS) {
             File[] files = new File(path).listFiles();
@@ -399,10 +399,10 @@ public class DataCenter extends Thread {
                 }
             }
         }
-        throw new ServerException("Card not found");
+        throw new ServerException("ServerCard not found");
     }
 
-    private void saveOriginalCard(Card card) {
+    private void saveOriginalCard(ServerCard card) {
         String cardJson = new GsonBuilder().setPrettyPrinting().create().toJson(card);
         String path;
         try {

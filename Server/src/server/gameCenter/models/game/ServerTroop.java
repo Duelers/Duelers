@@ -1,5 +1,6 @@
 package server.gameCenter.models.game;
 
+import server.dataCenter.models.card.ServerCard;
 import shared.models.card.Card;
 import shared.models.game.Troop;
 import shared.models.game.map.Cell;
@@ -11,6 +12,11 @@ public class ServerTroop extends Troop {
     public ServerTroop(Card card, int playerNumber) {
         super(card, playerNumber);
         resetRemainingMovesAndAttacks();
+    }
+
+    public ServerCard getCard() {
+        ServerCard card = new ServerCard(super.getCard());
+        return card;
     }
 
     public void resetRemainingMovesAndAttacks() {
