@@ -85,7 +85,7 @@ public class Deck {
                 others.add(card);
                 break;
             default:
-                GameServer.serverPrint("Error!");
+                GameServer.serverPrint("Error, card does not have valid type.");
                 break;
         }
     }

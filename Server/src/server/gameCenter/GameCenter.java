@@ -259,7 +259,6 @@ public class GameCenter extends Thread {//synchronize
                 onlineGames.remove(account2);
             }
         }
-
         for (OnlineGame onlineGame : gameInfos) {
             if (onlineGame.getPlayer1().equals(game.getPlayerOne().getUserName()) ||
                     onlineGame.getPlayer2().equals(game.getPlayerTwo().getUserName())) {
