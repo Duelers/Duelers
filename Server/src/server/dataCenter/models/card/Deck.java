@@ -15,6 +15,9 @@ public class Deck {
     private ServerCard item;
     private List<ServerCard> others = new ArrayList<>();
 
+    private final int MIN_DECK_SIZE = 5;
+    private final int MAX_DECK_SIZE = 40;
+
     public Deck(String deckName, ServerCard hero, ServerCard item, ArrayList<ServerCard> others) {
         this.deckName = deckName;
         this.hero = hero;
@@ -102,7 +105,7 @@ public class Deck {
 
     public boolean isValid() {
         if (hero == null) return false;
-        return others.size() == 20;
+        return others.size() >= MIN_DECK_SIZE && others.size() <= MAX_DECK_SIZE;
     }
 
     public void copyCards() {//TODO:reCode
