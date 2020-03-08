@@ -138,9 +138,9 @@ public class AvailableActions {
     }
 
     private boolean checkRangeForAttack(ServerTroop myTroop, ServerTroop enemyTroop) {
-        if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
+        if (myTroop.getCard().getAttackType().equals(AttackType.MELEE)) {
             return !myTroop.getCell().isNearbyCell(enemyTroop.getCell());
-        } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {
+        } else if (myTroop.getCard().getAttackType().equals(AttackType.RANGED)) {
             return !myTroop.getCell().isNearbyCell(enemyTroop.getCell()) &&
                     myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         } else { // HYBRID

@@ -199,7 +199,7 @@ public class Player {
         addToGraveYard(troop.getCard());
 //        Server.getInstance().sendChangeCardPositionMessage(game, troop.getCard(), CardPosition.GRAVE_YARD);
         troops.remove(troop);
-        if (troop.getCard().getType() == CardType.HERO) {
+        if (troop.getCard().getType().equals(CardType.HERO)) {
             hero = null;
         }
     }

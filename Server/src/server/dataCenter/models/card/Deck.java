@@ -93,9 +93,9 @@ public class Deck {
         if (!hasCard(card.getCardId())) {
             throw new ClientException("deck doesn't have this card.");
         }
-        if (hero == card)
+        if (hero.equals(card))
             hero = null;
-        if (item == card)
+        if (item.equals(card))
             item = null;
         others.remove(card);
     }

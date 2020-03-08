@@ -110,7 +110,7 @@ public class Collection {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+        if (this.equals(o)) return true;
         if (!(o instanceof Collection)) return false;
         Collection other = (Collection) o;
 

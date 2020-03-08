@@ -56,12 +56,12 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
         hpLabel = new DefaultLabel(
                 String.valueOf(card.getDefaultHp()), AP_HP_FONT, Color.WHITE, HP_X, AP_HP_Y
         );
-        if (card.getType() == CardType.HERO || card.getType() == CardType.MINION) {
+        if (card.getType().equals(CardType.HERO) || card.getType().equals(CardType.MINION)) {
             getChildren().addAll(apLabel, hpLabel);
         }
 
         manaPane = new ManaIcon(card.getManaCost());
-        if (card.getType() == CardType.SPELL || card.getType() == CardType.MINION) {
+        if (card.getType().equals(CardType.SPELL) || card.getType().equals(CardType.MINION)) {
             getChildren().add(manaPane);
         }
 

@@ -39,7 +39,7 @@ public class DialogContainer extends BorderPane {
             close();
         });
         setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ESCAPE) {
+            if (event.getCode().equals(KeyCode.ESCAPE)) {
                 e.handle(event);
                 close();
             }
