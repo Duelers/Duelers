@@ -34,6 +34,7 @@ public class Message {
     private GameFinishMessage gameFinishMessage;
     private GameAnimations gameAnimations;
     private OnlineGame[] onlineGames;
+    private int CurrentDeckSize;
     //SENDER:CLIENT
     private String cardName;
     private GetDataMessage getDataMessage;
@@ -208,6 +209,13 @@ public class Message {
         Message message = new Message(receiver);
         message.clientIDMessage = new ClientIDMessage(clientID);
         message.messageType = MessageType.CLIENT_ID;
+        return message;
+    }
+
+    public static Message makeUpdateCurrentDeckSizeMessage(String receiver, int currentDeckSize) {
+        Message message = new Message(receiver);
+        message.messageType = MessageType.CURRENT_DECK_SIZE;
+        message.CurrentDeckSize = currentDeckSize;
         return message;
     }
 

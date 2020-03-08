@@ -307,6 +307,12 @@ public class GameCenter extends Thread {//synchronize
         game.replaceCard(message.getCardID());
     }
 
+    public void getCurrentDeckSize(Message message) throws LogicException {
+        DataCenter.getInstance().loginCheck(message);
+        Game game = getGame(message.getSender());
+        game.updateCurrentDeckSize();
+    }
+
     public void endTurn(Message message) throws LogicException {
         Game game = getGame(message.getSender());
         game.changeTurn(DataCenter.getInstance().getClients().get(message.getSender()).getUsername(), false);
@@ -375,4 +381,5 @@ public class GameCenter extends Thread {//synchronize
             throw new ClientException("Invalid Game");
         game.removeObserver(account);
     }
+
 }

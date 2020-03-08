@@ -42,6 +42,7 @@ public enum MessageType {
     STOP_SHOW_GAME,
     ONLINE_GAME_SHOW_REQUEST,
     SET_NEW_NEXT_CARD,
+    CURRENT_DECK_SIZE,
     //SENDER:DUAL
     CHAT,
     ACCEPT_REQUEST,

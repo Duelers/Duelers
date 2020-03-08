@@ -19,7 +19,7 @@ public interface GameActions {
 
     void exitGameShow(OnlineGame onlineGame);
 
-    void setNewNextCard();
-
     void replaceCard(String cardID);
+
+    void getCurrentDeckSize();
 }

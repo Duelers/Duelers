@@ -83,6 +83,7 @@ public class HandBox implements PropertyChangeListener {
     }
 
     private void updateNext() {
+        battleScene.getController().getCurrentDeckSize();
         next.getChildren().clear();
         final ImageView replaceIcon = new ImageView();
         next.getChildren().add(replaceIcon);

@@ -114,6 +114,11 @@ public abstract class Game {
         }
     }
 
+    public void updateCurrentDeckSize(){
+        int currentDeckSize = getCurrentTurnPlayer().getDeck().getOthers().size();
+        GameServer.getInstance().sendUpdateCurrentDeckSizeMessage(this, currentDeckSize);
+    };
+
     private boolean canCommand(String username) {
         return (turnNumber % 2 == 0 && username.equalsIgnoreCase(playerTwo.getUserName()))
                 || (turnNumber % 2 == 1 && username.equalsIgnoreCase(playerOne.getUserName()));
