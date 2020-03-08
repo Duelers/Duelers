@@ -47,7 +47,7 @@ public class CompressedGame {
 
     public void moveCardToGraveYard(Card card) {
         CompressedPlayer player;
-        if (card.getType() == CardType.HERO || card.getType() == CardType.MINION) {
+        if (card.getType().equals(CardType.HERO) || card.getType().equals(CardType.MINION)) {
             Troop troop = gameMap.getTroop(card.getCardId());
             if (troop == null) {
                 System.out.println("Client error, troop in moveCardToGraveYard is null");

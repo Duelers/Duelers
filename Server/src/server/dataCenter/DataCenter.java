@@ -322,7 +322,7 @@ public class DataCenter extends Thread {
     public void changeCardNumber(Message message) throws LogicException {
         loginCheck(message);
         Account account = clients.get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
+        if (!account.getAccountType().equals(AccountType.ADMIN))
             throw new ClientException("You don't have admin access!");
         changeCardNumber(message.getChangeCardNumber().getCardName(), message.getChangeCardNumber().getNumber());
     }
@@ -330,7 +330,7 @@ public class DataCenter extends Thread {
     public void changeAccountType(Message message) throws LogicException {
         loginCheck(message);
         Account account = clients.get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
+        if (!account.getAccountType().equals(AccountType.ADMIN))
             throw new ClientException("You don't have admin access!");
         Account changingAccount = getAccount(message.getChangeAccountType().getUsername());
         if (changingAccount == null)

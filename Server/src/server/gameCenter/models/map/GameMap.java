@@ -9,8 +9,8 @@ import java.util.*;
 
 public class GameMap {
     private static final int NUM_ROWS = Constants.NUMBER_OF_ROWS, NUM_COLUMNS = Constants.NUMBER_OF_COLUMNS;
-    private Cell[][] cells;
-    private List<ServerTroop> troops = new ArrayList<>();
+    private final Cell[][] cells;
+    private final List<ServerTroop> troops = new ArrayList<>();
 
     public GameMap() {
         cells = new Cell[NUM_ROWS][NUM_COLUMNS];

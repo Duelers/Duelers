@@ -8,8 +8,8 @@ import java.util.List;
 import shared.models.game.Troop;
 
 public class Attack {
-    private Troop attackerTroop;
-    private List<Troop> defenders;
+    private final Troop attackerTroop;
+    private final List<Troop> defenders;
 
     Attack(Troop attackerTroop, ArrayList<Troop> defenders) {
         this.attackerTroop = attackerTroop;

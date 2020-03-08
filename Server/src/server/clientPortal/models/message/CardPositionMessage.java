@@ -3,8 +3,8 @@ package server.clientPortal.models.message;
 import shared.models.card.Card;
 
 class CardPositionMessage {
-    private Card card;
-    private CardPosition cardPosition;
+    private final Card card;
+    private final CardPosition cardPosition;
 
     CardPositionMessage(Card card, CardPosition cardPosition) {
         this.card = card;

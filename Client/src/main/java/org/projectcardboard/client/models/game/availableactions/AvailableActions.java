@@ -18,9 +18,9 @@ import shared.models.game.Troop;
 import shared.models.game.map.Cell;
 
 public class AvailableActions {
-    private List<Insert> handInserts = new ArrayList<>();
-    private List<Attack> attacks = new ArrayList<>();
-    private List<Move> moves = new ArrayList<>();
+    private final List<Insert> handInserts = new ArrayList<>();
+    private final List<Attack> attacks = new ArrayList<>();
+    private final List<Move> moves = new ArrayList<>();
     private int NumTimesReplacedThisTurn = 0;
     private int MaxNumReplacePerTurn = 1;
 
@@ -149,9 +149,9 @@ public class AvailableActions {
     }
 
     private boolean isTargetInRange(Troop myTroop, Troop enemyTroop) {
-        if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
+        if (myTroop.getCard().getAttackType().equals(AttackType.MELEE)) {
             return myTroop.getCell().isNearbyCell(enemyTroop.getCell());
-        } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {
+        } else if (myTroop.getCard().getAttackType().equals(AttackType.RANGED)) {
             return myTroop.getCell().isNearbyCell(enemyTroop.getCell()) ||
                     myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         } else { // HYBRID

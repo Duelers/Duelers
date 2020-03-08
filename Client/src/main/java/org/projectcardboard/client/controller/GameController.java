@@ -80,11 +80,11 @@ public class GameController implements GameActions {
         try {
             if (!attackerTroop.canAttack() || attackerTroop.getCurrentAp() == 0)
                 throw new InputException("Error: troop cannot attack and/or current 'ap' is 0.");
-            if (attackerTroop.getCard().getAttackType() == AttackType.MELEE) {
+            if (attackerTroop.getCard().getAttackType().equals(AttackType.MELEE)) {
                 if (!attackerTroop.getCell().isNearbyCell(defenderTroop.getCell())) {
                     throw new InputException("Error: target is outside of MELEE range");
                 }
-            } else if (attackerTroop.getCard().getAttackType() == AttackType.RANGED) {
+            } else if (attackerTroop.getCard().getAttackType().equals(AttackType.RANGED)) {
                 if (attackerTroop.getCell().isNearbyCell(defenderTroop.getCell()) ||
                         attackerTroop.getCell().manhattanDistance(defenderTroop.getCell()) > attackerTroop.getCard().getRange()) {
                     throw new InputException(String.format("Error: target is outside of range (%d)", attackerTroop.getCard().getRange()));
@@ -157,7 +157,7 @@ public class GameController implements GameActions {
     }
 
     private boolean validatePositionForInsert(Card card, int row, int column) {
-        return (card.getType() == CardType.SPELL) || (currentGame.getGameMap().getTroop(new Cell(row, column)) == null);
+        return (card.getType().equals(CardType.SPELL)) || (currentGame.getGameMap().getTroop(new Cell(row, column)) == null);
     }
 
 

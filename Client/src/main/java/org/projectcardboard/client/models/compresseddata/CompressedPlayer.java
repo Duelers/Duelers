@@ -77,7 +77,7 @@ public class CompressedPlayer {
         removeTroop(troop.getCard().getCardId());
         if (troop.getCurrentHp() > 0) {
             troops.add(troop);
-            if (troop.getCard().getType() == CardType.HERO)
+            if (troop.getCard().getType().equals(CardType.HERO))
                 hero = troop;
         }
     }
@@ -114,7 +114,7 @@ public class CompressedPlayer {
         this.troops = troops;
 
         for (Troop troop : troops) {
-            if (troop.getCard().getType() == CardType.HERO) {
+            if (troop.getCard().getType().equals(CardType.HERO)) {
                 hero = troop;
             }
         }

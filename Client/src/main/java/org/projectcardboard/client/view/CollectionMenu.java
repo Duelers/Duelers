@@ -211,13 +211,9 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         if (evt.getPropertyName().equals("search_result")) {
             showingCards = (Collection) evt.getNewValue();
             Platform.runLater(() -> {
-                try {
-                    cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards.getHeroes()));
-                    cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
-                    cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+                cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards.getHeroes()));
+                cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
+                cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
             });
         }
 

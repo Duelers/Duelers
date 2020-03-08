@@ -55,7 +55,7 @@ class LoginFieldsContainer extends VBox {
         );
 
         setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
+            if (event.getCode().equals(KeyCode.ENTER)) {
                 LoginMenuController.getInstance().login(usernameField.getText(), passwordField.getText());
             }
         });

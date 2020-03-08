@@ -4,7 +4,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class AccountInfo {
-    private transient PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private final transient PropertyChangeSupport support = new PropertyChangeSupport(this);
     private String username;
     private boolean online;
     private int wins;

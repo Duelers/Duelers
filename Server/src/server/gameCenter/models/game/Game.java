@@ -42,17 +42,17 @@ import java.util.Random;
 
 public abstract class Game {
     private static final long TURN_TIME_LIMIT = 120000;
-    private Player playerOne;
-    private Player playerTwo;
-    private GameType gameType;
-    private ArrayList<Buff> buffs = new ArrayList<>();
-    private ArrayList<Buff> tempBuffs = new ArrayList<>();
-    private GameMap gameMap;
+    private final Player playerOne;
+    private final Player playerTwo;
+    private final GameType gameType;
+    private final ArrayList<Buff> buffs = new ArrayList<>();
+    private final ArrayList<Buff> tempBuffs = new ArrayList<>();
+    private final GameMap gameMap;
     private int turnNumber = 1;
     private boolean isFinished;
-    private ArrayList<Account> observers = new ArrayList<>();
+    private final ArrayList<Account> observers = new ArrayList<>();
 
-    private ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+    private final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
     private Runnable task;
     private ScheduledFuture<?> future;
 
@@ -235,9 +235,9 @@ public abstract class Game {
 
                 // Pick a playable minion in the hand at random.
                 // By "playable" we simply check available mana relative to minion cost.
-                ArrayList<ServerCard> minionOptions = new ArrayList<ServerCard>();
+                ArrayList<ServerCard> minionOptions = new ArrayList<>();
                 for (Insert i : actions.getHandInserts()) {
-                    if (i.getCard().getManaCost() <= currentMana && i.getCard().getType() == CardType.MINION) {
+                    if (i.getCard().getManaCost() <= currentMana && i.getCard().getType().equals(CardType.MINION)) {
                         minionOptions.add(i.getCard());
                     }
                 }
@@ -377,7 +377,7 @@ public abstract class Game {
             Player player = getCurrentTurnPlayer();
             ServerCard card = player.insert(cardId);
 
-            if (card.getType() == CardType.MINION) {
+            if (card.getType().equals(CardType.MINION)) {
                 if (gameMap.getTroop(cell) != null) {
                     throw new ClientException("another troop is here.");
                 }
@@ -402,7 +402,7 @@ public abstract class Game {
 
                 GameServer.getInstance().sendTroopUpdateMessage(this, troop);
             }
-            if (card.getType() == CardType.SPELL) {
+            if (card.getType().equals(CardType.SPELL)) {
                 player.addToGraveYard(card);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
             }
@@ -414,7 +414,7 @@ public abstract class Game {
 
     private void putMinion(int playerNumber, ServerTroop troop, Cell cell) {
 
-        if (!(troop.getCard().getType() == CardType.HERO)) {
+        if (!(troop.getCard().getType().equals(CardType.HERO))) {
             // This function is also used to place heroes at start of game, hence this check.
             if (!isLegalCellForMinion(cell, troop.getCard())) {
                 // Note: there is a bug where is you target an illegal square the game gets in an unplayable state
@@ -638,11 +638,11 @@ public abstract class Game {
     }
 
     private void checkRangeForAttack(ServerTroop attackerTroop, ServerTroop defenderTroop) throws ClientException {
-        if (attackerTroop.getCard().getAttackType() == AttackType.MELEE) {
+        if (attackerTroop.getCard().getAttackType().equals(AttackType.MELEE)) {
             if (!attackerTroop.getCell().isNearbyCell(defenderTroop.getCell())) {
                 throw new ClientException(attackerTroop.getCard().getCardId() + " can not attack to this target");
             }
-        } else if (attackerTroop.getCard().getAttackType() == AttackType.RANGED) {
+        } else if (attackerTroop.getCard().getAttackType().equals(AttackType.RANGED)) {
             if (attackerTroop.getCell().isNearbyCell(defenderTroop.getCell()) ||
                     attackerTroop.getCell().manhattanDistance(defenderTroop.getCell()) > attackerTroop.getCard().getRange()) {
                 throw new ClientException(attackerTroop.getCard().getCardId() + " can not attack to this target");
@@ -950,9 +950,9 @@ public abstract class Game {
     }
 
     private void addCardToTargetData(Spell spell, TargetData targetData, ServerCard card) {
-        if (spell.getTarget().getCardType().isHero() && card.getType() == CardType.HERO)
+        if (spell.getTarget().getCardType().isHero() && card.getType().equals(CardType.HERO))
             targetData.getCards().add(card);
-        if (spell.getTarget().getCardType().isMinion() && card.getType() == CardType.MINION)
+        if (spell.getTarget().getCardType().isMinion() && card.getType().equals(CardType.MINION))
             targetData.getCards().add(card);
     }
 
@@ -961,13 +961,13 @@ public abstract class Game {
             if (player != null) {
                 ServerTroop troop = player.getTroop(cell);
                 if (troop != null) {
-                    if (spell.getTarget().getAttackType().isHybrid() && troop.getCard().getAttackType() == AttackType.HYBRID) {
+                    if (spell.getTarget().getAttackType().isHybrid() && troop.getCard().getAttackType().equals(AttackType.HYBRID)) {
                         addTroopToTargetData(spell, targetData, troop);
                     }
-                    if (spell.getTarget().getAttackType().isMelee() && troop.getCard().getAttackType() == AttackType.MELEE) {
+                    if (spell.getTarget().getAttackType().isMelee() && troop.getCard().getAttackType().equals(AttackType.MELEE)) {
                         addTroopToTargetData(spell, targetData, troop);
                     }
-                    if (spell.getTarget().getAttackType().isRanged() && troop.getCard().getAttackType() == AttackType.RANGED) {
+                    if (spell.getTarget().getAttackType().isRanged() && troop.getCard().getAttackType().equals(AttackType.RANGED)) {
                         addTroopToTargetData(spell, targetData, troop);
                     }
                 }
@@ -979,10 +979,10 @@ public abstract class Game {
     }
 
     private void addTroopToTargetData(Spell spell, TargetData targetData, ServerTroop troop) {
-        if (spell.getTarget().getCardType().isHero() && troop.getCard().getType() == CardType.HERO) {
+        if (spell.getTarget().getCardType().isHero() && troop.getCard().getType().equals(CardType.HERO)) {
             targetData.getTroops().add(troop);
         }
-        if (spell.getTarget().getCardType().isMinion() && troop.getCard().getType() == CardType.MINION) {
+        if (spell.getTarget().getCardType().isMinion() && troop.getCard().getType().equals(CardType.MINION)) {
             targetData.getTroops().add(troop);
         }
     }

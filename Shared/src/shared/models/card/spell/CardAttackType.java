@@ -1,9 +1,9 @@
 package shared.models.card.spell;
 
 public class CardAttackType {
-    private boolean melee;
-    private boolean ranged;
-    private boolean hybrid;
+    private final boolean melee;
+    private final boolean ranged;
+    private final boolean hybrid;
 
     public CardAttackType(boolean melee, boolean ranged, boolean hybrid) {
         this.melee = melee;

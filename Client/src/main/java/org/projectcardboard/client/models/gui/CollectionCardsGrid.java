@@ -13,7 +13,7 @@ public class CollectionCardsGrid extends GridPane {
     private static final int COLUMN_NUMBER = 4;
     private static final double WIDTH = 2350 * SCALE;
 
-    public CollectionCardsGrid(List<Card> cards) throws FileNotFoundException {
+    public CollectionCardsGrid(List<Card> cards) {
         setHgap(DEFAULT_SPACING * 5);
         setVgap(DEFAULT_SPACING * 5);
         setMinWidth(WIDTH);

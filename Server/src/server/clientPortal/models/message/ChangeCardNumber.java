@@ -1,8 +1,8 @@
 package server.clientPortal.models.message;
 
 public class ChangeCardNumber {
-    private String cardName;
-    private int number;
+    private final String cardName;
+    private final int number;
 
     public ChangeCardNumber(String cardName, int number) {
         this.cardName = cardName;

@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class TempDeck {
-    private String deckName;
+    private final String deckName;
     private String heroId;
     private String itemId;
-    private List<String> othersIds = new ArrayList<>();
+    private final List<String> othersIds = new ArrayList<>();
 
     public TempDeck(Deck deck) {
         this.deckName = deck.getDeckName();

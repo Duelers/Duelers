@@ -11,9 +11,9 @@ public class TempAccount {
     private String password;
     private AccountType accountType;
     private Collection collection;
-    private List<TempDeck> decks = new ArrayList<>();
+    private final List<TempDeck> decks = new ArrayList<>();
     private String mainDeckName;
-    private List<MatchHistory> matchHistories = new ArrayList<>();
+    private final List<MatchHistory> matchHistories = new ArrayList<>();
     private int wins;
 
     public String getUsername() {

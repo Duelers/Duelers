@@ -13,15 +13,15 @@ import server.dataCenter.models.Constants;
 import java.util.*;
 
 public class Player {
-    private String userName;
+    private final String userName;
     private int currentMP;
-    private Deck deck;
+    private final Deck deck;
     private ServerTroop hero;
-    private List<ServerCard> hand = new ArrayList<>();
-    private List<ServerTroop> troops = new ArrayList<>();
-    private List<ServerCard> graveyard = new ArrayList<>();
+    private final List<ServerCard> hand = new ArrayList<>();
+    private final List<ServerTroop> troops = new ArrayList<>();
+    private final List<ServerCard> graveyard = new ArrayList<>();
     private ServerCard nextCard;
-    private int playerNumber;
+    private final int playerNumber;
     private MatchHistory matchHistory;
     private int numTimesReplacedThisTurn;
     private int maxNumReplacePerTurn;
@@ -199,7 +199,7 @@ public class Player {
         addToGraveYard(troop.getCard());
 //        Server.getInstance().sendChangeCardPositionMessage(game, troop.getCard(), CardPosition.GRAVE_YARD);
         troops.remove(troop);
-        if (troop.getCard().getType() == CardType.HERO) {
+        if (troop.getCard().getType().equals(CardType.HERO)) {
             hero = null;
         }
     }

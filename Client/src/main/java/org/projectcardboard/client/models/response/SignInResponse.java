@@ -4,7 +4,7 @@ import shared.models.services.WebApiResponse;
 
 public class SignInResponse implements WebApiResponse {
     
-    public String error;
+    public final String error;
     public String token;
 
     public SignInResponse() {

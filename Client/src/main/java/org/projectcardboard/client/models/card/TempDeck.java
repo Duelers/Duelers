@@ -7,10 +7,10 @@ import java.util.List;
 import shared.models.card.Card;
 
 public class TempDeck {
-    private String deckName;
+    private final String deckName;
     private String heroId;
     private String itemId;
-    private ArrayList<String> othersIds = new ArrayList<>();
+    private final ArrayList<String> othersIds = new ArrayList<>();
 
     public TempDeck(Deck deck) {
         this.deckName = deck.getName();
