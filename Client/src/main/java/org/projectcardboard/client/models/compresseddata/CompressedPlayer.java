@@ -57,7 +57,7 @@ public class CompressedPlayer {
         }
     }
 
-    public void replaceNextCard(CompressedCard compressedCard) {
+    public void replaceNextCard(Card compressedCard) {
         if (nextCard == null)
             System.out.println("Client Game Error! replaceNextCard: Attempting to set nextCard but nextCard is null");
         else {

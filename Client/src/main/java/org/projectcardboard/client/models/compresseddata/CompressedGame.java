@@ -45,6 +45,11 @@ public class CompressedGame {
         player.removeCardFromHand(card.getCardId());
     }
 
+    public void replaceNextCard(Card compressedCard) {
+        CompressedPlayer player = getCurrentTurnPlayer();
+        player.replaceNextCard(compressedCard);
+    }
+
     public void moveCardToGraveYard(Card card) {
         CompressedPlayer player;
         if (card.getType() == CardType.HERO || card.getType() == CardType.MINION) {
@@ -136,6 +141,4 @@ public class CompressedGame {
             return playerTwo;
         }
     }
-
-
 }
