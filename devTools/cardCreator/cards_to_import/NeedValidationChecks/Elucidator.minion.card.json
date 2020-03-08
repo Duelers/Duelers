@@ -1,0 +1,46 @@
+{
+	"name": "Elucidator",
+	"description": "Rush. Opening Gambit: Deal 4 damage to your General",
+	"cardId": "Elucidator",
+	"spriteName": "f5_support",
+	"type": "MINION",
+	"spells": [{
+			"spellId": "deal_4_your_general",
+			"action": {
+				"hpChange": -4,
+				"durable": true,
+				"duration": 1
+			},
+			"target": {
+				"isRelatedToCardOwnerPosition": true,
+				"dimensions": {
+					"row": 20,
+					"column": 20
+				},
+
+				"owner": {
+					"own": true,
+					"enemy": false
+				},
+
+				"cardType": {
+					"hero": true
+				},
+
+				"attackType": {
+					"melee": true,
+					"ranged": true,
+					"hybrid": true
+				}
+			},
+			"availabilityType": {
+				"onPut": true
+			}
+	}],
+	"defaultAp": 5,
+	"defaultHp": 4,
+	"manaCost": 4,
+	"price": 100,
+	"attackType": "MELEE",
+	"remainingNumber": 20
+}
