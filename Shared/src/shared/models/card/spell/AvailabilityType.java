@@ -1,9 +1,9 @@
 package shared.models.card.spell;
 
 public class AvailabilityType {
-    private boolean onPut;
-    private boolean onAttack;
-    private boolean onDeath;
+    private final boolean onPut;
+    private final boolean onAttack;
+    private final boolean onDeath;
     private boolean onDefend;
     private boolean continuous;
 

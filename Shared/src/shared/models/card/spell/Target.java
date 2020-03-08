@@ -3,10 +3,10 @@ package shared.models.card.spell;
 import shared.models.game.map.Cell;
 
 public class Target {
-    private boolean isRelatedToCardOwnerPosition;
-    private boolean isForAroundOwnHero;
-    private boolean isRandom;
-    private boolean isForDeckCards;
+    private final boolean isRelatedToCardOwnerPosition;
+    private final boolean isForAroundOwnHero;
+    private final boolean isRandom;
+    private final boolean isForDeckCards;
     private Cell dimensions;
     private Owner owner;
     private TargetCardType cardType;

@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Collection {
-    private List<ServerCard> heroes = new ArrayList<>();
-    private List<ServerCard> minions = new ArrayList<>();
-    private List<ServerCard> spells = new ArrayList<>();
+    private final List<ServerCard> heroes = new ArrayList<>();
+    private final List<ServerCard> minions = new ArrayList<>();
+    private final List<ServerCard> spells = new ArrayList<>();
 
     boolean hasCard(String cardId) {
         return hasCard(cardId, heroes) || hasCard(cardId, minions) || hasCard(cardId, spells);

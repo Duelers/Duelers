@@ -13,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 public class ApiClientService {
     private static ApiClientService instance;
     private final Gson gson = new Gson();
-    private HttpClient httpClient;
+    private final HttpClient httpClient;
 
     private ApiClientService() {
         this.httpClient = HttpClient.newHttpClient();

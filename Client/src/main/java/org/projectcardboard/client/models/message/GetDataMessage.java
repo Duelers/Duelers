@@ -1,7 +1,7 @@
 package org.projectcardboard.client.models.message;
 
 class GetDataMessage {
-    private DataName dataName;
+    private final DataName dataName;
 
     GetDataMessage(DataName dataName) {
         this.dataName = dataName;

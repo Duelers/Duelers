@@ -1,8 +1,8 @@
 package shared.models.card.spell;
 
 public class Owner {
-    private boolean own;
-    private boolean enemy;
+    private final boolean own;
+    private final boolean enemy;
 
     public Owner(boolean own, boolean enemy) {
         this.own = own;
