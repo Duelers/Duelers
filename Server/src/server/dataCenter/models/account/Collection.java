@@ -61,7 +61,7 @@ public class Collection {
         return null;
     }
 
-    void addCard(String cardName, Collection originalCards, String username) throws ClientException {//for account collections
+    void addCard(String cardName, Collection originalCards, String username) {//for account collections
         ServerCard card = DataCenter.getCard(cardName, originalCards);
         assert card != null : "Invalid card name given to addCard.";
         int number = 1;
@@ -69,10 +69,6 @@ public class Collection {
         while (hasCard(cardId + number))
             number++;
         ServerCard newCard = new ServerCard(card, username, number);
-        //removed to allow the user to have all items in their collection
-        //if (newCard.getType() == CardType.USABLE_ITEM && items.size() >= 3) {
-        //    throw new ClientException("you can't have more than 3 items");
-        //}
         addCard(newCard);
     }
 
