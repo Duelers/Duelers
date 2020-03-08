@@ -9,5 +9,5 @@ public class Playlist {
     int frameDuration = 100;
     public double extraX;
     public double extraY;
-    public HashMap<String, ArrayList<Frame>> lists = new HashMap<>();
+    public final HashMap<String, ArrayList<Frame>> lists = new HashMap<>();
 }

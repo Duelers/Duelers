@@ -101,7 +101,7 @@ public class PlayerBox implements PropertyChangeListener {
         }
         chatField.relocate(x, y);
         chatField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
+            if (event.getCode().equals(KeyCode.ENTER)) {
                 GameController.getInstance().sendChat(chatField.getText());
                 battleScene.showMyMessage(chatField.getText());
                 chatField.clear();

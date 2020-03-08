@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class AuthenticationService {
     private static AuthenticationService instance;
-    private ApiClientService apiClient;
+    private final ApiClientService apiClient;
     private URI signInUri;
     private static final String SIGN_IN_ENDPOINT = "/api/authentication/v1/signin/";
     private static final String HTTPS = "https";

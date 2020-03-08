@@ -1,10 +1,10 @@
 package shared.models.card.spell;
 
 public class TargetCardType {
-    private boolean cell;
-    private boolean hero;
-    private boolean minion;
-    private boolean player;
+    private final boolean cell;
+    private final boolean hero;
+    private final boolean minion;
+    private final boolean player;
 
     public TargetCardType(TargetCardType targetCardType) {
         this.cell = targetCardType.cell;

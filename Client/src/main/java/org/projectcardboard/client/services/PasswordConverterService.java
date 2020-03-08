@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 
 public final class PasswordConverterService {
 
-    private MessageDigest digest;
+    private final MessageDigest digest;
 
     public PasswordConverterService(MessageDigest digest) {
         this.digest = digest;

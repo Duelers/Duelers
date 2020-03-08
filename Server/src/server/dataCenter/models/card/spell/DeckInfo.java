@@ -4,8 +4,8 @@ import server.dataCenter.models.card.Deck;
 import shared.models.game.GameType;
 
 public class DeckInfo {
-    private String deckName;
-    private String HeroName;
+    private final String deckName;
+    private final String HeroName;
     private GameType type;
 
 

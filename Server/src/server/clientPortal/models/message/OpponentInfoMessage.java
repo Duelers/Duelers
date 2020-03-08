@@ -4,7 +4,7 @@ import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.AccountInfo;
 
 class OpponentInfoMessage {
-    private AccountInfo opponentInfo;
+    private final AccountInfo opponentInfo;
 
     OpponentInfoMessage(Account opponent) {
         this.opponentInfo = new AccountInfo(opponent);

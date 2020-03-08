@@ -45,7 +45,7 @@ public class CardAnimation extends Transition {
         //file settings
         Playlist playlist;
         Image image;
-        if (card.getType() == CardType.SPELL) {
+        if (card.getType().equals(CardType.SPELL)) {
             image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/icons/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
@@ -111,7 +111,7 @@ public class CardAnimation extends Transition {
     }
 
     private void generateNextState() {
-        if (action == ACTION.STOPPED) {
+        if (action.equals(ACTION.STOPPED)) {
             nextIndex = 0;
             return;
         }
@@ -131,8 +131,9 @@ public class CardAnimation extends Transition {
     }
 
     private void setAction(ACTION action) {
-        if (this.action == action)
+        if (action.equals(this.action)) {
             return;
+        }
         this.action = action;
         nextIndex = 0;
         this.stop();
@@ -168,7 +169,7 @@ public class CardAnimation extends Transition {
         this.stop();
         Playlist playlist;
         Image image;
-        if (card.getType() == CardType.SPELL) {
+        if (card.getType().equals(CardType.SPELL)) {
             image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/icons/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
