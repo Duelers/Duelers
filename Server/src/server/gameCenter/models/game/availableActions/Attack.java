@@ -1,24 +1,24 @@
 package server.gameCenter.models.game.availableActions;
 
-import server.gameCenter.models.game.Troop;
+import server.gameCenter.models.game.ServerTroop;
 
 import java.util.Collections;
 import java.util.List;
 
 public class Attack {
-    private Troop attackerTroop;
-    private List<Troop> defenders;
+    private ServerTroop attackerTroop;
+    private List<ServerTroop> defenders;
 
-    Attack(Troop attackerTroop, List<Troop> defenders) {
+    Attack(ServerTroop attackerTroop, List<ServerTroop> defenders) {
         this.attackerTroop = attackerTroop;
         this.defenders = defenders;
     }
 
-    public Troop getAttackerTroop() {
+    public ServerTroop getAttackerTroop() {
         return attackerTroop;
     }
 
-    public List<Troop> getDefenders() {
+    public List<ServerTroop> getDefenders() {
         return Collections.unmodifiableList(defenders);
     }
 }

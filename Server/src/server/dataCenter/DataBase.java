@@ -1,16 +1,16 @@
 package server.dataCenter;
 
 import server.dataCenter.models.account.Collection;
-import server.dataCenter.models.card.Card;
+import server.dataCenter.models.card.ServerCard;
 
 
 public interface DataBase {
 
-    Card getCard(String cardName);
+    ServerCard getCard(String cardName);
 
     Collection getOriginalCards();
 
-    void addOriginalCard(Card card);
+    void addOriginalCard(ServerCard card);
 
     boolean isEmpty();
 }

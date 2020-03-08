@@ -1,25 +1,22 @@
 package server.clientPortal.models.comperessedData;
 
-import server.gameCenter.models.game.Troop;
+import server.gameCenter.models.game.ServerTroop;
+import shared.Constants;
 import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CompressedGameMap {
-    private static final int ROW_NUMBER = 5, COLUMN_NUMBER = 9;
+    private static final int ROW_NUMBER = Constants.NUMBER_OF_ROWS, COLUMN_NUMBER = Constants.NUMBER_OF_COLUMNS;
 
     private Cell[][] cells = new Cell[ROW_NUMBER][COLUMN_NUMBER];
-    private List<CompressedTroop> troops = new ArrayList<>();
+    private List<ServerTroop> troops = new ArrayList<>();
 
-    public CompressedGameMap(Cell[][] cells, List<Troop> troops) {
+    public CompressedGameMap(Cell[][] cells, List<ServerTroop> troops) {
         for (int i = 0; i < ROW_NUMBER; i++) {
-            for (int j = 0; j < COLUMN_NUMBER; j++) {
-                this.cells[i][j] = cells[i][j];
-            }
+            System.arraycopy(cells[i], 0, this.cells[i], 0, COLUMN_NUMBER);
         }
-        for (Troop troop : troops) {
-            this.troops.add(troop.toCompressedTroop());
-        }
+        this.troops.addAll(troops);
     }
 }

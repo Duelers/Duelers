@@ -16,7 +16,7 @@ public class TempDeck {
             this.heroId = deck.getHero().getCardId();
         }
 
-        for (Card card : deck.getOthers()) {
+        for (ServerCard card : deck.getOthers()) {
             this.othersIds.add(card.getCardId());
         }
     }

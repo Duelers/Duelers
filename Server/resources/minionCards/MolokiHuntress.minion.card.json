@@ -1,0 +1,78 @@
+{
+  "name": "Moloki Huntress",
+  "description": "Grow: +1/+1 \n Friendly minions grow at the start of BOTH player's turns",
+  "cardId": "MolokiHuntress",
+  "spriteName": "f5_molokihuntress",
+  "type": "MINION",
+  "spells": [
+    {
+      "spellId": "grow_1/1",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 1,
+        "hpChange": 1,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": -1,
+        "delay": 1
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 20,
+          "column": 20
+        },
+        "owner": {
+          "own": true,
+          "enemy": false
+        },
+        "cardType": {
+          "cell": false,
+          "hero": false,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
+      },
+      "coolDown": 0,
+      "manaCost": 0,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 1,
+  "defaultHp": 2,
+  "manaCost": 3,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

@@ -5,8 +5,7 @@ import io.joshworks.restclient.http.Unirest;
 import server.clientPortal.models.JsonConverter;
 import server.dataCenter.DataBase;
 import server.dataCenter.models.account.Collection;
-import server.dataCenter.models.card.Card;
-
+import server.dataCenter.models.card.ServerCard;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -46,7 +45,7 @@ public class Rest implements DataBase {
             File[] files = new File(path).listFiles();
             if (files != null) {
                 for (File file : files) {
-                    Card card = loadFile(file, Card.class);
+                    ServerCard card = loadFile(file, ServerCard.class);
                     if (card != null) {
                         dataBase.addOriginalCard(card);
                     }
@@ -160,9 +159,9 @@ public class Rest implements DataBase {
 
 
     @Override
-    public Card getCard(String cardName) {
+    public ServerCard getCard(String cardName) {
         String json = getFromDataBase(maps.ORIGINAL_CARDS.path, cardName);
-        return JsonConverter.fromJson(json, Card.class);
+        return JsonConverter.fromJson(json, ServerCard.class);
     }
 
     @Override
@@ -170,7 +169,7 @@ public class Rest implements DataBase {
         List jsons = getAllValues(maps.ORIGINAL_CARDS.path);
         Collection collection = new Collection();
         for (Object o : jsons) {
-            collection.addCard(JsonConverter.fromJson((String) o, Card.class));
+            collection.addCard(JsonConverter.fromJson((String) o, ServerCard.class));
         }
         return collection;
     }
@@ -185,7 +184,7 @@ public class Rest implements DataBase {
     }
 
     @Override
-    public void addOriginalCard(Card card) {
+    public void addOriginalCard(ServerCard card) {
         put(maps.ORIGINAL_CARDS.path, card.getName(), JsonConverter.toJson(card));
     }
 

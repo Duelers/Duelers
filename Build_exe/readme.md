@@ -5,7 +5,7 @@
 These instructions assume that you already have:
 
 1) A jar file ready to go with dependancies. (To do that, run 'mvm clean package').
-2) A copy of the 1.8.0_221 jre somewhere on your system.
+2) A copy of the Java11 jre somewhere on your system.
 3) Python 3.5+ installed on the computer
 4) The build_exe\Application directory has two empty folders (jre, and Client). If this is not the case, you may wish to run the cleanup script first.
 
@@ -14,7 +14,7 @@ These instructions assume that you already have:
 In:
 	\build_exe\Application\jre 
 
-Copy the jre you want to bundle with this build (We are currently using 1.8.0_221). 
+Copy the jre you want to bundle with this build (We are currently using Java11). 
 
 Please note that you should copy the contents of the jre. Ergo: '\build_exe\Application\jre\lib' should be a valid path.
 

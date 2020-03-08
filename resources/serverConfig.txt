@@ -1,0 +1,7 @@
+# To connect to the central server, copy & paste the details below to the config.properties file.
+HOST_SERVER = false
+SERVER_IP = 3.123.26.96
+SERVER_URI = wss://mechaz.org
+PORT = 8888
+SERVER_NAME = Server
+API_HOST = mechaz.org
