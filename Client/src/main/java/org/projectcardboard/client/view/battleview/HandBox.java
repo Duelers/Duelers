@@ -5,6 +5,9 @@ import java.beans.PropertyChangeListener;
 import java.io.FileInputStream;
 import java.util.List;
 
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
@@ -24,10 +27,6 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import shared.models.card.Card;
 
@@ -37,7 +36,7 @@ public class HandBox implements PropertyChangeListener {
     private final CompressedPlayer player;
     private final Group handGroup;
     private final Pane[] cards = new Pane[Constants.MAXIMUM_CARD_HAND_SIZE];
-    private final Pane next = new Pane();
+    private final StackPane next = new StackPane();
     private int selectedCard = -1;
     private CardPane cardPane = null;
     private final Image cardBack = new Image(new FileInputStream("Client/src/main/resources/ui/card_background@2x.png"));
@@ -90,9 +89,15 @@ public class HandBox implements PropertyChangeListener {
         replaceIcon.setFitWidth(Constants.SCREEN_WIDTH * 0.11);
         replaceIcon.setFitHeight(Constants.SCREEN_WIDTH * 0.11);
         replaceIcon.setImage(nextBack);
-        Effect nullOrGrayscale = GameController.getInstance().getAvailableActions().canReplace(player) ? null : DISABLE_BUTTON_EFFECT;
-        replaceIcon.setEffect(nullOrGrayscale);
-
+        boolean canReplace = GameController.getInstance().getAvailableActions().canReplace(player);
+        replaceIcon.setEffect(canReplace ? null: DISABLE_BUTTON_EFFECT);
+        if(canReplace){
+            Text replaceText = new Text("Replace Available");
+            replaceText.setFont(Constants.AP_FONT);
+            replaceText.setStyle("-fx-text-base-color: white; -fx-font-size: 18px;");
+            replaceText.setFill(Color.WHITE);
+            next.getChildren().add(replaceText);
+        }
         next.setOnMouseClicked(mouseEvent -> replaceSelectedCard());
     }
 
