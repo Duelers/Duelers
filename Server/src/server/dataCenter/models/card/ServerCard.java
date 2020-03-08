@@ -33,4 +33,23 @@ public class ServerCard extends Card {
     public void addSpell(Spell spell) {
         this.spells.add(spell);
     }
+
+    public boolean checkIfSameIDs(Card card){
+        /*
+            the last two characters at the end of each card ID is to differentiate
+            each copy from one another. So that when we do card look ups
+            ( e.g. getCard(String cardID) ) we know that we are getting
+            the specific card we requested, instead of the first card
+            that matched
+            So to make sure that the two cards we're comparing are the same, we need
+            to remove these numbers from the cardID strings before comparing.
+         */
+        int thisCardIDLength = this.getCardId().length();
+        String thisCardID = this.getCardId().substring(0, thisCardIDLength - 2);
+
+        int cardIDLength = card.getCardId().length();
+        String cardID = card.getCardId().substring(0, cardIDLength - 2);
+
+        return cardID.equals(thisCardID);
+    }
 }

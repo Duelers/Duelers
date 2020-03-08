@@ -196,7 +196,9 @@ public abstract class Game {
             }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             if (getCurrentTurnPlayer().addNextCardToHand()) {
-                getCurrentTurnPlayer().setCanReplaceCard(false);
+                nextCard = getCurrentTurnPlayer().getNextCard();
+                int numTimesReplacedThisTurn = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
+                getCurrentTurnPlayer().setNumTimesReplacedThisTurn(numTimesReplacedThisTurn + 1);
                 ServerCard newNextCard = getCurrentTurnPlayer().getNextCard();
                 GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, newNextCard, CardPosition.HAND);
