@@ -183,15 +183,15 @@ public abstract class Game {
                 getCurrentTurnPlayer().setNewNextCard();
                 getCurrentTurnPlayer().addCardToDeck(nextCard);
                 Card nonDupeNextCard = getCurrentTurnPlayer().getNextCard();
-                Server.getInstance().sendChangeCardPositionMessage(this, nonDupeNextCard, CardPosition.DUPLICATE);
+                GameServer.getInstance().sendChangeCardPositionMessage(this, nonDupeNextCard, CardPosition.DUPLICATE);
             }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 getCurrentTurnPlayer().setCanReplaceCard(false);
                 Card newNextCard = getCurrentTurnPlayer().getNextCard();
-                Server.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
-                Server.getInstance().sendChangeCardPositionMessage(this, newNextCard, CardPosition.HAND);
-                Server.getInstance().sendChangeCardPositionMessage(this, newNextCard, CardPosition.NEXT);
+                GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
+                GameServer.getInstance().sendChangeCardPositionMessage(this, newNextCard, CardPosition.HAND);
+                GameServer.getInstance().sendChangeCardPositionMessage(this, newNextCard, CardPosition.NEXT);
             }
         } else {
             System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
