@@ -163,7 +163,7 @@ public class MapBox implements PropertyChangeListener {
         TroopAnimation animation = troopAnimationHashMap.get(troop);
         if (animation == null)
             return;
-        if (!(selectedTroop.equals(troop))) {
+        if (!(troop.equals(selectedTroop))) {
             animation.diSelect();
         }
     }
