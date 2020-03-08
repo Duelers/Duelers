@@ -230,7 +230,7 @@ public abstract class Game {
 
                 // Pick a playable minion in the hand at random.
                 // By "playable" we simply check available mana relative to minion cost.
-                ArrayList<ServerCard> minionOptions = new ArrayList<ServerCard>();
+                ArrayList<ServerCard> minionOptions = new ArrayList<>();
                 for (Insert i : actions.getHandInserts()) {
                     if (i.getCard().getManaCost() <= currentMana && i.getCard().getType().equals(CardType.MINION)) {
                         minionOptions.add(i.getCard());
