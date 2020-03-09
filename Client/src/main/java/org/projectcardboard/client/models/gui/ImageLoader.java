@@ -5,11 +5,15 @@ import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class ImageLoader {
 
     public static ImageView loadImage(String url, double width, double height) throws FileNotFoundException {
-        return makeImageView(new Image(new FileInputStream(url)), width, height);
+        InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
+        System.out.println(url);
+        if (imageResource == null) { throw new FileNotFoundException(); }
+        return makeImageView(new Image(imageResource), width, height);
     }
 
     static ImageView loadImage(String url, double width, double height, double x, double y) throws FileNotFoundException {

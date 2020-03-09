@@ -4,6 +4,7 @@ import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import javafx.scene.image.Image;
@@ -22,13 +23,22 @@ class CardBackground extends StackPane {
 
     static {
         try {
-            Image troopBackground = new Image(
-                    new FileInputStream("Client/src/main/resources/card_backgrounds/troop.png"));
-            Image spellBackground = new Image(
-                    new FileInputStream("Client/src/main/resources/card_backgrounds/spell.png"));
-            Image itemBackground = new Image(
-                    new FileInputStream("Client/src/main/resources/card_backgrounds/item.png"));
-            glow = new Image(new FileInputStream("Client/src/main/resources/card_backgrounds/glow.png"));
+            InputStream troopBackgroundR = ImageLoader.class.getResourceAsStream("/card_backgrounds/troop.png");
+            InputStream spellBackgroundR = ImageLoader.class.getResourceAsStream("/card_backgrounds/spell.png");
+            InputStream itemBackgroundR = ImageLoader.class.getResourceAsStream("/card_backgrounds/item.png");
+            InputStream glowR = ImageLoader.class.getResourceAsStream("/card_backgrounds/glow.png");
+            if (
+                troopBackgroundR == null ||
+                spellBackgroundR == null ||
+                itemBackgroundR == null ||
+                glowR == null
+            ) {
+                    throw new FileNotFoundException();
+            }
+            Image troopBackground = new Image(troopBackgroundR);
+            Image spellBackground = new Image(spellBackgroundR);
+            Image itemBackground = new Image(itemBackgroundR);
+            glow = new Image(glowR);
 
             background.put(CardType.HERO, troopBackground);
             background.put(CardType.MINION, troopBackground);
