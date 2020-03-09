@@ -1,0 +1,16 @@
+{
+  "name": "Young Flamewiing",
+  "description": "Flying",
+  "cardId": "YoungFlamewing",
+  "spriteName": "neutral_monsterflamewing",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 5,
+  "defaultHp": 4,
+  "manaCost": 4,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

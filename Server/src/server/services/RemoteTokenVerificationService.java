@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class RemoteTokenVerificationService implements TokenVerificationService {
     private static RemoteTokenVerificationService instance;
-    private ApiClientService apiClient;
+    private final ApiClientService apiClient;
     private URI verifyTokenUri;
     private static final String VERIFY_TOKEN_ENDPOINT = "/api/token/v1/verify/";
     private static final String HTTPS = "https";

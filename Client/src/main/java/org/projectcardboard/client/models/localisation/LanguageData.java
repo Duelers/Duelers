@@ -65,7 +65,7 @@ public class LanguageData {
                         Arrays.deepToString(keys), defaultLanguage, missingValue));
             }
         }
-        return (value != null) ? value.toString() : missingValue;
+        return (value != null) ? value : missingValue;
     }
 
     private String getValue(Object languageData, String[] keys)

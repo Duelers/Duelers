@@ -163,7 +163,7 @@ public class MapBox implements PropertyChangeListener {
         TroopAnimation animation = troopAnimationHashMap.get(troop);
         if (animation == null)
             return;
-        if (!(selectedTroop == troop)) {
+        if (!(troop.equals(selectedTroop))) {
             animation.diSelect();
         }
     }
@@ -198,18 +198,18 @@ public class MapBox implements PropertyChangeListener {
         }
         CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
         Troop currentTroop = getTroop(row, column);
-        if (selectionType == SelectionType.INSERTION) {
+        if (selectionType.equals(SelectionType.INSERTION)) {
             if (GameController.getInstance().getAvailableActions().canInsertCard(battleScene.getHandBox().getSelectedCard())) {
 
                 Card card = battleScene.getHandBox().getSelectedCard();
-                if (card.getType() == CardType.MINION || card.getType() == CardType.HERO) {
+                if (card.getType().equals(CardType.MINION) || card.getType().equals(CardType.HERO)) {
                     if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)) {
                         battleScene.getController().insert(card, row, column);
                         System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
                         battleScene.getHandBox().resetSelection();
                         resetSelection();
                     }
-                } else if (card.getType() == CardType.SPELL) {
+                } else if (card.getType().equals(CardType.SPELL)) {
                     battleScene.getController().insert(card, row, column);
                     System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
                     battleScene.getHandBox().resetSelection();
@@ -218,7 +218,7 @@ public class MapBox implements PropertyChangeListener {
             }
             return;
         }
-        if (selectionType == SelectionType.SELECTION) {
+        if (selectionType.equals(SelectionType.SELECTION)) {
             if (currentTroop != null && currentTroop.getPlayerNumber() == battleScene.getMyPlayerNumber()) {
                 selectedTroop = currentTroop;
                 updateMapColors();
@@ -235,7 +235,7 @@ public class MapBox implements PropertyChangeListener {
             resetSelection();
             return;
         }
-        if (selectionType == SelectionType.NORMAL) {
+        if (selectionType.equals(SelectionType.NORMAL)) {
             if (GameController.getInstance().getAvailableActions().canAttack(gameMap, player,
                     selectedTroop, row, column)) {
                 battleScene.getController().attack(selectedTroop, currentTroop);
@@ -262,10 +262,10 @@ public class MapBox implements PropertyChangeListener {
 
                 cells[row][column].setFill(Constants.defaultColor);
 
-                if (selectionType == SelectionType.INSERTION) {
+                if (selectionType.equals(SelectionType.INSERTION)) {
                     updateMapColoursOnInsertion(row, column, player);
                 }
-                if (selectionType == SelectionType.NORMAL){
+                if (selectionType.equals(SelectionType.NORMAL)){
                     boolean updateNormal = updateMapColoursOnNormal(row, column, player);
                     if (updateNormal) { continue;}
                 }
@@ -311,7 +311,7 @@ public class MapBox implements PropertyChangeListener {
 
         if (GameController.getInstance().getAvailableActions().canInsertCard(card)) {
 
-            if (card.getType() == CardType.SPELL) {
+            if (card.getType().equals(CardType.SPELL)) {
                 cells[row][column].setFill(Constants.SPELL_COLOR);
             } else { // MINION or HERO
                 if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)) {

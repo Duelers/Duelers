@@ -53,9 +53,7 @@ public class Client {
         }
         int connectionAttempts = 5;
 
-        Thread sendMessageThread = new Thread(() -> {
-                sendMessages();
-        });
+        Thread sendMessageThread = new Thread(this::sendMessages);
 
         this.ws = new WebSocketFactory().createSocket(serverUri + "/websockets/game");
         this.ws.addListener(new WebSocketAdapter() {

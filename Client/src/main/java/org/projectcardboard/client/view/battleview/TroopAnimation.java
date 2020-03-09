@@ -149,7 +149,7 @@ public class TroopAnimation extends Transition {
 
     private void generateNextState() {
         //has reached to destination
-        if (action == ACTION.RUN
+        if (action.equals(ACTION.RUN)
                 && Math.abs(troopGroup.getLayoutX() - cellsX[currentJ][currentI]) < 2
                 && Math.abs(troopGroup.getLayoutY() - cellsY[currentJ][currentI]) < 2) {//may bug
             generateNextAction();
@@ -158,7 +158,7 @@ public class TroopAnimation extends Transition {
         //hasn't reached to last frame
         if (nextIndex != (currentFramePositions.length - 1)) {
             nextIndex++;
-            if (action == ACTION.BREATHING || action == ACTION.IDLE)
+            if (action.equals(ACTION.BREATHING) || action.equals(ACTION.IDLE))
                 generateNextAction();
             return;
         }
@@ -225,7 +225,7 @@ public class TroopAnimation extends Transition {
     }
 
     private void setAction(ACTION action) {
-        if (this.action == action)
+        if (this.action.equals(action))
             return;
         this.action = action;
         nextIndex = 0;

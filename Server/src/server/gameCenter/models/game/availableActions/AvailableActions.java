@@ -11,9 +11,9 @@ import shared.models.game.map.Cell;
 import java.util.*;
 
 public class AvailableActions {
-    private List<Insert> handInserts = new ArrayList<>();
-    private List<Attack> attacks = new ArrayList<>();
-    private List<Move> moves = new ArrayList<>();
+    private final List<Insert> handInserts = new ArrayList<>();
+    private final List<Attack> attacks = new ArrayList<>();
+    private final List<Move> moves = new ArrayList<>();
 
     public void calculateAvailableActions(Game game) {
         calculateAvailableInserts(game);
@@ -138,9 +138,9 @@ public class AvailableActions {
     }
 
     private boolean checkRangeForAttack(ServerTroop myTroop, ServerTroop enemyTroop) {
-        if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
+        if (myTroop.getCard().getAttackType().equals(AttackType.MELEE)) {
             return !myTroop.getCell().isNearbyCell(enemyTroop.getCell());
-        } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {
+        } else if (myTroop.getCard().getAttackType().equals(AttackType.RANGED)) {
             return !myTroop.getCell().isNearbyCell(enemyTroop.getCell()) &&
                     myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         } else { // HYBRID

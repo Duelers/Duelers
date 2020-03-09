@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Move {
-    private ServerTroop troop;
-    private List<Cell> targets;
+    private final ServerTroop troop;
+    private final List<Cell> targets;
 
     Move(ServerTroop troop, List<Cell> targets) {
         this.troop = troop;

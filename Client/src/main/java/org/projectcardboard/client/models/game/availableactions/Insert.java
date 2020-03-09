@@ -3,7 +3,7 @@ package org.projectcardboard.client.models.game.availableactions;
 import shared.models.card.Card;
 
 public class Insert {
-    private Card card;
+    private final Card card;
 
     Insert(Card card) {
         this.card = card;

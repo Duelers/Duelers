@@ -4,9 +4,9 @@ import server.gameCenter.models.game.Game;
 import shared.models.game.GameType;
 
 public class OnlineGame {
-    private String player1;
-    private String player2;
-    private GameType gameType;
+    private final String player1;
+    private final String player2;
+    private final GameType gameType;
 
     public OnlineGame(Game game) {
         player1 = game.getPlayerOne().getUserName();

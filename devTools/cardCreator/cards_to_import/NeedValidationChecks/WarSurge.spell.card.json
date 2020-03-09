@@ -1,16 +1,16 @@
 {
-  "name": "Fireball",
-  "description": "Deal 3 damage to anything.",
-  "cardId": "Fireball",
-  "spriteName": "icon_f2_fireball",
+  "name": "War Surge",
+  "description": "Give all friendly minions +1/+1.",
+  "cardId": "WarSurge",
+  "spriteName": "icon_f1_warsurge",
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "deal_3_to_anything",
+      "spellId": "give_friendly_minions_1_1",
       "action": {
         "enemyHitChanges": 0,
-        "apChange": 0,
-        "hpChange": -3,
+        "apChange": 1,
+        "hpChange": 1,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -35,18 +35,18 @@
         "isRandom": false,
         "isForDeckCards": false,
         "dimensions": {
-          "row": 1,
-          "column": 1
+          "row": 20,
+          "column": 20
         },
         "owner": {
           "own": true,
-          "enemy": true
+          "enemy": false
         },
         "cardType": {
           "cell": false,
-          "hero": true,
+          "hero": false,
           "minion": true,
-          "player": true
+          "player": false
         },
         "attackType": {
           "melee": true,

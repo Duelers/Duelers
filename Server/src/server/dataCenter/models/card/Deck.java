@@ -84,7 +84,7 @@ public class Deck {
                 others.add(card);
                 break;
             default:
-                GameServer.serverPrint("Error!");
+                GameServer.serverPrint("Error, card does not have valid type.");
                 break;
         }
     }
@@ -99,6 +99,7 @@ public class Deck {
             item = null;
         others.remove(card);
     }
+
 
     public boolean isValid() {
         if (hero == null) return false;

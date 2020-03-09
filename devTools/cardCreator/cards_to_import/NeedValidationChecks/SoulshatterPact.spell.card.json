@@ -1,16 +1,16 @@
 {
-  "name": "Moloki Huntress",
-  "description": "Grow: +1/+1 \n Friendly minions grow at the start of BOTH player's turns",
-  "cardId": "MolokiHuntress",
-  "spriteName": "f5_molokihuntress",
-  "type": "MINION",
+  "name": "Soulshatter Pact",
+  "description": "Give all friendly minions +2 Attack this turn.",
+  "cardId": "SoulshatterPact",
+  "spriteName": "icon_f4_soulshatterpact",
+  "type": "SPELL",
   "spells": [
     {
-      "spellId": "grow_1/1",
+      "spellId": "give_friendly_minions_2attack_this_turn",
       "action": {
         "enemyHitChanges": 0,
-        "apChange": 1,
-        "hpChange": 1,
+        "apChange": 2,
+        "hpChange": 0,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -24,13 +24,13 @@
         "addSpell": false,
         "killsTarget": false,
         "isForGladiator": false,
-        "durable": true,
+        "durable": false,
         "removeBuffs": 0,
-        "duration": -1,
-        "delay": 1
+        "duration": 1,
+        "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": true,
+        "isRelatedToCardOwnerPosition": false,
         "isForAroundOwnHero": false,
         "isRandom": false,
         "isForDeckCards": false,
@@ -67,11 +67,10 @@
       "lastTurnUsed": 0
     }
   ],
-  "defaultAp": 1,
-  "defaultHp": 2,
-  "manaCost": 3,
+  "defaultAp": 0,
+  "defaultHp": 0,
+  "manaCost": 2,
   "price": 100,
-  "attackType": "MELEE",
   "range": 0,
   "hasCombo": false,
   "remainingNumber": 20
