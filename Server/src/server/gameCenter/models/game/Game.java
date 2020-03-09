@@ -453,6 +453,14 @@ public abstract class Game {
         return false;
     }
 
+    private void applyOnPutSpells(ServerCard card, Cell cell) {
+        for (Spell spell : card.getSpells()) {
+            if (spell.getAvailabilityType().isOnPut()) {
+                applySpell(spell, detectTarget(spell, cell, cell, getCurrentTurnPlayer().getHero().getCell()));
+            }
+        }
+    }
+
     public void moveTroop(String username, String cardId, Cell cell) throws LogicException {
         if (!canCommand(username)) {
             throw new ClientException("its not your turn");
@@ -555,7 +563,7 @@ public abstract class Game {
             if (spell.getAvailabilityType().isOnDefend())
                 applySpell(
                         spell,
-                        detectOnDeathTarget(spell, defenderTroop.getCell(), attackerTroop.getCell(), getOtherTurnPlayer().getHero().getCell())
+                        detectTarget(spell, defenderTroop.getCell(), attackerTroop.getCell(), getOtherTurnPlayer().getHero().getCell())
                 );
         }
     }
@@ -565,7 +573,7 @@ public abstract class Game {
             throw new ClientException("defender is disarm");
         }
 
-        checkRangeForAttack(defenderTroop, attackerTroop); //Todo boolean?
+        checkRangeForAttack(defenderTroop, attackerTroop);
 
         if (attackerTroop.canGiveBadEffect() &&
                 (attackerTroop.canBeAttackedFromWeakerOnes() || defenderTroop.getCurrentAp() > attackerTroop.getCurrentAp())
