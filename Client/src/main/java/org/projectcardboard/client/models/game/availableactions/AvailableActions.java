@@ -194,6 +194,10 @@ public class AvailableActions {
     }
 
     public boolean canMove(CompressedGameMap gameMap, CompressedPlayer player, Troop troop, int row, int column) {
+        if (!troop.canMove()){
+            return false;
+        }
+        
         if (isTroopProvoked(gameMap, player, troop)) {
             return false;
         }
@@ -206,6 +210,10 @@ public class AvailableActions {
     }
 
     public boolean canAttack(CompressedGameMap gameMap, CompressedPlayer player, Troop troop, int row, int col) {
+
+        if (!troop.canAttack()) {
+            return false;
+        }
 
         if (troop.getCurrentAp() <= 0) {
             return false;
