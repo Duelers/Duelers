@@ -28,7 +28,7 @@ public class ImageButton extends StackPane {
             InputStream primaryGlowR = ImageButton.class.getResourceAsStream("/ui/button_primary_glow@2x.png");
             if (primaryDefaultR == null || primaryGlowR == null) {
                 throw new FileNotFoundException();
-            }            
+            }
             primaryDefault = new Image(primaryDefaultR);
             primaryHover = new Image(primaryGlowR);
         } catch (FileNotFoundException e) {

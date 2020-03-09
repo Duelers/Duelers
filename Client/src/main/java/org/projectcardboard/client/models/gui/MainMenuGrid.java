@@ -13,8 +13,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
@@ -30,8 +30,13 @@ class MainMenuGrid extends GridPane {
         setVgap(UIConstants.DEFAULT_SPACING * 3);
         setHgap(UIConstants.DEFAULT_SPACING * 3);
 
-        menuItemImage = new Image(new FileInputStream("Client/src/main/resources/ui/menu_item.png"));
-        hoverRing = new Image(new FileInputStream("Client/src/main/resources/ui/glow_ring.png"));
+        InputStream menuItemR = MainMenuGrid.class.getResourceAsStream("/ui/menu_item.png");
+        InputStream hoverRingR = MainMenuGrid.class.getResourceAsStream("/ui/glow_ring.png");
+        if (menuItemR == null || hoverRingR== null) {
+            throw new FileNotFoundException();
+        }
+        menuItemImage = new Image(menuItemR);
+        hoverRing = new Image(hoverRingR);
 
         items.forEach(item -> addRow(item.index, makeRow(item)));
     }
