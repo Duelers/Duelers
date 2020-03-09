@@ -1030,7 +1030,7 @@ public abstract class Game {
         return lastRow;
     }
 
-    void setMatchHistories(boolean resultOne, boolean resultTwo) {
+    void setMatchHistories(boolean resultOne, boolean resultTwo) { //Todo call twice
         playerOne.setMatchHistory(
                 new MatchHistory(playerTwo, resultOne)
         );
