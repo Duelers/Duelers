@@ -2,6 +2,9 @@ package org.projectcardboard.client.view.battleview;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,10 +49,12 @@ public class CardAnimation extends Transition {
         Playlist playlist;
         Image image;
         if (card.getType().equals(CardType.SPELL)) {
-            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/icons/" + card.getSpriteName() + ".png"));
+            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("/icons/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
-                    return new Gson().fromJson(new FileReader("Client/src/main/resources/icons/" + card.getSpriteName() + ".plist.json"), Playlist.class);
+                    InputStream plistR = this.getClass().getResourceAsStream("/icons/" + card.getSpriteName() + ".plist.json");
+                    if (plistR == null) { throw new FileNotFoundException(); }
+                    return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8), Playlist.class);
                 } catch (FileNotFoundException e) {
                     return new Playlist();
                 }
@@ -59,10 +64,12 @@ public class CardAnimation extends Transition {
             extraX = 38 * Constants.SCALE;
             extraY = 31 * Constants.SCALE;
         } else {
-            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/troopAnimations/" + card.getSpriteName() + ".png"));
+            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("/troopAnimations/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
-                    return new Gson().fromJson(new FileReader("Client/src/main/resources/troopAnimations/" + card.getSpriteName() + ".plist.json"), Playlist.class);
+                    InputStream plistR = this.getClass().getResourceAsStream("/troopAnimations/" + card.getSpriteName() + ".plist.json");
+                    if (plistR == null) { throw new FileNotFoundException(); }
+                    return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8), Playlist.class);
                 } catch (FileNotFoundException e) {
                     return new Playlist();
                 }
@@ -170,10 +177,12 @@ public class CardAnimation extends Transition {
         Playlist playlist;
         Image image;
         if (card.getType().equals(CardType.SPELL)) {
-            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/icons/" + card.getSpriteName() + ".png"));
+            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("/icons/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
-                    return new Gson().fromJson(new FileReader("Client/src/main/resources/icons/" + card.getSpriteName() + ".plist.json"), Playlist.class);
+                    InputStream plistR = this.getClass().getResourceAsStream("/icons/" + card.getSpriteName() + ".plist.json");
+                    if (plistR == null) { throw new FileNotFoundException(); }
+                    return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8), Playlist.class);
                 } catch (FileNotFoundException e) {
                     return new Playlist();
                 }
@@ -183,10 +192,12 @@ public class CardAnimation extends Transition {
             extraX = 38 * Constants.SCALE;
             extraY = 31 * Constants.SCALE;
         } else {
-            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("Client/src/main/resources/troopAnimations/" + card.getSpriteName() + ".png"));
+            image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("/troopAnimations/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
-                    return new Gson().fromJson(new FileReader("Client/src/main/resources/troopAnimations/" + card.getSpriteName() + ".plist.json"), Playlist.class);
+                    InputStream plistR = this.getClass().getResourceAsStream("/troopAnimations/" + card.getSpriteName() + ".plist.json");
+                    if (plistR == null) { throw new FileNotFoundException(); }
+                    return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8), Playlist.class);
                 } catch (FileNotFoundException e) {
                     return new Playlist();
                 }

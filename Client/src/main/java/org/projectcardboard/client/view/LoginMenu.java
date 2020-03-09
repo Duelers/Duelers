@@ -10,8 +10,8 @@ import org.projectcardboard.client.models.gui.*;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
 
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
@@ -43,11 +43,12 @@ public class LoginMenu extends Show {
     }
 
     public String getVersionInfo() throws IOException {
-        final String versionPath = "./resources/version.txt";
+        final String versionPath = "/version.txt";
 
-         FileInputStream file = new FileInputStream(versionPath);
-         Scanner scanner =new Scanner(file);
+         InputStream file = this.getClass().getResourceAsStream(versionPath);
+         Scanner scanner = new Scanner(file);
          String versionInfo = scanner.nextLine();
+         scanner.close();
          file.close();
 
          return versionInfo;

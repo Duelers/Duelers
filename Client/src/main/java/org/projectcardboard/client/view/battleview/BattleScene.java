@@ -14,9 +14,9 @@ import shared.models.card.spell.AvailabilityType;
 import shared.models.game.map.Cell;
 import org.projectcardboard.client.view.Show;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +26,7 @@ import static org.projectcardboard.client.controller.SoundEffectPlayer.SoundName
 public class BattleScene extends Show {
     private static final String WINNER_SPRITE_NAME = "fx_winner";
     private static final Media backgroundMusic = new Media(
-            new File("Client/src/main/resources/music/music_battlemap_vetruv.m4a").toURI().toString()
+            BattleScene.class.getResource("/music/music_battlemap_vetruv.m4a").toString()
     );
     private static final Map<SpellType, String> spellSpriteNames = new HashMap();
     private final GameActions controller;
@@ -69,7 +69,9 @@ public class BattleScene extends Show {
 
     private void addBackGround(String address) {
         try {
-            Image image = new Image(new FileInputStream("Client/src/main/resources/backGrounds/" + address + ".png"));
+            InputStream imageR = this.getClass().getResourceAsStream("/backGrounds/" + address + ".png");
+            if (imageR == null) { throw new FileNotFoundException(); }
+            Image image = new Image(imageR);
             ImageView backGround = new ImageView(image);
             backGround.setFitWidth(Constants.SCREEN_WIDTH);
             backGround.setFitHeight(Constants.SCREEN_HEIGHT);
