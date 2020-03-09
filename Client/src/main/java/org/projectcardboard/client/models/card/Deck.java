@@ -15,9 +15,6 @@ public class Deck {
     private final Card hero;
     private final ArrayList<Card> others = new ArrayList<>();
 
-    private final int MIN_DECK_SIZE = 5;
-    private final int MAX_DECK_SIZE = 40;
-
     public Deck(TempDeck tempDeck, Collection collection) {
         this.deckName = tempDeck.getDeckName();
         this.hero = collection.findHero(tempDeck.getHeroId());
@@ -74,7 +71,7 @@ public class Deck {
 
     public boolean isValid() {
         if (hero == null) return false;
-        return others.size() >= MIN_DECK_SIZE && others.size() <= MAX_DECK_SIZE;
+        return others.size() == 20;
     }
 
     public boolean isMain() {
