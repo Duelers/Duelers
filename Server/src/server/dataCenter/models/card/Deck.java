@@ -93,47 +93,16 @@ public class Deck {
         if (!hasCard(card.getCardId())) {
             throw new ClientException("deck doesn't have this card.");
         }
-        if (hero == card)
+        if (card.equals(hero))
             hero = null;
-        if (item == card)
+        if (card.equals(item))
             item = null;
         others.remove(card);
     }
 
-
     public boolean isValid() {
         if (hero == null) return false;
         return others.size() == 20;
-    }
-
-    public void copyCards() {//TODO:reCode
-        if (hero != null) {
-            this.hero = new ServerCard(hero);
-            this.hero.setCardId(makeId(hero, 1));
-        }
-
-        List<ServerCard> oldOthers = this.others;
-        this.others = new ArrayList<>();
-        for (ServerCard other : oldOthers) {
-            ServerCard card = new ServerCard(other);
-            card.setCardId(makeId(card, numberOf(card.getName()) + 1));
-            others.add(card);
-        }
-    }
-
-    private String makeId(ServerCard card, int number) {
-        return deckName.replaceAll(" ", "") + "_" +
-                card.getName().replaceAll(" ", "") + "_" +
-                number;
-    }
-
-    private int numberOf(String name) {
-        if (hero.getName().equalsIgnoreCase(name) || item.getName().equalsIgnoreCase(name)) return 0;
-        int number = 0;
-        for (ServerCard card : others) {
-            if (card.getName().equalsIgnoreCase(name)) number++;
-        }
-        return number;
     }
 
     public String getDeckName() {
@@ -153,12 +122,13 @@ public class Deck {
     }
 
     public void makeCustomGameDeck() {
-        hero.setCardId("customGame_" + hero.getCardId());
+        String customGamePrefix = "customGame_";
+        hero.setCardId(customGamePrefix + hero.getCardId());
         if (item != null)
-            item.setCardId("customGame_" + item.getCardId());
-        deckName = "customGame_" + deckName;
+            item.setCardId(customGamePrefix + item.getCardId());
+        deckName = customGamePrefix + deckName;
         for (ServerCard card : others) {
-            card.setCardId("customGame_" + card.getCardId());
+            card.setCardId(customGamePrefix + card.getCardId());
         }
     }
 
