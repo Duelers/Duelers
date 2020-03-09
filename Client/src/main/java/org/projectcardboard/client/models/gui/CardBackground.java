@@ -26,8 +26,6 @@ class CardBackground extends StackPane {
                     new FileInputStream("Client/src/main/resources/card_backgrounds/troop.png"));
             Image spellBackground = new Image(
                     new FileInputStream("Client/src/main/resources/card_backgrounds/spell.png"));
-            Image itemBackground = new Image(
-                    new FileInputStream("Client/src/main/resources/card_backgrounds/item.png"));
             glow = new Image(new FileInputStream("Client/src/main/resources/card_backgrounds/glow.png"));
 
             background.put(CardType.HERO, troopBackground);

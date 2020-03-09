@@ -7,7 +7,6 @@ import java.util.List;
 public class TempDeck {
     private final String deckName;
     private String heroId;
-    private String itemId;
     private final List<String> othersIds = new ArrayList<>();
 
     public TempDeck(Deck deck) {
@@ -27,10 +26,6 @@ public class TempDeck {
 
     String getHeroId() {
         return heroId;
-    }
-
-    String getItemId() {
-        return itemId;
     }
 
     List<String> getOthersIds() {

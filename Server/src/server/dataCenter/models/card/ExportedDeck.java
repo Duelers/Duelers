@@ -9,16 +9,12 @@ import java.util.Map;
 public class ExportedDeck {
     private final String name;
     private String heroName;
-    private String itemName;
     private final HashMap<String, Integer> otherCards = new HashMap<>();
 
     public ExportedDeck(Deck deck) {
         name = deck.getName();
         if (deck.getHero() != null) {
             heroName = deck.getHero().getName();
-        }
-        if (deck.getItem() != null) {
-            itemName = deck.getItem().getName();
         }
         for (Card other : deck.getOthers()) {
             otherCards.merge(other.getName(), 1, Integer::sum);
@@ -31,10 +27,6 @@ public class ExportedDeck {
 
     public String getHeroName() {
         return heroName;
-    }
-
-    public String getItemName() {
-        return itemName;
     }
 
     public Map<String, Integer> getOtherCards() {

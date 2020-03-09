@@ -9,7 +9,6 @@ import shared.models.card.Card;
 public class TempDeck {
     private final String deckName;
     private String heroId;
-    private String itemId;
     private final ArrayList<String> othersIds = new ArrayList<>();
 
     public TempDeck(Deck deck) {
@@ -28,10 +27,6 @@ public class TempDeck {
 
     public String getHeroId() {
         return heroId;
-    }
-
-    public String getItemId() {
-        return itemId;
     }
 
     public List<String> getOthersIds() {
