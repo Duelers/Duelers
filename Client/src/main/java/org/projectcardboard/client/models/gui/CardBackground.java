@@ -2,7 +2,6 @@ package org.projectcardboard.client.models.gui;
 
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -23,10 +22,10 @@ class CardBackground extends StackPane {
 
     static {
         try {
-            InputStream troopBackgroundR = ImageLoader.class.getResourceAsStream("/card_backgrounds/troop.png");
-            InputStream spellBackgroundR = ImageLoader.class.getResourceAsStream("/card_backgrounds/spell.png");
-            InputStream itemBackgroundR = ImageLoader.class.getResourceAsStream("/card_backgrounds/item.png");
-            InputStream glowR = ImageLoader.class.getResourceAsStream("/card_backgrounds/glow.png");
+            InputStream troopBackgroundR = CardBackground.class.getResourceAsStream("/card_backgrounds/troop.png");
+            InputStream spellBackgroundR = CardBackground.class.getResourceAsStream("/card_backgrounds/spell.png");
+            InputStream itemBackgroundR = CardBackground.class.getResourceAsStream("/card_backgrounds/item.png");
+            InputStream glowR = CardBackground.class.getResourceAsStream("/card_backgrounds/glow.png");
             if (
                 troopBackgroundR == null ||
                 spellBackgroundR == null ||

@@ -6,8 +6,8 @@ import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 import static org.projectcardboard.client.models.gui.UIConstants.SCENE_WIDTH;
 import static org.projectcardboard.client.models.gui.UIConstants.SELECT_CURSOR;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import org.projectcardboard.client.controller.CollectionMenuController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
@@ -48,12 +48,28 @@ public class DeckBox extends GridPane {
 
     static {
         try {
-            checkIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_check.png"));
-            modifyIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_modify.png"));
-            removeIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_remove.png"));
-            saveIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_save.png"));
-            mainIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_main_deck.png"));
-            disableMainIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_main_deck_disable.png"));
+            InputStream checkIconR = DeckBox.class.getResourceAsStream("/ui/icon_check.png");
+            InputStream modifyIconR = DeckBox.class.getResourceAsStream("/ui/icon_modify.png");
+            InputStream removeIconR = DeckBox.class.getResourceAsStream("/ui/icon_remove.png");
+            InputStream saveIconR = DeckBox.class.getResourceAsStream("/ui/icon_save.png");
+            InputStream mainIconR = DeckBox.class.getResourceAsStream("/ui/icon_main_deck.png");
+            InputStream disableMainIconR = DeckBox.class.getResourceAsStream("/ui/icon_main_deck_disable.png");
+            if (
+                checkIconR == null ||
+                modifyIconR == null ||
+                removeIconR == null ||
+                saveIconR == null ||
+                mainIconR == null ||
+                disableMainIconR == null
+            ) {
+                    throw new FileNotFoundException();
+            }
+            checkIcon = new Image(checkIconR);
+            modifyIcon = new Image(modifyIconR);
+            removeIcon = new Image(removeIconR);
+            saveIcon = new Image(saveIconR);
+            mainIcon = new Image(mainIconR);
+            disableMainIcon = new Image(disableMainIconR);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
