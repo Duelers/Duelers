@@ -22,4 +22,6 @@ public interface GameActions {
     void setNewNextCard();
 
     void replaceCard(String cardID);
+
+    void getCurrentDeckSize();
 }

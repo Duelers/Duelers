@@ -52,6 +52,7 @@ public class HandBox implements PropertyChangeListener {
         this.battleScene = battleScene;
         this.player = player;
         handGroup = new Group();
+        updateCurrentDeckSize();
         handGroup.setLayoutX(Constants.HAND_X);
         handGroup.setLayoutY(Constants.HAND_Y);
 
@@ -91,13 +92,18 @@ public class HandBox implements PropertyChangeListener {
         replaceIcon.setImage(nextBack);
         boolean canReplace = GameController.getInstance().getAvailableActions().canReplace(player);
         replaceIcon.setEffect(canReplace ? null: DISABLE_BUTTON_EFFECT);
+        Text replaceButtonText = new Text("");
+        int currentDeckSize = player.getCurrentDeckSize() + 1;//deck size + nextCard
+        replaceButtonText.setFont(Constants.AP_FONT);
+        replaceButtonText.setStyle("-fx-text-base-color: white; -fx-font-size: 14px;");
+        replaceButtonText.setFill(Color.WHITE);
         if(canReplace){
-            Text replaceText = new Text("Replace Available");
-            replaceText.setFont(Constants.AP_FONT);
-            replaceText.setStyle("-fx-text-base-color: white; -fx-font-size: 18px;");
-            replaceText.setFill(Color.WHITE);
-            next.getChildren().add(replaceText);
+            replaceButtonText.setText("Replace Available" + "\n" +  "Cards Remaining: " + currentDeckSize);
         }
+        else{
+            replaceButtonText.setText("Cards Remaining: " + currentDeckSize);
+        }
+        next.getChildren().add(replaceButtonText);
         next.setOnMouseClicked(mouseEvent -> replaceSelectedCard());
     }
 
@@ -168,6 +174,11 @@ public class HandBox implements PropertyChangeListener {
                 cards[i].setEffect(nullOrGrayscale);
             }
         }
+        updateNext();
+    }
+
+    public void updateCurrentDeckSize(){
+        battleScene.getController().getCurrentDeckSize();
     }
 
     private void addEndTurnButton() {
@@ -195,6 +206,7 @@ public class HandBox implements PropertyChangeListener {
             endTurnButton.setOnMouseClicked(mouseEvent -> {
                 if (battleScene.isMyTurn()) {
                     battleScene.getController().endTurn();
+                    updateNext();
                 }
             });
             this.handGroup.getChildren().add(endTurnButton);
@@ -274,6 +286,7 @@ public class HandBox implements PropertyChangeListener {
         switch (evt.getPropertyName()) {
             case "next":
             case "hand":
+                updateCurrentDeckSize();
                 Platform.runLater(this::resetSelection);
                 break;
             case "turn":
@@ -281,11 +294,13 @@ public class HandBox implements PropertyChangeListener {
                     Platform.runLater(() -> {
                         endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);
                         endTurnLabel.setText("ENEMY TURN");
-
+                        updateNext();
+                        updateCurrentDeckSize();
                     });
                 } else {
                     Platform.runLater(() -> {
                         updateNext();
+                        updateCurrentDeckSize();
                         endTurnButton.setEffect(null);
                         endTurnLabel.setText("END TURN");
                     });

@@ -21,6 +21,7 @@ public class CompressedPlayer {
     private int playerNumber;
     private List<Troop> troops;
     private Troop hero;
+    private int currentDeckSize;
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -158,5 +159,13 @@ public class CompressedPlayer {
 
     public int getPlayerNumber() {
         return playerNumber;
+    }
+
+    public void setCurrentDeckSize(int currentDeckSize){
+        this.currentDeckSize = currentDeckSize;
+    }
+
+    public int getCurrentDeckSize(){
+        return this.currentDeckSize;
     }
 }

@@ -30,6 +30,7 @@ public class Message {
     private ClientIDMessage clientIDMessage;
     private GameAnimations gameAnimations;
     private OnlineGame[] onlineGames;
+    private int CurrentDeckSize;
     //SENDER:CLIENT
     private String cardName;
     private ExportedDeck exportedDeck;
@@ -299,6 +300,12 @@ public class Message {
         return message;
     }
 
+    public static Message makeNewGetCurrentDeckSizeMessage(String serverName){
+        Message message = new Message(serverName);
+        message.messageType = MessageType.CURRENT_DECK_SIZE;
+        return message;
+    }
+
     public String toJson() {
         return JsonConverter.toJson(this);
     }
@@ -388,4 +395,8 @@ public class Message {
     }
 
     public OtherFields getOtherFields() {return otherFields;}
+
+    public int getCurrentDeckSize(){
+        return this.CurrentDeckSize;
+    }
 }
