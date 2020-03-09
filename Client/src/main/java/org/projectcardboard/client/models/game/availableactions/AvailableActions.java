@@ -270,8 +270,8 @@ public class AvailableActions {
         if (player.getPlayerNumber() != GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().getPlayerNumber()) {
             return false;
         }
+        // ToDo make sure this echoes the logic found in player.java (i.e. should not be able to replace when deck is empty).
         return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn();
-        // ToDo Other checks to see if replace is valid (e.g. false if already replaced this turn).
     }
 
     public void setNumTimesReplacedThisTurn(int number){
