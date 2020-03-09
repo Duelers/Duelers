@@ -41,10 +41,10 @@ public class ProfileGrid extends GridPane {
             ) {
                 throw new FileNotFoundException();
             }
-            defaultProfilePic = new Image(new FileInputStream(DEFAULT_PROFILE_PIC_URL));
-            generalIcon = new Image(new FileInputStream(GENERAL_ICON_URL));
-            goldIcon = new Image(new FileInputStream(GOLD_ICON_URL));
-            historyIcon = new Image(new FileInputStream(HISTORY_ICON_URL));
+            defaultProfilePic = new Image(profilePicR);
+            generalIcon = new Image(generalIconR);
+            goldIcon = new Image(goldIconR);
+            historyIcon = new Image(historyIconR);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
