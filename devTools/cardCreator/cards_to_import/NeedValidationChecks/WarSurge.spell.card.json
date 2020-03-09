@@ -6,7 +6,7 @@
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "give_friendly_minions_plus1plus1",
+      "spellId": "give_friendly_minions_1_1",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 1,
@@ -24,9 +24,9 @@
         "addSpell": false,
         "killsTarget": false,
         "isForGladiator": false,
-        "durable": false,
+        "durable": true,
         "removeBuffs": 0,
-        "duration": 2147483647,
+        "duration": 1,
         "delay": 0
       },
       "target": {
