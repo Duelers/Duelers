@@ -1,7 +1,6 @@
-package org.projectcardboard;
+package org.projectcardboard.client.controller;
 
 import org.junit.Test;
-import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
 
 public class SoundEffectPlayerTest {

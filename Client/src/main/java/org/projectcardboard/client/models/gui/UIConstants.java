@@ -2,6 +2,7 @@ package org.projectcardboard.client.models.gui;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
@@ -38,9 +39,14 @@ public class UIConstants {
     public static Cursor SELECT_CURSOR;
     
     static{
-    	try {
-            UIConstants.DEFAULT_CURSOR = new ImageCursor(new Image(new FileInputStream("Client/src/main/resources/cursors/default.png")));
-            UIConstants.SELECT_CURSOR = new ImageCursor(new Image(new FileInputStream("Client/src/main/resources/cursors/select.png")));
+        try {
+            InputStream defaultCursorResource = UIConstants.class.getResourceAsStream("/cursors/default.png");
+            if (defaultCursorResource == null) { throw new FileNotFoundException(); }
+            UIConstants.DEFAULT_CURSOR = new ImageCursor(new Image(defaultCursorResource));
+
+            InputStream selectCursorResource = UIConstants.class.getResourceAsStream("/cursors/select.png");
+            if (selectCursorResource == null) { throw new FileNotFoundException(); }
+            UIConstants.SELECT_CURSOR = new ImageCursor(new Image(selectCursorResource));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

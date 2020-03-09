@@ -1,4 +1,4 @@
-package org.projectcardboard;
+package org.projectcardboard.client.models.localisation;
 
 import org.junit.Assert;
 import org.junit.Test;
