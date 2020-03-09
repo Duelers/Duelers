@@ -16,6 +16,7 @@ public enum MessageType {
     INVITATION,
     ADD_TO_ORIGINALS,
     ONLINE_GAMES_COPY,
+    CURRENT_DECK_SIZE,
     //SENDER:CLIENT
     GET_DATA,
     MOVE_TROOP,

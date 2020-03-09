@@ -276,6 +276,12 @@ public class GameCenter extends Thread {//synchronize
         GameServer.getInstance().sendGameUpdateMessage(game);
     }
 
+    public void getCurrentDeckSize(Message message) throws LogicException{
+        DataCenter.getInstance().loginCheck(message);
+        Game game = getGame(message.getSender());
+        game.updateCurrentDeckSize();
+    }
+
     public void attack(Message message) throws LogicException {
         Game game = getGame(message.getSender());
         game.attack(

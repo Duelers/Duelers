@@ -184,6 +184,11 @@ public abstract class Game {
         GameServer.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard());
     }
 
+    public void updateCurrentDeckSize(){
+        int currentDeckSize = getCurrentTurnPlayer().getDeck().getOthers().size();
+        GameServer.getInstance().sendUpdateCurrentDeckSizeMessage(this, currentDeckSize);
+    }
+
     public void replaceCard(String cardID) throws LogicException {
         if (getCurrentTurnPlayer().getCanReplaceCard()) {
             ServerCard removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);

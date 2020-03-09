@@ -139,6 +139,9 @@ public class GameServer {
                 case SELL_CARD:
                     DataCenter.getInstance().sellCard(message);
                     break;
+                case CURRENT_DECK_SIZE:
+                    GameCenter.getInstance().getCurrentDeckSize(message);
+                    break;
                 case CREATE_DECK:
                     DataCenter.getInstance().createDeck(message);
                     break;
@@ -401,6 +404,17 @@ public class GameServer {
         if (clientName == null)
             return;
         addToSendingMessages(Message.makeAccountCopyMessage(clientName, account));
+    }
+
+    public void sendUpdateCurrentDeckSizeMessage(Game game, int currentDeckSize){
+        for(Account account : game.getObservers()){
+            String clientName = DataCenter.getInstance().getAccounts().get(account);
+            if(clientName == null){
+                serverPrint("Error!: Client not found");
+                continue;
+            }
+            addToSendingMessages(Message.makeUpdateCurrentDeckSizeMessage(clientName, currentDeckSize));
+        }
     }
 
 }
