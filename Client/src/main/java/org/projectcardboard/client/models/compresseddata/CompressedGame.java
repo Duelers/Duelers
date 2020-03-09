@@ -137,4 +137,8 @@ public class CompressedGame {
         }
     }
 
+    public void updateCurrentDeckSize(int currentDeckSize) {
+        CompressedPlayer player = getCurrentTurnPlayer();
+        player.setCurrentDeckSize(currentDeckSize);
+    }
 }
