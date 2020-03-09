@@ -30,7 +30,7 @@ public class LoginMenu extends Show {
             root.getChildren().addAll(sceneContents);
 
 
-            String versionInfo = getVersionInfo();
+            String versionInfo = getClientVersionInfo();
             if (versionInfo != null) {
                 String version = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.VERSION});
                 DefaultLabel versionLabel = new DefaultLabel(String.format("%s: %s", version, versionInfo), Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.WHITE);
@@ -42,16 +42,16 @@ public class LoginMenu extends Show {
         }
     }
 
-    public String getVersionInfo() throws IOException {
-        final String versionPath = "/version.txt";
+    public String getClientVersionInfo() throws IOException {
+        final String versionPath = "/clientVersion.txt";
 
          InputStream file = this.getClass().getResourceAsStream(versionPath);
          Scanner scanner = new Scanner(file);
-         String versionInfo = scanner.nextLine();
+         String clientVersionInfo = scanner.nextLine();
          scanner.close();
          file.close();
 
-         return versionInfo;
+         return clientVersionInfo;
     }
 
     @Override
