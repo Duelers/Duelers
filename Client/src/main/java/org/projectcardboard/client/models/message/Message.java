@@ -299,6 +299,12 @@ public class Message {
         return message;
     }
 
+    public static Message makeNewGetDeckSizeMessage(String serverName) {
+        Message message = new Message(serverName);
+        message.messageType = MessageType.DECK_SIZE;
+        return message;
+    }
+
     public String toJson() {
         return JsonConverter.toJson(this);
     }

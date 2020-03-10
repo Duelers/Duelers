@@ -51,6 +51,7 @@ public class HandBox implements PropertyChangeListener {
     HandBox(BattleScene battleScene, CompressedPlayer player) throws Exception {
         this.battleScene = battleScene;
         this.player = player;
+        this.battleScene.getController().getDeckSize();
         handGroup = new Group();
         handGroup.setLayoutX(Constants.HAND_X);
         handGroup.setLayoutY(Constants.HAND_Y);

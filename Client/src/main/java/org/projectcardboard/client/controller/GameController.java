@@ -145,6 +145,10 @@ public class GameController implements GameActions {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeNewReplaceCardMessage(SERVER_NAME, cardID));
     }
 
+    public void getDeckSize(){
+        Client.getInstance().addToSendingMessagesAndSend(Message.makeNewGetDeckSizeMessage(SERVER_NAME));
+    }
+
     public void forceFinish() {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeForceFinishGameMessage(SERVER_NAME));
     }
