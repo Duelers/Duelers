@@ -187,6 +187,8 @@ public class Client {
             case SET_NEW_NEXT_CARD:
                 GameController.getInstance().getCurrentGame().moveCardToNext( message.getCard() );
                 break;
+            case DECK_SIZE:
+                GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().setDeckSize(message.getDeckSize());
             case GAME_UPDATE:
                 GameUpdateMessage gameUpdateMessage = message.getGameUpdateMessage();
                 GameController.getInstance().getCurrentGame().gameUpdate(

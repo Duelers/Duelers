@@ -30,6 +30,7 @@ public class Message {
     private ClientIDMessage clientIDMessage;
     private GameAnimations gameAnimations;
     private OnlineGame[] onlineGames;
+    private int deckSize;
     //SENDER:CLIENT
     private String cardName;
     private ExportedDeck exportedDeck;
@@ -394,4 +395,8 @@ public class Message {
     }
 
     public OtherFields getOtherFields() {return otherFields;}
+
+    public int getDeckSize() {
+        return deckSize;
+    }
 }

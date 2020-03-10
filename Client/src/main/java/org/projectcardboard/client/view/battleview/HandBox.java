@@ -92,13 +92,19 @@ public class HandBox implements PropertyChangeListener {
         replaceIcon.setImage(nextBack);
         boolean canReplace = GameController.getInstance().getAvailableActions().canReplace(player);
         replaceIcon.setEffect(canReplace ? null: DISABLE_BUTTON_EFFECT);
+        Text replaceText = new Text("");
+        replaceText.setFont(Constants.AP_FONT);
+        replaceText.setStyle("-fx-text-base-color: white; -fx-font-size: 15px;");
+        replaceText.setFill(Color.WHITE);
+        int deckSize = player.getDeckSize() + 1;
         if(canReplace){
-            Text replaceText = new Text("Replace Available");
-            replaceText.setFont(Constants.AP_FONT);
-            replaceText.setStyle("-fx-text-base-color: white; -fx-font-size: 18px;");
-            replaceText.setFill(Color.WHITE);
-            next.getChildren().add(replaceText);
+            replaceText.setText("Replace Available\nCards Left: " + deckSize);//+1 for nextCard card
+
         }
+        else{
+            replaceText.setText("Cards Left: " + deckSize);
+        }
+        next.getChildren().add(replaceText);
         next.setOnMouseClicked(mouseEvent -> replaceSelectedCard());
     }
 
@@ -196,6 +202,7 @@ public class HandBox implements PropertyChangeListener {
             endTurnButton.setOnMouseClicked(mouseEvent -> {
                 if (battleScene.isMyTurn()) {
                     battleScene.getController().endTurn();
+                    updateNext();
                 }
             });
             this.handGroup.getChildren().add(endTurnButton);
@@ -276,17 +283,22 @@ public class HandBox implements PropertyChangeListener {
             case "next":
             case "hand":
                 Platform.runLater(this::resetSelection);
+                updateNext();
+                this.battleScene.getController().getDeckSize();
                 break;
             case "turn":
                 if (((int) evt.getNewValue() + 1) % 2 == battleScene.getMyPlayerNumber() % 2) {
                     Platform.runLater(() -> {
                         endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);
                         endTurnLabel.setText("ENEMY TURN");
+                        updateNext();
+                        this.battleScene.getController().getDeckSize();
 
                     });
                 } else {
                     Platform.runLater(() -> {
                         updateNext();
+                        this.battleScene.getController().getDeckSize();
                         endTurnButton.setEffect(null);
                         endTurnLabel.setText("END TURN");
                     });
