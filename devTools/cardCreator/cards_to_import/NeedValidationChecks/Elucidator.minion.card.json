@@ -4,7 +4,8 @@
 	"cardId": "Elucidator",
 	"spriteName": "f5_support",
 	"type": "MINION",
-	"spells": [{
+	"spells": [
+		{
 			"spellId": "deal_4_your_general",
 			"action": {
 				"hpChange": -4,
@@ -36,7 +37,8 @@
 			"availabilityType": {
 				"onPut": true
 			}
-	}],
+		}
+	],
 	"defaultAp": 5,
 	"defaultHp": 4,
 	"manaCost": 4,

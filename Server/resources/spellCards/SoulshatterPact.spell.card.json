@@ -1,16 +1,16 @@
 {
-  "name": "War Surge",
-  "description": "Give all friendly minions +1/+1.",
-  "cardId": "WarSurge",
-  "spriteName": "icon_f1_warsurge",
+  "name": "Soulshatter Pact",
+  "description": "Give all friendly minions +2 Attack this turn.",
+  "cardId": "SoulshatterPact",
+  "spriteName": "icon_f4_soulshatterpact",
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "give_friendly_minions_plus1plus1",
+      "spellId": "give_friendly_minions_2attack_this_turn",
       "action": {
         "enemyHitChanges": 0,
-        "apChange": 1,
-        "hpChange": 1,
+        "apChange": 2,
+        "hpChange": 0,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -26,7 +26,7 @@
         "isForGladiator": false,
         "durable": false,
         "removeBuffs": 0,
-        "duration": 2147483647,
+        "duration": 1,
         "delay": 0
       },
       "target": {
