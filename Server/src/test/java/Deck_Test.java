@@ -13,6 +13,9 @@ import java.util.ArrayList;
 
 public class Deck_Test {
 
+    int minimumDeckSize = 20;
+    int maximumDeckSize = 20;
+
     private ServerCard makeMinionCard() {
         return new ServerCard(" ", " ", " ", " ", CardType.MINION, new ArrayList<>(), 1, 1, 1, 1, AttackType.MELEE, 1);
     }
@@ -99,7 +102,7 @@ public class Deck_Test {
         Deck sut = new Deck("sut");
         ServerCard general = makeGeneralCard();
         sut.addCard(general);
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < maximumDeckSize; i++) {
             ServerCard minion = makeMinionCard();
             sut.addCard(minion);
         }
@@ -112,8 +115,10 @@ public class Deck_Test {
 
     @Test
     public void isValid_noGeneral_isFalse() throws LogicException {
+
+
         Deck sut = new Deck("sut");
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < maximumDeckSize; i++) {
             ServerCard minion = makeMinionCard();
             sut.addCard(minion);
         }
@@ -128,7 +133,7 @@ public class Deck_Test {
         Deck sut = new Deck("sut");
         ServerCard general = makeGeneralCard();
         sut.addCard(general);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < minimumDeckSize - 1; i++) {
             ServerCard minion = makeMinionCard();
             sut.addCard(minion);
         }
