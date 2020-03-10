@@ -177,6 +177,51 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>1.7.25</version>
+                <executions>
+                    <execution>
+                        <id>l4j-cli</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>console</headerType>
+                            <outfile>target/CardBoard.exe</outfile>
+                            <jar>target/${project.build.finalName}-shaded.jar</jar>
+                            <classPath>
+                                <mainClass>org.projectcardboard.client.Launcher</mainClass>
+                            </classPath>
+                            <icon>src/main/resources/icon.ico</icon>
+                            <jre>
+                                <minVersion>11</minVersion>
+                            </jre>
+                            <versionInfo>
+                                <fileVersion>1.0.0.0</fileVersion>
+                                <txtFileVersion>${project.version}</txtFileVersion>
+                                <fileDescription>${project.name}</fileDescription>
+                                <copyright>2020 Project CardBoard</copyright>
+                                <productVersion>1.0.0.0</productVersion>
+                                <txtProductVersion>1.0.0.0</txtProductVersion>
+                                <productName>${project.name}</productName>
+                                <companyName>Project CardBoard</companyName>
+                                <internalName>Project CardBoard</internalName>
+                                <originalFilename>CardBoard.exe</originalFilename>
+                            </versionInfo>
+                            <messages>
+                                <startupErr>An error occurred while starting the application.</startupErr>
+                                <bundledJreErr>This application was configured to use a bundled Java Runtime Environment but the runtime is missing or corrupted.</bundledJreErr>
+                                <jreVersionErr>This application requires a Java Runtime Environment</jreVersionErr>
+                                <launcherErr>The registry refers to a nonexistent Java Runtime Environment installation or the runtime is corrupted.</launcherErr>
+                                <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
+                            </messages>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
