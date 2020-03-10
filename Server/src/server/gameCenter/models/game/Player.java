@@ -217,7 +217,7 @@ public class Player {
     }
 
     public boolean getCanReplaceCard() {
-        return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn() && !deck.getOthers().isEmpty();
+        return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn() && !deck.getCards().isEmpty();
     }
 
     public void setNumTimesReplacedThisTurn(int number){
