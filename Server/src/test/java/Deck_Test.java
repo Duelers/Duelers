@@ -25,11 +25,9 @@ public class Deck_Test {
     public void hasCard_whenMissingGeneral_NotFindGeneral() {
         Deck sut = new Deck("sut");
         ServerCard general = makeGeneralCard();
-
         boolean actualHasCard = sut.hasCard(general.getCardId());
-        boolean expectedHasCard = false;
 
-        Assert.assertEquals(expectedHasCard, actualHasCard);
+        Assert.assertFalse(actualHasCard);
     }
 
     @Test
@@ -39,9 +37,8 @@ public class Deck_Test {
         sut.addCard(minion);
 
         boolean actualHasCard = sut.hasCard(minion.getCardId());
-        boolean expectedHasCard = true;
 
-        Assert.assertEquals(expectedHasCard, actualHasCard);
+        Assert.assertTrue(actualHasCard);
     }
 
     @Test
@@ -51,9 +48,8 @@ public class Deck_Test {
         sut.addCard(minion);
 
         boolean actualHasCard = sut.hasCard(minion.getCardId());
-        boolean expectedHasCard = true;
 
-        Assert.assertEquals(expectedHasCard, actualHasCard);
+        Assert.assertTrue(actualHasCard);
     }
 
     @Test
@@ -64,9 +60,8 @@ public class Deck_Test {
         sut.addCard(minion);
 
         boolean actualHasCard = sut.hasCard(minion.getCardId());
-        boolean expectedHasCard = true;
 
-        Assert.assertEquals(expectedHasCard, actualHasCard);
+        Assert.assertTrue(actualHasCard);
     }
 
     @Test(expected = ClientException.class)
@@ -88,13 +83,12 @@ public class Deck_Test {
         sut.removeCard(minion);
 
         boolean actualHasCard = sut.hasCard(minion.getCardId());
-        boolean expectedHasCard = false;
 
-        Assert.assertEquals(expectedHasCard, actualHasCard);
+        Assert.assertFalse(actualHasCard);
     }
 
     @Test(expected = ClientException.class)
-    public void removeCard_whenMissinCard_throwClientError() throws LogicException {
+    public void removeCard_whenMissingCard_throwClientError() throws LogicException {
         Deck sut = new Deck("sut");
         ServerCard minion = makeMinionCard();
         sut.removeCard(minion);
@@ -111,9 +105,8 @@ public class Deck_Test {
         }
 
         boolean actualValid = sut.isValid();
-        boolean expectedValid = true;
 
-        Assert.assertEquals(expectedValid, actualValid);
+        Assert.assertTrue(actualValid);
     }
 
 
@@ -126,9 +119,8 @@ public class Deck_Test {
         }
 
         boolean actualValid = sut.isValid();
-        boolean expectedValid = false;
 
-        Assert.assertEquals(expectedValid, actualValid);
+        Assert.assertFalse(actualValid);
     }
 
     @Test
@@ -142,9 +134,8 @@ public class Deck_Test {
         }
 
         boolean actualValid = sut.isValid();
-        boolean expectedValid = false;
 
-        Assert.assertEquals(expectedValid, actualValid);
+        Assert.assertFalse(actualValid);
     }
 
 }

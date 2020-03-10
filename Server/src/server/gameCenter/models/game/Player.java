@@ -93,9 +93,9 @@ public class Player {
     }
 
     private void setNextCard() {
-        if (!deck.getOthers().isEmpty()) {
-            int index = new Random().nextInt(deck.getOthers().size());
-            nextCard = deck.getOthers().get(index);
+        if (!deck.getCards().isEmpty()) {
+            int index = new Random().nextInt(deck.getCards().size());
+            nextCard = deck.getCards().get(index);
             try {
                 deck.removeCard(nextCard);
             } catch (ClientException ignored) {
@@ -111,7 +111,7 @@ public class Player {
     }
 
     boolean addNextCardToHand() {
-        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getOthers().isEmpty() || nextCard != null)) {
+        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getCards().isEmpty() || nextCard != null)) {
             hand.add(nextCard);
             setNextCard();
             return true;
