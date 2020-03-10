@@ -2,6 +2,7 @@ package org.projectcardboard.client.models.card;
 
 
 import org.projectcardboard.client.controller.Client;
+import shared.models.card.BaseDeck;
 import shared.models.card.Card;
 import shared.models.card.ICard;
 import org.projectcardboard.client.models.account.Collection;
@@ -10,16 +11,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Deck {
-    private final String deckName;
-    private final Card hero;
-    private final ArrayList<Card> cards = new ArrayList<>();
+public class Deck extends BaseDeck {
 
     public Deck(TempDeck tempDeck, Collection collection) {
-        this.deckName = tempDeck.getDeckName();
+        super(tempDeck.getDeckName());
         this.hero = collection.findHero(tempDeck.getHeroId());
         for (String cardId : tempDeck.getCardIds()) {
-            cards.add(collection.findOthers(cardId));
+            this.cards.add(collection.findOthers(cardId));
         }
     }
 

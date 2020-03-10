@@ -4,44 +4,43 @@ import server.GameServer;
 import server.dataCenter.models.account.Collection;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.card.BaseDeck;
+import shared.models.card.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Deck {
-    private String deckName;
+public class Deck extends BaseDeck {
     private ServerCard hero;
     private List<ServerCard> cards = new ArrayList<>();
 
     public Deck(String deckName, ServerCard hero, ArrayList<ServerCard> cards) {
-        this.deckName = deckName;
-        this.hero = hero;
-        this.cards = cards;
+        super(deckName, hero, cards);
     }
 
     public Deck(Deck deck) {
-        this.deckName = deck.deckName;
+        super(deck.deckName);
         if (deck.hero != null) {
             this.hero = new ServerCard(deck.hero);
         }
         for (ServerCard card : deck.cards) {
-            cards.add(new ServerCard(card));
+            this.cards.add(new ServerCard(card));
         }
     }
 
     public Deck(TempDeck tempDeck, Collection collection) {
-        this.deckName = tempDeck.getDeckName();
+        super(tempDeck.getDeckName());
         if (collection == null)
             return;
         this.hero = collection.getCard(tempDeck.getHeroId());
         for (String cardId : tempDeck.getCardIds()) {
-            cards.add(collection.getCard(cardId));
+            this.cards.add(collection.getCard(cardId));
         }
     }
 
     public Deck(String deckName) {
-        this.deckName = deckName;
+        super(deckName);
     }
 
     public boolean hasCard(String cardId) {
