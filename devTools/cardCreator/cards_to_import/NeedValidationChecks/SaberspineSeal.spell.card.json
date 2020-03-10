@@ -28,7 +28,7 @@
         },
         "owner": {
           "own": true,
-          "enemy": false
+          "enemy": true
         },
         "cardType": {
           "cell": false,
