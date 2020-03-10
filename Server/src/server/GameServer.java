@@ -157,6 +157,9 @@ public class GameServer {
                 case SELECT_DECK:
                     DataCenter.getInstance().selectDeck(message);
                     break;
+                case DECK_SIZE:
+                    GameCenter.getInstance().getDeckSize(message);
+                    break;
                 case MULTIPLAYER_GAME_REQUEST:
                     GameCenter.getInstance().getMultiPlayerGameRequest(message);
                     addToSendingMessages(Message.makeDoneMessage(message.getSender()));
@@ -403,4 +406,14 @@ public class GameServer {
         addToSendingMessages(Message.makeAccountCopyMessage(clientName, account));
     }
 
+    public void sendDeckSizeMessage(Game game, int deckSize) {
+        for (Account account : game.getObservers()) {
+            String clientName = DataCenter.getInstance().getAccounts().get(account);
+            if (clientName == null) {
+                serverPrint("*Error: Client not found");
+                continue;
+            }
+            addToSendingMessages(Message.makeDeckSizeMessage(clientName, deckSize));
+        }
+    }
 }

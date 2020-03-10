@@ -49,6 +49,7 @@ public class Message {
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
     private ChangeAccountType changeAccountType;
+    private int deckSize;
 
 
     private Message(String receiver) {
@@ -208,6 +209,12 @@ public class Message {
         Message message = new Message(receiver);
         message.clientIDMessage = new ClientIDMessage(clientID);
         message.messageType = MessageType.CLIENT_ID;
+        return message;
+    }
+
+    public static Message makeDeckSizeMessage(String receiver, int deckSize) {
+        Message message = new Message(receiver);
+        message.deckSize = deckSize;
         return message;
     }
 

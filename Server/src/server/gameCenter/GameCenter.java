@@ -304,6 +304,14 @@ public class GameCenter extends Thread {//synchronize
         game.replaceCard(message.getCardID());
     }
 
+    public void getDeckSize(Message message) throws LogicException {
+        DataCenter.getInstance().loginCheck(message);
+        Game game = getGame(message.getSender());
+        int deckSize = game.getCurrentTurnPlayer().getDeck().getOthers().size();
+        GameServer.getInstance().sendDeckSizeMessage(game, deckSize);
+
+    }
+
     public void endTurn(Message message) throws LogicException {
         Game game = getGame(message.getSender());
         game.changeTurn(DataCenter.getInstance().getClients().get(message.getSender()).getUsername(), false);
