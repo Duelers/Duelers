@@ -2,10 +2,8 @@ package org.projectcardboard.client.view.battleview;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.FileInputStream;
 import java.util.List;
 
-import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import org.projectcardboard.client.controller.GameController;

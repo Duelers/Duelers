@@ -14,7 +14,6 @@ import shared.models.card.spell.AvailabilityType;
 import shared.models.game.map.Cell;
 import org.projectcardboard.client.view.Show;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -28,7 +27,7 @@ public class BattleScene extends Show {
     private static final Media backgroundMusic = new Media(
             BattleScene.class.getResource("/music/music_battlemap_vetruv.m4a").toString()
     );
-    private static final Map<SpellType, String> spellSpriteNames = new HashMap();
+    private static final Map<SpellType, String> spellSpriteNames = new HashMap<>();
     private final GameActions controller;
     private final CompressedGame game;
     private final MapBox mapBox;

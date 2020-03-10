@@ -165,6 +165,7 @@ public class TroopAnimation extends Transition {
             return;
         }
         //has reached to last frame
+        // TODO: what about RUN?
         nextIndex = 0;
         switch (action) {
             case HIT:

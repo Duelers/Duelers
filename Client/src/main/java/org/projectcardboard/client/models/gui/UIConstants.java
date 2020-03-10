@@ -1,6 +1,5 @@
 package org.projectcardboard.client.models.gui;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 

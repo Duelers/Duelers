@@ -1,7 +1,6 @@
 package org.projectcardboard.client.view.battleview;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -127,6 +126,7 @@ public class CardAnimation extends Transition {
             return;
         }
         //has reached to last frame
+        // TODO: what about STOPPED?
         switch (action) {
             case ACTIVE:
                 group.getChildren().remove(imageView);

@@ -147,8 +147,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = jfc.getSelectedFile();
             System.out.println(selectedFile.getAbsolutePath());
-            try {
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)));
+            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)))) {
                 return bufferedReader.readLine();
             } catch (IOException e) {
                 e.printStackTrace();

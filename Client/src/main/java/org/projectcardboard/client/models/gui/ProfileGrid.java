@@ -6,7 +6,6 @@ import org.projectcardboard.client.models.account.Account;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
