@@ -3,6 +3,7 @@ package org.projectcardboard.client.models.gui;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -29,12 +30,12 @@ public class ImageLoader {
         return menuView;
     }
 
-    public static Image load(String url) {
-        try {
-            return new Image(new FileInputStream(url));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
+    public static Image load(String url){
+        InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
+        System.out.println(url);
+        if (imageResource == null) {
+            return null; //todo Instead of null, maybe return some placeholder image ?
         }
+        return new Image(imageResource);
     }
 }
