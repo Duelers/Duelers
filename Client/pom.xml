@@ -189,7 +189,7 @@
                             <goal>launch4j</goal>
                         </goals>
                         <configuration>
-                            <headerType>console</headerType>
+                            <headerType>gui</headerType>
                             <outfile>target/CardBoard.exe</outfile>
                             <jar>target/${project.build.finalName}-shaded.jar</jar>
                             <classPath>
