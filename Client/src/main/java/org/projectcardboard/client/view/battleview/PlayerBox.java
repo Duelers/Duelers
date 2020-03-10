@@ -119,10 +119,10 @@ public class PlayerBox implements PropertyChangeListener {
     private void addHeroPortraits() throws FileNotFoundException {
 
         String player1HeroName = player1.getHero().getCard().getName();
-        Image player1Profile = new Image(new FileInputStream(MapGeneralToPortrait().getOrDefault(player1HeroName, "/photo/general_portrait_image_hex_rook@2x.png")));
+        Image player1Profile = new Image(ImageLoader.class.getResourceAsStream(MapGeneralToPortrait().getOrDefault(player1HeroName, "/photo/general_portrait_image_hex_rook@2x.png")));
 
         String player2HeroName = player2.getHero().getCard().getName();
-        Image player2Profile = new Image(new FileInputStream(MapGeneralToPortrait().getOrDefault(player2HeroName, "/photo/general_portrait_image_hex_calibero@2x.png")));
+        Image player2Profile = new Image(ImageLoader.class.getResourceAsStream(MapGeneralToPortrait().getOrDefault(player2HeroName, "/photo/general_portrait_image_hex_calibero@2x.png")));
 
         player1Image = ImageLoader.makeImageView(player1Profile,
                 player1Profile.getWidth() * SCALE * 0.3,
