@@ -175,7 +175,7 @@ public class HandBox implements PropertyChangeListener {
                 cards[i].setEffect(nullOrGrayscale);
             }
         }
-        //battleScene.getController().getDeckSize();
+        battleScene.getController().getDeckSize();
         //updateNext();
     }
 
@@ -203,8 +203,9 @@ public class HandBox implements PropertyChangeListener {
             });
             endTurnButton.setOnMouseClicked(mouseEvent -> {
                 if (battleScene.isMyTurn()) {
+                    battleScene.getController().getDeckSize();
                     battleScene.getController().endTurn();
-                    //updateNext();
+                    updateNext();
                 }
             });
             this.handGroup.getChildren().add(endTurnButton);
@@ -293,7 +294,7 @@ public class HandBox implements PropertyChangeListener {
                     Platform.runLater(() -> {
                         endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);
                         endTurnLabel.setText("ENEMY TURN");
-                        //updateNext();
+                        updateNext();
                         this.battleScene.getController().getDeckSize();
 
                     });
@@ -319,6 +320,7 @@ public class HandBox implements PropertyChangeListener {
             battleScene.getMapBox().resetSelection();
         }
         updateCards();
+        updateNext();
     }
 
     Group getHandGroup() {
@@ -335,6 +337,7 @@ public class HandBox implements PropertyChangeListener {
         if (player != null) {
             selectedCard = -1;
             updateCards();
+            updateNext();
         }
     }
 
