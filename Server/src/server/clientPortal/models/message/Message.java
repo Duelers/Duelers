@@ -214,6 +214,7 @@ public class Message {
 
     public static Message makeDeckSizeMessage(String receiver, int deckSize) {
         Message message = new Message(receiver);
+        message.messageType = MessageType.DECK_SIZE;
         message.deckSize = deckSize;
         return message;
     }

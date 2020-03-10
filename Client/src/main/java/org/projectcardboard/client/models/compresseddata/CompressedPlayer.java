@@ -58,6 +58,15 @@ public class CompressedPlayer {
         }
     }
 
+    public void replaceSelectedCard(int selectedCardIndex) {
+        hand.set(selectedCardIndex, nextCard);
+        removeCardFromNext();
+        if (support == null) {
+            support = new PropertyChangeSupport(this);
+        }
+        support.firePropertyChange("replace", null, null);
+    }
+
     void addCardToGraveYard(Card card) {
         graveyard.add(card);
     }
@@ -153,6 +162,7 @@ public class CompressedPlayer {
     }
 
     public void setDeckSize(int deckSize) {
+        System.out.println("value of deckSize after receive: " + deckSize);
         this.deckSize = deckSize;
     }
 

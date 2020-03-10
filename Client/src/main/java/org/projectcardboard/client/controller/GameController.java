@@ -166,6 +166,11 @@ public class GameController implements GameActions {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeStopShowGameMessage(SERVER_NAME, onlineGame));
     }
 
+    @Override
+    public void setNewNextCard() {
+        Client.getInstance().addToSendingMessagesAndSend(Message.makeSetNewNextCardMessage(SERVER_NAME));
+    }
+
     public void showAnimation(GameAnimations gameAnimations) {
         new Thread(() -> {
             gameAnimations.getSpellAnimations().forEach(

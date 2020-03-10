@@ -397,6 +397,6 @@ public class Message {
     public OtherFields getOtherFields() {return otherFields;}
 
     public int getDeckSize() {
-        return deckSize;
+        return this.deckSize;
     }
 }
