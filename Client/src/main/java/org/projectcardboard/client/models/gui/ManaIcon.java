@@ -19,7 +19,7 @@ class ManaIcon extends StackPane {
 
     static {
         try {
-            InputStream manaIconR = ManaIcon.class.getResourceAsStream("/ui/menu_item.png");
+            InputStream manaIconR = ManaIcon.class.getResourceAsStream("/ui/icon_mana@2x.png");
             if (manaIconR == null) {
                 throw new FileNotFoundException();
             }
