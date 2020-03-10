@@ -48,7 +48,7 @@ public class CompressedPlayer {
 
     public void addCardToNext(Card card) {
         if (nextCard != null)
-            System.out.println("Compressed Player, addCardToNext, card is null");
+            System.out.println("CompressedPlayer. Attempting to set nextCard failed. Expected current nextCard value to be null");
         else {
             nextCard = card;
             if (support == null) {
