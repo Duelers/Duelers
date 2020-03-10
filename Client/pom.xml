@@ -198,6 +198,9 @@
                             <icon>src/main/resources/icon.ico</icon>
                             <jre>
                                 <minVersion>11</minVersion>
+                                <path>${java.home}</path>
+                                <bundledJre64Bit>true</bundledJre64Bit>
+                                <jdkPreference>preferJre</jdkPreference>
                             </jre>
                             <versionInfo>
                                 <fileVersion>1.0.0.0</fileVersion>
