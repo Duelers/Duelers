@@ -56,15 +56,18 @@ public abstract class Game {
     private boolean isFinished;
     private final ArrayList<Account> observers = new ArrayList<>();
 
+    private boolean versusAi = false;
+
     private final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
     private Runnable task;
     private ScheduledFuture<?> future;
 
-    protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType) {
+    protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType, boolean versusAi) {
         this.gameType = gameType;
         this.gameMap = gameMap;
         this.playerOne = new Player(account.getMainDeck(), account.getUsername(), 1);
         this.playerTwo = new Player(secondDeck, userName, 2);
+        this.versusAi = versusAi;
     }
 
     public int getTurnNumber() {
@@ -146,7 +149,7 @@ public abstract class Game {
 
                 startTurnTimeLimit();
 
-                if (getCurrentTurnPlayer().getUserName().equals("AI")) {
+                if (versusAi && getCurrentTurnPlayer().getUserName().equals("AI")) { // Todo needs improvement
                     playCurrentTurnAtRandom();
                 }
             } else {
@@ -416,8 +419,10 @@ public abstract class Game {
             applyOnPutSpells(card, gameMap.getCell(cell));
 
             // Announce in GameChat most recently played card.
+            String receiver = versusAi ? getCurrentTurnPlayer().getUserName() : getOtherTurnPlayer().getUserName();
+            
             ChatCenter.getInstance().sendMessage(
-                    DataCenter.getInstance().getClientName(player.getUserName()),
+                    DataCenter.getInstance().getClientName(receiver),
                     getCurrentTurnPlayer().getUserName(),
                     getOtherTurnPlayer().getUserName(),
                     "I play: " + card.getName() + "!");
