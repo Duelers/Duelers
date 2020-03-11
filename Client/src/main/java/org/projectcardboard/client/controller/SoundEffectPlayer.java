@@ -28,6 +28,10 @@ public class SoundEffectPlayer {
     }
 
     public void playSound(SoundName soundName) {
+        if(soundName == null){
+            System.out.println("soundName is null");
+            return;
+        }
         try {
             Media media = mediaFiles.get(soundName);
             MediaPlayer mediaPlayer = new MediaPlayer(media);
