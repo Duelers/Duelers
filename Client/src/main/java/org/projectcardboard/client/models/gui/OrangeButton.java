@@ -1,5 +1,6 @@
 package org.projectcardboard.client.models.gui;
 
+import javafx.scene.Cursor;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -27,7 +28,7 @@ public class OrangeButton extends Button {
     );
     private static final double WIDTH = 400 * SCALE;
 
-    public OrangeButton(String text, EventHandler<? super MouseEvent> clickEvent, SoundName soundName) {
+    public OrangeButton(String text, EventHandler<? super MouseEvent> clickEvent, SoundName soundName, boolean showWaitCursor) {
         super(text);
         setBackground(DEFAULT_BACKGROUND);
         setPadding(new Insets(UIConstants.DEFAULT_SPACING * 3));
@@ -49,6 +50,9 @@ public class OrangeButton extends Button {
         setOnMouseClicked(event -> {
             SoundEffectPlayer.getInstance().playSound(soundName);
             clickEvent.handle(event);
+            if(showWaitCursor){
+                setCursor(Cursor.WAIT);
+            }
         });
     }
 }

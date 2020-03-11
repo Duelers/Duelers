@@ -24,7 +24,6 @@ class CardBackground extends StackPane {
         try {
             InputStream troopBackgroundR = CardBackground.class.getResourceAsStream("/card_backgrounds/troop.png");
             InputStream spellBackgroundR = CardBackground.class.getResourceAsStream("/card_backgrounds/spell.png");
-            InputStream itemBackgroundR = CardBackground.class.getResourceAsStream("/card_backgrounds/item.png");
             InputStream glowR = CardBackground.class.getResourceAsStream("/card_backgrounds/glow.png");
             if (
                 troopBackgroundR == null ||
@@ -36,7 +35,6 @@ class CardBackground extends StackPane {
             }
             Image troopBackground = new Image(troopBackgroundR);
             Image spellBackground = new Image(spellBackgroundR);
-            Image itemBackground = new Image(itemBackgroundR);
             glow = new Image(glowR);
 
             background.put(CardType.HERO, troopBackground);

@@ -86,7 +86,7 @@ public class DeckBox extends GridPane {
         ImageView modify = ImageLoader.makeImageView(modifyIcon, ICON_SIZE, ICON_SIZE);
         ImageView remove = ImageLoader.makeImageView(removeIcon, ICON_SIZE, ICON_SIZE);
         ImageView export = ImageLoader.makeImageView(saveIcon, ICON_SIZE, ICON_SIZE);
-        DefaultLabel cardsNumber = new DefaultLabel(deck.getOthers().size() + " Cards", DETAILS_FONT, Color.WHITE);
+        DefaultLabel cardsNumber = new DefaultLabel(deck.getCards().size() + " Cards", DETAILS_FONT, Color.WHITE);
         DefaultLabel heroNumber = new DefaultLabel((deck.getHero() != null ? "1" : "0") + " Hero", DETAILS_FONT,
                 Color.WHITE);
 
