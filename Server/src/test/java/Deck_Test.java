@@ -25,7 +25,7 @@ public class Deck_Test {
     public void hasCard_whenMissingGeneral_NotFindGeneral() {
         Deck sut = new Deck("sut");
         ServerCard general = makeGeneralCard();
-        boolean actualHasCard = sut.hasCard(general.getCardId());
+        boolean actualHasCard = sut.hasCardOrHeroWithId(general.getCardId());
 
         Assert.assertFalse(actualHasCard);
     }
@@ -36,7 +36,7 @@ public class Deck_Test {
         ServerCard minion = makeMinionCard();
         sut.addCard(minion);
 
-        boolean actualHasCard = sut.hasCard(minion.getCardId());
+        boolean actualHasCard = sut.hasCardOrHeroWithId(minion.getCardId());
 
         Assert.assertTrue(actualHasCard);
     }
@@ -47,7 +47,7 @@ public class Deck_Test {
         ServerCard minion = makeGeneralCard();
         sut.addCard(minion);
 
-        boolean actualHasCard = sut.hasCard(minion.getCardId());
+        boolean actualHasCard = sut.hasCardOrHeroWithId(minion.getCardId());
 
         Assert.assertTrue(actualHasCard);
     }
@@ -59,7 +59,7 @@ public class Deck_Test {
         ServerCard minion = makeMinionCard();
         sut.addCard(minion);
 
-        boolean actualHasCard = sut.hasCard(minion.getCardId());
+        boolean actualHasCard = sut.hasCardOrHeroWithId(minion.getCardId());
 
         Assert.assertTrue(actualHasCard);
     }
@@ -82,7 +82,7 @@ public class Deck_Test {
         sut.addCard(minion);
         sut.removeCard(minion);
 
-        boolean actualHasCard = sut.hasCard(minion.getCardId());
+        boolean actualHasCard = sut.hasCardOrHeroWithId(minion.getCardId());
 
         Assert.assertFalse(actualHasCard);
     }

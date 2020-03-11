@@ -5,11 +5,8 @@ import server.dataCenter.models.account.Collection;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import shared.models.card.BaseDeck;
-import shared.models.card.Card;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Deck extends BaseDeck<ServerCard> {
     public Deck(String deckName, ServerCard hero, ArrayList<ServerCard> cards) {
@@ -40,7 +37,7 @@ public class Deck extends BaseDeck<ServerCard> {
         super(deckName);
     }
 
-    public boolean hasCard(String cardId) {
+    public boolean hasCardOrHeroWithId(String cardId) {
         if (hero != null && hero.getCardId().equalsIgnoreCase(cardId)) {
             return true;
         }
@@ -52,7 +49,7 @@ public class Deck extends BaseDeck<ServerCard> {
     }
 
     public void addCard(String cardId, Collection collection) throws LogicException {
-        if (hasCard(cardId)) {
+        if (hasCardOrHeroWithId(cardId)) {
             throw new ClientException("deck had this card.");
         }
         addCard(collection.getCard(cardId));
@@ -79,7 +76,7 @@ public class Deck extends BaseDeck<ServerCard> {
     }
 
     public void removeCard(ServerCard card) throws ClientException {
-        if (!hasCard(card.getCardId())) {
+        if (!hasCardOrHeroWithId(card.getCardId())) {
             throw new ClientException("deck doesn't have this card.");
         }
         if (card.equals(hero)) {
