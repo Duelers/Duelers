@@ -86,7 +86,7 @@ public class GameCenter extends Thread {//synchronize
         removeAllGameRequests(account);
         synchronized (globalRequests) {
             for (GlobalRequest globalRequest : globalRequests) {
-                if (globalRequest.getGameType().equals(gameType)) {
+                if (gameType.equals(globalRequest.getGameType())) {
                     newMultiplayerGame(globalRequest.getRequester(), account, gameType);
                     globalRequests.remove(globalRequest);
                     return;

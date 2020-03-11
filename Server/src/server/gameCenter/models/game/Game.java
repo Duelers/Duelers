@@ -906,7 +906,7 @@ public abstract class Game {
         }
 
         if (spell.getTarget().isForDeckCards()) {
-            for (ServerCard card : player.getDeck().getOthers()) {
+            for (ServerCard card : player.getDeck().getCards()) {
                 addCardToTargetData(spell, targetData, card);
             }
             for (ServerCard card : player.getHand()) {
