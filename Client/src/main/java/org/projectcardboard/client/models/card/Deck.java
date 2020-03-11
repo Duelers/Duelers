@@ -2,6 +2,7 @@ package org.projectcardboard.client.models.card;
 
 
 import org.projectcardboard.client.controller.Client;
+import shared.models.card.BaseDeck;
 import shared.models.card.Card;
 import shared.models.card.ICard;
 import org.projectcardboard.client.models.account.Collection;
@@ -10,16 +11,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Deck {
-    private final String deckName;
-    private final Card hero;
-    private final ArrayList<Card> cards = new ArrayList<>();
+public class Deck extends BaseDeck<Card> {
 
     public Deck(TempDeck tempDeck, Collection collection) {
-        this.deckName = tempDeck.getDeckName();
+        super(tempDeck.getDeckName());
         this.hero = collection.findHero(tempDeck.getHeroId());
         for (String cardId : tempDeck.getCardIds()) {
-            cards.add(collection.findOthers(cardId));
+            this.cards.add(collection.findOthers(cardId));
         }
     }
 
@@ -55,25 +53,9 @@ public class Deck {
         return false;
     }
 
-    public String getName() {
-        return this.deckName;
-    }
 
-    public Card getHero() {
-        return this.hero;
-    }
-
-    public List<Card> getCards() {
-        return Collections.unmodifiableList(this.cards);
-    }
-
-    public boolean areSame(String deckName) {
+    public boolean hasName(String deckName) {
         return this.deckName.equalsIgnoreCase(deckName);
-    }
-
-    public boolean isValid() {
-        if (hero == null) return false;
-        return cards.size() == 20;
     }
 
     public boolean isMain() {
@@ -95,28 +77,5 @@ public class Deck {
             default:
                 return 0;
         }
-    }
-
-    public boolean hasHero(Card hero) {
-        if (this.hero == null) return false;
-        return this.hero.equals(hero);
-    }
-
-    public boolean hasCard(Card other) {
-        for (Card card : cards) {
-            if (card.equals(other)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Card getCard(String cardName) {
-        if (hero != null && hero.isSameAs(cardName)) return hero;
-
-        for (Card card : cards) {
-            if (card.isSameAs(cardName)) return card;
-        }
-        return null;
     }
 }

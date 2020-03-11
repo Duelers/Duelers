@@ -136,9 +136,6 @@ public class GameServer {
                 case BUY_CARD:
                     DataCenter.getInstance().buyCard(message);
                     break;
-                case SELL_CARD:
-                    DataCenter.getInstance().sellCard(message);
-                    break;
                 case CREATE_DECK:
                     DataCenter.getInstance().createDeck(message);
                     break;
