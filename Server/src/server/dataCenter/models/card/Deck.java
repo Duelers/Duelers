@@ -12,9 +12,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck extends BaseDeck<ServerCard> {
-    private ServerCard hero;
-    private List<ServerCard> cards = new ArrayList<>();
-
     public Deck(String deckName, ServerCard hero, ArrayList<ServerCard> cards) {
         super(deckName, hero, cards);
     }
@@ -94,10 +91,6 @@ public class Deck extends BaseDeck<ServerCard> {
     public boolean isValid() {
         if (hero == null) return false;
         return cards.size() == 20;
-    }
-
-    public ServerCard getHero() {
-        return hero;
     }
 
     public List<ServerCard> getCards() {
