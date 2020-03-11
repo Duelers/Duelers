@@ -110,7 +110,7 @@ public class PlayerBox implements PropertyChangeListener {
     }
 
     private void addMuteButton(){
-        this.muteButton = new OrangeButton("Disable Chat Box", event -> handleMuteButtonOnClick(), null);
+        this.muteButton = new OrangeButton("Disable Chat", event -> handleMuteButtonOnClick(), null);
         this.muteButton.setLayoutX(1530 * Constants.SCALE);
         this.muteButton.setLayoutY(800 * SCALE);
         group.getChildren().add(this.muteButton);
@@ -118,7 +118,7 @@ public class PlayerBox implements PropertyChangeListener {
 
     private void handleMuteButtonOnClick(){
         this.isChatFieldEnabled = !this.isChatFieldEnabled;
-        muteButton.setText(isChatFieldEnabled ? "Disable Chat box" : "Enable Chat box");
+        muteButton.setText(isChatFieldEnabled ? "Disable Chat" : "Enable Chat");
     }
 
     private void makeMessageShows() {
