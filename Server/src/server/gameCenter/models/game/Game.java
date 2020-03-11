@@ -1,8 +1,12 @@
 package server.gameCenter.models.game;
 
 import server.GameServer;
+import server.chatCenter.ChatCenter;
 import server.clientPortal.models.comperessedData.CompressedGame;
 import server.clientPortal.models.message.CardPosition;
+import server.clientPortal.models.message.ChatMessage;
+import server.clientPortal.models.message.Message;
+import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
 
@@ -266,6 +270,16 @@ public abstract class Game {
 
                     if (isLegalCellForMinion(c, minion)) {
                         insert("AI", minion.getCardId(), new Cell(c.getRow(), c.getColumn()));
+
+                        // Get the AI to announce the most recently played minion.
+                        ChatCenter.getInstance().sendMessage(
+                                DataCenter.getInstance().getClientName(getOtherTurnPlayer().getUserName()),
+                                getCurrentTurnPlayer().getUserName(),
+                                getOtherTurnPlayer().getUserName(),
+                                "I play: " + minion.getName() + "!");
+
+
+
                         Thread.sleep(delay);
                         break;
                     }

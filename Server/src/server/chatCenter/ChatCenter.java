@@ -47,7 +47,7 @@ public class ChatCenter {
 
     }
 
-    private void sendMessage(String receiverClientName, String senderUsername, String receiverUsername, String text) {
+    public void sendMessage(String receiverClientName, String senderUsername, String receiverUsername, String text) {
         if (receiverClientName == null) {
             GameServer.serverPrint("Chat Receiver Error!");
         }
