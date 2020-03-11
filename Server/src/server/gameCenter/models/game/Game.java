@@ -419,14 +419,13 @@ public abstract class Game {
             applyOnPutSpells(card, gameMap.getCell(cell));
 
             // Announce in GameChat most recently played card.
-            String receiver = versusAi ? getCurrentTurnPlayer().getUserName() : getOtherTurnPlayer().getUserName();
-            
-            ChatCenter.getInstance().sendMessage(
-                    DataCenter.getInstance().getClientName(receiver),
-                    getCurrentTurnPlayer().getUserName(),
-                    getOtherTurnPlayer().getUserName(),
-                    "I play: " + card.getName() + "!");
-
+            if (!versusAi){
+                ChatCenter.getInstance().sendMessage(
+                        DataCenter.getInstance().getClientName(getOtherTurnPlayer().getUserName()),
+                        getCurrentTurnPlayer().getUserName(),
+                        getOtherTurnPlayer().getUserName(),
+                        "I play: " + card.getName() + "!");
+            }
 
         } finally {
             GameCenter.getInstance().checkGameFinish(this);
