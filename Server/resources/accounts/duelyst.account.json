@@ -1287,7 +1287,7 @@
             },
             {
                 "name": "Elucidator",
-                "description": "Rush. Opening Gambit: Deal 4 damage to your General",
+                "description": "Rush. \n Opening Gambit: Deal 4 damage to your General",
                 "cardId": "duelyst_Elucidator_1",
                 "spriteName": "f5_support",
                 "type": "MINION",
@@ -1332,7 +1332,7 @@
             },
             {
                 "name": "Elucidator",
-                "description": "Rush. Opening Gambit: Deal 4 damage to your General",
+                "description": "Rush. \n Opening Gambit: Deal 4 damage to your General",
                 "cardId": "duelyst_Elucidator_2",
                 "spriteName": "f5_support",
                 "type": "MINION",
@@ -1377,7 +1377,7 @@
             },
             {
                 "name": "Elucidator",
-                "description": "Rush. Opening Gambit: Deal 4 damage to your General",
+                "description": "Rush. \n Opening Gambit: Deal 4 damage to your General",
                 "cardId": "duelyst_Elucidator_3",
                 "spriteName": "f5_support",
                 "type": "MINION",
