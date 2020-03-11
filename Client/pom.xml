@@ -177,6 +177,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- create a windows .exe with everything in it -->
             <plugin>
                 <groupId>com.akathist.maven.plugins.launch4j</groupId>
                 <artifactId>launch4j-maven-plugin</artifactId>
@@ -196,10 +198,9 @@
                                 <mainClass>org.projectcardboard.client.Launcher</mainClass>
                             </classPath>
                             <icon>src/main/resources/icon.ico</icon>
+                            <downloadUrl>https://adoptopenjdk.net/?variant=openjdk11</downloadUrl>
                             <jre>
                                 <minVersion>11</minVersion>
-                                <path>${java.home}</path>
-                                <bundledJre64Bit>true</bundledJre64Bit>
                                 <jdkPreference>preferJre</jdkPreference>
                             </jre>
                             <versionInfo>
