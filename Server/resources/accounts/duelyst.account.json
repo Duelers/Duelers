@@ -8299,7 +8299,7 @@
         {
             "deckName": "starterDeck Aggro",
             "heroId": "duelyst_VaathTheImmortal_1",
-            "othersIds": [
+            "cardIds": [
                 "duelyst_FlamebloodWarlock_1",
                 "duelyst_FlamebloodWarlock_2",
                 "duelyst_FlamebloodWarlock_3",
@@ -8325,7 +8325,7 @@
         {
             "deckName": "starterDeck Golem",
             "heroId": "duelyst_ArgeonHighmayne_1",
-            "othersIds": [
+            "cardIds": [
                 "duelyst_BloodshardGolem_1",
                 "duelyst_BloodshardGolem_2",
                 "duelyst_BloodshardGolem_3",
@@ -8351,7 +8351,7 @@
         {
             "deckName": "AI_Friendly",
             "heroId": "duelyst_VaathTheImmortal_1",
-            "othersIds": [
+            "cardIds": [
                 "duelyst_WorldcoreGolem_3",
                 "duelyst_SkyrockGolem_1",
                 "duelyst_SkyrockGolem_2",

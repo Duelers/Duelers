@@ -34,5 +34,14 @@ public class BaseDeck<CardType extends Card> {
         return Collections.unmodifiableList(cards);
     }
 
+    public CardType getCard(String cardName) {
+        if (this.hero != null && hero.isSameAs(cardName)) return hero;
+
+        for (CardType card : cards) {
+            if (card.isSameAs(cardName)) return card;
+        }
+        return null;
+    }
+
 }
 
