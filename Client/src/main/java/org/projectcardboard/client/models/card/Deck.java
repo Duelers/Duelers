@@ -51,17 +51,6 @@ public class Deck extends BaseDeck<Card> {
         return false;
     }
 
-    public String getName() {
-        return this.deckName;
-    }
-
-    public Card getHero() {
-        return this.hero;
-    }
-
-    public List<Card> getCards() {
-        return Collections.unmodifiableList(this.cards);
-    }
 
     public boolean areSame(String deckName) {
         return this.deckName.equalsIgnoreCase(deckName);
