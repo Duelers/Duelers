@@ -100,21 +100,6 @@ public class Account {
         //DataCenter.getInstance().changeCardNumber(cardName, -1);
     }
 
-    public void sellCard(String cardId) throws LogicException {
-        ServerCard card = collection.getCard(cardId);
-        if (card == null) {
-            throw new ClientException("invalid card id");
-        }
-
-        collection.removeCard(card);
-        for (Deck deck : decks) {
-            if (deck.hasCard(cardId)) {
-                deck.removeCard(card);
-            }
-        }
-        DataCenter.getInstance().changeCardNumber(card.getName(), +1);
-    }
-
     public void addCardToDeck(String cardId, String deckName) throws LogicException {
         if (!hasDeck(deckName)) {
             throw new ClientException("deck was not found.");
