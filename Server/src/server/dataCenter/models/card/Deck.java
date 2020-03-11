@@ -96,10 +96,6 @@ public class Deck extends BaseDeck<ServerCard> {
         return cards.size() == 20;
     }
 
-    public String getName() {
-        return deckName;
-    }
-
     public ServerCard getHero() {
         return hero;
     }
