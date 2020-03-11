@@ -1,5 +1,6 @@
 package org.projectcardboard.client.models.gui;
 
+import javafx.scene.Cursor;
 import org.projectcardboard.client.controller.LoginMenuController;
 import javafx.geometry.Insets;
 import javafx.scene.input.KeyCode;
@@ -57,6 +58,8 @@ class LoginFieldsContainer extends VBox {
         setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 LoginMenuController.getInstance().login(usernameField.getText(), passwordField.getText());
+                setCursor(Cursor.WAIT);
+
             }
 
         });
