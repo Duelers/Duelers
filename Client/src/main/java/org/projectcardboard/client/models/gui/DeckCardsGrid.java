@@ -35,11 +35,11 @@ public class DeckCardsGrid extends GridPane {
             HBox buttonsBox = new HBox(UIConstants.DEFAULT_SPACING,
                     new OrangeButton("ADD", event ->
                             CollectionMenuController.getInstance().addCardToDeck(cardPane.getDeck(), card.getName()),
-                            select
+                            select, false
                     ),
                     new OrangeButton("REMOVE", event ->
                             CollectionMenuController.getInstance().removeCardFromDeck(cardPane.getDeck(), card.getName()),
-                            select
+                            select, false
                     )
             );
 
