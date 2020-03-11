@@ -278,8 +278,6 @@ public abstract class Game {
                                 getOtherTurnPlayer().getUserName(),
                                 "I play: " + minion.getName() + "!");
 
-
-
                         Thread.sleep(delay);
                         break;
                     }
@@ -416,6 +414,15 @@ public abstract class Game {
                 GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
             }
             applyOnPutSpells(card, gameMap.getCell(cell));
+
+            // Announce in GameChat most recently played card.
+            ChatCenter.getInstance().sendMessage(
+                    DataCenter.getInstance().getClientName(player.getUserName()),
+                    getCurrentTurnPlayer().getUserName(),
+                    getOtherTurnPlayer().getUserName(),
+                    "I play: " + card.getName() + "!");
+
+
         } finally {
             GameCenter.getInstance().checkGameFinish(this);
         }
