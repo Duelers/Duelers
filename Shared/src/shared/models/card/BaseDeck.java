@@ -43,5 +43,10 @@ public class BaseDeck<CardType extends Card> {
         return null;
     }
 
+    public boolean isValid() {
+        if (this.hero == null) return false;
+        return this.cards.size() == 20;
+    }
+
 }
 

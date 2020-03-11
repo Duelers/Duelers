@@ -56,11 +56,6 @@ public class Deck extends BaseDeck<Card> {
         return this.deckName.equalsIgnoreCase(deckName);
     }
 
-    public boolean isValid() {
-        if (hero == null) return false;
-        return cards.size() == 20;
-    }
-
     public boolean isMain() {
         return Client.getInstance().getAccount().isMainDeck(this);
     }
@@ -94,14 +89,5 @@ public class Deck extends BaseDeck<Card> {
             }
         }
         return false;
-    }
-
-    public Card getCard(String cardName) {
-        if (hero != null && hero.isSameAs(cardName)) return hero;
-
-        for (Card other : cards) {
-            if (other.isSameAs(cardName)) return other;
-        }
-        return null;
     }
 }

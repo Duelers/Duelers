@@ -88,10 +88,6 @@ public class Deck extends BaseDeck<ServerCard> {
         cards.remove(card);
     }
 
-    public boolean isValid() {
-        if (hero == null) return false;
-        return cards.size() == 20;
-    }
 
     public void makeCustomGameDeck() {
         String customGamePrefix = "customGame_";
