@@ -10,7 +10,7 @@ public class DeckInfo {
 
 
     public DeckInfo(Deck deck) {
-        this.deckName = deck.getDeckName();
+        this.deckName = deck.getName();
         this.HeroName = deck.getHero().getName();
     }
 }

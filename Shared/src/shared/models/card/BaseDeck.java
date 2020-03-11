@@ -20,7 +20,7 @@ public class BaseDeck<CardType extends Card> {
         }
     }
 
-    public String getDeckName() {
+    public String getName() {
         return deckName;
     }
 
