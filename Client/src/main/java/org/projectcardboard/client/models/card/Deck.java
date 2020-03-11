@@ -31,8 +31,8 @@ public class Deck extends BaseDeck<Card> {
             if (hero != null && !hero.equals(deck.hero)) return false;
 
             if (cards.size() != deck.cards.size()) return false;
-            for (Card other : cards) {
-                if (!deck.cards.contains(other)) return false;
+            for (Card cardInThis : cards) {
+                if (!deck.cards.contains(cardInThis)) return false;
             }
             return true;
         }
@@ -43,8 +43,8 @@ public class Deck extends BaseDeck<Card> {
             if (hero != null && !hero.getCardId().equalsIgnoreCase(deck.getHeroId())) return false;
 
             if (cards.size() != deck.getCardIds().size()) return false;
-            for (Card other : cards) {
-                if (!deck.getCardIds().contains(other.getCardId())) return false;
+            for (Card cardInThis : cards) {
+                if (!deck.getCardIds().contains(cardInThis.getCardId())) return false;
             }
             return true;
         }
@@ -68,8 +68,8 @@ public class Deck extends BaseDeck<Card> {
             case MINION:
             case SPELL:
                 int count = 0;
-                for (Card other : cards) {
-                    if (other.isSameAs(card.getName())) count++;
+                for (Card cardInThis : cards) {
+                    if (cardInThis.isSameAs(card.getName())) count++;
                 }
                 return count;
             default:

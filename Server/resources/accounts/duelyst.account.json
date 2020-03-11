@@ -1286,6 +1286,141 @@
                 "remainingNumber": 20
             },
             {
+                "name": "Elucidator",
+                "description": "Rush. \n Opening Gambit: Deal 4 damage to your General",
+                "cardId": "duelyst_Elucidator_1",
+                "spriteName": "f5_support",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "deal_4_your_general",
+                        "action": {
+                            "hpChange": -4,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "hero": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 5,
+                "defaultHp": 4,
+                "manaCost": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            },
+            {
+                "name": "Elucidator",
+                "description": "Rush. \n Opening Gambit: Deal 4 damage to your General",
+                "cardId": "duelyst_Elucidator_2",
+                "spriteName": "f5_support",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "deal_4_your_general",
+                        "action": {
+                            "hpChange": -4,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "hero": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 5,
+                "defaultHp": 4,
+                "manaCost": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            },
+            {
+                "name": "Elucidator",
+                "description": "Rush. \n Opening Gambit: Deal 4 damage to your General",
+                "cardId": "duelyst_Elucidator_3",
+                "spriteName": "f5_support",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "deal_4_your_general",
+                        "action": {
+                            "hpChange": -4,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "hero": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onPut": true
+                        }
+                    }
+                ],
+                "defaultAp": 5,
+                "defaultHp": 4,
+                "manaCost": 4,
+                "price": 100,
+                "attackType": "MELEE",
+                "remainingNumber": 20
+            },
+            {
                 "name": "Emberwyrm",
                 "description": "Flying",
                 "cardId": "duelyst_Emberwyrm_1",
