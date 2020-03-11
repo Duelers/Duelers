@@ -145,6 +145,7 @@ public class Client {
 
 
     private void handleMessage(Message message) {
+        // TODO: missing lots of cases here with no default
         switch (message.getMessageType()) {
             case SEND_EXCEPTION:
                 showError(message);

@@ -1,7 +1,5 @@
 package org.projectcardboard.client.view;
 
-import static org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
-
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
 import org.projectcardboard.client.models.gui.DialogBox;

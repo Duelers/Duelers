@@ -3,13 +3,16 @@ package org.projectcardboard.client.models.gui;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class ImageLoader {
 
     public static ImageView loadImage(String url, double width, double height) throws FileNotFoundException {
-        return makeImageView(new Image(new FileInputStream(url)), width, height);
+        InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
+        System.out.println("Loading image: " + url);
+        if (imageResource == null) { throw new FileNotFoundException(); }
+        return makeImageView(new Image(imageResource), width, height);
     }
 
     static ImageView loadImage(String url, double width, double height, double x, double y) throws FileNotFoundException {
@@ -25,12 +28,13 @@ public class ImageLoader {
         return menuView;
     }
 
-    public static Image load(String url) {
-        try {
-            return new Image(new FileInputStream(url));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
+    public static Image load(String url){
+        InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
+        System.out.println("Loading image: " + url);
+        if (imageResource == null) {
+            System.out.println("Failed to load image at: " + url);
+            return null; //todo Instead of null, maybe return some placeholder image ?
         }
+        return new Image(imageResource);
     }
 }

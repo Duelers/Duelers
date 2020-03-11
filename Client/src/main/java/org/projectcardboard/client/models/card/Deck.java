@@ -23,6 +23,8 @@ public class Deck {
         }
     }
 
+    // TODO: overriding equals without changing hashcode is normally no bueno.
+    // there's probably a safer way for us to accomplish this.
     @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
