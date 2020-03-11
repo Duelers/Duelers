@@ -52,7 +52,7 @@ public class Deck extends BaseDeck<Card> {
     }
 
 
-    public boolean areSame(String deckName) {
+    public boolean hasName(String deckName) {
         return this.deckName.equalsIgnoreCase(deckName);
     }
 
