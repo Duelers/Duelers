@@ -93,10 +93,6 @@ public class Deck extends BaseDeck<ServerCard> {
         return cards.size() == 20;
     }
 
-    public List<ServerCard> getCards() {
-        return Collections.unmodifiableList(cards);
-    }
-
     public void makeCustomGameDeck() {
         String customGamePrefix = "customGame_";
         hero.setCardId(customGamePrefix + hero.getCardId());

@@ -1,13 +1,15 @@
 package shared.models.card;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BaseDeck<CardType extends Card> {
     protected String deckName;
     protected CardType hero;
     protected ArrayList<CardType> cards = new ArrayList<>();
 
-    public BaseDeck(String deckName){
+    public BaseDeck(String deckName) {
         this.deckName = deckName;
     }
 
@@ -26,6 +28,10 @@ public class BaseDeck<CardType extends Card> {
 
     public CardType getHero() {
         return hero;
+    }
+
+    public List<CardType> getCards() {
+        return Collections.unmodifiableList(cards);
     }
 
 }
