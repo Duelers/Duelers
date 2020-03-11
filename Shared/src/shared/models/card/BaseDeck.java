@@ -53,5 +53,14 @@ public class BaseDeck<CardType extends Card> {
         return this.hero.equals(hero);
     }
 
+    public boolean hasCard(Card other) {
+        for (Card card : cards) {
+            if (card.equals(other)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 

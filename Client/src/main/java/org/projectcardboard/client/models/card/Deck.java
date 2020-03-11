@@ -76,13 +76,4 @@ public class Deck extends BaseDeck<Card> {
                 return 0;
         }
     }
-
-    public boolean hasCard(Card other) {
-        for (Card card : cards) {
-            if (card.equals(other)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
