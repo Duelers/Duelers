@@ -33,8 +33,8 @@ public class Deck {
             if (hero != null && !hero.equals(deck.hero)) return false;
 
             if (cards.size() != deck.cards.size()) return false;
-            for (Card other : cards) {
-                if (!deck.cards.contains(other)) return false;
+            for (Card cardInThis : cards) {
+                if (!deck.cards.contains(cardInThis)) return false;
             }
             return true;
         }
@@ -45,8 +45,8 @@ public class Deck {
             if (hero != null && !hero.getCardId().equalsIgnoreCase(deck.getHeroId())) return false;
 
             if (cards.size() != deck.getCardIds().size()) return false;
-            for (Card other : cards) {
-                if (!deck.getCardIds().contains(other.getCardId())) return false;
+            for (Card cardInThis : cards) {
+                if (!deck.getCardIds().contains(cardInThis.getCardId())) return false;
             }
             return true;
         }
@@ -86,8 +86,8 @@ public class Deck {
             case MINION:
             case SPELL:
                 int count = 0;
-                for (Card other : cards) {
-                    if (other.isSameAs(card.getName())) count++;
+                for (Card cardInThis : cards) {
+                    if (cardInThis.isSameAs(card.getName())) count++;
                 }
                 return count;
             default:
@@ -112,8 +112,8 @@ public class Deck {
     public Card getCard(String cardName) {
         if (hero != null && hero.isSameAs(cardName)) return hero;
 
-        for (Card other : cards) {
-            if (other.isSameAs(cardName)) return other;
+        for (Card card : cards) {
+            if (card.isSameAs(cardName)) return card;
         }
         return null;
     }

@@ -16,8 +16,8 @@ public class ExportedDeck {
         if (deck.getHero() != null) {
             heroName = deck.getHero().getName();
         }
-        for (Card other : deck.getCards()) {
-            otherCards.merge(other.getName(), 1, Integer::sum);
+        for (Card card : deck.getCards()) {
+            otherCards.merge(card.getName(), 1, Integer::sum);
         }
     }
 
