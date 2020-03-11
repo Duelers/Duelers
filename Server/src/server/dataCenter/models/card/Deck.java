@@ -112,8 +112,4 @@ public class Deck extends BaseDeck<ServerCard> {
             card.setCardId(customGamePrefix + card.getCardId());
         }
     }
-
-//    public String getName() {
-//        return deckName;
-//    }
 }

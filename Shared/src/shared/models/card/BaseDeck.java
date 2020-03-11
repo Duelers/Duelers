@@ -24,7 +24,9 @@ public class BaseDeck<CardType extends Card> {
         return deckName;
     }
 
-
+    public CardType getHero() {
+        return hero;
+    }
 
 }
 
