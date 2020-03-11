@@ -420,6 +420,7 @@ public abstract class Game {
 
             // Announce in GameChat most recently played card.
             if (!versusAi){
+                //sendMessage(String receiverClientName, String senderUsername, String receiverUsername, String text)
                 ChatCenter.getInstance().sendMessage(
                         DataCenter.getInstance().getClientName(getOtherTurnPlayer().getUserName()),
                         getCurrentTurnPlayer().getUserName(),
