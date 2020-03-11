@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Deck extends BaseDeck {
+public class Deck extends BaseDeck<ServerCard> {
     private ServerCard hero;
     private List<ServerCard> cards = new ArrayList<>();
 
