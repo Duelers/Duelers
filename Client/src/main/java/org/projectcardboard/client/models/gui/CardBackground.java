@@ -28,7 +28,6 @@ class CardBackground extends StackPane {
             if (
                 troopBackgroundR == null ||
                 spellBackgroundR == null ||
-                itemBackgroundR == null ||
                 glowR == null
             ) {
                     throw new FileNotFoundException();
