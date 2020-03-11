@@ -13,13 +13,13 @@ import java.util.List;
 public class Deck {
     private final String deckName;
     private final Card hero;
-    private final ArrayList<Card> others = new ArrayList<>();
+    private final ArrayList<Card> cards = new ArrayList<>();
 
     public Deck(TempDeck tempDeck, Collection collection) {
         this.deckName = tempDeck.getDeckName();
         this.hero = collection.findHero(tempDeck.getHeroId());
-        for (String cardId : tempDeck.getOthersIds()) {
-            others.add(collection.findOthers(cardId));
+        for (String cardId : tempDeck.getCardIds()) {
+            cards.add(collection.findOthers(cardId));
         }
     }
 
@@ -32,9 +32,9 @@ public class Deck {
             if (hero == null ^ deck.hero == null) return false;
             if (hero != null && !hero.equals(deck.hero)) return false;
 
-            if (others.size() != deck.others.size()) return false;
-            for (Card other : others) {
-                if (!deck.others.contains(other)) return false;
+            if (cards.size() != deck.cards.size()) return false;
+            for (Card cardInThis : cards) {
+                if (!deck.cards.contains(cardInThis)) return false;
             }
             return true;
         }
@@ -44,9 +44,9 @@ public class Deck {
             if (hero == null ^ deck.getHeroId() == null) return false;
             if (hero != null && !hero.getCardId().equalsIgnoreCase(deck.getHeroId())) return false;
 
-            if (others.size() != deck.getOthersIds().size()) return false;
-            for (Card other : others) {
-                if (!deck.getOthersIds().contains(other.getCardId())) return false;
+            if (cards.size() != deck.getCardIds().size()) return false;
+            for (Card cardInThis : cards) {
+                if (!deck.getCardIds().contains(cardInThis.getCardId())) return false;
             }
             return true;
         }
@@ -61,8 +61,8 @@ public class Deck {
         return this.hero;
     }
 
-    public List<Card> getOthers() {
-        return Collections.unmodifiableList(this.others);
+    public List<Card> getCards() {
+        return Collections.unmodifiableList(this.cards);
     }
 
     public boolean areSame(String deckName) {
@@ -71,7 +71,7 @@ public class Deck {
 
     public boolean isValid() {
         if (hero == null) return false;
-        return others.size() == 20;
+        return cards.size() == 20;
     }
 
     public boolean isMain() {
@@ -86,8 +86,8 @@ public class Deck {
             case MINION:
             case SPELL:
                 int count = 0;
-                for (Card other : others) {
-                    if (other.isSameAs(card.getName())) count++;
+                for (Card cardInThis : cards) {
+                    if (cardInThis.isSameAs(card.getName())) count++;
                 }
                 return count;
             default:
@@ -101,7 +101,7 @@ public class Deck {
     }
 
     public boolean hasCard(Card other) {
-        for (Card card : others) {
+        for (Card card : cards) {
             if (card.equals(other)) {
                 return true;
             }
@@ -112,8 +112,8 @@ public class Deck {
     public Card getCard(String cardName) {
         if (hero != null && hero.isSameAs(cardName)) return hero;
 
-        for (Card other : others) {
-            if (other.isSameAs(cardName)) return other;
+        for (Card card : cards) {
+            if (card.isSameAs(cardName)) return card;
         }
         return null;
     }
