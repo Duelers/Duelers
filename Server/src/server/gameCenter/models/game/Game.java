@@ -149,7 +149,7 @@ public abstract class Game {
 
                 startTurnTimeLimit();
 
-                if (versusAi && getCurrentTurnPlayer().getUserName().equals("AI")) { // Todo needs improvement
+                if (versusAi && getCurrentTurnPlayer().getUserName().equals("AI")) { // TODO needs improvement
                     playCurrentTurnAtRandom();
                 }
             } else {
