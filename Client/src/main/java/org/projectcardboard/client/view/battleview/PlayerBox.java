@@ -109,7 +109,7 @@ public class PlayerBox implements PropertyChangeListener {
     }
 
     private void addMuteButton(){
-        this.muteButton = new OrangeButton("Disable Chat", event -> handleMuteButtonOnClick(), null);
+        this.muteButton = new OrangeButton("Disable Chat", event -> handleMuteButtonOnClick(), null, false);
         this.muteButton.setLayoutX(1560 * Constants.SCALE);
         this.muteButton.setLayoutY(825 * SCALE);
         this.muteButton.setMaxWidth(chatField.getMaxWidth());
