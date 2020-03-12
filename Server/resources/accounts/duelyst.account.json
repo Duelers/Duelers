@@ -4595,7 +4595,7 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Young Flamewiing",
+                "name": "Young Flamewing",
                 "description": "Flying",
                 "cardId": "duelyst_YoungFlamewing_1",
                 "spriteName": "neutral_monsterflamewing",
@@ -4611,7 +4611,7 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Young Flamewiing",
+                "name": "Young Flamewing",
                 "description": "Flying",
                 "cardId": "duelyst_YoungFlamewing_2",
                 "spriteName": "neutral_monsterflamewing",
@@ -4627,7 +4627,7 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Young Flamewiing",
+                "name": "Young Flamewing",
                 "description": "Flying",
                 "cardId": "duelyst_YoungFlamewing_3",
                 "spriteName": "neutral_monsterflamewing",
@@ -6452,7 +6452,7 @@
                 "type": "SPELL",
                 "spells": [
                     {
-                        "spellId": "give_friendly_3_attack_this_turn",
+                        "spellId": "give_3_attack_this_turn",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 3,
@@ -6512,7 +6512,7 @@
                 "type": "SPELL",
                 "spells": [
                     {
-                        "spellId": "give_friendly_3_attack_this_turn",
+                        "spellId": "give_3_attack_this_turn",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 3,
@@ -6572,7 +6572,7 @@
                 "type": "SPELL",
                 "spells": [
                     {
-                        "spellId": "give_friendly_3_attack_this_turn",
+                        "spellId": "give_3_attack_this_turn",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 3,

@@ -6,7 +6,7 @@
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "give_friendly_3_attack_this_turn",
+      "spellId": "give_3_attack_this_turn",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 3,
@@ -28,7 +28,7 @@
         },
         "owner": {
           "own": true,
-          "enemy": false
+          "enemy": true
         },
         "cardType": {
           "cell": false,
