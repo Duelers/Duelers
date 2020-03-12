@@ -1,4 +1,7 @@
-# To run the same in 'local mode', copy & paste the details below to the 'config.properties' file.
+# To run the same in 'local mode', copy & paste the details below to the 'config.properties' file in your config directory.
+#MacOSX: /Users/yourusername/Library/Application Support/cardboard/1.0
+#Windows: C:\Users\yourusername\AppData\Roaming\projectcardboard\cardboard\1.0
+#Linux: /home/yourusername/.config/cardboard/1.0
 HOST_SERVER = true
 SERVER_IP = localhost
 PORT = 8888
