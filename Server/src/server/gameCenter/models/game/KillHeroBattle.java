@@ -8,11 +8,11 @@ import shared.models.game.GameType;
 public class KillHeroBattle extends Game {
 
     public KillHeroBattle(Account account1, Account account2, GameMap gameMap) {
-        super(account1, account2.getMainDeck(), account2.getUsername(), gameMap, GameType.KILL_HERO);
+        super(account1, account2.getMainDeck(), account2.getUsername(), gameMap, GameType.KILL_HERO, false);
     }
 
     public KillHeroBattle(Account account1, Deck deck, GameMap gameMap) {
-        super(account1, deck, "AI", gameMap, GameType.KILL_HERO);
+        super(account1, deck, "AI", gameMap, GameType.KILL_HERO, true);
     }
 
     @Override
