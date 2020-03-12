@@ -67,11 +67,11 @@
       "lastTurnUsed": 0
     },
     {
-      "spellId": "3_health_self",
+      "spellId": "health_self",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": 3,
+        "hpChange": 2,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
