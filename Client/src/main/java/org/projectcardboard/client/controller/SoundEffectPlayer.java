@@ -1,6 +1,6 @@
 package org.projectcardboard.client.controller;
 
-import java.io.File;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,13 +10,15 @@ import javafx.scene.media.MediaPlayer;
 
 public class SoundEffectPlayer {
     private static final Map<SoundName, Media> mediaFiles = new HashMap<>();
-    private static final String directory = "Client/src/main/resources/sfx/";
+    private static final String directory = "/sfx/";
     private static final String format = ".m4a";
     private static final SoundEffectPlayer SEP = new SoundEffectPlayer();
 
     static {
-        Arrays.stream(SoundName.values()).forEach(soundName ->
-                mediaFiles.put(soundName, new Media(new File(soundName.path).toURI().toString()))
+        Arrays.stream(SoundName.values()).forEach(soundName -> {
+                URL soundEffectResource = SoundEffectPlayer.class.getResource(soundName.path);
+                mediaFiles.put(soundName, new Media(soundEffectResource.toString()));
+            }
         );
     }
 

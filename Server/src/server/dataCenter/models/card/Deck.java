@@ -4,47 +4,40 @@ import server.GameServer;
 import server.dataCenter.models.account.Collection;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.card.BaseDeck;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-public class Deck {
-    private String deckName;
-    private ServerCard hero;
-    private List<ServerCard> cards = new ArrayList<>();
-
+public class Deck extends BaseDeck<ServerCard> {
     public Deck(String deckName, ServerCard hero, ArrayList<ServerCard> cards) {
-        this.deckName = deckName;
-        this.hero = hero;
-        this.cards = cards;
+        super(deckName, hero, cards);
     }
 
     public Deck(Deck deck) {
-        this.deckName = deck.deckName;
+        super(deck.deckName);
         if (deck.hero != null) {
             this.hero = new ServerCard(deck.hero);
         }
         for (ServerCard card : deck.cards) {
-            cards.add(new ServerCard(card));
+            this.cards.add(new ServerCard(card));
         }
     }
 
     public Deck(TempDeck tempDeck, Collection collection) {
-        this.deckName = tempDeck.getDeckName();
+        super(tempDeck.getDeckName());
         if (collection == null)
             return;
         this.hero = collection.getCard(tempDeck.getHeroId());
         for (String cardId : tempDeck.getCardIds()) {
-            cards.add(collection.getCard(cardId));
+            this.cards.add(collection.getCard(cardId));
         }
     }
 
     public Deck(String deckName) {
-        this.deckName = deckName;
+        super(deckName);
     }
 
-    public boolean hasCard(String cardId) {
+    public boolean hasCardOrHeroWithId(String cardId) {
         if (hero != null && hero.getCardId().equalsIgnoreCase(cardId)) {
             return true;
         }
@@ -56,7 +49,7 @@ public class Deck {
     }
 
     public void addCard(String cardId, Collection collection) throws LogicException {
-        if (hasCard(cardId)) {
+        if (hasCardOrHeroWithId(cardId)) {
             throw new ClientException("deck had this card.");
         }
         addCard(collection.getCard(cardId));
@@ -83,7 +76,7 @@ public class Deck {
     }
 
     public void removeCard(ServerCard card) throws ClientException {
-        if (!hasCard(card.getCardId())) {
+        if (!hasCardOrHeroWithId(card.getCardId())) {
             throw new ClientException("deck doesn't have this card.");
         }
         if (card.equals(hero)) {
@@ -92,22 +85,6 @@ public class Deck {
         cards.remove(card);
     }
 
-    public boolean isValid() {
-        if (hero == null) return false;
-        return cards.size() == 20;
-    }
-
-    public String getDeckName() {
-        return deckName;
-    }
-
-    public ServerCard getHero() {
-        return hero;
-    }
-
-    public List<ServerCard> getCards() {
-        return Collections.unmodifiableList(cards);
-    }
 
     public void makeCustomGameDeck() {
         String customGamePrefix = "customGame_";
@@ -116,9 +93,5 @@ public class Deck {
         for (ServerCard card : cards) {
             card.setCardId(customGamePrefix + card.getCardId());
         }
-    }
-
-    public String getName() {
-        return deckName;
     }
 }

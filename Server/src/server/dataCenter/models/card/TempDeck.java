@@ -10,7 +10,7 @@ public class TempDeck {
     private final List<String> cardIds = new ArrayList<>();
 
     public TempDeck(Deck deck) {
-        this.deckName = deck.getDeckName();
+        this.deckName = deck.getName();
         if (deck.getHero() != null) {
             this.heroId = deck.getHero().getCardId();
         }

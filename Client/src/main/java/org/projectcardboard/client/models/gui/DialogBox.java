@@ -40,7 +40,7 @@ public class DialogBox extends VBox {
     }
 
     public void makeButton(String text, EventHandler<? super MouseEvent> event) {
-        getChildren().add(new OrangeButton(text, event, click));
+        getChildren().add(new OrangeButton(text, event, click, false));
     }
 
     private void preventClosingOnClick(AtomicBoolean shouldBeClosed) {

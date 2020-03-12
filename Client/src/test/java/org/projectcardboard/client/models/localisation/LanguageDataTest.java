@@ -1,9 +1,7 @@
-package org.projectcardboard;
+package org.projectcardboard.client.models.localisation;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.projectcardboard.client.models.localisation.LanguageData;
-import org.projectcardboard.client.models.localisation.LanguageKeys;
 
 public class LanguageDataTest {
 

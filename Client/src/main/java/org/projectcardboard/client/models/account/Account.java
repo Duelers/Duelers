@@ -62,7 +62,7 @@ public class Account {
 
     public Deck getDeck(String deckName) {
         for (Deck deck : decks) {
-            if (deck.areSame(deckName)) {
+            if (deck.hasName(deckName)) {
                 return deck;
             }
         }
