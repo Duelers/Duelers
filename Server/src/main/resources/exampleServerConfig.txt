@@ -1,6 +1,4 @@
-#Network related properties
-#WARNING: DO NOT EDIT FOR LOCAL CHANGES
-#This will be copied to your system's config location on first run. If you want to change it, change it there.
+# To connect to the central server, copy & paste the details below to the config.properties file in your config directory.
 #MacOSX: /Users/yourusername/Library/Application Support/cardboard/1.0
 #Windows: C:\Users\yourusername\AppData\Roaming\projectcardboard\cardboard\1.0
 #Linux: /home/yourusername/.config/cardboard/1.0
