@@ -8,20 +8,9 @@ import shared.models.card.BaseDeck;
 
 import java.util.ArrayList;
 
-public class Deck {
-    private String deckName;
-    private ServerCard hero;
-    private ServerCard item;
-    private List<ServerCard> others = new ArrayList<>();
-
-    private final int MIN_DECK_SIZE = 5;
-    private final int MAX_DECK_SIZE = 40;
-
-
 public class Deck extends BaseDeck<ServerCard> {
     public Deck(String deckName, ServerCard hero, ArrayList<ServerCard> cards) {
         super(deckName, hero, cards);
-
     }
 
     public Deck(Deck deck) {
@@ -92,41 +81,6 @@ public class Deck extends BaseDeck<ServerCard> {
         }
         if (card.equals(hero)) {
             hero = null;
-
-        cards.remove(card);
-    }
-
-    public boolean isValid() {
-        if (hero == null) return false;
-        return others.size() >= MIN_DECK_SIZE && others.size() <= MAX_DECK_SIZE;
-    }
-
-    public void copyCards() {//TODO:reCode
-        if (hero != null) {
-            this.hero = new ServerCard(hero);
-            this.hero.setCardId(makeId(hero, 1));
-        }
-
-        List<ServerCard> oldOthers = this.others;
-        this.others = new ArrayList<>();
-        for (ServerCard other : oldOthers) {
-            ServerCard card = new ServerCard(other);
-            card.setCardId(makeId(card, numberOf(card.getName()) + 1));
-            others.add(card);
-        }
-    }
-
-    private String makeId(ServerCard card, int number) {
-        return deckName.replaceAll(" ", "") + "_" +
-                card.getName().replaceAll(" ", "") + "_" +
-                number;
-    }
-
-    private int numberOf(String name) {
-        if (hero.getName().equalsIgnoreCase(name) || item.getName().equalsIgnoreCase(name)) return 0;
-        int number = 0;
-        for (ServerCard card : others) {
-            if (card.getName().equalsIgnoreCase(name)) number++;
         }
         cards.remove(card);
     }
