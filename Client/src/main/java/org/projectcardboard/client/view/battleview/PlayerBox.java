@@ -9,7 +9,6 @@ import java.beans.PropertyChangeListener;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 
-import javafx.scene.text.Text;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.models.compresseddata.CompressedGame;
@@ -149,10 +148,10 @@ public class PlayerBox implements PropertyChangeListener {
         player2Image.setX(Constants.SCREEN_WIDTH * 0.85);
         player2Image.setY(-Constants.SCREEN_HEIGHT * 0.02);
         DefaultLabel player1Name = new DefaultLabel("", Constants.NAME_FONT, Color.WHITE, 290 * SCALE, 75 * SCALE);
-        player1Name.setBackground(new Background(new BackgroundFill(Color.rgb(155, 82, 100, 0.0), new CornerRadii(3), Insets.EMPTY)));
+        player1Name.setBackground(new Background(new BackgroundFill(Color.rgb(155, 82, 100, 0.7), new CornerRadii(3), Insets.EMPTY)));
         player1Name.setPadding(Constants.NAME_PADDING);
-        DefaultLabel player2Name = new DefaultLabel("", Constants.NAME_FONT, Color.WHITE, SCREEN_WIDTH - 500 * SCALE, 75 * SCALE);
-        player2Name.setBackground(new Background(new BackgroundFill(Color.rgb(155, 82, 100, 0.0), new CornerRadii(3), Insets.EMPTY)));
+        DefaultLabel player2Name = new DefaultLabel("", Constants.NAME_FONT, Color.WHITE, SCREEN_WIDTH - 600 * SCALE, 75 * SCALE);
+        player2Name.setBackground(new Background(new BackgroundFill(Color.rgb(155, 82, 100, 0.7), new CornerRadii(3), Insets.EMPTY)));
         player2Name.setPadding(Constants.NAME_PADDING);
         player1Name.setText(player1.getUserName());
         player2Name.setText(player2.getUserName());
@@ -189,13 +188,6 @@ public class PlayerBox implements PropertyChangeListener {
                 e.printStackTrace();
             }
         }
-        Text player1MPText = new Text(player1.getCurrentMP() + "/" + maxMP);
-        player1MPText.setX(SCALE * (300 + maxMP * 40));
-        player1MPText.setY(SCALE * (180 - maxMP * 2));
-        player1MPText.setFont(Constants.AP_FONT);
-        player1MPText.setStyle("-fx-text-base-color: white; -fx-font-size: 24px;");
-        player1MPText.setFill(Color.AQUA);
-        mpGroup.getChildren().add(player1MPText);
         for (int i = 1; i <= player2.getCurrentMP(); i++) {
             try {
                 ImageView imageView = new ImageView(manaImage);
@@ -220,13 +212,6 @@ public class PlayerBox implements PropertyChangeListener {
                 e.printStackTrace();
             }
         }
-        Text player2MPText = new Text(player2.getCurrentMP() + "/" + maxMP);
-        player2MPText.setX(SCREEN_WIDTH - SCALE * (335 + maxMP * 40));
-        player2MPText.setY(SCALE * (180 - maxMP * 2));
-        player2MPText.setFont(Constants.AP_FONT);
-        player2MPText.setStyle("-fx-text-base-color: white; -fx-font-size: 24px;");
-        player2MPText.setFill(Color.AQUA);
-        mpGroup.getChildren().add(player2MPText);
     }
 
     Group getGroup() {
