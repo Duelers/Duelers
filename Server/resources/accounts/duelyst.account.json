@@ -248,9 +248,9 @@
                         "lastTurnUsed": 0
                     }
                 ],
-                "defaultAp": 5,
+                "defaultAp": 4,
                 "defaultHp": 5,
-                "manaCost": 6,
+                "manaCost": 7,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -387,9 +387,9 @@
                         "lastTurnUsed": 0
                     }
                 ],
-                "defaultAp": 5,
+                "defaultAp": 4,
                 "defaultHp": 5,
-                "manaCost": 6,
+                "manaCost": 7,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -526,9 +526,9 @@
                         "lastTurnUsed": 0
                     }
                 ],
-                "defaultAp": 5,
+                "defaultAp": 4,
                 "defaultHp": 5,
-                "manaCost": 6,
+                "manaCost": 7,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -3213,7 +3213,7 @@
                 "type": "MINION",
                 "defaultAp": 3,
                 "defaultHp": 2,
-                "manaCost": 4,
+                "manaCost": 3,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -3228,7 +3228,7 @@
                 "type": "MINION",
                 "defaultAp": 3,
                 "defaultHp": 2,
-                "manaCost": 4,
+                "manaCost": 3,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -3243,7 +3243,7 @@
                 "type": "MINION",
                 "defaultAp": 3,
                 "defaultHp": 2,
-                "manaCost": 4,
+                "manaCost": 3,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -7851,11 +7851,11 @@
                         "lastTurnUsed": 0
                     },
                     {
-                        "spellId": "3_health_self",
+                        "spellId": "health_self",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
-                            "hpChange": 3,
+                            "hpChange": 2,
                             "mpChange": 0,
                             "poison": false,
                             "makeStun": false,
@@ -7989,11 +7989,11 @@
                         "lastTurnUsed": 0
                     },
                     {
-                        "spellId": "3_health_self",
+                        "spellId": "health_self",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
-                            "hpChange": 3,
+                            "hpChange": 2,
                             "mpChange": 0,
                             "poison": false,
                             "makeStun": false,
@@ -8127,11 +8127,11 @@
                         "lastTurnUsed": 0
                     },
                     {
-                        "spellId": "3_health_self",
+                        "spellId": "health_self",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
-                            "hpChange": 3,
+                            "hpChange": 2,
                             "mpChange": 0,
                             "poison": false,
                             "makeStun": false,
