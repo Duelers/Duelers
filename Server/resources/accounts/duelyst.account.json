@@ -4595,7 +4595,7 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Young Flamewiing",
+                "name": "Young Flamewing",
                 "description": "Flying",
                 "cardId": "duelyst_YoungFlamewing_1",
                 "spriteName": "neutral_monsterflamewing",
@@ -4611,7 +4611,7 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Young Flamewiing",
+                "name": "Young Flamewing",
                 "description": "Flying",
                 "cardId": "duelyst_YoungFlamewing_2",
                 "spriteName": "neutral_monsterflamewing",
@@ -4627,7 +4627,7 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Young Flamewiing",
+                "name": "Young Flamewing",
                 "description": "Flying",
                 "cardId": "duelyst_YoungFlamewing_3",
                 "spriteName": "neutral_monsterflamewing",
@@ -6474,7 +6474,7 @@
                             },
                             "owner": {
                                 "own": true,
-                                "enemy": true
+                                "enemy": false
                             },
                             "cardType": {
                                 "cell": false,
@@ -6534,7 +6534,7 @@
                             },
                             "owner": {
                                 "own": true,
-                                "enemy": true
+                                "enemy": false
                             },
                             "cardType": {
                                 "cell": false,
@@ -6594,7 +6594,7 @@
                             },
                             "owner": {
                                 "own": true,
-                                "enemy": true
+                                "enemy": false
                             },
                             "cardType": {
                                 "cell": false,
