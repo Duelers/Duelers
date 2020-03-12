@@ -13,9 +13,6 @@ import java.util.List;
 
 public class Deck extends BaseDeck<Card> {
 
-    private final int MIN_DECK_SIZE = 5;
-    private final int MAX_DECK_SIZE = 40;
-
     public Deck(TempDeck tempDeck, Collection collection) {
         super(tempDeck.getDeckName());
         this.hero = collection.findHero(tempDeck.getHeroId());
@@ -59,11 +56,6 @@ public class Deck extends BaseDeck<Card> {
 
     public boolean hasName(String deckName) {
         return this.deckName.equalsIgnoreCase(deckName);
-    }
-
-    public boolean isValid() {
-        if (hero == null) return false;
-        return cards.size() >= MIN_DECK_SIZE && cards.size() <= MAX_DECK_SIZE;
     }
 
     public boolean isMain() {
