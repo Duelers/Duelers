@@ -1,0 +1,18 @@
+{
+  "LANGUAGE_ENGLISH_TITLE": "french",
+  "LANGUAGE_NATIVE_TITLE": "français",
+  "LOGIN_MENU": {
+    "WELCOME_MESSAGE": "La communauté Duelyst essaie de sauver le jeu.",
+    "VERSION": "version",
+    "LOGIN": "login",
+    "REGISTER": "inscription",
+    "PASSWORD": "mot de passe",
+    "ERROR_SHORT_PASSWORD": "Mot de passe trop court.",
+    "ERROR_SHORT_USERNAME": "Pseudo trop court.",
+    "ERROR_INCORRECT_PASSWORD": "Mot de passe incorrect."
+  },
+  "BUTTON_TEXT": {
+    "OK": "ok",
+    "CANCEL": "annuler"
+  }
+}

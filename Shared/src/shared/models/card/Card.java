@@ -2,29 +2,27 @@ package shared.models.card;
 
 import shared.models.card.spell.Spell;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Card implements ICard {
-    private transient PropertyChangeSupport support = new PropertyChangeSupport(this);
-    private String name;
-    private String description;
-    private String cardId;
-    private String spriteName;
-    private CardType type;
-    private ArrayList<Spell> spells;
-    private int defaultAp;
-    private int defaultHp;
-    private int manaCost;
-    private int price;
-    private AttackType attackType;
-    private int range;
-    private int remainingNumber = 20;
+    protected final transient PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private final String name;
+    private final String description;
+    protected String cardId;
+    private final String spriteName;
+    private final CardType type;
+    protected final ArrayList<Spell> spells;
+    private final int defaultAp;
+    private final int defaultHp;
+    private final int manaCost;
+    private final int price;
+    private final AttackType attackType;
+    private final int range;
+    protected int remainingNumber = 20;
 
-    public Card(String name,
+    // This is only used in tests right now. All other cards are loaded from json with gson.
+    public Card(String name, //TODO refactor other constructors to use this one.
                 String cardId,
                 String description,
                 String spriteName,
@@ -48,32 +46,6 @@ public class Card implements ICard {
         this.price = price;
         this.attackType = attackType;
         this.range = range;
-    }
-
-    public Card(String name,
-                String description,
-                CardType cardType,
-                ArrayList<Spell> spells,
-                int defaultAp,
-                int defaultHp,
-                int manaCost,
-                int price,
-                AttackType attackType,
-                int range) {
-        this.name = name;
-        this.description = description;
-        this.type = cardType;
-        this.spells = spells;
-        this.defaultAp = defaultAp;
-        this.defaultHp = defaultHp;
-        this.manaCost = manaCost;
-        this.price = price;
-        this.attackType = attackType;
-        this.range = range;
-    }
-
-
-    public Card() {
     }
 
     public Card(Card referenceCard, String username, int number) {
@@ -100,10 +72,14 @@ public class Card implements ICard {
         this.price = referenceCard.price;
         this.attackType = referenceCard.attackType;
         this.range = referenceCard.range;
+        this.remainingNumber = referenceCard.remainingNumber;
     }
 
     @Override
     public boolean equals(Object obj) {
+        if (!(obj instanceof Card)) {
+            return false;
+        }
         if (!this.getClass().getName().equals(obj.getClass().getName())) return false;
         Card card = (Card) obj;
         return this.cardId.equalsIgnoreCase(card.cardId);
@@ -120,10 +96,6 @@ public class Card implements ICard {
 
     public String getCardId() {
         return this.cardId;
-    }
-
-    public void setCardId(String cardId) {//TODO:Should be removed!
-        this.cardId = cardId;
     }
 
     public String getSpriteName() {
@@ -177,33 +149,4 @@ public class Card implements ICard {
     public int getRemainingNumber() {
         return remainingNumber;
     }
-
-    public void setRemainingNumber(int remainingNumber) {
-        int old = this.remainingNumber;
-        this.remainingNumber = remainingNumber;
-        support.firePropertyChange("new_value", old, remainingNumber);
-    }
-
-//    public void setRemainingNumber(int number) { //From old server version
-//        remainingNumber = number;
-//    }
-
-
-    public void addListener(PropertyChangeListener pcl) {
-        support.addPropertyChangeListener(pcl);
-    }
-
-
-    public void increaseRemainingNumber() {
-        remainingNumber++;
-    }
-
-    public void decreaseRemainingNumber() {
-        remainingNumber--;
-    }
-
-    public void addSpell(Spell spell) {
-        spells.add(spell);
-    }
-
 }

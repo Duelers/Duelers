@@ -1,0 +1,18 @@
+{
+  "LANGUAGE_ENGLISH_TITLE": "brazilian portuguese",
+  "LANGUAGE_NATIVE_TITLE": "português brasileiro",
+  "LOGIN_MENU": {
+    "WELCOME_MESSAGE": "A Comunidade tenta salvar o Duelyst.",
+    "VERSION": "versão",
+    "LOGIN": "entrar",
+    "REGISTER": "criar conta",
+    "PASSWORD": "senha",
+    "ERROR_SHORT_PASSWORD": "Erro! Senha é muito curta.",
+    "ERROR_SHORT_USERNAME": "Erro! Nome de usuário é muito curto.",
+    "ERROR_INCORRECT_PASSWORD": "Erro! Senha incorreta."
+  },
+  "BUTTON_TEXT": {
+    "OK": "ok",
+    "CANCEL": "cancelar"
+  }
+}

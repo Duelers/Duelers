@@ -1,19 +1,19 @@
 package server.gameCenter.models.game.availableActions;
 
 import javafx.util.Pair;
+import server.dataCenter.models.card.ServerCard;
 import shared.models.card.AttackType;
 import server.gameCenter.models.game.Game;
 import server.gameCenter.models.game.Player;
-import server.gameCenter.models.game.Troop;
-import shared.models.card.Card;
+import server.gameCenter.models.game.ServerTroop;
 import shared.models.game.map.Cell;
 
 import java.util.*;
 
 public class AvailableActions {
-    private List<Insert> handInserts = new ArrayList<>();
-    private List<Attack> attacks = new ArrayList<>();
-    private List<Move> moves = new ArrayList<>();
+    private final List<Insert> handInserts = new ArrayList<>();
+    private final List<Attack> attacks = new ArrayList<>();
+    private final List<Move> moves = new ArrayList<>();
 
     public void calculateAvailableActions(Game game) {
         calculateAvailableInserts(game);
@@ -25,7 +25,7 @@ public class AvailableActions {
         Player ownPlayer = game.getCurrentTurnPlayer();
         handInserts.clear();
 
-        for (Card card : ownPlayer.getHand()) {
+        for (ServerCard card : ownPlayer.getHand()) {
             if (ownPlayer.getCurrentMP() >= card.getManaCost()) {
                 handInserts.add(new Insert(card));
             }
@@ -36,12 +36,12 @@ public class AvailableActions {
         Player ownPlayer = game.getCurrentTurnPlayer();
         Player otherPlayer = game.getOtherTurnPlayer();
         attacks.clear();
-        for (Troop myTroop : ownPlayer.getTroops()) {
+        for (ServerTroop myTroop : ownPlayer.getTroops()) {
             if (!myTroop.canAttack()) continue;
             if (myTroop.getCurrentAp() <= 0){ continue;}
 
-            ArrayList<Troop> targets = new ArrayList<>();
-            for (Troop enemyTroop : otherPlayer.getTroops()) {
+            ArrayList<ServerTroop> targets = new ArrayList<>();
+            for (ServerTroop enemyTroop : otherPlayer.getTroops()) {
                 if (enemyTroop.canBeAttackedFromWeakerOnes() && myTroop.getCurrentAp() < enemyTroop.getCurrentAp())
                     continue;
 
@@ -60,7 +60,7 @@ public class AvailableActions {
     public void calculateAvailableMoves(Game game) {
         Player ownPlayer = game.getCurrentTurnPlayer();
         moves.clear();
-        for (Troop troop : ownPlayer.getTroops()) {
+        for (ServerTroop troop : ownPlayer.getTroops()) {
             ArrayList<Cell> troopMoves = calculateAvailableMovesForTroop(game, troop);
 
             if (troopMoves.size() > 0) {
@@ -70,7 +70,7 @@ public class AvailableActions {
     }
 
 
-    private ArrayList<Cell> calculateAvailableMovesForTroop(Game game, Troop troop) {
+    private ArrayList<Cell> calculateAvailableMovesForTroop(Game game, ServerTroop troop) {
         Cell troopCell = troop.getCell();
 
         HashSet<Cell> walkableCells = new HashSet<>(); //Cells which the unit can move to.
@@ -78,8 +78,7 @@ public class AvailableActions {
 
         boolean isProvoked = getIsProvoked(game, troopCell);
         if (isProvoked || !troop.canMove()) {
-            ArrayList<Cell> walkableCellsList = new ArrayList<>(walkableCells);
-            return walkableCellsList;
+            return new ArrayList<>(walkableCells);
         }
 
         HashSet<Cell> seenCells = new HashSet<>();
@@ -100,7 +99,7 @@ public class AvailableActions {
             if (remainingMovement > 0) {
                 ArrayList<Cell> manhattanAdjacentCells = game.getGameMap().getManhattanAdjacentCells(currentCell);
                 for (Cell adjacentCell : manhattanAdjacentCells) {
-                    Troop troopInSpace = game.getGameMap().getTroop(adjacentCell);
+                    ServerTroop troopInSpace = game.getGameMap().getTroop(adjacentCell);
 
                     boolean blockedByAnything = troopInSpace != null;
                     if (!blockedByAnything) {
@@ -119,8 +118,7 @@ public class AvailableActions {
             }
         }
 
-        ArrayList<Cell> walkableCellsList = new ArrayList<>(walkableCells);
-        return walkableCellsList;
+        return new ArrayList<>(walkableCells);
     }
 
     private boolean getIsProvoked(Game game, Cell troopCell) {
@@ -128,7 +126,7 @@ public class AvailableActions {
         List<Cell> neighbourCells = game.getGameMap().getNearbyCells(troopCell);
         for (Cell nCell : neighbourCells) {
             if (game.getGameMap().getTroop(nCell) != null) {
-                Troop nearbyUnit = game.getGameMap().getTroop(nCell);
+                ServerTroop nearbyUnit = game.getGameMap().getTroop(nCell);
                 // is provoked?
                 if (nearbyUnit.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
                     isProvoked = true;
@@ -139,11 +137,11 @@ public class AvailableActions {
         return isProvoked;
     }
 
-    private boolean checkRangeForAttack(Troop myTroop, Troop enemyTroop) {
-        if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
-            return !myTroop.getCell().isNextTo(enemyTroop.getCell());
-        } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {
-            return !myTroop.getCell().isNextTo(enemyTroop.getCell()) &&
+    private boolean checkRangeForAttack(ServerTroop myTroop, ServerTroop enemyTroop) {
+        if (myTroop.getCard().getAttackType().equals(AttackType.MELEE)) {
+            return !myTroop.getCell().isNearbyCell(enemyTroop.getCell());
+        } else if (myTroop.getCard().getAttackType().equals(AttackType.RANGED)) {
+            return !myTroop.getCell().isNearbyCell(enemyTroop.getCell()) &&
                     myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         } else { // HYBRID
             return myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
@@ -161,7 +159,7 @@ public class AvailableActions {
             return "| <EMPTY> |";
         }
 
-        getHandInserts().forEach(n -> strBuilder.append(n.getCard().getCardId() + " | "));
+        getHandInserts().forEach(n -> strBuilder.append(n.getCard().getCardId()).append(" | "));
         return strBuilder.toString();
     }
 

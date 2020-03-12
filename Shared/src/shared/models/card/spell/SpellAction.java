@@ -2,23 +2,24 @@ package shared.models.card.spell;
 
 
 public class SpellAction {
-    private int enemyHitChanges;
-    private int apChange;
-    private int hpChange;
-    private int mpChange;
-    private boolean poison;
-    private boolean makeStun;
-    private boolean makeDisarm;
-    private boolean noDisarm;
-    private boolean noPoison;
-    private boolean noStun;
-    private boolean noBadEffect;
-    private boolean noAttackFromWeakerOnes;
+    private final int enemyHitChanges;
+    private final int apChange;
+    private final int hpChange;
+    private final int mpChange;
+    private int cardDraw;
+    private final boolean poison;
+    private final boolean makeStun;
+    private final boolean makeDisarm;
+    private final boolean noDisarm;
+    private final boolean noPoison;
+    private final boolean noStun;
+    private final boolean noBadEffect;
+    private final boolean noAttackFromWeakerOnes;
     private boolean disableHolyBuff;
     private boolean addSpell;
-    private boolean killsTarget;
+    private final boolean killsTarget;
     private boolean isForGladiator;
-    private boolean durable;
+    private final boolean durable;
     private int removeBuffs; // -1 for negative buffs and +1 for positive ones
     private int duration;
     private int delay;
@@ -77,6 +78,7 @@ public class SpellAction {
         this.apChange = referenceAction.apChange;
         this.hpChange = referenceAction.hpChange;
         this.mpChange = referenceAction.mpChange;
+        this.cardDraw = referenceAction.cardDraw;
         this.poison = referenceAction.poison;
         this.makeStun = referenceAction.makeStun;
         this.makeDisarm = referenceAction.makeDisarm;
@@ -117,6 +119,10 @@ public class SpellAction {
 
     public int getMpChange() {
         return mpChange;
+    }
+
+    public int getCardDraw() {
+        return cardDraw;
     }
 
     public boolean isPoison() {

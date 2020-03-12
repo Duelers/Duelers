@@ -23,22 +23,23 @@ import static org.mockito.Mockito.when;
 public class AvailableActions_Test {
 
     private Card makeMinionCard() {
-        Card card = new Card(" ", " ", CardType.MINION, new ArrayList<Spell>(), 1, 1, 1, 1, AttackType.MELEE, 1);
-        return card;
+        return new Card(" ", " ", " ", " ", CardType.MINION, new ArrayList<>(), 1, 1, 1, 1, AttackType.MELEE, 1);
     }
 
-    private Troop addFriendlyMinion(Game game, Cell cell) {
+    private ServerTroop addFriendlyMinion(Game game, Cell cell) {
         int friendlyPlayerNumber = 1;
-        Troop troop = new Troop(makeMinionCard(), cell, friendlyPlayerNumber);
+        ServerTroop troop = new ServerTroop(makeMinionCard(), friendlyPlayerNumber);
+        troop.setCell(cell);
         troop.setCanMove(true);
         game.getGameMap().addTroop(friendlyPlayerNumber, troop);
         game.getCurrentTurnPlayer().addTroop(troop);
         return troop;
     }
 
-    private Troop addEnemyMinion(Game game, Cell cell) {
+    private ServerTroop addEnemyMinion(Game game, Cell cell) {
         int enemyPlayerNumber = 2;
-        Troop troop = new Troop(makeMinionCard(), cell, enemyPlayerNumber);
+        ServerTroop troop = new ServerTroop(makeMinionCard(), enemyPlayerNumber);
+        troop.setCell(cell);
         troop.setCanMove(true);
         game.getGameMap().addTroop(enemyPlayerNumber, troop);
         return troop;
@@ -60,7 +61,7 @@ public class AvailableActions_Test {
         when(mockGame.getGameMap()).thenReturn(map);
         when(mockGame.getCurrentTurnPlayer()).thenReturn(mockPlayer);
 
-//        doCallRealMethod().when(mockPlayer).addTroop(any(Troop.class));
+//        doCallRealMethod().when(mockPlayer).addTroop(any(ServerTroop.class));
     }
 
     @Test
@@ -69,7 +70,7 @@ public class AvailableActions_Test {
         AvailableActions sut = new AvailableActions();
 
         Cell topLeft = new Cell(0, 0);
-        Troop topLeftMinion = addFriendlyMinion(game, topLeft);
+        ServerTroop topLeftMinion = addFriendlyMinion(game, topLeft);
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(topLeftMinion));
 
@@ -95,7 +96,7 @@ public class AvailableActions_Test {
         AvailableActions sut = new AvailableActions();
 
         Cell centerLeft = new Cell(2, 0);
-        Troop centerMinion = addFriendlyMinion(game, centerLeft);
+        ServerTroop centerMinion = addFriendlyMinion(game, centerLeft);
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
@@ -129,7 +130,7 @@ public class AvailableActions_Test {
         AvailableActions sut = new AvailableActions();
 
         Cell center = new Cell(2, 3);
-        Troop centerMinion = addFriendlyMinion(game, center);
+        ServerTroop centerMinion = addFriendlyMinion(game, center);
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
@@ -167,7 +168,7 @@ public class AvailableActions_Test {
         AvailableActions sut = new AvailableActions();
 
         Cell center = new Cell(2, 3);
-        Troop centerMinion = addFriendlyMinion(game, center);
+        ServerTroop centerMinion = addFriendlyMinion(game, center);
 
         addFriendlyMinion(game, new Cell(0, 3));
         addFriendlyMinion(game, new Cell(1, 2));
@@ -204,7 +205,7 @@ public class AvailableActions_Test {
         AvailableActions sut = new AvailableActions();
 
         Cell center = new Cell(2, 3);
-        Troop centerMinion = addFriendlyMinion(game, center);
+        ServerTroop centerMinion = addFriendlyMinion(game, center);
 
         addFriendlyMinion(game, new Cell(1, 3));
         addFriendlyMinion(game, new Cell(2, 2));
@@ -242,7 +243,7 @@ public class AvailableActions_Test {
         AvailableActions sut = new AvailableActions();
 
         Cell center = new Cell(2, 3);
-        Troop centerMinion = addFriendlyMinion(game, center);
+        ServerTroop centerMinion = addFriendlyMinion(game, center);
 
         addEnemyMinion(game, new Cell(1, 3));
         addEnemyMinion(game, new Cell(2, 2));
@@ -272,7 +273,7 @@ public class AvailableActions_Test {
         AvailableActions sut = new AvailableActions();
 
         Cell center = new Cell(2, 3);
-        Troop centerMinion = addFriendlyMinion(game, center);
+        ServerTroop centerMinion = addFriendlyMinion(game, center);
 
         addEnemyMinion(game, new Cell(1, 3));
 
@@ -309,7 +310,7 @@ public class AvailableActions_Test {
         AvailableActions sut = new AvailableActions();
 
         Cell center = new Cell(2, 3);
-        Troop centerMinion = addFriendlyMinion(game, center);
+        ServerTroop centerMinion = addFriendlyMinion(game, center);
 
         addEnemyMinion(game, new Cell(2, 2));
 
@@ -346,7 +347,7 @@ public class AvailableActions_Test {
         AvailableActions sut = new AvailableActions();
 
         Cell center = new Cell(2, 3);
-        Troop centerMinion = addFriendlyMinion(game, center);
+        ServerTroop centerMinion = addFriendlyMinion(game, center);
 
         addEnemyMinion(game, new Cell(3, 3));
 
@@ -382,7 +383,7 @@ public class AvailableActions_Test {
         AvailableActions sut = new AvailableActions();
 
         Cell center = new Cell(2, 3);
-        Troop centerMinion = addFriendlyMinion(game, center);
+        ServerTroop centerMinion = addFriendlyMinion(game, center);
 
         addEnemyMinion(game, new Cell(2, 4));
 

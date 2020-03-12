@@ -11,13 +11,14 @@ import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.account.TempAccount;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
+import server.dataCenter.models.card.ServerCard;
 import server.dataCenter.models.db.OldDataBase;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
-import shared.models.card.Card;
 
+import javax.websocket.Session;
 import java.io.*;
 import java.util.*;
 
@@ -54,16 +55,16 @@ public class DataCenter extends Thread {
 
     }
 
-    public static Card getCard(String cardName, Collection collection) {
-        for (Card card : collection.getHeroes()) {
+    public static ServerCard getCard(String cardName, Collection collection) {
+        for (ServerCard card : collection.getHeroes()) {
             if (card.getName().equals(cardName))
                 return card;
         }
-        for (Card card : collection.getMinions()) {
+        for (ServerCard card : collection.getMinions()) {
             if (card.getName().equals(cardName))
                 return card;
         }
-        for (Card card : collection.getSpells()) {
+        for (ServerCard card : collection.getSpells()) {
             if (card.getName().equals(cardName))
                 return card;
         }
@@ -97,65 +98,73 @@ public class DataCenter extends Thread {
         return accounts.get(account);
     }
 
-    public void register(Message message) throws LogicException {
-        if (message.getAccountFields().getUsername() == null || message.getAccountFields().getUsername().length() < 2
-                || getAccount(message.getAccountFields().getUsername()) != null) {
-            throw new ClientException("Invalid Username!");
-        } else if (message.getAccountFields().getPassword() == null || message.getAccountFields().getPassword().length() < 4) {
-            throw new ClientException("Invalid Password!");
+    private void login(Account account, String client) throws LogicException {
+        //TODO: send commented out parts async
+        if (!ClientPortal.getInstance().hasThisClient(client)) {
+            throw new LogicException("Client Wasn't Added!");
+        } else if (account == null) {
+            throw new ClientException("Username Not Found!");
+        } else if (clients.get(client) != null) {
+            throw new ClientException("Your Client Has Logged In Before!");
         } else {
-            Account account = new Account(message.getAccountFields().getUsername(), message.getAccountFields().getPassword());
+            if (accounts.get(account) != null) {
+                this.forceLogout(accounts.get(account));
+            }
+            accounts.replace(account, client);
+            clients.replace(client, account);
+            GameServer.addToSendingMessages(Message.makeAccountCopyMessage(client, account));
+            GameServer.serverPrint(client + " Is Logged In");
+        }
+    }
+
+    private void register(String username, String client) throws LogicException {
+        if (username == null || username.length() < 2
+                || getAccount(username) != null) {
+            throw new ClientException("Invalid Username!");
+        } else {
+            Account account = new Account(username, "");
             accounts.put(account, null);
             saveAccount(account);
-            GameServer.serverPrint(message.getAccountFields().getUsername() + " Is Created!");
+            GameServer.serverPrint(username + " Is Created!");
 
-            login(message);
+            login(account, client);
 
             //give the player all cards upon registration
             //cant give all items because player can only own 3
             Collection originalCards = dataBase.getOriginalCards();
 
             System.out.println("Starting Heroes");
-            for (Card card : originalCards.getHeroes()) {
-                buyAllCards(message, card.getName());
+            for (ServerCard card : originalCards.getHeroes()) {
+                this.buyAllCards(account, card.getName());
 
             }
 
             for (int i = 0; i < 3; i++) {
                 System.out.println("Starting Minions");
-                for (Card card : originalCards.getMinions()) {
-                    buyAllCards(message, card.getName());
+                for (ServerCard card : originalCards.getMinions()) {
+                    this.buyAllCards(account, card.getName());
                 }
                 System.out.println("Starting Spells");
-                for (Card card : originalCards.getSpells()) {
-                    buyAllCards(message, card.getName());
+                for (ServerCard card : originalCards.getSpells()) {
+                    this.buyAllCards(account, card.getName());
                 }
             }
-            Account accountToUpdateClientSide = clients.get(message.getSender());
-            GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), accountToUpdateClientSide));
+            GameServer.addToSendingMessages(Message.makeAccountCopyMessage(client, account));
         }
     }
 
-    public void login(Message message) throws LogicException {
-        if (message.getAccountFields().getUsername() == null || message.getSender() == null) {
-            throw new ClientException("invalid message!");
-        }
-        Account account = getAccount(message.getAccountFields().getUsername());
-        if (!ClientPortal.getInstance().hasThisClient(message.getSender())) {
-            throw new LogicException("Client Wasn't Added!");
-        } else if (account == null) {
-            throw new ClientException("Username Not Found!");
-        } else if (!account.getPassword().equalsIgnoreCase(message.getAccountFields().getPassword())) {
-            throw new ClientException("Incorrect PassWord!");
-        } else if (accounts.get(account) != null) {
-            throw new ClientException("Selected Username Is Online!");
-        } else if (clients.get(message.getSender()) != null) {
-            throw new ClientException("Your Client Has Logged In Before!");
-        } else {
-            accounts.replace(account, message.getSender());
-            clients.replace(message.getSender(), account);
-            GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
-            GameServer.serverPrint(message.getSender() + " Is Logged In");
+    public void loginOrRegister(String username, String client) {
+        Account account = this.getAccount(username);
+        try {
+            if (account == null) {
+                this.register(username, client);
+            } else {
+                this.login(account, client);
+            }
+        } catch (LogicException e) {
+            GameServer.serverPrint(e.toString());
+            GameServer.sendException(e.getMessage(), client);
+            //TODO: send error message async
         }
     }
 
@@ -193,6 +202,13 @@ public class DataCenter extends Thread {
         clients.replace(message.getSender(), null);
         GameServer.serverPrint(message.getSender() + " Is Logged Out.");
         GameServer.addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+    }
+
+    public void logout(Session session) throws LogicException {
+        String id = session.getId();
+        loginCheck(id);
+        forceLogout(id);
+        GameServer.serverPrint(id + " Is Logged Out.");
     }
 
     public void createDeck(Message message) throws LogicException {
@@ -249,17 +265,14 @@ public class DataCenter extends Thread {
 
     public void buyAllCards(Message message, String cardName) throws LogicException {
         Account account = clients.get(message.getSender());
-        account.buyCard(cardName, dataBase.getOriginalCards());
-        saveAccount(account);
+        this.buyAllCards(account, cardName);
 
     }
 
-    public void sellCard(Message message) throws LogicException {
-        loginCheck(message);
-        Account account = clients.get(message.getSender());
-        account.sellCard(message.getOtherFields().getMyCardId());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+    public void buyAllCards(Account account, String cardName) throws LogicException {
+        account.buyCard(cardName, dataBase.getOriginalCards());
         saveAccount(account);
+
     }
 
     public Map<Account, String> getAccounts() {
@@ -290,9 +303,9 @@ public class DataCenter extends Thread {
     }
 
     public void changeCardNumber(String cardName, int changeValue) throws LogicException {
-        Card card = getCard(cardName, getOriginalCards());
+        ServerCard card = getCard(cardName, getOriginalCards());
         if (card == null)
-            throw new ClientException("Invalid Card");
+            throw new ClientException("Invalid ServerCard");
         card.setRemainingNumber(card.getRemainingNumber() + changeValue);
         updateCard(card);
         GameServer.getInstance().sendChangeCardNumberMessage(card);
@@ -301,7 +314,7 @@ public class DataCenter extends Thread {
     public void changeCardNumber(Message message) throws LogicException {
         loginCheck(message);
         Account account = clients.get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
+        if (!account.getAccountType().equals(AccountType.ADMIN))
             throw new ClientException("You don't have admin access!");
         changeCardNumber(message.getChangeCardNumber().getCardName(), message.getChangeCardNumber().getNumber());
     }
@@ -309,7 +322,7 @@ public class DataCenter extends Thread {
     public void changeAccountType(Message message) throws LogicException {
         loginCheck(message);
         Account account = clients.get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
+        if (!account.getAccountType().equals(AccountType.ADMIN))
             throw new ClientException("You don't have admin access!");
         Account changingAccount = getAccount(message.getChangeAccountType().getUsername());
         if (changingAccount == null)
@@ -338,7 +351,7 @@ public class DataCenter extends Thread {
             File[] files = new File(path).listFiles();
             if (files != null) {
                 for (File file : files) {
-                    Card card = loadFile(file, Card.class);
+                    ServerCard card = loadFile(file, ServerCard.class);
                     if (card != null) {
                         dataBase.addOriginalCard(card);
                     }
@@ -359,7 +372,7 @@ public class DataCenter extends Thread {
         }
     }
 
-    private void updateCard(Card card) throws ServerException {
+    private void updateCard(ServerCard card) throws ServerException {
         String cardJson = new GsonBuilder().setPrettyPrinting().create().toJson(card);
         for (String path : CARDS_PATHS) {
             File[] files = new File(path).listFiles();
@@ -378,10 +391,10 @@ public class DataCenter extends Thread {
                 }
             }
         }
-        throw new ServerException("Card not found");
+        throw new ServerException("ServerCard not found");
     }
 
-    private void saveOriginalCard(Card card) {
+    private void saveOriginalCard(ServerCard card) {
         String cardJson = new GsonBuilder().setPrettyPrinting().create().toJson(card);
         String path;
         try {

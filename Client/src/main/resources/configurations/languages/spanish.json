@@ -1,0 +1,18 @@
+{
+  "LANGUAGE_ENGLISH_TITLE": "spanish",
+  "LANGUAGE_NATIVE_TITLE": "español",
+  "LOGIN_MENU": {
+    "WELCOME_MESSAGE": "La Communidad intenta salvar a Duelyst.",
+    "VERSION": "version",
+    "LOGIN": "Iniciar sesión",
+    "REGISTER": "Registrarse",
+    "PASSWORD": "contraseña",
+    "ERROR_SHORT_PASSWORD": "Error! Contraseña muy corta.",
+    "ERROR_SHORT_USERNAME": "Error! Nombre de usuario muy corto",
+    "ERROR_INCORRECT_PASSWORD": "Error! Contraseña incorrecta"
+  },
+  "BUTTON_TEXT": {
+    "OK": "ok",
+    "CANCEL": "cancelar"
+  }
+}

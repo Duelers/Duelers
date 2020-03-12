@@ -5,13 +5,13 @@ import server.gameCenter.models.game.Player;
 import java.util.Date;
 
 public class MatchHistory {
-    private String oppName;
-    private boolean amIWinner;
-    private Date date;
+    private final String oppName;
+    private final boolean amIWinner;
+    private final Date date;
 
     public MatchHistory(Player player, boolean amIWinner) {
         if (player.getUserName().equals("AI")) {
-            this.oppName = player.getDeck().getDeckName();
+            this.oppName = player.getDeck().getName();
         } else {
             this.oppName = player.getUserName();
         }
@@ -24,7 +24,7 @@ public class MatchHistory {
     }
 
     public String getDate() {
-        return date.toLocaleString();
+        return date.toString();
     }
 
     public boolean isAmIWinner() {

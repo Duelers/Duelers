@@ -1,0 +1,15 @@
+{
+  "name": "Phalanxar",
+  "description": "",
+  "cardId": "Phalanxar",
+  "spriteName": "f5_tank",
+  "type": "MINION",
+  "defaultAp": 7,
+  "defaultHp": 2,
+  "manaCost": 3,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

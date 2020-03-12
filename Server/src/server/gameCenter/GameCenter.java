@@ -5,7 +5,6 @@ import server.clientPortal.models.message.Message;
 import server.clientPortal.models.message.OnlineGame;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
-import server.dataCenter.models.account.AccountType;
 import server.dataCenter.models.account.MatchHistory;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
@@ -87,7 +86,7 @@ public class GameCenter extends Thread {//synchronize
         removeAllGameRequests(account);
         synchronized (globalRequests) {
             for (GlobalRequest globalRequest : globalRequests) {
-                if (globalRequest.getGameType() == gameType) {
+                if (gameType.equals(globalRequest.getGameType())) {
                     newMultiplayerGame(globalRequest.getRequester(), account, gameType);
                     globalRequests.remove(globalRequest);
                     return;
@@ -110,7 +109,7 @@ public class GameCenter extends Thread {//synchronize
     public void removeAllGameRequests(Account account) {
         synchronized (globalRequests) {
             for (GlobalRequest globalRequest : globalRequests) {
-                if (globalRequest.getRequester() == account) {
+                if (globalRequest.getRequester().equals(account)) {
                     globalRequests.remove(globalRequest);
                     break;
                 }
@@ -118,7 +117,7 @@ public class GameCenter extends Thread {//synchronize
         }
         synchronized (userInvitations) {
             for (UserInvitation userInvitation : userInvitations) {
-                if (userInvitation.getInviter() == account) {
+                if (userInvitation.getInviter().equals(account)) {
                     userInvitations.remove(userInvitation);
                     break;
                 }
@@ -132,7 +131,7 @@ public class GameCenter extends Thread {//synchronize
 
     private UserInvitation getUserInvitation(Account inviter) {
         for (UserInvitation userInvitation : userInvitations) {
-            if (userInvitation.getInviter() == inviter)
+            if (userInvitation.getInviter().equals(inviter))
                 return userInvitation;
         }
         return null;
@@ -214,13 +213,8 @@ public class GameCenter extends Thread {//synchronize
         deck.makeCustomGameDeck();
         Game game = null;
         GameMap gameMap = new GameMap();
-        switch (message.getNewGameFields().getGameType()) {
-            case KILL_HERO:
-                game = new KillHeroBattle(myAccount, deck, gameMap);
-                game.addObserver(myAccount);
-                break;
-        }
-        game.setReward(Game.getDefaultReward());
+        game = new KillHeroBattle(myAccount, deck, gameMap);
+        game.addObserver(myAccount);
         onlineGames.put(myAccount, game);
         gameInfos.add(new OnlineGame(game));
         GameServer.addToSendingMessages(Message.makeGameCopyMessage
@@ -235,15 +229,11 @@ public class GameCenter extends Thread {//synchronize
         removeAllGameRequests(account2);
         Game game = null;
         GameMap gameMap = new GameMap();
-        switch (gameType) {
-            case KILL_HERO:
-                game = new KillHeroBattle(account1, account2, gameMap);
-                game.addObserver(account1);
-                game.addObserver(account2);
-                break;
-
+        if (gameType.equals(GameType.KILL_HERO)) {
+            game = new KillHeroBattle(account1, account2, gameMap);
+            game.addObserver(account1);
+            game.addObserver(account2);
         }
-        game.setReward(Game.getDefaultReward());
         onlineGames.put(account1, game);
         onlineGames.put(account2, game);
         gameInfos.add(new OnlineGame(game));
@@ -267,7 +257,6 @@ public class GameCenter extends Thread {//synchronize
                 onlineGames.remove(account2);
             }
         }
-
         for (OnlineGame onlineGame : gameInfos) {
             if (onlineGame.getPlayer1().equals(game.getPlayerOne().getUserName()) ||
                     onlineGame.getPlayer2().equals(game.getPlayerTwo().getUserName())) {
@@ -317,7 +306,7 @@ public class GameCenter extends Thread {//synchronize
 
     public void endTurn(Message message) throws LogicException {
         Game game = getGame(message.getSender());
-        game.changeTurn(DataCenter.getInstance().getClients().get(message.getSender()).getUsername());
+        game.changeTurn(DataCenter.getInstance().getClients().get(message.getSender()).getUsername(), false);
     }
 
     public void checkGameFinish(Game game) {
@@ -334,7 +323,7 @@ public class GameCenter extends Thread {//synchronize
             if (account == null)
                 GameServer.serverPrint("Error");
             else {
-                account.addMatchHistory(playerOneHistory, game.getReward());
+                account.addMatchHistory(playerOneHistory);
                 DataCenter.getInstance().saveAccount(account);
             }
         }
@@ -343,7 +332,7 @@ public class GameCenter extends Thread {//synchronize
             if (account == null)
                 GameServer.serverPrint("Error");
             else {
-                account.addMatchHistory(playerTwoHistory, game.getReward());
+                account.addMatchHistory(playerTwoHistory);
                 DataCenter.getInstance().saveAccount(account);
             }
         }
@@ -368,8 +357,6 @@ public class GameCenter extends Thread {//synchronize
     public void addOnlineShowRequest(Message message) throws LogicException {
         DataCenter.getInstance().loginCheck(message);
         Account account = DataCenter.getInstance().getClients().get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
-            throw new ClientException("You don't have admin access!");
         Game game = getGame(message.getOnlineGame());
         if (game == null)
             throw new ClientException("Invalid Game");
@@ -380,8 +367,6 @@ public class GameCenter extends Thread {//synchronize
     public void removeOnlineShowGame(Message message) throws LogicException {
         DataCenter.getInstance().loginCheck(message);
         Account account = DataCenter.getInstance().getClients().get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
-            throw new ClientException("You don't have admin access!");
         Game game = getGame(message.getOnlineGame());
         if (game == null)
             throw new ClientException("Invalid Game");

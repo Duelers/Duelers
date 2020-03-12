@@ -18,8 +18,8 @@ import java.util.Set;
 public class Message {
     private MessageType messageType;
     //serverName || clientName
-    private String sender;
-    private String receiver;
+    private final String sender;
+    private final String receiver;
 
     //SENDER:SERVER
     private GameCopyMessage gameCopyMessage;
@@ -44,6 +44,7 @@ public class Message {
     //SENDER:DUAL
     private Card card;
     private String cardID;
+    public String token;
     private ChatMessage chatMessage;
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
@@ -51,7 +52,7 @@ public class Message {
 
 
     private Message(String receiver) {
-        this.sender = GameServer.getInstance().serverName;
+        this.sender = GameServer.serverName;
         this.receiver = receiver;
     }
 
@@ -93,7 +94,7 @@ public class Message {
         return message;
     }
 
-    public static Message makeAttackMessage(String receiver, Troop attacker, Troop defender, boolean counterAttack) {
+    public static Message makeAttackMessage(String receiver, ServerTroop attacker, ServerTroop defender, boolean counterAttack) {
         Message message = new Message(receiver);
         message.gameAnimations = new GameAnimations();
         message.gameAnimations.addAttacks(attacker.getCard().getCardId(), defender.getCard().getCardId());
@@ -118,7 +119,7 @@ public class Message {
         return message;
     }
 
-    public static Message makeTroopUpdateMessage(String receiver, Troop troop) {
+    public static Message makeTroopUpdateMessage(String receiver, ServerTroop troop) {
         Message message = new Message(receiver);
         message.troopUpdateMessage = new TroopUpdateMessage(troop);
         message.messageType = MessageType.TROOP_UPDATE;
@@ -156,9 +157,9 @@ public class Message {
         return message;
     }
 
-    public static Message makeGameFinishMessage(String receiver, boolean youWon, int reward) {
+    public static Message makeGameFinishMessage(String receiver, boolean youWon) {
         Message message = new Message(receiver);
-        message.gameFinishMessage = new GameFinishMessage(youWon, reward);
+        message.gameFinishMessage = new GameFinishMessage(youWon);
         message.messageType = MessageType.Game_FINISH;
         return message;
     }

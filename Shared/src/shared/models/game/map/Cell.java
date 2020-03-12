@@ -3,14 +3,13 @@ package shared.models.game.map;
 import java.util.Objects;
 
 public class Cell {
-    private int row;
-    private int column;
+    private final int row;
+    private final int column;
 
     public Cell(int row, int column) {
         this.row = row;
         this.column = column;
     }
-
 
     public int getRow() {
         return this.row;
@@ -20,8 +19,8 @@ public class Cell {
         return this.column;
     }
 
-    public boolean isNextTo(Cell cell) {
-        return Math.abs(cell.row - row) < 2 && Math.abs(cell.column - column) < 2;
+    public boolean isNearbyCell(Cell cell) {
+        return Math.abs(cell.row - row) <= 1 && Math.abs(cell.column - column) <= 1;
     }
 
     public int manhattanDistance(Cell otherCell) {
@@ -35,7 +34,7 @@ public class Cell {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj.getClass() != this.getClass()) return false;
+        if (!obj.getClass().equals(this.getClass())) return false;
         Cell cell = (Cell) obj;
         return row == cell.row && column == cell.column;
     }

@@ -4,9 +4,9 @@ import server.GameServer;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
+import server.dataCenter.models.card.ServerCard;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
-import shared.models.card.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,36 +14,36 @@ import java.util.List;
 import java.util.Map;
 
 public class Collection {
-    private List<Card> heroes = new ArrayList<>();
-    private List<Card> minions = new ArrayList<>();
-    private List<Card> spells = new ArrayList<>();
+    private final List<ServerCard> heroes = new ArrayList<>();
+    private final List<ServerCard> minions = new ArrayList<>();
+    private final List<ServerCard> spells = new ArrayList<>();
 
     boolean hasCard(String cardId) {
         return hasCard(cardId, heroes) || hasCard(cardId, minions) || hasCard(cardId, spells);
     }
 
-    private boolean hasCard(String cardId, List<Card> cards) {
+    private boolean hasCard(String cardId, List<ServerCard> cards) {
         if (cardId == null || cards == null)
             return false;
-        for (Card card : cards) {
+        for (ServerCard card : cards) {
             if (card.getCardId().equalsIgnoreCase(cardId))
                 return true;
         }
         return false;
     }
 
-    private ArrayList<Card> getCardsWithName(String cardName, List<Card> cards) {
-        ArrayList<Card> cards1 = new ArrayList<>();
+    private ArrayList<ServerCard> getCardsWithName(String cardName, List<ServerCard> cards) {
+        ArrayList<ServerCard> cards1 = new ArrayList<>();
         if (cardName == null || cards == null)
             return cards1;
-        for (Card card : cards) {
+        for (ServerCard card : cards) {
             if (card.getName().equalsIgnoreCase(cardName))
                 cards1.add(card);
         }
         return cards1;
     }
 
-    public Card getCard(String cardId) {
+    public ServerCard getCard(String cardId) {
         if (hasCard(cardId, heroes))
             return getCard(cardId, heroes);
         if (hasCard(cardId, minions))
@@ -53,39 +53,29 @@ public class Collection {
         return null;
     }
 
-    private Card getCard(String cardId, List<Card> cards) {
-        for (Card card : cards) {
+    private ServerCard getCard(String cardId, List<ServerCard> cards) {
+        for (ServerCard card : cards) {
             if (card.getCardId().equalsIgnoreCase(cardId))
                 return card;
         }
         return null;
     }
 
-    void addCard(String cardName, Collection originalCards, String username) throws ClientException {//for account collections
-        Card card = DataCenter.getCard(cardName, originalCards);
-        if (card == null) {
-            GameServer.getInstance().serverPrint("Invalid CardName!");
-            return;
-        }
+    void addCard(String cardName, Collection originalCards, String username) {//for account collections
+        ServerCard card = DataCenter.getCard(cardName, originalCards);
+        assert card != null : "Invalid card name given to addCard.";
         int number = 1;
         String cardId = (username + "_" + cardName + "_").replaceAll(" ", "");
         while (hasCard(cardId + number))
             number++;
-        Card newCard = new Card(card, username, number);
-        //removed to allow the user to have all items in their collection
-        //if (newCard.getType() == CardType.USABLE_ITEM && items.size() >= 3) {
-        //    throw new ClientException("you can't have more than 3 items");
-        //}
+        ServerCard newCard = new ServerCard(card, username, number);
         addCard(newCard);
     }
 
-    public void addCard(Card card) {//for shop
-        if (card == null) {
-            GameServer.getInstance().serverPrint("Error: Card is null");
-            return;
-        }
+    public void addCard(ServerCard card) {//for shop
+        assert card != null : "addCard card is null.";
         if (hasCard(card.getCardId())) {
-            GameServer.getInstance().serverPrint("Error: Account does not own '" + card.getCardId() + "'");
+            GameServer.serverPrint("Error: Account does not own '" + card.getCardId() + "'");
             return;
         }
         switch (card.getType()) {
@@ -101,7 +91,7 @@ public class Collection {
         }
     }
 
-    public void removeCard(Card card) {
+    public void removeCard(ServerCard card) {
         heroes.remove(card);
         minions.remove(card);
         spells.remove(card);
@@ -109,13 +99,13 @@ public class Collection {
 
     public Deck extractDeck(ExportedDeck exportedDeck) throws LogicException {
         Deck deck = new Deck(exportedDeck.getName());
-        ArrayList<Card> hero = getCardsWithName(exportedDeck.getHeroName(), heroes);
+        ArrayList<ServerCard> hero = getCardsWithName(exportedDeck.getHeroName(), heroes);
         if (hero.isEmpty())
             throw new ClientException("you have not the hero");
         deck.addCard(hero.get(0));
         for (Map.Entry<String, Integer> entry :
                 exportedDeck.getOtherCards().entrySet()) {
-            ArrayList<Card> cards = getCardsWithName(entry.getKey(), minions);
+            ArrayList<ServerCard> cards = getCardsWithName(entry.getKey(), minions);
             cards.addAll(getCardsWithName(entry.getKey(), spells));
             if (cards.size() < entry.getValue())
                 throw new ClientException("you have not enough cards (buy " + entry.getKey() + " from shop");
@@ -126,15 +116,15 @@ public class Collection {
         return deck;
     }
 
-    public List<Card> getHeroes() {
+    public List<ServerCard> getHeroes() {
         return Collections.unmodifiableList(heroes);
     }
 
-    public List<Card> getMinions() {
+    public List<ServerCard> getMinions() {
         return Collections.unmodifiableList(minions);
     }
 
-    public List<Card> getSpells() {
+    public List<ServerCard> getSpells() {
         return Collections.unmodifiableList(spells);
     }
 }

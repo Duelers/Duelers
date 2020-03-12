@@ -1,15 +1,16 @@
 package server.gameCenter.models.map;
 
 import server.clientPortal.models.comperessedData.CompressedGameMap;
-import server.gameCenter.models.game.Troop;
+import server.gameCenter.models.game.ServerTroop;
+import shared.Constants;
 import shared.models.game.map.Cell;
 
 import java.util.*;
 
 public class GameMap {
-    private static final int NUM_ROWS = 5, NUM_COLUMNS = 9;
-    private Cell[][] cells;
-    private List<Troop> troops = new ArrayList<>();
+    private static final int NUM_ROWS = Constants.NUMBER_OF_ROWS, NUM_COLUMNS = Constants.NUMBER_OF_COLUMNS;
+    private final Cell[][] cells;
+    private final List<ServerTroop> troops = new ArrayList<>();
 
     public GameMap() {
         cells = new Cell[NUM_ROWS][NUM_COLUMNS];
@@ -102,12 +103,12 @@ public class GameMap {
     }
 
 
-    public void addTroop(int playerNumber, Troop troop) {
+    public void addTroop(int playerNumber, ServerTroop troop) {
         this.troops.add(troop);
     }
 
-    private Troop getTroop(int row, int column) {
-        for (Troop troop : troops) {
+    private ServerTroop getTroop(int row, int column) {
+        for (ServerTroop troop : troops) {
             if (troop.getCell().getColumn() == column && troop.getCell().getRow() == row) {
                 return troop;
             }
@@ -115,13 +116,13 @@ public class GameMap {
         return null;
     }
 
-    public Troop getTroop(Cell cell) {
+    public ServerTroop getTroop(Cell cell) {
         return getTroop(cell.getRow(), cell.getColumn());
     }
 
 
-    public Troop getTroop(String cardId) {
-        for (Troop troop : troops) {
+    public ServerTroop getTroop(String cardId) {
+        for (ServerTroop troop : troops) {
             if (troop.getCard().getCardId().equalsIgnoreCase(cardId)) {
                 return troop;
             }
@@ -129,11 +130,11 @@ public class GameMap {
         return null;
     }
 
-    public void removeTroop(Troop troop) {
+    public void removeTroop(ServerTroop troop) {
         troops.remove(troop);
     }
 
-    public List<Troop> getTroops() {
+    public List<ServerTroop> getTroops() {
         return Collections.unmodifiableList(troops);
     }
 }
