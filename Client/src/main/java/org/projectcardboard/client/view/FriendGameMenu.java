@@ -5,7 +5,7 @@ import shared.models.game.GameType;
 import java.io.FileNotFoundException;
 
 public class FriendGameMenu extends GameModeChooseMenu {
-    private static final String BACKGROUND_URL = "Client/src/main/resources/menu/background/friend_game_background.jpg";
+    private static final String BACKGROUND_URL = "/menu/background/friend_game_background.jpg";
     private static FriendGameMenu menu;
 
     private FriendGameMenu() throws FileNotFoundException {

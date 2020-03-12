@@ -1,7 +1,9 @@
 package org.projectcardboard.client.models.message;
 
 public class ChatMessage {
-    private String senderUsername, receiverUsername, text;
+    private final String senderUsername;
+    private final String receiverUsername;
+    private final String text;
 
     ChatMessage(String senderUsername, String receiverUsername, String text) {
         this.senderUsername = senderUsername;

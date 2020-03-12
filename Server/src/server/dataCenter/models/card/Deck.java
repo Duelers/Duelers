@@ -4,10 +4,9 @@ import server.GameServer;
 import server.dataCenter.models.account.Collection;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.card.BaseDeck;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Deck {
     private String deckName;
@@ -18,47 +17,42 @@ public class Deck {
     private final int MIN_DECK_SIZE = 5;
     private final int MAX_DECK_SIZE = 40;
 
-    public Deck(String deckName, ServerCard hero, ServerCard item, ArrayList<ServerCard> others) {
-        this.deckName = deckName;
-        this.hero = hero;
-        this.item = item;
-        this.others = others;
+
+public class Deck extends BaseDeck<ServerCard> {
+    public Deck(String deckName, ServerCard hero, ArrayList<ServerCard> cards) {
+        super(deckName, hero, cards);
+
     }
 
     public Deck(Deck deck) {
-        this.deckName = deck.deckName;
+        super(deck.deckName);
         if (deck.hero != null) {
             this.hero = new ServerCard(deck.hero);
         }
-        if (deck.item != null) {
-            this.item = new ServerCard(deck.item);
-        }
-        for (ServerCard card : deck.others) {
-            others.add(new ServerCard(card));
+        for (ServerCard card : deck.cards) {
+            this.cards.add(new ServerCard(card));
         }
     }
 
     public Deck(TempDeck tempDeck, Collection collection) {
-        this.deckName = tempDeck.getDeckName();
+        super(tempDeck.getDeckName());
         if (collection == null)
             return;
         this.hero = collection.getCard(tempDeck.getHeroId());
-        this.item = collection.getCard(tempDeck.getItemId());
-        for (String cardId : tempDeck.getOthersIds()) {
-            others.add(collection.getCard(cardId));
+        for (String cardId : tempDeck.getCardIds()) {
+            this.cards.add(collection.getCard(cardId));
         }
     }
 
     public Deck(String deckName) {
-        this.deckName = deckName;
+        super(deckName);
     }
 
-    public boolean hasCard(String cardId) {
-        if (hero != null && hero.getCardId().equalsIgnoreCase(cardId))
+    public boolean hasCardOrHeroWithId(String cardId) {
+        if (hero != null && hero.getCardId().equalsIgnoreCase(cardId)) {
             return true;
-        if (item != null && item.getCardId().equalsIgnoreCase(cardId))
-            return true;
-        for (ServerCard card : others) {
+        }
+        for (ServerCard card : cards) {
             if (card.getCardId().equalsIgnoreCase(cardId))
                 return true;
         }
@@ -66,7 +60,7 @@ public class Deck {
     }
 
     public void addCard(String cardId, Collection collection) throws LogicException {
-        if (hasCard(cardId)) {
+        if (hasCardOrHeroWithId(cardId)) {
             throw new ClientException("deck had this card.");
         }
         addCard(collection.getCard(cardId));
@@ -84,23 +78,22 @@ public class Deck {
                 break;
             case MINION:
             case SPELL:
-                others.add(card);
+                cards.add(card);
                 break;
             default:
-                GameServer.serverPrint("Error!");
+                GameServer.serverPrint("Error, card does not have valid type.");
                 break;
         }
     }
 
     public void removeCard(ServerCard card) throws ClientException {
-        if (!hasCard(card.getCardId())) {
+        if (!hasCardOrHeroWithId(card.getCardId())) {
             throw new ClientException("deck doesn't have this card.");
         }
-        if (hero == card)
+        if (card.equals(hero)) {
             hero = null;
-        if (item == card)
-            item = null;
-        others.remove(card);
+
+        cards.remove(card);
     }
 
     public boolean isValid() {
@@ -135,36 +128,16 @@ public class Deck {
         for (ServerCard card : others) {
             if (card.getName().equalsIgnoreCase(name)) number++;
         }
-        return number;
+        cards.remove(card);
     }
 
-    public String getDeckName() {
-        return deckName;
-    }
-
-    public ServerCard getHero() {
-        return hero;
-    }
-
-    public List<ServerCard> getOthers() {
-        return Collections.unmodifiableList(others);
-    }
-
-    public ServerCard getItem() {
-        return item;
-    }
 
     public void makeCustomGameDeck() {
-        hero.setCardId("customGame_" + hero.getCardId());
-        if (item != null)
-            item.setCardId("customGame_" + item.getCardId());
-        deckName = "customGame_" + deckName;
-        for (ServerCard card : others) {
-            card.setCardId("customGame_" + card.getCardId());
+        String customGamePrefix = "customGame_";
+        hero.setCardId(customGamePrefix + hero.getCardId());
+        deckName = customGamePrefix + deckName;
+        for (ServerCard card : cards) {
+            card.setCardId(customGamePrefix + card.getCardId());
         }
-    }
-
-    public String getName() {
-        return deckName;
     }
 }

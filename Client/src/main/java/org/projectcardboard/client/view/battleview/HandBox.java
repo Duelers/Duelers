@@ -2,9 +2,10 @@ package org.projectcardboard.client.view.battleview;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.FileInputStream;
 import java.util.List;
 
+import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
@@ -24,10 +25,6 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import shared.models.card.Card;
 
@@ -37,14 +34,14 @@ public class HandBox implements PropertyChangeListener {
     private final CompressedPlayer player;
     private final Group handGroup;
     private final Pane[] cards = new Pane[Constants.MAXIMUM_CARD_HAND_SIZE];
-    private final Pane next = new Pane();
+    private final StackPane next = new StackPane();
     private int selectedCard = -1;
     private CardPane cardPane = null;
-    private final Image cardBack = new Image(new FileInputStream("Client/src/main/resources/ui/card_background@2x.png"));
-    private final Image cardBackGlow = new Image(new FileInputStream("Client/src/main/resources/ui/card_background_highlight@2x.png"));
-    private final Image nextBack = new Image(new FileInputStream("Client/src/main/resources/ui/replace_background@2x.png"));
-    private final Image endTurnImage = new Image(new FileInputStream("Client/src/main/resources/ui/button_end_turn_finished@2x.png"));
-    private final Image endTurnImageGlow = new Image(new FileInputStream("Client/src/main/resources/ui/button_end_turn_finished_glow@2x.png"));
+    private final Image cardBack = new Image(this.getClass().getResourceAsStream("/ui/card_background@2x.png"));
+    private final Image cardBackGlow = new Image(this.getClass().getResourceAsStream("/ui/card_background_highlight@2x.png"));
+    private final Image nextBack = new Image(this.getClass().getResourceAsStream("/ui/replace_background@2x.png"));
+    private final Image endTurnImage = new Image(this.getClass().getResourceAsStream("/ui/button_end_turn_finished@2x.png"));
+    private final Image endTurnImageGlow = new Image(this.getClass().getResourceAsStream("/ui/button_end_turn_finished_glow@2x.png"));
     private DefaultLabel endTurnLabel;
     private StackPane endTurnButton;
 
@@ -90,9 +87,15 @@ public class HandBox implements PropertyChangeListener {
         replaceIcon.setFitWidth(Constants.SCREEN_WIDTH * 0.11);
         replaceIcon.setFitHeight(Constants.SCREEN_WIDTH * 0.11);
         replaceIcon.setImage(nextBack);
-        Effect nullOrGrayscale = GameController.getInstance().getAvailableActions().canReplace(player) ? null : DISABLE_BUTTON_EFFECT;
-        replaceIcon.setEffect(nullOrGrayscale);
-
+        boolean canReplace = GameController.getInstance().getAvailableActions().canReplace(player);
+        replaceIcon.setEffect(canReplace ? null: DISABLE_BUTTON_EFFECT);
+        if(canReplace){
+            Text replaceText = new Text("Replace Available");
+            replaceText.setFont(Constants.AP_FONT);
+            replaceText.setStyle("-fx-text-base-color: white; -fx-font-size: 18px;");
+            replaceText.setFill(Color.WHITE);
+            next.getChildren().add(replaceText);
+        }
         next.setOnMouseClicked(mouseEvent -> replaceSelectedCard());
     }
 
@@ -207,14 +210,14 @@ public class HandBox implements PropertyChangeListener {
                     battleScene.getController().exitGameShow(new OnlineGame(battleScene.getGame()));
                     new MainMenu().show();
                 },
-                        new Image(new FileInputStream("Client/src/main/resources/ui/button_primary_left@2x.png")),
-                        new Image(new FileInputStream("Client/src/main/resources/ui/button_primary_left_glow@2x.png"))
+                        new Image(this.getClass().getResourceAsStream("/ui/button_primary_left@2x.png")),
+                        new Image(this.getClass().getResourceAsStream("/ui/button_primary_left_glow@2x.png"))
                 );
             } else {
                 imageButton = new ImageButton(
                         "FINISH", event -> battleScene.getController().forceFinish(),
-                        new Image(new FileInputStream("Client/src/main/resources/ui/button_primary_left@2x.png")),
-                        new Image(new FileInputStream("Client/src/main/resources/ui/button_primary_left_glow@2x.png"))
+                        new Image(this.getClass().getResourceAsStream("/ui/button_primary_left@2x.png")),
+                        new Image(this.getClass().getResourceAsStream("/ui/button_primary_left_glow@2x.png"))
                 );
             }
             imageButton.setLayoutX(1360 * Constants.SCALE);
@@ -230,8 +233,8 @@ public class HandBox implements PropertyChangeListener {
         try {
             ImageButton imageButton = new ImageButton(
                     "GRAVEYARD", event -> showGraveyard(),
-                    new Image(new FileInputStream("Client/src/main/resources/ui/button_primary_right@2x.png")),
-                    new Image(new FileInputStream("Client/src/main/resources/ui/button_primary_right_glow@2x.png"))
+                    new Image(this.getClass().getResourceAsStream("/ui/button_primary_right@2x.png")),
+                    new Image(this.getClass().getResourceAsStream("/ui/button_primary_right_glow@2x.png"))
             );
             imageButton.setLayoutX(1530 * Constants.SCALE);
             imageButton.setLayoutY(110 * Constants.SCALE);

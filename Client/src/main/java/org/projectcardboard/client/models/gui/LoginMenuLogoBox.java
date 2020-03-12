@@ -20,7 +20,7 @@ import java.io.FileNotFoundException;
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 class LoginMenuLogoBox extends VBox {
-    private static final String ABABEEL_URL = "Client/src/main/resources/ui/meme_logo.png";
+    private static final String ABABEEL_URL = "/ui/meme_logo.png";
     private static final Paint ABABEEL_TEXT_COLOR = Color.rgb(102, 166, 214);
     private static final Font FONT = Font.font("SansSerif", FontWeight.EXTRA_BOLD, 35 * SCALE);
     private static final Background ABABEEL_BACKGROUND = new Background(

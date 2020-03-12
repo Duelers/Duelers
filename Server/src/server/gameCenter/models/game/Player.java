@@ -13,15 +13,15 @@ import server.dataCenter.models.Constants;
 import java.util.*;
 
 public class Player {
-    private String userName;
+    private final String userName;
     private int currentMP;
-    private Deck deck;
+    private final Deck deck;
     private ServerTroop hero;
-    private List<ServerCard> hand = new ArrayList<>();
-    private List<ServerTroop> troops = new ArrayList<>();
-    private List<ServerCard> graveyard = new ArrayList<>();
+    private final List<ServerCard> hand = new ArrayList<>();
+    private final List<ServerTroop> troops = new ArrayList<>();
+    private final List<ServerCard> graveyard = new ArrayList<>();
     private ServerCard nextCard;
-    private int playerNumber;
+    private final int playerNumber;
     private MatchHistory matchHistory;
     private int numTimesReplacedThisTurn;
     private int maxNumReplacePerTurn;
@@ -93,9 +93,9 @@ public class Player {
     }
 
     private void setNextCard() {
-        if (!deck.getOthers().isEmpty()) {
-            int index = new Random().nextInt(deck.getOthers().size());
-            nextCard = deck.getOthers().get(index);
+        if (!deck.getCards().isEmpty()) {
+            int index = new Random().nextInt(deck.getCards().size());
+            nextCard = deck.getCards().get(index);
             try {
                 deck.removeCard(nextCard);
             } catch (ClientException ignored) {
@@ -111,7 +111,7 @@ public class Player {
     }
 
     boolean addNextCardToHand() {
-        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getOthers().isEmpty() || nextCard != null)) {
+        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getCards().isEmpty() || nextCard != null)) {
             hand.add(nextCard);
             setNextCard();
             return true;
@@ -199,7 +199,7 @@ public class Player {
         addToGraveYard(troop.getCard());
 //        Server.getInstance().sendChangeCardPositionMessage(game, troop.getCard(), CardPosition.GRAVE_YARD);
         troops.remove(troop);
-        if (troop.getCard().getType() == CardType.HERO) {
+        if (troop.getCard().getType().equals(CardType.HERO)) {
             hero = null;
         }
     }
@@ -217,7 +217,7 @@ public class Player {
     }
 
     public boolean getCanReplaceCard() {
-        return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn();
+        return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn() && !deck.getCards().isEmpty();
     }
 
     public void setNumTimesReplacedThisTurn(int number){

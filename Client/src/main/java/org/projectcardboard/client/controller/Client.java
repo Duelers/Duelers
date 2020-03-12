@@ -53,9 +53,7 @@ public class Client {
         }
         int connectionAttempts = 5;
 
-        Thread sendMessageThread = new Thread(() -> {
-                sendMessages();
-        });
+        Thread sendMessageThread = new Thread(this::sendMessages);
 
         this.ws = new WebSocketFactory().createSocket(serverUri + "/websockets/game");
         this.ws.addListener(new WebSocketAdapter() {
@@ -147,6 +145,7 @@ public class Client {
 
 
     private void handleMessage(Message message) {
+        // TODO: missing lots of cases here with no default
         switch (message.getMessageType()) {
             case SEND_EXCEPTION:
                 showError(message);

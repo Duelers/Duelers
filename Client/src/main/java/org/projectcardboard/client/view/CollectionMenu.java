@@ -46,9 +46,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         menu.searchBox.clear();
         new MainMenu().show();
     };
-    private static final Media backgroundMusic = new Media(
-            new File("Client/src/main/resources/music/collection_menu.m4a").toURI().toString()
-    );
+    private static final Media backgroundMusic = new Media(CollectionMenu.class.getResource("/music/collection_menu.m4a").toString());
     private VBox collectionBox;
     private ImageButton showCollectionButton;
     private CollectionSearchBox searchBox;
@@ -149,8 +147,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = jfc.getSelectedFile();
             System.out.println(selectedFile.getAbsolutePath());
-            try {
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)));
+            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)))) {
                 return bufferedReader.readLine();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -211,13 +208,9 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         if (evt.getPropertyName().equals("search_result")) {
             showingCards = (Collection) evt.getNewValue();
             Platform.runLater(() -> {
-                try {
-                    cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards.getHeroes()));
-                    cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
-                    cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+                cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards.getHeroes()));
+                cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
+                cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
             });
         }
 

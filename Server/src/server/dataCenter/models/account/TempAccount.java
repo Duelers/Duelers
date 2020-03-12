@@ -8,13 +8,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class TempAccount {
-    private String username;
-    private String password;
-    private AccountType accountType;
-    private Collection collection;
-    private List<TempDeck> decks = new ArrayList<>();
+    private final String username;
+    private final String password;
+    private final AccountType accountType;
+    private final Collection collection;
+    private final List<TempDeck> decks = new ArrayList<>();
     private String mainDeckName;
-    private List<MatchHistory> matchHistories;
+    private final List<MatchHistory> matchHistories;
 
     public TempAccount(Account account) {
         this.username = account.getUsername();
@@ -24,7 +24,7 @@ public class TempAccount {
             this.decks.add(new TempDeck(deck));
         }
         if (account.getMainDeck() != null) {
-            this.mainDeckName = account.getMainDeck().getDeckName();
+            this.mainDeckName = account.getMainDeck().getName();
         }
         this.matchHistories = account.getMatchHistories();
         this.accountType = account.getAccountType();

@@ -136,9 +136,6 @@ public class GameServer {
                 case BUY_CARD:
                     DataCenter.getInstance().buyCard(message);
                     break;
-                case SELL_CARD:
-                    DataCenter.getInstance().sellCard(message);
-                    break;
                 case CREATE_DECK:
                     DataCenter.getInstance().createDeck(message);
                     break;
@@ -379,7 +376,7 @@ public class GameServer {
 
     public void sendChangeCardNumberMessage(Card card) {
         for (Account account : DataCenter.getInstance().getAccounts().keySet()) {
-            if (account.getAccountType() == AccountType.ADMIN && DataCenter.getInstance().isOnline(account.getUsername())) {
+            if (account.getAccountType().equals(AccountType.ADMIN) && DataCenter.getInstance().isOnline(account.getUsername())) {
                 addToSendingMessages(Message.makeChangeCardNumberMessage(DataCenter.getInstance().getAccounts().get(account),
                         card, card.getRemainingNumber()));
             }

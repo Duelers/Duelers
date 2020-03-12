@@ -4,7 +4,7 @@ import shared.models.services.WebApiResponse;
 
 public class SignUpResponse implements WebApiResponse {
     
-    public String error;
+    public final String error;
 
     public SignUpResponse() {
         this.error = null;

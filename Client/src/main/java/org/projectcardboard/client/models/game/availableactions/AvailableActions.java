@@ -18,9 +18,9 @@ import shared.models.game.Troop;
 import shared.models.game.map.Cell;
 
 public class AvailableActions {
-    private List<Insert> handInserts = new ArrayList<>();
-    private List<Attack> attacks = new ArrayList<>();
-    private List<Move> moves = new ArrayList<>();
+    private final List<Insert> handInserts = new ArrayList<>();
+    private final List<Attack> attacks = new ArrayList<>();
+    private final List<Move> moves = new ArrayList<>();
     private int NumTimesReplacedThisTurn = 0;
     private int MaxNumReplacePerTurn = 1;
 
@@ -149,9 +149,9 @@ public class AvailableActions {
     }
 
     private boolean isTargetInRange(Troop myTroop, Troop enemyTroop) {
-        if (myTroop.getCard().getAttackType() == AttackType.MELEE) {
+        if (myTroop.getCard().getAttackType().equals(AttackType.MELEE)) {
             return myTroop.getCell().isNearbyCell(enemyTroop.getCell());
-        } else if (myTroop.getCard().getAttackType() == AttackType.RANGED) {
+        } else if (myTroop.getCard().getAttackType().equals(AttackType.RANGED)) {
             return myTroop.getCell().isNearbyCell(enemyTroop.getCell()) ||
                     myTroop.getCell().manhattanDistance(enemyTroop.getCell()) <= myTroop.getCard().getRange();
         } else { // HYBRID
@@ -270,8 +270,8 @@ public class AvailableActions {
         if (player.getPlayerNumber() != GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().getPlayerNumber()) {
             return false;
         }
+        // ToDo make sure this echoes the logic found in player.java (i.e. should not be able to replace when deck is empty).
         return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn();
-        // ToDo Other checks to see if replace is valid (e.g. false if already replaced this turn).
     }
 
     public void setNumTimesReplacedThisTurn(int number){

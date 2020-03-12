@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class RegistrationService {
     private static RegistrationService instance;
-    private ApiClientService apiClient;
+    private final ApiClientService apiClient;
     private URI signUpUri;
     private static final String SIGN_UP_ENDPOINT = "/api/registration/v1/signup/";
     private static final String HTTPS = "https";

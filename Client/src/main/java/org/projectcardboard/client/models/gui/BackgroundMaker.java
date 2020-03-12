@@ -11,11 +11,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 public class BackgroundMaker {
-    private static final String BACKGROUND_URL = "Client/src/main/resources/menu/background/background.jpg";
-    private static final String FOREGROUND_URL = "Client/src/main/resources/menu/background/foreground.png";
-    private static final String FAR_PILLAR_URL = "Client/src/main/resources/menu/background/far_pillars.png";
-    private static final String NEAR_PILLAR_URL = "Client/src/main/resources/menu/background/near_pillars.png";
-    private static final String VIGNETTE_URL = "Client/src/main/resources/menu/background/vignette.png";
+    private static final String BACKGROUND_URL = "/menu/background/background.jpg";
+    private static final String FOREGROUND_URL = "/menu/background/foreground.png";
+    private static final String FAR_PILLAR_URL = "/menu/background/far_pillars.png";
+    private static final String NEAR_PILLAR_URL = "/menu/background/near_pillars.png";
+    private static final String VIGNETTE_URL = "/menu/background/vignette.png";
     private static final double FOREGROUND_WIDTH = 2400 * SCALE;
     private static final double FOREGROUND_HEIGHT = 726 * SCALE;
     private static final double NEAR_PILLARS_WIDTH = 2000 * SCALE;

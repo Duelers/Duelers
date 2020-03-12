@@ -2,8 +2,8 @@ package org.projectcardboard.client.models.gui;
 
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
@@ -22,8 +22,10 @@ public class BackButton extends ImageView {
 
     static {
         try {
-            IMAGE = new Image(new FileInputStream("Client/src/main/resources/ui/button_back.png"));
-        } catch (FileNotFoundException e) {
+            InputStream backButtonResource = BackButton.class.getResourceAsStream("/ui/button_back.png");
+            if (backButtonResource == null) { throw new FileNotFoundException(); }
+            IMAGE = new Image(backButtonResource);
+        } catch (FileNotFoundException | NullPointerException e) {
             e.printStackTrace();
         }
     }
