@@ -13,11 +13,7 @@ import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.models.compresseddata.CompressedGame;
 import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
-import org.projectcardboard.client.models.gui.DefaultLabel;
-import org.projectcardboard.client.models.gui.DefaultText;
-import org.projectcardboard.client.models.gui.ImageLoader;
-import org.projectcardboard.client.models.gui.NormalField;
-import org.projectcardboard.client.models.gui.UIConstants;
+import org.projectcardboard.client.models.gui.*;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -39,6 +35,8 @@ public class PlayerBox implements PropertyChangeListener {
     private final Image chatImage = new Image(this.getClass().getResourceAsStream("/ui/chat_bubble.png"));
     private final double CHAT_BUBBLE_SIZE = 150 * SCALE;
     private final NormalField chatField = new NormalField("Type message and send");
+    private boolean isChatFieldEnabled = true;
+    private OrangeButton muteButton;
     private final BattleScene battleScene;
     private final CompressedPlayer player1, player2;
     private final Group group;
@@ -106,8 +104,22 @@ public class PlayerBox implements PropertyChangeListener {
                 chatField.clear();
             }
         });
-
         group.getChildren().add(chatField);
+        addMuteButton();
+    }
+
+    private void addMuteButton(){
+        this.muteButton = new OrangeButton("Disable Chat", event -> handleMuteButtonOnClick(), null);
+        this.muteButton.setLayoutX(1560 * Constants.SCALE);
+        this.muteButton.setLayoutY(825 * SCALE);
+        this.muteButton.setMaxWidth(chatField.getMaxWidth());
+        this.muteButton.setMaxHeight(chatField.getMaxHeight());
+        group.getChildren().add(this.muteButton);
+    }
+
+    private void handleMuteButtonOnClick(){
+        this.isChatFieldEnabled = !this.isChatFieldEnabled;
+        muteButton.setText(isChatFieldEnabled ? "Disable Chat" : "Enable Chat");
     }
 
     private void makeMessageShows() {
@@ -261,9 +273,11 @@ public class PlayerBox implements PropertyChangeListener {
         }
 
         void show(String text) {
-            this.text.setText(text);
-            initialTime = -1;
-            start();
+            if(isChatFieldEnabled) {
+                this.text.setText(text);
+                initialTime = -1;
+                start();
+            }
         }
 
         @Override
