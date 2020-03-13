@@ -60,7 +60,7 @@ public class CompressedPlayer {
         }
     }
 
-    public void addCardsToHand(ServerCard[] drawnCards, int deckSize) {
+    public void addCardsToHand(int deckSize, ServerCard... drawnCards) {
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }

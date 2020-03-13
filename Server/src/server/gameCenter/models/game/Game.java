@@ -7,6 +7,7 @@ import server.clientPortal.models.message.CardPosition;
 import server.clientPortal.models.message.ChatMessage;
 import server.clientPortal.models.message.Message;
 import server.dataCenter.DataCenter;
+import server.dataCenter.models.Constants;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
 
@@ -134,7 +135,7 @@ public abstract class Game {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
                 //addNextCardToHand(2); // TODO This probably needs a constant
-                drawCardsFromDeck(2);
+                drawCardsFromDeck(Constants.END_OF_TURN_CARD_DRAW);
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(0);
 
                 revertNotDurableBuffs();
@@ -191,7 +192,7 @@ public abstract class Game {
         ServerCard[] drawnCards = getCurrentTurnPlayer().getCardsFromDeck(cardsToDraw);
         getCurrentTurnPlayer().addCardsToHand(drawnCards);
         int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
-        GameServer.getInstance().sendCardsDrawnToHandMessage(this, drawnCards, deckSize);
+        GameServer.getInstance().sendCardsDrawnToHandMessage(this, deckSize, drawnCards);
     }
 
     public void setNewNextCard() {

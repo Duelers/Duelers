@@ -186,7 +186,7 @@ public class Client {
                 GameController.getInstance().calculateAvailableActions();
                 break;
             case ADD_TO_HAND:
-                GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().addCardsToHand(message.getDrawnCards(), message.getDeckSize());
+                GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().addCardsToHand(message.getDeckSize(), message.getDrawnCards());
                 break;
             case SET_NEW_NEXT_CARD:
                 GameController.getInstance().getCurrentGame().moveCardToNext( message.getCard() );

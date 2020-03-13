@@ -401,14 +401,15 @@ public class GameServer {
         addToSendingMessages(Message.makeAccountCopyMessage(clientName, account));
     }
 
-    public void sendCardsDrawnToHandMessage(Game game, ServerCard[] drawnCards, int deckSize) {
+    public void sendCardsDrawnToHandMessage(Game game, int deckSize, ServerCard... drawnCards) {
         for (Account account : game.getObservers()) {
             String clientName = DataCenter.getInstance().getAccounts().get(account);
             if (clientName == null) {
-                serverPrint("*Error: Failed to get client name from list of observers");
+                serverPrint("*Error: Failed to get client name of account " + account.getUsername() +". Deleting from list of observers." );
+                game.getObservers().remove(account);
                 continue;
             }
-            addToSendingMessages(Message.makeCardsDrawnFromDeckMessage(clientName,drawnCards,deckSize));
+            addToSendingMessages(Message.makeCardsDrawnFromDeckMessage(clientName, deckSize, drawnCards));
         }
     }
 }

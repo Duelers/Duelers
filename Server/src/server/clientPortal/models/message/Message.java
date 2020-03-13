@@ -215,7 +215,7 @@ public class Message {
         return message;
     }
 
-    public static Message makeCardsDrawnFromDeckMessage(String receiver, ServerCard[] drawnCards, int deckSize) {
+    public static Message makeCardsDrawnFromDeckMessage(String receiver, int deckSize, ServerCard... drawnCards) {
         Message message = new Message(receiver);
         message.messageType = MessageType.ADD_TO_HAND;
         message.drawnCards = drawnCards;
