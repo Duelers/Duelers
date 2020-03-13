@@ -275,14 +275,6 @@ public class DataCenter extends Thread {
 
     }
 
-    public void sellCard(Message message) throws LogicException {
-        loginCheck(message);
-        Account account = clients.get(message.getSender());
-        account.sellCard(message.getOtherFields().getMyCardId());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
-        saveAccount(account);
-    }
-
     public Map<Account, String> getAccounts() {
         return Collections.unmodifiableMap(accounts);
     }

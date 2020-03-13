@@ -2,7 +2,9 @@ package org.projectcardboard.client.view.battleview;
 
 import static org.projectcardboard.client.view.battleview.CardAnimation.cachedImages;
 
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -28,14 +30,15 @@ public class SpellAnimation extends Transition {
     private Group mapGroup;
 
     SpellAnimation(Group mapGroup, String fileName, double x, double y) throws Exception {
-        Playlist playlist = new Gson().fromJson(new FileReader("Client/src/main/resources/fx/" + fileName + ".plist.json"), Playlist.class);
+        InputStream plistR = this.getClass().getResourceAsStream("/fx/" + fileName + ".plist.json");
+        Playlist playlist = new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8), Playlist.class);
         framePositions = playlist.getFrames();
 
         frameWidth = playlist.frameWidth;
         frameHeight = playlist.frameHeight;
         setCycleDuration(Duration.millis(playlist.frameDuration));
 
-        Image image = cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load("Client/src/main/resources/fx/" + fileName + ".png"));
+        Image image = cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load("/fx/" + fileName + ".png"));
         imageView = new ImageView(image);
 
         imageView.setFitWidth(frameWidth * Constants.SPELL_SCALE * Constants.SCALE);

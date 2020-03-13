@@ -9,7 +9,6 @@ import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 import org.projectcardboard.client.models.gui.*;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 
 public class PlayMenu extends Show {
@@ -18,17 +17,15 @@ public class PlayMenu extends Show {
                     Color.rgb(40, 43, 53), CornerRadii.EMPTY, Insets.EMPTY
             )
     );
-    private static final String BACKGROUND_URL = "Client/src/main/resources/menu/background/play_background.jpg";
+    private static final String BACKGROUND_URL = "/menu/background/play_background.jpg";
     private static final EventHandler<? super MouseEvent> BACK_EVENT = event -> new MainMenu().show();
-    private static final Media backgroundMusic = new Media(
-            new File("Client/src/main/resources/music/play_menu.m4a").toURI().toString()
-    );
+    private static final Media backgroundMusic = new Media(PlayMenu.class.getResource("/music/play_menu.m4a").toString());
     private static final PlayButtonItem[] items = {
-            new PlayButtonItem("Client/src/main/resources/menu/playButtons/single_player.jpg", "SINGLE PLAYER",
+            new PlayButtonItem("/menu/playButtons/single_player.jpg", "SINGLE PLAYER",
                     "Custom game, play with AI", event -> CustomGameMenu.getInstance().show()),
-            new PlayButtonItem("Client/src/main/resources/menu/playButtons/friend_game.jpg", "PLAY WITH FRIENDS",
+            new PlayButtonItem("/menu/playButtons/friend_game.jpg", "PLAY WITH FRIENDS",
                     "Play with your friends", event -> FriendGameMenu.getInstance().show()),
-            new PlayButtonItem("Client/src/main/resources/menu/playButtons/global_game.jpg", "GLOBAL GAME",
+            new PlayButtonItem("/menu/playButtons/global_game.jpg", "GLOBAL GAME",
                     "Search for an opponent an play", event -> GlobalGameMenu.getInstance().show())
     };
     private static PlayMenu menu;

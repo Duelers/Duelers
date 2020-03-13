@@ -11,7 +11,7 @@ public class MatchHistory {
 
     public MatchHistory(Player player, boolean amIWinner) {
         if (player.getUserName().equals("AI")) {
-            this.oppName = player.getDeck().getDeckName();
+            this.oppName = player.getDeck().getName();
         } else {
             this.oppName = player.getUserName();
         }

@@ -77,6 +77,9 @@ public class Card implements ICard {
 
     @Override
     public boolean equals(Object obj) {
+        if (!(obj instanceof Card)) {
+            return false;
+        }
         if (!this.getClass().getName().equals(obj.getClass().getName())) return false;
         Card card = (Card) obj;
         return this.cardId.equalsIgnoreCase(card.cardId);

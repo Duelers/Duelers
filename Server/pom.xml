@@ -80,6 +80,12 @@
             <version>11</version>
             <classifier>mac</classifier>
         </dependency>
+
+        <dependency>
+            <groupId>net.harawata</groupId>
+            <artifactId>appdirs</artifactId>
+            <version>1.0.3</version>
+        </dependency>
     </dependencies>
 
     <build>

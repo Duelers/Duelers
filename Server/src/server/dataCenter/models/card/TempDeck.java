@@ -7,17 +7,16 @@ import java.util.List;
 public class TempDeck {
     private final String deckName;
     private String heroId;
-    private String itemId;
-    private final List<String> othersIds = new ArrayList<>();
+    private final List<String> cardIds = new ArrayList<>();
 
     public TempDeck(Deck deck) {
-        this.deckName = deck.getDeckName();
+        this.deckName = deck.getName();
         if (deck.getHero() != null) {
             this.heroId = deck.getHero().getCardId();
         }
 
-        for (ServerCard card : deck.getOthers()) {
-            this.othersIds.add(card.getCardId());
+        for (ServerCard card : deck.getCards()) {
+            this.cardIds.add(card.getCardId());
         }
     }
 
@@ -29,11 +28,7 @@ public class TempDeck {
         return heroId;
     }
 
-    String getItemId() {
-        return itemId;
-    }
-
-    List<String> getOthersIds() {
-        return Collections.unmodifiableList(othersIds);
+    List<String> getCardIds() {
+        return Collections.unmodifiableList(cardIds);
     }
 }

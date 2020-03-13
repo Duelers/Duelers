@@ -25,14 +25,14 @@ import static org.projectcardboard.client.models.gui.UIConstants.*;
 
 public class GameResultMenu extends Show {
     private static final double ICON_SIZE = 100 * SCALE;
-    private static final String backgroundUrl = "Client/src/main/resources/backGrounds/battlemap6_middleground@2x.png";
+    private static final String backgroundUrl = "/backGrounds/battlemap6_middleground@2x.png";
     private static final Background ROOT_BACKGROUND = new Background(
             new BackgroundFill(
                     Color.rgb(40, 43, 53), CornerRadii.EMPTY, Insets.EMPTY
             )
     );
     private static final Map<Boolean, ResultData> results = new HashMap<>();
-    private static final String directory = "Client/src/main/resources/result_menu/";
+    private static final String directory = "/result_menu/";
     private static final String format = ".png";
     private static final double HERO_WIDTH = 3800 * SCALE;
     private static final double HERO_HEIGHT = 2875 * SCALE;

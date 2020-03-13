@@ -2,8 +2,8 @@ package org.projectcardboard.client.models.gui;
 
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
@@ -24,8 +24,13 @@ public class ImageButton extends StackPane {
 
     static {
         try {
-            primaryDefault = new Image(new FileInputStream("Client/src/main/resources/ui/button_primary@2x.png"));
-            primaryHover = new Image(new FileInputStream("Client/src/main/resources/ui/button_primary_glow@2x.png"));
+            InputStream primaryDefaultR = ImageButton.class.getResourceAsStream("/ui/button_primary@2x.png");
+            InputStream primaryGlowR = ImageButton.class.getResourceAsStream("/ui/button_primary_glow@2x.png");
+            if (primaryDefaultR == null || primaryGlowR == null) {
+                throw new FileNotFoundException();
+            }
+            primaryDefault = new Image(primaryDefaultR);
+            primaryHover = new Image(primaryGlowR);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

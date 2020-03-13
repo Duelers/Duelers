@@ -10,7 +10,6 @@ import server.exceptions.LogicException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static server.dataCenter.models.account.AccountType.NORMAL;
 
@@ -49,7 +48,7 @@ public class Account {
         if (deckName == null)
             return false;
         for (Deck deck : decks) {
-            if (deck.getDeckName().equalsIgnoreCase(deckName))
+            if (deck.getName().equalsIgnoreCase(deckName))
                 return true;
         }
         return false;
@@ -59,7 +58,7 @@ public class Account {
         if (deckName == null)
             return null;
         for (Deck deck : decks) {
-            if (deck.getDeckName().equalsIgnoreCase(deckName)) {
+            if (deck.getName().equalsIgnoreCase(deckName)) {
                 return deck;
             }
         }
@@ -74,7 +73,7 @@ public class Account {
     }
 
     public void addDeck(Deck deck) throws ClientException {
-        if (hasDeck(deck.getDeckName())) {
+        if (hasDeck(deck.getName())) {
             throw new ClientException("new deck's name was duplicate.");
         }
         decks.add(deck);
@@ -99,21 +98,6 @@ public class Account {
         collection.addCard(cardName, originalCards, username);
         //removed, no longer needed
         //DataCenter.getInstance().changeCardNumber(cardName, -1);
-    }
-
-    public void sellCard(String cardId) throws LogicException {
-        ServerCard card = collection.getCard(cardId);
-        if (card == null) {
-            throw new ClientException("invalid card id");
-        }
-
-        collection.removeCard(card);
-        for (Deck deck : decks) {
-            if (deck.hasCard(cardId)) {
-                deck.removeCard(card);
-            }
-        }
-        DataCenter.getInstance().changeCardNumber(card.getName(), +1);
     }
 
     public void addCardToDeck(String cardId, String deckName) throws LogicException {
