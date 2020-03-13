@@ -6,6 +6,7 @@ import org.projectcardboard.client.models.JsonConverter;
 import org.projectcardboard.client.models.account.AccountType;
 import org.projectcardboard.client.models.card.ExportedDeck;
 
+import server.dataCenter.models.card.ServerCard;
 import shared.models.card.Card;
 import shared.models.game.GameType;
 import shared.models.game.map.Cell;
@@ -30,6 +31,8 @@ public class Message {
     private ClientIDMessage clientIDMessage;
     private GameAnimations gameAnimations;
     private OnlineGame[] onlineGames;
+    private ServerCard[] drawnCards;
+    private int deckSize;
     //SENDER:CLIENT
     private String cardName;
     private ExportedDeck exportedDeck;
@@ -388,4 +391,12 @@ public class Message {
     }
 
     public OtherFields getOtherFields() {return otherFields;}
+
+    public ServerCard[] getDrawnCards(){
+        return this.drawnCards;
+    }
+
+    public int getDeckSize(){
+        return this.deckSize;
+    }
 }

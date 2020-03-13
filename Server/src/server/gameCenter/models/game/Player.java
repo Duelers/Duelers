@@ -119,6 +119,26 @@ public class Player {
         return false;
     }
 
+    public ServerCard[] getCardsFromDeck(int cardsToDraw) {
+        ServerCard[] drawnCards = new ServerCard[cardsToDraw];
+
+        for(int i = 0; i < cardsToDraw; i++) {
+            if (!deck.getCards().isEmpty()) {
+                int index = new Random().nextInt(deck.getCards().size());
+                ServerCard drawnCard = deck.getCards().get(index);
+                drawnCards[i] = drawnCard;
+                try {
+                    deck.removeCard(drawnCard);
+                } catch (ClientException ignored) {
+                    System.out.println("Unable to remove card from deck");
+                }
+            } else {
+                drawnCards[i] = null;
+            }
+        }
+        return drawnCards;
+    }
+
     public String getUserName() {
         return this.userName;
     }

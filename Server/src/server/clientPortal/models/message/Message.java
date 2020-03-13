@@ -2,6 +2,7 @@ package server.clientPortal.models.message;
 
 import server.GameServer;
 import server.clientPortal.models.JsonConverter;
+import server.dataCenter.models.card.ServerCard;
 import shared.models.card.Card;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.Collection;
@@ -34,6 +35,8 @@ public class Message {
     private GameFinishMessage gameFinishMessage;
     private GameAnimations gameAnimations;
     private OnlineGame[] onlineGames;
+    private ServerCard[] drawnCards;
+    private int deckSize;
     //SENDER:CLIENT
     private String cardName;
     private GetDataMessage getDataMessage;
@@ -49,6 +52,7 @@ public class Message {
     private NewGameFields newGameFields;
     private ChangeCardNumber changeCardNumber;
     private ChangeAccountType changeAccountType;
+
 
 
     private Message(String receiver) {
@@ -209,6 +213,14 @@ public class Message {
         message.clientIDMessage = new ClientIDMessage(clientID);
         message.messageType = MessageType.CLIENT_ID;
         return message;
+    }
+
+    public static Message makeCardsDrawnFromDeckMessage(String receiver, ServerCard[] drawnCards, int deckSize) {
+        Message message = new Message(receiver);
+        message.messageType = MessageType.ADD_TO_HAND;
+        message.drawnCards = drawnCards;
+        message.deckSize = deckSize;
+        return  message;
     }
 
     public String toJson() {

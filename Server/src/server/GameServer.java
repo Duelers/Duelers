@@ -2,6 +2,7 @@ package server;
 
 import server.chatCenter.ChatCenter;
 import server.clientPortal.ClientPortal;
+import server.dataCenter.models.card.ServerCard;
 import server.services.RemoteTokenVerificationService;
 import shared.models.card.Card;
 import server.clientPortal.models.message.CardPosition;
@@ -400,4 +401,14 @@ public class GameServer {
         addToSendingMessages(Message.makeAccountCopyMessage(clientName, account));
     }
 
+    public void sendCardsDrawnToHandMessage(Game game, ServerCard[] drawnCards, int deckSize) {
+        for (Account account : game.getObservers()) {
+            String clientName = DataCenter.getInstance().getAccounts().get(account);
+            if (clientName == null) {
+                serverPrint("*Error: Failed to get client name from list of observers");
+                continue;
+            }
+            addToSendingMessages(Message.makeCardsDrawnFromDeckMessage(clientName,drawnCards,deckSize));
+        }
+    }
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.projectcardboard.client.view.battleview.Constants;
 
+import server.dataCenter.models.card.ServerCard;
 import shared.models.card.Card;
 import shared.models.card.CardType;
 import shared.models.game.Troop;
@@ -21,6 +22,7 @@ public class CompressedPlayer {
     private int playerNumber;
     private List<Troop> troops;
     private Troop hero;
+    private int deckSize;
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -45,6 +47,7 @@ public class CompressedPlayer {
             System.out.println("Client Game Error! - current card hand exceeds max card hand size size");
     }
 
+
     public void addCardToNext(Card card) {
         if (nextCard != null)
             System.out.println("Compressed Player, addCardToNext, card is null");
@@ -54,6 +57,20 @@ public class CompressedPlayer {
                 support = new PropertyChangeSupport(this);
             }
             support.firePropertyChange("next", null, null);
+        }
+    }
+
+    public void addCardsToHand(ServerCard[] drawnCards, int deckSize) {
+        if (support == null) {
+            support = new PropertyChangeSupport(this);
+        }
+
+        this.deckSize = deckSize;
+        for (ServerCard drawnCard : drawnCards) {
+            if (drawnCard != null && this.hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
+                this.hand.add(drawnCard);
+                support.firePropertyChange("hand", null, null);
+            }
         }
     }
 

@@ -133,7 +133,8 @@ public abstract class Game {
             if (canCommand(username)) {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
-                addNextCardToHand(2); // TODO This probably needs a constant
+                //addNextCardToHand(2); // TODO This probably needs a constant
+                drawCardsFromDeck(2);
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(0);
 
                 revertNotDurableBuffs();
@@ -184,6 +185,12 @@ public abstract class Game {
                 GameServer.getInstance().sendChangeCardPositionMessage(this, getCurrentTurnPlayer().getNextCard(), CardPosition.NEXT);
             }
         }
+    }
+
+    private void drawCardsFromDeck(int cardsToDraw){
+        ServerCard[] drawnCards = getCurrentTurnPlayer().getCardsFromDeck(cardsToDraw);
+        int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
+        GameServer.getInstance().sendCardsDrawnToHandMessage(this, drawnCards, deckSize);
     }
 
     public void setNewNextCard() {
