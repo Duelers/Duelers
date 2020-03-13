@@ -1,6 +1,5 @@
 package server.gameCenter.models.game;
 
-import server.clientPortal.models.comperessedData.CompressedPlayer;
 import server.dataCenter.models.account.MatchHistory;
 import server.dataCenter.models.card.ServerCard;
 import shared.Constants;
@@ -29,11 +28,6 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         }
         this.numTimesReplacedThisTurn = 0;
         this.maxNumReplacePerTurn = 1;
-    }
-
-    public CompressedPlayer toCompressedPlayer() {
-        return new CompressedPlayer(
-                userName, currentMP, hand, graveyard, nextCard, playerNumber, troops, hero);
     }
 
     ServerCard insert(String cardId) throws ClientException {
