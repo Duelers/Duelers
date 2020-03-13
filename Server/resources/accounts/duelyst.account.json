@@ -7784,7 +7784,7 @@
             },
             {
                 "name": "Void Pulse",
-                "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
+                "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_1",
                 "spriteName": "icon_f4_voidpulse",
                 "type": "SPELL",
@@ -7922,7 +7922,7 @@
             },
             {
                 "name": "Void Pulse",
-                "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
+                "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_2",
                 "spriteName": "icon_f4_voidpulse",
                 "type": "SPELL",
@@ -8060,7 +8060,7 @@
             },
             {
                 "name": "Void Pulse",
-                "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
+                "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_3",
                 "spriteName": "icon_f4_voidpulse",
                 "type": "SPELL",
