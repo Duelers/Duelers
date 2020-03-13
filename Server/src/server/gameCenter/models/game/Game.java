@@ -207,14 +207,23 @@ public abstract class Game {
                 return;
             }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
+            ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeck(1);
+            getCurrentTurnPlayer().addCardsToHand(drawnCard);
+            int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
+            GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
+            GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,drawnCard);
+            /*
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 ServerCard nextCard = getCurrentTurnPlayer().getNextCard();
                 int numTimesReplacedThisTurn = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(numTimesReplacedThisTurn + 1);
-                GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
+
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
             }
+            */
+
+
         } else {
             System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
         }
@@ -731,8 +740,12 @@ public abstract class Game {
         SpellAction action = buff.getAction();
         for (Player player : players) {
             player.changeCurrentMP(action.getMpChange());
-            addNextCardToHand(action.getCardDraw());
+            //addNextCardToHand(action.getCardDraw());
+            ServerCard[] cardsDrawn = player.getCardsFromDeck(action.getCardDraw());
+            player.addCardsToHand(cardsDrawn);
+            int deckSize = player.getDeck().getCards().size();
             GameServer.getInstance().sendGameUpdateMessage(this);
+            GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,cardsDrawn);
         }
     }
 
