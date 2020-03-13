@@ -1,6 +1,7 @@
 package shared.models.game;
 
 import shared.models.card.Card;
+import shared.models.game.map.Cell;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,6 +47,28 @@ public class BasePlayer<
         return Collections.unmodifiableList(hand);
     }
 
+    public List<TroopType> getTroops() {
+        return Collections.unmodifiableList(troops);
+    }
+
+    public TroopType getTroop(Cell cell) {
+        for (TroopType troop : troops) {
+            if (troop.getCell().equals(cell)) {
+                return troop;
+            }
+        }
+        return null;
+    }
+
+    public TroopType getTroop(String cardId) {
+        for (TroopType troop : troops) {
+            if (troop.getCard().getCardId().equalsIgnoreCase(cardId)) {
+                return troop;
+            }
+        }
+        return null;
+    }
+
     public List<CardType> getGraveyard() {
         return Collections.unmodifiableList(graveyard);
     }
@@ -58,7 +81,7 @@ public class BasePlayer<
         return playerNumber;
     }
 
-    public Troop getHero() {
+    public TroopType getHero() {
         return hero;
     }
 }

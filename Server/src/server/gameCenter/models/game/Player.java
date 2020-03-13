@@ -102,14 +102,6 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         return false;
     }
 
-    public String getUserName() {
-        return this.userName;
-    }
-
-    public int getCurrentMP() {
-        return this.currentMP;
-    }
-
     void setCurrentMP(int currentMP) {
         this.currentMP = currentMP;
     }
@@ -122,38 +114,12 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         currentMP += change;
     }
 
-    public int getPlayerNumber() {
-        return playerNumber;
-    }
-
     public Deck getDeck() {
         return this.deck;
     }
 
-    public List<ServerTroop> getTroops() {
-        return Collections.unmodifiableList(troops);
-    }
-
     void addToGraveYard(ServerCard card) {
         graveyard.add(card);
-    }
-
-    ServerTroop getTroop(Cell cell) {
-        for (ServerTroop troop : troops) {
-            if (troop.getCell().equals(cell)) {
-                return troop;
-            }
-        }
-        return null;
-    }
-
-    ServerTroop getTroop(String cardId) {
-        for (ServerTroop troop : troops) {
-            if (troop.getCard().getCardId().equalsIgnoreCase(cardId)) {
-                return troop;
-            }
-        }
-        return null;
     }
 
     public ServerTroop createHero() {
@@ -166,17 +132,12 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         return hero;
     }
 
-    public ServerTroop getHero() {
-        return hero;
-    }
-
     public void setHero(ServerTroop hero) {
         this.hero = hero;
     }
 
     void killTroop(Game game, ServerTroop troop) {
         addToGraveYard(troop.getCard());
-//        Server.getInstance().sendChangeCardPositionMessage(game, troop.getCard(), CardPosition.GRAVE_YARD);
         troops.remove(troop);
         if (troop.getCard().getType().equals(CardType.HERO)) {
             hero = null;

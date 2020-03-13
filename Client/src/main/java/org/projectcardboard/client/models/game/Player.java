@@ -108,7 +108,7 @@ public class Player extends BasePlayer<Card, Troop> {
         return Collections.unmodifiableList(troops);
     }
 
-    public void setTroops(List<Troop> troops) {
+    public void setTroops(List<Troop> troops) {//Todo this should be part of construction, not a method.
         this.troops = troops;
 
         for (Troop troop : troops) {
@@ -117,8 +117,6 @@ public class Player extends BasePlayer<Card, Troop> {
             }
         }
     }
-
-
 
     public Card searchGraveyard(String cardId) {
         for (Card card : graveyard) {

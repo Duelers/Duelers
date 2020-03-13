@@ -68,7 +68,7 @@ public class CompressedGame {
     public void troopUpdate(Troop troop) {
         Player player;
         player = getPlayer(troop.getPlayerNumber());
-        if (player.searchGraveyard(troop.getCard().getCardId()) == null) {
+        if (player.searchGraveyard(troop.getCard().getCardId()) == null) { //Todo, this looks avoidable.
             player.troopUpdate(troop);
             gameMap.updateTroop(troop);
         }
