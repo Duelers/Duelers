@@ -40,7 +40,7 @@ public class Player {
 
     public CompressedPlayer toCompressedPlayer() {
         return new CompressedPlayer(
-                userName, currentMP, hand, graveyard, nextCard, playerNumber);
+                userName, currentMP, hand, graveyard, nextCard, playerNumber, troops, hero);
     }
 
     public List<ServerCard> getHand() {
@@ -220,19 +220,19 @@ public class Player {
         return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn() && !deck.getCards().isEmpty();
     }
 
-    public void setNumTimesReplacedThisTurn(int number){
+    public void setNumTimesReplacedThisTurn(int number) {
         this.numTimesReplacedThisTurn = number;
     }
 
-    public int getNumTimesReplacedThisTurn(){
+    public int getNumTimesReplacedThisTurn() {
         return this.numTimesReplacedThisTurn;
     }
 
-    public void setMaxNumReplacePerTurn(int number){
+    public void setMaxNumReplacePerTurn(int number) {
         this.maxNumReplacePerTurn = number;
     }
 
-    public int getMaxNumReplacePerTurn(){
+    public int getMaxNumReplacePerTurn() {
         return this.maxNumReplacePerTurn;
     }
 }

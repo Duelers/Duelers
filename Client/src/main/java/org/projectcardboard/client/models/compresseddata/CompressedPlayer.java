@@ -19,6 +19,7 @@ public class CompressedPlayer {
     private List<Card> graveyard;
     private Card nextCard;
     private int playerNumber;
+
     private List<Troop> troops;
     private Troop hero;
 
