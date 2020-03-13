@@ -584,16 +584,6 @@ public abstract class Game {
         }
     }
 
-    private void applyOnCounterAttackSpells(ServerTroop attacker, ServerTroop counterAttacker) {
-        for (Spell spell : counterAttacker.getCard().getSpells()) {
-            if (spell.getAvailabilityType().isOnCounterAttack())
-                applySpell(
-                    spell,
-                    detectOnCounterAttackTarget(spell, counterAttacker.getCell(), attacker.getCell())
-                );
-        }
-    }
-
     private void applyOnDefendSpells(ServerTroop defenderTroop, ServerTroop attackerTroop) {
         for (Spell spell : defenderTroop.getCard().getSpells()) {
             if (spell.getAvailabilityType().isOnDefend())
@@ -628,6 +618,16 @@ public abstract class Game {
             killTroop(defenderTroop);
         } else {
             GameServer.getInstance().sendTroopUpdateMessage(this, defenderTroop);
+        }
+    }
+
+    private void applyOnCounterAttackSpells(ServerTroop attacker, ServerTroop counterAttacker) {
+        for (Spell spell : counterAttacker.getCard().getSpells()) {
+            if (spell.getAvailabilityType().isOnCounterAttack())
+                applySpell(
+                        spell,
+                        detectOnCounterAttackTarget(spell, counterAttacker.getCell(), attacker.getCell())
+                );
         }
     }
 
