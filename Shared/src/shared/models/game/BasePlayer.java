@@ -9,14 +9,15 @@ import java.util.List;
 public class BasePlayer<
         CardType extends Card,
         TroopType extends Troop> {
-    private final String userName;
+    protected final String userName;
     protected int currentMP;
+
+    protected TroopType hero;
     protected final ArrayList<CardType> hand = new ArrayList<>();
+    protected List<TroopType> troops = new ArrayList<>();
     protected final ArrayList<CardType> graveyard = new ArrayList<>();
     protected CardType nextCard;
-    private final int playerNumber;
-    protected List<TroopType> troops = new ArrayList<>();
-    protected TroopType hero;
+    protected final int playerNumber;
 
     public BasePlayer(String userName, int currentMP,
                       List<CardType> hand, List<CardType> graveyard, CardType nextCard,
@@ -41,15 +42,15 @@ public class BasePlayer<
         return currentMP;
     }
 
-    public List<Card> getHand() {
+    public List<CardType> getHand() {
         return Collections.unmodifiableList(hand);
     }
 
-    public List<Card> getGraveyard() {
+    public List<CardType> getGraveyard() {
         return Collections.unmodifiableList(graveyard);
     }
 
-    public Card getNextCard() {
+    public CardType getNextCard() {
         return nextCard;
     }
 

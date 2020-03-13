@@ -8,28 +8,21 @@ import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.game.BasePlayer;
 import shared.models.game.map.Cell;
 
 import java.util.*;
 
-public class Player {
-    private final String userName;
-    private int currentMP;
+public class Player extends BasePlayer<ServerCard, ServerTroop> {
     private final Deck deck;
-    private ServerTroop hero;
-    private final List<ServerCard> hand = new ArrayList<>();
-    private final List<ServerTroop> troops = new ArrayList<>();
-    private final List<ServerCard> graveyard = new ArrayList<>();
-    private ServerCard nextCard;
-    private final int playerNumber;
     private MatchHistory matchHistory;
     private int numTimesReplacedThisTurn;
     private int maxNumReplacePerTurn;
 
     Player(Deck mainDeck, String userName, int playerNumber) {
-        this.playerNumber = playerNumber;
-        this.userName = userName;
-        deck = new Deck(mainDeck);
+        super(userName, 0, new ArrayList<>(), new ArrayList<>(), null,
+                playerNumber, new ArrayList<>(), null);
+        this.deck = new Deck(mainDeck);
         setNextCard();
         for (int i = 0; i < 3; i++) {
             addNextCardToHand();
@@ -41,10 +34,6 @@ public class Player {
     public CompressedPlayer toCompressedPlayer() {
         return new CompressedPlayer(
                 userName, currentMP, hand, graveyard, nextCard, playerNumber, troops, hero);
-    }
-
-    public List<ServerCard> getHand() {
-        return Collections.unmodifiableList(hand);
     }
 
     ServerCard insert(String cardId) throws ClientException {
@@ -153,10 +142,6 @@ public class Player {
 
     void addToGraveYard(ServerCard card) {
         graveyard.add(card);
-    }
-
-    ServerCard getNextCard() {
-        return this.nextCard;
     }
 
     ServerTroop getTroop(Cell cell) {

@@ -13,14 +13,6 @@ import shared.models.game.BasePlayer;
 import shared.models.game.Troop;
 
 public class CompressedPlayer extends BasePlayer<Card, Troop> {
-//    private String userName;
-//    private int currentMP;
-//    private List<Card> hand;
-//    private List<Card> graveyard;
-//    private Card nextCard;
-//    private int playerNumber;
-//    private List<Troop> troops;
-//    private Troop hero;
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public CompressedPlayer(String userName, int currentMP,
