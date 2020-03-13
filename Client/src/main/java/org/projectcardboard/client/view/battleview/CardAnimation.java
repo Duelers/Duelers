@@ -47,7 +47,7 @@ public class CardAnimation extends Transition {
         //file settings
         Playlist playlist;
         Image image;
-        if (CardType.SPELL.equals(card.getType())) {
+        if (card.getType().equals(CardType.SPELL)) {
             image = cachedImages.computeIfAbsent(card.getSpriteName(), key -> ImageLoader.load("/icons/" + card.getSpriteName() + ".png"));
             playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
                 try {
