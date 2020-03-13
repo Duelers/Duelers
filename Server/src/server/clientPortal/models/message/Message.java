@@ -3,7 +3,6 @@ package server.clientPortal.models.message;
 import server.GameServer;
 import server.clientPortal.models.JsonConverter;
 import server.dataCenter.models.card.ServerCard;
-import shared.models.card.Card;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.ExportedDeck;
@@ -45,7 +44,7 @@ public class Message {
     private AccountFields accountFields;
     private OnlineGame onlineGame;
     //SENDER:DUAL
-    private Card card;
+    private ServerCard card;
     private String cardID;
     public String token;
     private ChatMessage chatMessage;
@@ -91,7 +90,7 @@ public class Message {
         return message;
     }
 
-    public static Message makeChangeCardPositionMessage(String receiver, Card card, CardPosition cardPosition) {
+    public static Message makeChangeCardPositionMessage(String receiver, ServerCard card, CardPosition cardPosition) {
         Message message = new Message(receiver);
         message.cardPositionMessage = new CardPositionMessage(card, cardPosition);
         message.messageType = MessageType.CARD_POSITION;
@@ -108,7 +107,7 @@ public class Message {
         return message;
     }
 
-    public static Message makeNewNextCardSetMessage(String receiver, Card nextCard) {
+    public static Message makeNewNextCardSetMessage(String receiver, ServerCard nextCard) {
         Message message = new Message(receiver);
         message.messageType = MessageType.SET_NEW_NEXT_CARD;
         message.card = nextCard; // Used to set message.compressedCard. This could potentially alter behaviour.
@@ -187,14 +186,14 @@ public class Message {
         return message;
     }
 
-    public static Message makeChangeCardNumberMessage(String receiver, Card card, int newValue) {
+    public static Message makeChangeCardNumberMessage(String receiver, ServerCard card, int newValue) {
         Message message = new Message(receiver);
         message.changeCardNumber = new ChangeCardNumber(card.getName(), newValue);
         message.messageType = MessageType.CHANGE_CARD_NUMBER;
         return message;
     }
 
-    public static Message makeAddOriginalCardMessage(String receiver, Card card) {
+    public static Message makeAddOriginalCardMessage(String receiver, ServerCard card) {
         Message message = new Message(receiver);
         message.card = card;
         message.messageType = MessageType.ADD_TO_ORIGINALS;
@@ -255,7 +254,7 @@ public class Message {
         return newGameFields;
     }
 
-    public Card getCard() {
+    public ServerCard getCard() {
         return card;
     }
 

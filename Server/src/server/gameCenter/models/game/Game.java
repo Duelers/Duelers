@@ -134,7 +134,6 @@ public abstract class Game {
             if (canCommand(username)) {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
-                //addNextCardToHand(2); // TODO This probably needs a constant
                 drawCardsFromDeck(Constants.END_OF_TURN_CARD_DRAW);
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(0);
 

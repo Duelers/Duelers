@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.projectcardboard.client.view.battleview.Constants;
 
-import server.dataCenter.models.card.ServerCard;
 import shared.models.card.Card;
 import shared.models.card.CardType;
 import shared.models.game.Troop;
@@ -60,13 +59,13 @@ public class CompressedPlayer {
         }
     }
 
-    public void addCardsToHand(int deckSize, ServerCard... drawnCards) {
+    public void addCardsToHand(int deckSize, Card... drawnCards) {
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }
 
         this.deckSize = deckSize;
-        for (ServerCard drawnCard : drawnCards) {
+        for (Card drawnCard : drawnCards) {
             if (drawnCard != null && this.hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
                 this.hand.add(drawnCard);
                 support.firePropertyChange("hand", null, null);
