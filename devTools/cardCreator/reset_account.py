@@ -14,8 +14,8 @@ passw = "duel"
 
 if __name__ == "__main__":
 
-    assert os.path.isdir(RESOURCES_SERVER_DIR), f"ERROR: {RESOURCES_SERVER_PATH} is not a valid directory!"
-    assert os.path.isdir(ACCOUNTS_DIR), f"ERROR: {ACCOUNT_PATH} is not a valid directory!"
+    assert os.path.isdir(RESOURCES_SERVER_DIR), "ERROR: {RESOURCES_SERVER_PATH} is not a valid directory!"
+    assert os.path.isdir(ACCOUNTS_DIR), "ERROR: {ACCOUNT_PATH} is not a valid directory!"
 
     account_path = os.path.join(ACCOUNTS_DIR, accname + ".account.json")
     template_path = os.path.join(ACCOUNTS_DIR, "template.account.json")

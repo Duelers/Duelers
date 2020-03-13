@@ -149,7 +149,7 @@ public abstract class Game {
 
                 startTurnTimeLimit();
 
-                if (versusAi && getCurrentTurnPlayer().getUserName().equals("AI")) { // TODO needs improvement
+                if (versusAi && getCurrentTurnPlayer().getUserName().equals("AI")) { // Todo needs improvement
                     playCurrentTurnAtRandom();
                 }
             } else {
@@ -1064,7 +1064,7 @@ public abstract class Game {
         return lastRow;
     }
 
-    void setMatchHistories(boolean resultOne, boolean resultTwo) { //TODO call twice
+    void setMatchHistories(boolean resultOne, boolean resultTwo) {
         playerOne.setMatchHistory(
                 new MatchHistory(playerTwo, resultOne)
         );

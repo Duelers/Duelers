@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class Deck_Test {
 
-    int minimumDeckSize = 5;
-    int maximumDeckSize = 40;
+    int minimumDeckSize = 20;
+    int maximumDeckSize = 20;
 
     private ServerCard makeMinionCard() {
         return new ServerCard(" ", " ", " ", " ", CardType.MINION, new ArrayList<>(), 1, 1, 1, 1, AttackType.MELEE, 1);
