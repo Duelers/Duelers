@@ -3,12 +3,12 @@ package server.gameCenter.models.game;
 import server.clientPortal.models.comperessedData.CompressedPlayer;
 import server.dataCenter.models.account.MatchHistory;
 import server.dataCenter.models.card.ServerCard;
+import shared.Constants;
 import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import shared.models.game.map.Cell;
-import server.dataCenter.models.Constants;
 
 import java.util.*;
 

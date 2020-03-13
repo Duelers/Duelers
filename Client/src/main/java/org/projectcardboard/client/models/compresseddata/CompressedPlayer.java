@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.projectcardboard.client.view.battleview.Constants;
-
+import shared.Constants;
 import shared.models.card.Card;
 import shared.models.card.CardType;
+import shared.models.game.BasePlayer;
 import shared.models.game.Troop;
 
 public class CompressedPlayer {
