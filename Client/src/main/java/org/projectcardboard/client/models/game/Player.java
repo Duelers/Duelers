@@ -1,4 +1,4 @@
-package org.projectcardboard.client.models.compresseddata;
+package org.projectcardboard.client.models.game;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -12,14 +12,14 @@ import shared.models.card.CardType;
 import shared.models.game.BasePlayer;
 import shared.models.game.Troop;
 
-public class CompressedPlayer extends BasePlayer<Card, Troop> {
+public class Player extends BasePlayer<Card, Troop> {
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
-    public CompressedPlayer(String userName, int currentMP,
-                            List<Card> hand, List<Card> graveyard, Card nextCard,
-                            int playerNumber,
-                            List<Troop> troops,
-                            Troop hero) {
+    public Player(String userName, int currentMP,
+                  List<Card> hand, List<Card> graveyard, Card nextCard,
+                  int playerNumber,
+                  List<Troop> troops,
+                  Troop hero) {
         super(userName, currentMP, hand, graveyard, nextCard, playerNumber, troops, hero);
     }
 
@@ -65,11 +65,11 @@ public class CompressedPlayer extends BasePlayer<Card, Troop> {
         support.firePropertyChange("replace", null, null);
     }
 
-    void addCardToGraveYard(Card card) {
+    public void addCardToGraveYard(Card card) {
         graveyard.add(card);
     }
 
-    void troopUpdate(Troop troop) {
+    public void troopUpdate(Troop troop) {
         if (troops == null)
             troops = new ArrayList<>();
         removeTroop(troop.getCard().getCardId());
@@ -80,7 +80,7 @@ public class CompressedPlayer extends BasePlayer<Card, Troop> {
         }
     }
 
-    void removeCardFromHand(String cardId) {
+    public void removeCardFromHand(String cardId) {
         hand.removeIf(card -> card.getCardId().equalsIgnoreCase(cardId));
         if (support == null) {
             support = new PropertyChangeSupport(this);
@@ -96,7 +96,7 @@ public class CompressedPlayer extends BasePlayer<Card, Troop> {
         support.firePropertyChange("next", null, null);
     }
 
-    void removeTroop(String cardId) {
+    public void removeTroop(String cardId) {
         if (troops == null)
             troops = new ArrayList<>();
         troops.removeIf(troop -> troop.getCard().getCardId().equalsIgnoreCase(cardId));
@@ -129,7 +129,7 @@ public class CompressedPlayer extends BasePlayer<Card, Troop> {
         return null;
     }
 
-    void setCurrentMP(int currentMP, int turnNumber) {
+    public void setCurrentMP(int currentMP, int turnNumber) {
         this.currentMP = currentMP;
     }
 

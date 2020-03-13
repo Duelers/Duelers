@@ -1,5 +1,6 @@
 package org.projectcardboard.client.models.compresseddata;
 
+import org.projectcardboard.client.models.game.Player;
 import shared.models.card.CardType;
 import shared.models.card.Card;
 import shared.models.game.Troop;
@@ -10,8 +11,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class CompressedGame {
-    private CompressedPlayer playerOne;
-    private CompressedPlayer playerTwo;
+    private Player playerOne;
+    private Player playerTwo;
     private CompressedGameMap gameMap;
     private int turnNumber;
     private GameType gameType;
@@ -30,23 +31,23 @@ public class CompressedGame {
     }
 
     public void moveCardToHand() {
-        CompressedPlayer player = getCurrentTurnPlayer();
+        Player player = getCurrentTurnPlayer();
         player.addNextCardToHand();
         player.removeCardFromNext();
     }
 
     public void moveCardToNext(Card card) {
-        CompressedPlayer player = getCurrentTurnPlayer();
+        Player player = getCurrentTurnPlayer();
         player.addCardToNext(card);
     }
 
     public void moveCardToMap(Card card) {
-        CompressedPlayer player = getCurrentTurnPlayer();
+        Player player = getCurrentTurnPlayer();
         player.removeCardFromHand(card.getCardId());
     }
 
     public void moveCardToGraveYard(Card card) {
-        CompressedPlayer player;
+        Player player;
         if (card.getType().equals(CardType.HERO) || card.getType().equals(CardType.MINION)) {
             Troop troop = gameMap.getTroop(card.getCardId());
             if (troop == null) {
@@ -65,7 +66,7 @@ public class CompressedGame {
     }
 
     public void troopUpdate(Troop troop) {
-        CompressedPlayer player;
+        Player player;
         player = getPlayer(troop.getPlayerNumber());
         if (player.searchGraveyard(troop.getCard().getCardId()) == null) {
             player.troopUpdate(troop);
@@ -101,11 +102,11 @@ public class CompressedGame {
         gameMap.updateCellEffects(cellEffects);
     }
 
-    public CompressedPlayer getPlayerOne() {
+    public Player getPlayerOne() {
         return playerOne;
     }
 
-    public CompressedPlayer getPlayerTwo() {
+    public Player getPlayerTwo() {
         return playerTwo;
     }
 
@@ -121,15 +122,15 @@ public class CompressedGame {
         return gameType;
     }
 
-    public CompressedPlayer getCurrentTurnPlayer() {
+    public Player getCurrentTurnPlayer() {
         return getPlayer(turnNumber % 2);
     }
 
-    public CompressedPlayer getOtherTurnPlayer() {
+    public Player getOtherTurnPlayer() {
         return getPlayer(turnNumber % 2 + 1);
     }
 
-    private CompressedPlayer getPlayer(int number) {
+    private Player getPlayer(int number) {
         if (number == 1) {
             return playerOne;
         } else {

@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import org.projectcardboard.client.models.compresseddata.CompressedGame;
-import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
+import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.GameActions;
 import shared.models.card.spell.AvailabilityType;
 import shared.models.game.map.Cell;
@@ -34,8 +34,8 @@ public class BattleScene extends Show {
     private final HandBox handBox;
     private final PlayerBox playerBox;
     private final int myPlayerNumber;
-    private CompressedPlayer myPlayer;
-    private CompressedPlayer oppPlayer;
+    private Player myPlayer;
+    private Player oppPlayer;
 
     static {
         spellSpriteNames.put(SpellType.ATTACK, "fx_f4_shadownova");
