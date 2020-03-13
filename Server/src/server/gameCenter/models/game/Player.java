@@ -133,10 +133,18 @@ public class Player {
                     System.out.println("Unable to remove card from deck");
                 }
             } else {
-                drawnCards[i] = null;
+                break;
             }
         }
         return drawnCards;
+    }
+
+    public void addCardsToHand(ServerCard... cards){
+        for(ServerCard card : cards) {
+            if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getCards().isEmpty() || card != null)) {
+                hand.add(card);
+            }
+        }
     }
 
     public String getUserName() {

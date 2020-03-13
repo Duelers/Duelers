@@ -189,6 +189,7 @@ public abstract class Game {
 
     private void drawCardsFromDeck(int cardsToDraw){
         ServerCard[] drawnCards = getCurrentTurnPlayer().getCardsFromDeck(cardsToDraw);
+        getCurrentTurnPlayer().addCardsToHand(drawnCards);
         int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
         GameServer.getInstance().sendCardsDrawnToHandMessage(this, drawnCards, deckSize);
     }
