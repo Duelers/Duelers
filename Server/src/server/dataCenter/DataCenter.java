@@ -112,7 +112,7 @@ public class DataCenter extends Thread {
             }
             accounts.replace(account, client);
             clients.replace(client, account);
-            GameServer.addToSendingMessages(Message.makeAccountCopyMessage(client, account));
+            GameServer.sendMessageAsync(Message.makeAccountCopyMessage(client, account));
             GameServer.serverPrint(client + " Is Logged In");
         }
     }
@@ -149,7 +149,7 @@ public class DataCenter extends Thread {
                     this.buyAllCards(account, card.getName());
                 }
             }
-            GameServer.addToSendingMessages(Message.makeAccountCopyMessage(client, account));
+            GameServer.sendMessageAsync(Message.makeAccountCopyMessage(client, account));
         }
     }
 
@@ -201,7 +201,7 @@ public class DataCenter extends Thread {
         accounts.replace(clients.get(message.getSender()), null);
         clients.replace(message.getSender(), null);
         GameServer.serverPrint(message.getSender() + " Is Logged Out.");
-        GameServer.addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+        GameServer.sendMessageAsync(Message.makeDoneMessage(message.getSender()));
     }
 
     public void logout(Session session) throws LogicException {
@@ -215,7 +215,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.addDeck(message.getOtherFields().getDeckName());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -223,7 +223,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.deleteDeck(message.getOtherFields().getDeckName());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -231,7 +231,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.addCardToDeck(message.getOtherFields().getMyCardId(), message.getOtherFields().getDeckName());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -239,7 +239,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.removeCardFromDeck(message.getOtherFields().getMyCardId(), message.getOtherFields().getDeckName());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -247,7 +247,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.selectDeck(message.getOtherFields().getDeckName());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -259,7 +259,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.buyCard(message.getOtherFields().getCardName(), dataBase.getOriginalCards());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -298,7 +298,7 @@ public class DataCenter extends Thread {
         Collection collection = account.getCollection();
         Deck deck = collection.extractDeck(exportedDeck);
         account.addDeck(deck);
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
