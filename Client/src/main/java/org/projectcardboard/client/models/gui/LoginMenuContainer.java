@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class LoginMenuContainer extends VBox {
-    private static final String DUELYST_LOGO_URL = "Client/src/main/resources/ui/brand_duelyst.png";
+    private static final String DUELYST_LOGO_URL = "/ui/brand_duelyst.png";
     private static final double WIDTH = 1600 * SCALE;
 
     public LoginMenuContainer() throws FileNotFoundException {

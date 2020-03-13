@@ -6,7 +6,6 @@ import shared.models.card.ICard;
 import org.projectcardboard.client.models.card.Deck;
 
 import java.beans.PropertyChangeEvent;
-import java.io.FileNotFoundException;
 
 public class DeckCardPane extends CardPane {
 

@@ -24,7 +24,7 @@ public class TempAccount {
             this.decks.add(new TempDeck(deck));
         }
         if (account.getMainDeck() != null) {
-            this.mainDeckName = account.getMainDeck().getDeckName();
+            this.mainDeckName = account.getMainDeck().getName();
         }
         this.matchHistories = account.getMatchHistories();
         this.accountType = account.getAccountType();

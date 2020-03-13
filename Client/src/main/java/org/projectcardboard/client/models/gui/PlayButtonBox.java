@@ -8,8 +8,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
@@ -22,7 +22,11 @@ class PlayButtonBox extends VBox {
 
     static {
         try {
-            PLATE_IMAGE = new Image(new FileInputStream("Client/src/main/resources/menu/playButtons/panel_trim_plate.png"));
+            InputStream plateR = PlayButtonBox.class.getResourceAsStream("/menu/playButtons/panel_trim_plate.png");
+            if (plateR == null) {
+                throw new FileNotFoundException();
+            }
+            PLATE_IMAGE = new Image(plateR);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

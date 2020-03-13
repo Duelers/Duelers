@@ -25,7 +25,7 @@ public class OnlineGamesList extends TableView {
         String playerTwo = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "PLAYER_TWO"});
         String gameTypeText = LanguageData.getInstance().getValue(new String[]{"SPECTATE", "GAME_TYPE"});
 
-        TableColumn<OnlineGameView, Integer> index = new TableColumn(indexText);
+        TableColumn<OnlineGameView, Integer> index = new TableColumn<>(indexText);
         index.setSortable(false);
         index.setCellValueFactory(
                 param -> new ReadOnlyObjectWrapper<>(getItems().indexOf(param.getValue()) + 1)

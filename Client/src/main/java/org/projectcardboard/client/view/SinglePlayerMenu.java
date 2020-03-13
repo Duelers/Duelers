@@ -7,10 +7,10 @@ import org.projectcardboard.client.models.gui.PlayButtonItem;
 import java.io.FileNotFoundException;
 
 public class SinglePlayerMenu extends PlayMenu {
-    private static final String BACKGROUND_URL = "Client/src/main/resources/menu/background/single_player_background.jpg";
+    private static final String BACKGROUND_URL = "/menu/background/single_player_background.jpg";
     private static final EventHandler<? super MouseEvent> BACK_EVENT = event -> PlayMenu.getInstance().show();
     private static final PlayButtonItem[] items = {
-            new PlayButtonItem("Client/src/main/resources/menu/playButtons/custom_game.jpg", "CUSTOM GAME",
+            new PlayButtonItem("/menu/playButtons/custom_game.jpg", "CUSTOM GAME",
                     "Play with one of your decks controlled by AI", event -> CustomGameMenu.getInstance().show()) };
     private static SinglePlayerMenu menu;
 
