@@ -12,18 +12,24 @@ import shared.models.card.CardType;
 import shared.models.game.BasePlayer;
 import shared.models.game.Troop;
 
-public class CompressedPlayer {
-    private String userName;
-    private int currentMP;
-    private List<Card> hand;
-    private List<Card> graveyard;
-    private Card nextCard;
-    private int playerNumber;
-
-    private List<Troop> troops;
-    private Troop hero;
-
+public class CompressedPlayer extends BasePlayer<Card, Troop> {
+//    private String userName;
+//    private int currentMP;
+//    private List<Card> hand;
+//    private List<Card> graveyard;
+//    private Card nextCard;
+//    private int playerNumber;
+//    private List<Troop> troops;
+//    private Troop hero;
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+    public CompressedPlayer(String userName, int currentMP,
+                            List<Card> hand, List<Card> graveyard, Card nextCard,
+                            int playerNumber,
+                            List<Troop> troops,
+                            Troop hero) {
+        super(userName, currentMP, hand, graveyard, nextCard, playerNumber, troops, hero);
+    }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         if (support == null) {
@@ -120,9 +126,7 @@ public class CompressedPlayer {
         }
     }
 
-    public Troop getHero() {
-        return hero;
-    }
+
 
     public Card searchGraveyard(String cardId) {
         for (Card card : graveyard) {
@@ -133,31 +137,9 @@ public class CompressedPlayer {
         return null;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public int getCurrentMP() {
-        return currentMP;
-    }
-
     void setCurrentMP(int currentMP, int turnNumber) {
         this.currentMP = currentMP;
     }
 
-    public List<Card> getHand() {
-        return Collections.unmodifiableList(hand);
-    }
 
-    public List<Card> getGraveyard() {
-        return Collections.unmodifiableList(graveyard);
-    }
-
-    public Card getNextCard() {
-        return nextCard;
-    }
-
-    public int getPlayerNumber() {
-        return playerNumber;
-    }
 }
