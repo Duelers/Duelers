@@ -28,7 +28,6 @@ public class GameServer {
     private static GameServer server;
     public static String serverName;
 
-    private final static Queue<Message> sendingMessages = new LinkedList<>();
     private final static Queue<Message> receivingMessages = new LinkedList<>();
 
     private GameServer(String serverName) {
@@ -51,25 +50,6 @@ public class GameServer {
         ClientPortal.getInstance().start();
 
         new Thread(() -> {
-            serverPrint("Server Thread:sending messages is started...");
-            while (true) {
-                Message message;
-                synchronized (sendingMessages) {
-                    message = sendingMessages.poll();
-                }
-                if (message != null) {
-                    ClientPortal.getInstance().sendMessage(message.getReceiver(), message.toJson());
-                } else {
-                    try {
-                        synchronized (sendingMessages) {
-                            sendingMessages.wait();
-                        }
-                    } catch (InterruptedException ignored) {
-                    }
-                }
-            }
-        }).start();
-        new Thread(() -> {
             serverPrint("Server Thread:receiving messages is started...");
             while (true) {
                 Message message;
@@ -90,11 +70,8 @@ public class GameServer {
         }).start();
     }
 
-    public static void addToSendingMessages(Message message) {
-        synchronized (sendingMessages) {
-            sendingMessages.add(message);
-            sendingMessages.notify();
-        }
+    public static void sendMessageAsync(Message message) {
+        ClientPortal.getInstance().prepareAndSendMessageAsync(message.getReceiver(), message);
     }
 
     public static void addToReceivingMessages(Message message) {
@@ -160,43 +137,43 @@ public class GameServer {
                     break;
                 case MULTIPLAYER_GAME_REQUEST:
                     GameCenter.getInstance().getMultiPlayerGameRequest(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case CANCEL_REQUEST:
                     GameCenter.getInstance().getCancelRequest(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case ACCEPT_REQUEST:
                     GameCenter.getInstance().getAcceptRequest(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case DECLINE_REQUEST:
                     GameCenter.getInstance().getDeclineRequest(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case NEW_DECK_GAME:
                     GameCenter.getInstance().newDeckGame(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case INSERT:
                     GameCenter.getInstance().insertCard(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case ATTACK:
                     GameCenter.getInstance().attack(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case END_TURN:
                     GameCenter.getInstance().endTurn(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case MOVE_TROOP:
                     GameCenter.getInstance().moveTroop(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case SET_NEW_NEXT_CARD:
                     GameCenter.getInstance().setNewNextCard(message);
-                    addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case REPLACE_CARD:
                     GameCenter.getInstance().replaceCard(message);
@@ -243,19 +220,19 @@ public class GameServer {
     }
 
     public static void sendException(String exceptionString, String receiver) {
-        addToSendingMessages(Message.makeExceptionMessage(receiver, exceptionString));
+        sendMessageAsync(Message.makeExceptionMessage(receiver, exceptionString));
     }
 
     private static void sendOnlineGames(Message message) throws LogicException {
         DataCenter.getInstance().loginCheck(message);
         Account account = DataCenter.getInstance().getClients().get(message.getSender());
         OnlineGame[] onlines = GameCenter.getInstance().getOnlineGames();
-        addToSendingMessages(Message.makeOnlineGamesCopyMessage(message.getSender(), onlines));
+        sendMessageAsync(Message.makeOnlineGamesCopyMessage(message.getSender(), onlines));
     }
 
     private static void sendOriginalCards(Message message) throws LogicException {
         DataCenter.getInstance().loginCheck(message);
-        addToSendingMessages(Message.makeOriginalCardsCopyMessage(message.getSender(), DataCenter.getInstance().getOriginalCards()));
+        sendMessageAsync(Message.makeOriginalCardsCopyMessage(message.getSender(), DataCenter.getInstance().getOriginalCards()));
     }
 
 
@@ -266,7 +243,7 @@ public class GameServer {
         } else if (!account.hasValidMainDeck()) {
             throw new ClientException("selected deck for second player is not valid");
         } else {
-            addToSendingMessages(Message.makeAccountInfoMessage(message.getSender(), account));
+            sendMessageAsync(Message.makeAccountInfoMessage(message.getSender(), account));
         }
     }
 
@@ -277,7 +254,7 @@ public class GameServer {
                 serverPrint(account.getUsername() + " " + account.getPassword());
             }
         }
-        addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+        sendMessageAsync(Message.makeDoneMessage(message.getSender()));
     }
 
     public void sendChangeCardPositionMessage(Game game, Card card, CardPosition newCardPosition) {
@@ -287,7 +264,7 @@ public class GameServer {
                 serverPrint("*Error");
                 continue;
             }
-            addToSendingMessages(Message.makeChangeCardPositionMessage(clientName, card, newCardPosition));
+            sendMessageAsync(Message.makeChangeCardPositionMessage(clientName, card, newCardPosition));
         }
     }
 
@@ -298,7 +275,7 @@ public class GameServer {
                 serverPrint("*Error: Client not found");
                 continue;
             }
-            addToSendingMessages(Message.makeNewNextCardSetMessage(clientName, nextCard));
+            sendMessageAsync(Message.makeNewNextCardSetMessage(clientName, nextCard));
         }
     }
 
@@ -309,7 +286,7 @@ public class GameServer {
                 serverPrint("*Error");
                 continue;
             }
-            addToSendingMessages(Message.makeTroopUpdateMessage(clientName, troop));
+            sendMessageAsync(Message.makeTroopUpdateMessage(clientName, troop));
         }
     }
 
@@ -320,7 +297,7 @@ public class GameServer {
                 serverPrint("*Error");
                 continue;
             }
-            addToSendingMessages(Message.makeAttackMessage(clientName, attacker, defender, counterAttack));
+            sendMessageAsync(Message.makeAttackMessage(clientName, attacker, defender, counterAttack));
         }
     }
 
@@ -333,7 +310,7 @@ public class GameServer {
                 serverPrint("*Error");
                 continue;
             }
-            addToSendingMessages(Message.makeSpellMessage(clientName, cells, availabilityType));
+            sendMessageAsync(Message.makeSpellMessage(clientName, cells, availabilityType));
         }
     }
 
@@ -345,7 +322,7 @@ public class GameServer {
                 serverPrint("*Error");
                 continue;
             }
-            addToSendingMessages(Message.makeGameUpdateMessage(
+            sendMessageAsync(Message.makeGameUpdateMessage(
                     clientName, game.getTurnNumber(), game.getPlayerOne().getCurrentMP(), game.getPlayerTwo().getCurrentMP(), cellEffects));
         }
     }
@@ -358,17 +335,17 @@ public class GameServer {
                 continue;
             }
             if (account.getUsername().equals(game.getPlayerOne().getUserName())) {
-                addToSendingMessages(Message.makeGameFinishMessage(
+                sendMessageAsync(Message.makeGameFinishMessage(
                         clientName, game.getPlayerOne().getMatchHistory().isAmIWinner()));
-                addToSendingMessages(Message.makeAccountCopyMessage(
+                sendMessageAsync(Message.makeAccountCopyMessage(
                         clientName, DataCenter.getInstance().getAccount(game.getPlayerOne().getUserName())));
             } else if (account.getUsername().equals(game.getPlayerTwo().getUserName())) {
-                addToSendingMessages(Message.makeGameFinishMessage(
+                sendMessageAsync(Message.makeGameFinishMessage(
                         clientName, game.getPlayerTwo().getMatchHistory().isAmIWinner()));
-                addToSendingMessages(Message.makeAccountCopyMessage(
+                sendMessageAsync(Message.makeAccountCopyMessage(
                         clientName, DataCenter.getInstance().getAccount(game.getPlayerTwo().getUserName())));
             } else {
-                addToSendingMessages(Message.makeGameFinishMessage(
+                sendMessageAsync(Message.makeGameFinishMessage(
                         clientName, false));
             }
         }
@@ -381,7 +358,7 @@ public class GameServer {
     public void sendChangeCardNumberMessage(Card card) {
         for (Account account : DataCenter.getInstance().getAccounts().keySet()) {
             if (account.getAccountType().equals(AccountType.ADMIN) && DataCenter.getInstance().isOnline(account.getUsername())) {
-                addToSendingMessages(Message.makeChangeCardNumberMessage(DataCenter.getInstance().getAccounts().get(account),
+                sendMessageAsync(Message.makeChangeCardNumberMessage(DataCenter.getInstance().getAccounts().get(account),
                         card, card.getRemainingNumber()));
             }
         }
@@ -390,7 +367,7 @@ public class GameServer {
     public void sendAddToOriginalsMessage(Card card) {
         for (Account account : DataCenter.getInstance().getAccounts().keySet()) {
             if (DataCenter.getInstance().isOnline(account.getUsername())) {
-                addToSendingMessages(
+                sendMessageAsync(
                         Message.makeAddOriginalCardMessage(DataCenter.getInstance().getAccounts().get(account), card)
                 );
             }
@@ -401,7 +378,7 @@ public class GameServer {
         String clientName = DataCenter.getInstance().getAccounts().get(account);
         if (clientName == null)
             return;
-        addToSendingMessages(Message.makeAccountCopyMessage(clientName, account));
+        sendMessageAsync(Message.makeAccountCopyMessage(clientName, account));
     }
 
 }

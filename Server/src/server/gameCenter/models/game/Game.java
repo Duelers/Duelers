@@ -1,8 +1,12 @@
 package server.gameCenter.models.game;
 
 import server.GameServer;
+import server.chatCenter.ChatCenter;
 import server.clientPortal.models.comperessedData.CompressedGame;
 import server.clientPortal.models.message.CardPosition;
+import server.clientPortal.models.message.ChatMessage;
+import server.clientPortal.models.message.Message;
+import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
 
@@ -52,15 +56,18 @@ public abstract class Game {
     private boolean isFinished;
     private final ArrayList<Account> observers = new ArrayList<>();
 
+    private boolean versusAi = false;
+
     private final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
     private Runnable task;
     private ScheduledFuture<?> future;
 
-    protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType) {
+    protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType, boolean versusAi) {
         this.gameType = gameType;
         this.gameMap = gameMap;
         this.playerOne = new Player(account.getMainDeck(), account.getUsername(), 1);
         this.playerTwo = new Player(secondDeck, userName, 2);
+        this.versusAi = versusAi;
     }
 
     public int getTurnNumber() {
@@ -142,7 +149,7 @@ public abstract class Game {
 
                 startTurnTimeLimit();
 
-                if (getCurrentTurnPlayer().getUserName().equals("AI")) {
+                if (versusAi && getCurrentTurnPlayer().getUserName().equals("AI")) { // TODO needs improvement
                     playCurrentTurnAtRandom();
                 }
             } else {
@@ -266,6 +273,14 @@ public abstract class Game {
 
                     if (isLegalCellForMinion(c, minion)) {
                         insert("AI", minion.getCardId(), new Cell(c.getRow(), c.getColumn()));
+
+                        // Get the AI to announce the most recently played minion.
+                        ChatCenter.getInstance().sendMessage(
+                                DataCenter.getInstance().getClientName(getOtherTurnPlayer().getUserName()),
+                                getCurrentTurnPlayer().getUserName(),
+                                getOtherTurnPlayer().getUserName(),
+                                "I play: " + minion.getName() + "!");
+
                         Thread.sleep(delay);
                         break;
                     }
@@ -402,6 +417,17 @@ public abstract class Game {
                 GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
             }
             applyOnPutSpells(card, gameMap.getCell(cell));
+
+            // Announce in GameChat most recently played card.
+            if (!versusAi){
+                //sendMessage(String receiverClientName, String senderUsername, String receiverUsername, String text)
+                ChatCenter.getInstance().sendMessage(
+                        DataCenter.getInstance().getClientName(getOtherTurnPlayer().getUserName()),
+                        getCurrentTurnPlayer().getUserName(),
+                        getOtherTurnPlayer().getUserName(),
+                        "I play: " + card.getName() + "!");
+            }
+
         } finally {
             GameCenter.getInstance().checkGameFinish(this);
         }
@@ -1038,7 +1064,7 @@ public abstract class Game {
         return lastRow;
     }
 
-    void setMatchHistories(boolean resultOne, boolean resultTwo) {
+    void setMatchHistories(boolean resultOne, boolean resultTwo) { //TODO call twice
         playerOne.setMatchHistory(
                 new MatchHistory(playerTwo, resultOne)
         );
