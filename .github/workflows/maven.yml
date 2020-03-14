@@ -24,7 +24,7 @@ jobs:
           path: built-server.tar.gz
 
   deploy:
-    #if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     steps:
