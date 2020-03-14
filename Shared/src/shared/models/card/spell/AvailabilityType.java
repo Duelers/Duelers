@@ -1,9 +1,10 @@
 package shared.models.card.spell;
 
 public class AvailabilityType {
-    private boolean onPut;
-    private boolean onAttack;
-    private boolean onDeath;
+    private final boolean onPut;
+    private final boolean onAttack;
+    private final boolean onCounterAttack;
+    private final boolean onDeath;
     private boolean onDefend;
     private boolean continuous;
 
@@ -11,25 +12,11 @@ public class AvailabilityType {
     public AvailabilityType(AvailabilityType availabilityType) {
         this.onPut = availabilityType.onPut;
         this.onAttack = availabilityType.onAttack;
+        this.onCounterAttack = availabilityType.onCounterAttack;
         this.onDeath = availabilityType.onDeath;
         this.onDefend = availabilityType.onDefend;
+        this.continuous = availabilityType.continuous;
     }
-
-    public AvailabilityType(boolean onPut, boolean onAttack, boolean onDeath, boolean continuous) {
-        this.onPut = onPut;
-        this.onAttack = onAttack;
-        this.onDeath = onDeath;
-        this.continuous = continuous;
-    }
-
-    public AvailabilityType(boolean onPut, boolean onAttack, boolean onDeath, boolean continuous, boolean onDefend) {
-        this.onPut = onPut;
-        this.onAttack = onAttack;
-        this.onDeath = onDeath;
-        this.continuous = continuous;
-        this.onDefend = onDefend; //Todo Kill unneeded constructors.
-    }
-
 
     public boolean isOnPut() {
         return onPut;
@@ -37,6 +24,10 @@ public class AvailabilityType {
 
     public boolean isOnAttack() {
         return onAttack;
+    }
+
+    public boolean isOnCounterAttack() {
+        return onCounterAttack;
     }
 
     public boolean isOnDeath() {

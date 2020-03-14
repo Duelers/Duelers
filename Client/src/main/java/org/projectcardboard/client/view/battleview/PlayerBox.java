@@ -6,7 +6,6 @@ import static org.projectcardboard.client.view.battleview.Constants.SCREEN_WIDTH
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 
@@ -14,11 +13,7 @@ import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.models.compresseddata.CompressedGame;
 import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
-import org.projectcardboard.client.models.gui.DefaultLabel;
-import org.projectcardboard.client.models.gui.DefaultText;
-import org.projectcardboard.client.models.gui.ImageLoader;
-import org.projectcardboard.client.models.gui.NormalField;
-import org.projectcardboard.client.models.gui.UIConstants;
+import org.projectcardboard.client.models.gui.*;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -35,11 +30,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
 public class PlayerBox implements PropertyChangeListener {
-    private final Image manaImage = new Image(new FileInputStream("Client/src/main/resources/ui/icon_mana@2x.png"));
-    private final Image inActiveManaImage = new Image(new FileInputStream("Client/src/main/resources/ui/icon_mana_inactive@2x.png"));
-    private final Image chatImage = new Image(new FileInputStream("Client/src/main/resources/ui/chat_bubble.png"));
+    private final Image manaImage = new Image(this.getClass().getResourceAsStream("/ui/icon_mana@2x.png"));
+    private final Image inActiveManaImage = new Image(this.getClass().getResourceAsStream("/ui/icon_mana_inactive@2x.png"));
+    private final Image chatImage = new Image(this.getClass().getResourceAsStream("/ui/chat_bubble.png"));
     private final double CHAT_BUBBLE_SIZE = 150 * SCALE;
     private final NormalField chatField = new NormalField("Type message and send");
+    private boolean isChatFieldEnabled = true;
+    private OrangeButton muteButton;
     private final BattleScene battleScene;
     private final CompressedPlayer player1, player2;
     private final Group group;
@@ -80,10 +77,10 @@ public class PlayerBox implements PropertyChangeListener {
     private HashMap<String, String> MapGeneralToPortrait() {
         // Note that this is a quick hack; a better solution is to have "portraitId" defined in the Hero's json file.
         HashMap<String, String> nameToPortrait = new HashMap<>();
-        nameToPortrait.put("Reva Eventide", "Client/src/main/resources/photo/general_portrait_image_hex_f2-alt@2x.png");
-        nameToPortrait.put("Vaath The Immortal", "Client/src/main/resources/photo/general_portrait_image_hex_f5@2x.png");
-        nameToPortrait.put("Argeon Highmayne", "Client/src/main/resources/photo/general_portrait_image_hex_f1@2x.png");
-        nameToPortrait.put("Faie Bloodwing", "Client/src/main/resources/photo/general_portrait_image_hex_f6@2x.png");
+        nameToPortrait.put("Reva Eventide", "/photo/general_portrait_image_hex_f2-alt@2x.png");
+        nameToPortrait.put("Vaath The Immortal", "/photo/general_portrait_image_hex_f5@2x.png");
+        nameToPortrait.put("Argeon Highmayne", "/photo/general_portrait_image_hex_f1@2x.png");
+        nameToPortrait.put("Faie Bloodwing", "/photo/general_portrait_image_hex_f6@2x.png");
 
         return nameToPortrait;
     }
@@ -101,14 +98,28 @@ public class PlayerBox implements PropertyChangeListener {
         }
         chatField.relocate(x, y);
         chatField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
+            if (event.getCode().equals(KeyCode.ENTER)) {
                 GameController.getInstance().sendChat(chatField.getText());
                 battleScene.showMyMessage(chatField.getText());
                 chatField.clear();
             }
         });
-
         group.getChildren().add(chatField);
+        addMuteButton();
+    }
+
+    private void addMuteButton(){
+        this.muteButton = new OrangeButton("Disable Chat", event -> handleMuteButtonOnClick(), null, false);
+        this.muteButton.setLayoutX(1560 * Constants.SCALE);
+        this.muteButton.setLayoutY(825 * SCALE);
+        this.muteButton.setMaxWidth(chatField.getMaxWidth());
+        this.muteButton.setMaxHeight(chatField.getMaxHeight());
+        group.getChildren().add(this.muteButton);
+    }
+
+    private void handleMuteButtonOnClick(){
+        this.isChatFieldEnabled = !this.isChatFieldEnabled;
+        muteButton.setText(isChatFieldEnabled ? "Disable Chat" : "Enable Chat");
     }
 
     private void makeMessageShows() {
@@ -119,10 +130,10 @@ public class PlayerBox implements PropertyChangeListener {
     private void addHeroPortraits() throws FileNotFoundException {
 
         String player1HeroName = player1.getHero().getCard().getName();
-        Image player1Profile = new Image(new FileInputStream(MapGeneralToPortrait().getOrDefault(player1HeroName, "Client/src/main/resources/photo/general_portrait_image_hex_rook@2x.png")));
+        Image player1Profile = new Image(this.getClass().getResourceAsStream(MapGeneralToPortrait().getOrDefault(player1HeroName, "/photo/general_portrait_image_hex_rook@2x.png")));
 
         String player2HeroName = player2.getHero().getCard().getName();
-        Image player2Profile = new Image(new FileInputStream(MapGeneralToPortrait().getOrDefault(player2HeroName, "Client/src/main/resources/photo/general_portrait_image_hex_calibero@2x.png")));
+        Image player2Profile = new Image(this.getClass().getResourceAsStream(MapGeneralToPortrait().getOrDefault(player2HeroName, "/photo/general_portrait_image_hex_calibero@2x.png")));
 
         player1Image = ImageLoader.makeImageView(player1Profile,
                 player1Profile.getWidth() * SCALE * 0.3,
@@ -262,9 +273,11 @@ public class PlayerBox implements PropertyChangeListener {
         }
 
         void show(String text) {
-            this.text.setText(text);
-            initialTime = -1;
-            start();
+            if(isChatFieldEnabled) {
+                this.text.setText(text);
+                initialTime = -1;
+                start();
+            }
         }
 
         @Override

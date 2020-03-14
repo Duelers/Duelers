@@ -5,7 +5,7 @@ import shared.models.game.map.Cell;
 
 
 public class Troop {
-    private final Card card;
+    protected final Card card;
     protected int currentAp;
     protected int currentHp;
     protected int enemyHitChanges;

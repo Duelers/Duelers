@@ -22,7 +22,7 @@ class Cloud extends Pane {
 
     Cloud() throws FileNotFoundException {
         for (int i = 0; i < 3; i++) {
-            getChildren().add(ImageLoader.loadImage("Client/src/main/resources/particles/cloud_" + i + ".png", WIDTH,
+            getChildren().add(ImageLoader.loadImage("/particles/cloud_" + i + ".png", WIDTH,
                     HEIGHT, DISTANCE * i, 0));
         }
         moveFog();

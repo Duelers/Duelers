@@ -5,11 +5,11 @@ import server.gameCenter.models.game.Player;
 import server.gameCenter.models.map.GameMap;
 
 public class CompressedGame {
-    private CompressedPlayer playerOne;
-    private CompressedPlayer playerTwo;
-    private CompressedGameMap gameMap;
-    private int turnNumber;
-    private GameType gameType;
+    private final CompressedPlayer playerOne;
+    private final CompressedPlayer playerTwo;
+    private final CompressedGameMap gameMap;
+    private final int turnNumber;
+    private final GameType gameType;
 
     public CompressedGame(Player playerOne, Player playerTwo, GameMap gameMap, int turnNumber, GameType gameType) {
         this.playerOne = playerOne.toCompressedPlayer();

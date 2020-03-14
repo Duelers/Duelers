@@ -2,10 +2,10 @@ package server.dataCenter.models.db;
 
 import server.dataCenter.DataBase;
 import server.dataCenter.models.account.Collection;
-import shared.models.card.Card;
+import server.dataCenter.models.card.ServerCard;
 
 public class OldDataBase implements DataBase {
-    private Collection originalCards = new Collection();
+    private final Collection originalCards = new Collection();
 
     public Collection getOriginalCards() {
         return originalCards;
@@ -13,7 +13,7 @@ public class OldDataBase implements DataBase {
 
 
     @Override
-    public void addOriginalCard(Card card) {
+    public void addOriginalCard(ServerCard card) {
         originalCards.addCard(card);
     }
 
@@ -24,7 +24,7 @@ public class OldDataBase implements DataBase {
 
 
     @Override
-    public Card getCard(String cardName) {
+    public ServerCard getCard(String cardName) {
         return null;
     }
 }

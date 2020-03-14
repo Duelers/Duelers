@@ -11,7 +11,6 @@ import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
 import org.projectcardboard.client.models.message.OnlineGame;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,9 +33,7 @@ public class MainMenu extends Show {
 
     private final String onlineGamesText = LanguageData.getInstance().getValue(new String[]{LanguageKeys.SPECTATE_MENU, LanguageKeys.ONLINE_GAMES});
 
-    private static final Media backgroundMusic = new Media(
-            new File("Client/src/main/resources/music/main_menu.m4a").toURI().toString()
-    );
+    private static final Media backgroundMusic = new Media(MainMenu.class.getResource("/music/main_menu.m4a").toString());
     private final List<MenuItem> items = new ArrayList<>();
     private int itemIndex = 0;
     private final MenuItem[] itemsArray = {
@@ -53,7 +50,7 @@ public class MainMenu extends Show {
 
     {
         items.addAll(Arrays.asList(itemsArray));
-        if (Client.getInstance().getAccount().getAccountType() == ADMIN) {
+        if (Client.getInstance().getAccount().getAccountType().equals(ADMIN)) {
             System.out.println(Client.getInstance().getAccount().getUsername());
             items.addAll(Collections.singletonList(
                     new MenuItem(itemIndex++, onlineGamesText, null, event -> menu.showOnlineGamesList())

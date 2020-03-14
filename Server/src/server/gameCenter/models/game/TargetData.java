@@ -1,5 +1,6 @@
 package server.gameCenter.models.game;
 
+import server.dataCenter.models.card.ServerCard;
 import shared.models.card.Card;
 import shared.models.game.map.Cell;
 
@@ -7,10 +8,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class TargetData {
-    private List<Card> cards = new ArrayList<>();
+    private final List<ServerCard> cards = new ArrayList<>();
     private List<ServerTroop> troops = new ArrayList<>();
-    private List<Cell> cells = new ArrayList<>();
-    private List<Player> players = new ArrayList<>();
+    private final List<Cell> cells = new ArrayList<>();
+    private final List<Player> players = new ArrayList<>();
 
     TargetData(List<ServerTroop> troops) {
         this.troops = troops;
@@ -19,7 +20,7 @@ public class TargetData {
     TargetData() {
     }
 
-    List<Card> getCards() {
+    List<ServerCard> getCards() {
         return cards;
     }
 

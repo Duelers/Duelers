@@ -6,17 +6,17 @@ import org.projectcardboard.client.models.account.Account;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class ProfileGrid extends GridPane {
     private static final double ICON_SIZE = 70 * SCALE;
-    private static final String DEFAULT_PROFILE_PIC_URL = "Client/src/main/resources/ui/default_profile.jpg";
-    private static final String GENERAL_ICON_URL = "Client/src/main/resources/ui/icon_general.png";
-    private static final String GOLD_ICON_URL = "Client/src/main/resources/ui/icon_gold.png";
-    private static final String HISTORY_ICON_URL = "Client/src/main/resources/ui/icon_history.png";
+    private static final String DEFAULT_PROFILE_PIC_URL = "/ui/default_profile.jpg";
+    private static final String GENERAL_ICON_URL = "/ui/icon_general.png";
+    private static final String GOLD_ICON_URL = "/ui/icon_gold.png";
+    private static final String HISTORY_ICON_URL = "/ui/icon_history.png";
 
 
     private static final String USERNAME_TEXT = LanguageData.getInstance().getValue(new String[]{LanguageKeys.LOGIN_MENU, LanguageKeys.USERNAME});
@@ -28,10 +28,22 @@ public class ProfileGrid extends GridPane {
 
     static {
         try {
-            defaultProfilePic = new Image(new FileInputStream(DEFAULT_PROFILE_PIC_URL));
-            generalIcon = new Image(new FileInputStream(GENERAL_ICON_URL));
-            goldIcon = new Image(new FileInputStream(GOLD_ICON_URL));
-            historyIcon = new Image(new FileInputStream(HISTORY_ICON_URL));
+            InputStream profilePicR = ProfileGrid.class.getResourceAsStream(DEFAULT_PROFILE_PIC_URL);
+            InputStream generalIconR = ProfileGrid.class.getResourceAsStream(GENERAL_ICON_URL);
+            InputStream goldIconR = ProfileGrid.class.getResourceAsStream(GOLD_ICON_URL);
+            InputStream historyIconR = ProfileGrid.class.getResourceAsStream(HISTORY_ICON_URL);
+            if (
+                profilePicR == null ||
+                generalIconR == null ||
+                goldIconR == null ||
+                historyIconR == null
+            ) {
+                throw new FileNotFoundException();
+            }
+            defaultProfilePic = new Image(profilePicR);
+            generalIcon = new Image(generalIconR);
+            goldIcon = new Image(goldIconR);
+            historyIcon = new Image(historyIconR);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

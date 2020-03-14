@@ -1,16 +1,11 @@
 package server.gameCenter.models.game.availableActions;
 
 
-import shared.models.card.Card;
+import server.dataCenter.models.card.ServerCard;
+import shared.models.game.availableactions.BaseInsert;
 
-public class Insert {
-    private Card card;
-
-    Insert(Card card) {
-        this.card = card;
-    }
-
-    public Card getCard() {
-        return card;
+public class Insert extends BaseInsert<ServerCard> {
+    Insert(ServerCard card) {
+        super(card);
     }
 }

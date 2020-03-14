@@ -6,8 +6,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
@@ -19,7 +19,11 @@ class ManaIcon extends StackPane {
 
     static {
         try {
-            manaIcon = new Image(new FileInputStream("Client/src/main/resources/ui/icon_mana@2x.png"));
+            InputStream manaIconR = ManaIcon.class.getResourceAsStream("/ui/icon_mana@2x.png");
+            if (manaIconR == null) {
+                throw new FileNotFoundException();
+            }
+            manaIcon = new Image(manaIconR);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

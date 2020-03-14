@@ -12,7 +12,7 @@ public abstract class GameModeChooseMenu extends PlayMenu {
     private static final EventHandler<? super MouseEvent> BACK_EVENT = event -> PlayMenu.getInstance().show();
     private static GameModeChooseMenu menu;
     private static final PlayButtonItem[] items = {
-            new PlayButtonItem("Client/src/main/resources/menu/playButtons/kill_hero.jpg", "KILL HERO",
+            new PlayButtonItem("/menu/playButtons/kill_hero.jpg", "KILL HERO",
                     "You must kill opponent's hero to win", event -> menu.startKillHero())
     };
 

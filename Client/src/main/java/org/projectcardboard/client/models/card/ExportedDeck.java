@@ -7,17 +7,17 @@ import java.util.Map;
 import shared.models.card.Card;
 
 public class ExportedDeck {
-    private String name;
+    private final String name;
     private String heroName;
-    private HashMap<String, Integer> otherCards = new HashMap<>();
+    private final HashMap<String, Integer> otherCards = new HashMap<>();
 
     public ExportedDeck(Deck deck) {
         name = deck.getName();
         if (deck.getHero() != null) {
             heroName = deck.getHero().getName();
         }
-        for (Card other : deck.getOthers()) {
-            otherCards.merge(other.getName(), 1, Integer::sum);
+        for (Card card : deck.getCards()) {
+            otherCards.merge(card.getName(), 1, Integer::sum);
         }
     }
 

@@ -2,25 +2,12 @@ package org.projectcardboard.client.models.game.availableactions;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import shared.models.game.Troop;
+import shared.models.game.availableactions.BaseAttack;
 
-public class Attack {
-    private Troop attackerTroop;
-    private List<Troop> defenders;
-
+public class Attack extends BaseAttack<Troop> {
     Attack(Troop attackerTroop, ArrayList<Troop> defenders) {
-        this.attackerTroop = attackerTroop;
-        this.defenders = defenders;
-    }
-
-    public Troop getAttackerTroop() {
-        return attackerTroop;
-    }
-
-    public List<Troop> getDefenders() {
-        return Collections.unmodifiableList(defenders);
+        super(attackerTroop, defenders);
     }
 }

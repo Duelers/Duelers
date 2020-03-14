@@ -1,6 +1,6 @@
 {
   "name": "Void Pulse",
-  "description": "Deal 2 damage to the enemy General. Your General gains 3 Health.",
+  "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
   "cardId": "VoidPulse",
   "spriteName": "icon_f4_voidpulse",
   "type": "SPELL",
@@ -67,11 +67,11 @@
       "lastTurnUsed": 0
     },
     {
-      "spellId": "3_health_self",
+      "spellId": "health_self",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": 3,
+        "hpChange": 2,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,

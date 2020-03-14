@@ -1,12 +1,11 @@
 package org.projectcardboard.client.view;
 
-import static org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
-
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.controller.SoundEffectPlayer.SoundName;
 import org.projectcardboard.client.models.gui.DialogBox;
 import org.projectcardboard.client.models.gui.DialogContainer;
 import org.projectcardboard.client.models.gui.DialogText;
+import org.projectcardboard.client.models.gui.UIConstants;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
 
@@ -36,6 +35,7 @@ public class ErrorView {
         dialogBox.makeButton(buttonText, e -> {
             event.handle(e);
             dialogContainer.close();
+            dialogBox.setCursor(UIConstants.DEFAULT_CURSOR);
         });
 
         dialogContainer.show();

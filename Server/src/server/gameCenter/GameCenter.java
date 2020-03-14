@@ -86,7 +86,7 @@ public class GameCenter extends Thread {//synchronize
         removeAllGameRequests(account);
         synchronized (globalRequests) {
             for (GlobalRequest globalRequest : globalRequests) {
-                if (globalRequest.getGameType() == gameType) {
+                if (gameType.equals(globalRequest.getGameType())) {
                     newMultiplayerGame(globalRequest.getRequester(), account, gameType);
                     globalRequests.remove(globalRequest);
                     return;
@@ -100,7 +100,7 @@ public class GameCenter extends Thread {//synchronize
         removeAllGameRequests(inviter);
         synchronized (userInvitations) {
             userInvitations.addLast(new UserInvitation(inviter, invited, gameType));
-            GameServer.addToSendingMessages(Message.makeInvitationMessage(
+            GameServer.sendMessageAsync(Message.makeInvitationMessage(
                     DataCenter.getInstance().getAccounts().get(invited), inviter.getUsername(),
                     gameType));
         }
@@ -109,7 +109,7 @@ public class GameCenter extends Thread {//synchronize
     public void removeAllGameRequests(Account account) {
         synchronized (globalRequests) {
             for (GlobalRequest globalRequest : globalRequests) {
-                if (globalRequest.getRequester() == account) {
+                if (globalRequest.getRequester().equals(account)) {
                     globalRequests.remove(globalRequest);
                     break;
                 }
@@ -117,7 +117,7 @@ public class GameCenter extends Thread {//synchronize
         }
         synchronized (userInvitations) {
             for (UserInvitation userInvitation : userInvitations) {
-                if (userInvitation.getInviter() == account) {
+                if (userInvitation.getInviter().equals(account)) {
                     userInvitations.remove(userInvitation);
                     break;
                 }
@@ -131,7 +131,7 @@ public class GameCenter extends Thread {//synchronize
 
     private UserInvitation getUserInvitation(Account inviter) {
         for (UserInvitation userInvitation : userInvitations) {
-            if (userInvitation.getInviter() == inviter)
+            if (userInvitation.getInviter().equals(inviter))
                 return userInvitation;
         }
         return null;
@@ -150,7 +150,7 @@ public class GameCenter extends Thread {//synchronize
             if (invitation == null)
                 throw new ClientException("The Invitation was not found!");
             userInvitations.remove(invitation);
-            GameServer.addToSendingMessages(Message.makeAcceptRequestMessage(
+            GameServer.sendMessageAsync(Message.makeAcceptRequestMessage(
                     DataCenter.getInstance().getAccounts().get(inviter)));
             newMultiplayerGame(inviter, invited, invitation.getGameType());
         }
@@ -169,7 +169,7 @@ public class GameCenter extends Thread {//synchronize
             if (invitation == null)
                 throw new ClientException("The Invitation was not found!");
             userInvitations.remove(invitation);
-            GameServer.addToSendingMessages(Message.makeDeclineRequestMessage(
+            GameServer.sendMessageAsync(Message.makeDeclineRequestMessage(
                     DataCenter.getInstance().getAccounts().get(inviter)));
         }
     }
@@ -213,13 +213,11 @@ public class GameCenter extends Thread {//synchronize
         deck.makeCustomGameDeck();
         Game game = null;
         GameMap gameMap = new GameMap();
-        if (message.getNewGameFields().getGameType() == GameType.KILL_HERO) {
-            game = new KillHeroBattle(myAccount, deck, gameMap);
-            game.addObserver(myAccount);
-        }
+        game = new KillHeroBattle(myAccount, deck, gameMap);
+        game.addObserver(myAccount);
         onlineGames.put(myAccount, game);
         gameInfos.add(new OnlineGame(game));
-        GameServer.addToSendingMessages(Message.makeGameCopyMessage
+        GameServer.sendMessageAsync(Message.makeGameCopyMessage
                 (message.getSender(), game));
         game.startGame();
     }
@@ -231,7 +229,7 @@ public class GameCenter extends Thread {//synchronize
         removeAllGameRequests(account2);
         Game game = null;
         GameMap gameMap = new GameMap();
-        if (gameType == GameType.KILL_HERO) {
+        if (gameType.equals(GameType.KILL_HERO)) {
             game = new KillHeroBattle(account1, account2, gameMap);
             game.addObserver(account1);
             game.addObserver(account2);
@@ -239,9 +237,9 @@ public class GameCenter extends Thread {//synchronize
         onlineGames.put(account1, game);
         onlineGames.put(account2, game);
         gameInfos.add(new OnlineGame(game));
-        GameServer.addToSendingMessages(Message.makeGameCopyMessage
+        GameServer.sendMessageAsync(Message.makeGameCopyMessage
                 (DataCenter.getInstance().getClientName(account1.getUsername()), game));
-        GameServer.addToSendingMessages(Message.makeGameCopyMessage
+        GameServer.sendMessageAsync(Message.makeGameCopyMessage
                 (DataCenter.getInstance().getClientName(account2.getUsername()), game));
         game.startGame();
     }
@@ -259,7 +257,6 @@ public class GameCenter extends Thread {//synchronize
                 onlineGames.remove(account2);
             }
         }
-
         for (OnlineGame onlineGame : gameInfos) {
             if (onlineGame.getPlayer1().equals(game.getPlayerOne().getUserName()) ||
                     onlineGame.getPlayer2().equals(game.getPlayerTwo().getUserName())) {
@@ -363,7 +360,7 @@ public class GameCenter extends Thread {//synchronize
         Game game = getGame(message.getOnlineGame());
         if (game == null)
             throw new ClientException("Invalid Game");
-        GameServer.addToSendingMessages(Message.makeGameCopyMessage(message.getSender(), game));
+        GameServer.sendMessageAsync(Message.makeGameCopyMessage(message.getSender(), game));
         game.addObserver(account);
     }
 

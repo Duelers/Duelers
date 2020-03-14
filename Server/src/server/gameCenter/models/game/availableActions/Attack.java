@@ -1,24 +1,13 @@
 package server.gameCenter.models.game.availableActions;
 
 import server.gameCenter.models.game.ServerTroop;
+import shared.models.game.availableactions.BaseAttack;
 
 import java.util.Collections;
 import java.util.List;
 
-public class Attack {
-    private ServerTroop attackerTroop;
-    private List<ServerTroop> defenders;
-
+public class Attack extends BaseAttack<ServerTroop> {
     Attack(ServerTroop attackerTroop, List<ServerTroop> defenders) {
-        this.attackerTroop = attackerTroop;
-        this.defenders = defenders;
-    }
-
-    public ServerTroop getAttackerTroop() {
-        return attackerTroop;
-    }
-
-    public List<ServerTroop> getDefenders() {
-        return Collections.unmodifiableList(defenders);
+        super(attackerTroop, defenders);
     }
 }

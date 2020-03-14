@@ -7,18 +7,17 @@ import java.util.List;
 import shared.models.card.Card;
 
 public class TempDeck {
-    private String deckName;
+    private final String deckName;
     private String heroId;
-    private String itemId;
-    private ArrayList<String> othersIds = new ArrayList<>();
+    private final ArrayList<String> cardIds = new ArrayList<>();
 
     public TempDeck(Deck deck) {
         this.deckName = deck.getName();
         if (deck.getHero() != null) {
             this.heroId = deck.getHero().getCardId();
         }
-        for (Card card : deck.getOthers()) {
-            this.othersIds.add(card.getCardId());
+        for (Card card : deck.getCards()) {
+            this.cardIds.add(card.getCardId());
         }
     }
 
@@ -30,11 +29,7 @@ public class TempDeck {
         return heroId;
     }
 
-    public String getItemId() {
-        return itemId;
-    }
-
-    public List<String> getOthersIds() {
-        return Collections.unmodifiableList(othersIds);
+    public List<String> getCardIds() {
+        return Collections.unmodifiableList(cardIds);
     }
 }

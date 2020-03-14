@@ -1,6 +1,6 @@
 {
   "name": "Sun Seer",
-  "description": "When this minion attacks or counterattacks,  your General gains 2 Health",
+  "description": "When this minion attacks or counterattacks,  your General gains 3 Health",
   "cardId": "SunSeer",
   "spriteName": "neutral_mercsunseer",
   "type": "MINION",
@@ -10,7 +10,7 @@
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": 2,
+        "hpChange": 3,
         "mpChange": 0,
         "removeBuffs": 0,
 		"durable": true,
@@ -47,8 +47,8 @@
       "lastTurnUsed": 0
     }
   ],
-  "defaultAp": 1,
-  "defaultHp": 5,
+  "defaultAp": 3,
+  "defaultHp": 3,
   "manaCost": 3,
   "price": 100,
   "attackType": "MELEE",

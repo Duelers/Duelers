@@ -47,11 +47,11 @@ public class ChatCenter {
 
     }
 
-    private void sendMessage(String receiverClientName, String senderUsername, String receiverUsername, String text) {
+    public void sendMessage(String receiverClientName, String senderUsername, String receiverUsername, String text) {
         if (receiverClientName == null) {
             GameServer.serverPrint("Chat Receiver Error!");
         }
         Message message = Message.makeChatMessage(receiverClientName, senderUsername, receiverUsername, text);
-        GameServer.addToSendingMessages(message);
+        GameServer.sendMessageAsync(message);
     }
 }

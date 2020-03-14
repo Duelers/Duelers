@@ -34,7 +34,7 @@ public class Cell {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj.getClass() != this.getClass()) return false;
+        if (!obj.getClass().equals(this.getClass())) return false;
         Cell cell = (Cell) obj;
         return row == cell.row && column == cell.column;
     }

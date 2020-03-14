@@ -26,7 +26,7 @@ public class GlobalChatDialog {
         ScrollPane scrollPane = new ScrollPane(chatMessages);
         OrangeButton sendButton = new OrangeButton("send",
                 event -> sendMessage(),
-                SoundEffectPlayer.SoundName.select);
+                SoundEffectPlayer.SoundName.select, false);
         dialogBox.getChildren().addAll(scrollPane, new HBox(normalField, sendButton));
         normalField.setMinSize(500, 50);
         normalField.setOnKeyPressed(event -> {

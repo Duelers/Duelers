@@ -1,13 +1,17 @@
 package server.gameCenter.models.game;
 
 import server.GameServer;
+import server.chatCenter.ChatCenter;
 import server.clientPortal.models.comperessedData.CompressedGame;
 import server.clientPortal.models.message.CardPosition;
+import server.clientPortal.models.message.ChatMessage;
+import server.clientPortal.models.message.Message;
+import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
 
+import server.dataCenter.models.card.ServerCard;
 import shared.models.card.AttackType;
-import shared.models.card.Card;
 import shared.models.card.CardType;
 
 import server.dataCenter.models.card.Deck;
@@ -42,25 +46,28 @@ import java.util.Random;
 
 public abstract class Game {
     private static final long TURN_TIME_LIMIT = 120000;
-    private Player playerOne;
-    private Player playerTwo;
-    private GameType gameType;
-    private ArrayList<Buff> buffs = new ArrayList<>();
-    private ArrayList<Buff> tempBuffs = new ArrayList<>();
-    private GameMap gameMap;
+    private final Player playerOne;
+    private final Player playerTwo;
+    private final GameType gameType;
+    private final ArrayList<Buff> buffs = new ArrayList<>();
+    private final ArrayList<Buff> tempBuffs = new ArrayList<>();
+    private final GameMap gameMap;
     private int turnNumber = 1;
     private boolean isFinished;
-    private ArrayList<Account> observers = new ArrayList<>();
+    private final ArrayList<Account> observers = new ArrayList<>();
 
-    private ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+    private boolean versusAi = false;
+
+    private final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
     private Runnable task;
     private ScheduledFuture<?> future;
 
-    protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType) {
+    protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType, boolean versusAi) {
         this.gameType = gameType;
         this.gameMap = gameMap;
         this.playerOne = new Player(account.getMainDeck(), account.getUsername(), 1);
         this.playerTwo = new Player(secondDeck, userName, 2);
+        this.versusAi = versusAi;
     }
 
     public int getTurnNumber() {
@@ -142,7 +149,7 @@ public abstract class Game {
 
                 startTurnTimeLimit();
 
-                if (getCurrentTurnPlayer().getUserName().equals("AI")) {
+                if (versusAi && getCurrentTurnPlayer().getUserName().equals("AI")) { // TODO needs improvement
                     playCurrentTurnAtRandom();
                 }
             } else {
@@ -171,7 +178,7 @@ public abstract class Game {
 
     private void addNextCardToHand(int cardsToDraw) {
         for (int i = 0; i < cardsToDraw; i++) {
-            Card nextCard = getCurrentTurnPlayer().getNextCard();
+            ServerCard nextCard = getCurrentTurnPlayer().getNextCard();
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, getCurrentTurnPlayer().getNextCard(), CardPosition.NEXT);
@@ -186,13 +193,13 @@ public abstract class Game {
 
     public void replaceCard(String cardID) throws LogicException {
         if (getCurrentTurnPlayer().getCanReplaceCard()) {
-            Card removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
+            ServerCard removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
             if (removedCard == null) {
                 return;
             }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             if (getCurrentTurnPlayer().addNextCardToHand()) {
-                Card nextCard = getCurrentTurnPlayer().getNextCard();
+                ServerCard nextCard = getCurrentTurnPlayer().getNextCard();
                 int numTimesReplacedThisTurn = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(numTimesReplacedThisTurn + 1);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
@@ -230,9 +237,9 @@ public abstract class Game {
 
                 // Pick a playable minion in the hand at random.
                 // By "playable" we simply check available mana relative to minion cost.
-                ArrayList<Card> minionOptions = new ArrayList<Card>();
+                ArrayList<ServerCard> minionOptions = new ArrayList<>();
                 for (Insert i : actions.getHandInserts()) {
-                    if (i.getCard().getManaCost() <= currentMana && i.getCard().getType() == CardType.MINION) {
+                    if (i.getCard().getManaCost() <= currentMana && i.getCard().getType().equals(CardType.MINION)) {
                         minionOptions.add(i.getCard());
                     }
                 }
@@ -246,7 +253,7 @@ public abstract class Game {
                 System.out.print("\n");
 
                 int idx = new Random().nextInt(Math.max(1, minionOptions.size() - 1));
-                Card minion = minionOptions.get(idx);
+                ServerCard minion = minionOptions.get(idx);
 
                 // Skew probability distribution towards favoring squares closer to Hero position.
                 int[] offsets = new int[]{-3, -2, -2, -1, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 3};
@@ -266,6 +273,14 @@ public abstract class Game {
 
                     if (isLegalCellForMinion(c, minion)) {
                         insert("AI", minion.getCardId(), new Cell(c.getRow(), c.getColumn()));
+
+                        // Get the AI to announce the most recently played minion.
+                        ChatCenter.getInstance().sendMessage(
+                                DataCenter.getInstance().getClientName(getOtherTurnPlayer().getUserName()),
+                                getCurrentTurnPlayer().getUserName(),
+                                getOtherTurnPlayer().getUserName(),
+                                "I play: " + minion.getName() + "!");
+
                         Thread.sleep(delay);
                         break;
                     }
@@ -370,9 +385,9 @@ public abstract class Game {
             }
 
             Player player = getCurrentTurnPlayer();
-            Card card = player.insert(cardId);
+            ServerCard card = player.insert(cardId);
 
-            if (card.getType() == CardType.MINION) {
+            if (card.getType().equals(CardType.MINION)) {
                 if (gameMap.getTroop(cell) != null) {
                     throw new ClientException("another troop is here.");
                 }
@@ -397,11 +412,22 @@ public abstract class Game {
 
                 GameServer.getInstance().sendTroopUpdateMessage(this, troop);
             }
-            if (card.getType() == CardType.SPELL) {
+            if (card.getType().equals(CardType.SPELL)) {
                 player.addToGraveYard(card);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
             }
             applyOnPutSpells(card, gameMap.getCell(cell));
+
+            // Announce in GameChat most recently played card.
+            if (!versusAi){
+                //sendMessage(String receiverClientName, String senderUsername, String receiverUsername, String text)
+                ChatCenter.getInstance().sendMessage(
+                        DataCenter.getInstance().getClientName(getOtherTurnPlayer().getUserName()),
+                        getCurrentTurnPlayer().getUserName(),
+                        getOtherTurnPlayer().getUserName(),
+                        "I play: " + card.getName() + "!");
+            }
+
         } finally {
             GameCenter.getInstance().checkGameFinish(this);
         }
@@ -409,7 +435,7 @@ public abstract class Game {
 
     private void putMinion(int playerNumber, ServerTroop troop, Cell cell) {
 
-        if (!(troop.getCard().getType() == CardType.HERO)) {
+        if (!(troop.getCard().getType().equals(CardType.HERO))) {
             // This function is also used to place heroes at start of game, hence this check.
             if (!isLegalCellForMinion(cell, troop.getCard())) {
                 // Note: there is a bug where is you target an illegal square the game gets in an unplayable state
@@ -422,7 +448,7 @@ public abstract class Game {
         GameServer.getInstance().sendTroopUpdateMessage(this, troop);
     }
 
-    private boolean isLegalCellForMinion(Cell cell, Card card) {
+    private boolean isLegalCellForMinion(Cell cell, ServerCard card) {
 
         if (!(gameMap.getTroop(cell) == null)) {
             // square is not empty
@@ -453,7 +479,7 @@ public abstract class Game {
         return false;
     }
 
-    private void applyOnPutSpells(Card card, Cell cell) {
+    private void applyOnPutSpells(ServerCard card, Cell cell) {
         for (Spell spell : card.getSpells()) {
             if (spell.getAvailabilityType().isOnPut()) {
                 applySpell(spell, detectTarget(spell, cell, cell, getCurrentTurnPlayer().getHero().getCell()));
@@ -579,6 +605,7 @@ public abstract class Game {
                 (attackerTroop.canBeAttackedFromWeakerOnes() || defenderTroop.getCurrentAp() > attackerTroop.getCurrentAp())
         ) {
             damage(defenderTroop, attackerTroop);
+            applyOnCounterAttackSpells(attackerTroop, defenderTroop);
         }
     }
 
@@ -591,6 +618,16 @@ public abstract class Game {
             killTroop(defenderTroop);
         } else {
             GameServer.getInstance().sendTroopUpdateMessage(this, defenderTroop);
+        }
+    }
+
+    private void applyOnCounterAttackSpells(ServerTroop attacker, ServerTroop counterAttacker) {
+        for (Spell spell : counterAttacker.getCard().getSpells()) {
+            if (spell.getAvailabilityType().isOnCounterAttack())
+                applySpell(
+                        spell,
+                        detectOnCounterAttackTarget(spell, counterAttacker.getCell(), attacker.getCell())
+                );
         }
     }
 
@@ -633,11 +670,11 @@ public abstract class Game {
     }
 
     private void checkRangeForAttack(ServerTroop attackerTroop, ServerTroop defenderTroop) throws ClientException {
-        if (attackerTroop.getCard().getAttackType() == AttackType.MELEE) {
+        if (attackerTroop.getCard().getAttackType().equals(AttackType.MELEE)) {
             if (!attackerTroop.getCell().isNearbyCell(defenderTroop.getCell())) {
                 throw new ClientException(attackerTroop.getCard().getCardId() + " can not attack to this target");
             }
-        } else if (attackerTroop.getCard().getAttackType() == AttackType.RANGED) {
+        } else if (attackerTroop.getCard().getAttackType().equals(AttackType.RANGED)) {
             if (attackerTroop.getCell().isNearbyCell(defenderTroop.getCell()) ||
                     attackerTroop.getCell().manhattanDistance(defenderTroop.getCell()) > attackerTroop.getCard().getRange()) {
                 throw new ClientException(attackerTroop.getCard().getCardId() + " can not attack to this target");
@@ -717,9 +754,9 @@ public abstract class Game {
         return false;
     }
 
-    private void applyBuffOnCards(Buff buff, List<Card> cards) {
+    private void applyBuffOnCards(Buff buff, List<ServerCard> cards) {
         SpellAction action = buff.getAction();
-        for (Card card : cards) {
+        for (ServerCard card : cards) {
             if (action.isAddSpell()) {
                 card.addSpell(action.getCarryingSpell());
             }
@@ -820,7 +857,7 @@ public abstract class Game {
             if (spell.getAvailabilityType().isOnDeath())
                 applySpell(
                         spell,
-                        detectTarget(spell, troop.getCell(), new Cell(0, 0), getOtherTurnPlayer().getHero().getCell())
+                        detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0), getOtherTurnPlayer().getHero().getCell())
                 );
         }
     }
@@ -840,6 +877,57 @@ public abstract class Game {
     }
 
     private TargetData detectTarget(Spell spell, Cell cardCell, Cell clickCell, Cell heroCell) {
+        TargetData targetData = new TargetData();
+        Player player;
+        if (spell.getTarget().getOwner() != null) {
+            if (spell.getTarget().getOwner().isOwn()) {
+                player = getCurrentTurnPlayer();
+                setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
+            }
+            if (spell.getTarget().getOwner().isEnemy()) {
+                player = getOtherTurnPlayer();
+                setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
+            }
+        } else {
+            setTargetData(spell, cardCell, clickCell, heroCell, null, targetData);
+        }
+        if (spell.getTarget().isRandom()) {
+            randomizeList(targetData.getTroops());
+            randomizeList(targetData.getCells());
+            randomizeList(targetData.getPlayers());
+            randomizeList(targetData.getCards());
+        }
+        return targetData;
+    }
+
+    private TargetData detectOnCounterAttackTarget(Spell spell, Cell cardCell, Cell clickCell) {
+        TargetData targetData = new TargetData();
+        int playerNumber = gameMap.getTroop(clickCell).getPlayerNumber();
+        Player player = (getCurrentTurnPlayer().getPlayerNumber() == playerNumber) ? getCurrentTurnPlayer() : getOtherTurnPlayer();
+        Cell heroCell = player.getHero().getCell();
+
+        if (spell.getTarget().getOwner() != null) {
+            setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
+        } else {
+            setTargetData(spell, cardCell, clickCell, heroCell, null, targetData);
+        }
+
+        if (spell.getTarget().isRandom()) {
+            randomizeList(targetData.getTroops());
+            randomizeList(targetData.getCells());
+            randomizeList(targetData.getPlayers());
+            randomizeList(targetData.getCards());
+        }
+
+        return targetData;
+    }
+
+    private TargetData detectOnDeathTarget(Spell spell, Cell cardCell, Cell clickCell, Cell heroCell) {
+
+        // Dying wishes can trigger on your turn and opponents turn.
+        // This logic fixes a bug where a call like sellsoul would always damage the turn player,
+        // regardless of who cast the minion.
+
         TargetData targetData = new TargetData();
         Player player;
 
@@ -877,10 +965,10 @@ public abstract class Game {
         }
 
         if (spell.getTarget().isForDeckCards()) {
-            for (Card card : player.getDeck().getOthers()) {
+            for (ServerCard card : player.getDeck().getCards()) {
                 addCardToTargetData(spell, targetData, card);
             }
-            for (Card card : player.getHand()) {
+            for (ServerCard card : player.getHand()) {
                 addCardToTargetData(spell, targetData, card);
             }
             addCardToTargetData(spell, targetData, player.getNextCard());
@@ -915,10 +1003,10 @@ public abstract class Game {
         list.add(e);
     }
 
-    private void addCardToTargetData(Spell spell, TargetData targetData, Card card) {
-        if (spell.getTarget().getCardType().isHero() && card.getType() == CardType.HERO)
+    private void addCardToTargetData(Spell spell, TargetData targetData, ServerCard card) {
+        if (spell.getTarget().getCardType().isHero() && card.getType().equals(CardType.HERO))
             targetData.getCards().add(card);
-        if (spell.getTarget().getCardType().isMinion() && card.getType() == CardType.MINION)
+        if (spell.getTarget().getCardType().isMinion() && card.getType().equals(CardType.MINION))
             targetData.getCards().add(card);
     }
 
@@ -927,13 +1015,13 @@ public abstract class Game {
             if (player != null) {
                 ServerTroop troop = player.getTroop(cell);
                 if (troop != null) {
-                    if (spell.getTarget().getAttackType().isHybrid() && troop.getCard().getAttackType() == AttackType.HYBRID) {
+                    if (spell.getTarget().getAttackType().isHybrid() && troop.getCard().getAttackType().equals(AttackType.HYBRID)) {
                         addTroopToTargetData(spell, targetData, troop);
                     }
-                    if (spell.getTarget().getAttackType().isMelee() && troop.getCard().getAttackType() == AttackType.MELEE) {
+                    if (spell.getTarget().getAttackType().isMelee() && troop.getCard().getAttackType().equals(AttackType.MELEE)) {
                         addTroopToTargetData(spell, targetData, troop);
                     }
-                    if (spell.getTarget().getAttackType().isRanged() && troop.getCard().getAttackType() == AttackType.RANGED) {
+                    if (spell.getTarget().getAttackType().isRanged() && troop.getCard().getAttackType().equals(AttackType.RANGED)) {
                         addTroopToTargetData(spell, targetData, troop);
                     }
                 }
@@ -945,10 +1033,10 @@ public abstract class Game {
     }
 
     private void addTroopToTargetData(Spell spell, TargetData targetData, ServerTroop troop) {
-        if (spell.getTarget().getCardType().isHero() && troop.getCard().getType() == CardType.HERO) {
+        if (spell.getTarget().getCardType().isHero() && troop.getCard().getType().equals(CardType.HERO)) {
             targetData.getTroops().add(troop);
         }
-        if (spell.getTarget().getCardType().isMinion() && troop.getCard().getType() == CardType.MINION) {
+        if (spell.getTarget().getCardType().isMinion() && troop.getCard().getType().equals(CardType.MINION)) {
             targetData.getTroops().add(troop);
         }
     }
@@ -1009,7 +1097,7 @@ public abstract class Game {
         return lastRow;
     }
 
-    void setMatchHistories(boolean resultOne, boolean resultTwo) {
+    void setMatchHistories(boolean resultOne, boolean resultTwo) { //TODO call twice
         playerOne.setMatchHistory(
                 new MatchHistory(playerTwo, resultOne)
         );

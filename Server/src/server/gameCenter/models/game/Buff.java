@@ -3,9 +3,9 @@ package server.gameCenter.models.game;
 import shared.models.card.spell.SpellAction;
 
 public class Buff {
-    private SpellAction action;
-    private TargetData target;
-    private boolean positive;
+    private final SpellAction action;
+    private final TargetData target;
+    private final boolean positive;
 
     Buff(SpellAction action, TargetData target) {
         this.action = new SpellAction(action);

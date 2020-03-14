@@ -2,7 +2,7 @@ package server.gameCenter.models.game;
 
 import server.clientPortal.models.comperessedData.CompressedPlayer;
 import server.dataCenter.models.account.MatchHistory;
-import shared.models.card.Card;
+import server.dataCenter.models.card.ServerCard;
 import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
@@ -13,15 +13,15 @@ import server.dataCenter.models.Constants;
 import java.util.*;
 
 public class Player {
-    private String userName;
+    private final String userName;
     private int currentMP;
-    private Deck deck;
+    private final Deck deck;
     private ServerTroop hero;
-    private List<Card> hand = new ArrayList<>();
-    private List<ServerTroop> troops = new ArrayList<>();
-    private List<Card> graveyard = new ArrayList<>();
-    private Card nextCard;
-    private int playerNumber;
+    private final List<ServerCard> hand = new ArrayList<>();
+    private final List<ServerTroop> troops = new ArrayList<>();
+    private final List<ServerCard> graveyard = new ArrayList<>();
+    private ServerCard nextCard;
+    private final int playerNumber;
     private MatchHistory matchHistory;
     private int numTimesReplacedThisTurn;
     private int maxNumReplacePerTurn;
@@ -43,15 +43,15 @@ public class Player {
                 userName, currentMP, hand, graveyard, nextCard, playerNumber);
     }
 
-    public List<Card> getHand() {
+    public List<ServerCard> getHand() {
         return Collections.unmodifiableList(hand);
     }
 
-    Card insert(String cardId) throws ClientException {
-        Card card = null;
+    ServerCard insert(String cardId) throws ClientException {
+        ServerCard card = null;
         Iterator iterator = hand.iterator();
         while (iterator.hasNext()) {
-            Card card1 = (Card) iterator.next();
+            ServerCard card1 = (ServerCard) iterator.next();
             if (card1.getCardId().equalsIgnoreCase(cardId)) {
                 card = card1;
                 break;
@@ -70,11 +70,11 @@ public class Player {
         return card;
     }
 
-    public Card removeCardFromHand(String cardID) throws ClientException {
-        Card cardToRemove = null;
+    public ServerCard removeCardFromHand(String cardID) throws ClientException {
+        ServerCard cardToRemove = null;
 
         for (int i = 0; i < hand.size(); i++) {
-            Card tempCard = hand.get(i);
+            ServerCard tempCard = hand.get(i);
             if (tempCard.getCardId().equalsIgnoreCase(cardID)) {
                 hand.remove(i);
                 cardToRemove = tempCard;
@@ -88,14 +88,14 @@ public class Player {
         return cardToRemove;
     }
 
-    public void addCardToDeck(Card card) throws LogicException {
+    public void addCardToDeck(ServerCard card) throws LogicException {
         deck.addCard(card);
     }
 
     private void setNextCard() {
-        if (!deck.getOthers().isEmpty()) {
-            int index = new Random().nextInt(deck.getOthers().size());
-            nextCard = deck.getOthers().get(index);
+        if (!deck.getCards().isEmpty()) {
+            int index = new Random().nextInt(deck.getCards().size());
+            nextCard = deck.getCards().get(index);
             try {
                 deck.removeCard(nextCard);
             } catch (ClientException ignored) {
@@ -111,7 +111,7 @@ public class Player {
     }
 
     boolean addNextCardToHand() {
-        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getOthers().isEmpty() || nextCard != null)) {
+        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getCards().isEmpty() || nextCard != null)) {
             hand.add(nextCard);
             setNextCard();
             return true;
@@ -151,11 +151,11 @@ public class Player {
         return Collections.unmodifiableList(troops);
     }
 
-    void addToGraveYard(Card card) {
+    void addToGraveYard(ServerCard card) {
         graveyard.add(card);
     }
 
-    Card getNextCard() {
+    ServerCard getNextCard() {
         return this.nextCard;
     }
 
@@ -199,7 +199,7 @@ public class Player {
         addToGraveYard(troop.getCard());
 //        Server.getInstance().sendChangeCardPositionMessage(game, troop.getCard(), CardPosition.GRAVE_YARD);
         troops.remove(troop);
-        if (troop.getCard().getType() == CardType.HERO) {
+        if (troop.getCard().getType().equals(CardType.HERO)) {
             hero = null;
         }
     }
@@ -217,7 +217,7 @@ public class Player {
     }
 
     public boolean getCanReplaceCard() {
-        return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn();
+        return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn() && !deck.getCards().isEmpty();
     }
 
     public void setNumTimesReplacedThisTurn(int number){

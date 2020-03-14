@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Account {
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
     private String username;
     private String password;
     private AccountType accountType;
@@ -62,7 +62,7 @@ public class Account {
 
     public Deck getDeck(String deckName) {
         for (Deck deck : decks) {
-            if (deck.areSame(deckName)) {
+            if (deck.hasName(deckName)) {
                 return deck;
             }
         }

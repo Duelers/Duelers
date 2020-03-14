@@ -6,23 +6,23 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class Card implements ICard {
-    private final transient PropertyChangeSupport support = new PropertyChangeSupport(this);
+    protected final transient PropertyChangeSupport support = new PropertyChangeSupport(this);
     private final String name;
     private final String description;
-    private String cardId;
+    protected String cardId;
     private final String spriteName;
     private final CardType type;
-    private final ArrayList<Spell> spells;
+    protected final ArrayList<Spell> spells;
     private final int defaultAp;
     private final int defaultHp;
     private final int manaCost;
     private final int price;
     private final AttackType attackType;
     private final int range;
-    private int remainingNumber = 20;
+    protected int remainingNumber = 20;
 
     // This is only used in tests right now. All other cards are loaded from json with gson.
-    public Card(String name,
+    public Card(String name, //TODO refactor other constructors to use this one.
                 String cardId,
                 String description,
                 String spriteName,
@@ -77,6 +77,9 @@ public class Card implements ICard {
 
     @Override
     public boolean equals(Object obj) {
+        if (!(obj instanceof Card)) {
+            return false;
+        }
         if (!this.getClass().getName().equals(obj.getClass().getName())) return false;
         Card card = (Card) obj;
         return this.cardId.equalsIgnoreCase(card.cardId);
@@ -93,10 +96,6 @@ public class Card implements ICard {
 
     public String getCardId() {
         return this.cardId;
-    }
-
-    public void setCardId(String cardId) {//TODO:Should be removed!
-        this.cardId = cardId;
     }
 
     public String getSpriteName() {
@@ -150,15 +149,4 @@ public class Card implements ICard {
     public int getRemainingNumber() {
         return remainingNumber;
     }
-
-    public void setRemainingNumber(int remainingNumber) {
-        int old = this.remainingNumber;
-        this.remainingNumber = remainingNumber;
-        support.firePropertyChange("new_value", old, remainingNumber);
-    }
-
-    public void addSpell(Spell spell) {
-        spells.add(spell);
-    }
-
 }

@@ -2,24 +2,23 @@ package server.dataCenter.models.account;
 
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.card.Deck;
+import server.dataCenter.models.card.ServerCard;
 import server.dataCenter.models.card.TempDeck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
-import shared.models.card.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static server.dataCenter.models.account.AccountType.NORMAL;
 
 public class Account {
-    private String username;
-    private String password;
+    private final String username;
+    private final String password;
     private AccountType accountType;
-    private Collection collection;
-    private List<Deck> decks = new ArrayList<>();
+    private final Collection collection;
+    private final List<Deck> decks = new ArrayList<>();
     private Deck mainDeck;
     private List<MatchHistory> matchHistories = new ArrayList<>();
 
@@ -49,7 +48,7 @@ public class Account {
         if (deckName == null)
             return false;
         for (Deck deck : decks) {
-            if (deck.getDeckName().equalsIgnoreCase(deckName))
+            if (deck.getName().equalsIgnoreCase(deckName))
                 return true;
         }
         return false;
@@ -59,7 +58,7 @@ public class Account {
         if (deckName == null)
             return null;
         for (Deck deck : decks) {
-            if (deck.getDeckName().equalsIgnoreCase(deckName)) {
+            if (deck.getName().equalsIgnoreCase(deckName)) {
                 return deck;
             }
         }
@@ -74,7 +73,7 @@ public class Account {
     }
 
     public void addDeck(Deck deck) throws ClientException {
-        if (hasDeck(deck.getDeckName())) {
+        if (hasDeck(deck.getName())) {
             throw new ClientException("new deck's name was duplicate.");
         }
         decks.add(deck);
@@ -88,7 +87,7 @@ public class Account {
     }
 
     public void buyCard(String cardName, Collection originalCards) throws LogicException {
-        Card card = DataCenter.getCard(cardName, originalCards);
+        ServerCard card = DataCenter.getCard(cardName, originalCards);
         if (card == null) {
             throw new ClientException("invalid card name");
         }
@@ -99,21 +98,6 @@ public class Account {
         collection.addCard(cardName, originalCards, username);
         //removed, no longer needed
         //DataCenter.getInstance().changeCardNumber(cardName, -1);
-    }
-
-    public void sellCard(String cardId) throws LogicException {
-        Card card = collection.getCard(cardId);
-        if (card == null) {
-            throw new ClientException("invalid card id");
-        }
-
-        collection.removeCard(card);
-        for (Deck deck : decks) {
-            if (deck.hasCard(cardId)) {
-                deck.removeCard(card);
-            }
-        }
-        DataCenter.getInstance().changeCardNumber(card.getName(), +1);
     }
 
     public void addCardToDeck(String cardId, String deckName) throws LogicException {

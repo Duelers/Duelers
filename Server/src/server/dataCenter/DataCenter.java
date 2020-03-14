@@ -11,12 +11,12 @@ import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.account.TempAccount;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ExportedDeck;
+import server.dataCenter.models.card.ServerCard;
 import server.dataCenter.models.db.OldDataBase;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
-import shared.models.card.Card;
 
 import javax.websocket.Session;
 import java.io.*;
@@ -55,16 +55,16 @@ public class DataCenter extends Thread {
 
     }
 
-    public static Card getCard(String cardName, Collection collection) {
-        for (Card card : collection.getHeroes()) {
+    public static ServerCard getCard(String cardName, Collection collection) {
+        for (ServerCard card : collection.getHeroes()) {
             if (card.getName().equals(cardName))
                 return card;
         }
-        for (Card card : collection.getMinions()) {
+        for (ServerCard card : collection.getMinions()) {
             if (card.getName().equals(cardName))
                 return card;
         }
-        for (Card card : collection.getSpells()) {
+        for (ServerCard card : collection.getSpells()) {
             if (card.getName().equals(cardName))
                 return card;
         }
@@ -112,7 +112,7 @@ public class DataCenter extends Thread {
             }
             accounts.replace(account, client);
             clients.replace(client, account);
-            GameServer.addToSendingMessages(Message.makeAccountCopyMessage(client, account));
+            GameServer.sendMessageAsync(Message.makeAccountCopyMessage(client, account));
             GameServer.serverPrint(client + " Is Logged In");
         }
     }
@@ -134,22 +134,22 @@ public class DataCenter extends Thread {
             Collection originalCards = dataBase.getOriginalCards();
 
             System.out.println("Starting Heroes");
-            for (Card card : originalCards.getHeroes()) {
+            for (ServerCard card : originalCards.getHeroes()) {
                 this.buyAllCards(account, card.getName());
 
             }
 
             for (int i = 0; i < 3; i++) {
                 System.out.println("Starting Minions");
-                for (Card card : originalCards.getMinions()) {
+                for (ServerCard card : originalCards.getMinions()) {
                     this.buyAllCards(account, card.getName());
                 }
                 System.out.println("Starting Spells");
-                for (Card card : originalCards.getSpells()) {
+                for (ServerCard card : originalCards.getSpells()) {
                     this.buyAllCards(account, card.getName());
                 }
             }
-            GameServer.addToSendingMessages(Message.makeAccountCopyMessage(client, account));
+            GameServer.sendMessageAsync(Message.makeAccountCopyMessage(client, account));
         }
     }
 
@@ -201,7 +201,7 @@ public class DataCenter extends Thread {
         accounts.replace(clients.get(message.getSender()), null);
         clients.replace(message.getSender(), null);
         GameServer.serverPrint(message.getSender() + " Is Logged Out.");
-        GameServer.addToSendingMessages(Message.makeDoneMessage(message.getSender()));
+        GameServer.sendMessageAsync(Message.makeDoneMessage(message.getSender()));
     }
 
     public void logout(Session session) throws LogicException {
@@ -215,7 +215,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.addDeck(message.getOtherFields().getDeckName());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -223,7 +223,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.deleteDeck(message.getOtherFields().getDeckName());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -231,7 +231,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.addCardToDeck(message.getOtherFields().getMyCardId(), message.getOtherFields().getDeckName());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -239,7 +239,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.removeCardFromDeck(message.getOtherFields().getMyCardId(), message.getOtherFields().getDeckName());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -247,7 +247,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.selectDeck(message.getOtherFields().getDeckName());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -259,7 +259,7 @@ public class DataCenter extends Thread {
         loginCheck(message);
         Account account = clients.get(message.getSender());
         account.buyCard(message.getOtherFields().getCardName(), dataBase.getOriginalCards());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
@@ -273,14 +273,6 @@ public class DataCenter extends Thread {
         account.buyCard(cardName, dataBase.getOriginalCards());
         saveAccount(account);
 
-    }
-
-    public void sellCard(Message message) throws LogicException {
-        loginCheck(message);
-        Account account = clients.get(message.getSender());
-        account.sellCard(message.getOtherFields().getMyCardId());
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
-        saveAccount(account);
     }
 
     public Map<Account, String> getAccounts() {
@@ -306,14 +298,14 @@ public class DataCenter extends Thread {
         Collection collection = account.getCollection();
         Deck deck = collection.extractDeck(exportedDeck);
         account.addDeck(deck);
-        GameServer.addToSendingMessages(Message.makeAccountCopyMessage(message.getSender(), account));
+        GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
     }
 
     public void changeCardNumber(String cardName, int changeValue) throws LogicException {
-        Card card = getCard(cardName, getOriginalCards());
+        ServerCard card = getCard(cardName, getOriginalCards());
         if (card == null)
-            throw new ClientException("Invalid Card");
+            throw new ClientException("Invalid ServerCard");
         card.setRemainingNumber(card.getRemainingNumber() + changeValue);
         updateCard(card);
         GameServer.getInstance().sendChangeCardNumberMessage(card);
@@ -322,7 +314,7 @@ public class DataCenter extends Thread {
     public void changeCardNumber(Message message) throws LogicException {
         loginCheck(message);
         Account account = clients.get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
+        if (!account.getAccountType().equals(AccountType.ADMIN))
             throw new ClientException("You don't have admin access!");
         changeCardNumber(message.getChangeCardNumber().getCardName(), message.getChangeCardNumber().getNumber());
     }
@@ -330,7 +322,7 @@ public class DataCenter extends Thread {
     public void changeAccountType(Message message) throws LogicException {
         loginCheck(message);
         Account account = clients.get(message.getSender());
-        if (account.getAccountType() != AccountType.ADMIN)
+        if (!account.getAccountType().equals(AccountType.ADMIN))
             throw new ClientException("You don't have admin access!");
         Account changingAccount = getAccount(message.getChangeAccountType().getUsername());
         if (changingAccount == null)
@@ -359,7 +351,7 @@ public class DataCenter extends Thread {
             File[] files = new File(path).listFiles();
             if (files != null) {
                 for (File file : files) {
-                    Card card = loadFile(file, Card.class);
+                    ServerCard card = loadFile(file, ServerCard.class);
                     if (card != null) {
                         dataBase.addOriginalCard(card);
                     }
@@ -370,7 +362,7 @@ public class DataCenter extends Thread {
     }
 
     public void saveAccount(Account account) {
-        String accountJson = JsonConverter.toJson(new TempAccount(account));
+        String accountJson = JsonConverter.toPrettyJson(new TempAccount(account));
         try {
             FileWriter writer = new FileWriter(ACCOUNTS_PATH + "/" + account.getUsername() + ".account.json");
             writer.write(accountJson);
@@ -380,7 +372,7 @@ public class DataCenter extends Thread {
         }
     }
 
-    private void updateCard(Card card) throws ServerException {
+    private void updateCard(ServerCard card) throws ServerException {
         String cardJson = new GsonBuilder().setPrettyPrinting().create().toJson(card);
         for (String path : CARDS_PATHS) {
             File[] files = new File(path).listFiles();
@@ -399,10 +391,10 @@ public class DataCenter extends Thread {
                 }
             }
         }
-        throw new ServerException("Card not found");
+        throw new ServerException("ServerCard not found");
     }
 
-    private void saveOriginalCard(Card card) {
+    private void saveOriginalCard(ServerCard card) {
         String cardJson = new GsonBuilder().setPrettyPrinting().create().toJson(card);
         String path;
         try {
