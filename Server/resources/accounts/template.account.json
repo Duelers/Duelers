@@ -1,15 +1,15 @@
-{ 
-    "username":"template",
-    "password":"empty",
-    "accountType":"NORMAL",
-    "collection":{ 
-		"heroes":[],
-		"minions": [],
-		"spells": [],
-		"items":[]
-	},
-	"decks":[],
-	"mainDeckName": "",
-    "matchHistories":[],
-    "money":9543289
+{
+  "username":"template",
+  "password":"empty",
+  "accountType":"NORMAL",
+  "collection":{
+    "heroes":[],
+    "minions": [],
+    "spells": [],
+    "items":[]
+  },
+  "decks":[],
+  "mainDeckName": "",
+  "matchHistories":[],
+  "money":9543289
 }

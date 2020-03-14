@@ -1,6 +1,7 @@
 package server.clientPortal.models;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 
@@ -19,4 +20,10 @@ public class JsonConverter {
     public static <T> T fromJson(BufferedReader reader, Class<T> classOfT) {
         return new Gson().fromJson(reader, classOfT);
     }
+
+	public static <T> String toPrettyJson(T object) {
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+		return gson.toJson(object);
+	}
 }

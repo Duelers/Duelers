@@ -362,7 +362,7 @@ public class DataCenter extends Thread {
     }
 
     public void saveAccount(Account account) {
-        String accountJson = JsonConverter.toJson(new TempAccount(account));
+        String accountJson = JsonConverter.toPrettyJson(new TempAccount(account));
         try {
             FileWriter writer = new FileWriter(ACCOUNTS_PATH + "/" + account.getUsername() + ".account.json");
             writer.write(accountJson);
