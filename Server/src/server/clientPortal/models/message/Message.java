@@ -60,12 +60,6 @@ public class Message {
         return JsonConverter.fromJson(messageJson, Message.class);
     }
 
-    public static Message makeDoneMessage(String receiver) {
-        Message message = new Message(receiver);
-        message.messageType = MessageType.DONE;
-        return message;
-    }
-
     public static Message makeGameCopyMessage(String receiver, Game game) {
         Message message = new Message(receiver);
         message.gameCopyMessage = new GameCopyMessage(game);
