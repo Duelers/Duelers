@@ -385,7 +385,7 @@ public class GameServer {
                 game.getObservers().remove(account);
                 continue;
             }
-            addToSendingMessages(Message.makeCardsDrawnFromDeckMessage(clientName, deckSize, drawnCards));
+            sendMessageAsync(Message.makeCardsDrawnFromDeckMessage(clientName, deckSize, drawnCards));
         }
     }
 }
