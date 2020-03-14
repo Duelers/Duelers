@@ -10,7 +10,7 @@ Creates a CSV of all the cards we are about to import to the game.
 SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 IMPORT_DIR: str = load_json(INFO_FILE).get("import_directory", "Error")
-OUTPUT_FILEPATH = os.path.join(SCRIPT_PATH, "imported_cards.csv")
+OUTPUT_FILEPATH = os.path.join(SCRIPT_PATH, "card_list.csv")
 
 
 def main():
