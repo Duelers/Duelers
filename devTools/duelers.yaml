@@ -106,7 +106,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8888
-      nodePort: 30888
+      nodePort: 30889
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -146,7 +146,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8888
-      nodePort: 30888
+      nodePort: 30890
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -186,4 +186,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8888
-      nodePort: 30888
+      nodePort: 30891
