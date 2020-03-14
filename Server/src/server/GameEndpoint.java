@@ -21,7 +21,7 @@ public class GameEndpoint {
         String id = session.getId();
         ClientPortal.getInstance().addClient(session);
         Message message = Message.makeClientIDMessage(id, id);
-        ClientPortal.getInstance().sendMessage(id, message.toJson());
+        ClientPortal.getInstance().sendMessage(session, message.toJson());
     }
 
     @OnMessage

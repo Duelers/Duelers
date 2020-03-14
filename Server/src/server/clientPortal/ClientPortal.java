@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 public class ClientPortal extends Thread {
     private static final ClientPortal ourInstance = new ClientPortal();
@@ -32,13 +33,8 @@ public class ClientPortal extends Thread {
         Server server = new Server("localhost", portConverted, "/websockets", GameEndpoint.class);
         try {
             server.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.print("Please press a key to stop the server.");
-            reader.readLine();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        } finally {
-            server.stop();
         }
     }
 
@@ -55,15 +51,31 @@ public class ClientPortal extends Thread {
         GameServer.addToReceivingMessages(Message.convertJsonToMessage(message));
     }
 
-    synchronized public void sendMessage(String clientName, String message) {//TODO:Change Synchronization
+    synchronized public void sendMessage(Session client, String message) {//TODO:Change Synchronization
         try {
-            if (clients.containsKey(clientName)) {
-                clients.get(clientName).getBasicRemote().sendText(message);
-            } else {
-                GameServer.serverPrint("Client Not Found!");
-            }
+            client.getBasicRemote().sendText(message);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    synchronized public void prepareAndSendMessage(String clientName, Message message) {
+        if (clients.containsKey(clientName)) {
+            this.sendMessage(clients.get(clientName), message.toJson());
+        } else {
+            GameServer.serverPrint("Client Not Found!");
+        }
+    }
+
+    synchronized public void prepareAndSendMessage(Session client, Message message) {
+        this.sendMessage(client, message.toJson());
+    }
+
+    public void prepareAndSendMessageAsync(String clientName, Message message) {
+        if (clients.containsKey(clientName)) {
+            CompletableFuture.runAsync(() -> this.prepareAndSendMessage(clients.get(clientName), message));
+        } else {
+            GameServer.serverPrint("Client Not Found!");
         }
     }
 

@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class BaseDeck<CardType extends Card> {
+
+    private final int MIN_DECK_SIZE = 5;
+    private final int MAX_DECK_SIZE = 40;
+
     protected String deckName;
     protected CardType hero;
     protected ArrayList<CardType> cards = new ArrayList<>();
@@ -44,8 +48,8 @@ public class BaseDeck<CardType extends Card> {
     }
 
     public boolean isValid() {
-        if (this.hero == null) return false;
-        return this.cards.size() == 20;
+        if (hero == null) return false;
+        return this.cards.size() >= MIN_DECK_SIZE && this.cards.size() <= MAX_DECK_SIZE;
     }
 
     public boolean hasHero(Card hero) {

@@ -17,6 +17,7 @@ import org.projectcardboard.client.models.gui.ImageButton;
 import org.projectcardboard.client.models.gui.UIConstants;
 import org.projectcardboard.client.models.message.OnlineGame;
 import org.projectcardboard.client.view.MainMenu;
+// import org.projectcardboard.client.models.gui.TurnTimer;
 
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -27,6 +28,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import shared.models.card.Card;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class HandBox implements PropertyChangeListener {
     private static final Effect DISABLE_BUTTON_EFFECT = new ColorAdjust(0, -1, 0, 0);
@@ -44,7 +47,9 @@ public class HandBox implements PropertyChangeListener {
     private final Image endTurnImageGlow = new Image(this.getClass().getResourceAsStream("/ui/button_end_turn_finished_glow@2x.png"));
     private DefaultLabel endTurnLabel;
     private StackPane endTurnButton;
-
+	private Timer turnTimer = null;
+	private int timerCount = 120;
+	private DefaultLabel timeRemaining = null;
 
     HandBox(BattleScene battleScene, Player player) throws Exception {
         this.battleScene = battleScene;
@@ -76,9 +81,34 @@ public class HandBox implements PropertyChangeListener {
             player.addPropertyChangeListener(this);
             battleScene.getGame().addPropertyChangeListener(this);
         }
-
+		this.runTurnTimer();
         addFinishButton();
     }
+
+	private void runTurnTimer() {
+		if (this.turnTimer != null) {
+			this.turnTimer.cancel();
+			this.timerCount = 120;
+		}
+		this.turnTimer = new Timer();
+		this.turnTimer.scheduleAtFixedRate(new TimerTask() {
+			public void run() {
+				Platform.runLater(() -> {
+					if (timerCount == 0) {
+						turnTimer.cancel();
+						if (timeRemaining != null)
+							handGroup.getChildren().remove(timeRemaining);
+						return;
+					}
+					if (timeRemaining != null)
+							handGroup.getChildren().remove(timeRemaining);
+					timeRemaining = new DefaultLabel(Integer.toString(timerCount), Constants.END_TURN_FONT, Color.WHITE);
+					handGroup.getChildren().add(timeRemaining);
+					timerCount--;
+				});
+			}
+		}, 0, 1000);
+	}
 
     private void updateNext() {
         next.getChildren().clear();
@@ -279,13 +309,14 @@ public class HandBox implements PropertyChangeListener {
                     Platform.runLater(() -> {
                         endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);
                         endTurnLabel.setText("ENEMY TURN");
-
+						this.runTurnTimer();
                     });
                 } else {
                     Platform.runLater(() -> {
                         updateNext();
                         endTurnButton.setEffect(null);
                         endTurnLabel.setText("END TURN");
+						this.runTurnTimer();
                     });
                 }
                 break;

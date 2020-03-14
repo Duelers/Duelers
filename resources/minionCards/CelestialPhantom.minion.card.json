@@ -40,10 +40,11 @@
       "availabilityType": {
         "onPut": false,
         "onAttack": true,
+        "onCounterAttack": true,
         "onDeath": false,
         "specialPower": false,
         "onStart": false,
-        "onDefend": true
+        "onDefend": false
       },
       "coolDown": 0,
       "manaCost": 0,

@@ -52,6 +52,6 @@ public class ChatCenter {
             GameServer.serverPrint("Chat Receiver Error!");
         }
         Message message = Message.makeChatMessage(receiverClientName, senderUsername, receiverUsername, text);
-        GameServer.addToSendingMessages(message);
+        GameServer.sendMessageAsync(message);
     }
 }

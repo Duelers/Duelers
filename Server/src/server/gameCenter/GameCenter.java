@@ -100,7 +100,7 @@ public class GameCenter extends Thread {//synchronize
         removeAllGameRequests(inviter);
         synchronized (userInvitations) {
             userInvitations.addLast(new UserInvitation(inviter, invited, gameType));
-            GameServer.addToSendingMessages(Message.makeInvitationMessage(
+            GameServer.sendMessageAsync(Message.makeInvitationMessage(
                     DataCenter.getInstance().getAccounts().get(invited), inviter.getUsername(),
                     gameType));
         }
@@ -150,7 +150,7 @@ public class GameCenter extends Thread {//synchronize
             if (invitation == null)
                 throw new ClientException("The Invitation was not found!");
             userInvitations.remove(invitation);
-            GameServer.addToSendingMessages(Message.makeAcceptRequestMessage(
+            GameServer.sendMessageAsync(Message.makeAcceptRequestMessage(
                     DataCenter.getInstance().getAccounts().get(inviter)));
             newMultiplayerGame(inviter, invited, invitation.getGameType());
         }
@@ -169,7 +169,7 @@ public class GameCenter extends Thread {//synchronize
             if (invitation == null)
                 throw new ClientException("The Invitation was not found!");
             userInvitations.remove(invitation);
-            GameServer.addToSendingMessages(Message.makeDeclineRequestMessage(
+            GameServer.sendMessageAsync(Message.makeDeclineRequestMessage(
                     DataCenter.getInstance().getAccounts().get(inviter)));
         }
     }
@@ -217,7 +217,7 @@ public class GameCenter extends Thread {//synchronize
         game.addObserver(myAccount);
         onlineGames.put(myAccount, game);
         gameInfos.add(new OnlineGame(game));
-        GameServer.addToSendingMessages(Message.makeGameCopyMessage
+        GameServer.sendMessageAsync(Message.makeGameCopyMessage
                 (message.getSender(), game));
         game.startGame();
     }
@@ -237,9 +237,9 @@ public class GameCenter extends Thread {//synchronize
         onlineGames.put(account1, game);
         onlineGames.put(account2, game);
         gameInfos.add(new OnlineGame(game));
-        GameServer.addToSendingMessages(Message.makeGameCopyMessage
+        GameServer.sendMessageAsync(Message.makeGameCopyMessage
                 (DataCenter.getInstance().getClientName(account1.getUsername()), game));
-        GameServer.addToSendingMessages(Message.makeGameCopyMessage
+        GameServer.sendMessageAsync(Message.makeGameCopyMessage
                 (DataCenter.getInstance().getClientName(account2.getUsername()), game));
         game.startGame();
     }
@@ -360,7 +360,7 @@ public class GameCenter extends Thread {//synchronize
         Game game = getGame(message.getOnlineGame());
         if (game == null)
             throw new ClientException("Invalid Game");
-        GameServer.addToSendingMessages(Message.makeGameCopyMessage(message.getSender(), game));
+        GameServer.sendMessageAsync(Message.makeGameCopyMessage(message.getSender(), game));
         game.addObserver(account);
     }
 
