@@ -51,6 +51,7 @@ spec:
             - mountPath: "/app/Server/resources/accounts"
               name: duelers-pv-storage
           image: duelers/duelers:dedicated_server
+          imagePullPolicy: Always
           ports:
             - containerPort: 8888
 ---
@@ -90,6 +91,7 @@ spec:
       containers:
         - name: duelers
           image: duelers/duelers:dedicated_server
+          imagePullPolicy: Always
           ports:
             - containerPort: 8888
 ---
@@ -130,6 +132,7 @@ spec:
       containers:
         - name: duelers
           image: duelers/duelers:dedicated_server
+          imagePullPolicy: Always
           ports:
             - containerPort: 8888
 ---
@@ -170,6 +173,7 @@ spec:
       containers:
         - name: duelers
           image: duelers/duelers:dedicated_server
+          imagePullPolicy: Always
           ports:
             - containerPort: 8888
 ---
