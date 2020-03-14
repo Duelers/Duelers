@@ -19,7 +19,7 @@ def get_version(txt_file: str) -> str:
     with open(txt_file, "r") as f:
         version = f.readline()
 
-    return version
+    return version.strip()
      
 
 def make_dirs(dir: str, dirname: str) -> str:
@@ -40,17 +40,29 @@ def make_dirs(dir: str, dirname: str) -> str:
 
 
 if __name__ == "__main__":
+
+    print("RUNNING PACKAGING SCRIPT")
+
     assert os.path.isfile(CARDBOARD_EXE_PATH), f"missing {EXE_NAME}"
     assert os.path.isfile(CLIENTVERSION_TXT_PATH), f"missing {CLIENT_VERSION}" 
     assert os.path.isfile(CARDBOARD_BAT_PATH), f"missing {BAT_NAME}" 
     assert os.path.isdir(OUTPUT_DIR), f"{OUTPUT_DIR} does not exist"
 
+    print("Getting Client version...")
     version = get_version(CLIENTVERSION_TXT_PATH)
     release_name = f"CardBoard_{version}"
+    print(f"Version found: {version}")
 
+    print("Creating directory...")
     release_dir = make_dirs(OUTPUT_DIR, release_name)
+    print(f"output directory created at: {release_dir}")
 
-    shutil.copy(CARDBOARD_EXE_PATH, os.path.join(release_dir, "data")
+    print("Copying files to out_dir...")
+    shutil.copy(CARDBOARD_EXE_PATH, os.path.join(release_dir, "data"))
     shutil.copy(CARDBOARD_BAT_PATH, release_dir)
+
+
+    print("Script COMPLETE.")
+
 
 
