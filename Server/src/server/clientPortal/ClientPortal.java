@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 public class ClientPortal extends Thread {
     private static final ClientPortal ourInstance = new ClientPortal();
@@ -55,16 +56,24 @@ public class ClientPortal extends Thread {
         GameServer.addToReceivingMessages(Message.convertJsonToMessage(message));
     }
 
-    synchronized public void sendMessage(String clientName, String message) {//TODO:Change Synchronization
+    synchronized public void sendMessage(Session client, String message) {//TODO:Change Synchronization
         try {
-            if (clients.containsKey(clientName)) {
-                clients.get(clientName).getBasicRemote().sendText(message);
-            } else {
-                GameServer.serverPrint("Client Not Found!");
-            }
+            client.getBasicRemote().sendText(message);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    synchronized public void prepareAndSendMessage(String clientName, Message message) {
+        if (clients.containsKey(clientName)) {
+            this.sendMessage(clients.get(clientName), message.toJson());
+        } else {
+            GameServer.serverPrint("Client Not Found!");
+        }
+    }
+
+    public void prepareAndSendMessageAsync(String clientName, Message message) {
+        CompletableFuture.runAsync(() -> prepareAndSendMessage(clientName, message));
     }
 
     public Set<Map.Entry<String, Session>> getClients() {
