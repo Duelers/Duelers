@@ -605,6 +605,7 @@ public abstract class Game {
                 (attackerTroop.canBeAttackedFromWeakerOnes() || defenderTroop.getCurrentAp() > attackerTroop.getCurrentAp())
         ) {
             damage(defenderTroop, attackerTroop);
+            applyOnCounterAttackSpells(attackerTroop, defenderTroop);
         }
     }
 
@@ -617,6 +618,16 @@ public abstract class Game {
             killTroop(defenderTroop);
         } else {
             GameServer.getInstance().sendTroopUpdateMessage(this, defenderTroop);
+        }
+    }
+
+    private void applyOnCounterAttackSpells(ServerTroop attacker, ServerTroop counterAttacker) {
+        for (Spell spell : counterAttacker.getCard().getSpells()) {
+            if (spell.getAvailabilityType().isOnCounterAttack())
+                applySpell(
+                        spell,
+                        detectOnCounterAttackTarget(spell, counterAttacker.getCell(), attacker.getCell())
+                );
         }
     }
 
@@ -886,6 +897,28 @@ public abstract class Game {
             randomizeList(targetData.getPlayers());
             randomizeList(targetData.getCards());
         }
+        return targetData;
+    }
+
+    private TargetData detectOnCounterAttackTarget(Spell spell, Cell cardCell, Cell clickCell) {
+        TargetData targetData = new TargetData();
+        int playerNumber = gameMap.getTroop(clickCell).getPlayerNumber();
+        Player player = (getCurrentTurnPlayer().getPlayerNumber() == playerNumber) ? getCurrentTurnPlayer() : getOtherTurnPlayer();
+        Cell heroCell = player.getHero().getCell();
+
+        if (spell.getTarget().getOwner() != null) {
+            setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
+        } else {
+            setTargetData(spell, cardCell, clickCell, heroCell, null, targetData);
+        }
+
+        if (spell.getTarget().isRandom()) {
+            randomizeList(targetData.getTroops());
+            randomizeList(targetData.getCells());
+            randomizeList(targetData.getPlayers());
+            randomizeList(targetData.getCards());
+        }
+
         return targetData;
     }
 

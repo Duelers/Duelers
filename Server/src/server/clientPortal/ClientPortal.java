@@ -33,13 +33,8 @@ public class ClientPortal extends Thread {
         Server server = new Server("localhost", portConverted, "/websockets", GameEndpoint.class);
         try {
             server.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.print("Please press a key to stop the server.");
-            reader.readLine();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        } finally {
-            server.stop();
         }
     }
 
@@ -72,8 +67,16 @@ public class ClientPortal extends Thread {
         }
     }
 
+    synchronized public void prepareAndSendMessage(Session client, Message message) {
+        this.sendMessage(client, message.toJson());
+    }
+
     public void prepareAndSendMessageAsync(String clientName, Message message) {
-        CompletableFuture.runAsync(() -> prepareAndSendMessage(clientName, message));
+        if (clients.containsKey(clientName)) {
+            CompletableFuture.runAsync(() -> this.prepareAndSendMessage(clients.get(clientName), message));
+        } else {
+            GameServer.serverPrint("Client Not Found!");
+        }
     }
 
     public Set<Map.Entry<String, Session>> getClients() {
