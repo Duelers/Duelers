@@ -6,10 +6,12 @@ DIR_PATH = os.path.dirname(os.path.realpath(__file__)) # path of this file, i.e 
 BAT_NAME = "CardBoard.bat"
 EXE_NAME = "CardBoard.exe"
 CLIENT_VERSION = "clientVersion.txt"
+CARD_LIST = "cards.csv"
 
 CARDBOARD_EXE_PATH = os.path.join(DIR_PATH, "..", "..", "Client", "target", EXE_NAME)
 CARDBOARD_BAT_PATH = os.path.join(DIR_PATH, BAT_NAME)
 CLIENTVERSION_TXT_PATH = os.path.join(DIR_PATH, "..", "..", "Client", "src", "main", "resources", CLIENT_VERSION)
+CARD_LIST_CSV_PATH = os.path.join(DIR_PATH, "..", "cardCreator", CARD_LIST)
 
 OUTPUT_DIR = os.path.join(DIR_PATH, "release")
 
@@ -47,6 +49,7 @@ if __name__ == "__main__":
     assert os.path.isfile(CLIENTVERSION_TXT_PATH), f"missing {CLIENT_VERSION}" 
     assert os.path.isfile(CARDBOARD_BAT_PATH), f"missing {BAT_NAME}" 
     assert os.path.isdir(OUTPUT_DIR), f"{OUTPUT_DIR} does not exist"
+    assert os.path.isfile(CARD_LIST_CSV_PATH)
 
     print("Getting Client version...")
     version = get_version(CLIENTVERSION_TXT_PATH)
@@ -60,7 +63,7 @@ if __name__ == "__main__":
     print("Copying files to out_dir...")
     shutil.copy(CARDBOARD_EXE_PATH, os.path.join(release_dir, "data"))
     shutil.copy(CARDBOARD_BAT_PATH, release_dir)
-
+    shutil.copy(CARD_LIST_CSV_PATH, os.path.join(release_dir, "docs"))
 
     print("Script COMPLETE.")
 
