@@ -41,9 +41,7 @@ def main():
 
     print("Saving dataframe to csv")
     card_database.to_csv(OUTPUT_FILEPATH)
-    print(f"database saved at {OUTPUT_FILEPATH}")
-    print("script complete")
-
+    print(f"csv saved at {OUTPUT_FILEPATH}")
 
 if __name__ == "__main__":  
     main()
