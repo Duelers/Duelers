@@ -6,7 +6,7 @@ DIR_PATH = os.path.dirname(os.path.realpath(__file__)) # path of this file, i.e 
 BAT_NAME = "CardBoard.bat"
 EXE_NAME = "CardBoard.exe"
 CLIENT_VERSION = "clientVersion.txt"
-CARD_LIST = "cards.csv"
+CARD_LIST = "card_list.csv"
 
 CARDBOARD_EXE_PATH = os.path.join(DIR_PATH, "..", "..", "Client", "target", EXE_NAME)
 CARDBOARD_BAT_PATH = os.path.join(DIR_PATH, BAT_NAME)
