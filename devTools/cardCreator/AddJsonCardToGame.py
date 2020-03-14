@@ -4,6 +4,8 @@ import shutil
 import copy
 from typing import Dict, Any, List
 
+import Generate_card_list
+
 SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 RESOURCES_DIR = os.path.abspath(os.path.join(SCRIPT_PATH, "..", "..", "resources"))
@@ -144,5 +146,8 @@ if __name__ == "__main__":
         main(c, card_path, account_path)
         print(f"Finished import process for Card: {c}\n")
 
-    print("¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦")
+    
+    # csv list of cards.
+    Generate_card_list.main()
+
     print("SCRIPT COMPLETE -- If you see this message no errors were detected :)")
