@@ -118,7 +118,7 @@ buildNumber.properties
 ## DevTools
 
 devTools/cardCreator/AddJsonCardToGame.exe
-/devTool/Build_exe/release/*
+devTools/Build_exe/release/*
 
 ## white list 
 !.keep
