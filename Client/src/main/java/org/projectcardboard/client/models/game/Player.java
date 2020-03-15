@@ -1,4 +1,4 @@
-package org.projectcardboard.client.models.compresseddata;
+package org.projectcardboard.client.models.game;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -6,23 +6,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.projectcardboard.client.view.battleview.Constants;
-
+import shared.Constants;
 import shared.models.card.Card;
 import shared.models.card.CardType;
+import shared.models.game.BasePlayer;
 import shared.models.game.Troop;
 
-public class CompressedPlayer {
-    private String userName;
-    private int currentMP;
-    private List<Card> hand;
-    private List<Card> graveyard;
-    private Card nextCard;
-    private int playerNumber;
-    private List<Troop> troops;
-    private Troop hero;
-
+public class Player extends BasePlayer<Card, Troop> {
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+    public Player(String userName, int currentMP,
+                  List<Card> hand, List<Card> graveyard, Card nextCard,
+                  int playerNumber,
+                  List<Troop> troops,
+                  Troop hero) {
+        super(userName, currentMP, hand, graveyard, nextCard, playerNumber, troops, hero);
+    }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         if (support == null) {
@@ -66,11 +65,11 @@ public class CompressedPlayer {
         support.firePropertyChange("replace", null, null);
     }
 
-    void addCardToGraveYard(Card card) {
+    public void addCardToGraveYard(Card card) {
         graveyard.add(card);
     }
 
-    void troopUpdate(Troop troop) {
+    public void troopUpdate(Troop troop) {
         if (troops == null)
             troops = new ArrayList<>();
         removeTroop(troop.getCard().getCardId());
@@ -81,7 +80,7 @@ public class CompressedPlayer {
         }
     }
 
-    void removeCardFromHand(String cardId) {
+    public void removeCardFromHand(String cardId) {
         hand.removeIf(card -> card.getCardId().equalsIgnoreCase(cardId));
         if (support == null) {
             support = new PropertyChangeSupport(this);
@@ -97,7 +96,7 @@ public class CompressedPlayer {
         support.firePropertyChange("next", null, null);
     }
 
-    void removeTroop(String cardId) {
+    public void removeTroop(String cardId) {
         if (troops == null)
             troops = new ArrayList<>();
         troops.removeIf(troop -> troop.getCard().getCardId().equalsIgnoreCase(cardId));
@@ -109,7 +108,7 @@ public class CompressedPlayer {
         return Collections.unmodifiableList(troops);
     }
 
-    public void setTroops(List<Troop> troops) {
+    public void setTroops(List<Troop> troops) {//Todo this should be part of construction, not a method.
         this.troops = troops;
 
         for (Troop troop : troops) {
@@ -117,10 +116,6 @@ public class CompressedPlayer {
                 hero = troop;
             }
         }
-    }
-
-    public Troop getHero() {
-        return hero;
     }
 
     public Card searchGraveyard(String cardId) {
@@ -132,31 +127,9 @@ public class CompressedPlayer {
         return null;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public int getCurrentMP() {
-        return currentMP;
-    }
-
-    void setCurrentMP(int currentMP, int turnNumber) {
+    public void setCurrentMP(int currentMP, int turnNumber) {
         this.currentMP = currentMP;
     }
 
-    public List<Card> getHand() {
-        return Collections.unmodifiableList(hand);
-    }
 
-    public List<Card> getGraveyard() {
-        return Collections.unmodifiableList(graveyard);
-    }
-
-    public Card getNextCard() {
-        return nextCard;
-    }
-
-    public int getPlayerNumber() {
-        return playerNumber;
-    }
 }

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.models.compresseddata.CompressedGame;
 import org.projectcardboard.client.models.compresseddata.CompressedGameMap;
-import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
+import org.projectcardboard.client.models.game.Player;
 
 import javafx.util.Pair;
 import shared.models.card.AttackType;
@@ -26,21 +26,21 @@ public class AvailableActions {
 
     public void calculate(CompressedGame game) {
         clearEverything();
-        CompressedPlayer ownPlayer = game.getCurrentTurnPlayer();
-        CompressedPlayer otherPlayer = game.getOtherTurnPlayer();
+        Player ownPlayer = game.getCurrentTurnPlayer();
+        Player otherPlayer = game.getOtherTurnPlayer();
 
         calculateCardInserts(ownPlayer);
         calculateAttacks(ownPlayer, otherPlayer);
         calculateMoves(game);
     }
 
-    private void calculateCardInserts(CompressedPlayer ownPlayer) {
+    private void calculateCardInserts(Player ownPlayer) {
         for (Card card : ownPlayer.getHand()) {
             handInserts.add(new Insert(card));
         }
     }
 
-    private void calculateAttacks(CompressedPlayer ownPlayer, CompressedPlayer otherPlayer) {
+    private void calculateAttacks(Player ownPlayer, Player otherPlayer) {
         for (Troop myTroop : ownPlayer.getTroops()) {
             if (!myTroop.canAttack()) continue;
 
@@ -61,7 +61,7 @@ public class AvailableActions {
     }
 
     public void calculateMoves(CompressedGame game) {
-        CompressedPlayer ownPlayer = game.getCurrentTurnPlayer();
+        Player ownPlayer = game.getCurrentTurnPlayer();
         moves.clear();
         for (Troop troop : ownPlayer.getTroops()) {
             ArrayList<Cell> troopMoves = calculateAvailableMovesForTroop(game, troop);
@@ -193,7 +193,7 @@ public class AvailableActions {
         return handInserts.stream().map(Insert::getCard).collect(Collectors.toList()).contains(card);
     }
 
-    public boolean canMove(CompressedGameMap gameMap, CompressedPlayer player, Troop troop, int row, int column) {
+    public boolean canMove(CompressedGameMap gameMap, Player player, Troop troop, int row, int column) {
         if (!troop.canMove()){
             return false;
         }
@@ -209,7 +209,7 @@ public class AvailableActions {
         return baseMovement.contains(new Cell(row, column));
     }
 
-    public boolean canAttack(CompressedGameMap gameMap, CompressedPlayer player, Troop troop, int row, int col) {
+    public boolean canAttack(CompressedGameMap gameMap, Player player, Troop troop, int row, int col) {
 
         if (!troop.canAttack()) {
             return false;
@@ -227,7 +227,7 @@ public class AvailableActions {
     }
 
 
-    private boolean isTroopProvoked(CompressedGameMap gameMap, CompressedPlayer player, Troop troop) {
+    private boolean isTroopProvoked(CompressedGameMap gameMap, Player player, Troop troop) {
         Cell currentPosition = troop.getCell();
         ArrayList<Cell> neighbourCells = gameMap.getNearbyCells(currentPosition);
 
@@ -247,7 +247,7 @@ public class AvailableActions {
     // public boolean canDeploySpellOnSquare(CompressedGame gameMap, CompressedPlayer player, CompressedCard card, int row, int column){
     //}
 
-    public boolean canDeployMinionOnSquare(CompressedGameMap gameMap, CompressedPlayer player, Card card, int row, int column) {
+    public boolean canDeployMinionOnSquare(CompressedGameMap gameMap, Player player, Card card, int row, int column) {
         // ToDo this duplicates the logic found in Server's "isLegalCellForMinion" function
         Cell cell = new Cell(row, column);
 
@@ -272,7 +272,7 @@ public class AvailableActions {
         return false;
     }
 
-    public Boolean canReplace(CompressedPlayer player) {
+    public Boolean canReplace(Player player) {
 
         // Cannot replace on enemy turn.
         if (player.getPlayerNumber() != GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().getPlayerNumber()) {
@@ -298,7 +298,7 @@ public class AvailableActions {
         return this.MaxNumReplacePerTurn;
     }
 
-    public boolean haveSufficientMana(CompressedPlayer player, Card card){
+    public boolean haveSufficientMana(Player player, Card card){
         return player.getCurrentMP() >= card.getManaCost();
     }
 }
