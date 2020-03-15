@@ -20,9 +20,11 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
     private int maxNumReplacePerTurn;
 
     Player(Deck mainDeck, String userName, int playerNumber) {
-        this.playerNumber = playerNumber;
-        this.userName = userName;
-        deck = new Deck(mainDeck);
+        super(userName, 0, new ArrayList<>(), new ArrayList<>(), null,
+                playerNumber, new ArrayList<>(), null);
+        //this.playerNumber = playerNumber;
+        //this.userName = userName;
+        this.deck = new Deck(mainDeck);
         //setNextCard();
         //for (int i = 0; i < 3; i++) {
             //addNextCardToHand();
