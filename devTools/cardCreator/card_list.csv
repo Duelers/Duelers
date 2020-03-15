@@ -7,7 +7,8 @@ MINION,Aymara Healer,"Provoke
 MINION,Azure Herald,Opening Gambit: Add 3 Health to your General,1,4,2,neutral_azureherald
 MINION,Azurite Lion,Celerity,2,3,2,f1_azuritelion
 SPELL,Beam Shock,STUN an enemy,0,0,0,icon_f1_beamshock
-MINION,Beastbound Savage,"Celerity. After attacking, deal 2 damage to all surrounding enemies",2,5,5,neutral_beastmaster
+MINION,Beastbound Savage,"Celerity.
+ After attacking, deal 2 damage to all surrounding enemies",2,5,5,neutral_beastmaster
 MINION,Blistering Skorn,Opening Gambit: Deal 1 damage to everything (including itself),4,5,4,neutral_blisteringscorn
 MINION,Bloodshard Golem,Golem,4,3,3,neutral_golembloodshard
 MINION,Brightmoss Golem,Golem,4,9,5,neutral_golemnature

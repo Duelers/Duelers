@@ -753,7 +753,7 @@
             },
             {
                 "name": "Beastbound Savage",
-                "description": "Celerity. After attacking, deal 2 damage to all surrounding enemies",
+                "description": "Celerity.\n After attacking, deal 2 damage to all surrounding enemies",
                 "cardId": "duelyst_BeastboundSavage_1",
                 "spriteName": "neutral_beastmaster",
                 "type": "MINION",
@@ -831,7 +831,7 @@
             },
             {
                 "name": "Beastbound Savage",
-                "description": "Celerity. After attacking, deal 2 damage to all surrounding enemies",
+                "description": "Celerity.\n After attacking, deal 2 damage to all surrounding enemies",
                 "cardId": "duelyst_BeastboundSavage_2",
                 "spriteName": "neutral_beastmaster",
                 "type": "MINION",
@@ -909,7 +909,7 @@
             },
             {
                 "name": "Beastbound Savage",
-                "description": "Celerity. After attacking, deal 2 damage to all surrounding enemies",
+                "description": "Celerity.\n After attacking, deal 2 damage to all surrounding enemies",
                 "cardId": "duelyst_BeastboundSavage_3",
                 "spriteName": "neutral_beastmaster",
                 "type": "MINION",
