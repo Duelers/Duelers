@@ -1,7 +1,7 @@
 {
-  "name": "Dark Transformation",
+  "name": "Dark Destruction",
   "description": "Destroy target enemy minion.",
-  "cardId": "DarkTransformation",
+  "cardId": "DarkDestruction",
   "spriteName": "icon_f4_darktransformation",
   "type": "SPELL",
   "spells": [
