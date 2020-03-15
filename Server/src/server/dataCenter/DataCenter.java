@@ -201,7 +201,6 @@ public class DataCenter extends Thread {
         accounts.replace(clients.get(message.getSender()), null);
         clients.replace(message.getSender(), null);
         GameServer.serverPrint(message.getSender() + " Is Logged Out.");
-        GameServer.sendMessageAsync(Message.makeDoneMessage(message.getSender()));
     }
 
     public void logout(Session session) throws LogicException {

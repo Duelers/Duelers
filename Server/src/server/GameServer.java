@@ -137,43 +137,33 @@ public class GameServer {
                     break;
                 case MULTIPLAYER_GAME_REQUEST:
                     GameCenter.getInstance().getMultiPlayerGameRequest(message);
-                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case CANCEL_REQUEST:
                     GameCenter.getInstance().getCancelRequest(message);
-                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case ACCEPT_REQUEST:
                     GameCenter.getInstance().getAcceptRequest(message);
-                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case DECLINE_REQUEST:
                     GameCenter.getInstance().getDeclineRequest(message);
-                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case NEW_DECK_GAME:
                     GameCenter.getInstance().newDeckGame(message);
-                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case INSERT:
                     GameCenter.getInstance().insertCard(message);
-                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case ATTACK:
                     GameCenter.getInstance().attack(message);
-                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case END_TURN:
                     GameCenter.getInstance().endTurn(message);
-                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case MOVE_TROOP:
                     GameCenter.getInstance().moveTroop(message);
-                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case SET_NEW_NEXT_CARD:
                     GameCenter.getInstance().setNewNextCard(message);
-                    sendMessageAsync(Message.makeDoneMessage(message.getSender()));
                     break;
                 case REPLACE_CARD:
                     GameCenter.getInstance().replaceCard(message);
@@ -254,7 +244,6 @@ public class GameServer {
                 serverPrint(account.getUsername() + " " + account.getPassword());
             }
         }
-        sendMessageAsync(Message.makeDoneMessage(message.getSender()));
     }
 
     public void sendChangeCardPositionMessage(Game game, Card card, CardPosition newCardPosition) {

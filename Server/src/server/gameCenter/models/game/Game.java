@@ -11,6 +11,7 @@ import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
 
 import server.dataCenter.models.card.ServerCard;
+import shared.Constants;
 import shared.models.card.AttackType;
 import shared.models.card.CardType;
 
@@ -45,7 +46,6 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Game {
-    private static final long TURN_TIME_LIMIT = 120000;
     private final Player playerOne;
     private final Player playerTwo;
     private final GameType gameType;
@@ -173,7 +173,7 @@ public abstract class Game {
                     changeTurn(getCurrentTurnPlayer().getUserName(), true);
             } catch (LogicException ignored) {}
         };
-        this.future = this.timer.schedule(this.task, 120, TimeUnit.SECONDS);
+        this.future = this.timer.schedule(this.task, Constants.TURN_TIME_LIMIT, TimeUnit.SECONDS);
     }
 
     private void addNextCardToHand(int cardsToDraw) {

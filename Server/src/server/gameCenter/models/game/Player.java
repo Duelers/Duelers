@@ -1,50 +1,33 @@
 package server.gameCenter.models.game;
 
-import server.clientPortal.models.comperessedData.CompressedPlayer;
 import server.dataCenter.models.account.MatchHistory;
 import server.dataCenter.models.card.ServerCard;
+import shared.Constants;
 import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.game.BasePlayer;
 import shared.models.game.map.Cell;
-import server.dataCenter.models.Constants;
 
 import java.util.*;
 
-public class Player {
-    private final String userName;
-    private int currentMP;
+public class Player extends BasePlayer<ServerCard, ServerTroop> {
     private final Deck deck;
-    private ServerTroop hero;
-    private final List<ServerCard> hand = new ArrayList<>();
-    private final List<ServerTroop> troops = new ArrayList<>();
-    private final List<ServerCard> graveyard = new ArrayList<>();
-    private ServerCard nextCard;
-    private final int playerNumber;
     private MatchHistory matchHistory;
     private int numTimesReplacedThisTurn;
     private int maxNumReplacePerTurn;
 
     Player(Deck mainDeck, String userName, int playerNumber) {
-        this.playerNumber = playerNumber;
-        this.userName = userName;
-        deck = new Deck(mainDeck);
+        super(userName, 0, new ArrayList<>(), new ArrayList<>(), null,
+                playerNumber, new ArrayList<>(), null);
+        this.deck = new Deck(mainDeck);
         setNextCard();
         for (int i = 0; i < 3; i++) {
             addNextCardToHand();
         }
         this.numTimesReplacedThisTurn = 0;
         this.maxNumReplacePerTurn = 1;
-    }
-
-    public CompressedPlayer toCompressedPlayer() {
-        return new CompressedPlayer(
-                userName, currentMP, hand, graveyard, nextCard, playerNumber);
-    }
-
-    public List<ServerCard> getHand() {
-        return Collections.unmodifiableList(hand);
     }
 
     ServerCard insert(String cardId) throws ClientException {
@@ -119,14 +102,6 @@ public class Player {
         return false;
     }
 
-    public String getUserName() {
-        return this.userName;
-    }
-
-    public int getCurrentMP() {
-        return this.currentMP;
-    }
-
     void setCurrentMP(int currentMP) {
         this.currentMP = currentMP;
     }
@@ -139,42 +114,12 @@ public class Player {
         currentMP += change;
     }
 
-    public int getPlayerNumber() {
-        return playerNumber;
-    }
-
     public Deck getDeck() {
         return this.deck;
     }
 
-    public List<ServerTroop> getTroops() {
-        return Collections.unmodifiableList(troops);
-    }
-
     void addToGraveYard(ServerCard card) {
         graveyard.add(card);
-    }
-
-    ServerCard getNextCard() {
-        return this.nextCard;
-    }
-
-    ServerTroop getTroop(Cell cell) {
-        for (ServerTroop troop : troops) {
-            if (troop.getCell().equals(cell)) {
-                return troop;
-            }
-        }
-        return null;
-    }
-
-    ServerTroop getTroop(String cardId) {
-        for (ServerTroop troop : troops) {
-            if (troop.getCard().getCardId().equalsIgnoreCase(cardId)) {
-                return troop;
-            }
-        }
-        return null;
     }
 
     public ServerTroop createHero() {
@@ -187,17 +132,12 @@ public class Player {
         return hero;
     }
 
-    public ServerTroop getHero() {
-        return hero;
-    }
-
     public void setHero(ServerTroop hero) {
         this.hero = hero;
     }
 
     void killTroop(Game game, ServerTroop troop) {
         addToGraveYard(troop.getCard());
-//        Server.getInstance().sendChangeCardPositionMessage(game, troop.getCard(), CardPosition.GRAVE_YARD);
         troops.remove(troop);
         if (troop.getCard().getType().equals(CardType.HERO)) {
             hero = null;
@@ -220,19 +160,19 @@ public class Player {
         return getNumTimesReplacedThisTurn() < getMaxNumReplacePerTurn() && !deck.getCards().isEmpty();
     }
 
-    public void setNumTimesReplacedThisTurn(int number){
+    public void setNumTimesReplacedThisTurn(int number) {
         this.numTimesReplacedThisTurn = number;
     }
 
-    public int getNumTimesReplacedThisTurn(){
+    public int getNumTimesReplacedThisTurn() {
         return this.numTimesReplacedThisTurn;
     }
 
-    public void setMaxNumReplacePerTurn(int number){
+    public void setMaxNumReplacePerTurn(int number) {
         this.maxNumReplacePerTurn = number;
     }
 
-    public int getMaxNumReplacePerTurn(){
+    public int getMaxNumReplacePerTurn() {
         return this.maxNumReplacePerTurn;
     }
 }

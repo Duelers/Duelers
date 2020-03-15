@@ -12,7 +12,7 @@ import java.util.HashMap;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.models.compresseddata.CompressedGame;
-import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
+import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.gui.*;
 
 import javafx.animation.AnimationTimer;
@@ -38,7 +38,7 @@ public class PlayerBox implements PropertyChangeListener {
     private boolean isChatFieldEnabled = true;
     private OrangeButton muteButton;
     private final BattleScene battleScene;
-    private final CompressedPlayer player1, player2;
+    private final Player player1, player2;
     private final Group group;
     private final Group mpGroup;
     private MessageShow player1MessageShow;
@@ -250,7 +250,7 @@ public class PlayerBox implements PropertyChangeListener {
         }
     }
 
-    void showMessage(CompressedPlayer player, String text) {
+    void showMessage(Player player, String text) {
         if (player.getPlayerNumber() == 1) {
             player1MessageShow.show(text);
         } else {

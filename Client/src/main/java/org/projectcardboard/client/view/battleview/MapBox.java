@@ -10,7 +10,7 @@ import java.util.HashMap;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.models.compresseddata.CompressedGameMap;
-import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
+import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.gui.CardPane;
 
 import javafx.application.Platform;
@@ -196,7 +196,7 @@ public class MapBox implements PropertyChangeListener {
         if (!battleScene.isMyTurn()) {
             return;
         }
-        CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
+        Player player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
         Troop currentTroop = getTroop(row, column);
         if (selectionType.equals(SelectionType.INSERTION)) {
             if (GameController.getInstance().getAvailableActions().canInsertCard(battleScene.getHandBox().getSelectedCard())) {
@@ -256,7 +256,7 @@ public class MapBox implements PropertyChangeListener {
 
     void updateMapColors() {
         updateSelectionType();
-        CompressedPlayer player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
+        Player player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
         for (int row = 0; row < CompressedGameMap.getRowNumber(); row++) {
             for (int column = 0; column < CompressedGameMap.getColumnNumber(); column++) {
 
@@ -280,7 +280,7 @@ public class MapBox implements PropertyChangeListener {
         }
     }
 
-    private void updateMapColoursHighlightUnitActions(int row, int column, CompressedPlayer player){
+    private void updateMapColoursHighlightUnitActions(int row, int column, Player player){
         Troop troop = getTroop(row, column);
         if (troop == null){ return; }
         if (!battleScene.isMyTurn()) { return; }
@@ -295,7 +295,7 @@ public class MapBox implements PropertyChangeListener {
         }
     }
 
-    private void updateMapColourHighlightEnemyUnits(int row, int column, CompressedPlayer player){
+    private void updateMapColourHighlightEnemyUnits(int row, int column, Player player){
         Troop troop = getTroop(row, column);
         if (troop == null){ return; }
 
@@ -305,7 +305,7 @@ public class MapBox implements PropertyChangeListener {
 
     }
 
-    private Boolean updateMapColoursOnInsertion(int row, int column, CompressedPlayer player){
+    private Boolean updateMapColoursOnInsertion(int row, int column, Player player){
 
         Card card = battleScene.getHandBox().getSelectedCard();
 
@@ -323,7 +323,7 @@ public class MapBox implements PropertyChangeListener {
         return false;
     }
 
-    private Boolean updateMapColoursOnNormal(int row, int column, CompressedPlayer player){
+    private Boolean updateMapColoursOnNormal(int row, int column, Player player){
 
         boolean canAttack = GameController.getInstance().getAvailableActions().canAttack(gameMap, player, selectedTroop, row, column);
         boolean canMove = GameController.getInstance().getAvailableActions().canMove(gameMap, player, selectedTroop, row, column);
