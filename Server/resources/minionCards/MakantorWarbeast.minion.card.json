@@ -1,6 +1,6 @@
 {
   "name": "Makantor Warbeast",
-  "description": "Rush. After attacking, deal 4 damage to all surrounding enemies",
+  "description": "Rush.\n After attacking, deal 4 damage to all surrounding enemies",
   "cardId": "MakantorWarbeast",
   "spriteName": "f5_mankatorwarbeast",
   "type": "MINION",
