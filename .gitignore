@@ -114,20 +114,11 @@ buildNumber.properties
 /exported_decks/*
 /resources/accounts/
 
-## Windows Exe
-
-/Build_exe/Application/Client/*.exe
-/Build_exe/Application/Client/Resources
-/Build_exe/Application/Client/Classes
-/Build_exe/Application/devTools
-/Build_exe/Application/jre
-/Build_exe/Application/resources
-/Build_exe/Application/Server
-/Build_exe/application/exported_decks/*
 
 ## DevTools
 
 devTools/cardCreator/AddJsonCardToGame.exe
+devTools/Build_exe/release/*
 
 ## white list 
 !.keep
@@ -206,3 +197,4 @@ local.properties
 
 ## end Eclipse
 resources/config.properties
+*.pyc

@@ -201,7 +201,6 @@ public class DataCenter extends Thread {
         accounts.replace(clients.get(message.getSender()), null);
         clients.replace(message.getSender(), null);
         GameServer.serverPrint(message.getSender() + " Is Logged Out.");
-        GameServer.sendMessageAsync(Message.makeDoneMessage(message.getSender()));
     }
 
     public void logout(Session session) throws LogicException {
@@ -362,7 +361,7 @@ public class DataCenter extends Thread {
     }
 
     public void saveAccount(Account account) {
-        String accountJson = JsonConverter.toJson(new TempAccount(account));
+        String accountJson = JsonConverter.toPrettyJson(new TempAccount(account));
         try {
             FileWriter writer = new FileWriter(ACCOUNTS_PATH + "/" + account.getUsername() + ".account.json");
             writer.write(accountJson);

@@ -12,6 +12,7 @@ import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
 
 import server.dataCenter.models.card.ServerCard;
+import shared.Constants;
 import shared.models.card.AttackType;
 import shared.models.card.CardType;
 
@@ -46,7 +47,6 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Game {
-    private static final long TURN_TIME_LIMIT = 120000;
     private final Player playerOne;
     private final Player playerTwo;
     private final GameType gameType;
@@ -174,7 +174,7 @@ public abstract class Game {
                     changeTurn(getCurrentTurnPlayer().getUserName(), true);
             } catch (LogicException ignored) {}
         };
-        this.future = this.timer.schedule(this.task, 120, TimeUnit.SECONDS);
+        this.future = this.timer.schedule(this.task, Constants.TURN_TIME_LIMIT, TimeUnit.SECONDS);
     }
 
     private void addNextCardToHand(int cardsToDraw) {
@@ -622,6 +622,7 @@ public abstract class Game {
                 (attackerTroop.canBeAttackedFromWeakerOnes() || defenderTroop.getCurrentAp() > attackerTroop.getCurrentAp())
         ) {
             damage(defenderTroop, attackerTroop);
+            applyOnCounterAttackSpells(attackerTroop, defenderTroop);
         }
     }
 
@@ -634,6 +635,16 @@ public abstract class Game {
             killTroop(defenderTroop);
         } else {
             GameServer.getInstance().sendTroopUpdateMessage(this, defenderTroop);
+        }
+    }
+
+    private void applyOnCounterAttackSpells(ServerTroop attacker, ServerTroop counterAttacker) {
+        for (Spell spell : counterAttacker.getCard().getSpells()) {
+            if (spell.getAvailabilityType().isOnCounterAttack())
+                applySpell(
+                        spell,
+                        detectOnCounterAttackTarget(spell, counterAttacker.getCell(), attacker.getCell())
+                );
         }
     }
 
@@ -907,6 +918,28 @@ public abstract class Game {
             randomizeList(targetData.getPlayers());
             randomizeList(targetData.getCards());
         }
+        return targetData;
+    }
+
+    private TargetData detectOnCounterAttackTarget(Spell spell, Cell cardCell, Cell clickCell) {
+        TargetData targetData = new TargetData();
+        int playerNumber = gameMap.getTroop(clickCell).getPlayerNumber();
+        Player player = (getCurrentTurnPlayer().getPlayerNumber() == playerNumber) ? getCurrentTurnPlayer() : getOtherTurnPlayer();
+        Cell heroCell = player.getHero().getCell();
+
+        if (spell.getTarget().getOwner() != null) {
+            setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
+        } else {
+            setTargetData(spell, cardCell, clickCell, heroCell, null, targetData);
+        }
+
+        if (spell.getTarget().isRandom()) {
+            randomizeList(targetData.getTroops());
+            randomizeList(targetData.getCells());
+            randomizeList(targetData.getPlayers());
+            randomizeList(targetData.getCards());
+        }
+
         return targetData;
     }
 
