@@ -8,7 +8,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
-import org.projectcardboard.client.models.compresseddata.CompressedPlayer;
+import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.gui.CardPane;
 import org.projectcardboard.client.models.gui.DefaultLabel;
 import org.projectcardboard.client.models.gui.DialogBox;
@@ -34,9 +34,9 @@ import java.util.TimerTask;
 public class HandBox implements PropertyChangeListener {
     private static final Effect DISABLE_BUTTON_EFFECT = new ColorAdjust(0, -1, 0, 0);
     private final BattleScene battleScene;
-    private final CompressedPlayer player;
+    private final Player player;
     private final Group handGroup;
-    private final Pane[] cards = new Pane[Constants.MAXIMUM_CARD_HAND_SIZE];
+    private final Pane[] cards = new Pane[shared.Constants.MAXIMUM_CARD_HAND_SIZE];
     private final StackPane next = new StackPane();
     private int selectedCard = -1;
     private CardPane cardPane = null;
@@ -51,7 +51,7 @@ public class HandBox implements PropertyChangeListener {
 	private int timerCount = 120;
 	private DefaultLabel timeRemaining = null;
 
-    HandBox(BattleScene battleScene, CompressedPlayer player) throws Exception {
+    HandBox(BattleScene battleScene, Player player) throws Exception {
         this.battleScene = battleScene;
         this.player = player;
         handGroup = new Group();
@@ -65,7 +65,7 @@ public class HandBox implements PropertyChangeListener {
             hBox.setLayoutY(25 * Constants.SCALE);
             hBox.setSpacing(-15 * Constants.SCALE);
             handGroup.getChildren().add(hBox);
-            for (int i = 0; i < Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
+            for (int i = 0; i < shared.Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
                 cards[i] = new Pane();
                 hBox.getChildren().add(cards[i]);
             }
@@ -130,7 +130,7 @@ public class HandBox implements PropertyChangeListener {
     }
 
     private void updateCards() {
-        for (int i = 0; i < Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
+        for (int i = 0; i < shared.Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
             final int I = i;
             cards[i].getChildren().clear();
             final ImageView imageView = new ImageView();
