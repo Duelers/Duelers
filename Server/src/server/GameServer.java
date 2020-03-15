@@ -2,8 +2,8 @@ package server;
 
 import server.chatCenter.ChatCenter;
 import server.clientPortal.ClientPortal;
+import server.dataCenter.models.card.ServerCard;
 import server.services.RemoteTokenVerificationService;
-import shared.models.card.Card;
 import server.clientPortal.models.message.CardPosition;
 import server.clientPortal.models.message.Message;
 import server.clientPortal.models.message.OnlineGame;
@@ -92,13 +92,13 @@ public class GameServer {
             switch (message.getMessageType()) {
                 case AUTHENTICATE:
                     RemoteTokenVerificationService.getInstance().verifyAuthenticationToken(message.token)
-                    .thenAccept(r -> {
-                        if (r.error == null) {
-                            DataCenter.getInstance().loginOrRegister(r.username, message.getSender());
-                        } else {
-                            serverPrint(r.error);
-                        }
-                    });
+                            .thenAccept(r -> {
+                                if (r.error == null) {
+                                    DataCenter.getInstance().loginOrRegister(r.username, message.getSender());
+                                } else {
+                                    serverPrint(r.error);
+                                }
+                            });
                     break;
                 case LOG_OUT:
                     DataCenter.getInstance().logout(message);
@@ -246,7 +246,7 @@ public class GameServer {
         }
     }
 
-    public void sendChangeCardPositionMessage(Game game, Card card, CardPosition newCardPosition) {
+    public void sendChangeCardPositionMessage(Game game, ServerCard card, CardPosition newCardPosition) {
         for (Account account : game.getObservers()) {
             String clientName = DataCenter.getInstance().getAccounts().get(account);
             if (clientName == null) {
@@ -257,7 +257,7 @@ public class GameServer {
         }
     }
 
-    public void sendNewNextCardSetMessage(Game game, Card nextCard) {
+    public void sendNewNextCardSetMessage(Game game, ServerCard nextCard) {
         for (Account account : game.getObservers()) {
             String clientName = DataCenter.getInstance().getAccounts().get(account);
             if (clientName == null) {
@@ -344,7 +344,7 @@ public class GameServer {
         System.out.println("\u001B[32m" + string.trim() + "\u001B[0m");
     }
 
-    public void sendChangeCardNumberMessage(Card card) {
+    public void sendChangeCardNumberMessage(ServerCard card) {
         for (Account account : DataCenter.getInstance().getAccounts().keySet()) {
             if (account.getAccountType().equals(AccountType.ADMIN) && DataCenter.getInstance().isOnline(account.getUsername())) {
                 sendMessageAsync(Message.makeChangeCardNumberMessage(DataCenter.getInstance().getAccounts().get(account),
@@ -353,7 +353,7 @@ public class GameServer {
         }
     }
 
-    public void sendAddToOriginalsMessage(Card card) {
+    public void sendAddToOriginalsMessage(ServerCard card) {
         for (Account account : DataCenter.getInstance().getAccounts().keySet()) {
             if (DataCenter.getInstance().isOnline(account.getUsername())) {
                 sendMessageAsync(
@@ -370,4 +370,15 @@ public class GameServer {
         sendMessageAsync(Message.makeAccountCopyMessage(clientName, account));
     }
 
+    public void sendCardsDrawnToHandMessage(Game game, int deckSize, ServerCard... drawnCards) {
+        for (Account account : game.getObservers()) {
+            String clientName = DataCenter.getInstance().getAccounts().get(account);
+            if (clientName == null) {
+                serverPrint("*Error: Failed to get client name of account " + account.getUsername() + ". Deleting from list of observers.");
+                game.getObservers().remove(account);
+                continue;
+            }
+            sendMessageAsync(Message.makeCardsDrawnFromDeckMessage(clientName, deckSize, drawnCards));
+        }
+    }
 }
