@@ -12,7 +12,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class CompressedGameMap {
-    private static final int NUM_ROWS = Constants.NUMBER_OF_ROWS, NUM_COLUMNS = Constants.NUMBER_OF_COLUMNS;
+    private static final int NUM_ROWS = Constants.NUMBER_OF_ROWS;
+    private static final int NUM_COLUMNS = Constants.NUMBER_OF_COLUMNS;
     private final Cell[][] cells;
     private final ArrayList<Troop> troops;
     private CellEffect[] cellEffects;
