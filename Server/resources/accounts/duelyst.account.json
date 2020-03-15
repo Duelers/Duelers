@@ -5860,9 +5860,9 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Dark Transformation",
+                "name": "Dark Destruction",
                 "description": "Destroy target enemy minion.",
-                "cardId": "duelyst_DarkTransformation_1",
+                "cardId": "duelyst_DarkDestruction_1",
                 "spriteName": "icon_f4_darktransformation",
                 "type": "SPELL",
                 "spells": [
@@ -5937,9 +5937,9 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Dark Transformation",
+                "name": "Dark Destruction",
                 "description": "Destroy target enemy minion.",
-                "cardId": "duelyst_DarkTransformation_2",
+                "cardId": "duelyst_DarkDestruction_2",
                 "spriteName": "icon_f4_darktransformation",
                 "type": "SPELL",
                 "spells": [
@@ -6014,9 +6014,9 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Dark Transformation",
+                "name": "Dark Destruction",
                 "description": "Destroy target enemy minion.",
-                "cardId": "duelyst_DarkTransformation_3",
+                "cardId": "duelyst_DarkDestruction_3",
                 "spriteName": "icon_f4_darktransformation",
                 "type": "SPELL",
                 "spells": [
