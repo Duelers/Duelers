@@ -7,6 +7,8 @@ MINION,Aymara Healer,"Provoke
 MINION,Azure Herald,Opening Gambit: Add 3 Health to your General,1,4,2,neutral_azureherald
 MINION,Azurite Lion,Celerity,2,3,2,f1_azuritelion
 SPELL,Beam Shock,STUN an enemy,0,0,0,icon_f1_beamshock
+MINION,Beastbound Savage,"Celerity.
+ After attacking, deal 2 damage to all surrounding enemies",2,5,5,neutral_beastmaster
 MINION,Blistering Skorn,Opening Gambit: Deal 1 damage to everything (including itself),4,5,4,neutral_blisteringscorn
 MINION,Bloodshard Golem,Golem,4,3,3,neutral_golembloodshard
 MINION,Brightmoss Golem,Golem,4,9,5,neutral_golemnature
@@ -28,7 +30,10 @@ MINION,Hailstone Golem,Golem,4,6,4,neutral_golemice
 MINION,Ironcliffe Guardian,"Provoke, Airdrop",3,10,5,f1_ironcliffeguardian
 SPELL,Kinetic Equilibrium,Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack,0,0,3,icon_f5_kineticequilibrium
 MINION,Lysian Brawler,Celerity,4,4,4,f1_silvermanevanguard
+MINION,Makantor Warbeast,"Rush.
+ After attacking, deal 4 damage to all surrounding enemies",4,4,7,f5_mankatorwarbeast
 MINION,Mr Swampy,"Provoke, Flying",0,3,1,neutral_beastswamp
+MINION,Orizuru,Flying,3,4,3,f2_orizuru
 MINION,Phalanxar,,7,2,3,f5_tank
 SPELL,Phoenix Fire,Deal 3 damage to anything.,0,0,2,icon_f2_phoenixfire02
 MINION,Piercing Mantis,"After attacking, deal 2 damage to all surrounding enemies",2,2,2,neutral_monstershreddingmantis

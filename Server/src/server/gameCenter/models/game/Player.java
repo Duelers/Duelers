@@ -9,6 +9,7 @@ import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import shared.models.game.BasePlayer;
 import shared.models.game.map.Cell;
+//import server.dataCenter.models.Constants;
 
 import java.util.*;
 
@@ -21,11 +22,15 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
     Player(Deck mainDeck, String userName, int playerNumber) {
         super(userName, 0, new ArrayList<>(), new ArrayList<>(), null,
                 playerNumber, new ArrayList<>(), null);
+        //this.playerNumber = playerNumber;
+        //this.userName = userName;
         this.deck = new Deck(mainDeck);
-        setNextCard();
-        for (int i = 0; i < 3; i++) {
-            addNextCardToHand();
-        }
+        //setNextCard();
+        //for (int i = 0; i < 3; i++) {
+            //addNextCardToHand();
+        //}
+        ServerCard[] drawnCards = getCardsFromDeck(3);
+        addCardsToHand(drawnCards);
         this.numTimesReplacedThisTurn = 0;
         this.maxNumReplacePerTurn = 1;
     }
@@ -102,6 +107,42 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         return false;
     }
 
+    public ServerCard[] getCardsFromDeck(int cardsToDraw) {
+        ServerCard[] drawnCards = new ServerCard[cardsToDraw];
+
+        for(int i = 0; i < cardsToDraw; i++) {
+            if (!deck.getCards().isEmpty()) {
+                int index = new Random().nextInt(deck.getCards().size());
+                ServerCard drawnCard = deck.getCards().get(index);
+                drawnCards[i] = drawnCard;
+                try {
+                    deck.removeCard(drawnCard);
+                } catch (ClientException ignored) {
+                    System.out.println("Unable to remove card from deck");
+                }
+            } else {
+                break;
+            }
+        }
+        return drawnCards;
+    }
+
+    public void addCardsToHand(ServerCard... cards){
+        for(ServerCard card : cards) {
+            if (hand.size() < shared.Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getCards().isEmpty() || card != null)) {
+                hand.add(card);
+            }
+        }
+    }
+
+    public String getUserName() {
+        return this.userName;
+    }
+
+    public int getCurrentMP() {
+        return this.currentMP;
+    }
+
     void setCurrentMP(int currentMP) {
         this.currentMP = currentMP;
     }
@@ -175,4 +216,5 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
     public int getMaxNumReplacePerTurn() {
         return this.maxNumReplacePerTurn;
     }
+
 }

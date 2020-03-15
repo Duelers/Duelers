@@ -133,7 +133,7 @@ public abstract class Game {
             if (canCommand(username)) {
                 getCurrentTurnPlayer().setCurrentMP(0);
 
-                addNextCardToHand(2); // TODO This probably needs a constant
+                drawCardsFromDeck(Constants.END_OF_TURN_CARD_DRAW);
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(0);
 
                 revertNotDurableBuffs();
@@ -186,6 +186,13 @@ public abstract class Game {
         }
     }
 
+    private void drawCardsFromDeck(int cardsToDraw){
+        ServerCard[] drawnCards = getCurrentTurnPlayer().getCardsFromDeck(cardsToDraw);
+        getCurrentTurnPlayer().addCardsToHand(drawnCards);
+        int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
+        GameServer.getInstance().sendCardsDrawnToHandMessage(this, deckSize, drawnCards);
+    }
+
     public void setNewNextCard() {
         getCurrentTurnPlayer().setNewNextCard();
         GameServer.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard());
@@ -198,14 +205,23 @@ public abstract class Game {
                 return;
             }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
+            ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeck(1);
+            getCurrentTurnPlayer().addCardsToHand(drawnCard);
+            int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
+            GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
+            GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,drawnCard);
+            /*
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 ServerCard nextCard = getCurrentTurnPlayer().getNextCard();
                 int numTimesReplacedThisTurn = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
                 getCurrentTurnPlayer().setNumTimesReplacedThisTurn(numTimesReplacedThisTurn + 1);
-                GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
+
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
             }
+            */
+
+
         } else {
             System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
         }
@@ -733,8 +749,12 @@ public abstract class Game {
         SpellAction action = buff.getAction();
         for (Player player : players) {
             player.changeCurrentMP(action.getMpChange());
-            addNextCardToHand(action.getCardDraw());
+            //addNextCardToHand(action.getCardDraw());
+            ServerCard[] cardsDrawn = player.getCardsFromDeck(action.getCardDraw());
+            player.addCardsToHand(cardsDrawn);
+            int deckSize = player.getDeck().getCards().size();
             GameServer.getInstance().sendGameUpdateMessage(this);
+            GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,cardsDrawn);
         }
     }
 

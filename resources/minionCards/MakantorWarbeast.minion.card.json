@@ -1,8 +1,8 @@
 {
-  "name": "Beastbound Savage",
-  "description": "Celerity. After attacking, deal 2 damage to all surrounding enemies",
-  "cardId": "BeastboundSavage",
-  "spriteName": "neutral_beastmaster",
+  "name": "Makantor Warbeast",
+  "description": "Rush.\n After attacking, deal 4 damage to all surrounding enemies",
+  "cardId": "MakantorWarbeast",
+  "spriteName": "f5_mankatorwarbeast",
   "type": "MINION",
     "spells": [ 
     {
@@ -10,7 +10,7 @@
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": -2,
+        "hpChange": -4,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -67,9 +67,9 @@
       "lastTurnUsed": 0
     }
   ],
-  "defaultAp": 2,
-  "defaultHp": 5,
-  "manaCost": 5,
+  "defaultAp": 4,
+  "defaultHp": 4,
+  "manaCost": 7,
   "price": 100,
   "attackType": "MELEE",
   "range": 0,
