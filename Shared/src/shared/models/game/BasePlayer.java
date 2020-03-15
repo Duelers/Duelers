@@ -19,6 +19,7 @@ public class BasePlayer<
     protected final ArrayList<CardType> graveyard = new ArrayList<>();
     protected CardType nextCard;
     protected final int playerNumber;
+    protected int deckSize;
 
     public BasePlayer(String userName, int currentMP,
                       List<CardType> hand, List<CardType> graveyard, CardType nextCard,
