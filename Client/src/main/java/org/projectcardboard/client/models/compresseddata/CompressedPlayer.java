@@ -60,6 +60,8 @@ public class CompressedPlayer {
     }
 
     public void addCardsToHand(int deckSize, Card... drawnCards) {
+        System.out.println("Current deck size: " + deckSize);
+        System.out.println(nextCard == null);
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }

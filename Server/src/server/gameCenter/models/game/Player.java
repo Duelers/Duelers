@@ -30,10 +30,12 @@ public class Player {
         this.playerNumber = playerNumber;
         this.userName = userName;
         deck = new Deck(mainDeck);
-        setNextCard();
-        for (int i = 0; i < 3; i++) {
-            addNextCardToHand();
-        }
+        //setNextCard();
+        //for (int i = 0; i < 3; i++) {
+        //    addNextCardToHand();
+        //}
+        ServerCard[] drawnCards = getCardsFromDeck(3);
+        addCardsToHand(drawnCards);
         this.numTimesReplacedThisTurn = 0;
         this.maxNumReplacePerTurn = 1;
     }
