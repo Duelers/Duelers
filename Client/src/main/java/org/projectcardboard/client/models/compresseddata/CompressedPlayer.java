@@ -177,4 +177,8 @@ public class CompressedPlayer {
     public int getPlayerNumber() {
         return playerNumber;
     }
+
+    public int getDeckSize(){
+        return this.deckSize;
+    }
 }

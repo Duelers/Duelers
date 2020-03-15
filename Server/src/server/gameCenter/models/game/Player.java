@@ -3,12 +3,13 @@ package server.gameCenter.models.game;
 import server.clientPortal.models.comperessedData.CompressedPlayer;
 import server.dataCenter.models.account.MatchHistory;
 import server.dataCenter.models.card.ServerCard;
+import shared.Constants;
 import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import shared.models.game.map.Cell;
-import server.dataCenter.models.Constants;
+//import server.dataCenter.models.Constants;
 
 import java.util.*;
 
@@ -32,7 +33,7 @@ public class Player {
         deck = new Deck(mainDeck);
         //setNextCard();
         //for (int i = 0; i < 3; i++) {
-        //    addNextCardToHand();
+            //addNextCardToHand();
         //}
         ServerCard[] drawnCards = getCardsFromDeck(3);
         addCardsToHand(drawnCards);
@@ -143,7 +144,7 @@ public class Player {
 
     public void addCardsToHand(ServerCard... cards){
         for(ServerCard card : cards) {
-            if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getCards().isEmpty() || card != null)) {
+            if (hand.size() < shared.Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getCards().isEmpty() || card != null)) {
                 hand.add(card);
             }
         }
@@ -265,4 +266,5 @@ public class Player {
     public int getMaxNumReplacePerTurn(){
         return this.maxNumReplacePerTurn;
     }
+
 }
