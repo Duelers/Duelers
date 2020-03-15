@@ -6,11 +6,11 @@
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "deal_99_to_enemy_minion",
+      "spellId": "destroy target",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": -99,
+        "hpChange": 0,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
