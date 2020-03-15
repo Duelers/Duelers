@@ -31,6 +31,7 @@ SPELL,Kinetic Equilibrium,Deal 2 damage to ALL minions in a 3x3 area. Friendly m
 MINION,Lysian Brawler,Celerity,4,4,4,f1_silvermanevanguard
 MINION,Makantor Warbeast,"Rush. After attacking, deal 4 damage to all surrounding enemies",4,4,7,f5_mankatorwarbeast
 MINION,Mr Swampy,"Provoke, Flying",0,3,1,neutral_beastswamp
+MINION,Orizuru,Flying,3,4,3,f2_orizuru
 MINION,Phalanxar,,7,2,3,f5_tank
 SPELL,Phoenix Fire,Deal 3 damage to anything.,0,0,2,icon_f2_phoenixfire02
 MINION,Piercing Mantis,"After attacking, deal 2 damage to all surrounding enemies",2,2,2,neutral_monstershreddingmantis
