@@ -17,6 +17,7 @@
                 "price": 10,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -32,6 +33,7 @@
                 "price": 10,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -47,6 +49,7 @@
                 "price": 10,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -62,6 +65,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             }
         ],
@@ -79,6 +83,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -94,6 +99,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -109,6 +115,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -125,7 +132,6 @@
                             "apChange": 0,
                             "hpChange": -5,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -172,8 +178,9 @@
                             "onPut": false,
                             "onAttack": false,
                             "onDeath": true,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -186,7 +193,6 @@
                             "apChange": 0,
                             "hpChange": 5,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -233,8 +239,9 @@
                             "onPut": false,
                             "onAttack": false,
                             "onDeath": true,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -247,6 +254,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -263,7 +271,6 @@
                             "apChange": 0,
                             "hpChange": -5,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -310,8 +317,9 @@
                             "onPut": false,
                             "onAttack": false,
                             "onDeath": true,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -324,7 +332,6 @@
                             "apChange": 0,
                             "hpChange": 5,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -371,8 +378,9 @@
                             "onPut": false,
                             "onAttack": false,
                             "onDeath": true,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -385,6 +393,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -401,7 +410,6 @@
                             "apChange": 0,
                             "hpChange": -5,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -448,8 +456,9 @@
                             "onPut": false,
                             "onAttack": false,
                             "onDeath": true,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -462,7 +471,6 @@
                             "apChange": 0,
                             "hpChange": 5,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -509,8 +517,9 @@
                             "onPut": false,
                             "onAttack": false,
                             "onDeath": true,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -523,6 +532,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -539,29 +549,12 @@
                             "apChange": 0,
                             "hpChange": 3,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -583,11 +576,7 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -600,6 +589,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -616,29 +606,12 @@
                             "apChange": 0,
                             "hpChange": 3,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -660,11 +633,7 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -677,6 +646,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -693,29 +663,12 @@
                             "apChange": 0,
                             "hpChange": 3,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -737,11 +690,7 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -754,6 +703,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -768,6 +718,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -782,6 +733,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -796,6 +748,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -812,29 +765,12 @@
                             "apChange": 0,
                             "hpChange": -1,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -856,11 +792,7 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -873,6 +805,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -889,29 +822,12 @@
                             "apChange": 0,
                             "hpChange": -1,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -933,11 +849,7 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -950,6 +862,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -966,29 +879,12 @@
                             "apChange": 0,
                             "hpChange": -1,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -1010,11 +906,7 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -1027,6 +919,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1041,6 +934,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1055,6 +949,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1069,6 +964,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1083,6 +979,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1097,6 +994,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1111,6 +1009,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1123,24 +1022,7 @@
                     {
                         "spellId": "kill_on_atk",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
-                            "hpChange": 0,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
                             "killsTarget": true,
-                            "isForGladiator": false,
-                            "durable": false,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -1159,8 +1041,6 @@
                                 "enemy": true
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": false,
                                 "minion": true,
                                 "player": false
                             },
@@ -1173,9 +1053,11 @@
                         "availabilityType": {
                             "onPut": false,
                             "onAttack": true,
+                            "onCounterAttack": true,
                             "onDeath": false,
-                            "onDefend": true,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -1188,6 +1070,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1200,24 +1083,7 @@
                     {
                         "spellId": "kill_on_atk",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
-                            "hpChange": 0,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
                             "killsTarget": true,
-                            "isForGladiator": false,
-                            "durable": false,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -1236,8 +1102,6 @@
                                 "enemy": true
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": false,
                                 "minion": true,
                                 "player": false
                             },
@@ -1250,9 +1114,11 @@
                         "availabilityType": {
                             "onPut": false,
                             "onAttack": true,
+                            "onCounterAttack": true,
                             "onDeath": false,
-                            "onDefend": true,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -1265,6 +1131,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1277,24 +1144,7 @@
                     {
                         "spellId": "kill_on_atk",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
-                            "hpChange": 0,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
                             "killsTarget": true,
-                            "isForGladiator": false,
-                            "durable": false,
                             "removeBuffs": 0,
                             "duration": 1,
                             "delay": 0
@@ -1313,8 +1163,6 @@
                                 "enemy": true
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": false,
                                 "minion": true,
                                 "player": false
                             },
@@ -1327,9 +1175,11 @@
                         "availabilityType": {
                             "onPut": false,
                             "onAttack": true,
+                            "onCounterAttack": true,
                             "onDeath": false,
-                            "onDefend": true,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -1342,6 +1192,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1357,6 +1208,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 2,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1372,6 +1224,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 2,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1387,6 +1240,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 2,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1401,6 +1255,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1415,6 +1270,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1429,6 +1285,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1441,33 +1298,12 @@
                     {
                         "spellId": "deal_4_your_general",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": -4,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 1,
-                            "delay": 0
+                            "duration": 1
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -1477,10 +1313,7 @@
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -1489,15 +1322,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onPut": true
+                        }
                     }
                 ],
                 "defaultAp": 5,
@@ -1505,7 +1331,6 @@
                 "manaCost": 4,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -1518,33 +1343,12 @@
                     {
                         "spellId": "deal_4_your_general",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": -4,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 1,
-                            "delay": 0
+                            "duration": 1
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -1554,10 +1358,7 @@
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -1566,15 +1367,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onPut": true
+                        }
                     }
                 ],
                 "defaultAp": 5,
@@ -1582,7 +1376,6 @@
                 "manaCost": 4,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -1595,33 +1388,12 @@
                     {
                         "spellId": "deal_4_your_general",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": -4,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 1,
-                            "delay": 0
+                            "duration": 1
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -1631,10 +1403,7 @@
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -1643,15 +1412,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onPut": true
+                        }
                     }
                 ],
                 "defaultAp": 5,
@@ -1659,7 +1421,6 @@
                 "manaCost": 4,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -1675,6 +1436,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1690,6 +1452,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1705,6 +1468,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -1717,33 +1481,12 @@
                     {
                         "spellId": "restore_4_to_general",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": 4,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 1,
-                            "delay": 0
+                            "duration": 1
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -1753,10 +1496,7 @@
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -1765,15 +1505,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onPut": true
+                        }
                     }
                 ],
                 "defaultAp": 4,
@@ -1781,7 +1514,6 @@
                 "manaCost": 4,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -1794,33 +1526,12 @@
                     {
                         "spellId": "restore_4_to_general",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": 4,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 1,
-                            "delay": 0
+                            "duration": 1
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -1830,10 +1541,7 @@
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -1842,15 +1550,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onPut": true
+                        }
                     }
                 ],
                 "defaultAp": 4,
@@ -1858,7 +1559,6 @@
                 "manaCost": 4,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -1871,33 +1571,12 @@
                     {
                         "spellId": "restore_4_to_general",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": 4,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 1,
-                            "delay": 0
+                            "duration": 1
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -1907,10 +1586,7 @@
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -1919,15 +1595,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onPut": true
+                        }
                     }
                 ],
                 "defaultAp": 4,
@@ -1935,7 +1604,6 @@
                 "manaCost": 4,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -1948,33 +1616,12 @@
                     {
                         "spellId": "deal_3_to_generals",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": -3,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 1,
-                            "delay": 0
+                            "duration": 1
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -1984,10 +1631,7 @@
                                 "enemy": true
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -1996,15 +1640,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onPut": true
+                        }
                     }
                 ],
                 "defaultAp": 3,
@@ -2012,7 +1649,6 @@
                 "manaCost": 2,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -2025,33 +1661,12 @@
                     {
                         "spellId": "deal_3_to_generals",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": -3,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 1,
-                            "delay": 0
+                            "duration": 1
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -2061,10 +1676,7 @@
                                 "enemy": true
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -2073,15 +1685,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onPut": true
+                        }
                     }
                 ],
                 "defaultAp": 3,
@@ -2089,7 +1694,6 @@
                 "manaCost": 2,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -2102,33 +1706,12 @@
                     {
                         "spellId": "deal_3_to_generals",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": -3,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 1,
-                            "delay": 0
+                            "duration": 1
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": true,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -2138,10 +1721,7 @@
                                 "enemy": true
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -2150,15 +1730,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onPut": true
+                        }
                     }
                 ],
                 "defaultAp": 3,
@@ -2166,7 +1739,6 @@
                 "manaCost": 2,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -2183,7 +1755,6 @@
                             "apChange": 0,
                             "hpChange": 2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -2230,12 +1801,10 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        }
                     },
                     {
                         "spellId": "dmg_on_put",
@@ -2244,7 +1813,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -2291,8 +1859,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -2305,6 +1874,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2321,7 +1891,6 @@
                             "apChange": 0,
                             "hpChange": 2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -2368,12 +1937,10 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        }
                     },
                     {
                         "spellId": "dmg_on_put",
@@ -2382,7 +1949,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -2429,8 +1995,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -2443,6 +2010,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2459,7 +2027,6 @@
                             "apChange": 0,
                             "hpChange": 2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -2506,12 +2073,10 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        }
                     },
                     {
                         "spellId": "dmg_on_put",
@@ -2520,7 +2085,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -2567,8 +2131,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -2581,6 +2146,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2595,6 +2161,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2609,6 +2176,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2623,6 +2191,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2638,6 +2207,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2653,6 +2223,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2668,6 +2239,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2682,6 +2254,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2696,6 +2269,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2710,6 +2284,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2725,6 +2300,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 99,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2740,6 +2316,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 99,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2755,6 +2332,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 99,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2769,6 +2347,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2783,6 +2362,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2797,6 +2377,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2813,7 +2394,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -2860,8 +2440,9 @@
                             "onPut": false,
                             "onAttack": true,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -2874,6 +2455,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2890,7 +2472,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -2937,8 +2518,9 @@
                             "onPut": false,
                             "onAttack": true,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -2951,6 +2533,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -2967,7 +2550,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -3014,8 +2596,9 @@
                             "onPut": false,
                             "onAttack": true,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -3028,6 +2611,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3043,6 +2627,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3058,6 +2643,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3073,6 +2659,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3089,7 +2676,6 @@
                             "apChange": -1,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -3136,12 +2722,10 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        }
                     },
                     {
                         "spellId": "power_on_put",
@@ -3150,7 +2734,6 @@
                             "apChange": 1,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -3197,8 +2780,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -3211,6 +2795,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3227,7 +2812,6 @@
                             "apChange": -1,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -3274,12 +2858,10 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        }
                     },
                     {
                         "spellId": "power_on_put",
@@ -3288,7 +2870,6 @@
                             "apChange": 1,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -3335,8 +2916,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -3349,6 +2931,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3365,7 +2948,6 @@
                             "apChange": -1,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -3412,12 +2994,10 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
+                        }
                     },
                     {
                         "spellId": "power_on_put",
@@ -3426,7 +3006,6 @@
                             "apChange": 1,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -3473,8 +3052,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -3487,6 +3067,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3501,6 +3082,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3515,6 +3097,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3529,6 +3112,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3544,6 +3128,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3559,6 +3144,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3574,6 +3160,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3588,6 +3175,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3602,6 +3190,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3616,6 +3205,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3630,6 +3220,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3644,6 +3235,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3658,6 +3250,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3670,33 +3263,12 @@
                     {
                         "spellId": "deal_4_to_general",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": -4,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 0,
-                            "delay": 0
+                            "duration": 0
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -3706,10 +3278,7 @@
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -3718,15 +3287,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
-                            "onAttack": false,
-                            "onDeath": true,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onDeath": true
+                        }
                     }
                 ],
                 "defaultAp": 4,
@@ -3734,7 +3296,6 @@
                 "manaCost": 3,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -3747,33 +3308,12 @@
                     {
                         "spellId": "deal_4_to_general",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": -4,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 0,
-                            "delay": 0
+                            "duration": 0
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -3783,10 +3323,7 @@
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -3795,15 +3332,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
-                            "onAttack": false,
-                            "onDeath": true,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onDeath": true
+                        }
                     }
                 ],
                 "defaultAp": 4,
@@ -3811,7 +3341,6 @@
                 "manaCost": 3,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -3824,33 +3353,12 @@
                     {
                         "spellId": "deal_4_to_general",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
                             "hpChange": -4,
-                            "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": true,
-                            "removeBuffs": 0,
-                            "duration": 0,
-                            "delay": 0
+                            "duration": 0
                         },
                         "target": {
                             "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -3860,10 +3368,7 @@
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": true,
-                                "minion": false,
-                                "player": false
+                                "hero": true
                             },
                             "attackType": {
                                 "melee": true,
@@ -3872,15 +3377,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
-                            "onAttack": false,
-                            "onDeath": true,
-                            "onDefend": false,
-                            "continuous": false
-                        },
-                        "coolDown": 0,
-                        "manaCost": 0,
-                        "lastTurnUsed": 0
+                            "onDeath": true
+                        }
                     }
                 ],
                 "defaultAp": 4,
@@ -3888,7 +3386,6 @@
                 "manaCost": 3,
                 "price": 100,
                 "attackType": "MELEE",
-                "range": 0,
                 "remainingNumber": 20
             },
             {
@@ -3905,7 +3402,6 @@
                             "apChange": 0,
                             "hpChange": -7,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -3952,8 +3448,9 @@
                             "onPut": false,
                             "onAttack": true,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -3966,6 +3463,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -3982,7 +3480,6 @@
                             "apChange": 0,
                             "hpChange": -7,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -4029,8 +3526,9 @@
                             "onPut": false,
                             "onAttack": true,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4043,6 +3541,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4059,7 +3558,6 @@
                             "apChange": 0,
                             "hpChange": -7,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -4106,8 +3604,9 @@
                             "onPut": false,
                             "onAttack": true,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4120,6 +3619,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4134,6 +3634,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4148,6 +3649,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4162,6 +3664,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4178,29 +3681,12 @@
                             "apChange": 0,
                             "hpChange": -4,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -4222,11 +3708,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
                             "onAttack": true,
-                            "onDeath": false,
-                            "onDefend": true,
-                            "continuous": false
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4239,6 +3722,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4255,29 +3739,12 @@
                             "apChange": 0,
                             "hpChange": -4,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -4299,11 +3766,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
                             "onAttack": true,
-                            "onDeath": false,
-                            "onDefend": true,
-                            "continuous": false
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4316,6 +3780,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4332,29 +3797,12 @@
                             "apChange": 0,
                             "hpChange": -4,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -4376,11 +3824,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
                             "onAttack": true,
-                            "onDeath": false,
-                            "onDefend": true,
-                            "continuous": false
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4393,6 +3838,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4408,6 +3854,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4423,6 +3870,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4438,6 +3886,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4454,29 +3903,12 @@
                             "apChange": 0,
                             "hpChange": 3,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -4498,11 +3930,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
                             "onAttack": true,
-                            "onDeath": false,
-                            "onDefend": true,
-                            "continuous": false
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4515,6 +3944,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4531,29 +3961,12 @@
                             "apChange": 0,
                             "hpChange": 3,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -4575,11 +3988,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
                             "onAttack": true,
-                            "onDeath": false,
-                            "onDefend": true,
-                            "continuous": false
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4592,6 +4002,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4608,29 +4019,12 @@
                             "apChange": 0,
                             "hpChange": 3,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": true,
                             "removeBuffs": 0,
+                            "durable": true,
                             "duration": 1,
                             "delay": 0
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "dimensions": {
                                 "row": 20,
                                 "column": 20
@@ -4652,11 +4046,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
                             "onAttack": true,
-                            "onDeath": false,
-                            "onDefend": true,
-                            "continuous": false
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4669,6 +4060,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4681,50 +4073,19 @@
                     {
                         "spellId": "draw_a_card",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
-                            "hpChange": 0,
-                            "mpChange": 0,
-                            "cardDraw": 1,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": false,
-                            "removeBuffs": 0,
-                            "duration": 0,
-                            "delay": 0
+                            "cardDraw": 1
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "owner": {
                                 "own": true,
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": false,
-                                "minion": false,
                                 "player": true
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4737,6 +4098,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4749,50 +4111,19 @@
                     {
                         "spellId": "draw_a_card",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
-                            "hpChange": 0,
-                            "mpChange": 0,
-                            "cardDraw": 1,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": false,
-                            "removeBuffs": 0,
-                            "duration": 0,
-                            "delay": 0
+                            "cardDraw": 1
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "owner": {
                                 "own": true,
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": false,
-                                "minion": false,
                                 "player": true
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4805,6 +4136,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4817,50 +4149,19 @@
                     {
                         "spellId": "draw_a_card",
                         "action": {
-                            "enemyHitChanges": 0,
-                            "apChange": 0,
-                            "hpChange": 0,
-                            "mpChange": 0,
-                            "cardDraw": 1,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
-                            "durable": false,
-                            "removeBuffs": 0,
-                            "duration": 0,
-                            "delay": 0
+                            "cardDraw": 1
                         },
                         "target": {
-                            "isRelatedToCardOwnerPosition": false,
-                            "isForAroundOwnHero": false,
-                            "isRandom": false,
-                            "isForDeckCards": false,
                             "owner": {
                                 "own": true,
                                 "enemy": false
                             },
                             "cardType": {
-                                "cell": false,
-                                "hero": false,
-                                "minion": false,
                                 "player": true
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4873,6 +4174,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4887,6 +4189,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4901,6 +4204,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4915,6 +4219,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4930,6 +4235,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 99,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4945,6 +4251,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 99,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4960,6 +4267,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 99,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -4976,7 +4284,6 @@
                             "apChange": 0,
                             "hpChange": -4,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -5023,8 +4330,9 @@
                             "onPut": false,
                             "onAttack": true,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5037,6 +4345,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5053,7 +4362,6 @@
                             "apChange": 0,
                             "hpChange": -4,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -5100,8 +4408,9 @@
                             "onPut": false,
                             "onAttack": true,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5114,6 +4423,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5130,7 +4440,6 @@
                             "apChange": 0,
                             "hpChange": -4,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -5177,8 +4486,9 @@
                             "onPut": false,
                             "onAttack": true,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5191,6 +4501,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5206,6 +4517,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 99,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5221,6 +4533,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 99,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5236,6 +4549,7 @@
                 "price": 100,
                 "attackType": "HYBRID",
                 "range": 99,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5250,6 +4564,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5264,6 +4579,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5278,6 +4594,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5293,6 +4610,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5308,6 +4626,7 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5323,6 +4642,55 @@
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Firefang Snake",
+                "description": "",
+                "cardId": "duelyst_FirefangSnake_1",
+                "spriteName": "neutral_firefang_snake",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 1,
+                "defaultHp": 1,
+                "manaCost": 0,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Firefang Snake",
+                "description": "",
+                "cardId": "duelyst_FirefangSnake_2",
+                "spriteName": "neutral_firefang_snake",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 1,
+                "defaultHp": 1,
+                "manaCost": 0,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Firefang Snake",
+                "description": "",
+                "cardId": "duelyst_FirefangSnake_3",
+                "spriteName": "neutral_firefang_snake",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 1,
+                "defaultHp": 1,
+                "manaCost": 0,
+                "price": 100,
+                "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             }
         ],
@@ -5341,7 +4709,6 @@
                             "apChange": 0,
                             "hpChange": 3,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -5388,8 +4755,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5401,6 +4769,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5417,7 +4786,6 @@
                             "apChange": 0,
                             "hpChange": 3,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -5464,8 +4832,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5477,6 +4846,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5493,7 +4863,6 @@
                             "apChange": 0,
                             "hpChange": 3,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -5540,8 +4909,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5553,6 +4923,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5569,7 +4940,6 @@
                             "apChange": 0,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": true,
                             "makeDisarm": false,
@@ -5616,8 +4986,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5629,6 +5000,7 @@
                 "manaCost": 0,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5645,7 +5017,6 @@
                             "apChange": 0,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": true,
                             "makeDisarm": false,
@@ -5692,8 +5063,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5705,6 +5077,7 @@
                 "manaCost": 0,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5721,7 +5094,6 @@
                             "apChange": 0,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": true,
                             "makeDisarm": false,
@@ -5768,8 +5140,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5781,6 +5154,7 @@
                 "manaCost": 0,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5797,7 +5171,6 @@
                             "apChange": 0,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -5844,8 +5217,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5857,6 +5231,7 @@
                 "manaCost": 9,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5873,7 +5248,6 @@
                             "apChange": 0,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -5920,8 +5294,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -5933,6 +5308,7 @@
                 "manaCost": 9,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -5949,7 +5325,6 @@
                             "apChange": 0,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -5996,8 +5371,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6009,6 +5385,7 @@
                 "manaCost": 9,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6025,7 +5402,6 @@
                             "apChange": 0,
                             "hpChange": 8,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6072,8 +5448,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6085,6 +5462,7 @@
                 "manaCost": 4,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6101,7 +5479,6 @@
                             "apChange": 0,
                             "hpChange": 8,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6148,8 +5525,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6161,6 +5539,7 @@
                 "manaCost": 4,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6177,7 +5556,6 @@
                             "apChange": 0,
                             "hpChange": 8,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6224,8 +5602,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6237,6 +5616,7 @@
                 "manaCost": 4,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6253,7 +5633,6 @@
                             "apChange": 0,
                             "hpChange": -3,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6300,8 +5679,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6313,6 +5693,7 @@
                 "manaCost": 6,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6329,7 +5710,6 @@
                             "apChange": 0,
                             "hpChange": -3,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6376,8 +5756,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6389,6 +5770,7 @@
                 "manaCost": 6,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6405,7 +5787,6 @@
                             "apChange": 0,
                             "hpChange": -3,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6452,8 +5833,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6465,6 +5847,7 @@
                 "manaCost": 6,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6481,7 +5864,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6528,8 +5910,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6542,7 +5925,6 @@
                             "apChange": 2,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6589,8 +5971,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6602,6 +5985,7 @@
                 "manaCost": 3,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6618,7 +6002,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6665,8 +6048,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6679,7 +6063,6 @@
                             "apChange": 2,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6726,8 +6109,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6739,6 +6123,7 @@
                 "manaCost": 3,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6755,7 +6140,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6802,8 +6186,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6816,7 +6201,6 @@
                             "apChange": 2,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6863,8 +6247,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6876,6 +6261,7 @@
                 "manaCost": 3,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6892,7 +6278,6 @@
                             "apChange": 0,
                             "hpChange": -3,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -6939,8 +6324,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -6952,6 +6338,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -6968,7 +6355,6 @@
                             "apChange": 0,
                             "hpChange": -3,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -7015,8 +6401,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7028,6 +6415,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -7044,7 +6432,6 @@
                             "apChange": 0,
                             "hpChange": -3,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -7091,8 +6478,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7104,6 +6492,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -7120,19 +6509,6 @@
                             "apChange": 3,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": false,
                             "removeBuffs": 0,
                             "duration": 1,
@@ -7164,11 +6540,7 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7180,6 +6552,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -7196,19 +6569,6 @@
                             "apChange": 3,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": false,
                             "removeBuffs": 0,
                             "duration": 1,
@@ -7240,11 +6600,7 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7256,6 +6612,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -7272,19 +6629,6 @@
                             "apChange": 3,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
-                            "poison": false,
-                            "makeStun": false,
-                            "makeDisarm": false,
-                            "noDisarm": false,
-                            "noPoison": false,
-                            "noStun": false,
-                            "noBadEffect": false,
-                            "noAttackFromWeakerOnes": false,
-                            "disableHolyBuff": false,
-                            "addSpell": false,
-                            "killsTarget": false,
-                            "isForGladiator": false,
                             "durable": false,
                             "removeBuffs": 0,
                             "duration": 1,
@@ -7316,11 +6660,7 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": true,
-                            "onAttack": false,
-                            "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "onPut": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7332,10 +6672,11 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
-                "name": "Scion\u0027s First Wish",
+                "name": "Scion's First Wish",
                 "description": "Give a friendly minion +1/+1. Draw a card",
                 "cardId": "duelyst_ScionsFirstWish_1",
                 "spriteName": "icon_f3_scionsfirstwish",
@@ -7395,8 +6736,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7408,10 +6750,11 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
-                "name": "Scion\u0027s First Wish",
+                "name": "Scion's First Wish",
                 "description": "Give a friendly minion +1/+1. Draw a card",
                 "cardId": "duelyst_ScionsFirstWish_2",
                 "spriteName": "icon_f3_scionsfirstwish",
@@ -7471,8 +6814,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7484,10 +6828,11 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
-                "name": "Scion\u0027s First Wish",
+                "name": "Scion's First Wish",
                 "description": "Give a friendly minion +1/+1. Draw a card",
                 "cardId": "duelyst_ScionsFirstWish_3",
                 "spriteName": "icon_f3_scionsfirstwish",
@@ -7547,8 +6892,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7560,6 +6906,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -7576,7 +6923,6 @@
                             "apChange": 5,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -7623,8 +6969,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7636,6 +6983,7 @@
                 "manaCost": 3,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -7652,7 +7000,6 @@
                             "apChange": 5,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -7699,8 +7046,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7712,6 +7060,7 @@
                 "manaCost": 3,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -7728,7 +7077,6 @@
                             "apChange": 5,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -7775,8 +7123,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7788,6 +7137,7 @@
                 "manaCost": 3,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -7804,7 +7154,6 @@
                             "apChange": 2,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -7851,8 +7200,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7864,6 +7214,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -7880,7 +7231,6 @@
                             "apChange": 2,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -7927,8 +7277,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -7940,6 +7291,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -7956,7 +7308,6 @@
                             "apChange": 2,
                             "hpChange": 0,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8003,8 +7354,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8016,6 +7368,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8032,7 +7385,6 @@
                             "apChange": 0,
                             "hpChange": -8,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8079,8 +7431,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8092,6 +7445,7 @@
                 "manaCost": 8,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8108,7 +7462,6 @@
                             "apChange": 0,
                             "hpChange": -8,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8155,8 +7508,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8168,6 +7522,7 @@
                 "manaCost": 8,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8184,7 +7539,6 @@
                             "apChange": 0,
                             "hpChange": -8,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8231,8 +7585,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8244,6 +7599,7 @@
                 "manaCost": 8,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8260,7 +7616,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8307,8 +7662,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8320,6 +7676,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8336,7 +7693,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8383,8 +7739,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8396,6 +7753,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8412,7 +7770,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8459,8 +7816,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8472,6 +7830,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8488,7 +7847,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8535,8 +7893,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8549,7 +7908,6 @@
                             "apChange": 0,
                             "hpChange": 2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8596,8 +7954,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8609,6 +7968,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8625,7 +7985,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8672,8 +8031,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8686,7 +8046,6 @@
                             "apChange": 0,
                             "hpChange": 2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8733,8 +8092,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8746,6 +8106,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8762,7 +8123,6 @@
                             "apChange": 0,
                             "hpChange": -2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8809,8 +8169,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8823,7 +8184,6 @@
                             "apChange": 0,
                             "hpChange": 2,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8870,8 +8230,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8883,6 +8244,7 @@
                 "manaCost": 1,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8899,7 +8261,6 @@
                             "apChange": 1,
                             "hpChange": 1,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -8946,8 +8307,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -8959,6 +8321,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -8975,7 +8338,6 @@
                             "apChange": 1,
                             "hpChange": 1,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -9022,8 +8384,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -9035,6 +8398,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             },
             {
@@ -9051,7 +8415,6 @@
                             "apChange": 1,
                             "hpChange": 1,
                             "mpChange": 0,
-                            "cardDraw": 0,
                             "poison": false,
                             "makeStun": false,
                             "makeDisarm": false,
@@ -9098,8 +8461,9 @@
                             "onPut": true,
                             "onAttack": false,
                             "onDeath": false,
-                            "onDefend": false,
-                            "continuous": false
+                            "specialPower": false,
+                            "onStart": false,
+                            "onDefend": false
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -9111,6 +8475,7 @@
                 "manaCost": 2,
                 "price": 100,
                 "range": 0,
+                "hasCombo": false,
                 "remainingNumber": 20
             }
         ]
