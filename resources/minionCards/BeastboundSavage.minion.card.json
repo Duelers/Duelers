@@ -1,6 +1,6 @@
 {
   "name": "Beastbound Savage",
-  "description": "Celerity. After attacking, deal 2 damage to all surrounding enemies",
+  "description": "Celerity.\n After attacking, deal 2 damage to all surrounding enemies",
   "cardId": "BeastboundSavage",
   "spriteName": "neutral_beastmaster",
   "type": "MINION",
