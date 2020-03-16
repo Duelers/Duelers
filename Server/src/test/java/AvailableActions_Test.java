@@ -31,7 +31,7 @@ public class AvailableActions_Test {
         ServerTroop troop = new ServerTroop(makeMinionCard(), friendlyPlayerNumber);
         troop.setCell(cell);
         troop.setCanMove(true);
-        game.getGameMap().addTroop(friendlyPlayerNumber, troop);
+        game.getGameMap().addTroop(troop);
         game.getCurrentTurnPlayer().addTroop(troop);
         return troop;
     }
@@ -41,7 +41,7 @@ public class AvailableActions_Test {
         ServerTroop troop = new ServerTroop(makeMinionCard(), enemyPlayerNumber);
         troop.setCell(cell);
         troop.setCanMove(true);
-        game.getGameMap().addTroop(enemyPlayerNumber, troop);
+        game.getGameMap().addTroop(troop);
         return troop;
     }
 

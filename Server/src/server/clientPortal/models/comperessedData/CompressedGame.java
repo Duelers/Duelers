@@ -7,14 +7,14 @@ import server.gameCenter.models.map.GameMap;
 public class CompressedGame {
     private final Player playerOne;
     private final Player playerTwo;
-    private final CompressedGameMap gameMap;
+    private final GameMap gameMap;
     private final int turnNumber;
     private final GameType gameType;
 
     public CompressedGame(Player playerOne, Player playerTwo, GameMap gameMap, int turnNumber, GameType gameType) {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
-        this.gameMap = gameMap.toCompressedGameMap();
+        this.gameMap = gameMap;
         this.turnNumber = turnNumber;
         this.gameType = gameType;
     }

@@ -99,7 +99,7 @@ public class AvailableActions {
             if (remainingMovement > 0) {
                 ArrayList<Cell> manhattanAdjacentCells = game.getGameMap().getManhattanAdjacentCells(currentCell);
                 for (Cell adjacentCell : manhattanAdjacentCells) {
-                    ServerTroop troopInSpace = game.getGameMap().getTroop(adjacentCell);
+                    ServerTroop troopInSpace = game.getGameMap().getTroopAtLocation(adjacentCell);
 
                     boolean blockedByAnything = troopInSpace != null;
                     if (!blockedByAnything) {
@@ -125,8 +125,8 @@ public class AvailableActions {
         boolean isProvoked = false;
         List<Cell> neighbourCells = game.getGameMap().getNearbyCells(troopCell);
         for (Cell nCell : neighbourCells) {
-            if (game.getGameMap().getTroop(nCell) != null) {
-                ServerTroop nearbyUnit = game.getGameMap().getTroop(nCell);
+            if (game.getGameMap().getTroopAtLocation(nCell) != null) {
+                ServerTroop nearbyUnit = game.getGameMap().getTroopAtLocation(nCell);
                 // is provoked?
                 if (nearbyUnit.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
                     isProvoked = true;
