@@ -5165,7 +5165,7 @@
         "spells": [
             {
                 "name": "Arms Race",
-                "description": "Both Generals gain 1 attack",
+                "description": "Both Generals gain +1 attack",
                 "cardId": "duelyst_ArmsRace_1",
                 "spriteName": "icon_f1_enthrall",
                 "type": "SPELL",
@@ -5242,7 +5242,7 @@
             },
             {
                 "name": "Arms Race",
-                "description": "Both Generals gain 1 attack",
+                "description": "Both Generals gain +1 attack",
                 "cardId": "duelyst_ArmsRace_2",
                 "spriteName": "icon_f1_enthrall",
                 "type": "SPELL",
@@ -5319,7 +5319,7 @@
             },
             {
                 "name": "Arms Race",
-                "description": "Both Generals gain 1 attack",
+                "description": "Both Generals gain +1 attack",
                 "cardId": "duelyst_ArmsRace_3",
                 "spriteName": "icon_f1_enthrall",
                 "type": "SPELL",

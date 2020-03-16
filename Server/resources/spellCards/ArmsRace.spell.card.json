@@ -1,6 +1,6 @@
 {
   "name": "Arms Race",
-  "description": "Both Generals gain 1 attack",
+  "description": "Both Generals gain +1 attack",
   "cardId": "ArmsRace",
   "spriteName": "icon_f1_enthrall",
   "type": "SPELL",
