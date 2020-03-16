@@ -7,26 +7,41 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GameMap<TroopType extends Troop> {
+public class BaseGameMap<TroopType extends Troop> {
     protected static final int NUM_ROWS = Constants.NUMBER_OF_ROWS;
     protected static final int NUM_COLUMNS = Constants.NUMBER_OF_COLUMNS;
 
-    protected final Cell[][] cells = new Cell[NUM_ROWS][NUM_COLUMNS];
+    protected final Cell[][] cells;
     protected final List<TroopType> troops = new ArrayList<>();
     protected CellEffect[] cellEffects;
 
-    public GameMap(Cell[][] cells, List<TroopType> troops) {
+    /**
+     * If we want to add items to the board on startup (eg terrain, mana springs, etc)
+     * If can be placed here by setting cell[x][y] as the item
+     * (0,4) | (2,5) | (4,4) are the correct coordinates for mana springs.
+     */
+    public BaseGameMap() {
+        this.cells = new Cell[NUM_ROWS][NUM_COLUMNS];
+        for (int i = 0; i < NUM_ROWS; i++) {
+            for (int j = 0; j < NUM_COLUMNS; j++) {
+                cells[i][j] = new Cell(i, j);
+            }
+        }
+    }
+
+    public BaseGameMap(Cell[][] cells, List<TroopType> troops) {
+        this.cells = new Cell[NUM_ROWS][NUM_COLUMNS];
         for (int i = 0; i < NUM_ROWS; i++) {
             System.arraycopy(cells[i], 0, this.cells[i], 0, NUM_COLUMNS);
         }
         this.troops.addAll(troops);
     }
 
-    public static int getRowNumber() {
+    public static int getNumRows() {
         return NUM_ROWS;
     }
 
-    public static int getColumnNumber() {
+    public static int getNumColumns() {
         return NUM_COLUMNS;
     }
 
@@ -34,8 +49,12 @@ public class GameMap<TroopType extends Troop> {
         return cells;
     }
 
-    public List<Troop> getTroops() {
+    public List<TroopType> getTroops() {
         return Collections.unmodifiableList(troops);
+    }
+
+    public boolean isInMap(Cell cell) {
+        return isInMap(cell.getRow(), cell.getColumn());
     }
 
     public static boolean isInMap(int row, int column) {
@@ -70,7 +89,7 @@ public class GameMap<TroopType extends Troop> {
     }
 
     /**
-     * Get the manhattan adjacent neighbours cell, not including diagonals..
+     * Get the manhattan adjacent neighbours cell, not including diagonals.
      * Do not return the cell itself.
      */
     public ArrayList<Cell> getManhattanAdjacentCells(Cell cell) {

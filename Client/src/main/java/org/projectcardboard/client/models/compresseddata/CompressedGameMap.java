@@ -1,18 +1,16 @@
 package org.projectcardboard.client.models.compresseddata;
 
-import shared.Constants;
 import shared.models.game.Troop;
 import shared.models.game.map.CellEffect;
 import shared.models.game.map.Cell;
-import shared.models.game.map.GameMap;
+import shared.models.game.map.BaseGameMap;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class CompressedGameMap extends GameMap<Troop> {
+public class CompressedGameMap extends BaseGameMap<Troop> {
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     //just for testing BattleView
