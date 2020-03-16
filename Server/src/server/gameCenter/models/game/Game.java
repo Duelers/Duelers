@@ -458,7 +458,7 @@ public abstract class Game {
         }
 
         troop.setCell(cell);
-        gameMap.addTroop(playerNumber, troop);
+        gameMap.addTroop(troop);
         GameServer.getInstance().sendTroopUpdateMessage(this, troop);
     }
 

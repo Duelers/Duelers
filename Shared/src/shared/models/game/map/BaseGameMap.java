@@ -126,11 +126,6 @@ public class BaseGameMap<TroopType extends Troop> {
         return troops;
     }
 
-    private TroopType getTroopAtLocation(int row, int column) {
-        Cell cell = new Cell(row, column);
-        return getTroopAtLocation(cell);
-    }
-
     public TroopType getTroopAtLocation(Cell cell) {
         for (TroopType troop : troops) {
             if (troop.getCell().equals(cell)) {
@@ -149,7 +144,7 @@ public class BaseGameMap<TroopType extends Troop> {
         return null;
     }
 
-    public void addTroop(int playerNumber, TroopType troop) {
+    public void addTroop(TroopType troop) {
         this.troops.add(troop);
     }
 
