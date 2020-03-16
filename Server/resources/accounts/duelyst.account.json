@@ -1285,12 +1285,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
                             "onAttack": true,
-                            "onDeath": false,
-                            "specialPower": false,
-                            "onStart": false,
-                            "onDefend": true
+                            "onCounterAttack": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -1345,12 +1341,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
                             "onAttack": true,
-                            "onDeath": false,
-                            "specialPower": false,
-                            "onStart": false,
-                            "onDefend": true
+                            "onCounterAttack": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -1405,12 +1397,8 @@
                             }
                         },
                         "availabilityType": {
-                            "onPut": false,
                             "onAttack": true,
-                            "onDeath": false,
-                            "specialPower": false,
-                            "onStart": false,
-                            "onDefend": true
+                            "onCounterAttack": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4222,7 +4210,7 @@
                         },
                         "availabilityType": {
                             "onAttack": true,
-                            "onDefend": true
+                            "onCounterAttack": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4280,7 +4268,7 @@
                         },
                         "availabilityType": {
                             "onAttack": true,
-                            "onDefend": true
+                            "onCounterAttack": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4338,7 +4326,7 @@
                         },
                         "availabilityType": {
                             "onAttack": true,
-                            "onDefend": true
+                            "onCounterAttack": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4444,7 +4432,7 @@
                         },
                         "availabilityType": {
                             "onAttack": true,
-                            "onDefend": true
+                            "onCounterAttack": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4502,7 +4490,7 @@
                         },
                         "availabilityType": {
                             "onAttack": true,
-                            "onDefend": true
+                            "onCounterAttack": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -4560,7 +4548,7 @@
                         },
                         "availabilityType": {
                             "onAttack": true,
-                            "onDefend": true
+                            "onCounterAttack": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
