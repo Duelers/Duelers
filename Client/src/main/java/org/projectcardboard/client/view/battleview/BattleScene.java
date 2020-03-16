@@ -39,7 +39,7 @@ public class BattleScene extends Show {
 
     static {
         spellSpriteNames.put(SpellType.ATTACK, "fx_f4_shadownova");
-        spellSpriteNames.put(SpellType.PUT, "fx_f2_phoenixfire");
+        spellSpriteNames.put(SpellType.PUT, "fx_neutral_earthspikes");
         spellSpriteNames.put(SpellType.DEATH, "fx_f4_deathfire_crescendo");
         spellSpriteNames.put(SpellType.DEFEND, "fx_f2_bbs_spellsword");
         spellSpriteNames.put(SpellType.CONTINUOUS, "fx_f3_sandportal");
