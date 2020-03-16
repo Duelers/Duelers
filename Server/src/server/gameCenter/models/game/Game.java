@@ -169,7 +169,8 @@ public abstract class Game {
             try {
                 if (this.turnNumber == currentTurn)
                     changeTurn(getCurrentTurnPlayer().getUserName(), true);
-            } catch (LogicException ignored) {}
+            } catch (LogicException ignored) {
+            }
         };
         this.future = this.timer.schedule(this.task, Constants.TURN_TIME_LIMIT, TimeUnit.SECONDS);
     }
@@ -184,7 +185,7 @@ public abstract class Game {
         }
     }
 
-    private void drawCardsFromDeck(int cardsToDraw){
+    private void drawCardsFromDeck(int cardsToDraw) {
         ServerCard[] drawnCards = getCurrentTurnPlayer().getCardsFromDeck(cardsToDraw);
         getCurrentTurnPlayer().addCardsToHand(drawnCards);
         int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
@@ -207,7 +208,7 @@ public abstract class Game {
             getCurrentTurnPlayer().addCardsToHand(drawnCard);
             int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
             GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
-            GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,drawnCard);
+            GameServer.getInstance().sendCardsDrawnToHandMessage(this, deckSize, drawnCard);
             /*
             if (getCurrentTurnPlayer().addNextCardToHand()) {
                 ServerCard nextCard = getCurrentTurnPlayer().getNextCard();
@@ -411,8 +412,7 @@ public abstract class Game {
                 if (troop.getCard().getDescription().contains("Rush")) {
                     troop.setCanAttack(true);
                     troop.setCanMove(true);
-                }
-                else{
+                } else {
                     troop.setCanAttack(false);
                     troop.setCanMove(false);
                 }
@@ -433,7 +433,7 @@ public abstract class Game {
             applyOnPutSpells(card, gameMap.getCell(cell));
 
             // Announce in GameChat most recently played card.
-            if (!versusAi){
+            if (!versusAi) {
                 //sendMessage(String receiverClientName, String senderUsername, String receiverUsername, String text)
                 ChatCenter.getInstance().sendMessage(
                         DataCenter.getInstance().getClientName(getOtherTurnPlayer().getUserName()),
@@ -752,7 +752,7 @@ public abstract class Game {
             player.addCardsToHand(cardsDrawn);
             int deckSize = player.getDeck().getCards().size();
             GameServer.getInstance().sendGameUpdateMessage(this);
-            GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,cardsDrawn);
+            GameServer.getInstance().sendCardsDrawnToHandMessage(this, deckSize, cardsDrawn);
         }
     }
 
@@ -1074,7 +1074,8 @@ public abstract class Game {
 
             for (int i = rowMin; i <= rowMax; i++) {
                 for (int j = colMin; j <= colMax; j++) {
-                    if (gameMap.isInMap(i, j)) {
+                    Cell cell = new Cell(i, j);
+                    if (gameMap.isInMap(cell)) {
                         targetCells.add(gameMap.getCells()[i][j]);
                     }
                 }
@@ -1087,7 +1088,8 @@ public abstract class Game {
             int lastColumn = calculateLastCoordinate(firstColumn, dimensions.getColumn(), GameMap.getNumColumns());
             for (int i = firstRow; i < lastRow; i++) {
                 for (int j = firstColumn; j < lastColumn; j++) {
-                    if (gameMap.isInMap(i, j))
+                    Cell cell = new Cell(i, j);
+                    if (gameMap.isInMap(cell))
                         targetCells.add(gameMap.getCells()[i][j]);
                 }
             }

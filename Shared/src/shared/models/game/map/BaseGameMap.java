@@ -49,11 +49,9 @@ public class BaseGameMap<TroopType extends Troop> {
         return Collections.unmodifiableList(troops);
     }
 
-    public boolean isInMap(Cell cell) {
-        return isInMap(cell.getRow(), cell.getColumn());
-    }
-
-    public static boolean isInMap(int row, int column) {
+    public static boolean isInMap(Cell cell) {
+        int row = cell.getRow();
+        int column = cell.getColumn();
         boolean inLeftBorder = row >= 0;
         boolean inRightBorder = row < NUM_ROWS;
         boolean inTopBorder = column >= 0;
@@ -65,13 +63,14 @@ public class BaseGameMap<TroopType extends Troop> {
         return cells;
     }
 
-    public Cell getCell(Cell cell) {
-        return cells[cell.getRow()][cell.getColumn()];
+    public Cell getCell(int row, int column) {
+        Cell cell = new Cell(row, column);
+        return getCell(cell);
     }
 
-    public Cell getCell(int row, int column) {
-        if (isInMap(row, column)) {
-            return cells[row][column];
+    public Cell getCell(Cell cell) {
+        if (isInMap(cell)) {
+            return cells[cell.getRow()][cell.getColumn()];
         }
         return null;
     }
@@ -90,8 +89,8 @@ public class BaseGameMap<TroopType extends Troop> {
                 }
                 int new_row = row_offset + cell.getRow();
                 int new_column = column_offset + cell.getColumn();
-
-                if (isInMap(new_row, new_column)) {
+                Cell new_cell = new Cell(new_row, new_column);
+                if (isInMap(new_cell)) {
                     cells.add(new Cell(new_row, new_column));
                 }
             }
@@ -110,7 +109,8 @@ public class BaseGameMap<TroopType extends Troop> {
         for (short[] offset : offsets) {
             int new_row = offset[0] + cell.getRow();
             int new_column = offset[1] + cell.getColumn();
-            if (isInMap(new_row, new_column)) {
+            Cell new_cell = new Cell(new_row, new_column);
+            if (isInMap(new_cell)) {
                 cells.add(new Cell(new_row, new_column));
             }
         }
@@ -127,7 +127,7 @@ public class BaseGameMap<TroopType extends Troop> {
     }
 
     public TroopType getTroopAtLocation(Cell cell) {
-        for (TroopType troop : troops) {
+        for (TroopType troop : this.troops) {
             if (troop.getCell().equals(cell)) {
                 return troop;
             }
@@ -136,7 +136,7 @@ public class BaseGameMap<TroopType extends Troop> {
     }
 
     public TroopType getTroop(String cardId) {
-        for (TroopType troop : troops) {
+        for (TroopType troop : this.troops) {
             if (troop.getCard().getCardId().equalsIgnoreCase(cardId)) {
                 return troop;
             }
@@ -149,7 +149,7 @@ public class BaseGameMap<TroopType extends Troop> {
     }
 
     public void removeTroop(TroopType troop) {
-        troops.remove(troop);
+        this.troops.remove(troop);
     }
 
 }
