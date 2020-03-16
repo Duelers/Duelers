@@ -4,6 +4,7 @@ import shared.Constants;
 import shared.models.game.Troop;
 import shared.models.game.map.CellEffect;
 import shared.models.game.map.Cell;
+import shared.models.game.map.GameMap;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -11,72 +12,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CompressedGameMap {
-    private static final int NUM_ROWS = Constants.NUMBER_OF_ROWS;
-    private static final int NUM_COLUMNS = Constants.NUMBER_OF_COLUMNS;
-    private final Cell[][] cells;
-    private final ArrayList<Troop> troops;
-    private CellEffect[] cellEffects;
+public class CompressedGameMap extends GameMap<Troop> {
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     //just for testing BattleView
     public CompressedGameMap(Cell[][] cells, ArrayList<Troop> troops) {
-        this.cells = cells;
-        this.troops = troops;
-    }
-
-    public static int getRowNumber() {
-        return NUM_ROWS;
-    }
-
-    public static int getColumnNumber() {
-        return NUM_COLUMNS;
-    }
-
-    public static boolean isInMap(int row, int column) {
-        return row >= 0 && row < NUM_ROWS && column >= 0 && column < NUM_COLUMNS;
-    }
-
-    /**
-     * Get the 3x3 neighbours of a cell.
-     * Do not return the cell itself.
-     */
-    public ArrayList<Cell> getNearbyCells(Cell cell) {
-        ArrayList<Cell> cells = new ArrayList<>();
-
-        short[] offsets = {-1, 0, 1};
-        for (short row_offset : offsets) {
-            for (short column_offset : offsets) {
-                if (row_offset == 0 && column_offset == 0) {
-                    continue; // This is the starting cell.
-                }
-                int new_row = row_offset + cell.getRow();
-                int new_column = column_offset + cell.getColumn();
-
-                if (isInMap(new_row, new_column)) {
-                    cells.add(new Cell(new_row, new_column));
-                }
-            }
-        }
-        return cells;
-    }
-
-    /**
-     * Get the manhattan adjacent neighbours cell, not including diagonals..
-     * Do not return the cell itself.
-     */
-    public ArrayList<Cell> getManhattanAdjacentCells(Cell cell) {
-        ArrayList<Cell> cells = new ArrayList<>();
-
-        short[][] offsets = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-        for (short[] offset : offsets) {
-            int new_row = offset[0] + cell.getRow();
-            int new_column = offset[1] + cell.getColumn();
-            if (isInMap(new_row, new_column)) {
-                cells.add(new Cell(new_row, new_column));
-            }
-        }
-        return cells;
+        super(cells, troops);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
@@ -90,14 +31,6 @@ public class CompressedGameMap {
         support.removePropertyChangeListener(pcl);
     }
 
-    public Cell[][] getCells() {
-        return cells;
-    }
-
-    public List<Troop> getTroops() {
-        return Collections.unmodifiableList(troops);
-    }
-    
     public void addTroop(Troop troop) {
         troops.add(troop);
     }
