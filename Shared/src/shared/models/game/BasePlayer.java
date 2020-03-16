@@ -72,10 +72,6 @@ public class BasePlayer<
         return Collections.unmodifiableList(graveyard);
     }
 
-    public CardType getNextCard() {
-        return nextCard;
-    }
-
     public int getPlayerNumber() {
         return playerNumber;
     }

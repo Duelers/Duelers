@@ -20,7 +20,7 @@ public class Player extends BasePlayer<Card, Troop> {
                   int playerNumber,
                   List<Troop> troops,
                   Troop hero) {
-        super(userName, currentMP, hand, graveyard, nextCard, playerNumber, troops, hero);
+        super(userName, currentMP, hand, graveyard, playerNumber, troops, hero);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
@@ -36,7 +36,6 @@ public class Player extends BasePlayer<Card, Troop> {
 
     public void addCardsToHand(int deckSize, Card... drawnCards) {
         System.out.println("Current deck size: " + deckSize);
-        System.out.println(nextCard == null);
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }

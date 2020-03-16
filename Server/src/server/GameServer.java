@@ -254,17 +254,6 @@ public class GameServer {
         }
     }
 
-    public void sendNewNextCardSetMessage(Game game, ServerCard nextCard) {
-        for (Account account : game.getObservers()) {
-            String clientName = DataCenter.getInstance().getAccounts().get(account);
-            if (clientName == null) {
-                serverPrint("*Error: Client not found");
-                continue;
-            }
-            sendMessageAsync(Message.makeNewNextCardSetMessage(clientName, nextCard));
-        }
-    }
-
     public void sendTroopUpdateMessage(Game game, ServerTroop troop) {
         for (Account account : game.getObservers()) {
             String clientName = DataCenter.getInstance().getAccounts().get(account);
