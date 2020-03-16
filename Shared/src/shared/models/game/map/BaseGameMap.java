@@ -117,7 +117,7 @@ public class BaseGameMap<TroopType extends Troop> {
         return cells;
     }
 
-    public List<TroopType> getTroopsBelongingToPlayer(int playerNumber) {
+    public ArrayList<TroopType> getTroopsBelongingToPlayer(int playerNumber) {
         ArrayList<TroopType> troops = new ArrayList<>();
         for (TroopType troop : this.troops) {
             if (troop.getPlayerNumber() == playerNumber)
