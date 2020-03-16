@@ -1,4 +1,4 @@
-package org.projectcardboard.client.models.compresseddata;
+package org.projectcardboard.client.models.game.map;
 
 import shared.models.game.Troop;
 import shared.models.game.map.CellEffect;
@@ -9,10 +9,10 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class CompressedGameMap extends BaseGameMap<Troop> {
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
+public class GameMap extends BaseGameMap<Troop> {
+    private transient PropertyChangeSupport support = new PropertyChangeSupport(this);
 
-    public CompressedGameMap(Cell[][] cells, ArrayList<Troop> troops) {
+    public GameMap(Cell[][] cells, ArrayList<Troop> troops) {
         super(cells, troops);
     }
 

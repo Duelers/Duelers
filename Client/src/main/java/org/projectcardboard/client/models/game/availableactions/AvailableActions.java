@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.models.compresseddata.CompressedGame;
-import org.projectcardboard.client.models.compresseddata.CompressedGameMap;
 import org.projectcardboard.client.models.game.Player;
 
 import javafx.util.Pair;
+import org.projectcardboard.client.models.game.map.GameMap;
 import shared.models.card.AttackType;
 import shared.models.card.Card;
 import shared.models.game.Troop;
@@ -193,7 +193,7 @@ public class AvailableActions {
         return handInserts.stream().map(Insert::getCard).collect(Collectors.toList()).contains(card);
     }
 
-    public boolean canMove(CompressedGameMap gameMap, Player player, Troop troop, int row, int column) {
+    public boolean canMove(GameMap gameMap, Player player, Troop troop, int row, int column) {
         if (!troop.canMove()){
             return false;
         }
@@ -209,7 +209,7 @@ public class AvailableActions {
         return baseMovement.contains(new Cell(row, column));
     }
 
-    public boolean canAttack(CompressedGameMap gameMap, Player player, Troop troop, int row, int col) {
+    public boolean canAttack(GameMap gameMap, Player player, Troop troop, int row, int col) {
 
         if (!troop.canAttack()) {
             return false;
@@ -227,7 +227,7 @@ public class AvailableActions {
     }
 
 
-    private boolean isTroopProvoked(CompressedGameMap gameMap, Player player, Troop troop) {
+    private boolean isTroopProvoked(GameMap gameMap, Player player, Troop troop) {
         Cell currentPosition = troop.getCell();
         ArrayList<Cell> neighbourCells = gameMap.getNearbyCells(currentPosition);
 
@@ -247,7 +247,7 @@ public class AvailableActions {
     // public boolean canDeploySpellOnSquare(CompressedGame gameMap, CompressedPlayer player, CompressedCard card, int row, int column){
     //}
 
-    public boolean canDeployMinionOnSquare(CompressedGameMap gameMap, Player player, Card card, int row, int column) {
+    public boolean canDeployMinionOnSquare(GameMap gameMap, Player player, Card card, int row, int column) {
         // ToDo this duplicates the logic found in Server's "isLegalCellForMinion" function
         Cell cell = new Cell(row, column);
 
