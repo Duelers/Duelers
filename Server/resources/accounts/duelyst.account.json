@@ -1287,11 +1287,10 @@
                         "availabilityType": {
                             "onPut": false,
                             "onAttack": true,
-                            "onCounterAttack": true,
                             "onDeath": false,
                             "specialPower": false,
                             "onStart": false,
-                            "onDefend": false
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -1348,11 +1347,10 @@
                         "availabilityType": {
                             "onPut": false,
                             "onAttack": true,
-                            "onCounterAttack": true,
                             "onDeath": false,
                             "specialPower": false,
                             "onStart": false,
-                            "onDefend": false
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
@@ -1409,11 +1407,10 @@
                         "availabilityType": {
                             "onPut": false,
                             "onAttack": true,
-                            "onCounterAttack": true,
                             "onDeath": false,
                             "specialPower": false,
                             "onStart": false,
-                            "onDefend": false
+                            "onDefend": true
                         },
                         "coolDown": 0,
                         "manaCost": 0,
