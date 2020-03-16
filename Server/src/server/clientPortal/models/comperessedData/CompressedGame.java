@@ -1,21 +1,12 @@
 package server.clientPortal.models.comperessedData;
 
+import shared.models.game.BaseGame;
 import shared.models.game.GameType;
 import server.gameCenter.models.game.Player;
 import server.gameCenter.models.map.GameMap;
 
-public class CompressedGame {
-    private final Player playerOne;
-    private final Player playerTwo;
-    private final GameMap gameMap;
-    private final int turnNumber;
-    private final GameType gameType;
-
+public class CompressedGame extends BaseGame<Player, GameMap> {
     public CompressedGame(Player playerOne, Player playerTwo, GameMap gameMap, int turnNumber, GameType gameType) {
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
-        this.gameMap = gameMap;
-        this.turnNumber = turnNumber;
-        this.gameType = gameType;
+        super(playerOne, playerTwo, gameMap, turnNumber, gameType);
     }
 }
