@@ -39,7 +39,6 @@ public enum MessageType {
     CHANGE_ACCOUNT_TYPE,
     STOP_SHOW_GAME,
     ONLINE_GAME_SHOW_REQUEST,
-    SET_NEW_NEXT_CARD,
     ADD_TO_HAND,
     //SENDER:DUAL
     CHAT,

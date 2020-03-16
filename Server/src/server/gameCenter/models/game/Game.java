@@ -193,11 +193,6 @@ public abstract class Game {
         GameServer.getInstance().sendCardsDrawnToHandMessage(this, deckSize, drawnCards);
     }
 
-    public void setNewNextCard() {
-        getCurrentTurnPlayer().setNewNextCard();
-        GameServer.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard());
-    }
-
     public void replaceCard(String cardID) throws LogicException {
         if (getCurrentTurnPlayer().getCanReplaceCard()) {
             ServerCard removedCard = getCurrentTurnPlayer().removeCardFromHand(cardID);
@@ -210,18 +205,6 @@ public abstract class Game {
             int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
             GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
             GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,drawnCard);
-            /*
-            if (getCurrentTurnPlayer().addNextCardToHand()) {
-                ServerCard nextCard = getCurrentTurnPlayer().getNextCard();
-                int numTimesReplacedThisTurn = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
-                getCurrentTurnPlayer().setNumTimesReplacedThisTurn(numTimesReplacedThisTurn + 1);
-
-                GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
-                GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
-            }
-            */
-
-
         } else {
             System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
         }

@@ -17,12 +17,11 @@ public class BasePlayer<
     protected final ArrayList<CardType> hand = new ArrayList<>();
     protected List<TroopType> troops = new ArrayList<>();
     protected final ArrayList<CardType> graveyard = new ArrayList<>();
-    protected CardType nextCard;
     protected final int playerNumber;
     protected int deckSize;
 
     public BasePlayer(String userName, int currentMP,
-                      List<CardType> hand, List<CardType> graveyard, CardType nextCard,
+                      List<CardType> hand, List<CardType> graveyard,
                       int playerNumber,
                       List<TroopType> troops,
                       TroopType hero) {
@@ -30,7 +29,6 @@ public class BasePlayer<
         this.currentMP = currentMP;
         this.hand.addAll(hand);
         this.graveyard.addAll(graveyard);
-        this.nextCard = nextCard;
         this.playerNumber = playerNumber;
         this.troops.addAll(troops);
         this.hero = hero;

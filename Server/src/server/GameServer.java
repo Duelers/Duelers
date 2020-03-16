@@ -162,9 +162,6 @@ public class GameServer {
                 case MOVE_TROOP:
                     GameCenter.getInstance().moveTroop(message);
                     break;
-                case SET_NEW_NEXT_CARD:
-                    GameCenter.getInstance().setNewNextCard(message);
-                    break;
                 case REPLACE_CARD:
                     GameCenter.getInstance().replaceCard(message);
                     break;
