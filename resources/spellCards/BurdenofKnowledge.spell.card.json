@@ -1,16 +1,16 @@
 {
   "name": "Burden of Knowledge",
-  "description": "Deal 2 damage to your General. Draw a card",
+  "description": "Deal 1 damage to your General. Draw a card",
   "cardId": "BurdenofKnowledge",
   "spriteName": "icon_f3_glimpse",
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "sub_2_and_draw_1",
+      "spellId": "sub_2",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": -2,
+        "hpChange": -1,
         "mpChange": 0,
         "cardDraw": 1,
         "poison": false,
@@ -46,6 +46,68 @@
         "cardType": {
           "cell": false,
           "hero": true,
+          "minion": false,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
+      },
+      "coolDown": 0,
+      "manaCost": 0,
+      "lastTurnUsed": 0
+    },
+	    {
+      "spellId": "draw 1",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": 0,
+        "mpChange": 0,
+        "cardDraw": 1,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 0,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": false,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 1,
+          "column": 1
+        },
+        "owner": {
+          "own": true,
+          "enemy": false
+        },
+        "cardType": {
+          "cell": false,
+          "hero": false,
           "minion": false,
           "player": true
         },
