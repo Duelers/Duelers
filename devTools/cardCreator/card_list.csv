@@ -12,7 +12,7 @@ MINION,Beastbound Savage,"Celerity.
 MINION,Blistering Skorn,Opening Gambit: Deal 1 damage to everything (including itself),4,5,4,neutral_blisteringscorn
 MINION,Bloodshard Golem,Golem,4,3,3,neutral_golembloodshard
 MINION,Brightmoss Golem,Golem,4,9,5,neutral_golemnature
-SPELL,Burden of Knowledge,Deal 2 damage to your General. Draw a card,0,0,0,icon_f3_glimpse
+SPELL,Burden of Knowledge,Deal 1 damage to your General. Draw a card,0,0,0,icon_f3_glimpse
 MINION,Celestial Phantom,Destroy any enemy minion that Celestial Phantom attacks or counterattacks,1,5,3,f2_deathphantom
 SPELL,Dark Destruction,Destroy target enemy minion.,0,0,5,icon_f4_darktransformation
 SPELL,Doom,The enemy General is DOOMED and will die after three turns,0,0,9,icon_f4_doom
