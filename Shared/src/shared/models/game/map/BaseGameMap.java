@@ -45,10 +45,6 @@ public class BaseGameMap<TroopType extends Troop> {
         return NUM_COLUMNS;
     }
 
-    public Cell[][] getCells() {
-        return cells;
-    }
-
     public List<TroopType> getTroops() {
         return Collections.unmodifiableList(troops);
     }
@@ -63,6 +59,21 @@ public class BaseGameMap<TroopType extends Troop> {
         boolean inTopBorder = column >= 0;
         boolean inBottomBorder = column < NUM_COLUMNS;
         return inLeftBorder && inRightBorder && inTopBorder && inBottomBorder;
+    }
+
+    public Cell[][] getCells() {
+        return cells;
+    }
+
+    public Cell getCell(Cell cell) {
+        return cells[cell.getRow()][cell.getColumn()];
+    }
+
+    public Cell getCell(int row, int column) {
+        if (isInMap(row, column)) {
+            return cells[row][column];
+        }
+        return null;
     }
 
     /**
@@ -104,6 +115,46 @@ public class BaseGameMap<TroopType extends Troop> {
             }
         }
         return cells;
+    }
+
+    public List<TroopType> getTroopsBelongingToPlayer(int playerNumber) {
+        ArrayList<TroopType> troops = new ArrayList<>();
+        for (TroopType troop : this.troops) {
+            if (troop.getPlayerNumber() == playerNumber)
+                troops.add(troop);
+        }
+        return troops;
+    }
+
+    private TroopType getTroopAtLocation(int row, int column) {
+        Cell cell = new Cell(row, column);
+        return getTroopAtLocation(cell);
+    }
+
+    public TroopType getTroopAtLocation(Cell cell) {
+        for (TroopType troop : troops) {
+            if (troop.getCell().equals(cell)) {
+                return troop;
+            }
+        }
+        return null;
+    }
+
+    public TroopType getTroop(String cardId) {
+        for (TroopType troop : troops) {
+            if (troop.getCard().getCardId().equalsIgnoreCase(cardId)) {
+                return troop;
+            }
+        }
+        return null;
+    }
+
+    public void addTroop(int playerNumber, TroopType troop) {
+        this.troops.add(troop);
+    }
+
+    public void removeTroop(TroopType troop) {
+        troops.remove(troop);
     }
 
 }

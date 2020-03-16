@@ -4,8 +4,6 @@ import server.GameServer;
 import server.chatCenter.ChatCenter;
 import server.clientPortal.models.comperessedData.CompressedGame;
 import server.clientPortal.models.message.CardPosition;
-import server.clientPortal.models.message.ChatMessage;
-import server.clientPortal.models.message.Message;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.MatchHistory;
@@ -404,7 +402,7 @@ public abstract class Game {
             ServerCard card = player.insert(cardId);
 
             if (card.getType().equals(CardType.MINION)) {
-                if (gameMap.getTroop(cell) != null) {
+                if (gameMap.getTroopAtLocation(cell) != null) {
                     throw new ClientException("another troop is here.");
                 }
                 GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.MAP);
@@ -466,7 +464,7 @@ public abstract class Game {
 
     private boolean isLegalCellForMinion(Cell cell, ServerCard card) {
 
-        if (!(gameMap.getTroop(cell) == null)) {
+        if (!(gameMap.getTroopAtLocation(cell) == null)) {
             // square is not empty
             return false;
         }
@@ -922,7 +920,7 @@ public abstract class Game {
 
     private TargetData detectOnCounterAttackTarget(Spell spell, Cell cardCell, Cell clickCell) {
         TargetData targetData = new TargetData();
-        int playerNumber = gameMap.getTroop(clickCell).getPlayerNumber();
+        int playerNumber = gameMap.getTroopAtLocation(clickCell).getPlayerNumber();
         Player player = (getCurrentTurnPlayer().getPlayerNumber() == playerNumber) ? getCurrentTurnPlayer() : getOtherTurnPlayer();
         Cell heroCell = player.getHero().getCell();
 
@@ -951,7 +949,7 @@ public abstract class Game {
         TargetData targetData = new TargetData();
         Player player;
 
-        int playerNumber = gameMap.getTroop(cardCell).getPlayerNumber();
+        int playerNumber = gameMap.getTroopAtLocation(cardCell).getPlayerNumber();
 
         if (spell.getTarget().getOwner() != null) {
             if (spell.getTarget().getOwner().isOwn()) {

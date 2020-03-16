@@ -8,12 +8,10 @@ import shared.models.game.map.BaseGameMap;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CompressedGameMap extends BaseGameMap<Troop> {
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
-    //just for testing BattleView
     public CompressedGameMap(Cell[][] cells, ArrayList<Troop> troops) {
         super(cells, troops);
     }
@@ -27,35 +25,6 @@ public class CompressedGameMap extends BaseGameMap<Troop> {
 
     public void removePropertyChangeListener(PropertyChangeListener pcl) {
         support.removePropertyChangeListener(pcl);
-    }
-
-    public void addTroop(Troop troop) {
-        troops.add(troop);
-    }
-
-    public List<Troop> getPlayerTroop(int playerNumber) {
-        ArrayList<Troop> troops = new ArrayList<>();
-        for (Troop troop : this.troops) {
-            if (troop.getPlayerNumber() == playerNumber)
-                troops.add(troop);
-        }
-        return troops;
-    }
-
-    public Cell getCell(int row, int column) {
-        if (isInMap(row, column)) {
-            return cells[row][column];
-        }
-        return null;
-    }
-
-    public Troop getTroop(Cell cell) {
-        for (Troop troop : troops) {
-            if (troop.getCell().equals(cell)) {
-                return troop;
-            }
-        }
-        return null;
     }
 
     public void updateCellEffects(CellEffect[] cellEffects) {
@@ -89,15 +58,6 @@ public class CompressedGameMap extends BaseGameMap<Troop> {
 
     private void removeTroop(String cardId) {
         troops.removeIf(troop -> troop.getCard().getCardId().equalsIgnoreCase(cardId));
-    }
-
-    public Troop getTroop(String cardId) {
-        for (Troop troop : troops) {
-            if (troop.getCard().getCardId().equalsIgnoreCase(cardId)) {
-                return troop;
-            }
-        }
-        return null;
     }
 
     public int getCellEffect(int j, int i) {

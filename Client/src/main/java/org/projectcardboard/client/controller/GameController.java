@@ -50,8 +50,8 @@ public class GameController implements GameActions {
 
     public void setCurrentGame(CompressedGame currentGame) {
         this.currentGame = currentGame;
-        currentGame.getPlayerOne().setTroops(currentGame.getGameMap().getPlayerTroop(1));
-        currentGame.getPlayerTwo().setTroops(currentGame.getGameMap().getPlayerTroop(2));
+        currentGame.getPlayerOne().setTroops(currentGame.getGameMap().getTroopsBelongingToPlayer(1));
+        currentGame.getPlayerTwo().setTroops(currentGame.getGameMap().getTroopsBelongingToPlayer(2));
         int playerNumber = getPlayerNumber(currentGame);
         Platform.runLater(() -> {
             try {
@@ -113,7 +113,7 @@ public class GameController implements GameActions {
                 throw new InputException("troop can not move");
             }
 
-            if (currentGame.getGameMap().getTroop(new Cell(row, column)) != null) {
+            if (currentGame.getGameMap().getTroopAtLocation(new Cell(row, column)) != null) {
                 throw new InputException("cell is not empty");
             }
 
@@ -157,7 +157,7 @@ public class GameController implements GameActions {
     }
 
     private boolean validatePositionForInsert(Card card, int row, int column) {
-        return (card.getType().equals(CardType.SPELL)) || (currentGame.getGameMap().getTroop(new Cell(row, column)) == null);
+        return (card.getType().equals(CardType.SPELL)) || (currentGame.getGameMap().getTroopAtLocation(new Cell(row, column)) == null);
     }
 
 

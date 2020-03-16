@@ -102,7 +102,7 @@ public class AvailableActions {
             if (remainingMovement > 0) {
                 ArrayList<Cell> manhattanAdjacentCells = game.getGameMap().getManhattanAdjacentCells(currentCell);
                 for (Cell adjacentCell : manhattanAdjacentCells) {
-                    Troop troopInSpace = game.getGameMap().getTroop(adjacentCell);
+                    Troop troopInSpace = game.getGameMap().getTroopAtLocation(adjacentCell);
 
                     boolean blockedByAnything = troopInSpace != null;
                     if (!blockedByAnything) {
@@ -128,8 +128,8 @@ public class AvailableActions {
         boolean isProvoked = false;
         List<Cell> neighbourCells = game.getGameMap().getNearbyCells(troopCell);
         for (Cell nCell : neighbourCells) {
-            if (game.getGameMap().getTroop(nCell) != null) {
-                Troop nearbyUnit = game.getGameMap().getTroop(nCell);
+            if (game.getGameMap().getTroopAtLocation(nCell) != null) {
+                Troop nearbyUnit = game.getGameMap().getTroopAtLocation(nCell);
                 // is provoked?
                 if (nearbyUnit.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
                     isProvoked = true;
@@ -221,7 +221,7 @@ public class AvailableActions {
 
         if (isTroopProvoked(gameMap, player, troop)) {
             return getAttackPositions(troop).contains(new Cell(row, col))
-                    && gameMap.getTroop(new Cell(row, col)).getCard().getDescription().contains("Provoke");
+                    && gameMap.getTroopAtLocation(new Cell(row, col)).getCard().getDescription().contains("Provoke");
         }
         return getAttackPositions(troop).contains(new Cell(row, col));
     }
@@ -232,8 +232,8 @@ public class AvailableActions {
         ArrayList<Cell> neighbourCells = gameMap.getNearbyCells(currentPosition);
 
         for (Cell cell : neighbourCells) {
-            if (gameMap.getTroop(cell) != null) {
-                Troop nearbyUnit = gameMap.getTroop(cell);
+            if (gameMap.getTroopAtLocation(cell) != null) {
+                Troop nearbyUnit = gameMap.getTroopAtLocation(cell);
                 if (nearbyUnit.getPlayerNumber() != player.getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
                     return true;
                 }
@@ -251,7 +251,7 @@ public class AvailableActions {
         // ToDo this duplicates the logic found in Server's "isLegalCellForMinion" function
         Cell cell = new Cell(row, column);
 
-        if (gameMap.getTroop(cell) != null) { // square is occupied
+        if (gameMap.getTroopAtLocation(cell) != null) { // square is occupied
             return false;
         }
 
