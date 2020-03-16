@@ -46,16 +46,16 @@ import java.util.Random;
 
 public abstract class Game extends BaseGame<Player, GameMap> {
 
-    private final ArrayList<Buff> buffs = new ArrayList<>();
-    private final ArrayList<Buff> tempBuffs = new ArrayList<>();
-    private boolean isFinished;
-    private final ArrayList<Account> observers = new ArrayList<>();
+    private final transient ArrayList<Buff> buffs = new ArrayList<>();
+    private final transient ArrayList<Buff> tempBuffs = new ArrayList<>();
+    private transient boolean isFinished;
+    private final transient ArrayList<Account> observers = new ArrayList<>();
 
-    private boolean versusAi = false;
+    private transient boolean versusAi = false;
 
-    private final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
-    private Runnable task;
-    private ScheduledFuture<?> future;
+    private final transient ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+    private transient Runnable task;
+    private transient ScheduledFuture<?> future;
 
     /**
      * Fresh new game starting on turn 1.

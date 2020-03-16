@@ -12,11 +12,11 @@ import shared.models.game.GameType;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class CompressedGame extends BaseGame<Player, GameMap> {
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
+public class Game extends BaseGame<Player, GameMap> {
+    private transient PropertyChangeSupport support = new PropertyChangeSupport(this);
 
 
-    public CompressedGame(Player playerOne, Player playerTwo, GameMap gameMap, int turnNumber, GameType gameType) {
+    public Game(Player playerOne, Player playerTwo, GameMap gameMap, int turnNumber, GameType gameType) {
         super(playerOne, playerTwo, gameMap, turnNumber, gameType);
     }
 
@@ -102,7 +102,6 @@ public class CompressedGame extends BaseGame<Player, GameMap> {
         }
         gameMap.updateCellEffects(cellEffects);
     }
-
 
 
 }

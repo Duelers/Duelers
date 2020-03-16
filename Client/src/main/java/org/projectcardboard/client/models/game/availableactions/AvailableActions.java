@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.projectcardboard.client.controller.GameController;
-import org.projectcardboard.client.models.compresseddata.CompressedGame;
+import org.projectcardboard.client.models.compresseddata.Game;
 import org.projectcardboard.client.models.game.Player;
 
 import javafx.util.Pair;
@@ -24,7 +24,7 @@ public class AvailableActions {
     private int NumTimesReplacedThisTurn = 0;
     private int MaxNumReplacePerTurn = 1;
 
-    public void calculate(CompressedGame game) {
+    public void calculate(Game game) {
         clearEverything();
         Player ownPlayer = game.getCurrentTurnPlayer();
         Player otherPlayer = game.getOtherTurnPlayer();
@@ -60,7 +60,7 @@ public class AvailableActions {
         }
     }
 
-    public void calculateMoves(CompressedGame game) {
+    public void calculateMoves(Game game) {
         Player ownPlayer = game.getCurrentTurnPlayer();
         moves.clear();
         for (Troop troop : ownPlayer.getTroops()) {
@@ -73,7 +73,7 @@ public class AvailableActions {
     }
 
 
-    private ArrayList<Cell> calculateAvailableMovesForTroop(CompressedGame game, Troop troop) {
+    private ArrayList<Cell> calculateAvailableMovesForTroop(Game game, Troop troop) {
         Cell troopCell = troop.getCell();
 
         HashSet<Cell> walkableCells = new HashSet<>(); //Cells which the unit can move to.
@@ -124,7 +124,7 @@ public class AvailableActions {
         return new ArrayList<>(walkableCells);
     }
 
-    private boolean getIsProvoked(CompressedGame game, Cell troopCell) {
+    private boolean getIsProvoked(Game game, Cell troopCell) {
         boolean isProvoked = false;
         List<Cell> neighbourCells = game.getGameMap().getNearbyCells(troopCell);
         for (Cell nCell : neighbourCells) {
