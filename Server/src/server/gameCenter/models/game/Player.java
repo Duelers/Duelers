@@ -8,8 +8,6 @@ import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import shared.models.game.BasePlayer;
 
-import static org.mockito.ArgumentMatchers.contains;
-
 import java.util.*;
 
 public class Player extends BasePlayer<ServerCard, ServerTroop> {
@@ -30,7 +28,7 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
 
     ServerCard insert(String cardId) throws ClientException {
         ServerCard card = null;
-        Iterator iterator = hand.iterator();
+        Iterator<ServerCard> iterator = hand.iterator();
         while (iterator.hasNext()) {
             ServerCard card1 = (ServerCard) iterator.next();
             if (card1.getCardId().equalsIgnoreCase(cardId)) {
@@ -75,10 +73,11 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
 
     public ServerCard[] getCardsFromDeck(int cardsToDraw) {
         ServerCard[] drawnCards = new ServerCard[cardsToDraw];
+        Random RNGenerator = new Random();
 
         for(int i = 0; i < cardsToDraw; i++) {
             if (!deck.getCards().isEmpty()) {
-                int index = new Random().nextInt(deck.getCards().size());
+                int index = RNGenerator.nextInt(deck.getCards().size());
                 ServerCard drawnCard = deck.getCards().get(index);
                 drawnCards[i] = drawnCard;
                 try {
@@ -95,17 +94,21 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
 
     public ServerCard[] getCardsFromDeckNoDuplicate(int cardsToDraw, ServerCard card) {
         ServerCard[] drawnCards = new ServerCard[cardsToDraw];
+        Random RNGenerator = new Random();
+        int infiniteRedrawFailSafe = 10;
 
 		for(int i = 0; i < cardsToDraw; i++) {
             if (!deck.getCards().isEmpty()) {
-                int index = new Random().nextInt(deck.getCards().size());
+                int index = RNGenerator.nextInt(deck.getCards().size());
                 ServerCard drawnCard = deck.getCards().get(index);
-                if( drawnCard.IDSameAs(card.getCardId()) ){
+                if( drawnCard.IDSameAs(card.getCardId()) && infiniteRedrawFailSafe > 0){
                     System.out.println("Same card found, redrawing...");
+                    infiniteRedrawFailSafe--;
                     i--;
                     continue;
                 }
                 drawnCards[i] = drawnCard;
+                infiniteRedrawFailSafe = 10;
                 try {
                     deck.removeCard(drawnCard);
                 } catch (ClientException ignored) {
