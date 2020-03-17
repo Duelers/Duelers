@@ -8,6 +8,8 @@ import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import shared.models.game.BasePlayer;
 
+import static org.mockito.ArgumentMatchers.contains;
+
 import java.util.*;
 
 public class Player extends BasePlayer<ServerCard, ServerTroop> {
@@ -90,6 +92,30 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         }
         return drawnCards;
     }
+
+    public ServerCard[] getCardsFromDeckNoDuplicate(int cardsToDraw, ServerCard card) {
+        ServerCard[] drawnCards = new ServerCard[cardsToDraw];
+
+		for(int i = 0; i < cardsToDraw; i++) {
+            if (!deck.getCards().isEmpty()) {
+                int index = new Random().nextInt(deck.getCards().size());
+                ServerCard drawnCard = deck.getCards().get(index);
+                if( drawnCard.IDSameAs(card.getCardId()) ){
+                    i--;
+                    continue;
+                }
+                drawnCards[i] = drawnCard;
+                try {
+                    deck.removeCard(drawnCard);
+                } catch (ClientException ignored) {
+                    System.out.println("Unable to remove card from deck");
+                }
+            } else {
+                break;
+            }
+        }
+        return drawnCards;
+	}
 
     public void addCardsToHand(ServerCard... cards){
         for(ServerCard card : cards) {

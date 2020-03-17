@@ -189,7 +189,8 @@ public abstract class Game {
                 return;
             }
             getCurrentTurnPlayer().addCardToDeck(removedCard);
-            ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeck(1);
+            //ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeck(1);
+            ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeckNoDuplicate(1, removedCard);
             getCurrentTurnPlayer().addCardsToHand(drawnCard);
             int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
             GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
