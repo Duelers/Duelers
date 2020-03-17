@@ -39,7 +39,7 @@ public class LoginMenu extends Show {
                 root.getChildren().add(versionLabel);
             }
 
-            
+
             String serverName = getServerInfo();
             if (serverName != null) {
                 String ServerNameFullString = String.format("server: %s", serverName);
@@ -60,8 +60,7 @@ public class LoginMenu extends Show {
             return "local host";
         }
 
-        String uri = Config.getInstance().getProperty("SERVER_URI");
-        return uri;
+        return Config.getInstance().getProperty("SERVER_URI");
     }
 
     public String getClientVersionInfo() throws IOException {
