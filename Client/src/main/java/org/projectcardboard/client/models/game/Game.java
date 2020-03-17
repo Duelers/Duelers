@@ -1,4 +1,4 @@
-package org.projectcardboard.client.models.compresseddata;
+package org.projectcardboard.client.models.game;
 
 import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.map.GameMap;

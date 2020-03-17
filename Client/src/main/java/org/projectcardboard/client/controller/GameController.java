@@ -1,6 +1,6 @@
 package org.projectcardboard.client.controller;
 
-import org.projectcardboard.client.models.compresseddata.Game;
+import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.exceptions.InputException;
 import org.projectcardboard.client.models.game.GameActions;
 import org.projectcardboard.client.models.game.availableactions.AvailableActions;

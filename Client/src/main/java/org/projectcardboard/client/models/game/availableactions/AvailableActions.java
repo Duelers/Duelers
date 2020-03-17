@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.projectcardboard.client.controller.GameController;
-import org.projectcardboard.client.models.compresseddata.Game;
+import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.game.Player;
 
 import javafx.util.Pair;

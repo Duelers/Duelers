@@ -1,6 +1,6 @@
 package org.projectcardboard.client.models.message;
 
-import org.projectcardboard.client.models.compresseddata.Game;
+import org.projectcardboard.client.models.game.Game;
 
 import shared.models.game.GameType;
 

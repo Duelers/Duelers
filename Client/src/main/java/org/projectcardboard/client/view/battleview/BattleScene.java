@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
-import org.projectcardboard.client.models.compresseddata.Game;
+import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.GameActions;
 import shared.models.card.spell.AvailabilityType;

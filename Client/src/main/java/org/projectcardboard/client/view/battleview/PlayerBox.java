@@ -12,7 +12,7 @@ import java.util.HashMap;
 import javafx.scene.text.Text;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
-import org.projectcardboard.client.models.compresseddata.Game;
+import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.gui.*;
 

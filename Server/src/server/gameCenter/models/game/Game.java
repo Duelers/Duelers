@@ -2,7 +2,6 @@ package server.gameCenter.models.game;
 
 import server.GameServer;
 import server.chatCenter.ChatCenter;
-import server.clientPortal.models.comperessedData.CompressedGame;
 import server.clientPortal.models.message.CardPosition;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
@@ -81,10 +80,6 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         startTurnTimeLimit();
 
         GameServer.getInstance().sendGameUpdateMessage(this);
-    }
-
-    public CompressedGame toCompressedGame() {
-        return new CompressedGame(playerOne, playerTwo, gameMap, turnNumber, gameType);
     }
 
     private boolean canCommand(String username) {
