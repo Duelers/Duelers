@@ -15,8 +15,7 @@ import shared.models.card.CardType;
 
 import server.dataCenter.models.card.Deck;
 
-import shared.models.card.spell.Spell;
-import shared.models.card.spell.SpellAction;
+import shared.models.card.spell.*;
 
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
@@ -400,7 +399,8 @@ public abstract class Game {
             }
 
             Player player = getCurrentTurnPlayer();
-            ServerCard card = player.insert(cardId);
+            ServerCard card = player.getCardFromHand(cardId);
+            player.tryInsert(card);
 
             if (card.getType().equals(CardType.MINION)) {
                 if (gameMap.getTroopAtLocation(cell) != null) {
@@ -426,11 +426,14 @@ public abstract class Game {
 
                 GameServer.getInstance().sendTroopUpdateMessage(this, troop);
             }
+
+            applyOnPutSpells(card, gameMap.getCell(cell));
+            player.insert(card);
+
             if (card.getType().equals(CardType.SPELL)) {
                 player.addToGraveYard(card);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
             }
-            applyOnPutSpells(card, gameMap.getCell(cell));
 
             // Announce in GameChat most recently played card.
             if (!versusAi) {
@@ -493,11 +496,70 @@ public abstract class Game {
         return false;
     }
 
-    private void applyOnPutSpells(ServerCard card, Cell cell) {
+    private void applyOnPutSpells(ServerCard card, Cell cell) throws ClientException {
+        validateSingleTargetSpells(card, cell);
         for (Spell spell : card.getSpells()) {
             if (spell.getAvailabilityType().isOnPut()) {
                 applySpell(spell, detectTarget(spell, cell, cell, getCurrentTurnPlayer().getHero().getCell()));
             }
+        }
+    }
+
+    private void validateSingleTargetSpells(ServerCard card, Cell cell) throws ClientException {
+        for (Spell spell : card.getSpells()) {
+            if (!spell.getAvailabilityType().isOnPut()) {
+                continue;
+            }
+
+            Cell dimensions = spell.getTarget().getDimensions();
+            if (dimensions == null) {
+                continue;
+            }
+
+            boolean spellIsSingleTarget = dimensions.getRow() * dimensions.getColumn() == 1;
+            if (!spellIsSingleTarget) {
+                continue;
+            }
+
+            validateTarget(spell, cell);
+        }
+    }
+
+    private void validateTarget(Spell spell, Cell cell) throws ClientException {
+        Target target = spell.getTarget();
+        ServerTroop targetedTroop = gameMap.getTroopAtLocation(cell);
+        TargetCardType targetType = target.getCardType();
+        boolean spellIsForUnits = targetType.isMinion() || targetType.isHero();
+
+        if (spellIsForUnits && targetedTroop == null) {
+            throw new ClientException("Spell must be casted on units");
+        }
+
+        Owner owner = target.getOwner();
+        boolean spellIsForAllies = owner.isOwn() && !owner.isEnemy();
+        boolean targetIsAlly = targetedTroop.getPlayerNumber() == getCurrentTurnPlayer().getPlayerNumber();
+
+        if (spellIsForAllies && !targetIsAlly) {
+            throw new ClientException("Spell must be casted on allies");
+        }
+
+        boolean spellIsForEnemies = owner.isEnemy() && !owner.isOwn();
+
+        if (spellIsForEnemies && targetIsAlly) {
+            throw new ClientException("Spell must be casted on enemies");
+        }
+
+        CardType targetCardType = targetedTroop.getCard().getType();
+        boolean spellIsForMinions = targetType.isMinion() && !targetType.isHero();
+
+        if (spellIsForMinions && targetCardType == CardType.HERO) {
+            throw new ClientException("Spell must be casted on minions");
+        }
+
+        boolean spellIsForGenerals = targetType.isHero() && !targetType.isMinion();
+
+        if (spellIsForGenerals && targetCardType == CardType.MINION) {
+            throw new ClientException("Spell must be casted on generals");
         }
     }
 

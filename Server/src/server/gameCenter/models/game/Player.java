@@ -35,27 +35,26 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         this.maxNumReplacePerTurn = 1;
     }
 
-    ServerCard insert(String cardId) throws ClientException {
-        ServerCard card = null;
-        Iterator iterator = hand.iterator();
-        while (iterator.hasNext()) {
-            ServerCard card1 = (ServerCard) iterator.next();
-            if (card1.getCardId().equalsIgnoreCase(cardId)) {
-                card = card1;
-                break;
-            }
-        }
-
+    public void tryInsert(ServerCard card) throws ClientException {
         if (card == null)
             throw new ClientException("card id is not valid");
 
         if (card.getManaCost() > currentMP)
             throw new ClientException("not enough mana");
+    }
 
-        iterator.remove();
+    public void insert(ServerCard card) {
+        hand.remove(card);
         currentMP -= card.getManaCost();
+    }
 
-        return card;
+    public ServerCard getCardFromHand(String cardId) {
+        for (ServerCard card : hand) {
+            if (card.getCardId().equalsIgnoreCase(cardId)) {
+                return card;
+            }
+        }
+        return null;
     }
 
     public ServerCard removeCardFromHand(String cardID) throws ClientException {
