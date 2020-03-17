@@ -101,6 +101,7 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
                 int index = new Random().nextInt(deck.getCards().size());
                 ServerCard drawnCard = deck.getCards().get(index);
                 if( drawnCard.IDSameAs(card.getCardId()) ){
+                    System.out.println("Same card found, redrawing...");
                     i--;
                     continue;
                 }
