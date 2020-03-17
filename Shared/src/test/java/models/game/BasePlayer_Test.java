@@ -1,4 +1,4 @@
-package models.game;
+package test.java.models.game;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class BasePlayer_Test {
         ArrayList<Troop> troops = new ArrayList<>();
         troops.add(mockTroop);
         return new BasePlayer<>("userName", 0,
-                new ArrayList<>(), new ArrayList<>(), null, 1, troops, null);
+                new ArrayList<>(), new ArrayList<>(), 1, troops, null);
     }
 
     @Mock

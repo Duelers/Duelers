@@ -136,11 +136,6 @@ public class GameController implements GameActions {
     }
 
     @Override
-    public void setNewNextCard() {
-        Client.getInstance().addToSendingMessagesAndSend(Message.makeSetNewNextCardMessage(SERVER_NAME));
-    }
-
-    @Override
     public void replaceCard(String cardID) {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeNewReplaceCardMessage(SERVER_NAME, cardID));
     }

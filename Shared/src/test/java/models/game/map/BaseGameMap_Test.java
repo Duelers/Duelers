@@ -1,4 +1,4 @@
-package models.game.map;
+package test.java.models.game.map;
 
 import org.junit.Before;
 import org.junit.Test;

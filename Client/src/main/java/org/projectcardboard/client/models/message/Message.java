@@ -281,12 +281,6 @@ public class Message {
         return message;
     }
 
-    public static Message makeSetNewNextCardMessage(String receiver){
-        Message message = new Message(receiver);
-        message.messageType = MessageType.SET_NEW_NEXT_CARD;
-        return message;
-    }
-
     public static Message makeNewReplaceCardMessage(String serverName, String cardID) {
         Message message = new Message(serverName);
         message.messageType = MessageType.REPLACE_CARD;
