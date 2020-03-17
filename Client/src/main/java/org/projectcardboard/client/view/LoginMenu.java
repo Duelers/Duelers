@@ -39,13 +39,13 @@ public class LoginMenu extends Show {
                 root.getChildren().add(versionLabel);
             }
 
-
-            // Todo add Localization of 'server',  'local host'
-            String uri = Config.getInstance().getProperty("SERVER_URI");
-            Boolean isLocalConnection = Boolean.parseBoolean(Config.getInstance().getProperty("HOST_SERVER"));
-            String ServerName = String.format("server: %s", isLocalConnection ? "local host" : uri);
-            DefaultLabel ServerLabel = new DefaultLabel(ServerName, Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.DARKGRAY, 10, 30);
-            root.getChildren().add(ServerLabel);
+            
+            String serverName = getServerInfo();
+            if (serverName != null) {
+                String ServerNameFullString = String.format("server: %s", serverName);
+                DefaultLabel ServerLabel = new DefaultLabel(ServerNameFullString, Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.DARKGRAY, 10, 30);
+                root.getChildren().add(ServerLabel);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,25 +53,15 @@ public class LoginMenu extends Show {
     }
 
     public String getServerInfo(){
+
+        // Todo (1) add localisation. (2) Only reveal last bit of server. eg "test3" instead of "wss://mechaz.org/test3"
         Boolean isLocalConnection = Boolean.parseBoolean(Config.getInstance().getProperty("HOST_SERVER"));
         if (isLocalConnection){
             return "local host";
         }
 
         String uri = Config.getInstance().getProperty("SERVER_URI");
-        Pattern p = Pattern.compile("/(\\w*$)");
-        Matcher m = p.matcher(uri);
-        m.matches();
-
-        String serverName = "Production";
-        try {
-            serverName = m.group(0);
-        }
-        catch(Exception e){
-            // do nothing
-        }
-
-        return serverName;
+        return uri;
     }
 
     public String getClientVersionInfo() throws IOException {
