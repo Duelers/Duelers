@@ -9,8 +9,8 @@ import java.util.HashMap;
 
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
-import org.projectcardboard.client.models.compresseddata.CompressedGameMap;
 import org.projectcardboard.client.models.game.Player;
+import org.projectcardboard.client.models.game.map.GameMap;
 import org.projectcardboard.client.models.gui.CardPane;
 
 import javafx.application.Platform;
@@ -25,7 +25,7 @@ import shared.models.game.map.Cell;
 
 public class MapBox implements PropertyChangeListener {
     private final BattleScene battleScene;
-    private final CompressedGameMap gameMap;
+    private final GameMap gameMap;
     private final Group mapGroup;
     private final Polygon[][] cells = new Polygon[5][9];
     private final double[][] cellsX = new double[5][9];
@@ -37,7 +37,7 @@ public class MapBox implements PropertyChangeListener {
     private SelectionType selectionType;
 
 
-    MapBox(BattleScene battleScene, CompressedGameMap gameMap) {
+    MapBox(BattleScene battleScene, GameMap gameMap) {
         this.battleScene = battleScene;
         this.gameMap = gameMap;
         mapGroup = new Group();
@@ -52,14 +52,14 @@ public class MapBox implements PropertyChangeListener {
     }
 
     private void makePolygons() {
-        for (int j = 0; j < CompressedGameMap.getRowNumber(); j++) {
+        for (int j = 0; j < GameMap.getNumRows(); j++) {
             double upperWidth = (j * Constants.MAP_DOWNER_WIDTH + (6 - j) * Constants.MAP_UPPER_WIDTH) / 6;
             double downerWidth = ((j + 1) * Constants.MAP_DOWNER_WIDTH + (6 - (j + 1)) * Constants.MAP_UPPER_WIDTH) / 6;
             double upperY = Constants.MAP_HEIGHT * (upperWidth - Constants.MAP_UPPER_WIDTH) /
                     (Constants.MAP_DOWNER_WIDTH - Constants.MAP_UPPER_WIDTH);
             double downerY = Constants.MAP_HEIGHT * (downerWidth - Constants.MAP_UPPER_WIDTH) /
                     (Constants.MAP_DOWNER_WIDTH - Constants.MAP_UPPER_WIDTH);
-            for (int i = 0; i < CompressedGameMap.getColumnNumber(); i++) {
+            for (int i = 0; i < GameMap.getNumColumns(); i++) {
                 double x1 = (Constants.MAP_DOWNER_WIDTH - upperWidth) / 2 + i * upperWidth / 9;
                 double x2 = (Constants.MAP_DOWNER_WIDTH - upperWidth) / 2 + (i + 1) * upperWidth / 9;
                 double x3 = (Constants.MAP_DOWNER_WIDTH - downerWidth) / 2 + (i + 1) * downerWidth / 9;
@@ -83,8 +83,8 @@ public class MapBox implements PropertyChangeListener {
     }
 
     void addCircles() {
-        for (int j = 0; j < CompressedGameMap.getRowNumber(); j++) {
-            for (int i = 0; i < CompressedGameMap.getColumnNumber(); i++) {
+        for (int j = 0; j < GameMap.getNumRows(); j++) {
+            for (int i = 0; i < GameMap.getNumColumns(); i++) {
                 mapGroup.getChildren().add(new Circle(cellsX[j][i], cellsY[j][i], 2));
             }
         }
@@ -257,8 +257,8 @@ public class MapBox implements PropertyChangeListener {
     void updateMapColors() {
         updateSelectionType();
         Player player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
-        for (int row = 0; row < CompressedGameMap.getRowNumber(); row++) {
-            for (int column = 0; column < CompressedGameMap.getColumnNumber(); column++) {
+        for (int row = 0; row < GameMap.getNumRows(); row++) {
+            for (int column = 0; column < GameMap.getNumColumns(); column++) {
 
                 cells[row][column].setFill(Constants.defaultColor);
 
@@ -389,7 +389,7 @@ public class MapBox implements PropertyChangeListener {
         return spellSelected;
     }
 
-    CompressedGameMap getGameMap() {
+    GameMap getGameMap() {
         return gameMap;
     }
 

@@ -1,6 +1,7 @@
 package org.projectcardboard.client.models.compresseddata;
 
 import org.projectcardboard.client.models.game.Player;
+import org.projectcardboard.client.models.game.map.GameMap;
 import shared.models.card.CardType;
 import shared.models.card.Card;
 import shared.models.game.Troop;
@@ -13,7 +14,7 @@ import java.beans.PropertyChangeSupport;
 public class CompressedGame {
     private Player playerOne;
     private Player playerTwo;
-    private CompressedGameMap gameMap;
+    private GameMap gameMap;
     private int turnNumber;
     private GameType gameType;
 
@@ -99,7 +100,7 @@ public class CompressedGame {
         return playerTwo;
     }
 
-    public CompressedGameMap getGameMap() {
+    public GameMap getGameMap() {
         return gameMap;
     }
 
