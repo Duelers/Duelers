@@ -112,8 +112,12 @@ public class DataCenter extends Thread {
             }
             accounts.replace(account, client);
             clients.replace(client, account);
-            if(account.getCollection().Size() < dataBase.getOriginalCards().Size()){
-                System.out.println("Account " + account.getUsername() + "does not own all cards in current collection. Updating...");
+            
+            boolean ownsAllGenerals = account.getCollection().getHeroes().size() == dataBase.getOriginalCards().getHeroes().size();
+            boolean ownsAllMinions = (account.getCollection().getMinions().size()/3) == dataBase.getOriginalCards().getMinions().size();
+            boolean ownsAllSPells = (account.getCollection().getSpells().size()/3) == dataBase.getOriginalCards().getSpells().size();
+            if(!ownsAllGenerals || !ownsAllMinions || !ownsAllSPells) {
+                System.out.println("Account " + account.getUsername() + " does not own all cards in current collection. Updating...");
                 account.updateCollection(dataBase.getOriginalCards());
                 saveAccount(account);
             }
