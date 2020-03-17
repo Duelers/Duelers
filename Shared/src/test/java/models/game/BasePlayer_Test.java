@@ -1,4 +1,4 @@
-package models.game;
+package test.java.models.game;
 
 import org.junit.Before;
 import org.junit.Test;
