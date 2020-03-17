@@ -2,7 +2,7 @@
   "name": "Peacekeeper",
   "description": "Celerity, Airdrop, Provoke\n After attacking, deal 6 damage to all surrounding enemies",
   "cardId": "Peacekeeper",
-  "spriteName": "neutral_beastmaster",
+  "spriteName": "f1_peacekeeper",
   "type": "MINION",
     "spells": [ 
     {
@@ -55,12 +55,7 @@
         }
       },
       "availabilityType": {
-        "onPut": false,
         "onAttack": true,
-        "onDeath": false,
-        "specialPower": false,
-        "onStart": false,
-        "onDefend": false
       },
       "coolDown": 0,
       "manaCost": 0,
