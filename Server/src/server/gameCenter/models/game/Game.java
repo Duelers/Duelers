@@ -189,7 +189,7 @@ public abstract class Game {
                 return;
             }
             //ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeck(1);
-            ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeckNoDuplicate(1, removedCard);
+            ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeckExcludingCard(1, removedCard);
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             getCurrentTurnPlayer().addCardsToHand(drawnCard);
             int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();

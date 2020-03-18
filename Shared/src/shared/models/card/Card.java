@@ -146,7 +146,7 @@ public class Card implements ICard {
         return name.equalsIgnoreCase(cardName);
     }
 
-    public boolean IDSameAs(String cardID){
+    public boolean checkIfSameID(String cardID){
         int ignoreLastTwoChars = 2;
         String thisCardID = this.cardId.substring(0, this.cardId.length() - ignoreLastTwoChars);
         String otherCardID = cardID.substring(0, cardID.length() - ignoreLastTwoChars);

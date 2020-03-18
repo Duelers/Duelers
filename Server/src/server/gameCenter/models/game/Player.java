@@ -92,30 +92,29 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         return drawnCards;
     }
 
-    public ServerCard[] getCardsFromDeckNoDuplicate(int cardsToDraw, ServerCard card) {
+    public ServerCard[] getCardsFromDeckExcludingCard(int cardsToDraw, ServerCard card) {
         ServerCard[] drawnCards = new ServerCard[cardsToDraw];
-        Random RNGenerator = new Random();
-        int infiniteRedrawFailSafe = 10;
-
-		for(int i = 0; i < cardsToDraw; i++) {
-            if (!deck.getCards().isEmpty()) {
-                int index = RNGenerator.nextInt(deck.getCards().size());
-                ServerCard drawnCard = deck.getCards().get(index);
-                if( drawnCard.IDSameAs(card.getCardId()) && infiniteRedrawFailSafe > 0){
-                    System.out.println("Same card found, redrawing...");
-                    infiniteRedrawFailSafe--;
-                    i--;
-                    continue;
-                }
-                drawnCards[i] = drawnCard;
-                infiniteRedrawFailSafe = 10;
+        int counter = 0;
+        int failSafeCount = (10 * cardsToDraw);
+        Random numberGenerator = new Random();
+        while(counter != cardsToDraw){
+            int index = numberGenerator.nextInt(deck.getCards().size());
+            ServerCard drawnCard = deck.getCards().get(index);
+            if(drawnCard.checkIfSameID(card.getCardId()) && (failSafeCount > 0) ){
+                System.out.println("Drew the card we dont want. Trying again...");
+                 failSafeCount--;
+                 continue; 
+            }
+            else{
+                drawnCards[counter] = drawnCard;
+                counter++;
                 try {
-                    deck.removeCard(drawnCard);
-                } catch (ClientException ignored) {
-                    System.out.println("Unable to remove card from deck");
+                    deck.removeCard(drawnCard);    
                 }
-            } else {
-                break;
+                catch (ClientException exception) {
+                    exception.printStackTrace();
+                }
+                continue;
             }
         }
         return drawnCards;
