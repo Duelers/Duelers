@@ -101,7 +101,6 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
             int index = numberGenerator.nextInt(deck.getCards().size());
             ServerCard drawnCard = deck.getCards().get(index);
             if(drawnCard.checkIfSameID(card.getCardId()) && (failSafeCount > 0) ){
-                System.out.println("Drew the card we dont want. Trying again...");
                  failSafeCount--;
                  continue; 
             }
