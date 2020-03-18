@@ -2,8 +2,8 @@
   "frameWidth": 80,
   "frameHeight": 80,
   "frameDuration": 100,
-  "extraX": 75.0,
-  "extraY": 75.0,
+  "extraX": 72.0,
+  "extraY": 90.0,
   "lists": {
     "hit": [
       {
