@@ -129,6 +129,10 @@ public class GameCenter extends Thread {//synchronize
         return gameInfos.toArray(new OnlineGame[]{});
     }
 
+    public int getTotalNumberOfOnlinePlayers(){
+       return DataCenter.getInstance().getClients().size();
+    }
+
     private UserInvitation getUserInvitation(Account inviter) {
         for (UserInvitation userInvitation : userInvitations) {
             if (userInvitation.getInviter().equals(inviter))

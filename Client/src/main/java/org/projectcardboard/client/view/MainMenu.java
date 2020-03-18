@@ -1,5 +1,8 @@
 package org.projectcardboard.client.view;
 
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import org.projectcardboard.client.controller.*;
 import javafx.application.Platform;
 import javafx.scene.layout.AnchorPane;
@@ -10,6 +13,7 @@ import org.projectcardboard.client.models.gui.*;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
 import org.projectcardboard.client.models.message.OnlineGame;
+import server.gameCenter.GameCenter;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -18,6 +22,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.projectcardboard.client.models.account.AccountType.ADMIN;
+import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class MainMenu extends Show {
     private static MainMenu menu;
@@ -71,6 +76,10 @@ public class MainMenu extends Show {
 
             AnchorPane sceneContents = new AnchorPane(background, menuBox);
             root.getChildren().addAll(sceneContents);
+
+            DefaultLabel onlinePlayerCount = new DefaultLabel("online players: " + GameCenter.getInstance().getTotalNumberOfOnlinePlayers(), Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.WHITE);
+            root.getChildren().add(onlinePlayerCount);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
