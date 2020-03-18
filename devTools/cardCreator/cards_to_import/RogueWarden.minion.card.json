@@ -9,7 +9,7 @@
     "defaultHp": 3,
     "manaCost": 5,
     "price": 100,
-    "attackType": "Hybrid",
+    "attackType": "HYBRID",
     "range": 99,
     "hasCombo": false,
     "remainingNumber": 20
