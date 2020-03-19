@@ -45,6 +45,7 @@ MINION,Primus Fist,Opening Gambit: Give nearby friendly minions +1 attack.,2,3,2
 MINION,Razorcrag Golem,Golem,10,3,4,neutral_razorcraggolem
 HERO,Reva Eventide,Songhai General,2,25,0,f2_altgeneral
 MINION,Rock Pulverizer,Provoke,1,4,2,neutral_monsterexplodingdemon
+MINION,Rogue Warden,Ranged,4,3,5,f1_ranged
 MINION,Saberspine Alpha,Rush,5,5,7,f6_eldersaberspine
 SPELL,Saberspine Seal,Give a minion or General +3 Attack this turn.,0,0,1,icon_f2_saberspineseal
 MINION,Saberspine Tiger,Rush,3,2,3,neutral_beastsaberspinetiger
