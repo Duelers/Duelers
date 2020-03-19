@@ -6374,7 +6374,7 @@
                 ],
                 "defaultAp": 0,
                 "defaultHp": 0,
-                "manaCost": 2,
+                "manaCost": 5,
                 "price": 100,
                 "range": 0,
                 "hasCombo": false,
@@ -6481,7 +6481,7 @@
                 ],
                 "defaultAp": 0,
                 "defaultHp": 0,
-                "manaCost": 2,
+                "manaCost": 5,
                 "price": 100,
                 "range": 0,
                 "hasCombo": false,
@@ -6588,7 +6588,7 @@
                 ],
                 "defaultAp": 0,
                 "defaultHp": 0,
-                "manaCost": 2,
+                "manaCost": 5,
                 "price": 100,
                 "range": 0,
                 "hasCombo": false,
@@ -10457,21 +10457,6 @@
                 "duelyst_StormArtha_1",
                 "duelyst_StormArtha_2",
                 "duelyst_StormArtha_3"
-            ]
-        },
-        {
-            "deckName": "test",
-            "heroId": "duelyst_RevaEventide_1",
-            "cardIds": [
-                "duelyst_BurdenofKnowledge_1",
-                "duelyst_BurdenofKnowledge_2",
-                "duelyst_BurdenofKnowledge_3",
-                "duelyst_PhoenixFire_1",
-                "duelyst_PhoenixFire_2",
-                "duelyst_PhoenixFire_3",
-                "duelyst_VoidPulse_1",
-                "duelyst_VoidPulse_2",
-                "duelyst_VoidPulse_3"
             ]
         }
     ],
