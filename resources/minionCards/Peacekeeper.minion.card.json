@@ -55,7 +55,7 @@
         }
       },
       "availabilityType": {
-        "onAttack": true,
+        "onAttack": true
       },
       "coolDown": 0,
       "manaCost": 0,
