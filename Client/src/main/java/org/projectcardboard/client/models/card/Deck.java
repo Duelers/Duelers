@@ -7,10 +7,6 @@ import shared.models.card.Card;
 import shared.models.card.ICard;
 import org.projectcardboard.client.models.account.Collection;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class Deck extends BaseDeck<Card> {
 
     public Deck(TempDeck tempDeck, Collection collection) {
