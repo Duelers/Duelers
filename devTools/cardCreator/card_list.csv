@@ -20,6 +20,7 @@ SPELL,Circle of Dessication,Destroy all minions.,0,0,8,icon_f3_circleofdessicati
 SPELL,Dark Destruction,Destroy target enemy minion.,0,0,5,icon_f4_darktransformation
 SPELL,Doom,The enemy General is DOOMED and will die after three turns,0,0,9,icon_f4_doom
 MINION,Dragonlark,"Flying, Ranged (2)",2,1,1,neutral_monsterdragonhawk
+SPELL,Draining Wave,Deal 4 damage to a minion AND your General,0,0,1,icon_f1_drainingwave
 MINION,Drybone Golem,Golem,10,10,7,neutral_golemdragonbone
 SPELL,Earth Sphere,Add 8 Health to your general.,0,0,4,icon_f5_earthsphere
 MINION,Elucidator,"Rush. 
