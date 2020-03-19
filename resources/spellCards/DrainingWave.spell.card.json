@@ -10,7 +10,7 @@
       "action": {
         "hpChange": -4,
         "durable": true,
-        "duration": 1,
+        "duration": 1
       },
       "target": {
         "dimensions": {
@@ -31,7 +31,7 @@
         }
       },
       "availabilityType": {
-        "onPut": true,
+        "onPut": true
       },
       "coolDown": 0,
       "manaCost": 0,
