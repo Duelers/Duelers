@@ -16,6 +16,7 @@ MINION,Bloodshard Golem,Golem,4,3,3,neutral_golembloodshard
 MINION,Brightmoss Golem,Golem,4,9,5,neutral_golemnature
 SPELL,Burden of Knowledge,Deal 1 damage to your General. Draw a card,0,0,0,icon_f3_glimpse
 MINION,Celestial Phantom,Destroy any enemy minion that Celestial Phantom attacks or counterattacks,1,5,3,f2_deathphantom
+SPELL,Circle of Dessication,Destroy all minions.,0,0,8,icon_f3_circleofdessication
 SPELL,Dark Destruction,Destroy target enemy minion.,0,0,5,icon_f4_darktransformation
 SPELL,Doom,The enemy General is DOOMED and will die after three turns,0,0,9,icon_f4_doom
 MINION,Dragonlark,"Flying, Ranged (2)",2,1,1,neutral_monsterdragonhawk
