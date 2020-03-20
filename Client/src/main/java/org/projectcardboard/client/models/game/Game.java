@@ -1,9 +1,10 @@
-package org.projectcardboard.client.models.compresseddata;
+package org.projectcardboard.client.models.game;
 
 import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.map.GameMap;
 import shared.models.card.CardType;
 import shared.models.card.Card;
+import shared.models.game.BaseGame;
 import shared.models.game.Troop;
 import shared.models.game.map.CellEffect;
 import shared.models.game.GameType;
@@ -11,14 +12,13 @@ import shared.models.game.GameType;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class CompressedGame {
-    private Player playerOne;
-    private Player playerTwo;
-    private GameMap gameMap;
-    private int turnNumber;
-    private GameType gameType;
+public class Game extends BaseGame<Player, GameMap> {
+    private transient PropertyChangeSupport support = new PropertyChangeSupport(this);
 
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+    public Game(Player playerOne, Player playerTwo, GameMap gameMap, int turnNumber, GameType gameType) {
+        super(playerOne, playerTwo, gameMap, turnNumber, gameType);
+    }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         if (support == null) {
@@ -92,40 +92,5 @@ public class CompressedGame {
         gameMap.updateCellEffects(cellEffects);
     }
 
-    public Player getPlayerOne() {
-        return playerOne;
-    }
-
-    public Player getPlayerTwo() {
-        return playerTwo;
-    }
-
-    public GameMap getGameMap() {
-        return gameMap;
-    }
-
-    public int getTurnNumber() {
-        return turnNumber;
-    }
-
-    public GameType getGameType() {
-        return gameType;
-    }
-
-    public Player getCurrentTurnPlayer() {
-        return getPlayer(turnNumber % 2);
-    }
-
-    public Player getOtherTurnPlayer() {
-        return getPlayer(turnNumber % 2 + 1);
-    }
-
-    private Player getPlayer(int number) {
-        if (number == 1) {
-            return playerOne;
-        } else {
-            return playerTwo;
-        }
-    }
 
 }
