@@ -2,6 +2,7 @@ package shared;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Level;
 
 public class Constants {
     // Board
@@ -19,4 +20,5 @@ public class Constants {
     // Logging
     public static final String LOG_NAME = "Log.txt";
     public static final Path LOG_FILE_PATH = Paths.get("./logs/" + LOG_NAME).toAbsolutePath();
+    public static final Level DEFAULT_LOG_LEVEL = Level.ALL;
 }

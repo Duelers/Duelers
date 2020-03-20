@@ -50,7 +50,7 @@ public class Log {
                     }
                 });
 
-                logger.setLevel(Level.ALL);
+                logger.setLevel(Constants.DEFAULT_LOG_LEVEL);
 
                 logMsg("\n\n", Level.ALL); // Allows us to quickly tell when a new 'session' begins.
 
