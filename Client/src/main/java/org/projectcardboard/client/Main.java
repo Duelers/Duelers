@@ -28,7 +28,8 @@ public class Main extends Application {
         }
 
         Client.getInstance().makeConnection();
-        Log.getInstance().logClientData("Client Version: " + new HelperMethods().getClientVersionInfo(), Level.INFO);
+
+        // Todo add logging calls to get client and server versions.
 
         launch(args);
     }

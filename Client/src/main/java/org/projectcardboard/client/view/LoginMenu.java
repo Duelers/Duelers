@@ -10,7 +10,6 @@ import javafx.scene.text.FontWeight;
 import org.projectcardboard.client.models.gui.*;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
-import shared.HelperMethods;
 import shared.models.services.Log;
 
 import java.io.IOException;
@@ -19,8 +18,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
@@ -57,10 +54,10 @@ public class LoginMenu extends Show {
         }
     }
 
+    // Todo move this function out of login menu, add call to Log in main
     public String getServerInfo(){
 
         // Todo (1) add localisation. (2) Only reveal last bit of server. eg "test3" instead of "wss://mechaz.org/test3"
-        // Todo (3) Move this function out of login Menu
         Boolean isLocalConnection = Boolean.parseBoolean(Config.getInstance().getProperty("HOST_SERVER"));
         if (isLocalConnection){
             return "local host";
@@ -69,7 +66,8 @@ public class LoginMenu extends Show {
         return Config.getInstance().getProperty("SERVER_URI");
     }
 
-    public String getClientVersionInfo(){
+    // Todo move this function out of login menu, add call to Log in main
+    public String getClientVersionInfo() {
         final Path versionPath = Paths.get("../clientVersion.txt").toAbsolutePath();
 
         try {
@@ -80,13 +78,13 @@ public class LoginMenu extends Show {
             file.close();
 
             return clientVersionInfo;
-        }
-        catch ( IOException e){
+        } catch (IOException e) {
             Log.getInstance().logClientData("Failed to find path: " + versionPath.toString(), Level.WARNING);
             Log.getInstance().logStackTrace(e);
 
             return "???";
         }
+    }
 
 
     @Override
