@@ -4,9 +4,11 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import shared.models.services.Log;
 
 public class SoundEffectPlayer {
     private static final Map<SoundName, Media> mediaFiles = new HashMap<>();
@@ -31,7 +33,7 @@ public class SoundEffectPlayer {
 
     public void playSound(SoundName soundName) {
         if(soundName == null){
-            System.out.println("soundName is null");
+            Log.getInstance().logClientData("soundName is null", Level.WARNING);
             return;
         }
         try {

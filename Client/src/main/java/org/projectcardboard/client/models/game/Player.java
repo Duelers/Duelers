@@ -5,12 +5,14 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
 
 import shared.Constants;
 import shared.models.card.Card;
 import shared.models.card.CardType;
 import shared.models.game.BasePlayer;
 import shared.models.game.Troop;
+import shared.models.services.Log;
 
 public class Player extends BasePlayer<Card, Troop> {
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -35,7 +37,8 @@ public class Player extends BasePlayer<Card, Troop> {
     }
 
     public void addCardsToHand(int deckSize, Card... drawnCards) {
-        System.out.println("Current deck size: " + deckSize);
+        Log.getInstance().logClientData("Current deck size: " + deckSize, Level.INFO);
+
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }

@@ -7,9 +7,11 @@ import shared.models.card.Card;
 import shared.models.game.Troop;
 import shared.models.game.map.CellEffect;
 import shared.models.game.GameType;
+import shared.models.services.Log;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.logging.Level;
 
 public class CompressedGame {
     private Player playerOne;
@@ -41,7 +43,7 @@ public class CompressedGame {
         if (card.getType().equals(CardType.HERO) || card.getType().equals(CardType.MINION)) {
             Troop troop = gameMap.getTroop(card.getCardId());
             if (troop == null) {
-                System.out.println("Client error, troop in moveCardToGraveYard is null");
+                Log.getInstance().logClientData("troop in moveCardToGraveYard is null", Level.SEVERE);
             } else {
                 player = getPlayer(troop.getPlayerNumber());
                 player.removeTroop(card.getCardId());

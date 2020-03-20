@@ -5,8 +5,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.logging.Level;
 
 import com.google.gson.Gson;
+import shared.models.services.Log;
 
 public class LanguageData {
     private static LanguageData languageDataInstance = null;
@@ -52,9 +54,11 @@ public class LanguageData {
         try {
             value = getValue(languageMapSelected, keys);
         } catch (IllegalAccessException | NoSuchFieldException | NullPointerException e1) {
-            System.out.println(String.format(
+            String errorMsg = String.format(
                     "Language Localisation Error:: failed to find value for keys '%s' for selected language: '%s'. Will use default value.",
-                    Arrays.deepToString(keys), selectedLanguage));
+                    Arrays.deepToString(keys), selectedLanguage);
+
+            Log.getInstance().logClientData(errorMsg, Level.WARNING);
 
             // If we fail to find a translation, see if we can add default text.
             try {
