@@ -13,7 +13,9 @@ import java.beans.PropertyChangeSupport;
 
 public class CompressedGame {
     private Player playerOne;
+    private int playerOneDeckSize;
     private Player playerTwo;
+    private int playerTwoDeckSize;
     private GameMap gameMap;
     private int turnNumber;
     private GameType gameType;
@@ -126,6 +128,11 @@ public class CompressedGame {
         } else {
             return playerTwo;
         }
+    }
+
+    public void setDeckSizes(){
+        playerOne.setDeckSize(playerOneDeckSize);
+        playerTwo.setDeckSize(playerTwoDeckSize);
     }
 
 }

@@ -50,6 +50,7 @@ public class GameController implements GameActions {
 
     public void setCurrentGame(CompressedGame currentGame) {
         this.currentGame = currentGame;
+        currentGame.setDeckSizes();
         currentGame.getPlayerOne().setTroops(currentGame.getGameMap().getTroopsBelongingToPlayer(1));
         currentGame.getPlayerTwo().setTroops(currentGame.getGameMap().getTroopsBelongingToPlayer(2));
         int playerNumber = getPlayerNumber(currentGame);

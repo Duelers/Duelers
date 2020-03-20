@@ -119,12 +119,16 @@ public class HandBox implements PropertyChangeListener {
         replaceIcon.setImage(nextBack);
         boolean canReplace = GameController.getInstance().getAvailableActions().canReplace(player);
         replaceIcon.setEffect(canReplace ? null: DISABLE_BUTTON_EFFECT);
+        Text replaceText = new Text("");
+        replaceText.setFont(Constants.AP_FONT);
+        replaceText.setStyle("-fx-text-base-color: white; -fx-font-size: 15px;");
+        replaceText.setFill(Color.WHITE);
+        next.getChildren().add(replaceText);
         if(canReplace){
-            Text replaceText = new Text("Replace Available");
-            replaceText.setFont(Constants.AP_FONT);
-            replaceText.setStyle("-fx-text-base-color: white; -fx-font-size: 18px;");
-            replaceText.setFill(Color.WHITE);
-            next.getChildren().add(replaceText);
+            replaceText.setText("Replace Available \n Cards Remaining: " + player.getDeckSize());
+        }
+        else{
+            replaceText.setText("\n Cards Remaining: " + player.getDeckSize());
         }
         next.setOnMouseClicked(mouseEvent -> replaceSelectedCard());
     }
