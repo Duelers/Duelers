@@ -82,6 +82,11 @@ public class Log {
         logMsg(errorMsg.getMessage(), Level.WARNING);
     }
 
+    public void logStackTrace(Error errorMsg){
+        logMsg(errorMsg.getMessage(), Level.WARNING);
+    }
+
+
     private void logMsg(String msg, Level level){
         if (writeToFile)
         {

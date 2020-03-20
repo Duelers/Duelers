@@ -12,6 +12,7 @@ import org.projectcardboard.client.models.gui.ImageLoader;
 import org.projectcardboard.client.view.PlayList;
 
 import javafx.scene.image.Image;
+import shared.models.services.Log;
 
 public class ResourcesCenter {
     private final static ResourcesCenter ourInstance = new ResourcesCenter();
@@ -60,11 +61,9 @@ public class ResourcesCenter {
             System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
             readData();
         } catch (OutOfMemoryError e) {
-            System.out.println("ho");
+            Log.getInstance().logStackTrace(e);
         }
         System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
-
-        System.out.println("x");
     }
 
     public static ResourcesCenter getInstance() {
