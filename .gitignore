@@ -198,3 +198,4 @@ local.properties
 ## end Eclipse
 resources/config.properties
 *.pyc
+logs/Log.txt
