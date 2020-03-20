@@ -8,21 +8,28 @@ import Config.Config;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import server.GameServer;
+import shared.HelperMethods;
+import shared.models.services.Log;
+
+import java.util.logging.Level;
 
 public class Main extends Application {
 
     public static void main(String[] args) {
 
-        LanguageData.getInstance(); // Initialise
+        // Initialise Singletons...
+        LanguageData.getInstance();
+        Log.getInstance().logClientData("\n\nStarting Client...", Level.INFO);
 
         String hostServer = Config.getInstance().getProperty("HOST_SERVER");
         boolean shouldHostServer = Boolean.parseBoolean(hostServer);
         if (shouldHostServer) {
-            System.out.println("Launching GameServer...");
             GameServer.start();
         }
 
         Client.getInstance().makeConnection();
+        Log.getInstance().logClientData("Client Version: " + new HelperMethods().getClientVersionInfo(), Level.INFO);
+
         launch(args);
     }
 
