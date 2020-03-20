@@ -8,7 +8,6 @@ import Config.Config;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import server.GameServer;
-import shared.HelperMethods;
 import shared.models.services.Log;
 
 import java.util.logging.Level;
