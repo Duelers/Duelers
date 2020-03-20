@@ -124,7 +124,7 @@ public class Client {
                 return message.getCardPositionMessage().getCard().getCardId() + " has been moved to: " + message.getCardPositionMessage().getCardPosition();
 
             case CHAT:
-                return String.format("Chat Message: '%s' was sent by '%s", message.getChatMessage().getText(), message.getChatMessage().getSenderUsername();
+                return String.format("Chat Message: '%s' was sent by '%s", message.getChatMessage().getText(), message.getChatMessage().getSenderUsername());
 
             default:
                 return null;
