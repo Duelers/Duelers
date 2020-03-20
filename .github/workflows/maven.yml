@@ -1,6 +1,6 @@
 name: Java CI
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
@@ -24,7 +24,6 @@ jobs:
           path: built-server.tar.gz
 
   deploy:
-    if: github.event_name == 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     steps:

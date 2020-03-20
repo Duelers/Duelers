@@ -14,6 +14,7 @@ import shared.models.card.CardType;
 
 import server.dataCenter.models.card.Deck;
 
+import shared.models.card.spell.Owner;
 import shared.models.card.spell.Spell;
 import shared.models.card.spell.SpellAction;
 
@@ -138,26 +139,11 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         this.future = this.timer.schedule(this.task, Constants.TURN_TIME_LIMIT, TimeUnit.SECONDS);
     }
 
-    private void addNextCardToHand(int cardsToDraw) {
-        for (int i = 0; i < cardsToDraw; i++) {
-            ServerCard nextCard = getCurrentTurnPlayer().getNextCard();
-            if (getCurrentTurnPlayer().addNextCardToHand()) {
-                GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
-                GameServer.getInstance().sendChangeCardPositionMessage(this, getCurrentTurnPlayer().getNextCard(), CardPosition.NEXT);
-            }
-        }
-    }
-
-    private void drawCardsFromDeck(int cardsToDraw) {
+    private void drawCardsFromDeck(int cardsToDraw){
         ServerCard[] drawnCards = getCurrentTurnPlayer().getCardsFromDeck(cardsToDraw);
         getCurrentTurnPlayer().addCardsToHand(drawnCards);
         int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
         GameServer.getInstance().sendCardsDrawnToHandMessage(this, deckSize, drawnCards);
-    }
-
-    public void setNewNextCard() {
-        getCurrentTurnPlayer().setNewNextCard();
-        GameServer.getInstance().sendNewNextCardSetMessage(this, getCurrentTurnPlayer().getNextCard());
     }
 
     public void replaceCard(String cardID) throws LogicException {
@@ -166,24 +152,13 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             if (removedCard == null) {
                 return;
             }
+            //ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeck(1);
+            ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeckExcludingCard(1, removedCard);
             getCurrentTurnPlayer().addCardToDeck(removedCard);
-            ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeck(1);
             getCurrentTurnPlayer().addCardsToHand(drawnCard);
             int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
             GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
-            GameServer.getInstance().sendCardsDrawnToHandMessage(this, deckSize, drawnCard);
-            /*
-            if (getCurrentTurnPlayer().addNextCardToHand()) {
-                ServerCard nextCard = getCurrentTurnPlayer().getNextCard();
-                int numTimesReplacedThisTurn = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
-                getCurrentTurnPlayer().setNumTimesReplacedThisTurn(numTimesReplacedThisTurn + 1);
-
-                GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.HAND);
-                GameServer.getInstance().sendChangeCardPositionMessage(this, nextCard, CardPosition.NEXT);
-            }
-            */
-
-
+            GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,drawnCard);
         } else {
             System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
         }
@@ -582,6 +557,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
                 (attackerTroop.canBeAttackedFromWeakerOnes() || defenderTroop.getCurrentAp() > attackerTroop.getCurrentAp())
         ) {
             damage(defenderTroop, attackerTroop);
+            applyOnCounterAttackSpells(defenderTroop, attackerTroop);
         }
     }
 
@@ -594,6 +570,16 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             killTroop(defenderTroop);
         } else {
             GameServer.getInstance().sendTroopUpdateMessage(this, defenderTroop);
+        }
+    }
+
+    private void applyOnCounterAttackSpells(ServerTroop counterAttacker, ServerTroop attacker) {
+        for (Spell spell : counterAttacker.getCard().getSpells()) {
+            if (spell.getAvailabilityType().isOnCounterAttack())
+                applySpell(
+                        spell,
+                        detectCounterAttackTarget(spell, counterAttacker, attacker)
+                );
         }
     }
 
@@ -905,6 +891,39 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         return targetData;
     }
 
+    private TargetData detectCounterAttackTarget(Spell spell, ServerTroop counterAttacker, ServerTroop attacker) {
+        TargetData targetData = new TargetData();
+        Owner spellOwner = spell.getTarget().getOwner();
+
+        if (spellOwner != null) {
+            List<ServerTroop> troops = new ArrayList<>();
+
+            if (spellOwner.isOwn()) {
+                troops.add(counterAttacker);
+            }
+
+            if (spellOwner.isEnemy()) {
+                troops.add(attacker);
+            }
+
+            for (ServerTroop troop : troops) {
+                int playerNumber = troop.getPlayerNumber();
+                Player player = (getCurrentTurnPlayer().getPlayerNumber() == playerNumber) ? getCurrentTurnPlayer() : getOtherTurnPlayer();
+                Cell heroCell = player.getHero().getCell();
+                setTargetData(spell, counterAttacker.getCell(), attacker.getCell(), heroCell, player, targetData);
+            }
+        }
+
+        if (spell.getTarget().isRandom()) {
+            randomizeList(targetData.getTroops());
+            randomizeList(targetData.getCells());
+            randomizeList(targetData.getPlayers());
+            randomizeList(targetData.getCards());
+        }
+
+        return targetData;
+    }
+
     private void setTargetData(Spell spell, Cell cardCell, Cell clickCell, Cell heroCell, Player player, TargetData targetData) {
 
         if (spell.getTarget().getCardType().isPlayer()) {
@@ -918,7 +937,8 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             for (ServerCard card : player.getHand()) {
                 addCardToTargetData(spell, targetData, card);
             }
-            addCardToTargetData(spell, targetData, player.getNextCard());
+            ServerCard[] drawnCard = player.getCardsFromDeck(1);
+            addCardToTargetData(spell, targetData, drawnCard[0]);
             addCardToTargetData(spell, targetData, player.getDeck().getHero());
         }
         if (spell.getTarget().getDimensions() != null) {

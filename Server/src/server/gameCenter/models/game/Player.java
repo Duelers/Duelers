@@ -2,14 +2,11 @@ package server.gameCenter.models.game;
 
 import server.dataCenter.models.account.MatchHistory;
 import server.dataCenter.models.card.ServerCard;
-import shared.Constants;
 import shared.models.card.CardType;
 import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import shared.models.game.BasePlayer;
-import shared.models.game.map.Cell;
-//import server.dataCenter.models.Constants;
 
 import java.util.*;
 
@@ -20,15 +17,9 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
     private int maxNumReplacePerTurn;
 
     Player(Deck mainDeck, String userName, int playerNumber) {
-        super(userName, 0, new ArrayList<>(), new ArrayList<>(), null,
+        super(userName, 0, new ArrayList<>(), new ArrayList<>(),
                 playerNumber, new ArrayList<>(), null);
-        //this.playerNumber = playerNumber;
-        //this.userName = userName;
         this.deck = new Deck(mainDeck);
-        //setNextCard();
-        //for (int i = 0; i < 3; i++) {
-            //addNextCardToHand();
-        //}
         ServerCard[] drawnCards = getCardsFromDeck(3);
         addCardsToHand(drawnCards);
         this.numTimesReplacedThisTurn = 0;
@@ -37,7 +28,7 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
 
     ServerCard insert(String cardId) throws ClientException {
         ServerCard card = null;
-        Iterator iterator = hand.iterator();
+        Iterator<ServerCard> iterator = hand.iterator();
         while (iterator.hasNext()) {
             ServerCard card1 = (ServerCard) iterator.next();
             if (card1.getCardId().equalsIgnoreCase(cardId)) {
@@ -80,39 +71,13 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         deck.addCard(card);
     }
 
-    private void setNextCard() {
-        if (!deck.getCards().isEmpty()) {
-            int index = new Random().nextInt(deck.getCards().size());
-            nextCard = deck.getCards().get(index);
-            try {
-                deck.removeCard(nextCard);
-            } catch (ClientException ignored) {
-                System.out.println("Unable to remove card from deck");
-            }
-        } else {
-            nextCard = null;
-        }
-    }
-
-    public void setNewNextCard() {
-        setNextCard();
-    }
-
-    boolean addNextCardToHand() {
-        if (hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE && (!deck.getCards().isEmpty() || nextCard != null)) {
-            hand.add(nextCard);
-            setNextCard();
-            return true;
-        }
-        return false;
-    }
-
     public ServerCard[] getCardsFromDeck(int cardsToDraw) {
         ServerCard[] drawnCards = new ServerCard[cardsToDraw];
+        Random RNGenerator = new Random();
 
         for(int i = 0; i < cardsToDraw; i++) {
             if (!deck.getCards().isEmpty()) {
-                int index = new Random().nextInt(deck.getCards().size());
+                int index = RNGenerator.nextInt(deck.getCards().size());
                 ServerCard drawnCard = deck.getCards().get(index);
                 drawnCards[i] = drawnCard;
                 try {
@@ -126,6 +91,33 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         }
         return drawnCards;
     }
+
+    public ServerCard[] getCardsFromDeckExcludingCard(int cardsToDraw, ServerCard card) {
+        ServerCard[] drawnCards = new ServerCard[cardsToDraw];
+        int counter = 0;
+        int failSafeCount = (10 * cardsToDraw);
+        Random numberGenerator = new Random();
+        while(counter != cardsToDraw){
+            int index = numberGenerator.nextInt(deck.getCards().size());
+            ServerCard drawnCard = deck.getCards().get(index);
+            if(drawnCard.checkIfSameID(card.getCardId()) && (failSafeCount > 0) ){
+                 failSafeCount--;
+                 continue; 
+            }
+            else{
+                drawnCards[counter] = drawnCard;
+                counter++;
+                try {
+                    deck.removeCard(drawnCard);    
+                }
+                catch (ClientException exception) {
+                    exception.printStackTrace();
+                }
+                continue;
+            }
+        }
+        return drawnCards;
+	}
 
     public void addCardsToHand(ServerCard... cards){
         for(ServerCard card : cards) {

@@ -101,13 +101,6 @@ public class Message {
         return message;
     }
 
-    public static Message makeNewNextCardSetMessage(String receiver, ServerCard nextCard) {
-        Message message = new Message(receiver);
-        message.messageType = MessageType.SET_NEW_NEXT_CARD;
-        message.card = nextCard; // Used to set message.compressedCard. This could potentially alter behaviour.
-        return message;
-    }
-
     public static Message makeSpellMessage(String receiver, Set<Cell> cells, AvailabilityType availabilityType) {
         Message message = new Message(receiver);
         message.gameAnimations = new GameAnimations();

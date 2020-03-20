@@ -150,7 +150,7 @@ public class Client {
             case SEND_EXCEPTION:
                 showError(message);
                 break;
-            case ACCOUNT_COPY:
+            case ACCOUNT_COPY: 
                 updateAccount(message);
                 break;
             case GAME_COPY:
@@ -166,14 +166,6 @@ public class Client {
                         GameController.getInstance().getCurrentGame().moveCardToMap(message.getCardPositionMessage().getCard());
                         GameController.getInstance().calculateAvailableActions();
                         break;
-                    case HAND:
-                        GameController.getInstance().getCurrentGame().moveCardToHand();
-                        GameController.getInstance().calculateAvailableActions();
-                        break;
-                    case NEXT:
-                        GameController.getInstance().getCurrentGame().moveCardToNext(message.getCardPositionMessage().getCard());
-                        GameController.getInstance().calculateAvailableActions();
-                        break;
                     case GRAVE_YARD:
                         GameController.getInstance().getCurrentGame().moveCardToGraveYard(message.getCardPositionMessage().getCard());
                         GameController.getInstance().calculateAvailableActions();
@@ -186,9 +178,7 @@ public class Client {
                 break;
             case ADD_TO_HAND:
                 GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().addCardsToHand(message.getDeckSize(), message.getDrawnCards());
-                break;
-            case SET_NEW_NEXT_CARD:
-                GameController.getInstance().getCurrentGame().moveCardToNext( message.getCard() );
+                GameController.getInstance().calculateAvailableActions();
                 break;
             case GAME_UPDATE:
                 GameUpdateMessage gameUpdateMessage = message.getGameUpdateMessage();

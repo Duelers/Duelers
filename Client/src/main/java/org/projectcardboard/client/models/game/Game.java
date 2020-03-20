@@ -31,17 +31,6 @@ public class Game extends BaseGame<Player, GameMap> {
         support.removePropertyChangeListener(pcl);
     }
 
-    public void moveCardToHand() {
-        Player player = getCurrentTurnPlayer();
-        player.addNextCardToHand();
-        player.removeCardFromNext();
-    }
-
-    public void moveCardToNext(Card card) {
-        Player player = getCurrentTurnPlayer();
-        player.addCardToNext(card);
-    }
-
     public void moveCardToMap(Card card) {
         Player player = getCurrentTurnPlayer();
         player.removeCardFromHand(card.getCardId());

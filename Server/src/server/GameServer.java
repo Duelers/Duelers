@@ -162,9 +162,6 @@ public class GameServer {
                 case MOVE_TROOP:
                     GameCenter.getInstance().moveTroop(message);
                     break;
-                case SET_NEW_NEXT_CARD:
-                    GameCenter.getInstance().setNewNextCard(message);
-                    break;
                 case REPLACE_CARD:
                     GameCenter.getInstance().replaceCard(message);
                     break;
@@ -254,17 +251,6 @@ public class GameServer {
                 continue;
             }
             sendMessageAsync(Message.makeChangeCardPositionMessage(clientName, card, newCardPosition));
-        }
-    }
-
-    public void sendNewNextCardSetMessage(Game game, ServerCard nextCard) {
-        for (Account account : game.getObservers()) {
-            String clientName = DataCenter.getInstance().getAccounts().get(account);
-            if (clientName == null) {
-                serverPrint("*Error: Client not found");
-                continue;
-            }
-            sendMessageAsync(Message.makeNewNextCardSetMessage(clientName, nextCard));
         }
     }
 

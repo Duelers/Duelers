@@ -20,7 +20,7 @@ public class Player extends BasePlayer<Card, Troop> {
                   int playerNumber,
                   List<Troop> troops,
                   Troop hero) {
-        super(userName, currentMP, hand, graveyard, nextCard, playerNumber, troops, hero);
+        super(userName, currentMP, hand, graveyard, playerNumber, troops, hero);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
@@ -34,52 +34,20 @@ public class Player extends BasePlayer<Card, Troop> {
         support.removePropertyChangeListener(pcl);
     }
 
-    public void addNextCardToHand() {
-        hand.add(nextCard);
-        if (support == null) {
-            support = new PropertyChangeSupport(this);
-        }
-        support.firePropertyChange("hand", null, null);
-        if (hand.size() > Constants.MAXIMUM_CARD_HAND_SIZE)
-            System.out.println("Client Game Error! - current card hand exceeds max card hand size size");
-    }
-
-
-    public void addCardToNext(Card card) {
-        if (nextCard != null)
-            System.out.println("Compressed Player, addCardToNext, card is null");
-        else {
-            nextCard = card;
-            if (support == null) {
-                support = new PropertyChangeSupport(this);
-            }
-            support.firePropertyChange("next", null, null);
-        }
-    }
-
     public void addCardsToHand(int deckSize, Card... drawnCards) {
         System.out.println("Current deck size: " + deckSize);
-        System.out.println(nextCard == null);
-        if (support == null) {
-            support = new PropertyChangeSupport(this);
-        }
+        
 
         this.deckSize = deckSize;
         for (Card drawnCard : drawnCards) {
             if (drawnCard != null && this.hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
                 this.hand.add(drawnCard);
-                support.firePropertyChange("hand", null, null);
             }
         }
-    }
-
-    public void replaceSelectedCard(int selectedCardIndex) {
-        hand.set(selectedCardIndex, nextCard);
-        removeCardFromNext();
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }
-        support.firePropertyChange("replace", null, null);
+        support.firePropertyChange("hand", null, null);
     }
 
     public void addCardToGraveYard(Card card) {
@@ -103,14 +71,6 @@ public class Player extends BasePlayer<Card, Troop> {
             support = new PropertyChangeSupport(this);
         }
         support.firePropertyChange("hand", null, null);
-    }
-
-    public void removeCardFromNext() {
-        nextCard = null;
-        if (support == null) {
-            support = new PropertyChangeSupport(this);
-        }
-        support.firePropertyChange("next", null, null);
     }
 
     public void removeTroop(String cardId) {
