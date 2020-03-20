@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
-import org.projectcardboard.client.models.compresseddata.CompressedGame;
+import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.GameActions;
 import shared.models.card.spell.AvailabilityType;
@@ -29,7 +29,7 @@ public class BattleScene extends Show {
     );
     private static final Map<SpellType, String> spellSpriteNames = new HashMap<>();
     private final GameActions controller;
-    private final CompressedGame game;
+    private final Game game;
     private final MapBox mapBox;
     private final HandBox handBox;
     private final PlayerBox playerBox;
@@ -46,7 +46,7 @@ public class BattleScene extends Show {
         spellSpriteNames.put(SpellType.DEFAULT, "fx_f2_eightgates_teallotus");
     }
 
-    public BattleScene(GameActions controller, CompressedGame game, int myPlayerNumber, String mapName) throws Exception {
+    public BattleScene(GameActions controller, Game game, int myPlayerNumber, String mapName) throws Exception {
         this.controller = controller;
         this.game = game;
         this.myPlayerNumber = myPlayerNumber;
@@ -142,7 +142,7 @@ public class BattleScene extends Show {
         return (game.getTurnNumber() % 2 == 1 && myPlayerNumber == 1) || (game.getTurnNumber() % 2 == 0 && myPlayerNumber == 2);
     }
 
-    public CompressedGame getGame() {
+    public Game getGame() {
         return game;
     }
 

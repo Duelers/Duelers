@@ -1,6 +1,6 @@
 package org.projectcardboard.client.controller;
 
-import org.projectcardboard.client.models.compresseddata.CompressedGame;
+import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.exceptions.InputException;
 import org.projectcardboard.client.models.game.GameActions;
 import org.projectcardboard.client.models.game.availableactions.AvailableActions;
@@ -22,7 +22,7 @@ import shared.models.game.map.Cell;
 public class GameController implements GameActions {
     private static GameController ourInstance;
     BattleScene battleScene;
-    private CompressedGame currentGame;
+    private Game currentGame;
     private final AvailableActions availableActions = new AvailableActions();
     private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
 
@@ -44,11 +44,11 @@ public class GameController implements GameActions {
         return availableActions;
     }
 
-    public CompressedGame getCurrentGame() {
+    public Game getCurrentGame() {
         return currentGame;
     }
 
-    public void setCurrentGame(CompressedGame currentGame) {
+    public void setCurrentGame(Game currentGame) {
         this.currentGame = currentGame;
         currentGame.setDeckSizes();
         currentGame.getPlayerOne().setTroops(currentGame.getGameMap().getTroopsBelongingToPlayer(1));
@@ -65,7 +65,7 @@ public class GameController implements GameActions {
 
     }
 
-    private int getPlayerNumber(CompressedGame currentGame) {
+    private int getPlayerNumber(Game currentGame) {
         int playerNumber = -1;
         if (currentGame.getPlayerOne().getUserName().equals(Client.getInstance().getAccount().getUsername())) {
             playerNumber = 1;
