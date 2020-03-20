@@ -11,10 +11,14 @@ import org.projectcardboard.client.models.gui.*;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
 import shared.HelperMethods;
+import shared.models.services.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,7 +37,7 @@ public class LoginMenu extends Show {
 
             root.getChildren().addAll(sceneContents);
 
-            String versionInfo = new HelperMethods().getClientVersionInfo();
+            String versionInfo = getClientVersionInfo();
             if (versionInfo != null) {
                 String version = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.VERSION});
                 DefaultLabel versionLabel = new DefaultLabel(String.format("%s: %s", version, versionInfo), Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.DARKGRAY, 10, 10);
@@ -64,6 +68,26 @@ public class LoginMenu extends Show {
 
         return Config.getInstance().getProperty("SERVER_URI");
     }
+
+    public String getClientVersionInfo(){
+        final Path versionPath = Paths.get("../clientVersion.txt").toAbsolutePath();
+
+        try {
+            InputStream file = this.getClass().getResourceAsStream(versionPath.toString());
+            Scanner scanner = new Scanner(file);
+            String clientVersionInfo = scanner.nextLine();
+            scanner.close();
+            file.close();
+
+            return clientVersionInfo;
+        }
+        catch ( IOException e){
+            Log.getInstance().logClientData("Failed to find path: " + versionPath.toString(), Level.WARNING);
+            Log.getInstance().logStackTrace(e);
+
+            return "???";
+        }
+
 
     @Override
     public void show() {

@@ -1,13 +1,12 @@
 package shared.models.services;
 
-import jdk.jfr.StackTrace;
+
 import shared.Constants;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.*;
@@ -15,7 +14,6 @@ import java.util.logging.*;
 public class Log {
 
     private static Log logInstance = null;
-
 
     private Logger logger;
     private Boolean writeToFile = true;
@@ -88,7 +86,7 @@ public class Log {
     private void logMsg(String msg, Level level){
         if (writeToFile)
         {
-            logger.log(Level.ALL, msg);
+            logger.log(level, msg);
         }
 
         System.out.println(msg);
