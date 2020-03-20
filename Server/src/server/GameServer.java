@@ -328,7 +328,7 @@ public class GameServer {
         }
     }
 
-    // Todo Replace
+    // Todo Replace ServerPrint Calls to individual log msgs.
     public static void serverPrint(String string) {
         Log.getInstance().logServerData(string, Level.INFO);
     }

@@ -68,7 +68,10 @@ public class Log {
     public void logClientData(String data, Level level){
         /// use this function when the file is on the Client.
         String clientPrefix = "CLIENT | ";
-        logMsg(clientPrefix + data, level);
+
+        if (data != null) {
+            logMsg(clientPrefix + data, level);
+        }
     }
 
     public void logServerData(String data, Level level){
