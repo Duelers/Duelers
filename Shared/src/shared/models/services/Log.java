@@ -1,31 +1,96 @@
 package shared.models.services;
 
+import jdk.jfr.StackTrace;
+import shared.Constants;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.*;
 
 public class Log {
 
-    private static Log log = null;
+    private static Log logInstance = null;
 
-    private final String logName = "";
+
+    private Logger logger;
+    private Boolean writeToFile = true;
+
+    private static final String logName = Constants.LOG_NAME;
+    private static final Path logPath = Constants.LOG_FILE_PATH;
 
     private Log(){
-        Logger logger = Logger.getLogger("myLogger");
+
+            try {
+                if (!Files.exists(logPath)) {
+                    Files.createFile(logPath);
+                    System.out.println("Creating NEW log file at: " + logPath.toString());
+                }
+            }
+            catch (IOException e){
+
+            }
+
+            logger = Logger.getLogger(logName);
+            FileHandler fh;
+
+            try {
+
+                // Add file handler
+                fh = new FileHandler(logPath.toString(), true);
+                logger.addHandler(fh);
+
+                // Format message: <log Level> | <datetime> | <message>
+                fh.setFormatter(new Formatter() {
+                    @Override
+                    public String format(LogRecord record) {
+                        SimpleDateFormat logTime = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+                        return record.getLevel().toString() + " | " + logTime.format(new Date()) + " | " +  record.getMessage() + "\n";
+                    }
+                });
+
+                logger.setLevel(Level.ALL);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    public static synchronized Log getInstance(){
+        if(logInstance == null)
+            logInstance = new Log();
+        return logInstance;
     }
 
-    public static synchronized Logger getInstance(){
-        if(log == null)
-            log = new Log();
-        return log;
+    public void logClientData(String data, Level level){
+        String clientPrefix = "[CLIENT] ";
+        logMsg(clientPrefix + data, level);
     }
 
-
-
-    private String getTime(){
-
+    public void logServerData(String data, Level level){
+        String serverPrefix = "[SERVER] ";
+        logMsg(serverPrefix + data, level);
     }
 
-    private String getDDMMYYY(){
-
+    public void logSharedData(String data, Level level){
+        String serverPrefix = "[SHARED] ";
+        logMsg(serverPrefix + data, level);
     }
 
+    public void logStackTrace(Exception errorMsg){
+        logMsg(errorMsg.getMessage(), Level.WARNING);
+    }
+
+    private void logMsg(String msg, Level level){
+        if (writeToFile)
+        {
+            logger.log(Level.ALL, msg);
+        }
+
+        System.out.println(msg);
+    }
 }
