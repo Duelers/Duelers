@@ -51,7 +51,6 @@ public class MainMenu extends Show {
     {
         items.addAll(Arrays.asList(itemsArray));
         if (Client.getInstance().getAccount().getAccountType().equals(ADMIN)) {
-            System.out.println(Client.getInstance().getAccount().getUsername());
             items.addAll(Collections.singletonList(
                     new MenuItem(itemIndex++, onlineGamesText, null, event -> menu.showOnlineGamesList())
             ));

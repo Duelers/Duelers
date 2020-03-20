@@ -19,6 +19,7 @@ import org.projectcardboard.client.models.account.Collection;
 import org.projectcardboard.client.models.card.Deck;
 import org.projectcardboard.client.models.card.ExportedDeck;
 import org.projectcardboard.client.models.gui.*;
+import shared.models.services.Log;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -26,6 +27,7 @@ import javax.swing.filechooser.FileSystemView;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.*;
+import java.util.logging.Level;
 
 import static org.projectcardboard.client.models.gui.UIConstants.*;
 
@@ -146,7 +148,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         GraphicalUserInterface.getInstance().makeFullScreen();
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = jfc.getSelectedFile();
-            System.out.println(selectedFile.getAbsolutePath());
+            Log.getInstance().logClientData("Selected Filepath: " + selectedFile.getAbsolutePath(), Level.INFO);
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)))) {
                 return bufferedReader.readLine();
             } catch (IOException e) {
