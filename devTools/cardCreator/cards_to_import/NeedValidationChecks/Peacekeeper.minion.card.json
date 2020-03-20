@@ -1,0 +1,73 @@
+{
+  "name": "Peacekeeper",
+  "description": "Celerity, Airdrop, Provoke\n After attacking, deal 6 damage to all surrounding enemies",
+  "cardId": "Peacekeeper",
+  "spriteName": "f1_peacekeeper",
+  "type": "MINION",
+    "spells": [ 
+    {
+      "spellId": "dmg_on_atk",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": -6,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 1,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 3,
+          "column": 3
+        },
+        "owner": {
+          "own": false,
+          "enemy": true
+        },
+        "cardType": {
+          "cell": false,
+          "hero": true,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onAttack": true,
+      },
+      "coolDown": 0,
+      "manaCost": 0,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 6,
+  "defaultHp": 6,
+  "manaCost": 8,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

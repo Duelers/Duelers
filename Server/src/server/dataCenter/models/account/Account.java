@@ -91,13 +91,7 @@ public class Account {
         if (card == null) {
             throw new ClientException("invalid card name");
         }
-        //removed so we can buy as many cards as we want
-        //if (card.getRemainingNumber() <= 0) {
-            //throw new ClientException("Shop doesn't have any of this card.");
-        //}
         collection.addCard(cardName, originalCards, username);
-        //removed, no longer needed
-        //DataCenter.getInstance().changeCardNumber(cardName, -1);
     }
 
     public void addCardToDeck(String cardId, String deckName) throws LogicException {
@@ -140,6 +134,25 @@ public class Account {
 
     public Collection getCollection() {
         return collection;
+    }
+
+    public void updateCollection(Collection collection){
+        this.getCollection().clearCollection();
+        for(ServerCard card : collection.getHeroes()){
+            for(int i = 0; i < 1; i++){   
+                this.collection.addCard(card.getName(), collection, this.username);
+            }
+        }
+        for(ServerCard card : collection.getMinions()){
+            for(int i = 0; i < 3; i++){   
+                this.collection.addCard(card.getName(), collection, this.username);
+            }
+        }
+        for(ServerCard card : collection.getSpells()){
+            for(int i = 0; i < 3; i++){   
+                this.collection.addCard(card.getName(), collection, this.username);
+            }
+        }
     }
 
     public Deck getMainDeck() {

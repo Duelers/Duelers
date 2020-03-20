@@ -28,7 +28,7 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
 
     ServerCard insert(String cardId) throws ClientException {
         ServerCard card = null;
-        Iterator iterator = hand.iterator();
+        Iterator<ServerCard> iterator = hand.iterator();
         while (iterator.hasNext()) {
             ServerCard card1 = (ServerCard) iterator.next();
             if (card1.getCardId().equalsIgnoreCase(cardId)) {
@@ -73,10 +73,11 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
 
     public ServerCard[] getCardsFromDeck(int cardsToDraw) {
         ServerCard[] drawnCards = new ServerCard[cardsToDraw];
+        Random RNGenerator = new Random();
 
         for(int i = 0; i < cardsToDraw; i++) {
             if (!deck.getCards().isEmpty()) {
-                int index = new Random().nextInt(deck.getCards().size());
+                int index = RNGenerator.nextInt(deck.getCards().size());
                 ServerCard drawnCard = deck.getCards().get(index);
                 drawnCards[i] = drawnCard;
                 try {
@@ -90,6 +91,33 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         }
         return drawnCards;
     }
+
+    public ServerCard[] getCardsFromDeckExcludingCard(int cardsToDraw, ServerCard card) {
+        ServerCard[] drawnCards = new ServerCard[cardsToDraw];
+        int counter = 0;
+        int failSafeCount = (10 * cardsToDraw);
+        Random numberGenerator = new Random();
+        while(counter != cardsToDraw){
+            int index = numberGenerator.nextInt(deck.getCards().size());
+            ServerCard drawnCard = deck.getCards().get(index);
+            if(drawnCard.checkIfSameID(card.getCardId()) && (failSafeCount > 0) ){
+                 failSafeCount--;
+                 continue; 
+            }
+            else{
+                drawnCards[counter] = drawnCard;
+                counter++;
+                try {
+                    deck.removeCard(drawnCard);    
+                }
+                catch (ClientException exception) {
+                    exception.printStackTrace();
+                }
+                continue;
+            }
+        }
+        return drawnCards;
+	}
 
     public void addCardsToHand(ServerCard... cards){
         for(ServerCard card : cards) {
