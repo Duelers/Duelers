@@ -110,20 +110,21 @@ public class Client {
 
     private String simplifyLogMessage(Message message, String sender){
 
-        final String header = String.format("%s says: ", sender);
-
         switch (message.getMessageType()) {
             case TROOP_UPDATE:
 
                 int currentAttack = message.getTroopUpdateMessage().getTroop().getCurrentAp();
                 int currentHealth = message.getTroopUpdateMessage().getTroop().getCurrentHp();
 
-                return header + message.getTroopUpdateMessage().getTroop().getCard().getCardId()
+                return message.getTroopUpdateMessage().getTroop().getCard().getCardId()
                         + String.format(" is %d/%d and at location: ", currentAttack, currentHealth)
                         + message.getTroopUpdateMessage().getTroop().getCell();
 
             case CARD_POSITION:
-                return header + message.getCardPositionMessage().getCard().getCardId() + " has been moved to: " + message.getCardPositionMessage().getCardPosition();
+                return message.getCardPositionMessage().getCard().getCardId() + " has been moved to: " + message.getCardPositionMessage().getCardPosition();
+
+            case CHAT:
+                return String.format("Chat Message: '%s' was sent by '%s", message.getChatMessage().getText(), message.getChatMessage().getSenderUsername();
 
             default:
                 return null;

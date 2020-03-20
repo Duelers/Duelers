@@ -37,7 +37,7 @@ public class Player extends BasePlayer<Card, Troop> {
     }
 
     public void addCardsToHand(int deckSize, Card... drawnCards) {
-        Log.getInstance().logClientData("Current deck size: " + deckSize, Level.INFO);
+        Log.getInstance().logClientData("Current deck size of '" + userName + "' is : " + deckSize, Level.INFO);
 
         if (support == null) {
             support = new PropertyChangeSupport(this);
