@@ -15,6 +15,7 @@ import shared.models.card.CardType;
 
 import server.dataCenter.models.card.Deck;
 
+import shared.models.card.spell.Owner;
 import shared.models.card.spell.Spell;
 import shared.models.card.spell.SpellAction;
 
@@ -592,6 +593,7 @@ public abstract class Game {
                 (attackerTroop.canBeAttackedFromWeakerOnes() || defenderTroop.getCurrentAp() > attackerTroop.getCurrentAp())
         ) {
             damage(defenderTroop, attackerTroop);
+            applyOnCounterAttackSpells(defenderTroop, attackerTroop);
         }
     }
 
@@ -604,6 +606,16 @@ public abstract class Game {
             killTroop(defenderTroop);
         } else {
             GameServer.getInstance().sendTroopUpdateMessage(this, defenderTroop);
+        }
+    }
+
+    private void applyOnCounterAttackSpells(ServerTroop counterAttacker, ServerTroop attacker) {
+        for (Spell spell : counterAttacker.getCard().getSpells()) {
+            if (spell.getAvailabilityType().isOnCounterAttack())
+                applySpell(
+                        spell,
+                        detectCounterAttackTarget(spell, counterAttacker, attacker)
+                );
         }
     }
 
@@ -913,6 +925,39 @@ public abstract class Game {
             randomizeList(targetData.getPlayers());
             randomizeList(targetData.getCards());
         }
+        return targetData;
+    }
+
+    private TargetData detectCounterAttackTarget(Spell spell, ServerTroop counterAttacker, ServerTroop attacker) {
+        TargetData targetData = new TargetData();
+        Owner spellOwner = spell.getTarget().getOwner();
+
+        if (spellOwner != null) {
+            List<ServerTroop> troops = new ArrayList<>();
+
+            if (spellOwner.isOwn()) {
+                troops.add(counterAttacker);
+            }
+
+            if (spellOwner.isEnemy()) {
+                troops.add(attacker);
+            }
+
+            for (ServerTroop troop : troops) {
+                int playerNumber = troop.getPlayerNumber();
+                Player player = (getCurrentTurnPlayer().getPlayerNumber() == playerNumber) ? getCurrentTurnPlayer() : getOtherTurnPlayer();
+                Cell heroCell = player.getHero().getCell();
+                setTargetData(spell, counterAttacker.getCell(), attacker.getCell(), heroCell, player, targetData);
+            }
+        }
+
+        if (spell.getTarget().isRandom()) {
+            randomizeList(targetData.getTroops());
+            randomizeList(targetData.getCells());
+            randomizeList(targetData.getPlayers());
+            randomizeList(targetData.getCards());
+        }
+
         return targetData;
     }
 

@@ -47,9 +47,12 @@ public class Player extends BasePlayer<Card, Troop> {
         for (Card drawnCard : drawnCards) {
             if (drawnCard != null && this.hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
                 this.hand.add(drawnCard);
-                support.firePropertyChange("hand", null, null);
             }
         }
+        if (support == null) {
+            support = new PropertyChangeSupport(this);
+        }
+        support.firePropertyChange("hand", null, null);
     }
 
     public void addCardToGraveYard(Card card) {
