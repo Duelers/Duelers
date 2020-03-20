@@ -40,7 +40,7 @@
 	  },
       "availabilityType": {
         "onAttack": true,
-		"onDefend": true
+        "onCounterAttack": true
       },
       "coolDown": 0,
       "manaCost": 0,

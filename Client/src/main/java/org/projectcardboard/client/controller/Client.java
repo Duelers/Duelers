@@ -150,7 +150,7 @@ public class Client {
             case SEND_EXCEPTION:
                 showError(message);
                 break;
-            case ACCOUNT_COPY:
+            case ACCOUNT_COPY: 
                 updateAccount(message);
                 break;
             case GAME_COPY:
@@ -178,6 +178,7 @@ public class Client {
                 break;
             case ADD_TO_HAND:
                 GameController.getInstance().getCurrentGame().getCurrentTurnPlayer().addCardsToHand(message.getDeckSize(), message.getDrawnCards());
+                GameController.getInstance().calculateAvailableActions();
                 break;
             case GAME_UPDATE:
                 GameUpdateMessage gameUpdateMessage = message.getGameUpdateMessage();
