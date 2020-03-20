@@ -112,6 +112,15 @@ public class DataCenter extends Thread {
             }
             accounts.replace(account, client);
             clients.replace(client, account);
+            
+            boolean ownsAllGenerals = account.getCollection().getHeroes().size() == dataBase.getOriginalCards().getHeroes().size();
+            boolean ownsAllMinions = (account.getCollection().getMinions().size()/3) == dataBase.getOriginalCards().getMinions().size();
+            boolean ownsAllSPells = (account.getCollection().getSpells().size()/3) == dataBase.getOriginalCards().getSpells().size();
+            if(!ownsAllGenerals || !ownsAllMinions || !ownsAllSPells) {
+                System.out.println("Account " + account.getUsername() + " does not own all cards in current collection. Updating...");
+                account.updateCollection(dataBase.getOriginalCards());
+                saveAccount(account);
+            }
             GameServer.sendMessageAsync(Message.makeAccountCopyMessage(client, account));
             GameServer.serverPrint(client + " Is Logged In");
         }
@@ -128,28 +137,6 @@ public class DataCenter extends Thread {
             GameServer.serverPrint(username + " Is Created!");
 
             login(account, client);
-
-            //give the player all cards upon registration
-            //cant give all items because player can only own 3
-            Collection originalCards = dataBase.getOriginalCards();
-
-            System.out.println("Starting Heroes");
-            for (ServerCard card : originalCards.getHeroes()) {
-                this.buyAllCards(account, card.getName());
-
-            }
-
-            for (int i = 0; i < 3; i++) {
-                System.out.println("Starting Minions");
-                for (ServerCard card : originalCards.getMinions()) {
-                    this.buyAllCards(account, card.getName());
-                }
-                System.out.println("Starting Spells");
-                for (ServerCard card : originalCards.getSpells()) {
-                    this.buyAllCards(account, card.getName());
-                }
-            }
-            GameServer.sendMessageAsync(Message.makeAccountCopyMessage(client, account));
         }
     }
 
@@ -260,18 +247,6 @@ public class DataCenter extends Thread {
         account.buyCard(message.getOtherFields().getCardName(), dataBase.getOriginalCards());
         GameServer.sendMessageAsync(Message.makeAccountCopyMessage(message.getSender(), account));
         saveAccount(account);
-    }
-
-    public void buyAllCards(Message message, String cardName) throws LogicException {
-        Account account = clients.get(message.getSender());
-        this.buyAllCards(account, cardName);
-
-    }
-
-    public void buyAllCards(Account account, String cardName) throws LogicException {
-        account.buyCard(cardName, dataBase.getOriginalCards());
-        saveAccount(account);
-
     }
 
     public Map<Account, String> getAccounts() {

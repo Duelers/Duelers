@@ -127,4 +127,14 @@ public class Collection {
     public List<ServerCard> getSpells() {
         return Collections.unmodifiableList(spells);
     }
+
+    public void clearCollection(){
+        heroes.clear();
+        minions.clear();
+        spells.clear();
+    }
+
+    public int Size(){
+        return heroes.size() + minions.size() + spells.size();
+    }
 }
