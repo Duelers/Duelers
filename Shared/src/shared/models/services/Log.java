@@ -52,7 +52,7 @@ public class Log {
 
                 logger.setLevel(Level.ALL);
 
-                logMsg("\n\n=====================================", Level.ALL); // Allows us to quickly tell when a new 'session' begins.
+                logMsg("\n\n", Level.ALL); // Allows us to quickly tell when a new 'session' begins.
 
             } catch (IOException e) {
                 e.printStackTrace();
