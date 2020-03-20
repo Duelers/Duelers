@@ -64,9 +64,11 @@ public class LanguageData {
             try {
                 value = getValue(languageMapDefault, keys);
             } catch (IllegalAccessException | NoSuchFieldException | NullPointerException e2) {
-                System.out.println(String.format(
+                String errorMsg2 = String.format(
                         "Language Localisation Error:: failed to find value for keys '%s' for DEFAULT language: '%s'. Inserting '%s'",
-                        Arrays.deepToString(keys), defaultLanguage, missingValue));
+                        Arrays.deepToString(keys), defaultLanguage, missingValue);
+
+                Log.getInstance().logClientData(errorMsg2, Level.WARNING);
             }
         }
         return (value != null) ? value : missingValue;
