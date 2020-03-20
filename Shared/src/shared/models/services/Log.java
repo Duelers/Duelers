@@ -66,12 +66,12 @@ public class Log {
     }
 
     public void logClientData(String data, Level level){
-        String clientPrefix = "[CLIENT] ";
+        String clientPrefix = " CLIENT | ";
         logMsg(clientPrefix + data, level);
     }
 
     public void logServerData(String data, Level level){
-        String serverPrefix = "[SERVER] ";
+        String serverPrefix = " SERVER | ";
 
         if (data != null) {
             logMsg(serverPrefix + data, level);
@@ -79,7 +79,7 @@ public class Log {
     }
 
     public void logSharedData(String data, Level level){
-        String serverPrefix = "[SHARED] ";
+        String serverPrefix = " SHARED | ";
         if (data != null)
             logMsg(serverPrefix + data, level);
     }

@@ -58,12 +58,12 @@ public class ResourcesCenter {
 
     public static void main(String[] args) {
         try {
-            System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
+            //System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
             readData();
         } catch (OutOfMemoryError e) {
             Log.getInstance().logStackTrace(e);
         }
-        System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
+        //System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
     }
 
     public static ResourcesCenter getInstance() {

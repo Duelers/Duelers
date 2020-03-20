@@ -32,6 +32,7 @@ import shared.models.game.map.Cell;
 import server.gameCenter.models.map.GameMap;
 
 import shared.models.game.map.CellEffect;
+import shared.models.services.Log;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -42,6 +43,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
 
 public abstract class Game {
     private final Player playerOne;
@@ -196,7 +198,7 @@ public abstract class Game {
             GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
             GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,drawnCard);
         } else {
-            System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
+            Log.getInstance().logServerData("(Replace Card) Cannot replace card", Level.INFO);
         }
     }
 
@@ -446,7 +448,6 @@ public abstract class Game {
         // Minion Placement rules: nearby ally <Hero, Minion>
         // Note, hard-coded the AIRDROP keyword ability
         if (card.getDescription().contains("Airdrop")) {
-            System.out.println(cell.toString() + " Is a legal square because " + card.getCardId() + " has AIRDROP keyword.");
             return true;
         }
 
@@ -459,8 +460,6 @@ public abstract class Game {
             boolean checkColumn = Math.abs(cell.getColumn() - allyPosition.getColumn()) <= 1;
 
             if (checkRow && checkColumn) {
-                System.out.println(cell.toString() + " Is a legal square because Ally UNIT: " + troop.getCard().getCardId()
-                        + " Is on " + allyPosition.toString());
                 return true;
             }
         }

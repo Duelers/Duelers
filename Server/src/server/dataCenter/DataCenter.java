@@ -17,10 +17,12 @@ import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import server.exceptions.ServerException;
 import server.gameCenter.GameCenter;
+import shared.models.services.Log;
 
 import javax.websocket.Session;
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
 
 public class DataCenter extends Thread {
     private static final String ACCOUNTS_PATH = "Server/resources/accounts";
@@ -117,7 +119,8 @@ public class DataCenter extends Thread {
             boolean ownsAllMinions = (account.getCollection().getMinions().size()/3) == dataBase.getOriginalCards().getMinions().size();
             boolean ownsAllSPells = (account.getCollection().getSpells().size()/3) == dataBase.getOriginalCards().getSpells().size();
             if(!ownsAllGenerals || !ownsAllMinions || !ownsAllSPells) {
-                System.out.println("Account " + account.getUsername() + " does not own all cards in current collection. Updating...");
+
+                Log.getInstance().logServerData("Account " + account.getUsername() + " does not own all cards in current collection. Updating...", Level.INFO);
                 account.updateCollection(dataBase.getOriginalCards());
                 saveAccount(account);
             }
@@ -310,7 +313,6 @@ public class DataCenter extends Thread {
         File[] files = new File(ACCOUNTS_PATH).listFiles();
         if (files != null) {
             for (File file : files) {
-                System.out.println(file.getName());
                 TempAccount account = loadFile(file, TempAccount.class);
                 if (account == null) continue;
                 Account newAccount = new Account(account);

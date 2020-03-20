@@ -7,8 +7,10 @@ import server.dataCenter.models.card.Deck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
 import shared.models.game.BasePlayer;
+import shared.models.services.Log;
 
 import java.util.*;
+import java.util.logging.Level;
 
 public class Player extends BasePlayer<ServerCard, ServerTroop> {
     private final Deck deck;
@@ -82,8 +84,9 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
                 drawnCards[i] = drawnCard;
                 try {
                     deck.removeCard(drawnCard);
-                } catch (ClientException ignored) {
-                    System.out.println("Unable to remove card from deck");
+                } catch (ClientException e) {
+                    Log.getInstance().logServerData("(getCardsFromDeck) Unable to remove card from deck", Level.WARNING);
+                    //Log.getInstance().logStackTrace(e);
                 }
             } else {
                 break;
@@ -102,7 +105,7 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
             ServerCard drawnCard = deck.getCards().get(index);
             if(drawnCard.checkIfSameID(card.getCardId()) && (failSafeCount > 0) ){
                  failSafeCount--;
-                 continue; 
+                 continue;
             }
             else{
                 drawnCards[counter] = drawnCard;
