@@ -10,6 +10,7 @@ import javafx.scene.text.FontWeight;
 import org.projectcardboard.client.models.gui.*;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
+import shared.HelperMethods;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +33,7 @@ public class LoginMenu extends Show {
 
             root.getChildren().addAll(sceneContents);
 
-            String versionInfo = getClientVersionInfo();
+            String versionInfo = new HelperMethods().getClientVersionInfo();
             if (versionInfo != null) {
                 String version = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.VERSION});
                 DefaultLabel versionLabel = new DefaultLabel(String.format("%s: %s", version, versionInfo), Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.DARKGRAY, 10, 10);
@@ -55,24 +56,13 @@ public class LoginMenu extends Show {
     public String getServerInfo(){
 
         // Todo (1) add localisation. (2) Only reveal last bit of server. eg "test3" instead of "wss://mechaz.org/test3"
+        // Todo (3) Move this function out of login Menu
         Boolean isLocalConnection = Boolean.parseBoolean(Config.getInstance().getProperty("HOST_SERVER"));
         if (isLocalConnection){
             return "local host";
         }
 
         return Config.getInstance().getProperty("SERVER_URI");
-    }
-
-    public String getClientVersionInfo() throws IOException {
-        final String versionPath = "/clientVersion.txt";
-
-         InputStream file = this.getClass().getResourceAsStream(versionPath);
-         Scanner scanner = new Scanner(file);
-         String clientVersionInfo = scanner.nextLine();
-         scanner.close();
-         file.close();
-
-         return clientVersionInfo;
     }
 
     @Override
