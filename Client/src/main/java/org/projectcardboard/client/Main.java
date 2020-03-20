@@ -18,7 +18,7 @@ public class Main extends Application {
 
         // Initialise Singletons...
         LanguageData.getInstance();
-        Log.getInstance().logClientData("\n\nStarting Client...", Level.INFO);
+        Log.getInstance().logClientData("Starting Client...", Level.INFO);
 
         String hostServer = Config.getInstance().getProperty("HOST_SERVER");
         boolean shouldHostServer = Boolean.parseBoolean(hostServer);

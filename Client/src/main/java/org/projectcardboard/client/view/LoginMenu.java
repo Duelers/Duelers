@@ -68,10 +68,10 @@ public class LoginMenu extends Show {
 
     // Todo move this function out of login menu, add call to Log in main
     public String getClientVersionInfo() {
-        final Path versionPath = Paths.get("../clientVersion.txt").toAbsolutePath();
+        final String versionPath = "/clientVersion.txt";
 
         try {
-            InputStream file = this.getClass().getResourceAsStream(versionPath.toString());
+            InputStream file = this.getClass().getResourceAsStream(versionPath);
             Scanner scanner = new Scanner(file);
             String clientVersionInfo = scanner.nextLine();
             scanner.close();
@@ -79,7 +79,7 @@ public class LoginMenu extends Show {
 
             return clientVersionInfo;
         } catch (IOException e) {
-            Log.getInstance().logClientData("Failed to find path: " + versionPath.toString(), Level.WARNING);
+            Log.getInstance().logClientData("Failed to find path: " + versionPath, Level.WARNING);
             Log.getInstance().logStackTrace(e);
 
             return "???";

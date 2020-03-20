@@ -18,11 +18,13 @@ import server.gameCenter.GameCenter;
 import server.gameCenter.models.game.*;
 import shared.models.game.map.Cell;
 import shared.models.game.map.CellEffect;
+import shared.models.services.Log;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
+import java.util.logging.Level;
 
 public class GameServer {
     private static GameServer server;
@@ -326,8 +328,9 @@ public class GameServer {
         }
     }
 
+    // Todo Replace
     public static void serverPrint(String string) {
-        System.out.println("\u001B[32m" + string.trim() + "\u001B[0m");
+        Log.getInstance().logServerData(string, Level.INFO);
     }
 
     public void sendChangeCardNumberMessage(ServerCard card) {

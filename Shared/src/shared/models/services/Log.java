@@ -52,6 +52,8 @@ public class Log {
 
                 logger.setLevel(Level.ALL);
 
+                logMsg("\n\n=====================================", Level.ALL); // Allows us to quickly tell when a new 'session' begins.
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -70,20 +72,28 @@ public class Log {
 
     public void logServerData(String data, Level level){
         String serverPrefix = "[SERVER] ";
-        logMsg(serverPrefix + data, level);
+
+        if (data != null) {
+            logMsg(serverPrefix + data, level);
+        }
     }
 
     public void logSharedData(String data, Level level){
         String serverPrefix = "[SHARED] ";
-        logMsg(serverPrefix + data, level);
+        if (data != null)
+            logMsg(serverPrefix + data, level);
     }
 
     public void logStackTrace(Exception errorMsg){
-        logMsg(errorMsg.getMessage(), Level.WARNING);
+        if (errorMsg != null) {
+            logMsg(errorMsg.getMessage(), Level.WARNING);
+        }
     }
 
     public void logStackTrace(Error errorMsg){
-        logMsg(errorMsg.getMessage(), Level.WARNING);
+        if (errorMsg != null) {
+            logMsg(errorMsg.getMessage(), Level.WARNING);
+        }
     }
 
 

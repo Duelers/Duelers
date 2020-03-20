@@ -65,7 +65,16 @@ public class Client {
                 Message messageObject = gson.fromJson(message, Message.class);
 
                 String msg = simplifyLogMessage(messageObject, "Server");
-                Log.getInstance().logClientData(msg != null ? msg: message, Level.INFO);
+                if (msg != null){
+                    Log.getInstance().logClientData(msg, Level.INFO);
+                }
+                else{
+                    Log.getInstance().logClientData(
+                            String.format("Message of Type '%s' was sent by '%s'",
+                                    messageObject.getMessageType().toString(),
+                                    messageObject.getSender()),
+                            Level.INFO);
+                }
 
                 handleMessage(messageObject);
             }
