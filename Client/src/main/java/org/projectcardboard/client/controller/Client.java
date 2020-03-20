@@ -22,7 +22,10 @@ import org.projectcardboard.client.view.battleview.BattleScene;
 
 import Config.Config;
 import javafx.application.Platform;
+import shared.models.services.Log;
+
 import java.util.Objects;
+import java.util.logging.Level;
 
 
 public class Client {
@@ -62,11 +65,8 @@ public class Client {
                 Message messageObject = gson.fromJson(message, Message.class);
 
                 String msg = simplifyLogMessage(messageObject, "Server");
-                if (msg != null) {
-                    System.out.println(msg);
-                } else {
-                    System.out.println(message);
-                }
+                Log.getInstance().logClientData(msg != null ? msg: message, Level.INFO);
+
                 handleMessage(messageObject);
             }
         });
@@ -75,7 +75,8 @@ public class Client {
                 this.ws.connect();
                 break;
             } catch (WebSocketException e) {
-                System.out.println(e.getMessage());
+                Log.getInstance().logStackTrace(e);
+
                 connectionAttempts -= 1;
                 if (connectionAttempts == 0) {
                     throw new RuntimeException(e);
@@ -130,7 +131,7 @@ public class Client {
                 String json = message.toJson();
                 this.ws.sendText(json);
 
-                System.out.println("message sent: " + json);
+                //System.out.println("message sent: " + json);
 
             } else {
                 try {

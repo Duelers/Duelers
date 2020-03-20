@@ -17,6 +17,7 @@ import shared.models.card.Card;
 import shared.models.card.CardType;
 import shared.models.game.Troop;
 import shared.models.game.map.Cell;
+import shared.models.services.Log;
 
 
 public class GameController implements GameActions {
@@ -99,7 +100,7 @@ public class GameController implements GameActions {
             Client.getInstance().addToSendingMessagesAndSend(message);
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            Log.getInstance().logStackTrace(e);
         }
 
     }
@@ -126,7 +127,7 @@ public class GameController implements GameActions {
             Message message = Message.makeMoveTroopMessage(SERVER_NAME, selectedTroop.getCard().getCardId(), target);
             Client.getInstance().addToSendingMessagesAndSend(message);
         } catch (InputException e) {
-            System.out.println(e.getMessage());
+            Log.getInstance().logStackTrace(e);
         }
     }
 
