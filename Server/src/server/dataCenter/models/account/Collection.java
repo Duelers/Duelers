@@ -104,7 +104,7 @@ public class Collection {
             throw new ClientException("you have not the hero");
         deck.addCard(hero.get(0));
         for (Map.Entry<String, Integer> entry :
-                exportedDeck.getOtherCards().entrySet()) {
+                exportedDeck.getCards().entrySet()) {
             ArrayList<ServerCard> cards = getCardsWithName(entry.getKey(), minions);
             cards.addAll(getCardsWithName(entry.getKey(), spells));
             if (cards.size() < entry.getValue())
