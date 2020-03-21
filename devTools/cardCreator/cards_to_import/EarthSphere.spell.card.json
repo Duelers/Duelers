@@ -3,6 +3,7 @@
   "description": "Add 8 Health to your general.",
   "cardId": "EarthSphere",
   "spriteName": "icon_f5_earthsphere",
+  "fxName": "fx_f5_earthsphere",
   "type": "SPELL",
   "spells": [
     {
