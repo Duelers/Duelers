@@ -9404,6 +9404,7 @@
                 "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_1",
                 "spriteName": "icon_f4_voidpulse",
+                "fxName": "fx_f4_voidpulse",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -9542,6 +9543,7 @@
                 "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_2",
                 "spriteName": "icon_f4_voidpulse",
+                "fxName": "fx_f4_voidpulse",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -9680,6 +9682,7 @@
                 "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_3",
                 "spriteName": "icon_f4_voidpulse",
+                "fxName": "fx_f4_voidpulse",
                 "type": "SPELL",
                 "spells": [
                     {
