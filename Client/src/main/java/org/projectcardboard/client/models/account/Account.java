@@ -3,6 +3,7 @@ package org.projectcardboard.client.models.account;
 import org.projectcardboard.client.models.card.Deck;
 import org.projectcardboard.client.models.card.TempDeck;
 import shared.models.account.AccountType;
+import shared.models.account.BaseAccount;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -10,20 +11,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Account {
-    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
-    private String username;
-    private String password;
-    private AccountType accountType;
-    private Collection collection;
-    private List<Deck> decks = new ArrayList<>();
-    private Deck mainDeck;
-    private List<MatchHistory> matchHistories;
+public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
+    private transient final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public Account(TempAccount account) {
-        this.username = account.getUsername();
-        this.password = account.getPassword();
-        this.collection = account.getCollection();
+        super(account.getUsername(), account.getPassword(), account.getCollection(), account.getAccountType());
         if (account.getDecks() != null) {
             for (TempDeck deck : account.getDecks()) {
                 this.decks.add(new Deck(deck, collection));
@@ -31,7 +23,6 @@ public class Account {
         }
         this.matchHistories = account.getMatchHistories();
         this.mainDeck = getDeck(account.getMainDeckName());
-        this.accountType = account.getAccountType();
     }
 
     @Override
@@ -74,7 +65,7 @@ public class Account {
         return deck.equals(this.mainDeck);
     }
 
-    public void update(TempAccount account) {
+    public void update(TempAccount account) { //Todo this stops all fields from being final. It should make a new account instead.
         if (!username.equals(account.getUsername())) {
             String old = username;
             username = account.getUsername();
