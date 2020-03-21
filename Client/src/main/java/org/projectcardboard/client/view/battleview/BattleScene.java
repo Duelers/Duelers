@@ -10,6 +10,7 @@ import javafx.scene.media.Media;
 import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.GameActions;
+import shared.models.card.Card;
 import shared.models.card.spell.AvailabilityType;
 import shared.models.game.map.Cell;
 import org.projectcardboard.client.view.Show;
@@ -95,16 +96,20 @@ public class BattleScene extends Show {
         mapBox.showDefend(defender, attacker);
     }
 
-    public void spell(AvailabilityType availabilityType, Cell cell) {
-        mapBox.showSpell(getSpellSpriteName(availabilityType), cell.getRow(), cell.getColumn());
+    public void spell(AvailabilityType availabilityType, Cell cell, Card card) {
+        mapBox.showSpell(getSpellSpriteName(availabilityType, card), cell.getRow(), cell.getColumn());
     }
 
-    private String getSpellSpriteName(AvailabilityType availabilityType) {
+    private String getSpellSpriteName(AvailabilityType availabilityType, Card card) {
+
         if (availabilityType.isOnAttack()) return spellSpriteNames.get(SpellType.ATTACK);
         if (availabilityType.isOnDeath()) return spellSpriteNames.get(SpellType.DEATH);
         if (availabilityType.isOnDefend()) return spellSpriteNames.get(SpellType.DEFEND);
         if (availabilityType.isContinuous()) return spellSpriteNames.get(SpellType.CONTINUOUS);
-        if (availabilityType.isOnPut()) return spellSpriteNames.get(SpellType.PUT);
+        if (availabilityType.isOnPut()) {
+            String spellFx = card != null ? card.getFxName(): null;
+            return spellFx != null ? spellFx : spellSpriteNames.get(SpellType.PUT);
+        }
         return spellSpriteNames.get(SpellType.DEFAULT);
     }
 
