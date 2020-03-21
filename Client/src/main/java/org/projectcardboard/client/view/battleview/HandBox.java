@@ -110,6 +110,10 @@ public class HandBox implements PropertyChangeListener {
 		}, 0, 1000);
 	}
 
+    /*
+    WARNING: excessive or insufficient calls to updateNext can lead to bad side affects, such as the button 
+    being greyed out when it shoudlnt, or the deck size variable showing an incorrect number
+    */
     private void updateNext() {
         next.getChildren().clear();
         final ImageView replaceIcon = new ImageView();
@@ -124,13 +128,15 @@ public class HandBox implements PropertyChangeListener {
         replaceText.setStyle("-fx-text-base-color: white; -fx-font-size: 15px;");
         replaceText.setFill(Color.WHITE);
         next.getChildren().add(replaceText);
-        if(canReplace){
-            replaceText.setText("Replace Available \n Cards Remaining: " + player.getDeckSize());
+        if(battleScene.isMyTurn()){
+            if(canReplace){
+                replaceText.setText("Replace Available \n Cards Remaining: " + player.getDeckSize());
+            }
+            else{
+                replaceText.setText("\n Cards Remaining: " + player.getDeckSize());
+            }
+            next.setOnMouseClicked(mouseEvent -> replaceSelectedCard());
         }
-        else{
-            replaceText.setText("\n Cards Remaining: " + player.getDeckSize());
-        }
-        next.setOnMouseClicked(mouseEvent -> replaceSelectedCard());
     }
 
     private void updateCards() {
@@ -313,14 +319,16 @@ public class HandBox implements PropertyChangeListener {
                     Platform.runLater(() -> {
                         endTurnButton.setEffect(DISABLE_BUTTON_EFFECT);
                         endTurnLabel.setText("ENEMY TURN");
-						this.runTurnTimer();
+                        this.runTurnTimer();
+                        updateNext();
                     });
                 } else {
                     Platform.runLater(() -> {
                         updateNext();
                         endTurnButton.setEffect(null);
                         endTurnLabel.setText("END TURN");
-						this.runTurnTimer();
+                        this.runTurnTimer();
+                        updateNext();
                     });
                 }
                 break;

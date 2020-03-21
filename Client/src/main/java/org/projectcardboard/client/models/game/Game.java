@@ -92,10 +92,4 @@ public class Game extends BaseGame<Player, GameMap> {
         gameMap.updateCellEffects(cellEffects);
     }
 
-
-    public void setDeckSizes(){
-        playerOne.setDeckSize(playerOneDeckSize);
-        playerTwo.setDeckSize(playerTwoDeckSize);
-    }
-
 }
