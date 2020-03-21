@@ -206,7 +206,7 @@ public class Client {
                 }).start();
                 break;
             case ANIMATION:
-                GameController.getInstance().showAnimation(message.getGameAnimations());
+                GameController.getInstance().showAnimation(message.getGameAnimations(), message.getCard());
                 break;
             case CHAT:
                 showOrSaveMessage(message);
