@@ -6,6 +6,7 @@ import server.dataCenter.models.card.ServerCard;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.card.ExportedDeck;
+import shared.models.card.Card;
 import shared.models.card.spell.AvailabilityType;
 import server.gameCenter.models.game.*;
 import shared.models.game.GameType;
@@ -101,10 +102,11 @@ public class Message {
         return message;
     }
 
-    public static Message makeSpellMessage(String receiver, Set<Cell> cells, AvailabilityType availabilityType) {
+    public static Message makeSpellMessage(String receiver, Set<Cell> cells, AvailabilityType availabilityType, Card card) {
         Message message = new Message(receiver);
         message.gameAnimations = new GameAnimations();
         message.gameAnimations.addSpellAnimation(cells, availabilityType);
+        message.card = (ServerCard) card;
         message.messageType = MessageType.ANIMATION;
         return message;
     }
