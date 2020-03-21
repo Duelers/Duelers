@@ -2,6 +2,7 @@ package shared.models.card;
 
 import shared.models.card.spell.Spell;
 
+import javax.swing.*;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ public class Card implements ICard {
     private final String description;
     protected String cardId;
     private final String spriteName;
+    private final String fxName;
     private final CardType type;
     protected final ArrayList<Spell> spells;
     private final int defaultAp;
@@ -26,6 +28,7 @@ public class Card implements ICard {
                 String cardId,
                 String description,
                 String spriteName,
+                String fxName,
                 CardType type,
                 ArrayList<Spell> spells,
                 int defaultAp,
@@ -38,6 +41,7 @@ public class Card implements ICard {
         this.cardId = cardId;
         this.description = description;
         this.spriteName = spriteName;
+        this.fxName = fxName;
         this.type = type;
         this.spells = spells;
         this.defaultAp = defaultAp;
@@ -59,6 +63,7 @@ public class Card implements ICard {
         this.description = referenceCard.description;
         this.cardId = referenceCard.cardId;
         this.spriteName = referenceCard.spriteName;
+        this.fxName = referenceCard.fxName;
         this.type = referenceCard.type;
         this.spells = new ArrayList<>();
         if (referenceCard.spells != null) {
@@ -101,6 +106,8 @@ public class Card implements ICard {
     public String getSpriteName() {
         return spriteName;
     }
+
+    public String getFxName(){ return fxName;}
 
     @Override
     public CardType getType() {
