@@ -128,15 +128,13 @@ public class HandBox implements PropertyChangeListener {
         replaceText.setStyle("-fx-text-base-color: white; -fx-font-size: 15px;");
         replaceText.setFill(Color.WHITE);
         next.getChildren().add(replaceText);
-        if(battleScene.isMyTurn()){
-            if(canReplace){
-                replaceText.setText("Replace Available \n Cards Remaining: " + player.getDeckSize());
-            }
-            else{
-                replaceText.setText("\n Cards Remaining: " + player.getDeckSize());
-            }
-            next.setOnMouseClicked(mouseEvent -> replaceSelectedCard());
+        if(canReplace){
+            replaceText.setText("Replace Available \n Cards Remaining: " + player.getDeckSize());
         }
+        else{
+            replaceText.setText("\n Cards Remaining: " + player.getDeckSize());
+        }
+        next.setOnMouseClicked(mouseEvent -> replaceSelectedCard());
     }
 
     private void updateCards() {
@@ -361,6 +359,7 @@ public class HandBox implements PropertyChangeListener {
         if (player != null) {
             selectedCard = -1;
             updateCards();
+            updateNext();
         }
     }
 
