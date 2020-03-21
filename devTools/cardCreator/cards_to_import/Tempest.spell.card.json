@@ -3,6 +3,7 @@
   "description": "Deal 2 Damage to ALL characters",
   "cardId": "Tempest",
   "spriteName": "icon_f1_tempest",
+  "fxName": "fx_explosionyellowelectrical",
   "type": "SPELL",
   "spells": [
     {
