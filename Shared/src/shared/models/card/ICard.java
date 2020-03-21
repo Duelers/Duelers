@@ -7,6 +7,8 @@ public interface ICard {
 
     String getSpriteName();
 
+    String getFxName();
+
     int getDefaultAp();
 
     int getDefaultHp();
