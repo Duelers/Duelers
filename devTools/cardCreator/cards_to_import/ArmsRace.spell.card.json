@@ -3,6 +3,7 @@
   "description": "Both Generals gain +1 attack",
   "cardId": "ArmsRace",
   "spriteName": "icon_f1_enthrall",
+  "fxName": "fx_martyrdom",
   "type": "SPELL",
   "spells": [
     {
