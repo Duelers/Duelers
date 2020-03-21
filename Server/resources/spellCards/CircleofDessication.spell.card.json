@@ -1,17 +1,17 @@
 {
-  "name": "Tempest",
-  "description": "Deal 2 Damage to ALL characters",
-  "cardId": "Tempest",
-  "spriteName": "icon_f1_tempest",
-  "fxName": "fx_explosionyellowelectrical",
+  "name": "Circle of Dessication",
+  "description": "Destroy all minions.",
+  "cardId": "CircleofDessication",
+  "spriteName": "icon_f3_circleofdessication",
+  "fxName": "f3_fx_circleofdessication",
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "deal_2_dmg_everything",
+      "spellId": "destroy_all_minions",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": -2,
+        "hpChange": 0,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -23,7 +23,7 @@
         "noAttackFromWeakerOnes": false,
         "disableHolyBuff": false,
         "addSpell": false,
-        "killsTarget": false,
+        "killsTarget": true,
         "isForGladiator": false,
         "durable": true,
         "removeBuffs": 0,
@@ -36,8 +36,8 @@
         "isRandom": false,
         "isForDeckCards": false,
         "dimensions": {
-          "row": 10,
-          "column": 18
+          "row": 20,
+          "column": 20
         },
         "owner": {
           "own": true,
@@ -45,9 +45,9 @@
         },
         "cardType": {
           "cell": false,
-          "hero": true,
+          "hero": false,
           "minion": true,
-          "player": true
+          "player": false
         },
         "attackType": {
           "melee": true,
@@ -70,7 +70,7 @@
   ],
   "defaultAp": 0,
   "defaultHp": 0,
-  "manaCost": 2,
+  "manaCost": 8,
   "price": 100,
   "range": 0,
   "hasCombo": false,

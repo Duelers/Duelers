@@ -3,6 +3,7 @@
   "description": "STUN an enemy",
   "cardId": "BeamShock",
   "spriteName": "icon_f1_beamshock",
+  "fxName": "fx_explosionorangesmoke",
   "type": "SPELL",
   "spells": [
     {

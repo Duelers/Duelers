@@ -3,6 +3,7 @@
   "description": "Destroy target enemy minion.",
   "cardId": "DarkDestruction",
   "spriteName": "icon_f4_darktransformation",
+  "fxName": "fx_f4_darkfiretransformation",
   "type": "SPELL",
   "spells": [
     {
