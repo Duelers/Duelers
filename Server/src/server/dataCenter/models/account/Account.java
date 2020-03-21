@@ -6,12 +6,13 @@ import server.dataCenter.models.card.ServerCard;
 import server.dataCenter.models.card.TempDeck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.account.AccountType;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static server.dataCenter.models.account.AccountType.NORMAL;
+import static shared.models.account.AccountType.NORMAL;
 
 public class Account {
     private final String username;

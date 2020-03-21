@@ -1,6 +1,7 @@
 package server.dataCenter.models.account;
 
 import server.dataCenter.DataCenter;
+import shared.models.account.AccountType;
 
 public class AccountInfo {
     private final String username;

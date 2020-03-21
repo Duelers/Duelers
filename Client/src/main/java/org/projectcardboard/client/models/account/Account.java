@@ -2,6 +2,7 @@ package org.projectcardboard.client.models.account;
 
 import org.projectcardboard.client.models.card.Deck;
 import org.projectcardboard.client.models.card.TempDeck;
+import shared.models.account.AccountType;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

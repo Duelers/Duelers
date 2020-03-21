@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.projectcardboard.client.models.card.TempDeck;
+import shared.models.account.AccountType;
 
 public class TempAccount {
     private String username;

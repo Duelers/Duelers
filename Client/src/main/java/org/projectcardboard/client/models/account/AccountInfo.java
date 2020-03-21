@@ -1,5 +1,7 @@
 package org.projectcardboard.client.models.account;
 
+import shared.models.account.AccountType;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 

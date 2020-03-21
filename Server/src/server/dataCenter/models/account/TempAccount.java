@@ -2,6 +2,7 @@ package server.dataCenter.models.account;
 
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.TempDeck;
+import shared.models.account.AccountType;
 
 import java.util.ArrayList;
 import java.util.Collections;
