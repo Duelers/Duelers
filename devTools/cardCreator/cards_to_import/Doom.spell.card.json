@@ -3,6 +3,7 @@
   "description": "The enemy General is DOOMED and will die after three turns",
   "cardId": "Doom",
   "spriteName": "icon_f4_doom",
+  "fxName": "fx_f4_doom",
   "type": "SPELL",
   "spells": [
     {
