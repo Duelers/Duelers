@@ -8066,6 +8066,7 @@
                 "description": "Give a minion or General +3 Attack this turn.",
                 "cardId": "duelyst_SaberspineSeal_1",
                 "spriteName": "icon_f2_saberspineseal",
+                "fxName": "fx_f2_saberspineseal",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -8126,6 +8127,7 @@
                 "description": "Give a minion or General +3 Attack this turn.",
                 "cardId": "duelyst_SaberspineSeal_2",
                 "spriteName": "icon_f2_saberspineseal",
+                "fxName": "fx_f2_saberspineseal",
                 "type": "SPELL",
                 "spells": [
                     {
@@ -8186,6 +8188,7 @@
                 "description": "Give a minion or General +3 Attack this turn.",
                 "cardId": "duelyst_SaberspineSeal_3",
                 "spriteName": "icon_f2_saberspineseal",
+                "fxName": "fx_f2_saberspineseal",
                 "type": "SPELL",
                 "spells": [
                     {
