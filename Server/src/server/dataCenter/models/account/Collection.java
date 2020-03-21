@@ -7,16 +7,14 @@ import server.dataCenter.models.card.ExportedDeck;
 import server.dataCenter.models.card.ServerCard;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.account.BaseCollection;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-public class Collection {
-    private final List<ServerCard> heroes = new ArrayList<>();
-    private final List<ServerCard> minions = new ArrayList<>();
-    private final List<ServerCard> spells = new ArrayList<>();
+public class Collection extends BaseCollection<ServerCard> {
 
     boolean hasCard(String cardId) {
         return hasCard(cardId, heroes) || hasCard(cardId, minions) || hasCard(cardId, spells);
@@ -91,12 +89,6 @@ public class Collection {
         }
     }
 
-    public void removeCard(ServerCard card) {
-        heroes.remove(card);
-        minions.remove(card);
-        spells.remove(card);
-    }
-
     public Deck extractDeck(ExportedDeck exportedDeck) throws LogicException {
         Deck deck = new Deck(exportedDeck.getName());
         ArrayList<ServerCard> hero = getCardsWithName(exportedDeck.getHeroName(), heroes);
@@ -116,25 +108,9 @@ public class Collection {
         return deck;
     }
 
-    public List<ServerCard> getHeroes() {
-        return Collections.unmodifiableList(heroes);
-    }
-
-    public List<ServerCard> getMinions() {
-        return Collections.unmodifiableList(minions);
-    }
-
-    public List<ServerCard> getSpells() {
-        return Collections.unmodifiableList(spells);
-    }
-
-    public void clearCollection(){
+    public void clearCollection() {
         heroes.clear();
         minions.clear();
         spells.clear();
-    }
-
-    public int Size(){
-        return heroes.size() + minions.size() + spells.size();
     }
 }
