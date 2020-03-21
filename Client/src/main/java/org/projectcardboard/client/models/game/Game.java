@@ -92,5 +92,4 @@ public class Game extends BaseGame<Player, GameMap> {
         gameMap.updateCellEffects(cellEffects);
     }
 
-
 }

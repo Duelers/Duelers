@@ -6,6 +6,7 @@ import org.projectcardboard.client.models.game.GameActions;
 import org.projectcardboard.client.models.game.availableactions.AvailableActions;
 import org.projectcardboard.client.models.message.CardAnimation;
 import org.projectcardboard.client.models.message.GameAnimations;
+import org.projectcardboard.client.models.message.GameCopyMessage;
 import org.projectcardboard.client.models.message.Message;
 import org.projectcardboard.client.models.message.OnlineGame;
 import org.projectcardboard.client.view.battleview.BattleScene;
@@ -48,14 +49,16 @@ public class GameController implements GameActions {
         return currentGame;
     }
 
-    public void setCurrentGame(Game currentGame) {
-        this.currentGame = currentGame;
-        currentGame.getPlayerOne().setTroops(currentGame.getGameMap().getTroopsBelongingToPlayer(1));
-        currentGame.getPlayerTwo().setTroops(currentGame.getGameMap().getTroopsBelongingToPlayer(2));
-        int playerNumber = getPlayerNumber(currentGame);
+    public void setCurrentGame(GameCopyMessage gameCopyMessage) {
+        this.currentGame = gameCopyMessage.getGame();
+        this.currentGame.getPlayerOne().setTroops(gameCopyMessage.getGame().getGameMap().getTroopsBelongingToPlayer(1));
+        this.currentGame.getPlayerTwo().setTroops(gameCopyMessage.getGame().getGameMap().getTroopsBelongingToPlayer(2));
+        this.getCurrentGame().getPlayerOne().setDeckSize(gameCopyMessage.getP1StartingDeckSize());
+        this.getCurrentGame().getPlayerTwo().setDeckSize(gameCopyMessage.getP2StartingDeckSize());
+        int playerNumber = getPlayerNumber(gameCopyMessage.getGame());
         Platform.runLater(() -> {
             try {
-                battleScene = new BattleScene(this, currentGame, playerNumber, "battlemap6_middleground@2x");
+                battleScene = new BattleScene(this, gameCopyMessage.getGame(), playerNumber, "battlemap6_middleground@2x");
                 battleScene.show();
             } catch (Exception e) {
                 e.printStackTrace();
