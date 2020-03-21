@@ -161,13 +161,14 @@ public class GameController implements GameActions {
         Client.getInstance().addToSendingMessagesAndSend(Message.makeStopShowGameMessage(SERVER_NAME, onlineGame));
     }
 
-    public void showAnimation(GameAnimations gameAnimations) {
+    public void showAnimation(GameAnimations gameAnimations, Card card) {
         new Thread(() -> {
             gameAnimations.getSpellAnimations().forEach(
                     spellAnimation -> spellAnimation.getCells().forEach(
-                            position -> battleScene.spell(spellAnimation.getAvailabilityType(), position)
+                            position -> battleScene.spell(spellAnimation.getAvailabilityType(), position, card)
                     )
             );
+
             for (CardAnimation cardAnimation :
                     gameAnimations.getAttacks()) {
                 battleScene.attack(cardAnimation.getAttacker(), cardAnimation.getDefender());

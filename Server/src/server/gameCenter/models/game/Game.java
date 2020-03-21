@@ -10,6 +10,7 @@ import server.dataCenter.models.account.MatchHistory;
 import server.dataCenter.models.card.ServerCard;
 import shared.Constants;
 import shared.models.card.AttackType;
+import shared.models.card.Card;
 import shared.models.card.CardType;
 
 import server.dataCenter.models.card.Deck;
@@ -434,7 +435,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
     private void applyOnPutSpells(ServerCard card, Cell cell) {
         for (Spell spell : card.getSpells()) {
             if (spell.getAvailabilityType().isOnPut()) {
-                applySpell(spell, detectTarget(spell, cell, cell, getCurrentTurnPlayer().getHero().getCell()));
+                applySpell(spell, detectTarget(spell, cell, cell, getCurrentTurnPlayer().getHero().getCell()), card);
             }
         }
     }
@@ -531,7 +532,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             if (spell.getAvailabilityType().isOnAttack())
                 applySpell(
                         spell,
-                        detectTarget(spell, attackerTroop.getCell(), defenderTroop.getCell(), getCurrentTurnPlayer().getHero().getCell())
+                        detectTarget(spell, attackerTroop.getCell(), defenderTroop.getCell(), getCurrentTurnPlayer().getHero().getCell()), null
                 );
         }
     }
@@ -541,7 +542,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             if (spell.getAvailabilityType().isOnDefend())
                 applySpell(
                         spell,
-                        detectTarget(spell, defenderTroop.getCell(), attackerTroop.getCell(), getOtherTurnPlayer().getHero().getCell())
+                        detectTarget(spell, defenderTroop.getCell(), attackerTroop.getCell(), getOtherTurnPlayer().getHero().getCell()), null
                 );
         }
     }
@@ -578,7 +579,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             if (spell.getAvailabilityType().isOnCounterAttack())
                 applySpell(
                         spell,
-                        detectCounterAttackTarget(spell, counterAttacker, attacker)
+                        detectCounterAttackTarget(spell, counterAttacker, attacker), null
                 );
         }
     }
@@ -660,10 +661,10 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         this.isFinished = true;
     }
 
-    private void applySpell(Spell spell, TargetData target) {
+    private void applySpell(Spell spell, TargetData target, Card card) {
         spell.setLastTurnUsed(turnNumber);
         Buff buff = new Buff(spell.getAction(), target);
-        GameServer.getInstance().sendSpellMessage(this, target, spell.getAvailabilityType());
+        GameServer.getInstance().sendSpellMessage(this, target, spell.getAvailabilityType(), card);
         buffs.add(buff);
         applyBuff(buff);
     }
@@ -812,7 +813,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             if (spell.getAvailabilityType().isOnDeath())
                 applySpell(
                         spell,
-                        detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0), getOtherTurnPlayer().getHero().getCell())
+                        detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0), getOtherTurnPlayer().getHero().getCell()), null
                 );
         }
     }

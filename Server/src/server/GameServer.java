@@ -10,6 +10,7 @@ import server.clientPortal.models.message.OnlineGame;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
 import server.dataCenter.models.account.AccountType;
+import shared.models.card.Card;
 import shared.models.card.spell.AvailabilityType;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
@@ -276,7 +277,7 @@ public class GameServer {
         }
     }
 
-    public void sendSpellMessage(Game game, TargetData target, AvailabilityType availabilityType) {
+    public void sendSpellMessage(Game game, TargetData target, AvailabilityType availabilityType, Card card) {
         Set<Cell> cells = target.getPositions();
         if (cells.size() == 0) return;
         for (Account account : game.getObservers()) {
@@ -285,7 +286,7 @@ public class GameServer {
                 serverPrint("*Error");
                 continue;
             }
-            sendMessageAsync(Message.makeSpellMessage(clientName, cells, availabilityType));
+            sendMessageAsync(Message.makeSpellMessage(clientName, cells, availabilityType, card));
         }
     }
 
