@@ -3,6 +3,7 @@
   "description": "Deal 1 damage to your General. Draw a card",
   "cardId": "BurdenofKnowledge",
   "spriteName": "icon_f3_glimpse",
+  "fxName": "fx_bloodground",
   "type": "SPELL",
   "spells": [
     {

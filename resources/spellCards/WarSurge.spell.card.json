@@ -3,6 +3,7 @@
   "description": "Give all friendly minions +1/+1.",
   "cardId": "WarSurge",
   "spriteName": "icon_f1_warsurge",
+  "fxName": "fx_f1_warsurge",
   "type": "SPELL",
   "spells": [
     {

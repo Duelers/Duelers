@@ -3,6 +3,7 @@
   "description": "Deal 3 damage to anything.",
   "cardId": "PhoenixFire",
   "spriteName": "icon_f2_phoenixfire02",
+  "fxName": "fx_f2_phoenixfire",
   "type": "SPELL",
   "spells": [
     {

@@ -1,17 +1,17 @@
 {
-  "name": "Tempest",
-  "description": "Deal 2 Damage to ALL characters",
-  "cardId": "Tempest",
-  "spriteName": "icon_f1_tempest",
-  "fxName": "fx_explosionyellowelectrical",
+  "name": "Circle of Life",
+  "description": "Deal 5 damage to an enemy minion. Your General gains 5 life.",
+  "cardId": "CircleOfLife",
+  "spriteName": "icon_f1_circleoflife",
+  "fxName": "fx_f1_circlelife",
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "deal_2_dmg_everything",
+      "spellId": "deal_5_to_minion",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": -2,
+        "hpChange": -5,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -36,18 +36,18 @@
         "isRandom": false,
         "isForDeckCards": false,
         "dimensions": {
-          "row": 10,
-          "column": 18
+          "row": 1,
+          "column": 1
         },
         "owner": {
-          "own": true,
+          "own": false,
           "enemy": true
         },
         "cardType": {
           "cell": false,
-          "hero": true,
+          "hero": false,
           "minion": true,
-          "player": true
+          "player": false
         },
         "attackType": {
           "melee": true,
@@ -66,7 +66,41 @@
       "coolDown": 0,
       "manaCost": 0,
       "lastTurnUsed": 0
-    }
+    },
+	
+	{
+		"spellId": "heal_5_to_enemy_general",
+			"action": {
+				"hpChange": 5,
+				"durable": true,
+				"duration": 1
+			},
+			"target": {
+				"isRelatedToCardOwnerPosition": false,
+				"dimensions": {
+					"row": 20,
+					"column": 20
+				},
+
+				"owner": {
+					"own": true,
+					"enemy": false
+				},
+
+				"cardType": {
+					"hero": true
+				},
+
+				"attackType": {
+					"melee": true,
+					"ranged": true,
+					"hybrid": true
+				}
+			},
+			"availabilityType": {
+				"onPut": true
+			}
+	}
   ],
   "defaultAp": 0,
   "defaultHp": 0,

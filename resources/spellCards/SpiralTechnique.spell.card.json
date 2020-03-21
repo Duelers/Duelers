@@ -3,6 +3,7 @@
   "description": "Deal 8 damage to anything",
   "cardId": "SpiralTechnique",
   "spriteName": "icon_f2_spiraltechnique",
+  "fxName": "fx_f2_spiraltechnique02",
   "type": "SPELL",
   "spells": [
     {
