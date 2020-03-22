@@ -3,7 +3,7 @@ package org.projectcardboard.client.models.message;
 
 import org.projectcardboard.client.controller.Client;
 import org.projectcardboard.client.models.JsonConverter;
-import org.projectcardboard.client.models.account.AccountType;
+import shared.models.account.AccountType;
 import org.projectcardboard.client.models.card.ExportedDeck;
 
 import shared.models.card.Card;
