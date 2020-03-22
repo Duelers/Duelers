@@ -37,8 +37,6 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
         return false;
     }
 
-
-
     public void addDeck(String deckName) throws LogicException {
         if (hasDeck(deckName)) {
             throw new ClientException("new deck's name was duplicate.");

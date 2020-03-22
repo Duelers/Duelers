@@ -8,7 +8,6 @@ import shared.models.account.BaseAccount;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
@@ -79,6 +78,14 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
         accountType = account.getAccountType();
     }
 
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener pcl) {
+        support.removePropertyChangeListener(pcl);
+    }
+
     private boolean mainDecksEqual(TempAccount account) {
         return (
                 (mainDeck == null && account.getMainDeckName() == null) ||
@@ -93,17 +100,5 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
             if (!this.decks.contains(deck)) return false;
         }
         return true;
-    }
-
-    public void addPropertyChangeListener(PropertyChangeListener pcl) {
-        support.addPropertyChangeListener(pcl);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener pcl) {
-        support.removePropertyChangeListener(pcl);
-    }
-
-    public AccountType getAccountType() {
-        return accountType;
     }
 }
