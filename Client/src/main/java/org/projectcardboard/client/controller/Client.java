@@ -154,7 +154,7 @@ public class Client {
                 updateAccount(message);
                 break;
             case GAME_COPY:
-                GameController.getInstance().setCurrentGame(message.getGameCopyMessage().getCompressedGame());
+                GameController.getInstance().setCurrentGame(message.getGameCopyMessage());
                 GameController.getInstance().calculateAvailableActions();
                 break;
             case ORIGINAL_CARDS_COPY:

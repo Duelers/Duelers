@@ -12,7 +12,7 @@ import java.util.HashMap;
 import javafx.scene.text.Text;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
-import org.projectcardboard.client.models.compresseddata.CompressedGame;
+import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.gui.*;
 
@@ -49,7 +49,7 @@ public class PlayerBox implements PropertyChangeListener {
     private ColorAdjust player1ImageEffect;
     private ColorAdjust player2ImageEffect;
 
-    PlayerBox(BattleScene battleScene, CompressedGame game) throws Exception {
+    PlayerBox(BattleScene battleScene, Game game) throws Exception {
         this.battleScene = battleScene;
         this.player1 = game.getPlayerOne();
         this.player2 = game.getPlayerTwo();
