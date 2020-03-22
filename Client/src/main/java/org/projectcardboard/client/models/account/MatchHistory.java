@@ -1,19 +1,9 @@
 package org.projectcardboard.client.models.account;
 
-public class MatchHistory {
-    private String oppName;
-    private boolean amIWinner;
-    private String date;
+import shared.models.account.BaseMatchHistory;
 
-    public String getOppName() {
-        return this.oppName;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public boolean amIWinner() {
-        return amIWinner;
+public class MatchHistory extends BaseMatchHistory {
+    private MatchHistory(String oppName, boolean amIWinner) { //Unused.
+        super(oppName, amIWinner);
     }
 }
