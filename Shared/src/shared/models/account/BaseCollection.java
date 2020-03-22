@@ -20,17 +20,17 @@ public class BaseCollection<CardType extends Card> {
     protected transient final Comparator<CardType> compareCostThenName = Comparator.comparingInt(CardType::getManaCost).thenComparingInt(c -> c.getCardId().charAt(0));
 
     public List<CardType> getHeroes() {
-        heroes.sort(compareCostThenName);
+//        heroes.sort(compareCostThenName);
         return Collections.unmodifiableList(heroes);
     }
 
     public List<CardType> getMinions() {
-        minions.sort(compareCostThenName);
+//        minions.sort(compareCostThenName);
         return Collections.unmodifiableList(minions);
     }
 
     public List<CardType> getSpells() {
-        spells.sort(compareCostThenName);
+//        spells.sort(compareCostThenName);
         return Collections.unmodifiableList(spells);
     }
 
