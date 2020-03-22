@@ -3,14 +3,15 @@ package shared.models.account;
 import shared.models.card.BaseDeck;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static shared.models.account.AccountType.NORMAL;
 
-public class BaseAccount <
+public class BaseAccount<
         DeckType extends BaseDeck,
         CollectionType extends BaseCollection,
-        MatchHistoryType extends BaseMatchHistory>{
+        MatchHistoryType extends BaseMatchHistory> {
     protected String username;
     protected String password;
     protected AccountType accountType;
@@ -29,6 +30,26 @@ public class BaseAccount <
         this.password = password;
         this.collection = collection;
         this.accountType = accountType;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public CollectionType getCollection() {
+        return this.collection;
+    }
+
+    public List<DeckType> getDecks() {
+        return Collections.unmodifiableList(decks);
+    }
+
+    public List<MatchHistoryType> getMatchHistories() {
+        return Collections.unmodifiableList(matchHistories);
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
     }
 
 }

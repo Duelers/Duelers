@@ -36,21 +36,6 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
         return this.username.equals(account.username);
     }
 
-    public String getUsername() {
-        return this.username;
-    }
-
-    public Collection getCollection() {
-        return this.collection;
-    }
-
-    public List<Deck> getDecks() {
-        return Collections.unmodifiableList(decks);
-    }
-
-    public List<MatchHistory> getMatchHistories() {
-        return Collections.unmodifiableList(matchHistories);
-    }
 
     public Deck getDeck(String deckName) {
         for (Deck deck : decks) {

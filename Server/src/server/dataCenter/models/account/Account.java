@@ -106,20 +106,8 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
         }
     }
 
-    public void addMatchHistory(MatchHistory matchHistory) {
-        matchHistories.add(matchHistory);
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public Collection getCollection() {
-        return collection;
     }
 
     public void updateCollection(Collection collection) {
@@ -141,6 +129,10 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
         }
     }
 
+    public void addMatchHistory(MatchHistory matchHistory) {
+        matchHistories.add(matchHistory);
+    }
+
     public Deck getMainDeck() {
         return mainDeck;
     }
@@ -149,20 +141,8 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
         return mainDeck != null && mainDeck.isValid();
     }
 
-    List<MatchHistory> getMatchHistories() {
-        return Collections.unmodifiableList(matchHistories);
-    }
-
     public int getWins() {
         return (int) matchHistories.stream().filter(MatchHistory::getAmIWinner).count();
-    }
-
-    List<Deck> getDecks() {
-        return Collections.unmodifiableList(decks);
-    }
-
-    public AccountType getAccountType() {
-        return accountType;
     }
 
     public void setAccountType(AccountType accountType) {
