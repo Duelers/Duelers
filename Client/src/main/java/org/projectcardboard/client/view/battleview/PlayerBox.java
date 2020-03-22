@@ -236,7 +236,7 @@ public class PlayerBox implements PropertyChangeListener {
 
     public void handleOpponentDeckView(int maxMP){
         Text opponentDeckInfo = new Text("");
-        if(battleScene.getMyPlayerNumber() != 2){
+        if(battleScene.getMyPlayerNumber() == player1.getPlayerNumber()){
             opponentDeckInfo.setText("Deck: " + player2.getDeckSize() + " Hand: " + player2.getHand().size() + "/6");
             opponentDeckInfo.setX(SCREEN_WIDTH - SCALE * (550 + maxMP * 40));
             opponentDeckInfo.setY(SCALE * (180 - maxMP * 2));
