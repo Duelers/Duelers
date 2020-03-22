@@ -113,14 +113,12 @@ public class DataCenter extends Thread {
             accounts.replace(account, client);
             clients.replace(client, account);
             
-            boolean ownsAllGenerals = account.getCollection().getHeroes().size() == dataBase.getOriginalCards().getHeroes().size();
-            boolean ownsAllMinions = (account.getCollection().getMinions().size()/3) == dataBase.getOriginalCards().getMinions().size();
-            boolean ownsAllSPells = (account.getCollection().getSpells().size()/3) == dataBase.getOriginalCards().getSpells().size();
-            if(!ownsAllGenerals || !ownsAllMinions || !ownsAllSPells) {
+            if(!account.getCollection().equals(dataBase.getOriginalCards())){
                 System.out.println("Account " + account.getUsername() + " does not own all cards in current collection. Updating...");
                 account.updateCollection(dataBase.getOriginalCards());
                 saveAccount(account);
             }
+            
             GameServer.sendMessageAsync(Message.makeAccountCopyMessage(client, account));
             GameServer.serverPrint(client + " Is Logged In");
         }

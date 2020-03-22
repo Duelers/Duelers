@@ -137,4 +137,51 @@ public class Collection {
     public int Size(){
         return heroes.size() + minions.size() + spells.size();
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if(object == null){
+            return false;
+        }
+
+        if( object.getClass() != this.getClass() ){
+             return false;
+        }
+
+        if(this == object){
+            return true;
+        }
+
+        Collection other = (Collection) object;
+
+        if (heroes.size() != other.heroes.size() ||
+            minions.size() != other.minions.size() ||
+            spells.size() != other.spells.size()){
+                    return false;
+                }  
+
+        if(!this.heroes.equals(other.heroes)){
+            return false;
+        }
+
+        if(!this.minions.equals(other.minions)){
+            return false;
+        }
+
+        if(!this.spells.equals(other.spells)){
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode(){
+        int result = 1;
+        
+        result = 31 * result + (heroes != null ? heroes.hashCode() : 0);
+        result = 31 * result + (minions != null ? minions.hashCode() : 0);
+        result = 31 * result + (spells != null? spells.hashCode() : 0);
+        return result;
+    }
 }
