@@ -485,13 +485,13 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         boolean spellIsForMinions = card.isTargetMinion() && !card.isTargetHero();
 
         if (spellIsForMinions && targetCardType == CardType.HERO) {
-            throw new ClientException(card.getName() + " be casted on minions");
+            throw new ClientException(card.getName() + " must be casted on minions");
         }
 
         boolean spellIsForGenerals = card.isTargetHero() && !card.isTargetMinion();
 
         if (spellIsForGenerals && targetCardType == CardType.MINION) {
-            throw new ClientException(card.getName() + " be casted on generals");
+            throw new ClientException(card.getName() + " must be casted on generals");
         }
     }
 
