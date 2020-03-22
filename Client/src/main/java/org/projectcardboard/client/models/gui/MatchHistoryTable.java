@@ -47,10 +47,10 @@ class MatchHistoryTable extends ScrollPane {
             Label opponentLabel = new DefaultLabel(history.getOppName(), UIConstants.DEFAULT_FONT, Color.WHITE);
             opponentLabel.setPadding(new Insets(UIConstants.DEFAULT_SPACING));
 
-            Label dateLabel = new DefaultLabel(history.getDate(), UIConstants.DEFAULT_FONT, Color.WHITE);
+            Label dateLabel = new DefaultLabel(history.getDate().toString(), UIConstants.DEFAULT_FONT, Color.WHITE);
             dateLabel.setPadding(new Insets(UIConstants.DEFAULT_SPACING));
 
-            Label stateLabel = new DefaultLabel(history.amIWinner() ? "Win" : "Lose", UIConstants.DEFAULT_FONT, Color.WHITE);
+            Label stateLabel = new DefaultLabel(history.getAmIWinner() ? "Win" : "Lose", UIConstants.DEFAULT_FONT, Color.WHITE);
             stateLabel.setPadding(new Insets(UIConstants.DEFAULT_SPACING));
 
             Button showButton = new Button("SHOW GAME");
