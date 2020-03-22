@@ -9,9 +9,6 @@ import server.exceptions.LogicException;
 import shared.models.account.AccountType;
 import shared.models.account.BaseAccount;
 
-import java.util.Collections;
-import java.util.List;
-
 public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
     public Account(String username, String password) {
         super(username, password, new Collection());
@@ -40,16 +37,7 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
         return false;
     }
 
-    public Deck getDeck(String deckName) {
-        if (deckName == null)
-            return null;
-        for (Deck deck : decks) {
-            if (deck.getName().equalsIgnoreCase(deckName)) {
-                return deck;
-            }
-        }
-        return null;
-    }
+
 
     public void addDeck(String deckName) throws LogicException {
         if (hasDeck(deckName)) {

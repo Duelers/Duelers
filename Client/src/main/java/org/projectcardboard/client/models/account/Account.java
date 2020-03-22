@@ -25,6 +25,7 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
         this.mainDeck = getDeck(account.getMainDeckName());
     }
 
+
     @Override
     public boolean equals(Object obj) {
         if (obj.getClass().getName().equals(AccountInfo.class.getName())) {
@@ -34,16 +35,6 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
         if (!obj.getClass().getName().equals(Account.class.getName())) return false;
         Account account = (Account) obj;
         return this.username.equals(account.username);
-    }
-
-
-    public Deck getDeck(String deckName) {
-        for (Deck deck : decks) {
-            if (deck.hasName(deckName)) {
-                return deck;
-            }
-        }
-        return null;
     }
 
     public boolean isMainDeck(Deck deck) {

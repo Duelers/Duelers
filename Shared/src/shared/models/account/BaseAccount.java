@@ -52,4 +52,14 @@ public class BaseAccount<
         return accountType;
     }
 
+    public DeckType getDeck(String deckName) {
+        if (deckName == null)
+            return null;
+        for (DeckType deck : decks) {
+            if (deck.getName().equalsIgnoreCase(deckName)) {
+                return deck;
+            }
+        }
+        return null;
+    }
 }
