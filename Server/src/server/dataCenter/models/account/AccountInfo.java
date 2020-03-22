@@ -1,18 +1,15 @@
 package server.dataCenter.models.account;
 
 import server.dataCenter.DataCenter;
-import shared.models.account.AccountType;
+import shared.models.account.BaseAccountInfo;
 
-public class AccountInfo {
-    private final String username;
-    private final boolean online;
-    private final int wins;
-    private final AccountType type;
+public class AccountInfo extends BaseAccountInfo {
 
     public AccountInfo(Account account) {
-        this.username = account.getUsername();
-        this.online = DataCenter.getInstance().isOnline(username);
-        this.wins = account.getWins();
-        this.type = account.getAccountType();
+        super(account.getUsername(),
+                DataCenter.getInstance().isOnline(account.getUsername()),
+                account.getWins(),
+                account.getAccountType()
+        );
     }
 }
