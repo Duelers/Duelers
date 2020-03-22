@@ -443,60 +443,55 @@ public abstract class Game extends BaseGame<Player, GameMap> {
     }
 
     private void validateSingleTargetSpells(ServerCard card, Cell cell) throws ClientException {
+        boolean onPut = false;
+
         for (Spell spell : card.getSpells()) {
-            if (!spell.getAvailabilityType().isOnPut()) {
-                continue;
+            if (spell.getAvailabilityType().isOnPut()) {
+                onPut = true;
+                break;
             }
+        }
 
-            Cell dimensions = spell.getTarget().getDimensions();
-            if (dimensions == null) {
-                continue;
-            }
+        boolean cardIsSingleTarget = card.isSingleTarget();
+        boolean cardTargetsUnits = card.isTargetMinion() || card.isTargetHero();
 
-            boolean spellIsSingleTarget = dimensions.getRow() * dimensions.getColumn() == 1;
-            if (!spellIsSingleTarget) {
-                continue;
-            }
-
-            validateTarget(spell, cell);
+        if (onPut && cardIsSingleTarget && cardTargetsUnits) {
+            validateTarget(card, cell);
         }
     }
 
-    private void validateTarget(Spell spell, Cell cell) throws ClientException {
-        Target target = spell.getTarget();
+    private void validateTarget(ServerCard card, Cell cell) throws ClientException {
         ServerTroop targetedTroop = gameMap.getTroopAtLocation(cell);
-        TargetCardType targetType = target.getCardType();
-        boolean spellIsForUnits = targetType.isMinion() || targetType.isHero();
+        boolean spellIsForUnits = card.isTargetMinion() || card.isTargetHero();
 
         if (spellIsForUnits && targetedTroop == null) {
-            throw new ClientException("Spell must be casted on units");
+            throw new ClientException(card.getName() + " must be casted on units");
         }
 
-        Owner owner = target.getOwner();
-        boolean spellIsForAllies = owner.isOwn() && !owner.isEnemy();
+        boolean spellIsForAllies = card.isTargetAllyUnit() && !card.isTargetEnemyUnit();
         boolean targetIsAlly = targetedTroop.getPlayerNumber() == getCurrentTurnPlayer().getPlayerNumber();
 
         if (spellIsForAllies && !targetIsAlly) {
-            throw new ClientException("Spell must be casted on allies");
+            throw new ClientException(card.getName() + " must be casted on allies");
         }
 
-        boolean spellIsForEnemies = owner.isEnemy() && !owner.isOwn();
+        boolean spellIsForEnemies = card.isTargetEnemyUnit() && !card.isTargetAllyUnit();
 
         if (spellIsForEnemies && targetIsAlly) {
-            throw new ClientException("Spell must be casted on enemies");
+            throw new ClientException(card.getName() + " must be casted on enemies");
         }
 
         CardType targetCardType = targetedTroop.getCard().getType();
-        boolean spellIsForMinions = targetType.isMinion() && !targetType.isHero();
+        boolean spellIsForMinions = card.isTargetMinion() && !card.isTargetHero();
 
         if (spellIsForMinions && targetCardType == CardType.HERO) {
-            throw new ClientException("Spell must be casted on minions");
+            throw new ClientException(card.getName() + " be casted on minions");
         }
 
-        boolean spellIsForGenerals = targetType.isHero() && !targetType.isMinion();
+        boolean spellIsForGenerals = card.isTargetHero() && !card.isTargetMinion();
 
         if (spellIsForGenerals && targetCardType == CardType.MINION) {
-            throw new ClientException("Spell must be casted on generals");
+            throw new ClientException(card.getName() + " be casted on generals");
         }
     }
 
