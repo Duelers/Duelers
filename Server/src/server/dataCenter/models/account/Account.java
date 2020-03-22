@@ -99,9 +99,7 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
     public void updateCollection(Collection collection) {
         this.getCollection().clearCollection();
         for (ServerCard card : collection.getHeroes()) {
-            for (int i = 0; i < 1; i++) {
-                this.collection.addCard(card.getName(), collection, this.username);
-            }
+            this.collection.addCard(card.getName(), collection, this.username); //Todo hangs on second loop.
         }
         for (ServerCard card : collection.getMinions()) {
             for (int i = 0; i < 3; i++) {
