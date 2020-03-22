@@ -40,12 +40,18 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
     }
 
     public ServerCard getCardFromHand(String cardId) {
-        for (ServerCard card : hand) {
-            if (card.getCardId().equalsIgnoreCase(cardId)) {
-                return card;
+        ServerCard card = null;
+        Iterator<ServerCard> iterator = hand.iterator();
+
+        while (iterator.hasNext()) {
+            ServerCard card1 = iterator.next();
+            if (card1.getCardId().equalsIgnoreCase(cardId)) {
+                card = card1;
+                break;
             }
         }
-        return null;
+
+        return card;
     }
 
     public ServerCard removeCardFromHand(String cardID) throws ClientException {
