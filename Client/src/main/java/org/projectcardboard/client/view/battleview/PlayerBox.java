@@ -230,15 +230,26 @@ public class PlayerBox implements PropertyChangeListener {
         player2MPText.setStyle("-fx-text-base-color: white; -fx-font-size: 24px;");
         player2MPText.setFill(Color.AQUA);
         mpGroup.getChildren().add(player2MPText);
+        handleOpponentDeckView(maxMP);
 
-        
-        Text opponentDeckInfo = new Text("Deck: " + player2.getDeckSize() + " Hand: " + player2.getHand().size() + "/6");
-        opponentDeckInfo.setX(SCREEN_WIDTH - SCALE * (335 + maxMP * 40));
-        opponentDeckInfo.setY(SCALE * (180 - maxMP * 2));
+    }
+
+    public void handleOpponentDeckView(int maxMP){
+        Text opponentDeckInfo = new Text("");
+        if(battleScene.getMyPlayerNumber() != 2){
+            opponentDeckInfo.setText("Deck: " + player2.getDeckSize() + " Hand: " + player2.getHand().size() + "/6");
+            opponentDeckInfo.setX(SCREEN_WIDTH - SCALE * (550 + maxMP * 40));
+            opponentDeckInfo.setY(SCALE * (180 - maxMP * 2));
+        }
+        else{
+            opponentDeckInfo.setText("Deck: " + player1.getDeckSize() + " Hand: " + player1.getHand().size() + "/6");
+            opponentDeckInfo.setX(SCALE * (350 + maxMP * 40));
+            opponentDeckInfo.setY(SCALE * (180 - maxMP * 2));
+        }
         opponentDeckInfo.setFont(Constants.AP_FONT);
         opponentDeckInfo.setStyle("-fx-text-base-color: white; -fx-font-size: 24px;");
-        opponentDeckInfo.setFill(Color.AQUA);
-
+        opponentDeckInfo.setFill(Color.AQUAMARINE);
+        mpGroup.getChildren().add(opponentDeckInfo);
     }
 
     Group getGroup() {
