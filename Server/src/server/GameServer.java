@@ -9,7 +9,7 @@ import server.clientPortal.models.message.Message;
 import server.clientPortal.models.message.OnlineGame;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
-import server.dataCenter.models.account.AccountType;
+import shared.models.account.AccountType;
 import shared.models.card.spell.AvailabilityType;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
@@ -311,12 +311,12 @@ public class GameServer {
             }
             if (account.getUsername().equals(game.getPlayerOne().getUserName())) {
                 sendMessageAsync(Message.makeGameFinishMessage(
-                        clientName, game.getPlayerOne().getMatchHistory().isAmIWinner()));
+                        clientName, game.getPlayerOne().getMatchHistory().getAmIWinner()));
                 sendMessageAsync(Message.makeAccountCopyMessage(
                         clientName, DataCenter.getInstance().getAccount(game.getPlayerOne().getUserName())));
             } else if (account.getUsername().equals(game.getPlayerTwo().getUserName())) {
                 sendMessageAsync(Message.makeGameFinishMessage(
-                        clientName, game.getPlayerTwo().getMatchHistory().isAmIWinner()));
+                        clientName, game.getPlayerTwo().getMatchHistory().getAmIWinner()));
                 sendMessageAsync(Message.makeAccountCopyMessage(
                         clientName, DataCenter.getInstance().getAccount(game.getPlayerTwo().getUserName())));
             } else {

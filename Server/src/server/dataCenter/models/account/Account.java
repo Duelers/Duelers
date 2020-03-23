@@ -6,33 +6,17 @@ import server.dataCenter.models.card.ServerCard;
 import server.dataCenter.models.card.TempDeck;
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
+import shared.models.account.AccountType;
+import shared.models.account.BaseAccount;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import static server.dataCenter.models.account.AccountType.NORMAL;
-
-public class Account {
-    private final String username;
-    private final String password;
-    private AccountType accountType;
-    private final Collection collection;
-    private final List<Deck> decks = new ArrayList<>();
-    private Deck mainDeck;
-    private List<MatchHistory> matchHistories = new ArrayList<>();
-
+public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
     public Account(String username, String password) {
-        this.username = username;
-        this.password = password;
-        this.collection = new Collection();
-        this.accountType = NORMAL;
+        super(username, password, new Collection());
     }
 
     public Account(TempAccount account) {
-        this.username = account.getUsername();
-        this.password = account.getPassword();
-        this.collection = account.getCollection();
+        super(account.getUsername(), account.getPassword(), account.getCollection(), account.getAccountType());
+
         if (account.getDecks() != null) {
             for (TempDeck deck : account.getDecks()) {
                 this.decks.add(new Deck(deck, collection));
@@ -41,7 +25,6 @@ public class Account {
         if (account.getMainDeckName() != null)
             this.mainDeck = getDeck(account.getMainDeckName());
         this.matchHistories = account.getMatchHistories();
-        this.accountType = account.getAccountType();
     }
 
     private boolean hasDeck(String deckName) {
@@ -52,17 +35,6 @@ public class Account {
                 return true;
         }
         return false;
-    }
-
-    public Deck getDeck(String deckName) {
-        if (deckName == null)
-            return null;
-        for (Deck deck : decks) {
-            if (deck.getName().equalsIgnoreCase(deckName)) {
-                return deck;
-            }
-        }
-        return null;
     }
 
     public void addDeck(String deckName) throws LogicException {
@@ -120,39 +92,29 @@ public class Account {
         }
     }
 
-    public void addMatchHistory(MatchHistory matchHistory) {
-        matchHistories.add(matchHistory);
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public Collection getCollection() {
-        return collection;
+    public void updateCollection(Collection collection) {
+        this.getCollection().clearCollection();
+        for (ServerCard card : collection.getHeroes()) {
+            this.collection.addCard(card.getName(), collection, this.username);
+        }
+        for (ServerCard card : collection.getMinions()) {
+            for (int i = 0; i < 3; i++) {
+                this.collection.addCard(card.getName(), collection, this.username);
+            }
+        }
+        for (ServerCard card : collection.getSpells()) {
+            for (int i = 0; i < 3; i++) {
+                this.collection.addCard(card.getName(), collection, this.username);
+            }
+        }
     }
 
-    public void updateCollection(Collection collection){
-        this.getCollection().clearCollection();
-        for(ServerCard card : collection.getHeroes()){
-            for(int i = 0; i < 1; i++){   
-                this.collection.addCard(card.getName(), collection, this.username);
-            }
-        }
-        for(ServerCard card : collection.getMinions()){
-            for(int i = 0; i < 3; i++){   
-                this.collection.addCard(card.getName(), collection, this.username);
-            }
-        }
-        for(ServerCard card : collection.getSpells()){
-            for(int i = 0; i < 3; i++){   
-                this.collection.addCard(card.getName(), collection, this.username);
-            }
-        }
+    public void addMatchHistory(MatchHistory matchHistory) {
+        matchHistories.add(matchHistory);
     }
 
     public Deck getMainDeck() {
@@ -163,20 +125,8 @@ public class Account {
         return mainDeck != null && mainDeck.isValid();
     }
 
-    List<MatchHistory> getMatchHistories() {
-        return Collections.unmodifiableList(matchHistories);
-    }
-
     public int getWins() {
-        return (int) matchHistories.stream().filter(MatchHistory::isAmIWinner).count();
-    }
-
-    List<Deck> getDecks() {
-        return Collections.unmodifiableList(decks);
-    }
-
-    public AccountType getAccountType() {
-        return accountType;
+        return (int) matchHistories.stream().filter(MatchHistory::getAmIWinner).count();
     }
 
     public void setAccountType(AccountType accountType) {

@@ -1,11 +1,12 @@
 package org.projectcardboard.client.controller;
 
-import org.projectcardboard.client.models.compresseddata.CompressedGame;
+import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.exceptions.InputException;
 import org.projectcardboard.client.models.game.GameActions;
 import org.projectcardboard.client.models.game.availableactions.AvailableActions;
 import org.projectcardboard.client.models.message.CardAnimation;
 import org.projectcardboard.client.models.message.GameAnimations;
+import org.projectcardboard.client.models.message.GameCopyMessage;
 import org.projectcardboard.client.models.message.Message;
 import org.projectcardboard.client.models.message.OnlineGame;
 import org.projectcardboard.client.view.battleview.BattleScene;
@@ -22,7 +23,7 @@ import shared.models.game.map.Cell;
 public class GameController implements GameActions {
     private static GameController ourInstance;
     BattleScene battleScene;
-    private CompressedGame currentGame;
+    private Game currentGame;
     private final AvailableActions availableActions = new AvailableActions();
     private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
 
@@ -44,18 +45,20 @@ public class GameController implements GameActions {
         return availableActions;
     }
 
-    public CompressedGame getCurrentGame() {
+    public Game getCurrentGame() {
         return currentGame;
     }
 
-    public void setCurrentGame(CompressedGame currentGame) {
-        this.currentGame = currentGame;
-        currentGame.getPlayerOne().setTroops(currentGame.getGameMap().getTroopsBelongingToPlayer(1));
-        currentGame.getPlayerTwo().setTroops(currentGame.getGameMap().getTroopsBelongingToPlayer(2));
-        int playerNumber = getPlayerNumber(currentGame);
+    public void setCurrentGame(GameCopyMessage gameCopyMessage) {
+        this.currentGame = gameCopyMessage.getGame();
+        this.currentGame.getPlayerOne().setTroops(gameCopyMessage.getGame().getGameMap().getTroopsBelongingToPlayer(1));
+        this.currentGame.getPlayerTwo().setTroops(gameCopyMessage.getGame().getGameMap().getTroopsBelongingToPlayer(2));
+        this.getCurrentGame().getPlayerOne().setDeckSize(gameCopyMessage.getP1StartingDeckSize());
+        this.getCurrentGame().getPlayerTwo().setDeckSize(gameCopyMessage.getP2StartingDeckSize());
+        int playerNumber = getPlayerNumber(gameCopyMessage.getGame());
         Platform.runLater(() -> {
             try {
-                battleScene = new BattleScene(this, currentGame, playerNumber, "battlemap6_middleground@2x");
+                battleScene = new BattleScene(this, gameCopyMessage.getGame(), playerNumber, "battlemap6_middleground@2x");
                 battleScene.show();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -64,7 +67,7 @@ public class GameController implements GameActions {
 
     }
 
-    private int getPlayerNumber(CompressedGame currentGame) {
+    private int getPlayerNumber(Game currentGame) {
         int playerNumber = -1;
         if (currentGame.getPlayerOne().getUserName().equals(Client.getInstance().getAccount().getUsername())) {
             playerNumber = 1;

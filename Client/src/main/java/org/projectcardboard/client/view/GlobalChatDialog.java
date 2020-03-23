@@ -37,12 +37,14 @@ public class GlobalChatDialog {
         sendButton.setAlignment(Pos.CENTER_LEFT);
         scrollPane.setMinHeight(800);
         dialogBox.getChildren().stream().filter(node -> node instanceof ScrollPane).forEach(node -> ((ScrollPane) node).setMinHeight(300 * SCALE));
+
+        chatMessages.heightProperty().addListener(observable -> scrollPane.setVvalue(1D)); // Autoscroll
     }
 
     public static GlobalChatDialog getInstance() {
         return ourInstance;
     }
-
+    
     private void sendMessage() {
         MainMenuController.getInstance().sendChatMessage(normalField.getText());
         normalField.setText("");
