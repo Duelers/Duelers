@@ -10,7 +10,7 @@ import java.util.HashMap;
 import org.projectcardboard.client.controller.Client;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
-import org.projectcardboard.client.models.compresseddata.CompressedGame;
+import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.map.GameMap;
 import org.projectcardboard.client.models.gui.CardPane;
@@ -256,7 +256,7 @@ public class MapBox implements PropertyChangeListener {
         }
     }
 
-    private boolean isSpectator(CompressedGame game){
+    private boolean isSpectator(Game game){
         String playerX = game.getCurrentTurnPlayer().getUserName();
         String playerY = game.getOtherTurnPlayer().getUserName();
 
