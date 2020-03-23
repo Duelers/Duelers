@@ -1,5 +1,7 @@
 package shared.models.card.spell;
 
+import shared.models.game.map.Cell;
+
 public class Spell {
     private final String spellId;
     private SpellAction action;
@@ -68,5 +70,17 @@ public class Spell {
             return false;
         }
         return lastTurnUsed + coolDown * 2 >= turnNumber;
+    }
+
+    public boolean isSingleTarget() {
+        Cell dimensions = this.target.getDimensions();
+
+        if (dimensions == null) {
+            return false;
+        }
+
+        boolean isSingleTarget = dimensions.getRow() * dimensions.getColumn() == 1;
+
+        return isSingleTarget;
     }
 }
