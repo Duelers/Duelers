@@ -7,8 +7,10 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 
+import org.projectcardboard.client.controller.Client;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
+import org.projectcardboard.client.models.compresseddata.CompressedGame;
 import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.availableactions.AvailableActions;
 import org.projectcardboard.client.models.game.map.GameMap;
@@ -255,9 +257,19 @@ public class MapBox implements PropertyChangeListener {
         }
     }
 
+    private boolean isSpectator(CompressedGame game){
+        String playerX = game.getCurrentTurnPlayer().getUserName();
+        String playerY = game.getOtherTurnPlayer().getUserName();
+
+        String self = Client.getInstance().getAccount().getUsername();
+
+        return (!self.equals(playerX)) && (!self.equals(playerY));
+    }
+
     void updateMapColors() {
         updateSelectionType();
         Player player = GameController.getInstance().getCurrentGame().getCurrentTurnPlayer();
+
         for (int row = 0; row < GameMap.getNumRows(); row++) {
             for (int column = 0; column < GameMap.getNumColumns(); column++) {
 
@@ -300,6 +312,12 @@ public class MapBox implements PropertyChangeListener {
     private void updateMapColourHighlightEnemyUnits(int row, int column, Player player){
         Troop troop = getTroop(row, column);
         if (troop == null){ return; }
+
+        if (isSpectator(GameController.getInstance().getCurrentGame())){
+            if (troop.getPlayerNumber() == 2){
+                cells[row][column].setFill(Constants.ENEMY_UNIT);
+            }
+        }
 
         if (troop.getPlayerNumber() != this.battleScene.getMyPlayerNumber()) {
             cells[row][column].setFill(Constants.ENEMY_UNIT);
