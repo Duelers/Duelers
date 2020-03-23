@@ -20,6 +20,11 @@ public class Card implements ICard {
     private final AttackType attackType;
     private final int range;
     protected int remainingNumber = 20;
+    protected boolean singleTarget;
+    protected boolean targetAllyUnit;
+    protected boolean targetEnemyUnit;
+    protected boolean targetMinion;
+    protected boolean targetHero;
 
     // This is only used in tests right now. All other cards are loaded from json with gson.
     public Card(String name, //TODO refactor other constructors to use this one.
@@ -155,5 +160,25 @@ public class Card implements ICard {
 
     public int getRemainingNumber() {
         return remainingNumber;
+    }
+
+    public boolean isSingleTarget() {
+        return singleTarget;
+    }
+
+    public boolean isTargetAllyUnit() {
+        return targetAllyUnit;
+    }
+
+    public boolean isTargetEnemyUnit() {
+        return targetEnemyUnit;
+    }
+
+    public boolean isTargetMinion() {
+        return targetMinion;
+    }
+
+    public boolean isTargetHero() {
+        return targetHero;
     }
 }

@@ -26,25 +26,30 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
         this.maxNumReplacePerTurn = 1;
     }
 
-    ServerCard insert(String cardId) throws ClientException {
-        ServerCard card = null;
-        Iterator<ServerCard> iterator = hand.iterator();
-        while (iterator.hasNext()) {
-            ServerCard card1 = (ServerCard) iterator.next();
-            if (card1.getCardId().equalsIgnoreCase(cardId)) {
-                card = card1;
-                break;
-            }
-        }
-
+    public void tryInsert(ServerCard card) throws ClientException {
         if (card == null)
             throw new ClientException("card id is not valid");
 
         if (card.getManaCost() > currentMP)
             throw new ClientException("not enough mana");
+    }
 
-        iterator.remove();
+    public void insert(ServerCard card) {
+        hand.remove(card);
         currentMP -= card.getManaCost();
+    }
+
+    public ServerCard getCardFromHand(String cardId) {
+        ServerCard card = null;
+        Iterator<ServerCard> iterator = hand.iterator();
+
+        while (iterator.hasNext()) {
+            ServerCard card1 = iterator.next();
+            if (card1.getCardId().equalsIgnoreCase(cardId)) {
+                card = card1;
+                break;
+            }
+        }
 
         return card;
     }
@@ -102,13 +107,13 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
             ServerCard drawnCard = deck.getCards().get(index);
             if(drawnCard.checkIfSameID(card.getCardId()) && (failSafeCount > 0) ){
                  failSafeCount--;
-                 continue; 
+                 continue;
             }
             else{
                 drawnCards[counter] = drawnCard;
                 counter++;
                 try {
-                    deck.removeCard(drawnCard);    
+                    deck.removeCard(drawnCard);
                 }
                 catch (ClientException exception) {
                     exception.printStackTrace();
