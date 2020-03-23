@@ -1,29 +1,16 @@
 package org.projectcardboard.client.models.account;
 
+import shared.models.account.AccountType;
+import shared.models.account.BaseAccountInfo;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class AccountInfo {
+public class AccountInfo extends BaseAccountInfo { //Todo it seems that most of this class and its superclass are unused.
     private final transient PropertyChangeSupport support = new PropertyChangeSupport(this);
-    private String username;
-    private boolean online;
-    private int wins;
-    private AccountType type;
 
-    public String getUsername() {
-        return username;
-    }
-
-    public boolean isOnline() {
-        return online;
-    }
-
-    public int getWins() {
-        return wins;
-    }
-
-    public AccountType getType() {
-        return type;
+    public AccountInfo(String username, boolean online, int wins, AccountType type) {
+        super(username, online, wins, type);
     }
 
     public void setType(AccountType newType) {
