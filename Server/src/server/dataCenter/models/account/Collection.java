@@ -158,10 +158,11 @@ public class Collection extends BaseCollection<ServerCard> {
     @Override
     public int hashCode(){
         int result = 1;
+        int primeNumberForHash = 31;
         
-        result = 31 * result + (heroes != null ? heroes.hashCode() : 0);
-        result = 31 * result + (minions != null ? minions.hashCode() : 0);
-        result = 31 * result + (spells != null? spells.hashCode() : 0);
+        result = primeNumberForHash * result + (heroes != null ? heroes.hashCode() : 0);
+        result = primeNumberForHash * result + (minions != null ? minions.hashCode() : 0);
+        result = primeNumberForHash * result + (spells != null? spells.hashCode() : 0);
         return result;
     }
 }
