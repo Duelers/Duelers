@@ -28,6 +28,7 @@ MINION,Emberwyrm,Flying,10,7,7,neutral_veteranflamewing
 MINION,Emerald Rejuvenator,Opening Gambit: Give 4 Health to your General.,4,4,4,neutral_rejuvenator
 HERO,Faie Bloodwing,Vanar General,2,25,0,f6_general
 MINION,Flameblood Warlock,Opening Gambit: Deal 3 damage to both generals,3,1,2,neutral_mercflamebloodwarlock
+SPELL,Flaming Stampede,Deal 8 Damage to ALL characters,0,0,8,icon_f5_flamingstampede
 MINION,Frostbone Naga,Opening Gambit: Deal 2 damage to everything around it,3,3,4,neutral_mercfrostbonenaga
 SPELL,Frostburn,Deal 3 damage to all enemy minions,0,0,6,icon_f6_frostburn
 SPELL,Ghost Lightning,Deal 1 damage to all enemy minions.,0,0,1,icon_f2_ghost_lightning
