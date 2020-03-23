@@ -322,7 +322,6 @@ public class HandBox implements PropertyChangeListener {
                     });
                 } else {
                     Platform.runLater(() -> {
-                        updateNext();
                         endTurnButton.setEffect(null);
                         endTurnLabel.setText("END TURN");
                         this.runTurnTimer();
@@ -359,7 +358,6 @@ public class HandBox implements PropertyChangeListener {
         if (player != null) {
             selectedCard = -1;
             updateCards();
-            updateNext();
         }
     }
 
