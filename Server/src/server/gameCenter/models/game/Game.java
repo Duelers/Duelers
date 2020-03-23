@@ -154,6 +154,8 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeckExcludingCard(1, removedCard);
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             getCurrentTurnPlayer().addCardsToHand(drawnCard);
+            int timesReplaced = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
+            getCurrentTurnPlayer().setNumTimesReplacedThisTurn(timesReplaced + 1);
             int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
             GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
             GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,drawnCard);
