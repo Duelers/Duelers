@@ -189,6 +189,7 @@ public class PlayerBox implements PropertyChangeListener {
                 e.printStackTrace();
             }
         }
+
         Text player1MPText = new Text(player1.getCurrentMP() + "/" + maxMP);
         player1MPText.setX(SCALE * (300 + maxMP * 40));
         player1MPText.setY(SCALE * (180 - maxMP * 2));
@@ -196,6 +197,7 @@ public class PlayerBox implements PropertyChangeListener {
         player1MPText.setStyle("-fx-text-base-color: white; -fx-font-size: 24px;");
         player1MPText.setFill(Color.AQUA);
         mpGroup.getChildren().add(player1MPText);
+
         for (int i = 1; i <= player2.getCurrentMP(); i++) {
             try {
                 ImageView imageView = new ImageView(manaImage);
@@ -220,6 +222,7 @@ public class PlayerBox implements PropertyChangeListener {
                 e.printStackTrace();
             }
         }
+
         Text player2MPText = new Text(player2.getCurrentMP() + "/" + maxMP);
         player2MPText.setX(SCREEN_WIDTH - SCALE * (335 + maxMP * 40));
         player2MPText.setY(SCALE * (180 - maxMP * 2));
@@ -227,6 +230,26 @@ public class PlayerBox implements PropertyChangeListener {
         player2MPText.setStyle("-fx-text-base-color: white; -fx-font-size: 24px;");
         player2MPText.setFill(Color.AQUA);
         mpGroup.getChildren().add(player2MPText);
+        handleOpponentDeckView(maxMP);
+
+    }
+
+    public void handleOpponentDeckView(int maxMP){
+        Text opponentDeckInfo = new Text("");
+        if(battleScene.getMyPlayerNumber() == player1.getPlayerNumber()){
+            opponentDeckInfo.setText("Deck: " + player2.getDeckSize() + " Hand: " + player2.getHand().size() + "/" + shared.Constants.MAXIMUM_CARD_HAND_SIZE);
+            opponentDeckInfo.setX(SCREEN_WIDTH - SCALE * (550 + maxMP * 40));
+            opponentDeckInfo.setY(SCALE * (180 - maxMP * 2));
+        }
+        else{
+            opponentDeckInfo.setText("Deck: " + player1.getDeckSize() + " Hand: " + player1.getHand().size() + "/" + shared.Constants.MAXIMUM_CARD_HAND_SIZE);
+            opponentDeckInfo.setX(SCALE * (350 + maxMP * 40));
+            opponentDeckInfo.setY(SCALE * (180 - maxMP * 2));
+        }
+        opponentDeckInfo.setFont(Constants.AP_FONT);
+        opponentDeckInfo.setStyle("-fx-text-base-color: white; -fx-font-size: 24px;");
+        opponentDeckInfo.setFill(Color.AQUAMARINE);
+        mpGroup.getChildren().add(opponentDeckInfo);
     }
 
     Group getGroup() {
