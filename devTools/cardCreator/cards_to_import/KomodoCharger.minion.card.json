@@ -1,0 +1,15 @@
+{
+  "name": "Komodo Charger",
+  "description": "",
+  "cardId": "KomodoCharger",
+  "spriteName": "neutral_beastcavern",
+  "type": "MINION",
+  "defaultAp": 1,
+  "defaultHp": 3,
+  "manaCost": 1,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+} 

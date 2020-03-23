@@ -3,7 +3,7 @@ package org.projectcardboard.client.models.message;
 
 import org.projectcardboard.client.controller.Client;
 import org.projectcardboard.client.models.JsonConverter;
-import org.projectcardboard.client.models.account.AccountType;
+import shared.models.account.AccountType;
 import org.projectcardboard.client.models.card.ExportedDeck;
 
 import shared.models.card.Card;
@@ -20,7 +20,6 @@ public class Message {
     private GameCopyMessage gameCopyMessage;
     private CardsCopyMessage cardsCopyMessage;
     private AccountCopyMessage accountCopyMessage;
-    private StoriesCopyMessage storiesCopyMessage;
     private CardPositionMessage cardPositionMessage;
     private TroopUpdateMessage troopUpdateMessage;
     private GameUpdateMessage gameUpdateMessage;
@@ -321,10 +320,6 @@ public class Message {
 
     public AccountCopyMessage getAccountCopyMessage() {
         return accountCopyMessage;
-    }
-
-    public StoriesCopyMessage getStoriesCopyMessage() {
-        return storiesCopyMessage;
     }
 
     public CardPositionMessage getCardPositionMessage() {

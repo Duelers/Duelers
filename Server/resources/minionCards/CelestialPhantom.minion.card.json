@@ -22,7 +22,6 @@
           "row": 1,
           "column": 1
         },
-		
         "owner": {
           "own": false,
           "enemy": true
@@ -38,12 +37,8 @@
         }
       },
       "availabilityType": {
-        "onPut": false,
         "onAttack": true,
-        "onDeath": false,
-        "specialPower": false,
-        "onStart": false,
-        "onDefend": true
+        "onCounterAttack": true
       },
       "coolDown": 0,
       "manaCost": 0,

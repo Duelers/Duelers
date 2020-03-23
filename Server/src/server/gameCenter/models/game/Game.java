@@ -2,7 +2,6 @@ package server.gameCenter.models.game;
 
 import server.GameServer;
 import server.chatCenter.ChatCenter;
-import server.clientPortal.models.comperessedData.CompressedGame;
 import server.clientPortal.models.message.CardPosition;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.account.Account;
@@ -15,6 +14,7 @@ import shared.models.card.CardType;
 
 import server.dataCenter.models.card.Deck;
 
+import shared.models.card.spell.Owner;
 import shared.models.card.spell.Spell;
 import shared.models.card.spell.SpellAction;
 
@@ -26,6 +26,7 @@ import server.gameCenter.models.game.availableActions.AvailableActions;
 import server.gameCenter.models.game.availableActions.Insert;
 import server.gameCenter.models.game.availableActions.Move;
 
+import shared.models.game.BaseGame;
 import shared.models.game.GameType;
 import shared.models.game.map.Cell;
 
@@ -43,38 +44,29 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public abstract class Game {
-    private final Player playerOne;
-    private final Player playerTwo;
-    private final GameType gameType;
-    private final ArrayList<Buff> buffs = new ArrayList<>();
-    private final ArrayList<Buff> tempBuffs = new ArrayList<>();
-    private final GameMap gameMap;
-    private int turnNumber = 1;
-    private boolean isFinished;
-    private final ArrayList<Account> observers = new ArrayList<>();
+public abstract class Game extends BaseGame<Player, GameMap> {
 
-    private boolean versusAi = false;
+    private final transient ArrayList<Buff> buffs = new ArrayList<>();
+    private final transient ArrayList<Buff> tempBuffs = new ArrayList<>();
+    private transient boolean isFinished;
+    private final transient ArrayList<Account> observers = new ArrayList<>();
 
-    private final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
-    private Runnable task;
-    private ScheduledFuture<?> future;
+    private transient boolean versusAi = false;
 
+    private final transient ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+    private transient Runnable task;
+    private transient ScheduledFuture<?> future;
+
+    /**
+     * Fresh new game starting on turn 1.
+     */
     protected Game(Account account, Deck secondDeck, String userName, GameMap gameMap, GameType gameType, boolean versusAi) {
-        this.gameType = gameType;
-        this.gameMap = gameMap;
-        this.playerOne = new Player(account.getMainDeck(), account.getUsername(), 1);
-        this.playerTwo = new Player(secondDeck, userName, 2);
+        super(new Player(account.getMainDeck(), account.getUsername(), 1),
+                new Player(secondDeck, userName, 2),
+                gameMap, 1, gameType);
         this.versusAi = versusAi;
     }
 
-    public int getTurnNumber() {
-        return turnNumber;
-    }
-
-    public GameMap getGameMap() {
-        return gameMap;
-    }
 
     public void startGame() {
         playerOne.setCurrentMP(2);
@@ -89,34 +81,6 @@ public abstract class Game {
         startTurnTimeLimit();
 
         GameServer.getInstance().sendGameUpdateMessage(this);
-    }
-
-    public CompressedGame toCompressedGame() {
-        return new CompressedGame(playerOne, playerTwo, gameMap, turnNumber, gameType);
-    }
-
-    public Player getPlayerOne() {
-        return playerOne;
-    }
-
-    public Player getPlayerTwo() {
-        return playerTwo;
-    }
-
-    public Player getCurrentTurnPlayer() {
-        if (turnNumber % 2 == 1) {
-            return playerOne;
-        } else {
-            return playerTwo;
-        }
-    }
-
-    public Player getOtherTurnPlayer() {
-        if (turnNumber % 2 == 0) {
-            return playerOne;
-        } else {
-            return playerTwo;
-        }
     }
 
     private boolean canCommand(String username) {
@@ -188,8 +152,9 @@ public abstract class Game {
             if (removedCard == null) {
                 return;
             }
+            //ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeck(1);
+            ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeckExcludingCard(1, removedCard);
             getCurrentTurnPlayer().addCardToDeck(removedCard);
-            ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeck(1);
             getCurrentTurnPlayer().addCardsToHand(drawnCard);
             int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
             GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
@@ -592,6 +557,7 @@ public abstract class Game {
                 (attackerTroop.canBeAttackedFromWeakerOnes() || defenderTroop.getCurrentAp() > attackerTroop.getCurrentAp())
         ) {
             damage(defenderTroop, attackerTroop);
+            applyOnCounterAttackSpells(defenderTroop, attackerTroop);
         }
     }
 
@@ -607,6 +573,16 @@ public abstract class Game {
         }
     }
 
+    private void applyOnCounterAttackSpells(ServerTroop counterAttacker, ServerTroop attacker) {
+        for (Spell spell : counterAttacker.getCard().getSpells()) {
+            if (spell.getAvailabilityType().isOnCounterAttack())
+                applySpell(
+                        spell,
+                        detectCounterAttackTarget(spell, counterAttacker, attacker)
+                );
+        }
+    }
+
     private int calculateAp(ServerTroop attackerTroop, ServerTroop defenderTroop) {
         int attackPower = attackerTroop.getCurrentAp();
         if (!attackerTroop.isHolyBuffDisabling() || defenderTroop.getEnemyHitChanges() > 0) {
@@ -614,7 +590,6 @@ public abstract class Game {
         }
         return attackPower;
     }
-
 
     private ServerTroop getAndValidateHero(String cardId) throws ClientException {
         ServerTroop hero = getCurrentTurnPlayer().getHero();
@@ -916,6 +891,39 @@ public abstract class Game {
         return targetData;
     }
 
+    private TargetData detectCounterAttackTarget(Spell spell, ServerTroop counterAttacker, ServerTroop attacker) {
+        TargetData targetData = new TargetData();
+        Owner spellOwner = spell.getTarget().getOwner();
+
+        if (spellOwner != null) {
+            List<ServerTroop> troops = new ArrayList<>();
+
+            if (spellOwner.isOwn()) {
+                troops.add(counterAttacker);
+            }
+
+            if (spellOwner.isEnemy()) {
+                troops.add(attacker);
+            }
+
+            for (ServerTroop troop : troops) {
+                int playerNumber = troop.getPlayerNumber();
+                Player player = (getCurrentTurnPlayer().getPlayerNumber() == playerNumber) ? getCurrentTurnPlayer() : getOtherTurnPlayer();
+                Cell heroCell = player.getHero().getCell();
+                setTargetData(spell, counterAttacker.getCell(), attacker.getCell(), heroCell, player, targetData);
+            }
+        }
+
+        if (spell.getTarget().isRandom()) {
+            randomizeList(targetData.getTroops());
+            randomizeList(targetData.getCells());
+            randomizeList(targetData.getPlayers());
+            randomizeList(targetData.getCards());
+        }
+
+        return targetData;
+    }
+
     private void setTargetData(Spell spell, Cell cardCell, Cell clickCell, Cell heroCell, Player player, TargetData targetData) {
 
         if (spell.getTarget().getCardType().isPlayer()) {
@@ -1080,10 +1088,6 @@ public abstract class Game {
     public void forceFinish(String username) {
         setMatchHistories(!playerOne.getUserName().equals(username), !playerTwo.getUserName().equals(username));
         finish();
-    }
-
-    public GameType getGameType() {
-        return gameType;
     }
 
     public void addObserver(Account account) {

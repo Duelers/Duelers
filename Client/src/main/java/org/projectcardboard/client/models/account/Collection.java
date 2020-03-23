@@ -6,33 +6,10 @@ import java.util.List;
 
 import org.projectcardboard.client.models.card.Deck;
 
+import shared.models.account.BaseCollection;
 import shared.models.card.Card;
 
-public class Collection {
-    private final List<Card> heroes = new ArrayList<>();
-    private final List<Card> minions = new ArrayList<>();
-    private final List<Card> spells = new ArrayList<>();
-
-    // When two cards cost the same mana, sort alphabetically by name.
-    // Note that the current implementation only sorts by first character.
-    // Thus Az could appear before Ab, but Cz is always before Da.
-    private final Comparator<Card> compareCostThenName = Comparator.comparingInt(Card::getManaCost).thenComparingInt(c -> c.getCardId().charAt(0));
-
-    public List<Card> getHeroes() {
-        heroes.sort(compareCostThenName);
-        return heroes;
-    }
-
-    public List<Card> getMinions() {
-        minions.sort(compareCostThenName);
-        return minions;
-    }
-
-    public List<Card> getSpells() {
-        spells.sort(compareCostThenName);
-        return spells;
-    }
-
+public class Collection extends BaseCollection<Card> {
     public Collection searchCollection(String cardName) {
         Collection result = new Collection();
         searchInList(heroes, result.heroes, cardName);
@@ -49,46 +26,20 @@ public class Collection {
         return null;
     }
 
+    private List<Card> find(String cardName) {
+        List<Card> result = new ArrayList<>();
+        findInList(heroes, result, cardName);
+        findInList(minions, result, cardName);
+        findInList(spells, result, cardName);
+        return result;
+    }
+
     private void searchInList(List<Card> list, List<Card> results, String cardName) {
         for (Card card : list) {
             if (card.nameContains(cardName)) {
                 results.add(card);
             }
         }
-    }
-
-    public void addCard(Card card) {//for shop
-        if (card == null) {
-            return;
-        }
-        if (hasCard(card.getCardId())) {
-            return;
-        }
-        switch (card.getType()) {
-            case HERO:
-                heroes.add(card);
-                break;
-            case MINION:
-                minions.add(card);
-                break;
-            case SPELL:
-                spells.add(card);
-                break;
-        }
-    }
-
-    private boolean hasCard(String cardId) {
-        return hasCard(cardId, heroes) || hasCard(cardId, minions) || hasCard(cardId, spells);
-    }
-
-    private boolean hasCard(String cardId, List<Card> cards) {
-        if (cardId == null || cards == null)
-            return false;
-        for (Card card : cards) {
-            if (card.getCardId().equalsIgnoreCase(cardId))
-                return true;
-        }
-        return false;
     }
 
     public Card findHero(String heroId) {
@@ -133,19 +84,7 @@ public class Collection {
         return true;
     }
 
-    public Card findLast(String cardName) {
-        List<Card> result = find(cardName);
-        if (result.size() == 0) return null;
-        return result.get(result.size() - 1);
-    }
 
-    private List<Card> find(String cardName) {
-        List<Card> result = new ArrayList<>();
-        findInList(heroes, result, cardName);
-        findInList(minions, result, cardName);
-        findInList(spells, result, cardName);
-        return result;
-    }
 
     private void findInList(List<Card> list, List<Card> result, String cardName) {
         for (Card card : list) {
@@ -192,24 +131,6 @@ public class Collection {
             if (spell.isSameAs(cardName) && !deck.hasCard(spell)) {
                 return spell.getCardId();
             }
-        }
-        return null;
-    }
-
-    public Card removeCard(String cardName) {
-        Card card;
-        if (null != (card = removeFromList(heroes, cardName))) return card;
-        if (null != (card = removeFromList(minions, cardName))) return card;
-        if (null != (card = removeFromList(spells, cardName))) return card;
-        return null;
-    }
-
-    private Card removeFromList(List<Card> list, String cardName) {
-        List<Card> result = new ArrayList<>();
-        findInList(list, result, cardName);
-        if (result.size() > 0) {
-            list.remove(result.get(0));
-            return result.get(0);
         }
         return null;
     }

@@ -1,33 +1,14 @@
 package server.dataCenter.models.account;
 
 import server.gameCenter.models.game.Player;
+import shared.models.account.BaseMatchHistory;
 
 import java.util.Date;
 
-public class MatchHistory {
-    private final String oppName;
-    private final boolean amIWinner;
-    private final Date date;
-
-    public MatchHistory(Player player, boolean amIWinner) {
-        if (player.getUserName().equals("AI")) {
-            this.oppName = player.getDeck().getName();
-        } else {
-            this.oppName = player.getUserName();
-        }
-        this.amIWinner = amIWinner;
-        this.date = new Date(System.currentTimeMillis());
-    }
-
-    public String getOppName() {
-        return this.oppName;
-    }
-
-    public String getDate() {
-        return date.toString();
-    }
-
-    public boolean isAmIWinner() {
-        return amIWinner;
+public class MatchHistory extends BaseMatchHistory {
+    public MatchHistory(Player player, boolean amIWinner) { //Sorry this is ugly. It has to be inline since super has to be the first call.
+        super("AI".equals(player.getUserName()) ?
+                        player.getDeck().getName() : player.getUserName(),
+                amIWinner);
     }
 }

@@ -35,7 +35,6 @@ public class Player extends BasePlayer<Card, Troop> {
     }
 
     public void addCardsToHand(int deckSize, Card... drawnCards) {
-        System.out.println("Current deck size: " + deckSize);
         if (support == null) {
             support = new PropertyChangeSupport(this);
         }
@@ -44,9 +43,12 @@ public class Player extends BasePlayer<Card, Troop> {
         for (Card drawnCard : drawnCards) {
             if (drawnCard != null && this.hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
                 this.hand.add(drawnCard);
-                support.firePropertyChange("hand", null, null);
             }
         }
+        if (support == null) {
+            support = new PropertyChangeSupport(this);
+        }
+        support.firePropertyChange("hand", null, null);
     }
 
     public void addCardToGraveYard(Card card) {
@@ -114,5 +116,9 @@ public class Player extends BasePlayer<Card, Troop> {
 
     public int getDeckSize(){
         return this.deckSize;
+    }
+
+    public void setDeckSize(int newSize){
+        this.deckSize = newSize;
     }
 }

@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.projectcardboard.client.models.account.AccountType.ADMIN;
+import static shared.models.account.AccountType.ADMIN;
 
 public class MainMenu extends Show {
     private static MainMenu menu;
