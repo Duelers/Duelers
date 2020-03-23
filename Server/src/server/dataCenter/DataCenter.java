@@ -6,7 +6,7 @@ import server.clientPortal.ClientPortal;
 import server.clientPortal.models.JsonConverter;
 import server.clientPortal.models.message.Message;
 import server.dataCenter.models.account.Account;
-import server.dataCenter.models.account.AccountType;
+import shared.models.account.AccountType;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.account.TempAccount;
 import server.dataCenter.models.card.Deck;

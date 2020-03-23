@@ -1,4 +1,4 @@
-package server.dataCenter.models.account;
+package shared.models.account;
 
 public enum AccountType {
     ADMIN, NORMAL
