@@ -9,6 +9,8 @@ import org.projectcardboard.client.models.gui.UIConstants;
 import org.projectcardboard.client.models.gui.KeyboardShortcutConstants;
 import org.projectcardboard.client.view.LoginMenu;
 
+import Config.Config;
+
 public class GraphicalUserInterface {
     private static GraphicalUserInterface GUI;
     private Stage stage;
@@ -58,8 +60,8 @@ public class GraphicalUserInterface {
 
     private void setStageProperties(Stage stage) {
         stage.setTitle("CardBoard");
-
-        stage.setFullScreen(true);
+        boolean setFullScreen = Boolean.parseBoolean(Config.getInstance().getProperty("FULLSCREEN"));
+        stage.setFullScreen(setFullScreen);
         stage.setResizable(true); // note that resizing the window does not currently 'redraw' the window.
 
         stage.setFullScreenExitHint(KeyboardShortcutConstants.EXIT_FULLSCREEN_HELP_MSG);
@@ -67,6 +69,7 @@ public class GraphicalUserInterface {
 
         stage.show();
         stage.setOnCloseRequest(event -> Client.getInstance().close());
+        
     }
 
     private void makeScene(AnchorPane root) {

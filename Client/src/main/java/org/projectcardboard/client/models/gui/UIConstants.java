@@ -3,6 +3,7 @@ package org.projectcardboard.client.models.gui;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import Config.Config;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
@@ -21,11 +22,13 @@ public class UIConstants {
                     Color.rgb(44, 33, 129), CornerRadii.EMPTY, Insets.EMPTY
             )
     );
+    private static final double DEFAULT_SCREEN_WIDTH = Double.parseDouble(Config.getInstance().getProperty("SCREEN_WIDTH"));
+    private static final double DEFAULT_SCREEN_HEIGHT = Double.parseDouble(Config.getInstance().getProperty("SCREEN_HEIGHT"));
     private static final double DEFAULT_SCENE_WIDTH = 3636;
     private static final double DEFAULT_SCENE_HEIGHT = 2045;
     public static final double SCALE = Math.min(
-            Screen.getPrimary().getBounds().getWidth() / DEFAULT_SCENE_WIDTH,
-            Screen.getPrimary().getBounds().getHeight() / DEFAULT_SCENE_HEIGHT
+            (DEFAULT_SCREEN_WIDTH / DEFAULT_SCENE_WIDTH),
+            (DEFAULT_SCREEN_HEIGHT / DEFAULT_SCENE_HEIGHT)
     );
     public static final double DEFAULT_SPACING = 10 * SCALE;
     public static final Font DEFAULT_FONT = Font.font("SansSerif", FontWeight.BOLD, 25 * SCALE);
@@ -39,6 +42,9 @@ public class UIConstants {
     
     static{
         try {
+            System.out.println(Screen.getPrimary().getBounds().getWidth());
+            System.out.println(Screen.getPrimary().getBounds().getHeight());
+            
             InputStream defaultCursorResource = UIConstants.class.getResourceAsStream("/cursors/default.png");
             if (defaultCursorResource == null) { throw new FileNotFoundException(); }
             UIConstants.DEFAULT_CURSOR = new ImageCursor(new Image(defaultCursorResource));
