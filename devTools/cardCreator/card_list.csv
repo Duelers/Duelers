@@ -5,6 +5,7 @@ SPELL,Arms Race,Both Generals gain +1 attack,0,0,1,icon_f1_enthrall
 SPELL,Auryn Nexus,Give a friendly minion +3 Health,0,0,1,icon_f1_aurynnexus
 MINION,Aymara Healer,Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.,5,5,6,f3_aymarahealer
 MINION,Azure Herald,Opening Gambit: Add 3 Health to your General,1,4,2,neutral_azureherald
+MINION,Azure Horn Shaman,Dying Wish: Give +4 health to friendly minions around it.,1,4,2,neutral_mercazurehorn
 MINION,Azurite Lion,Celerity,2,3,2,f1_azuritelion
 SPELL,Beam Shock,STUN an enemy,0,0,0,icon_f1_beamshock
 MINION,Beastbound Savage,"Celerity.
