@@ -114,7 +114,7 @@ buildNumber.properties
 /logs/*
 /exported_decks/*
 /resources/accounts/
-/Server/resources/accounts/*
+/Server/resources/accounts/
 
 
 ## DevTools
