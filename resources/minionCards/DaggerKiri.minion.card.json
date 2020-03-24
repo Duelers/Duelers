@@ -2,7 +2,7 @@
     "name": "Dagger Kiri",
     "description": "Celerity",
     "cardId": "DaggerKiri",
-    "spriteName": "neutral_mercdaggerkiri.png",
+    "spriteName": "neutral_mercdaggerkiri",
     "type": "MINION",
     "defaultAp": 2,
     "defaultHp": 8,
