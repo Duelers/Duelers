@@ -5153,11 +5153,11 @@
                 "description": "Both Generals gain +1 attack",
                 "cardId": "duelyst_ArmsRace_1",
                 "spriteName": "icon_f1_enthrall",
-                "fxName": "fx_martyrdom",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "_1_atk",
+                        "fxName": "fx_martyrdom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -5231,11 +5231,11 @@
                 "description": "Both Generals gain +1 attack",
                 "cardId": "duelyst_ArmsRace_2",
                 "spriteName": "icon_f1_enthrall",
-                "fxName": "fx_martyrdom",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "_1_atk",
+                        "fxName": "fx_martyrdom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -5309,11 +5309,11 @@
                 "description": "Both Generals gain +1 attack",
                 "cardId": "duelyst_ArmsRace_3",
                 "spriteName": "icon_f1_enthrall",
-                "fxName": "fx_martyrdom",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "_1_atk",
+                        "fxName": "fx_martyrdom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -5387,11 +5387,11 @@
                 "description": "Give a friendly minion +3 Health",
                 "cardId": "duelyst_AurynNexus_1",
                 "spriteName": "icon_f1_aurynnexus",
-                "fxName": "fx_f1_aurynnexus",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_3_health",
+                        "fxName": "fx_f1_aurynnexus",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5465,11 +5465,11 @@
                 "description": "Give a friendly minion +3 Health",
                 "cardId": "duelyst_AurynNexus_2",
                 "spriteName": "icon_f1_aurynnexus",
-                "fxName": "fx_f1_aurynnexus",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_3_health",
+                        "fxName": "fx_f1_aurynnexus",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5543,11 +5543,11 @@
                 "description": "Give a friendly minion +3 Health",
                 "cardId": "duelyst_AurynNexus_3",
                 "spriteName": "icon_f1_aurynnexus",
-                "fxName": "fx_f1_aurynnexus",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_3_health",
+                        "fxName": "fx_f1_aurynnexus",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5621,11 +5621,11 @@
                 "description": "STUN an enemy",
                 "cardId": "duelyst_BeamShock_1",
                 "spriteName": "icon_f1_beamshock",
-                "fxName": "fx_explosionorangesmoke",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "stun",
+                        "fxName": "fx_explosionorangesmoke",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5699,11 +5699,11 @@
                 "description": "STUN an enemy",
                 "cardId": "duelyst_BeamShock_2",
                 "spriteName": "icon_f1_beamshock",
-                "fxName": "fx_explosionorangesmoke",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "stun",
+                        "fxName": "fx_explosionorangesmoke",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5777,11 +5777,11 @@
                 "description": "STUN an enemy",
                 "cardId": "duelyst_BeamShock_3",
                 "spriteName": "icon_f1_beamshock",
-                "fxName": "fx_explosionorangesmoke",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "stun",
+                        "fxName": "fx_explosionorangesmoke",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5855,11 +5855,11 @@
                 "description": "Deal 1 damage to your General. Draw a card",
                 "cardId": "duelyst_BurdenofKnowledge_1",
                 "spriteName": "icon_f3_glimpse",
-                "fxName": "fx_bloodground",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "sub_2",
+                        "fxName": "fx_bloodground",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5996,11 +5996,11 @@
                 "description": "Deal 1 damage to your General. Draw a card",
                 "cardId": "duelyst_BurdenofKnowledge_2",
                 "spriteName": "icon_f3_glimpse",
-                "fxName": "fx_bloodground",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "sub_2",
+                        "fxName": "fx_bloodground",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6137,11 +6137,11 @@
                 "description": "Deal 1 damage to your General. Draw a card",
                 "cardId": "duelyst_BurdenofKnowledge_3",
                 "spriteName": "icon_f3_glimpse",
-                "fxName": "fx_bloodground",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "sub_2",
+                        "fxName": "fx_bloodground",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6278,11 +6278,11 @@
                 "description": "Destroy all minions.",
                 "cardId": "duelyst_CircleofDessication_1",
                 "spriteName": "icon_f3_circleofdessication",
-                "fxName": "f3_fx_circleofdessication",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "destroy_all_minions",
+                        "fxName": "f3_fx_circleofdessication",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6356,11 +6356,11 @@
                 "description": "Destroy all minions.",
                 "cardId": "duelyst_CircleofDessication_2",
                 "spriteName": "icon_f3_circleofdessication",
-                "fxName": "f3_fx_circleofdessication",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "destroy_all_minions",
+                        "fxName": "f3_fx_circleofdessication",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6434,11 +6434,11 @@
                 "description": "Destroy all minions.",
                 "cardId": "duelyst_CircleofDessication_3",
                 "spriteName": "icon_f3_circleofdessication",
-                "fxName": "f3_fx_circleofdessication",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "destroy_all_minions",
+                        "fxName": "f3_fx_circleofdessication",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6512,11 +6512,11 @@
                 "description": "Deal 5 damage to an enemy minion. Your General gains 5 life.",
                 "cardId": "duelyst_CircleOfLife_1",
                 "spriteName": "icon_f1_circleoflife",
-                "fxName": "fx_f1_circlelife",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_5_to_minion",
+                        "fxName": "fx_f1_circlelife",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6620,11 +6620,11 @@
                 "description": "Deal 5 damage to an enemy minion. Your General gains 5 life.",
                 "cardId": "duelyst_CircleOfLife_2",
                 "spriteName": "icon_f1_circleoflife",
-                "fxName": "fx_f1_circlelife",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_5_to_minion",
+                        "fxName": "fx_f1_circlelife",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6728,11 +6728,11 @@
                 "description": "Deal 5 damage to an enemy minion. Your General gains 5 life.",
                 "cardId": "duelyst_CircleOfLife_3",
                 "spriteName": "icon_f1_circleoflife",
-                "fxName": "fx_f1_circlelife",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_5_to_minion",
+                        "fxName": "fx_f1_circlelife",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6836,11 +6836,11 @@
                 "description": "Destroy target enemy minion.",
                 "cardId": "duelyst_DarkDestruction_1",
                 "spriteName": "icon_f4_darktransformation",
-                "fxName": "fx_f4_darkfiretransformation",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "destroy target",
+                        "fxName": "fx_f4_darkfiretransformation",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6914,11 +6914,11 @@
                 "description": "Destroy target enemy minion.",
                 "cardId": "duelyst_DarkDestruction_2",
                 "spriteName": "icon_f4_darktransformation",
-                "fxName": "fx_f4_darkfiretransformation",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "destroy target",
+                        "fxName": "fx_f4_darkfiretransformation",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6992,11 +6992,11 @@
                 "description": "Destroy target enemy minion.",
                 "cardId": "duelyst_DarkDestruction_3",
                 "spriteName": "icon_f4_darktransformation",
-                "fxName": "fx_f4_darkfiretransformation",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "destroy target",
+                        "fxName": "fx_f4_darkfiretransformation",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7070,11 +7070,11 @@
                 "description": "The enemy General is DOOMED and will die after three turns",
                 "cardId": "duelyst_Doom_1",
                 "spriteName": "icon_f4_doom",
-                "fxName": "fx_f4_doom",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "doom",
+                        "fxName": "fx_f4_doom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7148,11 +7148,11 @@
                 "description": "The enemy General is DOOMED and will die after three turns",
                 "cardId": "duelyst_Doom_2",
                 "spriteName": "icon_f4_doom",
-                "fxName": "fx_f4_doom",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "doom",
+                        "fxName": "fx_f4_doom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7226,11 +7226,11 @@
                 "description": "The enemy General is DOOMED and will die after three turns",
                 "cardId": "duelyst_Doom_3",
                 "spriteName": "icon_f4_doom",
-                "fxName": "fx_f4_doom",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "doom",
+                        "fxName": "fx_f4_doom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7304,11 +7304,11 @@
                 "description": "Deal 4 damage to a minion AND your General",
                 "cardId": "duelyst_DrainingWave_1",
                 "spriteName": "icon_f1_drainingwave",
-                "fxName": "fx_explosionblueelectrical",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_4_to_minion",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -7341,6 +7341,7 @@
                     },
                     {
                         "spellId": "deal_4_to_general",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -7382,11 +7383,11 @@
                 "description": "Deal 4 damage to a minion AND your General",
                 "cardId": "duelyst_DrainingWave_2",
                 "spriteName": "icon_f1_drainingwave",
-                "fxName": "fx_explosionblueelectrical",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_4_to_minion",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -7419,6 +7420,7 @@
                     },
                     {
                         "spellId": "deal_4_to_general",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -7460,11 +7462,11 @@
                 "description": "Deal 4 damage to a minion AND your General",
                 "cardId": "duelyst_DrainingWave_3",
                 "spriteName": "icon_f1_drainingwave",
-                "fxName": "fx_explosionblueelectrical",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_4_to_minion",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -7497,6 +7499,7 @@
                     },
                     {
                         "spellId": "deal_4_to_general",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -7538,11 +7541,11 @@
                 "description": "Add 8 Health to your general.",
                 "cardId": "duelyst_EarthSphere_1",
                 "spriteName": "icon_f5_earthsphere",
-                "fxName": "fx_f5_earthsphere",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "8_health_self",
+                        "fxName": "fx_f5_earthsphere",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7616,11 +7619,11 @@
                 "description": "Add 8 Health to your general.",
                 "cardId": "duelyst_EarthSphere_2",
                 "spriteName": "icon_f5_earthsphere",
-                "fxName": "fx_f5_earthsphere",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "8_health_self",
+                        "fxName": "fx_f5_earthsphere",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7694,11 +7697,11 @@
                 "description": "Add 8 Health to your general.",
                 "cardId": "duelyst_EarthSphere_3",
                 "spriteName": "icon_f5_earthsphere",
-                "fxName": "fx_f5_earthsphere",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "8_health_self",
+                        "fxName": "fx_f5_earthsphere",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7772,11 +7775,11 @@
                 "description": "Deal 8 Damage to ALL characters",
                 "cardId": "duelyst_FlamingStampede_1",
                 "spriteName": "icon_f5_flamingstampede",
-                "fxName": "f5_fx_flamingstampede",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_8_dmg_everything",
+                        "fxName": "f5_fx_flamingstampede",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7850,11 +7853,11 @@
                 "description": "Deal 8 Damage to ALL characters",
                 "cardId": "duelyst_FlamingStampede_2",
                 "spriteName": "icon_f5_flamingstampede",
-                "fxName": "f5_fx_flamingstampede",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_8_dmg_everything",
+                        "fxName": "f5_fx_flamingstampede",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7928,11 +7931,11 @@
                 "description": "Deal 8 Damage to ALL characters",
                 "cardId": "duelyst_FlamingStampede_3",
                 "spriteName": "icon_f5_flamingstampede",
-                "fxName": "f5_fx_flamingstampede",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_8_dmg_everything",
+                        "fxName": "f5_fx_flamingstampede",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8006,11 +8009,11 @@
                 "description": "Deal 3 damage to all enemy minions",
                 "cardId": "duelyst_Frostburn_1",
                 "spriteName": "icon_f6_frostburn",
-                "fxName": "f6_fx_winterswake",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_3_dmg_everything",
+                        "fxName": "f6_fx_winterswake",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8084,11 +8087,11 @@
                 "description": "Deal 3 damage to all enemy minions",
                 "cardId": "duelyst_Frostburn_2",
                 "spriteName": "icon_f6_frostburn",
-                "fxName": "f6_fx_winterswake",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_3_dmg_everything",
+                        "fxName": "f6_fx_winterswake",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8162,11 +8165,11 @@
                 "description": "Deal 3 damage to all enemy minions",
                 "cardId": "duelyst_Frostburn_3",
                 "spriteName": "icon_f6_frostburn",
-                "fxName": "f6_fx_winterswake",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_3_dmg_everything",
+                        "fxName": "f6_fx_winterswake",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8240,11 +8243,11 @@
                 "description": "Deal 1 damage to all enemy minions.",
                 "cardId": "duelyst_GhostLightning_1",
                 "spriteName": "icon_f2_ghost_lightning",
-                "fxName": "fx_collisionsparkred",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_1_dmg_everything",
+                        "fxName": "fx_collisionsparkred",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8318,11 +8321,11 @@
                 "description": "Deal 1 damage to all enemy minions.",
                 "cardId": "duelyst_GhostLightning_2",
                 "spriteName": "icon_f2_ghost_lightning",
-                "fxName": "fx_collisionsparkred",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_1_dmg_everything",
+                        "fxName": "fx_collisionsparkred",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8396,11 +8399,11 @@
                 "description": "Deal 1 damage to all enemy minions.",
                 "cardId": "duelyst_GhostLightning_3",
                 "spriteName": "icon_f2_ghost_lightning",
-                "fxName": "fx_collisionsparkred",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_1_dmg_everything",
+                        "fxName": "fx_collisionsparkred",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8474,11 +8477,11 @@
                 "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
                 "cardId": "duelyst_KineticEquilibrium_1",
                 "spriteName": "icon_f5_kineticequilibrium",
-                "fxName": "fx_f5_kinectequilibrium",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f5_kinectequilibrium",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8613,11 +8616,11 @@
                 "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
                 "cardId": "duelyst_KineticEquilibrium_2",
                 "spriteName": "icon_f5_kineticequilibrium",
-                "fxName": "fx_f5_kinectequilibrium",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f5_kinectequilibrium",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8752,11 +8755,11 @@
                 "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
                 "cardId": "duelyst_KineticEquilibrium_3",
                 "spriteName": "icon_f5_kineticequilibrium",
-                "fxName": "fx_f5_kinectequilibrium",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f5_kinectequilibrium",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8891,11 +8894,11 @@
                 "description": "Deal 3 damage to anything.",
                 "cardId": "duelyst_PhoenixFire_1",
                 "spriteName": "icon_f2_phoenixfire02",
-                "fxName": "fx_f2_phoenixfire",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_3_to_anything",
+                        "fxName": "fx_f2_phoenixfire",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8969,11 +8972,11 @@
                 "description": "Deal 3 damage to anything.",
                 "cardId": "duelyst_PhoenixFire_2",
                 "spriteName": "icon_f2_phoenixfire02",
-                "fxName": "fx_f2_phoenixfire",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_3_to_anything",
+                        "fxName": "fx_f2_phoenixfire",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -9047,11 +9050,11 @@
                 "description": "Deal 3 damage to anything.",
                 "cardId": "duelyst_PhoenixFire_3",
                 "spriteName": "icon_f2_phoenixfire02",
-                "fxName": "fx_f2_phoenixfire",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_3_to_anything",
+                        "fxName": "fx_f2_phoenixfire",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -9125,11 +9128,11 @@
                 "description": "Give a minion or General +3 Attack this turn.",
                 "cardId": "duelyst_SaberspineSeal_1",
                 "spriteName": "icon_f2_saberspineseal",
-                "fxName": "fx_f2_saberspineseal",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_3_attack_this_turn",
+                        "fxName": "fx_f2_saberspineseal",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 3,
@@ -9186,11 +9189,11 @@
                 "description": "Give a minion or General +3 Attack this turn.",
                 "cardId": "duelyst_SaberspineSeal_2",
                 "spriteName": "icon_f2_saberspineseal",
-                "fxName": "fx_f2_saberspineseal",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_3_attack_this_turn",
+                        "fxName": "fx_f2_saberspineseal",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 3,
@@ -9247,11 +9250,11 @@
                 "description": "Give a minion or General +3 Attack this turn.",
                 "cardId": "duelyst_SaberspineSeal_3",
                 "spriteName": "icon_f2_saberspineseal",
-                "fxName": "fx_f2_saberspineseal",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_3_attack_this_turn",
+                        "fxName": "fx_f2_saberspineseal",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 3,
@@ -9308,11 +9311,11 @@
                 "description": "Give a friendly minion +1/+1. Draw a card",
                 "cardId": "duelyst_ScionsFirstWish_1",
                 "spriteName": "icon_f3_scionsfirstwish",
-                "fxName": "fx_f3_scionsfirstwish",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_1_1_and_draw_1",
+                        "fxName": "fx_f3_scionsfirstwish",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -9387,11 +9390,11 @@
                 "description": "Give a friendly minion +1/+1. Draw a card",
                 "cardId": "duelyst_ScionsFirstWish_2",
                 "spriteName": "icon_f3_scionsfirstwish",
-                "fxName": "fx_f3_scionsfirstwish",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_1_1_and_draw_1",
+                        "fxName": "fx_f3_scionsfirstwish",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -9466,11 +9469,11 @@
                 "description": "Give a friendly minion +1/+1. Draw a card",
                 "cardId": "duelyst_ScionsFirstWish_3",
                 "spriteName": "icon_f3_scionsfirstwish",
-                "fxName": "fx_f3_scionsfirstwish",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_1_1_and_draw_1",
+                        "fxName": "fx_f3_scionsfirstwish",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -9545,11 +9548,11 @@
                 "description": "Give a friendly minion +5 Attack.",
                 "cardId": "duelyst_ShadowReflection_1",
                 "spriteName": "icon_f4_shadowreflection",
-                "fxName": "fx_f4_shadowreflection",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "Give_5_atk_to_friendly_minion",
+                        "fxName": "fx_f4_shadowreflection",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 5,
@@ -9623,11 +9626,11 @@
                 "description": "Give a friendly minion +5 Attack.",
                 "cardId": "duelyst_ShadowReflection_2",
                 "spriteName": "icon_f4_shadowreflection",
-                "fxName": "fx_f4_shadowreflection",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "Give_5_atk_to_friendly_minion",
+                        "fxName": "fx_f4_shadowreflection",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 5,
@@ -9701,11 +9704,11 @@
                 "description": "Give a friendly minion +5 Attack.",
                 "cardId": "duelyst_ShadowReflection_3",
                 "spriteName": "icon_f4_shadowreflection",
-                "fxName": "fx_f4_shadowreflection",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "Give_5_atk_to_friendly_minion",
+                        "fxName": "fx_f4_shadowreflection",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 5,
@@ -9779,11 +9782,11 @@
                 "description": "Give all friendly minions +2 Attack this turn.",
                 "cardId": "duelyst_SoulshatterPact_1",
                 "spriteName": "icon_f4_soulshatterpact",
-                "fxName": "fx_f4_soulshatterpact",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_2attack_this_turn",
+                        "fxName": "fx_f4_soulshatterpact",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 2,
@@ -9857,11 +9860,11 @@
                 "description": "Give all friendly minions +2 Attack this turn.",
                 "cardId": "duelyst_SoulshatterPact_2",
                 "spriteName": "icon_f4_soulshatterpact",
-                "fxName": "fx_f4_soulshatterpact",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_2attack_this_turn",
+                        "fxName": "fx_f4_soulshatterpact",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 2,
@@ -9935,11 +9938,11 @@
                 "description": "Give all friendly minions +2 Attack this turn.",
                 "cardId": "duelyst_SoulshatterPact_3",
                 "spriteName": "icon_f4_soulshatterpact",
-                "fxName": "fx_f4_soulshatterpact",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_2attack_this_turn",
+                        "fxName": "fx_f4_soulshatterpact",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 2,
@@ -10013,11 +10016,11 @@
                 "description": "Deal 8 damage to anything",
                 "cardId": "duelyst_SpiralTechnique_1",
                 "spriteName": "icon_f2_spiraltechnique",
-                "fxName": "fx_f2_spiraltechnique02",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_8_to_anything",
+                        "fxName": "fx_f2_spiraltechnique02",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10091,11 +10094,11 @@
                 "description": "Deal 8 damage to anything",
                 "cardId": "duelyst_SpiralTechnique_2",
                 "spriteName": "icon_f2_spiraltechnique",
-                "fxName": "fx_f2_spiraltechnique02",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_8_to_anything",
+                        "fxName": "fx_f2_spiraltechnique02",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10169,11 +10172,11 @@
                 "description": "Deal 8 damage to anything",
                 "cardId": "duelyst_SpiralTechnique_3",
                 "spriteName": "icon_f2_spiraltechnique",
-                "fxName": "fx_f2_spiraltechnique02",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_8_to_anything",
+                        "fxName": "fx_f2_spiraltechnique02",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10247,11 +10250,11 @@
                 "description": "Deal 2 Damage to ALL characters",
                 "cardId": "duelyst_Tempest_1",
                 "spriteName": "icon_f1_tempest",
-                "fxName": "fx_explosionyellowelectrical",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_2_dmg_everything",
+                        "fxName": "fx_explosionyellowelectrical",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10325,11 +10328,11 @@
                 "description": "Deal 2 Damage to ALL characters",
                 "cardId": "duelyst_Tempest_2",
                 "spriteName": "icon_f1_tempest",
-                "fxName": "fx_explosionyellowelectrical",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_2_dmg_everything",
+                        "fxName": "fx_explosionyellowelectrical",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10403,11 +10406,11 @@
                 "description": "Deal 2 Damage to ALL characters",
                 "cardId": "duelyst_Tempest_3",
                 "spriteName": "icon_f1_tempest",
-                "fxName": "fx_explosionyellowelectrical",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "deal_2_dmg_everything",
+                        "fxName": "fx_explosionyellowelectrical",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10481,11 +10484,11 @@
                 "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_1",
                 "spriteName": "icon_f4_voidpulse",
-                "fxName": "fx_f4_voidpulse",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10547,6 +10550,7 @@
                     },
                     {
                         "spellId": "health_self",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10620,11 +10624,11 @@
                 "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_2",
                 "spriteName": "icon_f4_voidpulse",
-                "fxName": "fx_f4_voidpulse",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10686,6 +10690,7 @@
                     },
                     {
                         "spellId": "health_self",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10759,11 +10764,11 @@
                 "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_3",
                 "spriteName": "icon_f4_voidpulse",
-                "fxName": "fx_f4_voidpulse",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10825,6 +10830,7 @@
                     },
                     {
                         "spellId": "health_self",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10898,11 +10904,11 @@
                 "description": "Give all friendly minions +1/+1.",
                 "cardId": "duelyst_WarSurge_1",
                 "spriteName": "icon_f1_warsurge",
-                "fxName": "fx_f1_warsurge",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_1_1",
+                        "fxName": "fx_f1_warsurge",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -10976,11 +10982,11 @@
                 "description": "Give all friendly minions +1/+1.",
                 "cardId": "duelyst_WarSurge_2",
                 "spriteName": "icon_f1_warsurge",
-                "fxName": "fx_f1_warsurge",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_1_1",
+                        "fxName": "fx_f1_warsurge",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -11054,11 +11060,11 @@
                 "description": "Give all friendly minions +1/+1.",
                 "cardId": "duelyst_WarSurge_3",
                 "spriteName": "icon_f1_warsurge",
-                "fxName": "fx_f1_warsurge",
                 "type": "SPELL",
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_1_1",
+                        "fxName": "fx_f1_warsurge",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,

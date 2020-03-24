@@ -3,11 +3,11 @@
   "description": "Deal 8 Damage to ALL characters",
   "cardId": "FlamingStampede",
   "spriteName": "icon_f5_flamingstampede",
-  "fxName": "f5_fx_flamingstampede",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "deal_8_dmg_everything",
+      "fxName": "f5_fx_flamingstampede",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

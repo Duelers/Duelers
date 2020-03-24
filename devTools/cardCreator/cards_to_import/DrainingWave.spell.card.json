@@ -3,11 +3,11 @@
   "description": "Deal 4 damage to a minion AND your General",
   "cardId": "DrainingWave",
   "spriteName": "icon_f1_drainingwave",
-  "fxName": "fx_explosionblueelectrical",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "deal_4_to_minion",
+      "fxName": "fx_explosionblueelectrical",
       "action": {
         "hpChange": -4,
         "durable": true,
@@ -40,6 +40,7 @@
     },
 	{
 		"spellId": "deal_4_to_general",
+        "fxName": "fx_explosionblueelectrical",
 		"action": {
 			"hpChange": -4,
 			"durable": true,

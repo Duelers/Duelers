@@ -3,11 +3,11 @@
   "description": "Deal 3 damage to all enemy minions",
   "cardId": "Frostburn",
   "spriteName": "icon_f6_frostburn",
-  "fxName": "f6_fx_winterswake",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "deal_3_dmg_everything",
+      "fxName": "f6_fx_winterswake",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

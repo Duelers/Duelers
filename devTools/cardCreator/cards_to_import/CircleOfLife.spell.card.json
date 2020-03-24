@@ -3,11 +3,11 @@
   "description": "Deal 5 damage to an enemy minion. Your General gains 5 life.",
   "cardId": "CircleOfLife",
   "spriteName": "icon_f1_circleoflife",
-  "fxName": "fx_f1_circlelife",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "deal_5_to_minion",
+      "fxName": "fx_f1_circlelife",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
@@ -67,7 +67,7 @@
       "manaCost": 0,
       "lastTurnUsed": 0
     },
-	
+
 	{
 		"spellId": "heal_5_to_enemy_general",
 			"action": {

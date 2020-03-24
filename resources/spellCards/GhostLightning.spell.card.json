@@ -3,11 +3,11 @@
   "description": "Deal 1 damage to all enemy minions.",
   "cardId": "GhostLightning",
   "spriteName": "icon_f2_ghost_lightning",
-  "fxName": "fx_collisionsparkred",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "deal_1_dmg_everything",
+      "fxName": "fx_collisionsparkred",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
