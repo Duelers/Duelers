@@ -95,17 +95,33 @@ public class BattleScene extends Show {
         mapBox.showDefend(defender, attacker);
     }
 
-    public void spell(AvailabilityType availabilityType, Cell cell) {
-        mapBox.showSpell(getSpellSpriteName(availabilityType), cell.getRow(), cell.getColumn());
+    public void spell(AvailabilityType availabilityType, Cell cell, String fxName) {
+        mapBox.showSpell(getSpellSpriteName(availabilityType, fxName), cell.getRow(), cell.getColumn());
     }
 
-    private String getSpellSpriteName(AvailabilityType availabilityType) {
-        if (availabilityType.isOnAttack()) return spellSpriteNames.get(SpellType.ATTACK);
-        if (availabilityType.isOnDeath()) return spellSpriteNames.get(SpellType.DEATH);
-        if (availabilityType.isOnDefend()) return spellSpriteNames.get(SpellType.DEFEND);
-        if (availabilityType.isContinuous()) return spellSpriteNames.get(SpellType.CONTINUOUS);
-        if (availabilityType.isOnPut()) return spellSpriteNames.get(SpellType.PUT);
-        return spellSpriteNames.get(SpellType.DEFAULT);
+    private String getSpellSpriteName(AvailabilityType availabilityType, String fxName) {
+        SpellType spellType;
+
+        if (availabilityType.isOnAttack()) {
+            spellType = SpellType.ATTACK;
+        }
+        else if (availabilityType.isOnDeath()) {
+            spellType = SpellType.DEATH;
+        }
+        else if (availabilityType.isOnDefend()) {
+            spellType = SpellType.DEFEND;
+        }
+        else if (availabilityType.isContinuous()) {
+            spellType = SpellType.CONTINUOUS;
+        }
+        else if (availabilityType.isOnPut()) {
+            spellType = SpellType.PUT;
+        }
+        else {
+            spellType = SpellType.DEFAULT;
+        }
+
+        return fxName != null ? fxName : spellSpriteNames.get(spellType);
     }
 
     @Override
