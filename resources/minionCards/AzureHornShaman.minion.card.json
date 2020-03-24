@@ -55,12 +55,12 @@
         }
       },
       "availabilityType": {
-        "onDeath": true,
+        "onDeath": true
       },
       "coolDown": 0,
       "manaCost": 0,
       "lastTurnUsed": 0
-    },
+    }
   ],
   "defaultAp": 1,
   "defaultHp": 4,

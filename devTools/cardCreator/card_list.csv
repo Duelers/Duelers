@@ -3,9 +3,9 @@ MINION,Arctic Displacer,Airdrop,10,4,5,f6_snowwyvern
 HERO,Argeon Highmayne,Lyonar General,2,25,0,f1_general
 SPELL,Arms Race,Both Generals gain +1 attack,0,0,1,icon_f1_enthrall
 SPELL,Auryn Nexus,Give a friendly minion +3 Health,0,0,1,icon_f1_aurynnexus
-MINION,Aymara Healer,"Provoke 
- Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",4,5,7,f3_aymarahealer
+MINION,Aymara Healer,Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.,5,5,6,f3_aymarahealer
 MINION,Azure Herald,Opening Gambit: Add 3 Health to your General,1,4,2,neutral_azureherald
+MINION,Azure Horn Shaman,Dying Wish: Give +4 health to friendly minions around it.,1,4,2,neutral_mercazurehorn
 MINION,Azurite Lion,Celerity,2,3,2,f1_azuritelion
 SPELL,Beam Shock,STUN an enemy,0,0,0,icon_f1_beamshock
 MINION,Beastbound Savage,"Celerity.
@@ -17,6 +17,7 @@ SPELL,Burden of Knowledge,Deal 1 damage to your General. Draw a card,0,0,0,icon_
 MINION,Celestial Phantom,Destroy any enemy minion that Celestial Phantom attacks or counterattacks,1,5,3,f2_deathphantom
 SPELL,Circle of Dessication,Destroy all minions.,0,0,8,icon_f3_circleofdessication
 SPELL,Circle of Life,Deal 5 damage to an enemy minion. Your General gains 5 life.,0,0,5,icon_f1_circleoflife
+MINION,Dagger Kiri,Celerity,2,8,5,neutral_mercdaggerkiri
 SPELL,Dark Destruction,Destroy target enemy minion.,0,0,5,icon_f4_darktransformation
 SPELL,Doom,The enemy General is DOOMED and will die after three turns,0,0,9,icon_f4_doom
 MINION,Dragonlark,"Flying, Ranged (2)",2,1,1,neutral_monsterdragonhawk
@@ -64,7 +65,7 @@ MINION,Skyrock Golem,Golem,3,2,2,neutral_golemrunesand
 SPELL,Soulshatter Pact,Give all friendly minions +2 Attack this turn.,0,0,2,icon_f4_soulshatterpact
 MINION,Spectral Revenant,"Rush 
  After attacking or counterattacking deal 4 damage to the enemy General",6,6,9,f4_daemonvoid
-SPELL,Spiral Technique,Deal 8 damage to anything,0,0,8,icon_f2_spiraltechnique
+SPELL,Spiral Technique,Deal 8 damage to anything,0,0,7,icon_f2_spiraltechnique
 MINION,Storm Artha,Flying,6,5,6,neutral_monsterlightningbeetle
 MINION,Sun Seer,"When this minion attacks or counterattacks,  your General gains 3 Health",3,3,3,neutral_mercsunseer
 MINION,Sun Wisp,Opening Gambit: Draw a card,2,1,2,f1_sunwisp
