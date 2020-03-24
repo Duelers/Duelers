@@ -120,7 +120,7 @@
             },
             {
                 "name": "Aymara Healer",
-                "description": "Provoke \n Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
+                "description": "Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
                 "cardId": "duelyst_AymaraHealer_1",
                 "spriteName": "f3_aymarahealer",
                 "type": "MINION",
@@ -248,9 +248,9 @@
                         "lastTurnUsed": 0
                     }
                 ],
-                "defaultAp": 4,
+                "defaultAp": 5,
                 "defaultHp": 5,
-                "manaCost": 7,
+                "manaCost": 6,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -259,7 +259,7 @@
             },
             {
                 "name": "Aymara Healer",
-                "description": "Provoke \n Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
+                "description": "Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
                 "cardId": "duelyst_AymaraHealer_2",
                 "spriteName": "f3_aymarahealer",
                 "type": "MINION",
@@ -387,9 +387,9 @@
                         "lastTurnUsed": 0
                     }
                 ],
-                "defaultAp": 4,
+                "defaultAp": 5,
                 "defaultHp": 5,
-                "manaCost": 7,
+                "manaCost": 6,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -398,7 +398,7 @@
             },
             {
                 "name": "Aymara Healer",
-                "description": "Provoke \n Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
+                "description": "Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
                 "cardId": "duelyst_AymaraHealer_3",
                 "spriteName": "f3_aymarahealer",
                 "type": "MINION",
@@ -526,9 +526,9 @@
                         "lastTurnUsed": 0
                     }
                 ],
-                "defaultAp": 4,
+                "defaultAp": 5,
                 "defaultHp": 5,
-                "manaCost": 7,
+                "manaCost": 6,
                 "price": 100,
                 "attackType": "MELEE",
                 "range": 0,
@@ -10334,7 +10334,7 @@
                 ],
                 "defaultAp": 0,
                 "defaultHp": 0,
-                "manaCost": 8,
+                "manaCost": 7,
                 "price": 100,
                 "range": 0,
                 "hasCombo": false,
@@ -10411,7 +10411,7 @@
                 ],
                 "defaultAp": 0,
                 "defaultHp": 0,
-                "manaCost": 8,
+                "manaCost": 7,
                 "price": 100,
                 "range": 0,
                 "hasCombo": false,
@@ -10488,7 +10488,7 @@
                 ],
                 "defaultAp": 0,
                 "defaultHp": 0,
-                "manaCost": 8,
+                "manaCost": 7,
                 "price": 100,
                 "range": 0,
                 "hasCombo": false,
