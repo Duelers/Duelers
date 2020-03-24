@@ -17,6 +17,7 @@ SPELL,Burden of Knowledge,Deal 1 damage to your General. Draw a card,0,0,0,icon_
 MINION,Celestial Phantom,Destroy any enemy minion that Celestial Phantom attacks or counterattacks,1,5,3,f2_deathphantom
 SPELL,Circle of Dessication,Destroy all minions.,0,0,8,icon_f3_circleofdessication
 SPELL,Circle of Life,Deal 5 damage to an enemy minion. Your General gains 5 life.,0,0,5,icon_f1_circleoflife
+MINION,Dagger Kiri,Celerity,2,8,5,neutral_mercdaggerkiri
 SPELL,Dark Destruction,Destroy target enemy minion.,0,0,5,icon_f4_darktransformation
 SPELL,Doom,The enemy General is DOOMED and will die after three turns,0,0,9,icon_f4_doom
 MINION,Dragonlark,"Flying, Ranged (2)",2,1,1,neutral_monsterdragonhawk
