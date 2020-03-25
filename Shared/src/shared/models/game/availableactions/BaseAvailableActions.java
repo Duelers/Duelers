@@ -7,6 +7,8 @@ import shared.models.game.Troop;
 import shared.models.game.map.BaseGameMap;
 import shared.models.game.map.Cell;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -25,7 +27,11 @@ public class BaseAvailableActions<
     protected final List<InsertType> handInserts = new ArrayList<>();
     protected final List<AttackType> attacks = new ArrayList<>();
     protected final List<MoveType> moves = new ArrayList<>();
+    private final Constructor<MoveType> moveConstructor;
 
+    public List<InsertType> getHandInserts() {
+        return Collections.unmodifiableList(handInserts);
+    }
 
     public List<AttackType> getAttacks() {
         return Collections.unmodifiableList(attacks);
@@ -33,6 +39,27 @@ public class BaseAvailableActions<
 
     public List<MoveType> getMoves() {
         return Collections.unmodifiableList(moves);
+    }
+
+
+    public BaseAvailableActions(Constructor<MoveType> moveConstructor) {
+        this.moveConstructor = moveConstructor;
+
+    }
+
+
+
+
+    public void calculateMoves(GameType game) {
+        PlayerType ownPlayer = game.getCurrentTurnPlayer();
+        moves.clear();
+        for (TroopType troop : ownPlayer.getTroops()) {
+            ArrayList<Cell> troopMoves = calculateAvailableMovesForTroop(game, troop);
+
+            if (troopMoves.size() > 0) {
+                moves.add(this.constructMove(troop, troopMoves));
+            }
+        }
     }
 
 
@@ -100,5 +127,17 @@ public class BaseAvailableActions<
         }
         return isProvoked;
     }
+
+    private MoveType constructMove(TroopType troop, ArrayList<Cell> targets) {
+        MoveType move = null;
+        try {
+            move = moveConstructor.newInstance(troop, targets);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+            assert false;
+        }
+        return move;
+    }
+
 
 }

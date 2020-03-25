@@ -139,7 +139,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         this.future = this.timer.schedule(this.task, Constants.TURN_TIME_LIMIT, TimeUnit.SECONDS);
     }
 
-    private void drawCardsFromDeck(int cardsToDraw){
+    private void drawCardsFromDeck(int cardsToDraw) {
         ServerCard[] drawnCards = getCurrentTurnPlayer().getCardsFromDeck(cardsToDraw);
         getCurrentTurnPlayer().addCardsToHand(drawnCards);
         int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
@@ -158,7 +158,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             getCurrentTurnPlayer().addCardsToHand(drawnCard);
             int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
             GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
-            GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,drawnCard);
+            GameServer.getInstance().sendCardsDrawnToHandMessage(this, deckSize, drawnCard);
         } else {
             System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
         }
@@ -168,13 +168,21 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         // AI
         final int delay = 1000;
         try {
-            AvailableActions actions = new AvailableActions();
+
+            AvailableActions actions = null;
+            try {
+                actions = new AvailableActions();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+                assert false;
+            }
+
             actions.calculateAvailableActions(this);
             while (actions.getMoves().size() > 0) {
                 Move move = actions.getMoves().get(new Random().nextInt(actions.getMoves().size()));
                 moveTroop("AI", move.getTroop().getCard().getCardId(), move.getTargets().get(new Random().nextInt(move.getTargets().size())));
                 Thread.sleep(delay);
-                actions.calculateAvailableMoves(this);
+                actions.calculateMoves(this);
             }
             actions.calculateAvailableAttacks(this);
             while (actions.getAttacks().size() > 0) {

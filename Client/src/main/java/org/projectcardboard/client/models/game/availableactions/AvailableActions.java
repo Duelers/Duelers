@@ -21,6 +21,11 @@ public class AvailableActions extends BaseAvailableActions<
     private transient int NumTimesReplacedThisTurn = 0;
     private transient int MaxNumReplacePerTurn = 1;
 
+    public AvailableActions() throws NoSuchMethodException {
+        super(Move.class.getDeclaredConstructor(Troop.class, ArrayList.class));
+    }
+
+
     public void calculate(Game game) {
         clearEverything();
         Player ownPlayer = game.getCurrentTurnPlayer();
@@ -57,19 +62,6 @@ public class AvailableActions extends BaseAvailableActions<
         }
     }
 
-    public void calculateMoves(Game game) {
-        Player ownPlayer = game.getCurrentTurnPlayer();
-        moves.clear();
-        for (Troop troop : ownPlayer.getTroops()) {
-            ArrayList<Cell> troopMoves = calculateAvailableMovesForTroop(game, troop);
-
-            if (troopMoves.size() > 0) {
-                moves.add(new Move(troop, troopMoves));
-            }
-        }
-    }
-
-
     private void clearEverything() {
         handInserts.clear();
         attacks.clear();
@@ -88,17 +80,6 @@ public class AvailableActions extends BaseAvailableActions<
         }
     }
 
-    public List<Insert> getHandInserts() {
-        return Collections.unmodifiableList(handInserts);
-    }
-
-    public List<Attack> getAttacks() {
-        return Collections.unmodifiableList(attacks);
-    }
-
-    public List<Move> getMoves() {
-        return Collections.unmodifiableList(moves);
-    }
 
     private List<Cell> getMovePositions(Troop troop) {
         for (Move move : moves) {

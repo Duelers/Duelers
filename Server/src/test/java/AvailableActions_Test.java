@@ -60,21 +60,29 @@ public class AvailableActions_Test {
         GameMap map = new GameMap();
         when(mockGame.getGameMap()).thenReturn(map);
         when(mockGame.getCurrentTurnPlayer()).thenReturn(mockPlayer);
+    }
 
-//        doCallRealMethod().when(mockPlayer).addTroop(any(ServerTroop.class));
+    private AvailableActions constructAvailableActions() {
+        try {
+            return new AvailableActions();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+            assert false;
+        }
+        return null;
     }
 
     @Test
     public void availableMovesAtCorner_TEST() {
         Game game = mockGame;
-        AvailableActions sut = new AvailableActions();
+        AvailableActions sut = constructAvailableActions();
 
         Cell topLeft = new Cell(0, 0);
         ServerTroop topLeftMinion = addFriendlyMinion(game, topLeft);
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(topLeftMinion));
 
-        sut.calculateAvailableMoves(game);
+        sut.calculateMoves(game);
 
         ArrayList<Cell> expected = new ArrayList<>();
 //        expected.add(new Cell(0, 0));
@@ -93,14 +101,14 @@ public class AvailableActions_Test {
     @Test
     public void availableMovesAtEdge__TEST() {
         Game game = mockGame;
-        AvailableActions sut = new AvailableActions();
+        AvailableActions sut = constructAvailableActions();
 
         Cell centerLeft = new Cell(2, 0);
         ServerTroop centerMinion = addFriendlyMinion(game, centerLeft);
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        sut.calculateAvailableMoves(game);
+        sut.calculateMoves(game);
 
         ArrayList<Cell> expected = new ArrayList<>();
         expected.add(new Cell(0, 0));
@@ -127,14 +135,14 @@ public class AvailableActions_Test {
     @Test
     public void availableMovesAtCenter__TEST() {
         Game game = mockGame;
-        AvailableActions sut = new AvailableActions();
+        AvailableActions sut = constructAvailableActions();
 
         Cell center = new Cell(2, 3);
         ServerTroop centerMinion = addFriendlyMinion(game, center);
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        sut.calculateAvailableMoves(game);
+        sut.calculateMoves(game);
 
         ArrayList<Cell> expected = new ArrayList<>();
         expected.add(new Cell(0, 3));
@@ -165,7 +173,7 @@ public class AvailableActions_Test {
     @Test
     public void availableMovesCanNotEndOnFriendly__TEST() {
         Game game = mockGame;
-        AvailableActions sut = new AvailableActions();
+        AvailableActions sut = constructAvailableActions();
 
         Cell center = new Cell(2, 3);
         ServerTroop centerMinion = addFriendlyMinion(game, center);
@@ -181,7 +189,7 @@ public class AvailableActions_Test {
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        sut.calculateAvailableMoves(game);
+        sut.calculateMoves(game);
 
         ArrayList<Cell> expected = new ArrayList<>();
         expected.add(new Cell(1, 3));
@@ -202,7 +210,7 @@ public class AvailableActions_Test {
     @Test
     public void availableMovesCanMoveOverFriendly__TEST() {
         Game game = mockGame;
-        AvailableActions sut = new AvailableActions();
+        AvailableActions sut = constructAvailableActions();
 
         Cell center = new Cell(2, 3);
         ServerTroop centerMinion = addFriendlyMinion(game, center);
@@ -214,7 +222,7 @@ public class AvailableActions_Test {
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        sut.calculateAvailableMoves(game);
+        sut.calculateMoves(game);
 
         ArrayList<Cell> expected = new ArrayList<>();
         expected.add(new Cell(0, 3));
@@ -240,7 +248,7 @@ public class AvailableActions_Test {
     @Test
     public void availableMovesCannotMoveOverEnemy__TEST() {
         Game game = mockGame;
-        AvailableActions sut = new AvailableActions();
+        AvailableActions sut = constructAvailableActions();
 
         Cell center = new Cell(2, 3);
         ServerTroop centerMinion = addFriendlyMinion(game, center);
@@ -252,7 +260,7 @@ public class AvailableActions_Test {
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        sut.calculateAvailableMoves(game);
+        sut.calculateMoves(game);
 
 //        ArrayList<Cell> expected = new ArrayList<>();
 //        expected.add(new Cell(2, 3));
@@ -270,7 +278,7 @@ public class AvailableActions_Test {
     @Test
     public void availableMovesPathAroundObstacleToAbove__TEST() {
         Game game = mockGame;
-        AvailableActions sut = new AvailableActions();
+        AvailableActions sut = constructAvailableActions();
 
         Cell center = new Cell(2, 3);
         ServerTroop centerMinion = addFriendlyMinion(game, center);
@@ -279,7 +287,7 @@ public class AvailableActions_Test {
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        sut.calculateAvailableMoves(game);
+        sut.calculateMoves(game);
 
         ArrayList<Cell> expected = new ArrayList<>();
 
@@ -307,7 +315,7 @@ public class AvailableActions_Test {
     @Test
     public void availableMovesPathAroundObstacleToLeft__TEST() {
         Game game = mockGame;
-        AvailableActions sut = new AvailableActions();
+        AvailableActions sut = constructAvailableActions();
 
         Cell center = new Cell(2, 3);
         ServerTroop centerMinion = addFriendlyMinion(game, center);
@@ -316,7 +324,7 @@ public class AvailableActions_Test {
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        sut.calculateAvailableMoves(game);
+        sut.calculateMoves(game);
 
         ArrayList<Cell> expected = new ArrayList<>();
         expected.add(new Cell(0, 3));
@@ -344,7 +352,7 @@ public class AvailableActions_Test {
     @Test
     public void availableMovesPathAroundObstacleToBelow__TEST() {
         Game game = mockGame;
-        AvailableActions sut = new AvailableActions();
+        AvailableActions sut = constructAvailableActions();
 
         Cell center = new Cell(2, 3);
         ServerTroop centerMinion = addFriendlyMinion(game, center);
@@ -353,7 +361,7 @@ public class AvailableActions_Test {
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        sut.calculateAvailableMoves(game);
+        sut.calculateMoves(game);
 
         ArrayList<Cell> expected = new ArrayList<>();
         expected.add(new Cell(0, 3));
@@ -380,7 +388,7 @@ public class AvailableActions_Test {
     @Test
     public void availableMovesPathAroundObstacleToRight__TEST() {
         Game game = mockGame;
-        AvailableActions sut = new AvailableActions();
+        AvailableActions sut = constructAvailableActions();
 
         Cell center = new Cell(2, 3);
         ServerTroop centerMinion = addFriendlyMinion(game, center);
@@ -389,7 +397,7 @@ public class AvailableActions_Test {
 
         when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        sut.calculateAvailableMoves(game);
+        sut.calculateMoves(game);
 
         ArrayList<Cell> expected = new ArrayList<>();
         expected.add(new Cell(0, 3));
