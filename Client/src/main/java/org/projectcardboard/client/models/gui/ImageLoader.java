@@ -3,14 +3,15 @@ package org.projectcardboard.client.models.gui;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class ImageLoader {
 
     public static ImageView loadImage(String url, double width, double height) throws FileNotFoundException {
-        InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
         System.out.println("Loading image: " + url);
+        InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
         if (imageResource == null) { throw new FileNotFoundException(); }
         return makeImageView(new Image(imageResource), width, height);
     }
@@ -29,10 +30,16 @@ public class ImageLoader {
     }
 
     public static Image load(String url){
-        InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
         System.out.println("Loading image: " + url);
+        InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
         if (imageResource == null) {
-            System.out.println("Failed to load image at: " + url);
+            System.out.println("Failed to load image at: " + url + ". Attempting absolute path check...");
+            try {
+                FileInputStream inputStream = new FileInputStream(url);
+                return new Image(inputStream);    
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return null; //todo Instead of null, maybe return some placeholder image ?
         }
         return new Image(imageResource);

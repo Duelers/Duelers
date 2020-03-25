@@ -36,8 +36,11 @@ public class Config {
                     throw new IOException("Couldn't find default configuration at " + configFileName);
                 }
                 Files.createDirectories(configFullPath.getParent());
+                createCustomCardsDirectory();
+                createCustomCardSpriteDirectory();
                 Files.copy(defaultConfig, configFullPath);
                 file = new FileInputStream(configFullPath.toString());
+                
             }
 
             config = new Properties();
@@ -71,12 +74,30 @@ public class Config {
         if( Files.notExists(path) ){
             createCustomCardsDirectory();
         }
-        return path.toString();
+        return path.toString() + "\\";
     }
 
     public void createCustomCardsDirectory(){
         try{
             Path customCardsFullPath = Path.of(configFullPath.getParent().toString() + "/Custom_Cards");
+            Files.createDirectories(customCardsFullPath);
+        }
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public String getPathToCustomCardSprites(){
+        Path path = Path.of(configFullPath.getParent().toString() + "/Custom_Cards_Sprites");
+        if( Files.notExists(path) ){
+            createCustomCardSpriteDirectory();
+        }
+        return path.toString() + "\\";
+    }
+
+    public void createCustomCardSpriteDirectory(){
+        try{
+            Path customCardsFullPath = Path.of(configFullPath.getParent().toString() + "/Custom_Cards_Sprites");
             Files.createDirectories(customCardsFullPath);
         }
         catch(IOException ex){

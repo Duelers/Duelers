@@ -12,6 +12,7 @@ public class Card implements ICard {
     protected String cardId;
     private final String spriteName;
     private final CardType type;
+    private final boolean isCustom;
     protected final ArrayList<Spell> spells;
     private final int defaultAp;
     private final int defaultHp;
@@ -32,6 +33,7 @@ public class Card implements ICard {
                 String description,
                 String spriteName,
                 CardType type,
+                boolean isCustom,
                 ArrayList<Spell> spells,
                 int defaultAp,
                 int defaultHp,
@@ -44,6 +46,7 @@ public class Card implements ICard {
         this.description = description;
         this.spriteName = spriteName;
         this.type = type;
+        this.isCustom = isCustom;
         this.spells = spells;
         this.defaultAp = defaultAp;
         this.defaultHp = defaultHp;
@@ -65,6 +68,7 @@ public class Card implements ICard {
         this.cardId = referenceCard.cardId;
         this.spriteName = referenceCard.spriteName;
         this.type = referenceCard.type;
+        this.isCustom = referenceCard.isCustom;
         this.spells = new ArrayList<>();
         if (referenceCard.spells != null) {
             for (Spell spell : referenceCard.spells) {
@@ -110,6 +114,11 @@ public class Card implements ICard {
     @Override
     public CardType getType() {
         return this.type;
+    }
+
+    @Override
+    public boolean getIsCustom(){
+        return this.isCustom;
     }
 
     public ArrayList<Spell> getSpells() {
