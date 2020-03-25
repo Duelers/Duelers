@@ -3,9 +3,9 @@ MINION,Arctic Displacer,Airdrop,10,4,5,f6_snowwyvern
 HERO,Argeon Highmayne,Lyonar General,2,25,0,f1_general
 SPELL,Arms Race,Both Generals gain +1 attack,0,0,1,icon_f1_enthrall
 SPELL,Auryn Nexus,Give a friendly minion +3 Health,0,0,1,icon_f1_aurynnexus
-MINION,Aymara Healer,"Provoke 
- Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",4,5,7,f3_aymarahealer
+MINION,Aymara Healer,Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.,5,5,6,f3_aymarahealer
 MINION,Azure Herald,Opening Gambit: Add 3 Health to your General,1,4,2,neutral_azureherald
+MINION,Azure Horn Shaman,Dying Wish: Give +4 health to friendly minions around it.,1,4,2,neutral_mercazurehorn
 MINION,Azurite Lion,Celerity,2,3,2,f1_azuritelion
 SPELL,Beam Shock,STUN an enemy,0,0,0,icon_f1_beamshock
 MINION,Beastbound Savage,"Celerity.
@@ -15,9 +15,13 @@ MINION,Bloodshard Golem,Golem,4,3,3,neutral_golembloodshard
 MINION,Brightmoss Golem,Golem,4,9,5,neutral_golemnature
 SPELL,Burden of Knowledge,Deal 1 damage to your General. Draw a card,0,0,0,icon_f3_glimpse
 MINION,Celestial Phantom,Destroy any enemy minion that Celestial Phantom attacks or counterattacks,1,5,3,f2_deathphantom
+SPELL,Circle of Dessication,Destroy all minions.,0,0,8,icon_f3_circleofdessication
+SPELL,Circle of Life,Deal 5 damage to an enemy minion. Your General gains 5 life.,0,0,5,icon_f1_circleoflife
+MINION,Dagger Kiri,Celerity,2,8,5,neutral_mercdaggerkiri
 SPELL,Dark Destruction,Destroy target enemy minion.,0,0,5,icon_f4_darktransformation
 SPELL,Doom,The enemy General is DOOMED and will die after three turns,0,0,9,icon_f4_doom
 MINION,Dragonlark,"Flying, Ranged (2)",2,1,1,neutral_monsterdragonhawk
+SPELL,Draining Wave,Deal 4 damage to a minion AND your General,0,0,1,icon_f1_drainingwave
 MINION,Drybone Golem,Golem,10,10,7,neutral_golemdragonbone
 SPELL,Earth Sphere,Add 8 Health to your general.,0,0,4,icon_f5_earthsphere
 MINION,Elucidator,"Rush. 
@@ -26,17 +30,21 @@ MINION,Emberwyrm,Flying,10,7,7,neutral_veteranflamewing
 MINION,Emerald Rejuvenator,Opening Gambit: Give 4 Health to your General.,4,4,4,neutral_rejuvenator
 HERO,Faie Bloodwing,Vanar General,2,25,0,f6_general
 MINION,Flameblood Warlock,Opening Gambit: Deal 3 damage to both generals,3,1,2,neutral_mercflamebloodwarlock
+SPELL,Flaming Stampede,Deal 8 Damage to ALL characters,0,0,8,icon_f5_flamingstampede
 MINION,Frostbone Naga,Opening Gambit: Deal 2 damage to everything around it,3,3,4,neutral_mercfrostbonenaga
 SPELL,Frostburn,Deal 3 damage to all enemy minions,0,0,6,icon_f6_frostburn
 SPELL,Ghost Lightning,Deal 1 damage to all enemy minions.,0,0,1,icon_f2_ghost_lightning
 MINION,Hailstone Golem,Golem,4,6,4,neutral_golemice
 MINION,Ironcliffe Guardian,"Provoke, Airdrop",3,10,5,f1_ironcliffeguardian
 SPELL,Kinetic Equilibrium,Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack,0,0,3,icon_f5_kineticequilibrium
+MINION,Komodo Charger,,1,3,1,neutral_beastcavern
 MINION,Lysian Brawler,Celerity,4,4,4,f1_silvermanevanguard
 MINION,Makantor Warbeast,"Rush.
  After attacking, deal 4 damage to all surrounding enemies",4,4,7,f5_mankatorwarbeast
 MINION,Mr Swampy,"Provoke, Flying",0,3,1,neutral_beastswamp
 MINION,Orizuru,Flying,3,4,3,f2_orizuru
+MINION,Peacekeeper,"Celerity, Airdrop, Provoke
+ After attacking, deal 6 damage to all surrounding enemies",6,6,8,f1_peacekeeper
 MINION,Phalanxar,,7,2,3,f5_tank
 SPELL,Phoenix Fire,Deal 3 damage to anything.,0,0,2,icon_f2_phoenixfire02
 MINION,Piercing Mantis,"After attacking, deal 2 damage to all surrounding enemies",2,2,2,neutral_monstershreddingmantis
@@ -45,6 +53,7 @@ MINION,Primus Fist,Opening Gambit: Give nearby friendly minions +1 attack.,2,3,2
 MINION,Razorcrag Golem,Golem,10,3,4,neutral_razorcraggolem
 HERO,Reva Eventide,Songhai General,2,25,0,f2_altgeneral
 MINION,Rock Pulverizer,Provoke,1,4,2,neutral_monsterexplodingdemon
+MINION,Rogue Warden,Ranged,4,3,5,f1_ranged
 MINION,Saberspine Alpha,Rush,5,5,7,f6_eldersaberspine
 SPELL,Saberspine Seal,Give a minion or General +3 Attack this turn.,0,0,1,icon_f2_saberspineseal
 MINION,Saberspine Tiger,Rush,3,2,3,neutral_beastsaberspinetiger
@@ -56,7 +65,7 @@ MINION,Skyrock Golem,Golem,3,2,2,neutral_golemrunesand
 SPELL,Soulshatter Pact,Give all friendly minions +2 Attack this turn.,0,0,2,icon_f4_soulshatterpact
 MINION,Spectral Revenant,"Rush 
  After attacking or counterattacking deal 4 damage to the enemy General",6,6,9,f4_daemonvoid
-SPELL,Spiral Technique,Deal 8 damage to anything,0,0,8,icon_f2_spiraltechnique
+SPELL,Spiral Technique,Deal 8 damage to anything,0,0,7,icon_f2_spiraltechnique
 MINION,Storm Artha,Flying,6,5,6,neutral_monsterlightningbeetle
 MINION,Sun Seer,"When this minion attacks or counterattacks,  your General gains 3 Health",3,3,3,neutral_mercsunseer
 MINION,Sun Wisp,Opening Gambit: Draw a card,2,1,2,f1_sunwisp

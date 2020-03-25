@@ -161,6 +161,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         collectionBox.getChildren().remove(showCollectionButton);
         cardsBox.getChildren().clear();
 
+        showingCards.sort();
+
         CollectionCardsGrid heroesGrid = new CollectionCardsGrid(showingCards.getHeroes());
 
         CollectionCardsGrid minionsGrid = new CollectionCardsGrid(showingCards.getMinions());

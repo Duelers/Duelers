@@ -12,6 +12,7 @@ import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.map.GameMap;
 import shared.models.card.AttackType;
 import shared.models.card.Card;
+import shared.models.card.CardType;
 import shared.models.game.Troop;
 import shared.models.game.availableactions.BaseAvailableActions;
 import shared.models.game.map.Cell;
@@ -152,10 +153,31 @@ public class AvailableActions extends BaseAvailableActions<
         return false;
     }
 
+    public boolean canCastSpellOnSquare(GameMap gameMap, Player player, Card card, int row, int column) {
+        boolean cardIsSingleTarget = card.isSingleTarget();
+        boolean cardTargetsUnits = card.isTargetMinion() || card.isTargetHero();
 
-    // ToDo fix UI targeting for Spells
-    // public boolean canDeploySpellOnSquare(CompressedGame gameMap, CompressedPlayer player, CompressedCard card, int row, int column){
-    //}
+        if (!cardIsSingleTarget || !cardTargetsUnits) {
+            return true;
+        }
+
+        Cell cell = new Cell(row, column);
+        Troop troop = gameMap.getTroopAtLocation(cell);
+
+        if (troop == null) {
+            return false;
+        }
+
+        boolean troopIsAlly = troop.getPlayerNumber() == player.getPlayerNumber();
+        boolean canCastOnSide = (card.isTargetAllyUnit() && troopIsAlly) ||
+                                (card.isTargetEnemyUnit() && !troopIsAlly);
+
+        CardType cardType = troop.getCard().getType();
+        boolean canCastOnCardType = (card.isTargetMinion() && cardType == CardType.MINION) ||
+                                    (card.isTargetHero() && cardType == CardType.HERO);
+
+        return canCastOnSide && canCastOnCardType;
+    }
 
     public boolean canDeployMinionOnSquare(GameMap gameMap, Player player, Card card, int row, int column) {
         // ToDo this duplicates the logic found in Server's "isLegalCellForMinion" function

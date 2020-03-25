@@ -10,6 +10,7 @@ import java.util.HashMap;
 import org.projectcardboard.client.controller.GameController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
 import org.projectcardboard.client.models.game.Player;
+import org.projectcardboard.client.models.game.availableactions.AvailableActions;
 import org.projectcardboard.client.models.game.map.GameMap;
 import org.projectcardboard.client.models.gui.CardPane;
 
@@ -262,9 +263,6 @@ public class MapBox implements PropertyChangeListener {
 
                 cells[row][column].setFill(Constants.defaultColor);
 
-                if (selectionType.equals(SelectionType.INSERTION)) {
-                    updateMapColoursOnInsertion(row, column, player);
-                }
                 if (selectionType.equals(SelectionType.NORMAL)){
                     boolean updateNormal = updateMapColoursOnNormal(row, column, player);
                     if (updateNormal) { continue;}
@@ -272,6 +270,10 @@ public class MapBox implements PropertyChangeListener {
 
                 updateMapColourHighlightEnemyUnits(row, column, player);
                 updateMapColoursHighlightUnitActions(row, column, player);
+
+                if (selectionType.equals(SelectionType.INSERTION)) {
+                    updateMapColoursOnInsertion(row, column, player);
+                }
 
                 if (selectedTroop != null && selectedTroop.getCell().equals(new Cell(row, column))){
                     cells[row][column].setFill(Constants.SELECTED_COLOR);
@@ -306,15 +308,16 @@ public class MapBox implements PropertyChangeListener {
     }
 
     private Boolean updateMapColoursOnInsertion(int row, int column, Player player){
-
+        AvailableActions availableActions = GameController.getInstance().getAvailableActions();
         Card card = battleScene.getHandBox().getSelectedCard();
 
-        if (GameController.getInstance().getAvailableActions().canInsertCard(card)) {
-
+        if (availableActions.canInsertCard(card)) {
             if (card.getType().equals(CardType.SPELL)) {
-                cells[row][column].setFill(Constants.SPELL_COLOR);
+                if (availableActions.canCastSpellOnSquare(gameMap, player, card, row, column)) {
+                    cells[row][column].setFill(Constants.SPELL_COLOR);
+                }
             } else { // MINION or HERO
-                if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap, player, card, row, column)) {
+                if (availableActions.canDeployMinionOnSquare(gameMap, player, card, row, column)) {
                     cells[row][column].setFill(Constants.DEPLOY_TROOP);
                 }
             }

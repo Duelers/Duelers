@@ -14,9 +14,7 @@ import shared.models.card.CardType;
 
 import server.dataCenter.models.card.Deck;
 
-import shared.models.card.spell.Owner;
-import shared.models.card.spell.Spell;
-import shared.models.card.spell.SpellAction;
+import shared.models.card.spell.*;
 
 import server.exceptions.ClientException;
 import server.exceptions.LogicException;
@@ -156,6 +154,8 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             ServerCard[] drawnCard = getCurrentTurnPlayer().getCardsFromDeckExcludingCard(1, removedCard);
             getCurrentTurnPlayer().addCardToDeck(removedCard);
             getCurrentTurnPlayer().addCardsToHand(drawnCard);
+            int timesReplaced = getCurrentTurnPlayer().getNumTimesReplacedThisTurn();
+            getCurrentTurnPlayer().setNumTimesReplacedThisTurn(timesReplaced + 1);
             int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
             GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
             GameServer.getInstance().sendCardsDrawnToHandMessage(this, deckSize, drawnCard);
@@ -346,7 +346,8 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             }
 
             Player player = getCurrentTurnPlayer();
-            ServerCard card = player.insert(cardId);
+            ServerCard card = player.getCardFromHand(cardId);
+            player.tryInsert(card);
 
             if (card.getType().equals(CardType.MINION)) {
                 if (gameMap.getTroopAtLocation(cell) != null) {
@@ -372,11 +373,14 @@ public abstract class Game extends BaseGame<Player, GameMap> {
 
                 GameServer.getInstance().sendTroopUpdateMessage(this, troop);
             }
+
+            applyOnPutSpells(card, gameMap.getCell(cell));
+            player.insert(card);
+
             if (card.getType().equals(CardType.SPELL)) {
                 player.addToGraveYard(card);
                 GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
             }
-            applyOnPutSpells(card, gameMap.getCell(cell));
 
             // Announce in GameChat most recently played card.
             if (!versusAi) {
@@ -439,11 +443,65 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         return false;
     }
 
-    private void applyOnPutSpells(ServerCard card, Cell cell) {
+    private void applyOnPutSpells(ServerCard card, Cell cell) throws ClientException {
+        validateSingleTargetSpells(card, cell);
         for (Spell spell : card.getSpells()) {
             if (spell.getAvailabilityType().isOnPut()) {
                 applySpell(spell, detectTarget(spell, cell, cell, getCurrentTurnPlayer().getHero().getCell()));
             }
+        }
+    }
+
+    private void validateSingleTargetSpells(ServerCard card, Cell cell) throws ClientException {
+        boolean onPut = false;
+
+        for (Spell spell : card.getSpells()) {
+            if (spell.getAvailabilityType().isOnPut()) {
+                onPut = true;
+                break;
+            }
+        }
+
+        boolean cardIsSingleTarget = card.isSingleTarget();
+        boolean cardTargetsUnits = card.isTargetMinion() || card.isTargetHero();
+
+        if (onPut && cardIsSingleTarget && cardTargetsUnits) {
+            validateTarget(card, cell);
+        }
+    }
+
+    private void validateTarget(ServerCard card, Cell cell) throws ClientException {
+        ServerTroop targetedTroop = gameMap.getTroopAtLocation(cell);
+        boolean spellIsForUnits = card.isTargetMinion() || card.isTargetHero();
+
+        if (spellIsForUnits && targetedTroop == null) {
+            throw new ClientException(card.getName() + " must be casted on units");
+        }
+
+        boolean spellIsForAllies = card.isTargetAllyUnit() && !card.isTargetEnemyUnit();
+        boolean targetIsAlly = targetedTroop.getPlayerNumber() == getCurrentTurnPlayer().getPlayerNumber();
+
+        if (spellIsForAllies && !targetIsAlly) {
+            throw new ClientException(card.getName() + " must be casted on allies");
+        }
+
+        boolean spellIsForEnemies = card.isTargetEnemyUnit() && !card.isTargetAllyUnit();
+
+        if (spellIsForEnemies && targetIsAlly) {
+            throw new ClientException(card.getName() + " must be casted on enemies");
+        }
+
+        CardType targetCardType = targetedTroop.getCard().getType();
+        boolean spellIsForMinions = card.isTargetMinion() && !card.isTargetHero();
+
+        if (spellIsForMinions && targetCardType == CardType.HERO) {
+            throw new ClientException(card.getName() + " must be casted on minions");
+        }
+
+        boolean spellIsForGenerals = card.isTargetHero() && !card.isTargetMinion();
+
+        if (spellIsForGenerals && targetCardType == CardType.MINION) {
+            throw new ClientException(card.getName() + " must be casted on generals");
         }
     }
 
