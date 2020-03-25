@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
+import Config.Config;
+
 public class GameServer {
     private static GameServer server;
     public static String serverName;

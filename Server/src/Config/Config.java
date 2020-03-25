@@ -13,9 +13,10 @@ import net.harawata.appdirs.AppDirsFactory;
 
 public class Config {
 
-    private static Config configInstance = null;
+    private static Config configInstance;
     private static Properties config;
-    private static InputStream file = null;
+    private static InputStream file;
+    private static Path configFullPath;
 
     private Config() {
         /**
@@ -26,7 +27,7 @@ public class Config {
             AppDirs appDirs = AppDirsFactory.getInstance();
             String configDirPath = appDirs.getUserConfigDir("cardboard", "1.0", "projectcardboard", true);
             String configFileName = "/config.properties";
-            Path configFullPath = Path.of(configDirPath + configFileName);
+            configFullPath = Path.of(configDirPath + configFileName);
             try {
                 file = new FileInputStream(configFullPath.toString());
             } catch (FileNotFoundException e) {
@@ -65,4 +66,21 @@ public class Config {
         return config.getProperty(property);
     }
 
+    public String getPathToCustomCards(){
+        Path path = Path.of(configFullPath.getParent().toString() + "/Custom_Cards");
+        if( Files.notExists(path) ){
+            createCustomCardsDirectory();
+        }
+        return path.toString();
+    }
+
+    public void createCustomCardsDirectory(){
+        try{
+            Path customCardsFullPath = Path.of(configFullPath.getParent().toString() + "/Custom_Cards");
+            Files.createDirectories(customCardsFullPath);
+        }
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
 }
