@@ -1,16 +1,20 @@
 package org.projectcardboard.client.models.gui;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class ImageLoader {
+    static Logger logger = LoggerFactory.getLogger(ImageLoader.class);
 
     public static ImageView loadImage(String url, double width, double height) throws FileNotFoundException {
         InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
-        System.out.println("Loading image: " + url);
+        logger.info("Loading image: " + url);
         if (imageResource == null) { throw new FileNotFoundException(); }
         return makeImageView(new Image(imageResource), width, height);
     }
@@ -30,9 +34,9 @@ public class ImageLoader {
 
     public static Image load(String url){
         InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
-        System.out.println("Loading image: " + url);
+        logger.info("Loading image: " + url);
         if (imageResource == null) {
-            System.out.println("Failed to load image at: " + url);
+            logger.warn("Failed to load image at: " + url);
             return null; //todo Instead of null, maybe return some placeholder image ?
         }
         return new Image(imageResource);
