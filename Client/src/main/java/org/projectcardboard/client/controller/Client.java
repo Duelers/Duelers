@@ -24,6 +24,9 @@ import Config.Config;
 import javafx.application.Platform;
 import java.util.Objects;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class Client {
     private WebSocket ws;
@@ -36,6 +39,7 @@ public class Client {
     private static final String serverName = Config.getInstance().getProperty("SERVER_NAME");
     private static final String GENERIC_ERROR = "Unknown error";
 
+    Logger logger = LoggerFactory.getLogger(Client.class);
 
     public static Client getInstance() {
         if (client == null) {
@@ -63,9 +67,10 @@ public class Client {
 
                 String msg = simplifyLogMessage(messageObject, "Server");
                 if (msg != null) {
-                    System.out.println(msg);
+                    //System.out.println(msg);
+                    logger.info(msg);
                 } else {
-                    System.out.println(message);
+                    logger.info(message);
                 }
                 handleMessage(messageObject);
             }
@@ -75,7 +80,11 @@ public class Client {
                 this.ws.connect();
                 break;
             } catch (WebSocketException e) {
-                System.out.println(e.getMessage());
+                //System.out.println(e.getMessage());
+
+                logger.warn("Failed to Connect");
+                logger.info(e.getMessage());
+
                 connectionAttempts -= 1;
                 if (connectionAttempts == 0) {
                     throw new RuntimeException(e);
@@ -129,8 +138,6 @@ public class Client {
             if (message != null) {
                 String json = message.toJson();
                 this.ws.sendText(json);
-
-                System.out.println("message sent: " + json);
 
             } else {
                 try {
