@@ -2681,6 +2681,150 @@
                 "remainingNumber": 20
             },
             {
+                "name": "Hashishi",
+                "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
+                "cardId": "duelyst_Hashishi_1",
+                "spriteName": "f2_buildcommon",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "draw_1_on_atk",
+                        "action": {
+                            "cardDraw": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 1,
+                "defaultHp": 1,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 1,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Hashishi",
+                "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
+                "cardId": "duelyst_Hashishi_2",
+                "spriteName": "f2_buildcommon",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "draw_1_on_atk",
+                        "action": {
+                            "cardDraw": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 1,
+                "defaultHp": 1,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 1,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Hashishi",
+                "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
+                "cardId": "duelyst_Hashishi_3",
+                "spriteName": "f2_buildcommon",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "draw_1_on_atk",
+                        "action": {
+                            "cardDraw": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 1,
+                "defaultHp": 1,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 1,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
                 "name": "Ironcliffe Guardian",
                 "description": "Provoke, Airdrop",
                 "cardId": "duelyst_IroncliffeGuardian_1",
