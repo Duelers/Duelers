@@ -90,6 +90,8 @@ public class DeckBox extends GridPane {
         DefaultLabel heroNumber = new DefaultLabel((deck.getHero() != null ? "1" : "0") + " Hero", DETAILS_FONT,
                 Color.WHITE);
 
+        DefaultLabel factions = new DefaultLabel( "Factions: " + deck.getFactionList().toString(), DETAILS_FONT, Color.WHITE);
+
         modify.setOnMouseEntered(event -> {
             modify.setEffect(ICON_SHADOW);
             SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
@@ -167,6 +169,8 @@ public class DeckBox extends GridPane {
 
         add(heroNumber, 5, 2, 2, 1);
         add(cardsNumber, 8, 2);
+
+        add(factions, 10, 3);
 
         add(modify, 0, 0);
         add(remove, 0, 1);

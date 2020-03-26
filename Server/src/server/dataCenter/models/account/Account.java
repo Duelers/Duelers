@@ -73,6 +73,7 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
             throw new ClientException("invalid card id.");
         } else {
             getDeck(deckName).addCard(cardId, collection);
+            getDeck(deckName).getFactionList().merge(collection.getCard(cardId).getFaction(), 1, Integer::sum);
         }
     }
 
@@ -81,6 +82,8 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
             throw new ClientException("deck was not found.");
         } else {
             getDeck(deckName).removeCard(collection.getCard(cardId));
+
+            getDeck(deckName).getFactionList().merge(collection.getCard(cardId).getFaction(), -1, Integer::sum);
         }
     }
 
