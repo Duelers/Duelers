@@ -10,128 +10,123 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Properties;
 import java.util.Set;
-
 import net.harawata.appdirs.AppDirs;
 import net.harawata.appdirs.AppDirsFactory;
 
 public class Config {
 
-    private static Config configInstance = null;
-    private static Properties config;
-    private static InputStream file = null;
-    private static final String configFileName = "/config.properties";
+  private static Config configInstance = null;
+  private static Properties config;
+  private static InputStream file = null;
+  private static final String configFileName = "/config.properties";
 
-    private Config() {
-        /**
-         * Attempt to get the user's config from their system's config location. If that fails, copy the default out
-         * of the JAR to that config location and then load it.
-         */
+  private Config() {
+    /**
+     * Attempt to get the user's config from their system's config location. If that fails, copy the
+     * default out of the JAR to that config location and then load it.
+     */
+    try {
+      AppDirs appDirs = AppDirsFactory.getInstance();
+      String configDirPath = appDirs.getUserConfigDir("cardboard", "1.0", "projectcardboard", true);
+      Path configFullPath = Path.of(configDirPath + configFileName);
+      try {
+        file = new FileInputStream(configFullPath.toString());
+      } catch (FileNotFoundException e) {
+        InputStream defaultConfig = Config.class.getResourceAsStream(configFileName);
+        if (defaultConfig == null) {
+          throw new IOException("Couldn't find default configuration at " + configFileName);
+        }
+        Files.createDirectories(configFullPath.getParent());
+        Files.copy(defaultConfig, configFullPath);
+        file = new FileInputStream(configFullPath.toString());
+      }
+
+      config = new Properties();
+      config.load(file);
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    } finally {
+      if (file != null) {
         try {
-            AppDirs appDirs = AppDirsFactory.getInstance();
-            String configDirPath = appDirs.getUserConfigDir("cardboard", "1.0", "projectcardboard", true);
-            Path configFullPath = Path.of(configDirPath + configFileName);
-            try {
-                file = new FileInputStream(configFullPath.toString());
-            } catch (FileNotFoundException e) {
-                InputStream defaultConfig = Config.class.getResourceAsStream(configFileName);
-                if (defaultConfig == null) {
-                    throw new IOException("Couldn't find default configuration at " + configFileName);
-                }
-                Files.createDirectories(configFullPath.getParent());
-                Files.copy(defaultConfig, configFullPath);
-                file = new FileInputStream(configFullPath.toString());
-            }
-
-            config = new Properties();
-            config.load(file);
+          file.close();
         } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            if (file != null) {
-                try {
-                    file.close();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }
+          ex.printStackTrace();
         }
+      }
+    }
+  }
+
+  public static Config getInstance() {
+    if (configInstance == null) {
+      configInstance = new Config();
+    }
+    return configInstance;
+  }
+
+  public String getProperty(String property) {
+    return config.getProperty(property);
+  }
+
+  private Properties loadDefaultConfigFile() {
+    Properties defaultProperties = null;
+
+    try {
+      InputStream defaultConfig = Config.class.getResourceAsStream(configFileName);
+      if (defaultConfig == null) {
+        throw new FileNotFoundException("Couldn't find default configuration at " + configFileName);
+      }
+      defaultProperties = new Properties();
+      defaultProperties.load(defaultConfig);
+
+      defaultConfig.close();
+    } catch (FileNotFoundException ex) {
+      ex.printStackTrace();
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
 
-    public static Config getInstance() {
-        if (configInstance == null) {
-            configInstance = new Config();
-        }
-        return configInstance;
+    return defaultProperties;
+  }
+
+  public boolean shouldUpdateUserConfig() {
+    boolean shouldUpdateUserConfig = false;
+    try {
+      if (config == null) {
+        throw new Exception("User's config file is null");
+      }
+
+      Properties defaultConfig = loadDefaultConfigFile();
+      Set<String> defaultVariables = defaultConfig.stringPropertyNames();
+      Set<String> userVariables = config.stringPropertyNames();
+      if (!defaultVariables.equals(userVariables)) {
+        shouldUpdateUserConfig = true;
+      }
+    } catch (Exception ex) {
+      ex.printStackTrace();
     }
 
-    public String getProperty(String property) {
-        return config.getProperty(property);
+    return shouldUpdateUserConfig;
+  }
+
+  public void updateUserConfig() {
+
+    Properties defaultConfig = loadDefaultConfigFile();
+    Properties newValuesToAppend = new Properties();
+    defaultConfig.forEach((key, value) -> {
+      if (!config.containsKey(key.toString())) {
+        newValuesToAppend.put(key.toString(), value.toString());
+        System.out.println("added " + key.toString());
+      }
+    });
+
+    try {
+      AppDirs appDirs = AppDirsFactory.getInstance();
+      String configDirPath = appDirs.getUserConfigDir("cardboard", "1.0", "projectcardboard", true);
+      Path configFullPath = Path.of(configDirPath + configFileName);
+      OutputStream out = new FileOutputStream(configFullPath.toString(), true);
+      newValuesToAppend.store(out, "\n");
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
-
-    private Properties loadDefaultConfigFile(){
-        Properties defaultProperties = null;
-
-        try{
-            InputStream defaultConfig = Config.class.getResourceAsStream(configFileName);
-            if (defaultConfig == null) {
-                throw new FileNotFoundException("Couldn't find default configuration at " + configFileName);
-            }
-            defaultProperties = new Properties();
-            defaultProperties.load(defaultConfig);
-
-            defaultConfig.close();
-        }
-        catch(FileNotFoundException ex){
-            ex.printStackTrace();
-        }
-        catch(IOException ex){
-            ex.printStackTrace();
-        }
-        
-        return defaultProperties;
-    }
-
-    public boolean shouldUpdateUserConfig(){
-        boolean shouldUpdateUserConfig = false;
-        try{
-            if(config == null){
-                throw new Exception("User's config file is null");
-            }
-            
-            Properties defaultConfig = loadDefaultConfigFile();
-            Set<String> defaultVariables = defaultConfig.stringPropertyNames();
-            Set<String> userVariables = config.stringPropertyNames();
-            if(!defaultVariables.equals(userVariables)){
-                shouldUpdateUserConfig = true;
-            }
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-        
-        return shouldUpdateUserConfig;
-    }
-
-    public void updateUserConfig(){
-
-        Properties defaultConfig = loadDefaultConfigFile();
-        Properties newValuesToAppend = new Properties(); 
-        defaultConfig.forEach( (key, value) -> {
-            if( !config.containsKey(key.toString()) ){
-                newValuesToAppend.put(key.toString(), value.toString());
-                System.out.println("added " + key.toString());
-            }
-        });
-
-        try{
-            AppDirs appDirs = AppDirsFactory.getInstance();
-            String configDirPath = appDirs.getUserConfigDir("cardboard", "1.0", "projectcardboard", true);
-            Path configFullPath = Path.of(configDirPath + configFileName);
-            OutputStream out = new FileOutputStream(configFullPath.toString(), true);
-            newValuesToAppend.store(out, "\n");
-        }
-        catch(IOException ex){
-            ex.printStackTrace();
-        }
-    }
+  }
 }

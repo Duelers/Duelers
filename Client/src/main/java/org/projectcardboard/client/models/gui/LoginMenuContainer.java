@@ -9,19 +9,18 @@ import java.io.FileNotFoundException;
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class LoginMenuContainer extends VBox {
-    private static final String DUELYST_LOGO_URL = "/ui/brand_duelyst.png";
-    private static final double WIDTH = 1600 * SCALE;
+  private static final String DUELYST_LOGO_URL = "/ui/brand_duelyst.png";
+  private static final double WIDTH = 1600 * SCALE;
 
-    public LoginMenuContainer() throws FileNotFoundException {
-        super(UIConstants.DEFAULT_SPACING);
-        setMaxWidth(WIDTH);
-        setAlignment(Pos.CENTER);
+  public LoginMenuContainer() throws FileNotFoundException {
+    super(UIConstants.DEFAULT_SPACING);
+    setMaxWidth(WIDTH);
+    setAlignment(Pos.CENTER);
 
-        ImageView brandView = ImageLoader.loadImage(
-                DUELYST_LOGO_URL, UIConstants.DUELYST_LOGO_WIDTH, UIConstants.DUELYST_LOGO_HEIGHT
-        );
-        LoginBox horizontalBox = new LoginBox();
+    ImageView brandView = ImageLoader.loadImage(DUELYST_LOGO_URL, UIConstants.DUELYST_LOGO_WIDTH,
+        UIConstants.DUELYST_LOGO_HEIGHT);
+    LoginBox horizontalBox = new LoginBox();
 
-        getChildren().addAll(brandView, horizontalBox);
-    }
+    getChildren().addAll(brandView, horizontalBox);
+  }
 }
