@@ -8,28 +8,28 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class CollectionSearchBox extends HBox {
 
-    private final SearchField searchField;
+  private final SearchField searchField;
 
-    public CollectionSearchBox() {
-        super(UIConstants.DEFAULT_SPACING * 2);
-        setAlignment(Pos.CENTER);
+  public CollectionSearchBox() {
+    super(UIConstants.DEFAULT_SPACING * 2);
+    setAlignment(Pos.CENTER);
 
-        searchField = new SearchField();
+    searchField = new SearchField();
 
-        AtomicReference<String> oldValue = new AtomicReference<>("");
-        searchField.setOnKeyPressed(event -> {
-            if (searchField.getText().equals(oldValue.get()))
-                return;
+    AtomicReference<String> oldValue = new AtomicReference<>("");
+    searchField.setOnKeyPressed(event -> {
+      if (searchField.getText().equals(oldValue.get()))
+        return;
 
-            oldValue.set(searchField.getText());
-            CollectionMenuController.getInstance().search(searchField.getText());
-        });
+      oldValue.set(searchField.getText());
+      CollectionMenuController.getInstance().search(searchField.getText());
+    });
 
-        getChildren().addAll(searchField);
-    }
+    getChildren().addAll(searchField);
+  }
 
-    public void clear() {
-        searchField.clear();
-        CollectionMenuController.getInstance().search("");
-    }
+  public void clear() {
+    searchField.clear();
+    CollectionMenuController.getInstance().search("");
+  }
 }
