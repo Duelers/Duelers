@@ -69,6 +69,7 @@
     },
     {
       "spellId": "2_atk_self",
+      "fxName": "fx_buff",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 2,
