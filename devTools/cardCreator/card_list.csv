@@ -34,6 +34,8 @@ SPELL,Flaming Stampede,Deal 8 Damage to ALL characters,0,0,8,icon_f5_flamingstam
 MINION,Frostbone Naga,Opening Gambit: Deal 2 damage to everything around it,3,3,4,neutral_mercfrostbonenaga
 SPELL,Frostburn,Deal 3 damage to all enemy minions,0,0,6,icon_f6_frostburn
 SPELL,Ghost Lightning,Deal 1 damage to all enemy minions.,0,0,1,icon_f2_ghost_lightning
+MINION,Gore Horn,"Backstab: (2)
+ After this minion attacks, it gains +1/+1.",3,3,3,f2_tank
 MINION,Hailstone Golem,Golem,4,6,4,neutral_golemice
 MINION,Hashishi,"Rush, Celerity, Backstab: (1)
 After attacking, draw a card",1,1,6,f2_buildcommon
