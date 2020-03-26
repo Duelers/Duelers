@@ -27,8 +27,8 @@ public class UIConstants {
     private static final double DEFAULT_SCENE_WIDTH = 3636;
     private static final double DEFAULT_SCENE_HEIGHT = 2045;
     public static final double SCALE = Math.min(
-            (DEFAULT_SCREEN_WIDTH / DEFAULT_SCENE_WIDTH),
-            (DEFAULT_SCREEN_HEIGHT / DEFAULT_SCENE_HEIGHT)
+            (CONFIG_SCREEN_WIDTH / DEFAULT_SCENE_WIDTH),
+            (CONFIG_SCREEN_HEIGHT / DEFAULT_SCENE_HEIGHT)
     );
     public static final double DEFAULT_SPACING = 10 * SCALE;
     public static final Font DEFAULT_FONT = Font.font("SansSerif", FontWeight.BOLD, 25 * SCALE);
