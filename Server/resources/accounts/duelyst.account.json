@@ -2679,7 +2679,7 @@
             },
             {
                 "name": "Hashishi",
-                "description": "Rush Celerity Backstab: (1)\nAfter attacking, draw a card",
+                "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_1",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
@@ -2727,7 +2727,7 @@
             },
             {
                 "name": "Hashishi",
-                "description": "Rush Celerity Backstab: (1)\nAfter attacking, draw a card",
+                "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_2",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
@@ -2775,7 +2775,7 @@
             },
             {
                 "name": "Hashishi",
-                "description": "Rush Celerity Backstab: (1)\nAfter attacking, draw a card",
+                "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_3",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
