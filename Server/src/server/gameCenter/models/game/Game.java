@@ -569,15 +569,23 @@ public abstract class Game extends BaseGame<Player, GameMap> {
                 GameServer.getInstance().sendTroopUpdateMessage(this, attackerTroop);
                 applyOnAttackSpells(attackerTroop, defenderTroop);
                 applyOnDefendSpells(defenderTroop, attackerTroop);
-                try {
-                    counterAttack(defenderTroop, attackerTroop);
-                } catch (LogicException e) {
-                    GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, false);
-//                    throw e;
-                }
-                GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, true);
 
-                damage(attackerTroop, defenderTroop);
+                boolean backstab = attackerTroop.hasBackstab() && attackerTroop.isDirectlyBehind(defenderTroop);
+                boolean counterAttack;
+
+                if (backstab) {
+                    counterAttack = false;
+                } else {
+                    try {
+                        counterAttack(defenderTroop, attackerTroop);
+                        counterAttack = true;
+                    } catch (LogicException e) {
+                        counterAttack = false;
+                    }
+                }
+
+                GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, counterAttack);
+                damage(attackerTroop, defenderTroop, backstab);
             }
         } finally {
             GameCenter.getInstance().checkGameFinish(this);
@@ -614,13 +622,19 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         if (attackerTroop.canGiveBadEffect() &&
                 (attackerTroop.canBeAttackedFromWeakerOnes() || defenderTroop.getCurrentAp() > attackerTroop.getCurrentAp())
         ) {
-            damage(defenderTroop, attackerTroop);
+            boolean backstab = defenderTroop.hasBackstab() && defenderTroop.isDirectlyBehind(attackerTroop);
+
+            damage(defenderTroop, attackerTroop, backstab);
             applyOnCounterAttackSpells(defenderTroop, attackerTroop);
         }
     }
 
-    private void damage(ServerTroop attackerTroop, ServerTroop defenderTroop) {
+    private void damage(ServerTroop attackerTroop, ServerTroop defenderTroop, boolean backstab) {
         int attackPower = calculateAp(attackerTroop, defenderTroop);
+
+        if (backstab) {
+            attackPower += attackerTroop.getBackstab();
+        }
 
         defenderTroop.changeCurrentHp(-attackPower);
 
@@ -700,7 +714,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             if (defenderTroop.canGiveBadEffect() &&
                     (defenderTroop.canBeAttackedFromWeakerOnes() || attackerTroop.getCurrentAp() > defenderTroop.getCurrentAp())
             ) {
-                damage(attackerTroop, defenderTroop);
+                damage(attackerTroop, defenderTroop, false);
 
                 attackerTroop.setCanAttack(false);
                 attackerTroop.setCanMove(false);
