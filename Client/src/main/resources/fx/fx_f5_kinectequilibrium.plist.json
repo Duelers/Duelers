@@ -2,8 +2,8 @@
   "frameWidth": 100,
   "frameHeight": 450,
   "frameDuration": 100,
-  "extraX": 100.0,
-  "extraY": 140.0,
+  "extraX": 60.0,
+  "extraY": 510.0,
   "lists": {
     "frames": [
       {
