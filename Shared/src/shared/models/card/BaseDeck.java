@@ -1,8 +1,6 @@
 package shared.models.card;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class BaseDeck<CardType extends Card> {
 
@@ -12,6 +10,7 @@ public class BaseDeck<CardType extends Card> {
     protected String deckName;
     protected CardType hero;
     protected ArrayList<CardType> cards = new ArrayList<>();
+    protected Map<String, Integer> factions = new HashMap<>();
 
     public BaseDeck(String deckName) {
         this.deckName = deckName;
@@ -23,8 +22,10 @@ public class BaseDeck<CardType extends Card> {
         for (CardType card : cards) {
             //noinspection unchecked //I belive this is redundant as CardType extends Card.
             this.cards.add((CardType) new Card(card));
+            this.factions.merge(card.getFaction(), 1, Integer::sum);
         }
     }
+
 
     public String getName() {
         return deckName;
@@ -33,6 +34,8 @@ public class BaseDeck<CardType extends Card> {
     public CardType getHero() {
         return hero;
     }
+
+    public Map<String, Integer> getFactionList() { return factions;}
 
     public List<CardType> getCards() {
         return Collections.unmodifiableList(cards);

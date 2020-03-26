@@ -10,6 +10,7 @@ public class Card implements ICard {
     private final String name;
     private final String description;
     protected String cardId;
+    private final String faction;
     private final String spriteName;
     private final CardType type;
     protected final ArrayList<Spell> spells;
@@ -31,6 +32,7 @@ public class Card implements ICard {
     // This is only used in tests right now. All other cards are loaded from json with gson.
     public Card(String name, //TODO refactor other constructors to use this one.
                 String cardId,
+                String faction,
                 String description,
                 String spriteName,
                 CardType type,
@@ -43,6 +45,7 @@ public class Card implements ICard {
                 int range) {
         this.name = name;
         this.cardId = cardId;
+        this.faction = faction;
         this.description = description;
         this.spriteName = spriteName;
         this.type = type;
@@ -65,6 +68,7 @@ public class Card implements ICard {
         this.name = referenceCard.name;
         this.description = referenceCard.description;
         this.cardId = referenceCard.cardId;
+        this.faction = referenceCard.faction;
         this.spriteName = referenceCard.spriteName;
         this.type = referenceCard.type;
         this.spells = new ArrayList<>();
@@ -173,6 +177,8 @@ public class Card implements ICard {
     public int getRemainingNumber() {
         return remainingNumber;
     }
+
+    public String getFaction() { return this.faction;}
 
     public boolean isSingleTarget() {
         return singleTarget;
