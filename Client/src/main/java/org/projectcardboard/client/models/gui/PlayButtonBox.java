@@ -14,32 +14,31 @@ import java.io.InputStream;
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 class PlayButtonBox extends VBox {
-  static final double BUTTON_WIDTH = 632 * SCALE;
-  static final double BUTTON_HEIGHT = 1160 * SCALE;
-  static final double PLATE_HEIGHT = 85 * SCALE;
-  private static final Effect SHADOW = new DropShadow(40 * SCALE, Color.BLACK);
-  private static Image PLATE_IMAGE;
+    static final double BUTTON_WIDTH = 632 * SCALE;
+    static final double BUTTON_HEIGHT = 1160 * SCALE;
+    static final double PLATE_HEIGHT = 85 * SCALE;
+    private static final Effect SHADOW = new DropShadow(40 * SCALE, Color.BLACK);
+    private static Image PLATE_IMAGE;
 
-  static {
-    try {
-      InputStream plateR =
-          PlayButtonBox.class.getResourceAsStream("/menu/playButtons/panel_trim_plate.png");
-      if (plateR == null) {
-        throw new FileNotFoundException();
-      }
-      PLATE_IMAGE = new Image(plateR);
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
+    static {
+        try {
+            InputStream plateR = PlayButtonBox.class.getResourceAsStream("/menu/playButtons/panel_trim_plate.png");
+            if (plateR == null) {
+                throw new FileNotFoundException();
+            }
+            PLATE_IMAGE = new Image(plateR);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
-  }
 
-  PlayButtonBox(PlayButtonItem item) {
-    super(UIConstants.DEFAULT_SPACING * (-3));
-    ImageView plate = ImageLoader.makeImageView(PLATE_IMAGE, BUTTON_WIDTH, PLATE_HEIGHT);
+    PlayButtonBox(PlayButtonItem item) {
+        super(UIConstants.DEFAULT_SPACING * (-3));
+        ImageView plate = ImageLoader.makeImageView(PLATE_IMAGE, BUTTON_WIDTH, PLATE_HEIGHT);
 
-    StackPane imageZone = new PlayButtonImageZone(item);
+        StackPane imageZone = new PlayButtonImageZone(item);
 
-    getChildren().addAll(imageZone, plate);
-    setEffect(SHADOW);
-  }
+        getChildren().addAll(imageZone, plate);
+        setEffect(SHADOW);
+    }
 }
