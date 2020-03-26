@@ -69,7 +69,6 @@ public class GraphicalUserInterface {
 
         stage.show();
         stage.setOnCloseRequest(event -> Client.getInstance().close());
-        
     }
 
     private void makeScene(AnchorPane root) {
