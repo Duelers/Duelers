@@ -35,8 +35,9 @@ public class Player extends BasePlayer<Card, Troop> {
     }
 
     public void addCardsToHand(int deckSize, Card... drawnCards) {
-        System.out.println("Current deck size: " + deckSize);
-        
+        if (support == null) {
+            support = new PropertyChangeSupport(this);
+        }
 
         this.deckSize = deckSize;
         for (Card drawnCard : drawnCards) {
@@ -115,5 +116,9 @@ public class Player extends BasePlayer<Card, Troop> {
 
     public int getDeckSize(){
         return this.deckSize;
+    }
+
+    public void setDeckSize(int newSize){
+        this.deckSize = newSize;
     }
 }

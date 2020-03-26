@@ -6,7 +6,7 @@ import server.clientPortal.ClientPortal;
 import server.clientPortal.models.JsonConverter;
 import server.clientPortal.models.message.Message;
 import server.dataCenter.models.account.Account;
-import server.dataCenter.models.account.AccountType;
+import shared.models.account.AccountType;
 import server.dataCenter.models.account.Collection;
 import server.dataCenter.models.account.TempAccount;
 import server.dataCenter.models.card.Deck;
@@ -113,14 +113,12 @@ public class DataCenter extends Thread {
             accounts.replace(account, client);
             clients.replace(client, account);
             
-            boolean ownsAllGenerals = account.getCollection().getHeroes().size() == dataBase.getOriginalCards().getHeroes().size();
-            boolean ownsAllMinions = (account.getCollection().getMinions().size()/3) == dataBase.getOriginalCards().getMinions().size();
-            boolean ownsAllSPells = (account.getCollection().getSpells().size()/3) == dataBase.getOriginalCards().getSpells().size();
-            if(!ownsAllGenerals || !ownsAllMinions || !ownsAllSPells) {
+            if(!account.getCollection().equals(dataBase.getOriginalCards())){
                 System.out.println("Account " + account.getUsername() + " does not own all cards in current collection. Updating...");
                 account.updateCollection(dataBase.getOriginalCards());
                 saveAccount(account);
             }
+            
             GameServer.sendMessageAsync(Message.makeAccountCopyMessage(client, account));
             GameServer.serverPrint(client + " Is Logged In");
         }

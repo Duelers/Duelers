@@ -18,8 +18,15 @@ public class Card implements ICard {
     private final int manaCost;
     private final int price;
     private final AttackType attackType;
+    private boolean hasBackstab;
+    private int backstab;
     private final int range;
     protected int remainingNumber = 20;
+    protected boolean singleTarget;
+    protected boolean targetAllyUnit;
+    protected boolean targetEnemyUnit;
+    protected boolean targetMinion;
+    protected boolean targetHero;
 
     // This is only used in tests right now. All other cards are loaded from json with gson.
     public Card(String name, //TODO refactor other constructors to use this one.
@@ -71,6 +78,8 @@ public class Card implements ICard {
         this.manaCost = referenceCard.manaCost;
         this.price = referenceCard.price;
         this.attackType = referenceCard.attackType;
+        this.hasBackstab = referenceCard.hasBackstab;
+        this.backstab = referenceCard.backstab;
         this.range = referenceCard.range;
         this.remainingNumber = referenceCard.remainingNumber;
     }
@@ -129,6 +138,14 @@ public class Card implements ICard {
         return this.attackType;
     }
 
+    public boolean hasBackstab() {
+        return hasBackstab;
+    }
+
+    public int getBackstab() {
+        return backstab;
+    }
+
     public int getRange() {
         return this.range;
     }
@@ -155,5 +172,25 @@ public class Card implements ICard {
 
     public int getRemainingNumber() {
         return remainingNumber;
+    }
+
+    public boolean isSingleTarget() {
+        return singleTarget;
+    }
+
+    public boolean isTargetAllyUnit() {
+        return targetAllyUnit;
+    }
+
+    public boolean isTargetEnemyUnit() {
+        return targetEnemyUnit;
+    }
+
+    public boolean isTargetMinion() {
+        return targetMinion;
+    }
+
+    public boolean isTargetHero() {
+        return targetHero;
     }
 }

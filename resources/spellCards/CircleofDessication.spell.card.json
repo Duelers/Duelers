@@ -3,11 +3,11 @@
   "description": "Destroy all minions.",
   "cardId": "CircleofDessication",
   "spriteName": "icon_f3_circleofdessication",
-  "fxName": "f3_fx_circleofdessication",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "destroy_all_minions",
+      "fxName": "f3_fx_circleofdessication",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

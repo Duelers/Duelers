@@ -3,11 +3,11 @@
   "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
   "cardId": "VoidPulse",
   "spriteName": "icon_f4_voidpulse",
-  "fxName": "fx_f4_voidpulse",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "2_damage",
+      "fxName": "fx_f4_voidpulse",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
@@ -69,6 +69,7 @@
     },
     {
       "spellId": "health_self",
+      "fxName": "fx_f4_voidpulse",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

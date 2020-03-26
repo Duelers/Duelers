@@ -3,11 +3,11 @@
   "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
   "cardId": "KineticEquilibrium",
   "spriteName": "icon_f5_kineticequilibrium",
-  "fxName": "fx_f5_kinectequilibrium",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "2_damage",
+      "fxName": "fx_f5_kinectequilibrium",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
@@ -69,6 +69,7 @@
     },
     {
       "spellId": "2_atk_self",
+      "fxName": "fx_buff",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 2,

@@ -3,11 +3,11 @@
   "description": "Give all friendly minions +2 Attack this turn.",
   "cardId": "SoulshatterPact",
   "spriteName": "icon_f4_soulshatterpact",
-  "fxName": "fx_f4_soulshatterpact",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "give_friendly_minions_2attack_this_turn",
+      "fxName": "fx_f4_soulshatterpact",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 2,

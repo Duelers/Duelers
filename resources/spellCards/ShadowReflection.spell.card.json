@@ -3,11 +3,11 @@
   "description": "Give a friendly minion +5 Attack.",
   "cardId": "ShadowReflection",
   "spriteName": "icon_f4_shadowreflection",
-  "fxName": "fx_f4_shadowreflection",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "Give_5_atk_to_friendly_minion",
+      "fxName": "fx_f4_shadowreflection",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 5,

@@ -1,6 +1,6 @@
 package org.projectcardboard.client.controller;
 
-import org.projectcardboard.client.models.account.AccountType;
+import shared.models.account.AccountType;
 import org.projectcardboard.client.models.message.ChatMessage;
 import org.projectcardboard.client.models.message.Message;
 import org.projectcardboard.client.view.GlobalChatDialog;
