@@ -24,403 +24,403 @@ public class AvailableActions_Test {
 
     private Card makeMinionCard() {
         return new Card(" ", " ", " ", " ", "", CardType.MINION, new ArrayList<>(), 1, 1, 1, 1, AttackType.MELEE, 1);
+  }
+
+  private ServerTroop addFriendlyMinion(Game game, Cell cell) {
+    int friendlyPlayerNumber = 1;
+    ServerTroop troop = new ServerTroop(makeMinionCard(), friendlyPlayerNumber);
+    troop.setCell(cell);
+    troop.setCanMove(true);
+    game.getGameMap().addTroop(troop);
+    game.getCurrentTurnPlayer().addTroop(troop);
+    return troop;
+  }
+
+  private ServerTroop addEnemyMinion(Game game, Cell cell) {
+    int enemyPlayerNumber = 2;
+    ServerTroop troop = new ServerTroop(makeMinionCard(), enemyPlayerNumber);
+    troop.setCell(cell);
+    troop.setCanMove(true);
+    game.getGameMap().addTroop(troop);
+    return troop;
+  }
+
+  @Mock
+  Game mockGame;
+
+  @Mock
+  Player mockPlayer;
+
+  @Before
+  public void setup() {
+    MockitoAnnotations.initMocks(this);
+
+    when(mockPlayer.getPlayerNumber()).thenReturn(1);
+
+    GameMap map = new GameMap();
+    when(mockGame.getGameMap()).thenReturn(map);
+    when(mockGame.getCurrentTurnPlayer()).thenReturn(mockPlayer);
+  }
+
+  private AvailableActions constructAvailableActions() {
+    try {
+      return new AvailableActions();
+    } catch (NoSuchMethodException e) {
+      e.printStackTrace();
+      assert false;
     }
+    return null;
+  }
 
-    private ServerTroop addFriendlyMinion(Game game, Cell cell) {
-        int friendlyPlayerNumber = 1;
-        ServerTroop troop = new ServerTroop(makeMinionCard(), friendlyPlayerNumber);
-        troop.setCell(cell);
-        troop.setCanMove(true);
-        game.getGameMap().addTroop(troop);
-        game.getCurrentTurnPlayer().addTroop(troop);
-        return troop;
-    }
+  @Test
+  public void availableMovesAtCorner_TEST() {
+    Game game = mockGame;
+    AvailableActions sut = constructAvailableActions();
 
-    private ServerTroop addEnemyMinion(Game game, Cell cell) {
-        int enemyPlayerNumber = 2;
-        ServerTroop troop = new ServerTroop(makeMinionCard(), enemyPlayerNumber);
-        troop.setCell(cell);
-        troop.setCanMove(true);
-        game.getGameMap().addTroop(troop);
-        return troop;
-    }
+    Cell topLeft = new Cell(0, 0);
+    ServerTroop topLeftMinion = addFriendlyMinion(game, topLeft);
 
-    @Mock
-    Game mockGame;
+    when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(topLeftMinion));
 
-    @Mock
-    Player mockPlayer;
+    sut.calculateMoves(game);
 
-    @Before
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
+    ArrayList<Cell> expected = new ArrayList<>();
+    // expected.add(new Cell(0, 0));
+    expected.add(new Cell(0, 1));
+    expected.add(new Cell(0, 2));
+    expected.add(new Cell(1, 0));
+    expected.add(new Cell(1, 1));
+    expected.add(new Cell(2, 0));
 
-        when(mockPlayer.getPlayerNumber()).thenReturn(1);
+    List<Move> moves = sut.getMoves();
+    List<Cell> actual = moves.get(0).getTargets();
 
-        GameMap map = new GameMap();
-        when(mockGame.getGameMap()).thenReturn(map);
-        when(mockGame.getCurrentTurnPlayer()).thenReturn(mockPlayer);
-    }
+    Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+  }
 
-    private AvailableActions constructAvailableActions() {
-        try {
-            return new AvailableActions();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-            assert false;
-        }
-        return null;
-    }
+  @Test
+  public void availableMovesAtEdge__TEST() {
+    Game game = mockGame;
+    AvailableActions sut = constructAvailableActions();
 
-    @Test
-    public void availableMovesAtCorner_TEST() {
-        Game game = mockGame;
-        AvailableActions sut = constructAvailableActions();
+    Cell centerLeft = new Cell(2, 0);
+    ServerTroop centerMinion = addFriendlyMinion(game, centerLeft);
 
-        Cell topLeft = new Cell(0, 0);
-        ServerTroop topLeftMinion = addFriendlyMinion(game, topLeft);
+    when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(topLeftMinion));
+    sut.calculateMoves(game);
 
-        sut.calculateMoves(game);
+    ArrayList<Cell> expected = new ArrayList<>();
+    expected.add(new Cell(0, 0));
 
-        ArrayList<Cell> expected = new ArrayList<>();
-//        expected.add(new Cell(0, 0));
-        expected.add(new Cell(0, 1));
-        expected.add(new Cell(0, 2));
-        expected.add(new Cell(1, 0));
-        expected.add(new Cell(1, 1));
-        expected.add(new Cell(2, 0));
+    expected.add(new Cell(1, 0));
+    expected.add(new Cell(1, 1));
 
-        List<Move> moves = sut.getMoves();
-        List<Cell> actual = moves.get(0).getTargets();
+    // expected.add(new Cell(2, 0));
+    expected.add(new Cell(2, 1));
+    expected.add(new Cell(2, 2));
 
-        Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
-    }
+    expected.add(new Cell(3, 0));
+    expected.add(new Cell(3, 1));
 
-    @Test
-    public void availableMovesAtEdge__TEST() {
-        Game game = mockGame;
-        AvailableActions sut = constructAvailableActions();
+    expected.add(new Cell(4, 0));
 
-        Cell centerLeft = new Cell(2, 0);
-        ServerTroop centerMinion = addFriendlyMinion(game, centerLeft);
 
-        when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
+    List<Move> moves = sut.getMoves();
+    List<Cell> actual = moves.get(0).getTargets();
 
-        sut.calculateMoves(game);
+    Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+  }
 
-        ArrayList<Cell> expected = new ArrayList<>();
-        expected.add(new Cell(0, 0));
+  @Test
+  public void availableMovesAtCenter__TEST() {
+    Game game = mockGame;
+    AvailableActions sut = constructAvailableActions();
 
-        expected.add(new Cell(1, 0));
-        expected.add(new Cell(1, 1));
+    Cell center = new Cell(2, 3);
+    ServerTroop centerMinion = addFriendlyMinion(game, center);
 
-//        expected.add(new Cell(2, 0));
-        expected.add(new Cell(2, 1));
-        expected.add(new Cell(2, 2));
+    when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        expected.add(new Cell(3, 0));
-        expected.add(new Cell(3, 1));
+    sut.calculateMoves(game);
 
-        expected.add(new Cell(4, 0));
+    ArrayList<Cell> expected = new ArrayList<>();
+    expected.add(new Cell(0, 3));
 
+    expected.add(new Cell(1, 2));
+    expected.add(new Cell(1, 3));
+    expected.add(new Cell(1, 4));
 
-        List<Move> moves = sut.getMoves();
-        List<Cell> actual = moves.get(0).getTargets();
+    expected.add(new Cell(2, 1));
+    expected.add(new Cell(2, 2));
+    // expected.add(new Cell(2, 3));
+    expected.add(new Cell(2, 4));
+    expected.add(new Cell(2, 5));
 
-        Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
-    }
+    expected.add(new Cell(3, 2));
+    expected.add(new Cell(3, 3));
+    expected.add(new Cell(3, 4));
 
-    @Test
-    public void availableMovesAtCenter__TEST() {
-        Game game = mockGame;
-        AvailableActions sut = constructAvailableActions();
+    expected.add(new Cell(4, 3));
 
-        Cell center = new Cell(2, 3);
-        ServerTroop centerMinion = addFriendlyMinion(game, center);
 
-        when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
+    List<Move> moves = sut.getMoves();
+    List<Cell> actual = moves.get(0).getTargets();
 
-        sut.calculateMoves(game);
+    Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+  }
 
-        ArrayList<Cell> expected = new ArrayList<>();
-        expected.add(new Cell(0, 3));
+  @Test
+  public void availableMovesCanNotEndOnFriendly__TEST() {
+    Game game = mockGame;
+    AvailableActions sut = constructAvailableActions();
 
-        expected.add(new Cell(1, 2));
-        expected.add(new Cell(1, 3));
-        expected.add(new Cell(1, 4));
+    Cell center = new Cell(2, 3);
+    ServerTroop centerMinion = addFriendlyMinion(game, center);
 
-        expected.add(new Cell(2, 1));
-        expected.add(new Cell(2, 2));
-//        expected.add(new Cell(2, 3));
-        expected.add(new Cell(2, 4));
-        expected.add(new Cell(2, 5));
+    addFriendlyMinion(game, new Cell(0, 3));
+    addFriendlyMinion(game, new Cell(1, 2));
+    addFriendlyMinion(game, new Cell(1, 4));
+    addFriendlyMinion(game, new Cell(2, 1));
+    addFriendlyMinion(game, new Cell(2, 5));
+    addFriendlyMinion(game, new Cell(3, 2));
+    addFriendlyMinion(game, new Cell(3, 4));
+    addFriendlyMinion(game, new Cell(4, 3));
 
-        expected.add(new Cell(3, 2));
-        expected.add(new Cell(3, 3));
-        expected.add(new Cell(3, 4));
+    when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        expected.add(new Cell(4, 3));
+    sut.calculateMoves(game);
 
+    ArrayList<Cell> expected = new ArrayList<>();
+    expected.add(new Cell(1, 3));
 
-        List<Move> moves = sut.getMoves();
-        List<Cell> actual = moves.get(0).getTargets();
+    expected.add(new Cell(2, 2));
+    // expected.add(new Cell(2, 3));
+    expected.add(new Cell(2, 4));
 
-        Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
-    }
+    expected.add(new Cell(3, 3));
 
-    @Test
-    public void availableMovesCanNotEndOnFriendly__TEST() {
-        Game game = mockGame;
-        AvailableActions sut = constructAvailableActions();
+    List<Move> moves = sut.getMoves();
+    List<Cell> actual = moves.get(0).getTargets();
 
-        Cell center = new Cell(2, 3);
-        ServerTroop centerMinion = addFriendlyMinion(game, center);
+    Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+  }
 
-        addFriendlyMinion(game, new Cell(0, 3));
-        addFriendlyMinion(game, new Cell(1, 2));
-        addFriendlyMinion(game, new Cell(1, 4));
-        addFriendlyMinion(game, new Cell(2, 1));
-        addFriendlyMinion(game, new Cell(2, 5));
-        addFriendlyMinion(game, new Cell(3, 2));
-        addFriendlyMinion(game, new Cell(3, 4));
-        addFriendlyMinion(game, new Cell(4, 3));
 
-        when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
+  @Test
+  public void availableMovesCanMoveOverFriendly__TEST() {
+    Game game = mockGame;
+    AvailableActions sut = constructAvailableActions();
 
-        sut.calculateMoves(game);
+    Cell center = new Cell(2, 3);
+    ServerTroop centerMinion = addFriendlyMinion(game, center);
 
-        ArrayList<Cell> expected = new ArrayList<>();
-        expected.add(new Cell(1, 3));
+    addFriendlyMinion(game, new Cell(1, 3));
+    addFriendlyMinion(game, new Cell(2, 2));
+    addFriendlyMinion(game, new Cell(2, 4));
+    addFriendlyMinion(game, new Cell(3, 3));
 
-        expected.add(new Cell(2, 2));
-//        expected.add(new Cell(2, 3));
-        expected.add(new Cell(2, 4));
+    when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        expected.add(new Cell(3, 3));
+    sut.calculateMoves(game);
 
-        List<Move> moves = sut.getMoves();
-        List<Cell> actual = moves.get(0).getTargets();
+    ArrayList<Cell> expected = new ArrayList<>();
+    expected.add(new Cell(0, 3));
 
-        Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
-    }
+    expected.add(new Cell(1, 2));
+    expected.add(new Cell(1, 4));
 
+    expected.add(new Cell(2, 1));
+    // expected.add(new Cell(2, 3));
+    expected.add(new Cell(2, 5));
 
-    @Test
-    public void availableMovesCanMoveOverFriendly__TEST() {
-        Game game = mockGame;
-        AvailableActions sut = constructAvailableActions();
+    expected.add(new Cell(3, 2));
+    expected.add(new Cell(3, 4));
 
-        Cell center = new Cell(2, 3);
-        ServerTroop centerMinion = addFriendlyMinion(game, center);
+    expected.add(new Cell(4, 3));
 
-        addFriendlyMinion(game, new Cell(1, 3));
-        addFriendlyMinion(game, new Cell(2, 2));
-        addFriendlyMinion(game, new Cell(2, 4));
-        addFriendlyMinion(game, new Cell(3, 3));
+    List<Move> moves = sut.getMoves();
+    List<Cell> actual = moves.get(0).getTargets();
 
-        when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
+    Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+  }
 
-        sut.calculateMoves(game);
+  @Test
+  public void availableMovesCannotMoveOverEnemy__TEST() {
+    Game game = mockGame;
+    AvailableActions sut = constructAvailableActions();
 
-        ArrayList<Cell> expected = new ArrayList<>();
-        expected.add(new Cell(0, 3));
+    Cell center = new Cell(2, 3);
+    ServerTroop centerMinion = addFriendlyMinion(game, center);
 
-        expected.add(new Cell(1, 2));
-        expected.add(new Cell(1, 4));
+    addEnemyMinion(game, new Cell(1, 3));
+    addEnemyMinion(game, new Cell(2, 2));
+    addEnemyMinion(game, new Cell(2, 4));
+    addEnemyMinion(game, new Cell(3, 3));
 
-        expected.add(new Cell(2, 1));
-//        expected.add(new Cell(2, 3));
-        expected.add(new Cell(2, 5));
+    when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        expected.add(new Cell(3, 2));
-        expected.add(new Cell(3, 4));
+    sut.calculateMoves(game);
 
-        expected.add(new Cell(4, 3));
+    // ArrayList<Cell> expected = new ArrayList<>();
+    // expected.add(new Cell(2, 3));
 
-        List<Move> moves = sut.getMoves();
-        List<Cell> actual = moves.get(0).getTargets();
+    int expected = 0;
 
-        Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
-    }
+    List<Move> moves = sut.getMoves();
+    // List<Cell> actual = moves.get(0).getTargets();
+    int actual = moves.size();
 
-    @Test
-    public void availableMovesCannotMoveOverEnemy__TEST() {
-        Game game = mockGame;
-        AvailableActions sut = constructAvailableActions();
 
-        Cell center = new Cell(2, 3);
-        ServerTroop centerMinion = addFriendlyMinion(game, center);
+    Assert.assertEquals(expected, actual);
+  }
 
-        addEnemyMinion(game, new Cell(1, 3));
-        addEnemyMinion(game, new Cell(2, 2));
-        addEnemyMinion(game, new Cell(2, 4));
-        addEnemyMinion(game, new Cell(3, 3));
+  @Test
+  public void availableMovesPathAroundObstacleToAbove__TEST() {
+    Game game = mockGame;
+    AvailableActions sut = constructAvailableActions();
 
-        when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
+    Cell center = new Cell(2, 3);
+    ServerTroop centerMinion = addFriendlyMinion(game, center);
 
-        sut.calculateMoves(game);
+    addEnemyMinion(game, new Cell(1, 3));
 
-//        ArrayList<Cell> expected = new ArrayList<>();
-//        expected.add(new Cell(2, 3));
+    when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        int expected = 0;
+    sut.calculateMoves(game);
 
-        List<Move> moves = sut.getMoves();
-//        List<Cell> actual = moves.get(0).getTargets();
-        int actual = moves.size();
+    ArrayList<Cell> expected = new ArrayList<>();
 
+    expected.add(new Cell(1, 2));
+    expected.add(new Cell(1, 4));
 
-        Assert.assertEquals(expected, actual);
-    }
+    expected.add(new Cell(2, 1));
+    expected.add(new Cell(2, 2));
+    // expected.add(new Cell(2, 3));
+    expected.add(new Cell(2, 4));
+    expected.add(new Cell(2, 5));
 
-    @Test
-    public void availableMovesPathAroundObstacleToAbove__TEST() {
-        Game game = mockGame;
-        AvailableActions sut = constructAvailableActions();
+    expected.add(new Cell(3, 2));
+    expected.add(new Cell(3, 3));
+    expected.add(new Cell(3, 4));
 
-        Cell center = new Cell(2, 3);
-        ServerTroop centerMinion = addFriendlyMinion(game, center);
+    expected.add(new Cell(4, 3));
 
-        addEnemyMinion(game, new Cell(1, 3));
+    List<Move> moves = sut.getMoves();
+    List<Cell> actual = moves.get(0).getTargets();
 
-        when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
+    Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+  }
 
-        sut.calculateMoves(game);
+  @Test
+  public void availableMovesPathAroundObstacleToLeft__TEST() {
+    Game game = mockGame;
+    AvailableActions sut = constructAvailableActions();
 
-        ArrayList<Cell> expected = new ArrayList<>();
+    Cell center = new Cell(2, 3);
+    ServerTroop centerMinion = addFriendlyMinion(game, center);
 
-        expected.add(new Cell(1, 2));
-        expected.add(new Cell(1, 4));
+    addEnemyMinion(game, new Cell(2, 2));
 
-        expected.add(new Cell(2, 1));
-        expected.add(new Cell(2, 2));
-//        expected.add(new Cell(2, 3));
-        expected.add(new Cell(2, 4));
-        expected.add(new Cell(2, 5));
+    when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        expected.add(new Cell(3, 2));
-        expected.add(new Cell(3, 3));
-        expected.add(new Cell(3, 4));
+    sut.calculateMoves(game);
 
-        expected.add(new Cell(4, 3));
+    ArrayList<Cell> expected = new ArrayList<>();
+    expected.add(new Cell(0, 3));
 
-        List<Move> moves = sut.getMoves();
-        List<Cell> actual = moves.get(0).getTargets();
+    expected.add(new Cell(1, 2));
+    expected.add(new Cell(1, 3));
+    expected.add(new Cell(1, 4));
 
-        Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
-    }
+    // expected.add(new Cell(2, 3));
+    expected.add(new Cell(2, 4));
+    expected.add(new Cell(2, 5));
 
-    @Test
-    public void availableMovesPathAroundObstacleToLeft__TEST() {
-        Game game = mockGame;
-        AvailableActions sut = constructAvailableActions();
+    expected.add(new Cell(3, 2));
+    expected.add(new Cell(3, 3));
+    expected.add(new Cell(3, 4));
 
-        Cell center = new Cell(2, 3);
-        ServerTroop centerMinion = addFriendlyMinion(game, center);
+    expected.add(new Cell(4, 3));
 
-        addEnemyMinion(game, new Cell(2, 2));
+    List<Move> moves = sut.getMoves();
+    List<Cell> actual = moves.get(0).getTargets();
 
-        when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
+    Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+  }
 
-        sut.calculateMoves(game);
+  @Test
+  public void availableMovesPathAroundObstacleToBelow__TEST() {
+    Game game = mockGame;
+    AvailableActions sut = constructAvailableActions();
 
-        ArrayList<Cell> expected = new ArrayList<>();
-        expected.add(new Cell(0, 3));
+    Cell center = new Cell(2, 3);
+    ServerTroop centerMinion = addFriendlyMinion(game, center);
 
-        expected.add(new Cell(1, 2));
-        expected.add(new Cell(1, 3));
-        expected.add(new Cell(1, 4));
+    addEnemyMinion(game, new Cell(3, 3));
 
-//        expected.add(new Cell(2, 3));
-        expected.add(new Cell(2, 4));
-        expected.add(new Cell(2, 5));
+    when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        expected.add(new Cell(3, 2));
-        expected.add(new Cell(3, 3));
-        expected.add(new Cell(3, 4));
+    sut.calculateMoves(game);
 
-        expected.add(new Cell(4, 3));
+    ArrayList<Cell> expected = new ArrayList<>();
+    expected.add(new Cell(0, 3));
 
-        List<Move> moves = sut.getMoves();
-        List<Cell> actual = moves.get(0).getTargets();
+    expected.add(new Cell(1, 2));
+    expected.add(new Cell(1, 3));
+    expected.add(new Cell(1, 4));
 
-        Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
-    }
+    expected.add(new Cell(2, 1));
+    expected.add(new Cell(2, 2));
+    // expected.add(new Cell(2, 3));
+    expected.add(new Cell(2, 4));
+    expected.add(new Cell(2, 5));
 
-    @Test
-    public void availableMovesPathAroundObstacleToBelow__TEST() {
-        Game game = mockGame;
-        AvailableActions sut = constructAvailableActions();
+    expected.add(new Cell(3, 2));
+    expected.add(new Cell(3, 4));
 
-        Cell center = new Cell(2, 3);
-        ServerTroop centerMinion = addFriendlyMinion(game, center);
+    List<Move> moves = sut.getMoves();
+    List<Cell> actual = moves.get(0).getTargets();
 
-        addEnemyMinion(game, new Cell(3, 3));
+    Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+  }
 
-        when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
+  @Test
+  public void availableMovesPathAroundObstacleToRight__TEST() {
+    Game game = mockGame;
+    AvailableActions sut = constructAvailableActions();
 
-        sut.calculateMoves(game);
+    Cell center = new Cell(2, 3);
+    ServerTroop centerMinion = addFriendlyMinion(game, center);
 
-        ArrayList<Cell> expected = new ArrayList<>();
-        expected.add(new Cell(0, 3));
+    addEnemyMinion(game, new Cell(2, 4));
 
-        expected.add(new Cell(1, 2));
-        expected.add(new Cell(1, 3));
-        expected.add(new Cell(1, 4));
+    when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
 
-        expected.add(new Cell(2, 1));
-        expected.add(new Cell(2, 2));
-//        expected.add(new Cell(2, 3));
-        expected.add(new Cell(2, 4));
-        expected.add(new Cell(2, 5));
+    sut.calculateMoves(game);
 
-        expected.add(new Cell(3, 2));
-        expected.add(new Cell(3, 4));
+    ArrayList<Cell> expected = new ArrayList<>();
+    expected.add(new Cell(0, 3));
 
-        List<Move> moves = sut.getMoves();
-        List<Cell> actual = moves.get(0).getTargets();
+    expected.add(new Cell(1, 2));
+    expected.add(new Cell(1, 3));
+    expected.add(new Cell(1, 4));
 
-        Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
-    }
+    expected.add(new Cell(2, 1));
+    expected.add(new Cell(2, 2));
+    // expected.add(new Cell(2, 3));
 
-    @Test
-    public void availableMovesPathAroundObstacleToRight__TEST() {
-        Game game = mockGame;
-        AvailableActions sut = constructAvailableActions();
+    expected.add(new Cell(3, 2));
+    expected.add(new Cell(3, 3));
+    expected.add(new Cell(3, 4));
 
-        Cell center = new Cell(2, 3);
-        ServerTroop centerMinion = addFriendlyMinion(game, center);
+    expected.add(new Cell(4, 3));
 
-        addEnemyMinion(game, new Cell(2, 4));
+    List<Move> moves = sut.getMoves();
+    List<Cell> actual = moves.get(0).getTargets();
 
-        when(mockPlayer.getTroops()).thenReturn(Collections.singletonList(centerMinion));
-
-        sut.calculateMoves(game);
-
-        ArrayList<Cell> expected = new ArrayList<>();
-        expected.add(new Cell(0, 3));
-
-        expected.add(new Cell(1, 2));
-        expected.add(new Cell(1, 3));
-        expected.add(new Cell(1, 4));
-
-        expected.add(new Cell(2, 1));
-        expected.add(new Cell(2, 2));
-//        expected.add(new Cell(2, 3));
-
-        expected.add(new Cell(3, 2));
-        expected.add(new Cell(3, 3));
-        expected.add(new Cell(3, 4));
-
-        expected.add(new Cell(4, 3));
-
-        List<Move> moves = sut.getMoves();
-        List<Cell> actual = moves.get(0).getTargets();
-
-        Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
-    }
+    Assert.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+  }
 
 
 }

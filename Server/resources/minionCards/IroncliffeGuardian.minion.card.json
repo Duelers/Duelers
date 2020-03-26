@@ -2,6 +2,7 @@
   "name": "Ironcliffe Guardian",
   "description": "Provoke, Airdrop",
   "cardId": "IroncliffeGuardian",
+  "faction": "lyonar",
   "spriteName": "f1_ironcliffeguardian",
   "type": "MINION",
   "spells": [],

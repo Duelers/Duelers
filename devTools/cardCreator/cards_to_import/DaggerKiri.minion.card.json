@@ -2,6 +2,7 @@
     "name": "Dagger Kiri",
     "description": "Celerity",
     "cardId": "DaggerKiri",
+	"faction": "mercenary",
     "spriteName": "neutral_mercdaggerkiri",
     "type": "MINION",
     "defaultAp": 2,

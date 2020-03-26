@@ -2,6 +2,7 @@
   "name": "Shadow Reflection",
   "description": "Give a friendly minion +5 Attack.",
   "cardId": "ShadowReflection",
+  "faction": "abyssian",
   "spriteName": "icon_f4_shadowreflection",
   "type": "SPELL",
   "spells": [

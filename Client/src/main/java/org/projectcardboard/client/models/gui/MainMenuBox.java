@@ -11,20 +11,19 @@ import java.util.List;
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class MainMenuBox extends VBox {
-    private static final String DUELYST_LOGO_URL = "/ui/brand_duelyst.png";
-    private static final double X = 100 * SCALE;
-    private static final double Y = 400 * SCALE;
+  private static final String DUELYST_LOGO_URL = "/ui/brand_duelyst.png";
+  private static final double X = 100 * SCALE;
+  private static final double Y = 400 * SCALE;
 
-    public MainMenuBox(List<MenuItem> items) throws FileNotFoundException {
-        super(UIConstants.DEFAULT_SPACING * 5);
-        ImageView brandView = ImageLoader.loadImage(
-                DUELYST_LOGO_URL, UIConstants.DUELYST_LOGO_WIDTH, UIConstants.DUELYST_LOGO_HEIGHT
-        );
-        MainMenuGrid menuGrid = new MainMenuGrid(items);
+  public MainMenuBox(List<MenuItem> items) throws FileNotFoundException {
+    super(UIConstants.DEFAULT_SPACING * 5);
+    ImageView brandView = ImageLoader.loadImage(DUELYST_LOGO_URL, UIConstants.DUELYST_LOGO_WIDTH,
+        UIConstants.DUELYST_LOGO_HEIGHT);
+    MainMenuGrid menuGrid = new MainMenuGrid(items);
 
-        getChildren().addAll(brandView, menuGrid);
-        setAlignment(Pos.CENTER);
-        relocate(X, Y);
-        setPadding(new Insets(UIConstants.DEFAULT_SPACING * 6));
-    }
+    getChildren().addAll(brandView, menuGrid);
+    setAlignment(Pos.CENTER);
+    relocate(X, Y);
+    setPadding(new Insets(UIConstants.DEFAULT_SPACING * 6));
+  }
 }

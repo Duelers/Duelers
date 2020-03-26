@@ -6,11 +6,11 @@ import server.dataCenter.models.card.ServerCard;
 
 public interface DataBase {
 
-    ServerCard getCard(String cardName);
+  ServerCard getCard(String cardName);
 
-    Collection getOriginalCards();
+  Collection getOriginalCards();
 
-    void addOriginalCard(ServerCard card);
+  void addOriginalCard(ServerCard card);
 
-    boolean isEmpty();
+  boolean isEmpty();
 }

@@ -11,23 +11,23 @@ import server.GameServer;
 
 public class Main extends Application {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        LanguageData.getInstance(); // Initialise
+    LanguageData.getInstance(); // Initialise
 
-        String hostServer = Config.getInstance().getProperty("HOST_SERVER");
-        boolean shouldHostServer = Boolean.parseBoolean(hostServer);
-        if (shouldHostServer) {
-            System.out.println("Launching GameServer...");
-            GameServer.start();
-        }
-
-        Client.getInstance().makeConnection();
-        launch(args);
+    String hostServer = Config.getInstance().getProperty("HOST_SERVER");
+    boolean shouldHostServer = Boolean.parseBoolean(hostServer);
+    if (shouldHostServer) {
+      System.out.println("Launching GameServer...");
+      GameServer.start();
     }
 
-    @Override
-    public void start(Stage stage) {
-        GraphicalUserInterface.getInstance().start(stage);
-    }
+    Client.getInstance().makeConnection();
+    launch(args);
+  }
+
+  @Override
+  public void start(Stage stage) {
+    GraphicalUserInterface.getInstance().start(stage);
+  }
 }

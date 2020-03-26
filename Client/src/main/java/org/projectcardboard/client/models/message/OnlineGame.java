@@ -5,25 +5,25 @@ import org.projectcardboard.client.models.game.Game;
 import shared.models.game.GameType;
 
 public class OnlineGame {
-    private final String player1;
-    private final String player2;
-    private final GameType gameType;
+  private final String player1;
+  private final String player2;
+  private final GameType gameType;
 
-    public OnlineGame(Game game) {
-        player1 = game.getPlayerOne().getUserName();
-        player2 = game.getPlayerTwo().getUserName();
-        gameType = game.getGameType();
-    }
+  public OnlineGame(Game game) {
+    player1 = game.getPlayerOne().getUserName();
+    player2 = game.getPlayerTwo().getUserName();
+    gameType = game.getGameType();
+  }
 
-    public String getPlayer1() {
-        return player1;
-    }
+  public String getPlayer1() {
+    return player1;
+  }
 
-    public String getPlayer2() {
-        return player2;
-    }
+  public String getPlayer2() {
+    return player2;
+  }
 
-    public GameType getGameType() {
-        return gameType;
-    }
+  public GameType getGameType() {
+    return gameType;
+  }
 }

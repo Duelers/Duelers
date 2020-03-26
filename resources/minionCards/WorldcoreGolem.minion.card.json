@@ -2,6 +2,7 @@
   "name": "Worldcore Golem",
   "description": "Golem",
   "cardId": "WorldcoreGolem",
+  "faction": "mercenary",
   "spriteName": "neutral_moltengolem",
   "type": "MINION",
   "defaultAp": 25,

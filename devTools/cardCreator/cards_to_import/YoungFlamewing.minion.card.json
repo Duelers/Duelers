@@ -2,6 +2,7 @@
   "name": "Young Flamewing",
   "description": "Flying",
   "cardId": "YoungFlamewing",
+  "faction": "mercenary",
   "spriteName": "neutral_monsterflamewing",
   "type": "MINION",
   "spells": [],

@@ -8,19 +8,19 @@ import java.util.ArrayList;
 import java.util.Set;
 
 class GameAnimations {
-    private final ArrayList<CardAnimation> attacks = new ArrayList<>();
-    private final ArrayList<CardAnimation> counterAttacks = new ArrayList<>();
-    private final ArrayList<SpellAnimation> spellAnimations = new ArrayList<>();
+  private final ArrayList<CardAnimation> attacks = new ArrayList<>();
+  private final ArrayList<CardAnimation> counterAttacks = new ArrayList<>();
+  private final ArrayList<SpellAnimation> spellAnimations = new ArrayList<>();
 
-    void addAttacks(String cardID, String defenderCardID) {
-        attacks.add(new CardAnimation(cardID, defenderCardID));
-    }
+  void addAttacks(String cardID, String defenderCardID) {
+    attacks.add(new CardAnimation(cardID, defenderCardID));
+  }
 
-    void addCounterAttacks(String cardID, String defenderCardID) {
-        counterAttacks.add(new CardAnimation(cardID, defenderCardID));
-    }
+  void addCounterAttacks(String cardID, String defenderCardID) {
+    counterAttacks.add(new CardAnimation(cardID, defenderCardID));
+  }
 
-    void addSpellAnimation(Set<Cell> cells, String fxName) {
-        spellAnimations.add(new SpellAnimation(cells, fxName));
-    }
+  void addSpellAnimation(Set<Cell> cells, String fxName) {
+    spellAnimations.add(new SpellAnimation(cells, fxName));
+  }
 }

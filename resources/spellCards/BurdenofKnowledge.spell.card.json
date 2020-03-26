@@ -2,6 +2,7 @@
   "name": "Burden of Knowledge",
   "description": "Deal 1 damage to your General. Draw a card",
   "cardId": "BurdenofKnowledge",
+  "faction": "vetruvian",
   "spriteName": "icon_f3_glimpse",
   "type": "SPELL",
   "spells": [

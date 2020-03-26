@@ -2,6 +2,7 @@
   "name": "Ghost Lightning",
   "description": "Deal 1 damage to all enemy minions.",
   "cardId": "GhostLightning",
+  "faction": "songhai",
   "spriteName": "icon_f2_ghost_lightning",
   "type": "SPELL",
   "spells": [

@@ -30,50 +30,46 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class DeckBox extends GridPane {
-    private static final Background DEFAULT_BACKGROUND = new Background(
-            new BackgroundFill(Color.rgb(43, 57, 69), CornerRadii.EMPTY, Insets.EMPTY));
-    private static final Background HOVER_BACKGROUND = new Background(
-            new BackgroundFill(Color.rgb(49, 68, 82), CornerRadii.EMPTY, Insets.EMPTY));
-    private static final double ICON_SIZE = 50 * SCALE;
-    private static final double WIDTH = SCENE_WIDTH * 0.18;
-    private static final Insets PADDING = new Insets(30 * SCALE);
-    private static final Font DETAILS_FONT = Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 20 * SCALE);
-    private static final Effect ICON_SHADOW = new DropShadow(10 * SCALE, Color.WHITE);
-    private static Image checkIcon;
-    private static Image modifyIcon;
-    private static Image removeIcon;
-    private static Image saveIcon;
-    private static Image mainIcon;
-    private static Image disableMainIcon;
+  private static final Background DEFAULT_BACKGROUND =
+      new Background(new BackgroundFill(Color.rgb(43, 57, 69), CornerRadii.EMPTY, Insets.EMPTY));
+  private static final Background HOVER_BACKGROUND =
+      new Background(new BackgroundFill(Color.rgb(49, 68, 82), CornerRadii.EMPTY, Insets.EMPTY));
+  private static final double ICON_SIZE = 50 * SCALE;
+  private static final double WIDTH = SCENE_WIDTH * 0.18;
+  private static final Insets PADDING = new Insets(30 * SCALE);
+  private static final Font DETAILS_FONT =
+      Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 20 * SCALE);
+  private static final Effect ICON_SHADOW = new DropShadow(10 * SCALE, Color.WHITE);
+  private static Image checkIcon;
+  private static Image modifyIcon;
+  private static Image removeIcon;
+  private static Image saveIcon;
+  private static Image mainIcon;
+  private static Image disableMainIcon;
 
-    static {
-        try {
-            InputStream checkIconR = DeckBox.class.getResourceAsStream("/ui/icon_check.png");
-            InputStream modifyIconR = DeckBox.class.getResourceAsStream("/ui/icon_modify.png");
-            InputStream removeIconR = DeckBox.class.getResourceAsStream("/ui/icon_remove.png");
-            InputStream saveIconR = DeckBox.class.getResourceAsStream("/ui/icon_save.png");
-            InputStream mainIconR = DeckBox.class.getResourceAsStream("/ui/icon_main_deck.png");
-            InputStream disableMainIconR = DeckBox.class.getResourceAsStream("/ui/icon_main_deck_disable.png");
-            if (
-                checkIconR == null ||
-                modifyIconR == null ||
-                removeIconR == null ||
-                saveIconR == null ||
-                mainIconR == null ||
-                disableMainIconR == null
-            ) {
-                    throw new FileNotFoundException();
-            }
-            checkIcon = new Image(checkIconR);
-            modifyIcon = new Image(modifyIconR);
-            removeIcon = new Image(removeIconR);
-            saveIcon = new Image(saveIconR);
-            mainIcon = new Image(mainIconR);
-            disableMainIcon = new Image(disableMainIconR);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+  static {
+      try {
+          InputStream checkIconR = DeckBox.class.getResourceAsStream("/ui/icon_check.png");
+          InputStream modifyIconR = DeckBox.class.getResourceAsStream("/ui/icon_modify.png");
+          InputStream removeIconR = DeckBox.class.getResourceAsStream("/ui/icon_remove.png");
+          InputStream saveIconR = DeckBox.class.getResourceAsStream("/ui/icon_save.png");
+          InputStream mainIconR = DeckBox.class.getResourceAsStream("/ui/icon_main_deck.png");
+          InputStream disableMainIconR =
+                  DeckBox.class.getResourceAsStream("/ui/icon_main_deck_disable.png");
+          if (checkIconR == null || modifyIconR == null || removeIconR == null || saveIconR == null
+                  || mainIconR == null || disableMainIconR == null) {
+              throw new FileNotFoundException();
+          }
+          checkIcon = new Image(checkIconR);
+          modifyIcon = new Image(modifyIconR);
+          removeIcon = new Image(removeIconR);
+          saveIcon = new Image(saveIconR);
+          mainIcon = new Image(mainIconR);
+          disableMainIcon = new Image(disableMainIconR);
+      } catch (FileNotFoundException e) {
+          e.printStackTrace();
+      }
+  }
 
     public DeckBox(Deck deck) {
         setPadding(PADDING);
@@ -178,10 +174,10 @@ public class DeckBox extends GridPane {
 
         setOnMouseEntered(event -> setBackground(HOVER_BACKGROUND));
         setOnMouseExited(event -> setBackground(DEFAULT_BACKGROUND));
-    }
+  }
 
-    private Font getFont(String name) {
-        double size = Math.min(45 * SCALE, 45 * SCALE * 8 / name.length());
-        return Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, size);
-    }
+  private Font getFont(String name) {
+    double size = Math.min(45 * SCALE, 45 * SCALE * 8 / name.length());
+    return Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, size);
+  }
 }

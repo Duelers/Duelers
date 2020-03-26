@@ -30,7 +30,7 @@ public class BaseDeck<CardType extends Card> {
     public String getName() {
         return deckName;
     }
-
+  }
     public CardType getHero() {
         return hero;
     }
@@ -41,33 +41,37 @@ public class BaseDeck<CardType extends Card> {
         return Collections.unmodifiableList(cards);
     }
 
-    public CardType getCard(String cardName) {
-        if (this.hero != null && hero.isSameAs(cardName)) return hero;
+  public CardType getCard(String cardName) {
+    if (this.hero != null && hero.isSameAs(cardName))
+      return hero;
 
-        for (CardType card : cards) {
-            if (card.isSameAs(cardName)) return card;
-        }
-        return null;
+    for (CardType card : cards) {
+      if (card.isSameAs(cardName))
+        return card;
     }
+    return null;
+  }
 
-    public boolean isValid() {
-        if (hero == null) return false;
-        return this.cards.size() >= MIN_DECK_SIZE && this.cards.size() <= MAX_DECK_SIZE;
-    }
+  public boolean isValid() {
+    if (hero == null)
+      return false;
+    return this.cards.size() >= MIN_DECK_SIZE && this.cards.size() <= MAX_DECK_SIZE;
+  }
 
-    public boolean hasHero(Card hero) {
-        if (this.hero == null) return false;
-        return this.hero.equals(hero);
-    }
+  public boolean hasHero(Card hero) {
+    if (this.hero == null)
+      return false;
+    return this.hero.equals(hero);
+  }
 
-    public boolean hasCard(Card other) {
-        for (Card card : cards) {
-            if (card.equals(other)) {
-                return true;
-            }
-        }
-        return false;
+  public boolean hasCard(Card other) {
+    for (Card card : cards) {
+      if (card.equals(other)) {
+        return true;
+      }
     }
+    return false;
+  }
 
 }
 

@@ -2,6 +2,7 @@
   "name": "Brightmoss Golem",
   "description": "Golem",
   "cardId": "BrightmossGolem",
+  "faction": "mercenary",
   "spriteName": "neutral_golemnature",
   "type": "MINION",
   "defaultAp": 4,

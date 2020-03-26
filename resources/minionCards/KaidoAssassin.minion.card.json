@@ -2,6 +2,7 @@
   "name": "Kaido Assassin",
   "description": "Backstab: (1)",
   "cardId": "KaidoAssassin",
+  "faction": "songhai",
   "spriteName": "f2_melee",
   "type": "MINION",
   "spells": [],

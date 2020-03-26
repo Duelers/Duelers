@@ -10,6 +10,7 @@ import shared.models.account.AccountType;
 import shared.models.account.BaseAccount;
 
 public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
+
     public Account(String username, String password) {
         super(username, password, new Collection());
     }
