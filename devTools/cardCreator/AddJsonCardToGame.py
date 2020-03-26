@@ -17,6 +17,7 @@ INFO_FILE = os.path.join(SCRIPT_PATH, "info.json")
 
 RESOURCES_SUBFOLDER_NAMES = ["heroCards", "minionCards", "spellCards"]
 SUPPORTED_CARD_TYPES = ["HERO", "MINION", "SPELL"]
+FACTIONS = ["songhai", "vetruvian", "lyonar", "abyssian", "magmar", "vanar", "mercenary"]
 
 subfolder_for_type = dict(zip(SUPPORTED_CARD_TYPES, RESOURCES_SUBFOLDER_NAMES)) 
 
@@ -62,6 +63,12 @@ def main(card: str, card_path: str, account_path: str) -> None:
 
     card_id   = data["cardId"]
     assert (" " not in card_id), "ERROR: Spaces should not be in cardId field"
+    
+    card_faction = data["faction"]
+    assert card_faction in FACTIONS, f"ERROR {card_faction}: is not a valid faction (case sensitive)."
+    
+    card_sprite = data["spriteName"]
+    assert (not card_sprite.endswith(".png")), "ERROR: SpriteName should not endwith '.png'."  
 
     assert is_name_valid(card, card_type, card_id), f"ERROR: '{card}' does not follow naming convention."
 
