@@ -1,0 +1,17 @@
+{
+  "name": "Lilithe Blightchaser",
+  "description": "General for Abyssian Faction",
+  "cardId": "LilitheBlightchaser",
+  "faction": "Abyssian"
+  "spriteName": "f4_general",
+  "type": "HERO",
+  "spells": [],
+  "defaultAp": 2,
+  "defaultHp": 25,
+  "manaCost": 0,
+  "price": 10,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
