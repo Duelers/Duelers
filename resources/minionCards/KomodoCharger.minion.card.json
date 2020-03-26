@@ -2,6 +2,7 @@
   "name": "Komodo Charger",
   "description": "",
   "cardId": "KomodoCharger",
+  "faction": "mercenary",
   "spriteName": "neutral_beastcavern",
   "type": "MINION",
   "defaultAp": 1,

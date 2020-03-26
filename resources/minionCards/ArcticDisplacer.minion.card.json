@@ -2,6 +2,7 @@
   "name": "Arctic Displacer",
   "description": "Airdrop",
   "cardId": "ArcticDisplacer",
+  "faction": "vanar",
   "spriteName": "f6_snowwyvern",
   "type": "MINION",
   "spells": [],

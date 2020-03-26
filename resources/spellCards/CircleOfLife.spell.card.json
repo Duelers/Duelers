@@ -2,6 +2,7 @@
     "name": "Circle of Life",
     "description": "Deal 5 damage to an enemy minion. Your General gains 5 life.",
     "cardId": "CircleOfLife",
+	"faction": "lyonar",
     "spriteName": "icon_f1_circleoflife",
     "type": "SPELL",
     "spells": [

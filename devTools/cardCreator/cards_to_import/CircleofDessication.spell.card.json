@@ -2,7 +2,7 @@
   "name": "Circle of Dessication",
   "description": "Destroy all minions.",
   "cardId": "CircleofDessication",
-  "faction": "Vetruvian",
+  "faction": "vetruvian",
   "spriteName": "icon_f3_circleofdessication",
   "type": "SPELL",
   "spells": [

@@ -2,6 +2,7 @@
   "name": "Rock Pulverizer",
   "description": "Provoke",
   "cardId": "RockPulverizer",
+  "faction": "mercenary",
   "spriteName": "neutral_monsterexplodingdemon",
   "type": "MINION",
   "spells": [],

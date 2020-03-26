@@ -2,6 +2,7 @@
   "name": "Saberspine Alpha",
   "description": "Rush",
   "cardId": "SaberspineAlpha",
+  "faction": "vanar",
   "spriteName": "f6_eldersaberspine",
   "type": "MINION",
   "defaultAp": 5,

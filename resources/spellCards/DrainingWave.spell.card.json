@@ -2,6 +2,7 @@
     "name": "Draining Wave",
     "description": "Deal 4 damage to a minion AND your General",
     "cardId": "DrainingWave",
+	"faction": "lyonar",
     "spriteName": "icon_f1_drainingwave",
     "type": "SPELL",
     "spells": [
