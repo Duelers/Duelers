@@ -8643,7 +8643,7 @@
                 "spells": [
                     {
                         "spellId": "deal_3_dmg_everything",
-                        "fxName": "f6_fx_winterswake",
+                        "fxName": "fx_f6_cryogenesis",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8721,7 +8721,7 @@
                 "spells": [
                     {
                         "spellId": "deal_3_dmg_everything",
-                        "fxName": "f6_fx_winterswake",
+                        "fxName": "fx_f6_cryogenesis",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8799,7 +8799,7 @@
                 "spells": [
                     {
                         "spellId": "deal_3_dmg_everything",
-                        "fxName": "f6_fx_winterswake",
+                        "fxName": "fx_f6_cryogenesis",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
