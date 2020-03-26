@@ -743,7 +743,9 @@ public abstract class Game extends BaseGame<Player, GameMap> {
     private void applySpell(Spell spell, TargetData target) {
         spell.setLastTurnUsed(turnNumber);
         Buff buff = new Buff(spell.getAction(), target);
-        GameServer.getInstance().sendSpellMessage(this, target, spell.getAvailabilityType(), spell.getFxName());
+        if (spell.getFxName() != null) {
+            GameServer.getInstance().sendSpellMessage(this, target, spell.getFxName());
+        }
         buffs.add(buff);
         applyBuff(buff);
     }

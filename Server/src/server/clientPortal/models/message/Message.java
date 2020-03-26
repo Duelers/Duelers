@@ -101,10 +101,10 @@ public class Message {
         return message;
     }
 
-    public static Message makeSpellMessage(String receiver, Set<Cell> cells, AvailabilityType availabilityType, String fxName) {
+    public static Message makeSpellMessage(String receiver, Set<Cell> cells, String fxName) {
         Message message = new Message(receiver);
         message.gameAnimations = new GameAnimations();
-        message.gameAnimations.addSpellAnimation(cells, availabilityType, fxName);
+        message.gameAnimations.addSpellAnimation(cells, fxName);
         message.messageType = MessageType.ANIMATION;
         return message;
     }

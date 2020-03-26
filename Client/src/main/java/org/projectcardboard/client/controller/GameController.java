@@ -170,7 +170,7 @@ public class GameController implements GameActions {
         new Thread(() -> {
             gameAnimations.getSpellAnimations().forEach(
                     spellAnimation -> spellAnimation.getCells().forEach(
-                            position -> battleScene.spell(spellAnimation.getAvailabilityType(), position, spellAnimation.getFxName())
+                            position -> battleScene.spell(spellAnimation.getFxName(), position)
                     )
             );
             for (CardAnimation cardAnimation :
