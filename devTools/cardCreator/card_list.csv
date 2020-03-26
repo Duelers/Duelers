@@ -36,6 +36,7 @@ SPELL,Frostburn,Deal 3 damage to all enemy minions,0,0,6,icon_f6_frostburn
 SPELL,Ghost Lightning,Deal 1 damage to all enemy minions.,0,0,1,icon_f2_ghost_lightning
 MINION,Hailstone Golem,Golem,4,6,4,neutral_golemice
 MINION,Ironcliffe Guardian,"Provoke, Airdrop",3,10,5,f1_ironcliffeguardian
+MINION,Kaido Assassin,Backstab: (1),2,3,2,f2_melee
 SPELL,Kinetic Equilibrium,Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack,0,0,3,icon_f5_kineticequilibrium
 MINION,Komodo Charger,,1,3,1,neutral_beastcavern
 MINION,Lysian Brawler,Celerity,4,4,4,f1_silvermanevanguard

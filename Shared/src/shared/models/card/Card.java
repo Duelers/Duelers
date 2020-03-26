@@ -18,6 +18,8 @@ public class Card implements ICard {
     private final int manaCost;
     private final int price;
     private final AttackType attackType;
+    private boolean hasBackstab;
+    private int backstab;
     private final int range;
     protected int remainingNumber = 20;
     protected boolean singleTarget;
@@ -76,6 +78,8 @@ public class Card implements ICard {
         this.manaCost = referenceCard.manaCost;
         this.price = referenceCard.price;
         this.attackType = referenceCard.attackType;
+        this.hasBackstab = referenceCard.hasBackstab;
+        this.backstab = referenceCard.backstab;
         this.range = referenceCard.range;
         this.remainingNumber = referenceCard.remainingNumber;
     }
@@ -132,6 +136,14 @@ public class Card implements ICard {
 
     public AttackType getAttackType() {
         return this.attackType;
+    }
+
+    public boolean hasBackstab() {
+        return hasBackstab;
+    }
+
+    public int getBackstab() {
+        return backstab;
     }
 
     public int getRange() {
