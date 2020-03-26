@@ -2,6 +2,7 @@
   "name": "Frostburn",
   "description": "Deal 3 damage to all enemy minions",
   "cardId": "Frostburn",
+  "faction": "vanar",
   "spriteName": "icon_f6_frostburn",
   "type": "SPELL",
   "spells": [

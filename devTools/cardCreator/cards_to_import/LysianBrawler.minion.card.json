@@ -2,6 +2,7 @@
     "name": "Lysian Brawler",
     "description": "Celerity",
     "cardId": "LysianBrawler",
+	"faction": "lyonar",
     "spriteName": "f1_silvermanevanguard",
     "type": "MINION",
     "defaultAp": 4,

@@ -2,6 +2,7 @@
   "name": "Storm Artha",
   "description": "Flying",
   "cardId": "StormArtha",
+  "faction": "mercenary",
   "spriteName": "neutral_monsterlightningbeetle",
   "type": "MINION",
   "spells": [],

@@ -2,6 +2,7 @@
   "name": "Frostbone Naga",
   "description": "Opening Gambit: Deal 2 damage to everything around it",
   "cardId": "FrostboneNaga",
+  "faction": "mercenary",
   "spriteName": "neutral_mercfrostbonenaga",
   "type": "MINION",
   "spells": [
