@@ -48,132 +48,135 @@ public class DeckBox extends GridPane {
   private static Image disableMainIcon;
 
   static {
-      try {
-          InputStream checkIconR = DeckBox.class.getResourceAsStream("/ui/icon_check.png");
-          InputStream modifyIconR = DeckBox.class.getResourceAsStream("/ui/icon_modify.png");
-          InputStream removeIconR = DeckBox.class.getResourceAsStream("/ui/icon_remove.png");
-          InputStream saveIconR = DeckBox.class.getResourceAsStream("/ui/icon_save.png");
-          InputStream mainIconR = DeckBox.class.getResourceAsStream("/ui/icon_main_deck.png");
-          InputStream disableMainIconR =
-                  DeckBox.class.getResourceAsStream("/ui/icon_main_deck_disable.png");
-          if (checkIconR == null || modifyIconR == null || removeIconR == null || saveIconR == null
-                  || mainIconR == null || disableMainIconR == null) {
-              throw new FileNotFoundException();
-          }
-          checkIcon = new Image(checkIconR);
-          modifyIcon = new Image(modifyIconR);
-          removeIcon = new Image(removeIconR);
-          saveIcon = new Image(saveIconR);
-          mainIcon = new Image(mainIconR);
-          disableMainIcon = new Image(disableMainIconR);
-      } catch (FileNotFoundException e) {
-          e.printStackTrace();
+    try {
+      InputStream checkIconR = DeckBox.class.getResourceAsStream("/ui/icon_check.png");
+      InputStream modifyIconR = DeckBox.class.getResourceAsStream("/ui/icon_modify.png");
+      InputStream removeIconR = DeckBox.class.getResourceAsStream("/ui/icon_remove.png");
+      InputStream saveIconR = DeckBox.class.getResourceAsStream("/ui/icon_save.png");
+      InputStream mainIconR = DeckBox.class.getResourceAsStream("/ui/icon_main_deck.png");
+      InputStream disableMainIconR =
+          DeckBox.class.getResourceAsStream("/ui/icon_main_deck_disable.png");
+      if (checkIconR == null || modifyIconR == null || removeIconR == null || saveIconR == null
+          || mainIconR == null || disableMainIconR == null) {
+        throw new FileNotFoundException();
       }
+      checkIcon = new Image(checkIconR);
+      modifyIcon = new Image(modifyIconR);
+      removeIcon = new Image(removeIconR);
+      saveIcon = new Image(saveIconR);
+      mainIcon = new Image(mainIconR);
+      disableMainIcon = new Image(disableMainIconR);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
   }
 
-    public DeckBox(Deck deck) {
-        setPadding(PADDING);
-        setVgap(DEFAULT_SPACING * 2);
-        setHgap(DEFAULT_SPACING * 2);
-        setBackground(DEFAULT_BACKGROUND);
-        setMinWidth(WIDTH);
+  public DeckBox(Deck deck) {
+    setPadding(PADDING);
+    setVgap(DEFAULT_SPACING * 2);
+    setHgap(DEFAULT_SPACING * 2);
+    setBackground(DEFAULT_BACKGROUND);
+    setMinWidth(WIDTH);
 
-        DefaultLabel deckName = new DefaultLabel(deck.getName().toUpperCase(), getFont(deck.getName()), Color.WHITE);
-        ImageView modify = ImageLoader.makeImageView(modifyIcon, ICON_SIZE, ICON_SIZE);
-        ImageView remove = ImageLoader.makeImageView(removeIcon, ICON_SIZE, ICON_SIZE);
-        ImageView export = ImageLoader.makeImageView(saveIcon, ICON_SIZE, ICON_SIZE);
-        DefaultLabel cardsNumber = new DefaultLabel(deck.getCards().size() + " Cards", DETAILS_FONT, Color.WHITE);
-        DefaultLabel heroNumber = new DefaultLabel((deck.getHero() != null ? "1" : "0") + " Hero", DETAILS_FONT,
-                Color.WHITE);
+    DefaultLabel deckName =
+        new DefaultLabel(deck.getName().toUpperCase(), getFont(deck.getName()), Color.WHITE);
+    ImageView modify = ImageLoader.makeImageView(modifyIcon, ICON_SIZE, ICON_SIZE);
+    ImageView remove = ImageLoader.makeImageView(removeIcon, ICON_SIZE, ICON_SIZE);
+    ImageView export = ImageLoader.makeImageView(saveIcon, ICON_SIZE, ICON_SIZE);
+    DefaultLabel cardsNumber =
+        new DefaultLabel(deck.getCards().size() + " Cards", DETAILS_FONT, Color.WHITE);
+    DefaultLabel heroNumber =
+        new DefaultLabel((deck.getHero() != null ? "1" : "0") + " Hero", DETAILS_FONT, Color.WHITE);
 
-        DefaultLabel factions = new DefaultLabel( "Factions: " + deck.getFactionList().toString(), DETAILS_FONT, Color.WHITE);
+    DefaultLabel factions = new DefaultLabel("Factions: " + deck.getFactionList().toString(),
+        DETAILS_FONT, Color.WHITE);
 
-        modify.setOnMouseEntered(event -> {
-            modify.setEffect(ICON_SHADOW);
-            SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
-            setCursor(SELECT_CURSOR);
-        });
-        modify.setOnMouseExited(event -> {
-            modify.setEffect(null);
-            setCursor(DEFAULT_CURSOR);
-        });
-        modify.setOnMouseClicked(event -> {
-            SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.click);
-            CollectionMenu.getInstance().modify(deck);
-        });
+    modify.setOnMouseEntered(event -> {
+      modify.setEffect(ICON_SHADOW);
+      SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
+      setCursor(SELECT_CURSOR);
+    });
+    modify.setOnMouseExited(event -> {
+      modify.setEffect(null);
+      setCursor(DEFAULT_CURSOR);
+    });
+    modify.setOnMouseClicked(event -> {
+      SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.click);
+      CollectionMenu.getInstance().modify(deck);
+    });
 
-        remove.setOnMouseEntered(event -> {
-            remove.setEffect(ICON_SHADOW);
-            SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
-            setCursor(SELECT_CURSOR);
-        });
-        remove.setOnMouseExited(event -> {
-            remove.setEffect(null);
-            setCursor(DEFAULT_CURSOR);
-        });
-        remove.setOnMouseClicked(event -> {
-            SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.click);
-            CollectionMenuController.getInstance().removeDeck(deck.getName());
-            try {
-                CollectionMenu.getInstance().showCollectionCards();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        });
+    remove.setOnMouseEntered(event -> {
+      remove.setEffect(ICON_SHADOW);
+      SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
+      setCursor(SELECT_CURSOR);
+    });
+    remove.setOnMouseExited(event -> {
+      remove.setEffect(null);
+      setCursor(DEFAULT_CURSOR);
+    });
+    remove.setOnMouseClicked(event -> {
+      SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.click);
+      CollectionMenuController.getInstance().removeDeck(deck.getName());
+      try {
+        CollectionMenu.getInstance().showCollectionCards();
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
+    });
 
-        export.setOnMouseEntered(event -> {
-            export.setEffect(ICON_SHADOW);
-            SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
-            setCursor(SELECT_CURSOR);
-        });
-        export.setOnMouseExited(event -> {
-            export.setEffect(null);
-            setCursor(DEFAULT_CURSOR);
-        });
-        export.setOnMouseClicked(event -> {
-            SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.click);
-            new DeckExporter(deck).export();
-        });
+    export.setOnMouseEntered(event -> {
+      export.setEffect(ICON_SHADOW);
+      SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
+      setCursor(SELECT_CURSOR);
+    });
+    export.setOnMouseExited(event -> {
+      export.setEffect(null);
+      setCursor(DEFAULT_CURSOR);
+    });
+    export.setOnMouseClicked(event -> {
+      SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.click);
+      new DeckExporter(deck).export();
+    });
 
-        add(deckName, 5, 0, 4, 2);
-        if (deck.isValid()) {
-            ImageView valid = ImageLoader.makeImageView(checkIcon, ICON_SIZE, ICON_SIZE);
-            add(valid, 12, 0, 1, 2);
-        }
+    add(deckName, 5, 0, 4, 2);
+    if (deck.isValid()) {
+      ImageView valid = ImageLoader.makeImageView(checkIcon, ICON_SIZE, ICON_SIZE);
+      add(valid, 12, 0, 1, 2);
+    }
 
-        if (deck.isMain()) {
-            ImageView main = ImageLoader.makeImageView(mainIcon, ICON_SIZE, ICON_SIZE);
-            add(main, 12, 2, 1, 1);
-        } else {
-            ImageView disableMain = ImageLoader.makeImageView(disableMainIcon, ICON_SIZE, ICON_SIZE);
-            add(disableMain, 12, 2, 1, 1);
+    if (deck.isMain()) {
+      ImageView main = ImageLoader.makeImageView(mainIcon, ICON_SIZE, ICON_SIZE);
+      add(main, 12, 2, 1, 1);
+    } else {
+      ImageView disableMain = ImageLoader.makeImageView(disableMainIcon, ICON_SIZE, ICON_SIZE);
+      add(disableMain, 12, 2, 1, 1);
 
-            disableMain.setOnMouseEntered(event -> {
-                disableMain.setEffect(new ColorAdjust(0, 0.5, 0, 0));
-                SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
-                setCursor(SELECT_CURSOR);
-            });
-            disableMain.setOnMouseExited(event -> {
-                disableMain.setEffect(null);
-                setCursor(DEFAULT_CURSOR);
-            });
-            disableMain.setOnMouseClicked(event -> {
-                SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.click);
-                CollectionMenuController.getInstance().selectDeck(deck.getName());
-            });
-        }
+      disableMain.setOnMouseEntered(event -> {
+        disableMain.setEffect(new ColorAdjust(0, 0.5, 0, 0));
+        SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
+        setCursor(SELECT_CURSOR);
+      });
+      disableMain.setOnMouseExited(event -> {
+        disableMain.setEffect(null);
+        setCursor(DEFAULT_CURSOR);
+      });
+      disableMain.setOnMouseClicked(event -> {
+        SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.click);
+        CollectionMenuController.getInstance().selectDeck(deck.getName());
+      });
+    }
 
-        add(heroNumber, 5, 2, 2, 1);
-        add(cardsNumber, 8, 2);
+    add(heroNumber, 5, 2, 2, 1);
+    add(cardsNumber, 8, 2);
 
-        add(factions, 10, 3);
+    add(factions, 10, 3);
 
-        add(modify, 0, 0);
-        add(remove, 0, 1);
-        add(export, 0, 2);
+    add(modify, 0, 0);
+    add(remove, 0, 1);
+    add(export, 0, 2);
 
-        setOnMouseEntered(event -> setBackground(HOVER_BACKGROUND));
-        setOnMouseExited(event -> setBackground(DEFAULT_BACKGROUND));
+    setOnMouseEntered(event -> setBackground(HOVER_BACKGROUND));
+    setOnMouseExited(event -> setBackground(DEFAULT_BACKGROUND));
   }
 
   private Font getFont(String name) {

@@ -4,42 +4,44 @@ import java.util.*;
 
 public class BaseDeck<CardType extends Card> {
 
-    private final int MIN_DECK_SIZE = 5;
-    private final int MAX_DECK_SIZE = 40;
+  private final int MIN_DECK_SIZE = 5;
+  private final int MAX_DECK_SIZE = 40;
 
-    protected String deckName;
-    protected CardType hero;
-    protected ArrayList<CardType> cards = new ArrayList<>();
-    protected Map<String, Integer> factions = new HashMap<>();
+  protected String deckName;
+  protected CardType hero;
+  protected ArrayList<CardType> cards = new ArrayList<>();
+  protected Map<String, Integer> factions = new HashMap<>();
 
-    public BaseDeck(String deckName) {
-        this.deckName = deckName;
-    }
+  public BaseDeck(String deckName) {
+    this.deckName = deckName;
+  }
 
-    public BaseDeck(String deckName, CardType hero, ArrayList<CardType> cards) {
-        this.deckName = deckName;
-        this.hero = hero;
-        for (CardType card : cards) {
-            //noinspection unchecked //I belive this is redundant as CardType extends Card.
-            this.cards.add((CardType) new Card(card));
-            this.factions.merge(card.getFaction(), 1, Integer::sum);
-        }
-    }
-
-
-    public String getName() {
-        return deckName;
+  public BaseDeck(String deckName, CardType hero, ArrayList<CardType> cards) {
+    this.deckName = deckName;
+    this.hero = hero;
+    for (CardType card : cards) {
+      // noinspection unchecked //I belive this is redundant as CardType extends Card.
+      this.cards.add((CardType) new Card(card));
+      this.factions.merge(card.getFaction(), 1, Integer::sum);
     }
   }
-    public CardType getHero() {
-        return hero;
-    }
 
-    public Map<String, Integer> getFactionList() { return factions;}
 
-    public List<CardType> getCards() {
-        return Collections.unmodifiableList(cards);
-    }
+  public String getName() {
+    return deckName;
+  }
+
+  public CardType getHero() {
+    return hero;
+  }
+
+  public Map<String, Integer> getFactionList() {
+    return factions;
+  }
+
+  public List<CardType> getCards() {
+    return Collections.unmodifiableList(cards);
+  }
 
   public CardType getCard(String cardName) {
     if (this.hero != null && hero.isSameAs(cardName))

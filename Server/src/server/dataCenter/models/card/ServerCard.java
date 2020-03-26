@@ -13,8 +13,11 @@ import java.util.ArrayList;
 
 public class ServerCard extends Card {
 
-  public ServerCard(String name, String cardId, String faction, String description, String spriteName, CardType type, ArrayList<Spell> spells, int defaultAp, int defaultHp, int manaCost, int price, AttackType attackType, int range) {
-    super(name, cardId, faction, description, spriteName, type, spells, defaultAp, defaultHp, manaCost, price, attackType, range);
+  public ServerCard(String name, String cardId, String faction, String description,
+      String spriteName, CardType type, ArrayList<Spell> spells, int defaultAp, int defaultHp,
+      int manaCost, int price, AttackType attackType, int range) {
+    super(name, cardId, faction, description, spriteName, type, spells, defaultAp, defaultHp,
+        manaCost, price, attackType, range);
   }
 
   public ServerCard(Card referenceCard, String username, int number) {
