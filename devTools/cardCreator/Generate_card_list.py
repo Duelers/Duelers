@@ -33,7 +33,7 @@ def main():
     print("Creating pandas dataframe")
     db_tmp = pd.DataFrame(dict_of_cards).T
 
-    card_database = pd.DataFrame(db_tmp, columns = ["type", "name", "description", "defaultAp", "defaultHp", "manaCost", "spriteName", "fxName"])
+    card_database = pd.DataFrame(db_tmp, columns = ["type", "name", "description", "defaultAp", "defaultHp", "manaCost", "spriteName"])
     card_database.rename(columns={'defaultAp':'attack','defaultHp':'health','manaCost':'cost'}, inplace=True)
 
     card_database.fillna("n/a", inplace=True)
