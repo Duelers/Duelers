@@ -1,6 +1,6 @@
 package org.projectcardboard.client.models.message;
 
-import org.projectcardboard.client.models.account.AccountType;
+import shared.models.account.AccountType;
 
 public class ChangeAccountType {
     private final String username;

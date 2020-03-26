@@ -39,7 +39,7 @@ public class Constants {
 
     static final Color ENEMY_UNIT = Color.rgb(255, 0, 44, 0.4);
 
-    static final Color SPELL_COLOR = Color.rgb(81, 25, 0, 0.8);
+    static final Color SPELL_COLOR = Color.rgb(225, 210, 25, 1);
 
     static final Color defaultColor = Color.rgb(20, 255, 255, 0.5);
 

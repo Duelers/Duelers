@@ -2,27 +2,19 @@ package org.projectcardboard.client.models.account;
 
 import org.projectcardboard.client.models.card.Deck;
 import org.projectcardboard.client.models.card.TempDeck;
+import shared.models.account.AccountType;
+import shared.models.account.BaseAccount;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class Account {
-    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
-    private String username;
-    private String password;
-    private AccountType accountType;
-    private Collection collection;
-    private List<Deck> decks = new ArrayList<>();
-    private Deck mainDeck;
-    private List<MatchHistory> matchHistories;
+public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
+    private transient final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public Account(TempAccount account) {
-        this.username = account.getUsername();
-        this.password = account.getPassword();
-        this.collection = account.getCollection();
+        super(account.getUsername(), account.getPassword(), account.getCollection(), account.getAccountType());
         if (account.getDecks() != null) {
             for (TempDeck deck : account.getDecks()) {
                 this.decks.add(new Deck(deck, collection));
@@ -30,8 +22,8 @@ public class Account {
         }
         this.matchHistories = account.getMatchHistories();
         this.mainDeck = getDeck(account.getMainDeckName());
-        this.accountType = account.getAccountType();
     }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -44,36 +36,11 @@ public class Account {
         return this.username.equals(account.username);
     }
 
-    public String getUsername() {
-        return this.username;
-    }
-
-    public Collection getCollection() {
-        return this.collection;
-    }
-
-    public List<Deck> getDecks() {
-        return Collections.unmodifiableList(decks);
-    }
-
-    public List<MatchHistory> getMatchHistories() {
-        return Collections.unmodifiableList(matchHistories);
-    }
-
-    public Deck getDeck(String deckName) {
-        for (Deck deck : decks) {
-            if (deck.hasName(deckName)) {
-                return deck;
-            }
-        }
-        return null;
-    }
-
     public boolean isMainDeck(Deck deck) {
         return deck.equals(this.mainDeck);
     }
 
-    public void update(TempAccount account) {
+    public void update(TempAccount account) { //Todo this stops all fields from being final. It should make a new account instead.
         if (!username.equals(account.getUsername())) {
             String old = username;
             username = account.getUsername();
@@ -111,6 +78,14 @@ public class Account {
         accountType = account.getAccountType();
     }
 
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener pcl) {
+        support.removePropertyChangeListener(pcl);
+    }
+
     private boolean mainDecksEqual(TempAccount account) {
         return (
                 (mainDeck == null && account.getMainDeckName() == null) ||
@@ -125,17 +100,5 @@ public class Account {
             if (!this.decks.contains(deck)) return false;
         }
         return true;
-    }
-
-    public void addPropertyChangeListener(PropertyChangeListener pcl) {
-        support.addPropertyChangeListener(pcl);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener pcl) {
-        support.removePropertyChangeListener(pcl);
-    }
-
-    public AccountType getAccountType() {
-        return accountType;
     }
 }

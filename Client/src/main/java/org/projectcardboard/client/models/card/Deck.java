@@ -49,11 +49,6 @@ public class Deck extends BaseDeck<Card> {
         return false;
     }
 
-
-    public boolean hasName(String deckName) {
-        return this.deckName.equalsIgnoreCase(deckName);
-    }
-
     public boolean isMain() {
         return Client.getInstance().getAccount().isMainDeck(this);
     }

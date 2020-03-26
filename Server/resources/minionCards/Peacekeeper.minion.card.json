@@ -1,16 +1,16 @@
 {
-  "name": "Azure Horn Shaman",
-  "description": "Dying Wish: Give +4 health to friendly minions around it.",
-  "cardId": "AzureHornShaman",
-  "spriteName": "neutral_mercazurehorn",
+  "name": "Peacekeeper",
+  "description": "Celerity, Airdrop, Provoke\n After attacking, deal 6 damage to all surrounding enemies",
+  "cardId": "Peacekeeper",
+  "spriteName": "f1_peacekeeper",
   "type": "MINION",
-  "spells": [
+    "spells": [ 
     {
-      "spellId": "+4_hp_on_death",
+      "spellId": "dmg_on_atk",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": 4,
+        "hpChange": -6,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -39,12 +39,12 @@
           "column": 3
         },
         "owner": {
-          "own": true,
-          "enemy": false
+          "own": false,
+          "enemy": true
         },
         "cardType": {
           "cell": false,
-          "hero": false,
+          "hero": true,
           "minion": true,
           "player": false
         },
@@ -55,16 +55,16 @@
         }
       },
       "availabilityType": {
-        "onDeath": true,
+        "onAttack": true
       },
       "coolDown": 0,
       "manaCost": 0,
       "lastTurnUsed": 0
-    },
+    }
   ],
-  "defaultAp": 1,
-  "defaultHp": 4,
-  "manaCost": 2,
+  "defaultAp": 6,
+  "defaultHp": 6,
+  "manaCost": 8,
   "price": 100,
   "attackType": "MELEE",
   "range": 0,
