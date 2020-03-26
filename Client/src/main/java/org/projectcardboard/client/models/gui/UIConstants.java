@@ -22,8 +22,8 @@ public class UIConstants {
                     Color.rgb(44, 33, 129), CornerRadii.EMPTY, Insets.EMPTY
             )
     );
-    private static final double DEFAULT_SCREEN_WIDTH = Double.parseDouble(Config.getInstance().getProperty("SCREEN_WIDTH"));
-    private static final double DEFAULT_SCREEN_HEIGHT = Double.parseDouble(Config.getInstance().getProperty("SCREEN_HEIGHT"));
+    private static final double CONFIG_SCREEN_WIDTH = Double.parseDouble(Config.getInstance().getProperty("SCREEN_WIDTH"));
+    private static final double CONFIG_SCREEN_HEIGHT = Double.parseDouble(Config.getInstance().getProperty("SCREEN_HEIGHT"));
     private static final double DEFAULT_SCENE_WIDTH = 3636;
     private static final double DEFAULT_SCENE_HEIGHT = 2045;
     public static final double SCALE = Math.min(
