@@ -2,6 +2,7 @@
   "name": "Spiral Technique",
   "description": "Deal 8 damage to anything",
   "cardId": "SpiralTechnique",
+  "faction": "songhai",
   "spriteName": "icon_f2_spiraltechnique",
   "type": "SPELL",
   "spells": [
