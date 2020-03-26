@@ -1963,6 +1963,7 @@
                 "spells": [
                     {
                         "spellId": "restore_4_to_general",
+                        "fxName": "fx_heal",
                         "action": {
                             "hpChange": 4,
                             "durable": true,
@@ -2008,6 +2009,7 @@
                 "spells": [
                     {
                         "spellId": "restore_4_to_general",
+                        "fxName": "fx_heal",
                         "action": {
                             "hpChange": 4,
                             "durable": true,
@@ -2053,6 +2055,7 @@
                 "spells": [
                     {
                         "spellId": "restore_4_to_general",
+                        "fxName": "fx_heal",
                         "action": {
                             "hpChange": 4,
                             "durable": true,
