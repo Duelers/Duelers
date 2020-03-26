@@ -38,7 +38,7 @@ def main():
 
     card_database.fillna("n/a", inplace=True)
     card_database.set_index(['type', "name"], inplace=True)
-    card_database.sort_values(by=['faction', 'type', "name"])
+    card_database.sort_values(by=['faction','type',"name"], inplace=True)
 
     print("Saving dataframe to csv")
     card_database.to_csv(OUTPUT_FILEPATH)
