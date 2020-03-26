@@ -3184,6 +3184,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3262,6 +3263,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3340,6 +3342,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3514,6 +3517,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3587,6 +3591,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3660,6 +3665,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3778,6 +3784,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3856,6 +3863,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3934,6 +3942,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -4691,6 +4700,60 @@
                 "remainingNumber": 20
             },
             {
+                "name": "Scarlet Viper",
+                "description": "Flying, Backstab: (4)",
+                "cardId": "duelyst_ScarletViper_1",
+                "spriteName": "f2_support",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 5,
+                "manaCost": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 4,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Scarlet Viper",
+                "description": "Flying, Backstab: (4)",
+                "cardId": "duelyst_ScarletViper_2",
+                "spriteName": "f2_support",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 5,
+                "manaCost": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 4,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Scarlet Viper",
+                "description": "Flying, Backstab: (4)",
+                "cardId": "duelyst_ScarletViper_3",
+                "spriteName": "f2_support",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 5,
+                "manaCost": 5,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 4,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
                 "name": "Sellsoul",
                 "description": "Dying Wish: Deal 4 damage to YOUR General.",
                 "cardId": "duelyst_Sellsoul_1",
@@ -4834,6 +4897,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -4912,6 +4976,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -4990,6 +5055,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5716,6 +5782,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5794,6 +5861,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5872,6 +5940,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
+                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
