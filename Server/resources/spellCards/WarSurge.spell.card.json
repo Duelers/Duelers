@@ -7,6 +7,7 @@
   "spells": [
     {
       "spellId": "give_friendly_minions_1_1",
+      "fxName": "fx_f1_warsurge",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 1,
