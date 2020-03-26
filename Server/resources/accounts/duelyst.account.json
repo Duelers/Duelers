@@ -1963,6 +1963,7 @@
                 "spells": [
                     {
                         "spellId": "restore_4_to_general",
+                        "fxName": "fx_heal",
                         "action": {
                             "hpChange": 4,
                             "durable": true,
@@ -2008,6 +2009,7 @@
                 "spells": [
                     {
                         "spellId": "restore_4_to_general",
+                        "fxName": "fx_heal",
                         "action": {
                             "hpChange": 4,
                             "durable": true,
@@ -2053,6 +2055,7 @@
                 "spells": [
                     {
                         "spellId": "restore_4_to_general",
+                        "fxName": "fx_heal",
                         "action": {
                             "hpChange": 4,
                             "durable": true,
@@ -2633,6 +2636,165 @@
                 "remainingNumber": 20
             },
             {
+                "name": "Gore Horn",
+                "description": "Backstab: (2)\n After this minion attacks, it gains +1/+1.",
+                "cardId": "duelyst_GoreHorn_1",
+                "spriteName": "f2_tank",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "stats_on_atk",
+                        "action": {
+                            "apChange": 1,
+                            "hpChange": 1,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 3,
+                "defaultHp": 3,
+                "manaCost": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 2,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Gore Horn",
+                "description": "Backstab: (2)\n After this minion attacks, it gains +1/+1.",
+                "cardId": "duelyst_GoreHorn_2",
+                "spriteName": "f2_tank",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "stats_on_atk",
+                        "action": {
+                            "apChange": 1,
+                            "hpChange": 1,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 3,
+                "defaultHp": 3,
+                "manaCost": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 2,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Gore Horn",
+                "description": "Backstab: (2)\n After this minion attacks, it gains +1/+1.",
+                "cardId": "duelyst_GoreHorn_3",
+                "spriteName": "f2_tank",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "stats_on_atk",
+                        "action": {
+                            "apChange": 1,
+                            "hpChange": 1,
+                            "durable": true,
+                            "duration": 1
+                        },
+                        "target": {
+                            "isRelatedToCardOwnerPosition": true,
+                            "dimensions": {
+                                "row": 1,
+                                "column": 1
+                            },
+                            "owner": {
+                                "own": true,
+                                "enemy": false
+                            },
+                            "cardType": {
+                                "minion": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 3,
+                "defaultHp": 3,
+                "manaCost": 3,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 2,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
                 "name": "Hailstone Golem",
                 "description": "Golem",
                 "cardId": "duelyst_HailstoneGolem_1",
@@ -2673,6 +2835,150 @@
                 "manaCost": 4,
                 "price": 100,
                 "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Hashishi",
+                "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
+                "cardId": "duelyst_Hashishi_1",
+                "spriteName": "f2_buildcommon",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "draw_1_on_atk",
+                        "action": {
+                            "cardDraw": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 1,
+                "defaultHp": 1,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 1,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Hashishi",
+                "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
+                "cardId": "duelyst_Hashishi_2",
+                "spriteName": "f2_buildcommon",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "draw_1_on_atk",
+                        "action": {
+                            "cardDraw": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 1,
+                "defaultHp": 1,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 1,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Hashishi",
+                "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
+                "cardId": "duelyst_Hashishi_3",
+                "spriteName": "f2_buildcommon",
+                "type": "MINION",
+                "spells": [
+                    {
+                        "spellId": "draw_1_on_atk",
+                        "action": {
+                            "cardDraw": 1
+                        },
+                        "target": {
+                            "dimensions": {
+                                "row": 20,
+                                "column": 20
+                            },
+                            "owner": {
+                                "own": true
+                            },
+                            "cardType": {
+                                "player": true
+                            },
+                            "attackType": {
+                                "melee": true,
+                                "ranged": true,
+                                "hybrid": true
+                            }
+                        },
+                        "availabilityType": {
+                            "onAttack": true
+                        },
+                        "coolDown": 0,
+                        "manaCost": 0,
+                        "lastTurnUsed": 0
+                    }
+                ],
+                "defaultAp": 1,
+                "defaultHp": 1,
+                "manaCost": 6,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 1,
                 "range": 0,
                 "hasCombo": false,
                 "remainingNumber": 20
@@ -2721,6 +3027,60 @@
                 "manaCost": 5,
                 "price": 100,
                 "attackType": "MELEE",
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Kaido Assassin",
+                "description": "Backstab: (1)",
+                "cardId": "duelyst_KaidoAssassin_1",
+                "spriteName": "f2_melee",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 3,
+                "manaCost": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 1,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Kaido Assassin",
+                "description": "Backstab: (1)",
+                "cardId": "duelyst_KaidoAssassin_2",
+                "spriteName": "f2_melee",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 3,
+                "manaCost": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 1,
+                "range": 0,
+                "hasCombo": false,
+                "remainingNumber": 20
+            },
+            {
+                "name": "Kaido Assassin",
+                "description": "Backstab: (1)",
+                "cardId": "duelyst_KaidoAssassin_3",
+                "spriteName": "f2_melee",
+                "type": "MINION",
+                "spells": [],
+                "defaultAp": 2,
+                "defaultHp": 3,
+                "manaCost": 2,
+                "price": 100,
+                "attackType": "MELEE",
+                "hasBackstab": true,
+                "backstab": 1,
                 "range": 0,
                 "hasCombo": false,
                 "remainingNumber": 20
@@ -5733,6 +6093,7 @@
                 "spells": [
                     {
                         "spellId": "_1_atk",
+                        "fxName": "fx_martyrdom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -5810,6 +6171,7 @@
                 "spells": [
                     {
                         "spellId": "_1_atk",
+                        "fxName": "fx_martyrdom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -5887,6 +6249,7 @@
                 "spells": [
                     {
                         "spellId": "_1_atk",
+                        "fxName": "fx_martyrdom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -5964,6 +6327,7 @@
                 "spells": [
                     {
                         "spellId": "give_3_health",
+                        "fxName": "fx_f1_aurynnexus",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6041,6 +6405,7 @@
                 "spells": [
                     {
                         "spellId": "give_3_health",
+                        "fxName": "fx_f1_aurynnexus",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6118,6 +6483,7 @@
                 "spells": [
                     {
                         "spellId": "give_3_health",
+                        "fxName": "fx_f1_aurynnexus",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6195,6 +6561,7 @@
                 "spells": [
                     {
                         "spellId": "stun",
+                        "fxName": "fx_explosionorangesmoke",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6272,6 +6639,7 @@
                 "spells": [
                     {
                         "spellId": "stun",
+                        "fxName": "fx_explosionorangesmoke",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6349,6 +6717,7 @@
                 "spells": [
                     {
                         "spellId": "stun",
+                        "fxName": "fx_explosionorangesmoke",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6426,6 +6795,7 @@
                 "spells": [
                     {
                         "spellId": "sub_2",
+                        "fxName": "fx_bloodground",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6566,6 +6936,7 @@
                 "spells": [
                     {
                         "spellId": "sub_2",
+                        "fxName": "fx_bloodground",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6706,6 +7077,7 @@
                 "spells": [
                     {
                         "spellId": "sub_2",
+                        "fxName": "fx_bloodground",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6846,6 +7218,7 @@
                 "spells": [
                     {
                         "spellId": "destroy_all_minions",
+                        "fxName": "f3_fx_circleofdessication",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6923,6 +7296,7 @@
                 "spells": [
                     {
                         "spellId": "destroy_all_minions",
+                        "fxName": "f3_fx_circleofdessication",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7000,6 +7374,7 @@
                 "spells": [
                     {
                         "spellId": "destroy_all_minions",
+                        "fxName": "f3_fx_circleofdessication",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7077,6 +7452,7 @@
                 "spells": [
                     {
                         "spellId": "deal_5_to_minion",
+                        "fxName": "fx_f1_circlelife",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7184,6 +7560,7 @@
                 "spells": [
                     {
                         "spellId": "deal_5_to_minion",
+                        "fxName": "fx_f1_circlelife",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7291,6 +7668,7 @@
                 "spells": [
                     {
                         "spellId": "deal_5_to_minion",
+                        "fxName": "fx_f1_circlelife",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7398,6 +7776,7 @@
                 "spells": [
                     {
                         "spellId": "destroy target",
+                        "fxName": "fx_f4_darkfiretransformation",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7475,6 +7854,7 @@
                 "spells": [
                     {
                         "spellId": "destroy target",
+                        "fxName": "fx_f4_darkfiretransformation",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7552,6 +7932,7 @@
                 "spells": [
                     {
                         "spellId": "destroy target",
+                        "fxName": "fx_f4_darkfiretransformation",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7629,6 +8010,7 @@
                 "spells": [
                     {
                         "spellId": "doom",
+                        "fxName": "fx_f4_doom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7706,6 +8088,7 @@
                 "spells": [
                     {
                         "spellId": "doom",
+                        "fxName": "fx_f4_doom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7783,6 +8166,7 @@
                 "spells": [
                     {
                         "spellId": "doom",
+                        "fxName": "fx_f4_doom",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -7860,6 +8244,7 @@
                 "spells": [
                     {
                         "spellId": "deal_4_to_minion",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -7892,6 +8277,7 @@
                     },
                     {
                         "spellId": "deal_4_to_general",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -7937,6 +8323,7 @@
                 "spells": [
                     {
                         "spellId": "deal_4_to_minion",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -7969,6 +8356,7 @@
                     },
                     {
                         "spellId": "deal_4_to_general",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -8014,6 +8402,7 @@
                 "spells": [
                     {
                         "spellId": "deal_4_to_minion",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -8046,6 +8435,7 @@
                     },
                     {
                         "spellId": "deal_4_to_general",
+                        "fxName": "fx_explosionblueelectrical",
                         "action": {
                             "hpChange": -4,
                             "durable": true,
@@ -8091,6 +8481,7 @@
                 "spells": [
                     {
                         "spellId": "8_health_self",
+                        "fxName": "fx_f5_earthsphere",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8168,6 +8559,7 @@
                 "spells": [
                     {
                         "spellId": "8_health_self",
+                        "fxName": "fx_f5_earthsphere",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8245,6 +8637,7 @@
                 "spells": [
                     {
                         "spellId": "8_health_self",
+                        "fxName": "fx_f5_earthsphere",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8322,6 +8715,7 @@
                 "spells": [
                     {
                         "spellId": "deal_8_dmg_everything",
+                        "fxName": "f5_fx_flamingstampede",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8399,6 +8793,7 @@
                 "spells": [
                     {
                         "spellId": "deal_8_dmg_everything",
+                        "fxName": "f5_fx_flamingstampede",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8476,6 +8871,7 @@
                 "spells": [
                     {
                         "spellId": "deal_8_dmg_everything",
+                        "fxName": "f5_fx_flamingstampede",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8553,6 +8949,7 @@
                 "spells": [
                     {
                         "spellId": "deal_3_dmg_everything",
+                        "fxName": "fx_f6_cryogenesis",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8630,6 +9027,7 @@
                 "spells": [
                     {
                         "spellId": "deal_3_dmg_everything",
+                        "fxName": "fx_f6_cryogenesis",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8707,6 +9105,7 @@
                 "spells": [
                     {
                         "spellId": "deal_3_dmg_everything",
+                        "fxName": "fx_f6_cryogenesis",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8784,6 +9183,7 @@
                 "spells": [
                     {
                         "spellId": "deal_1_dmg_everything",
+                        "fxName": "fx_collisionsparkred",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8861,6 +9261,7 @@
                 "spells": [
                     {
                         "spellId": "deal_1_dmg_everything",
+                        "fxName": "fx_collisionsparkred",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -8938,6 +9339,7 @@
                 "spells": [
                     {
                         "spellId": "deal_1_dmg_everything",
+                        "fxName": "fx_collisionsparkred",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -9015,6 +9417,7 @@
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f5_kinectequilibrium",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -9076,6 +9479,7 @@
                     },
                     {
                         "spellId": "2_atk_self",
+                        "fxName": "fx_buff",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 2,
@@ -9153,6 +9557,7 @@
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f5_kinectequilibrium",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -9214,6 +9619,7 @@
                     },
                     {
                         "spellId": "2_atk_self",
+                        "fxName": "fx_buff",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 2,
@@ -9291,6 +9697,7 @@
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f5_kinectequilibrium",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -9352,6 +9759,7 @@
                     },
                     {
                         "spellId": "2_atk_self",
+                        "fxName": "fx_buff",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 2,
@@ -9429,6 +9837,7 @@
                 "spells": [
                     {
                         "spellId": "deal_3_to_anything",
+                        "fxName": "fx_f2_phoenixfire",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -9506,6 +9915,7 @@
                 "spells": [
                     {
                         "spellId": "deal_3_to_anything",
+                        "fxName": "fx_f2_phoenixfire",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -9583,6 +9993,7 @@
                 "spells": [
                     {
                         "spellId": "deal_3_to_anything",
+                        "fxName": "fx_f2_phoenixfire",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -9660,6 +10071,7 @@
                 "spells": [
                     {
                         "spellId": "give_3_attack_this_turn",
+                        "fxName": "fx_f2_saberspineseal",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 3,
@@ -9720,6 +10132,7 @@
                 "spells": [
                     {
                         "spellId": "give_3_attack_this_turn",
+                        "fxName": "fx_f2_saberspineseal",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 3,
@@ -9780,6 +10193,7 @@
                 "spells": [
                     {
                         "spellId": "give_3_attack_this_turn",
+                        "fxName": "fx_f2_saberspineseal",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 3,
@@ -9840,6 +10254,7 @@
                 "spells": [
                     {
                         "spellId": "give_1_1_and_draw_1",
+                        "fxName": "fx_f3_scionsfirstwish",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -9918,6 +10333,7 @@
                 "spells": [
                     {
                         "spellId": "give_1_1_and_draw_1",
+                        "fxName": "fx_f3_scionsfirstwish",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -9996,6 +10412,7 @@
                 "spells": [
                     {
                         "spellId": "give_1_1_and_draw_1",
+                        "fxName": "fx_f3_scionsfirstwish",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -10074,6 +10491,7 @@
                 "spells": [
                     {
                         "spellId": "Give_5_atk_to_friendly_minion",
+                        "fxName": "fx_f4_shadowreflection",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 5,
@@ -10151,6 +10569,7 @@
                 "spells": [
                     {
                         "spellId": "Give_5_atk_to_friendly_minion",
+                        "fxName": "fx_f4_shadowreflection",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 5,
@@ -10228,6 +10647,7 @@
                 "spells": [
                     {
                         "spellId": "Give_5_atk_to_friendly_minion",
+                        "fxName": "fx_f4_shadowreflection",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 5,
@@ -10305,6 +10725,7 @@
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_2attack_this_turn",
+                        "fxName": "fx_f4_soulshatterpact",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 2,
@@ -10382,6 +10803,7 @@
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_2attack_this_turn",
+                        "fxName": "fx_f4_soulshatterpact",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 2,
@@ -10459,6 +10881,7 @@
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_2attack_this_turn",
+                        "fxName": "fx_f4_soulshatterpact",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 2,
@@ -10536,6 +10959,7 @@
                 "spells": [
                     {
                         "spellId": "deal_8_to_anything",
+                        "fxName": "fx_f2_spiraltechnique02",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10613,6 +11037,7 @@
                 "spells": [
                     {
                         "spellId": "deal_8_to_anything",
+                        "fxName": "fx_f2_spiraltechnique02",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10690,6 +11115,7 @@
                 "spells": [
                     {
                         "spellId": "deal_8_to_anything",
+                        "fxName": "fx_f2_spiraltechnique02",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10767,6 +11193,7 @@
                 "spells": [
                     {
                         "spellId": "deal_2_dmg_everything",
+                        "fxName": "fx_heavenlystrike",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10844,6 +11271,7 @@
                 "spells": [
                     {
                         "spellId": "deal_2_dmg_everything",
+                        "fxName": "fx_heavenlystrike",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10921,6 +11349,7 @@
                 "spells": [
                     {
                         "spellId": "deal_2_dmg_everything",
+                        "fxName": "fx_heavenlystrike",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -10998,6 +11427,7 @@
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -11059,6 +11489,7 @@
                     },
                     {
                         "spellId": "health_self",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -11136,6 +11567,7 @@
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -11197,6 +11629,7 @@
                     },
                     {
                         "spellId": "health_self",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -11274,6 +11707,7 @@
                 "spells": [
                     {
                         "spellId": "2_damage",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -11335,6 +11769,7 @@
                     },
                     {
                         "spellId": "health_self",
+                        "fxName": "fx_f4_voidpulse",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -11412,6 +11847,7 @@
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_1_1",
+                        "fxName": "fx_f1_warsurge",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -11489,6 +11925,7 @@
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_1_1",
+                        "fxName": "fx_f1_warsurge",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,
@@ -11566,6 +12003,7 @@
                 "spells": [
                     {
                         "spellId": "give_friendly_minions_1_1",
+                        "fxName": "fx_f1_warsurge",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 1,

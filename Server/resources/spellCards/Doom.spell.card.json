@@ -7,6 +7,7 @@
   "spells": [
     {
       "spellId": "doom",
+      "fxName": "fx_f4_doom",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
