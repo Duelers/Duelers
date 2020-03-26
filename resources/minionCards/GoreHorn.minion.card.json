@@ -2,9 +2,9 @@
   "name": "Gore Horn",
   "description": "Backstab: (2)\n After this minion attacks, it gains +1/+1.",
   "cardId": "GoreHorn",
-  "spriteName": "",
+  "spriteName": "f2_tank",
   "type": "MINION",
-  "spells": [ 
+  "spells": [  
     {
       "spellId": "stats_on_atk",
       "action": {
@@ -14,12 +14,14 @@
 		"duration": 1
       },
       "target": {
+	    "isRelatedToCardOwnerPosition": true,
 		"dimensions": {
           "row": 1,
           "column": 1
         },
         "owner": {
-          "own": true
+          "own": true,
+		  "enemy": false
         },
         "cardType": {
           "minion": true
