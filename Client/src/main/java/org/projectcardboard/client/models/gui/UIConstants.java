@@ -14,7 +14,6 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Screen;
 
 public class UIConstants {
     public static final Background DEFAULT_ROOT_BACKGROUND = new Background(
