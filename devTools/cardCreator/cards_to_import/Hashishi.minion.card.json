@@ -2,7 +2,7 @@
     "name": "Hashishi",
     "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
     "cardId": "Hashishi",
-	"faction": "songhai",
+	"faction": "mercenary",
     "spriteName": "f2_buildcommon",
     "type": "MINION",
     "spells": [{

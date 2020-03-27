@@ -5,8 +5,6 @@ public interface ICard {
 
   String getName();
 
-  String getFaction();
-
   String getSpriteName();
 
   int getDefaultAp();

@@ -1,5 +1,4 @@
 type,name,description,attack,health,cost,spriteName,faction
-HERO,Lilithe Blightchaser,Abyssian General,2,25,0,f4_general,abyssian
 MINION,Spectral Revenant,"Rush 
  After attacking or counterattacking deal 4 damage to the enemy General",6,6,9,f4_daemonvoid,abyssian
 SPELL,Dark Destruction,Destroy target enemy minion.,0,0,5,icon_f4_darktransformation,abyssian
@@ -31,9 +30,6 @@ SPELL,Arms Race,Both Generals gain +1 attack,0,0,1,icon_f1_enthrall,magmar
 SPELL,Earth Sphere,Add 8 Health to your general.,0,0,4,icon_f5_earthsphere,magmar
 SPELL,Flaming Stampede,Deal 8 Damage to ALL characters,0,0,8,icon_f5_flamingstampede,magmar
 SPELL,Kinetic Equilibrium,Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack,0,0,3,icon_f5_kineticequilibrium,magmar
-HERO,Calibero,Mercenary General,3,30,0,f1_caliber-o,mercenary
-HERO,Good Boi,"Mercenary General
-Range: (2)",2,20,0,f2_general_skindogehai,mercenary
 MINION,Azure Herald,Opening Gambit: Add 3 Health to your General,1,4,2,neutral_azureherald,mercenary
 MINION,Azure Horn Shaman,Dying Wish: Give +4 health to friendly minions around it.,1,4,2,neutral_mercazurehorn,mercenary
 MINION,Beastbound Savage,"Celerity.
@@ -42,13 +38,15 @@ MINION,Blistering Skorn,Opening Gambit: Deal 1 damage to everything (including i
 MINION,Bloodshard Golem,Golem,4,3,3,neutral_golembloodshard,mercenary
 MINION,Brightmoss Golem,Golem,4,9,5,neutral_golemnature,mercenary
 MINION,Dagger Kiri,Celerity,2,8,5,neutral_mercdaggerkiri,mercenary
-MINION,Dragonlark,"Flying, Ranged: (2)",2,1,1,neutral_monsterdragonhawk,mercenary
+MINION,Dragonlark,"Flying, Ranged (2)",2,1,1,neutral_monsterdragonhawk,mercenary
 MINION,Drybone Golem,Golem,10,10,7,neutral_golemdragonbone,mercenary
 MINION,Emberwyrm,Flying,10,7,7,neutral_veteranflamewing,mercenary
 MINION,Emerald Rejuvenator,Opening Gambit: Give 4 Health to your General.,4,4,4,neutral_rejuvenator,mercenary
 MINION,Flameblood Warlock,Opening Gambit: Deal 3 damage to both generals,3,1,2,neutral_mercflamebloodwarlock,mercenary
 MINION,Frostbone Naga,Opening Gambit: Deal 2 damage to everything around it,3,3,4,neutral_mercfrostbonenaga,mercenary
 MINION,Hailstone Golem,Golem,4,6,4,neutral_golemice,mercenary
+MINION,Hashishi,"Rush, Celerity, Backstab: (1)
+After attacking, draw a card",1,1,6,f2_buildcommon,mercenary
 MINION,Komodo Charger,,1,3,1,neutral_beastcavern,mercenary
 MINION,Mr Swampy,"Provoke, Flying",0,3,1,neutral_beastswamp,mercenary
 MINION,Piercing Mantis,"After attacking, deal 2 damage to all surrounding enemies",2,2,2,neutral_monstershreddingmantis,mercenary
@@ -72,8 +70,6 @@ HERO,Reva Eventide,Songhai General,2,25,0,f2_altgeneral,songhai
 MINION,Celestial Phantom,Destroy any enemy minion that Celestial Phantom attacks or counterattacks,1,5,3,f2_deathphantom,songhai
 MINION,Gore Horn,"Backstab: (2)
  After this minion attacks, it gains +1/+1.",3,3,3,f2_tank,songhai
-MINION,Hashishi,"Rush, Celerity, Backstab: (1)
-After attacking, draw a card",1,1,6,f2_buildcommon,songhai
 MINION,Kaido Assassin,Backstab: (1),2,3,2,f2_melee,songhai
 MINION,Katara,Backstab: (1),1,3,1,f2_katara,songhai
 MINION,Orizuru,Flying,3,4,3,f2_orizuru,songhai
@@ -86,7 +82,6 @@ SPELL,Spiral Technique,Deal 8 damage to anything,0,0,7,icon_f2_spiraltechnique,s
 HERO,Faie Bloodwing,Vanar General,2,25,0,f6_general,vanar
 MINION,Arctic Displacer,Airdrop,10,4,5,f6_snowwyvern,vanar
 SPELL,Frostburn,Deal 3 damage to all enemy minions,0,0,6,icon_f6_frostburn,vanar
-HERO,Zirix Starstrider,Vetruvian General,2,25,0,f3_general,vetruvian
 MINION,Aymara Healer,Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.,5,5,6,f3_aymarahealer,vetruvian
 SPELL,Burden of Knowledge,Deal 1 damage to your General. Draw a card,0,0,0,icon_f3_glimpse,vetruvian
 SPELL,Circle of Dessication,Destroy all minions.,0,0,8,icon_f3_circleofdessication,vetruvian

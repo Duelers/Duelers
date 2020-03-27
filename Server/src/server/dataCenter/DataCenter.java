@@ -242,6 +242,10 @@ public class DataCenter extends Thread {
   }
 
   public void buyCard(Message message) throws LogicException {
+
+    // System.out.println((message.getOtherFields().getCardName()));
+    // System.out.println( dataBase.getOriginalCards().toString() );
+
     loginCheck(message);
     Account account = clients.get(message.getSender());
     account.buyCard(message.getOtherFields().getCardName(), dataBase.getOriginalCards());

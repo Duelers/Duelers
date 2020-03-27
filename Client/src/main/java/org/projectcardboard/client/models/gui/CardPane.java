@@ -109,4 +109,58 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
       }
     }
   }
+
+  void setName(String newValue) {
+    detailBox.setName(newValue);
+  }
+
+  void setType(CardType newValue) {
+    background.changeType(newValue);
+    detailBox.setType(newValue);
+    switch (newValue) {
+      case HERO:
+        getChildren().remove(manaPane);
+        if (!getChildren().contains(apLabel)) {
+          getChildren().addAll(apLabel, hpLabel);
+        }
+        break;
+      case SPELL:
+        getChildren().removeAll(apLabel, hpLabel);
+        if (!getChildren().contains(manaPane)) {
+          getChildren().add(manaPane);
+        }
+        break;
+      case MINION:
+        if (!getChildren().contains(apLabel)) {
+          getChildren().addAll(apLabel, hpLabel);
+        }
+        if (!getChildren().contains(manaPane)) {
+          getChildren().add(manaPane);
+        }
+    }
+  }
+
+  void setDescription(String newValue) {
+    detailBox.setDescription(newValue);
+  }
+
+  void updateSprite() {
+    cardAnimation.setSprite(card);
+  }
+
+  void setDefaultAp(int newValue) {
+    apLabel.setText(String.valueOf(newValue));
+  }
+
+  void setDefaultHp(int newValue) {
+    hpLabel.setText(String.valueOf(newValue));
+  }
+
+  void setManaCost(int newValue) {
+    manaPane.setMana(newValue);
+  }
+
+  void setPrice(int newValue) {
+    priceBox.setPrice(newValue);
+  }
 }

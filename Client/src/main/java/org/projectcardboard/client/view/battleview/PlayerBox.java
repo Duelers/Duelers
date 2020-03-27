@@ -86,10 +86,6 @@ public class PlayerBox implements PropertyChangeListener {
     nameToPortrait.put("Vaath The Immortal", "/photo/general_portrait_image_hex_f5@2x.png");
     nameToPortrait.put("Argeon Highmayne", "/photo/general_portrait_image_hex_f1@2x.png");
     nameToPortrait.put("Faie Bloodwing", "/photo/general_portrait_image_hex_f6@2x.png");
-    nameToPortrait.put("Calibero", "/photo/general_portrait_image_hex_calibero@2x.png");
-    nameToPortrait.put("Lilithe Blightchaser", "/photo/general_portrait_image_hex_f4@2x.png");
-    nameToPortrait.put("Good Boi", "/photo/doghai_portrait@2x.png");
-    nameToPortrait.put("Zirix Starstrider", "/photo/general_portrait_image_hex_f3@2x.png");
 
     return nameToPortrait;
   }
@@ -145,7 +141,7 @@ public class PlayerBox implements PropertyChangeListener {
 
     String player2HeroName = player2.getHero().getCard().getName();
     Image player2Profile = new Image(this.getClass().getResourceAsStream(MapGeneralToPortrait()
-        .getOrDefault(player2HeroName, "/photo/general_portrait_image_hex_rook@2x.png")));
+        .getOrDefault(player2HeroName, "/photo/general_portrait_image_hex_calibero@2x.png")));
 
     player1Image = ImageLoader.makeImageView(player1Profile,
         player1Profile.getWidth() * SCALE * 0.3, player1Profile.getHeight() * SCALE * 0.3);
