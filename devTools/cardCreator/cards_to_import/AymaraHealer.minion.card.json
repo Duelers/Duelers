@@ -3,6 +3,7 @@
   "description": "Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
   "cardId": "AymaraHealer",
   "spriteName": "f3_aymarahealer",
+  "faction": "vetruvian",
   "type": "MINION",
   "spells": [
     {

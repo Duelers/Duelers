@@ -2,6 +2,7 @@
   "name": "Piercing Mantis",
   "description": "After attacking, deal 2 damage to all surrounding enemies",
   "cardId": "PiercingMantis",
+  "faction": "mercenary",
   "spriteName": "neutral_monstershreddingmantis",
   "type": "MINION",
   "spells": [

@@ -2,6 +2,7 @@
   "name": "Spectral Revenant",
   "description": "Rush \n After attacking or counterattacking deal 4 damage to the enemy General",
   "cardId": "SpectralRevenant",
+  "faction": "abyssian",
   "spriteName": "f4_daemonvoid",
   "type": "MINION",
   "spells": [
