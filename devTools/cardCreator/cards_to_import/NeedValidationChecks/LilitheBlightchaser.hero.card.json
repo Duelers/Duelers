@@ -2,7 +2,7 @@
   "name": "Lilithe Blightchaser",
   "description": "Abyssian General",
   "cardId": "LilitheBlightchaser",
-  "faction": "abyssian"
+  "faction": "abyssian",
   "spriteName": "f4_general",
   "type": "HERO",
   "spells": [],
