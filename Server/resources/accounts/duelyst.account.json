@@ -1717,7 +1717,7 @@
             },
             {
                 "name": "Dragonlark",
-                "description": "Flying, Ranged (2)",
+                "description": "Flying, Ranged: (2)",
                 "cardId": "duelyst_Dragonlark_1",
                 "faction": "mercenary",
                 "spriteName": "neutral_monsterdragonhawk",
@@ -1734,7 +1734,7 @@
             },
             {
                 "name": "Dragonlark",
-                "description": "Flying, Ranged (2)",
+                "description": "Flying, Ranged: (2)",
                 "cardId": "duelyst_Dragonlark_2",
                 "faction": "mercenary",
                 "spriteName": "neutral_monsterdragonhawk",
@@ -1751,7 +1751,7 @@
             },
             {
                 "name": "Dragonlark",
-                "description": "Flying, Ranged (2)",
+                "description": "Flying, Ranged: (2)",
                 "cardId": "duelyst_Dragonlark_3",
                 "faction": "mercenary",
                 "spriteName": "neutral_monsterdragonhawk",
@@ -2907,7 +2907,7 @@
                 "name": "Hashishi",
                 "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_1",
-                "faction": "mercenary",
+                "faction": "songhai",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
                 "spells": [
@@ -2956,7 +2956,7 @@
                 "name": "Hashishi",
                 "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_2",
-                "faction": "mercenary",
+                "faction": "songhai",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
                 "spells": [
@@ -3005,7 +3005,7 @@
                 "name": "Hashishi",
                 "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_3",
-                "faction": "mercenary",
+                "faction": "songhai",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
                 "spells": [
