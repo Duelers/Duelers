@@ -188,22 +188,19 @@ public class DeckBox extends GridPane {
     return Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, size);
   }
 
+/**
+   * Returns the count of all faction cards in deck with faction names shortened to two chars. For
+   * example a deck with 5 songhai cards and 35 mercs would return "So: 5 Me: 35"
+   */
   private String getFactionCardCount(Deck deck) {
-    // Returns the count of all faction cards in deck with faction names shortened to two chars.
-    // For example a deck with 5 songhai cards and 35 mercs would return "So: 5 Me: 35"
+    Map<String, Long> factionToCount =
+        deck.getCards().stream().collect(Collectors.groupingBy(card -> {
+          String faction = card.getFaction();
+          return faction.substring(0, 1).toUpperCase() + faction.substring(1, 2);
+        }, Collectors.counting()));
 
-    HashMap<String, Integer> factionCount = new HashMap<>();
-
-    for (Card card : deck.getCards()) {
-      factionCount.merge(card.getFaction(), 1, Integer::sum);
-    }
-
-    ArrayList<String> factions = new ArrayList<>();
-
-    // Shorten faction name to 2 chars; "vanar" -> "Va"
-    factionCount.forEach((key, value) -> factions
-        .add(key.substring(0, 1).toUpperCase() + key.substring(1, 2) + " : " + value.toString()));
-
-    return String.join("  ", factions);
+    return factionToCount.entrySet().stream()
+        .map(entry -> entry.getKey() + " : " + entry.getValue().toString())
+        .collect(Collectors.joining("  "));
   }
 }
