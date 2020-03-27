@@ -1236,6 +1236,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_put",
+                        "fxName": "fx_redquasar",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -1294,6 +1295,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_put",
+                        "fxName": "fx_redquasar",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -1352,6 +1354,7 @@
                 "spells": [
                     {
                         "spellId": "dmg_on_put",
+                        "fxName": "fx_redquasar",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
