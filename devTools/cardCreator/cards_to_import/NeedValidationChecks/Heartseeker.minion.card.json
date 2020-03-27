@@ -2,7 +2,7 @@
     "name": "Heartseeker",
     "description": "Ranged",
     "cardId": "Heartseeker",
-	"faction": "mercenary",
+	"faction": "songhai",
     "spriteName": "f2_caster",
     "type": "MINION",
     "spells": [],
