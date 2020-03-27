@@ -88,7 +88,7 @@ public class PlayerBox implements PropertyChangeListener {
     nameToPortrait.put("Faie Bloodwing", "/photo/general_portrait_image_hex_f6@2x.png");
     nameToPortrait.put("Calibero", "/photo/general_portrait_image_hex_calibero@2x.png");
     nameToPortrait.put("Lilithe Blightchaser", "/photo/general_portrait_image_hex_f4@2x.png");
-    nameToPortrait.put("Good Boi", "/photo/doghai_portrait.png");
+    nameToPortrait.put("Good Boi", "/photo/doghai_portrait@2x.png");
     nameToPortrait.put("Zirix Starstrider", "/photo/general_portrait_image_hex_f3@2x.png");
 
     return nameToPortrait;
