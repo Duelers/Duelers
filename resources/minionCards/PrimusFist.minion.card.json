@@ -2,6 +2,7 @@
   "name": "Primus Fist",
   "description": "Opening Gambit: Give nearby friendly minions +1 attack.",
   "cardId": "PrimusFist",
+  "faction": "mercenary",
   "spriteName": "neutral_gauntletmaster",
   "type": "MINION",
   "spells": [

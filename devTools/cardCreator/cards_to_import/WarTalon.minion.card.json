@@ -2,6 +2,7 @@
   "name": "War Talon",
   "description": "Provoke, After attacking, deal 4 damage to all surrounding enemies",
   "cardId": "WarTalon",
+  "faction": "mercenary",
   "spriteName": "neutral_wartalon",
   "type": "MINION",
     "spells": [

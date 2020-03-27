@@ -2,6 +2,7 @@
   "name": "Celestial Phantom",
   "description": "Destroy any enemy minion that Celestial Phantom attacks or counterattacks",
   "cardId": "CelestialPhantom",
+  "faction": "songhai",
   "spriteName": "f2_deathphantom",
   "type": "MINION",
   "spells": [ 

@@ -2,6 +2,7 @@
   "name": "Drybone Golem",
   "description": "Golem",
   "cardId": "DryboneGolem",
+  "faction": "mercenary",
   "spriteName": "neutral_golemdragonbone",
   "type": "MINION",
   "defaultAp": 10,
