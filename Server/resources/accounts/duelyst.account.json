@@ -1680,7 +1680,7 @@
             },
             {
                 "name": "Dragonlark",
-                "description": "Flying, Ranged (2)",
+                "description": "Flying, Ranged: (2)",
                 "cardId": "duelyst_Dragonlark_1",
                 "spriteName": "neutral_monsterdragonhawk",
                 "type": "MINION",
@@ -1696,7 +1696,7 @@
             },
             {
                 "name": "Dragonlark",
-                "description": "Flying, Ranged (2)",
+                "description": "Flying, Ranged: (2)",
                 "cardId": "duelyst_Dragonlark_2",
                 "spriteName": "neutral_monsterdragonhawk",
                 "type": "MINION",
@@ -1712,7 +1712,7 @@
             },
             {
                 "name": "Dragonlark",
-                "description": "Flying, Ranged (2)",
+                "description": "Flying, Ranged: (2)",
                 "cardId": "duelyst_Dragonlark_3",
                 "spriteName": "neutral_monsterdragonhawk",
                 "type": "MINION",
@@ -2843,6 +2843,7 @@
                 "name": "Hashishi",
                 "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_1",
+                "faction": "songhai",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
                 "spells": [
@@ -2891,6 +2892,7 @@
                 "name": "Hashishi",
                 "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_2",
+                "faction": "songhai",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
                 "spells": [
@@ -2939,6 +2941,7 @@
                 "name": "Hashishi",
                 "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_3",
+                "faction": "songhai",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
                 "spells": [
