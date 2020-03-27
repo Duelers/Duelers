@@ -278,7 +278,7 @@ public class GameServer {
         }
     }
 
-    public void sendSpellMessage(Game game, TargetData target, AvailabilityType availabilityType) {
+    public void sendSpellMessage(Game game, TargetData target, String fxName) {
         Set<Cell> cells = target.getPositions();
         if (cells.size() == 0) return;
         for (Account account : game.getObservers()) {
@@ -287,7 +287,7 @@ public class GameServer {
                 serverPrint("*Error");
                 continue;
             }
-            sendMessageAsync(Message.makeSpellMessage(clientName, cells, availabilityType));
+            sendMessageAsync(Message.makeSpellMessage(clientName, cells, fxName));
         }
     }
 
