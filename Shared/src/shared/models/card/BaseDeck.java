@@ -21,9 +21,11 @@ public class BaseDeck<CardType extends Card> {
     this.hero = hero;
     for (CardType card : cards) {
       // noinspection unchecked //I belive this is redundant as CardType extends Card.
-      this.cards.add((CardType) new Card(card));
-      this.factions.merge(card.getFaction(), 1, Integer::sum);
+      Card newC = new Card(card);
+      this.cards.add((CardType) newC);
+      this.factions.merge(newC.getFaction(), 1, Integer::sum);
     }
+    System.out.println("=!!=" + Collections.singletonList(this.factions));   // Does not seem to update
   }
 
 
@@ -36,7 +38,8 @@ public class BaseDeck<CardType extends Card> {
   }
 
   public Map<String, Integer> getFactionList() {
-    return factions;
+    System.out.println("0000" + Collections.singletonList(this.factions));
+    return this.factions;
   }
 
   public List<CardType> getCards() {

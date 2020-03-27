@@ -9,6 +9,9 @@ import server.exceptions.LogicException;
 import shared.models.account.AccountType;
 import shared.models.account.BaseAccount;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
 
   public Account(String username, String password) {
@@ -77,6 +80,9 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
       getDeck(deckName).addCard(cardId, collection);
       getDeck(deckName).getFactionList().merge(collection.getCard(cardId).getFaction(), 1,
           Integer::sum);
+
+      // Seems to be correct
+      System.out.println("abcbe" + Collections.singletonList(getDeck(deckName).getFactionList()));
     }
   }
 
@@ -88,6 +94,9 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
 
       getDeck(deckName).getFactionList().merge(collection.getCard(cardId).getFaction(), -1,
           Integer::sum);
+
+      // Seems to be correct
+      System.out.println("sdsds" + Collections.singletonList(getDeck(deckName).getFactionList()));
     }
   }
 

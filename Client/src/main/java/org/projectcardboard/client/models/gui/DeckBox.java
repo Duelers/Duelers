@@ -8,6 +8,7 @@ import static org.projectcardboard.client.models.gui.UIConstants.SELECT_CURSOR;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Collections;
 
 import org.projectcardboard.client.controller.CollectionMenuController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
@@ -88,7 +89,10 @@ public class DeckBox extends GridPane {
     DefaultLabel heroNumber =
         new DefaultLabel((deck.getHero() != null ? "1" : "0") + " Hero", DETAILS_FONT, Color.WHITE);
 
-    DefaultLabel factions = new DefaultLabel("Factions: " + deck.getFactionList().toString(),
+
+    System.out.println("=!!=" + Collections.singletonList(deck.getFactionList()));
+
+    DefaultLabel factions = new DefaultLabel("Factions: " + Collections.singletonList(deck.getFactionList()),
         DETAILS_FONT, Color.WHITE);
 
     modify.setOnMouseEntered(event -> {
