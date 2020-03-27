@@ -1,6 +1,8 @@
 package org.projectcardboard.client.view.battleview;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -12,6 +14,7 @@ import com.google.gson.Gson;
 
 import org.projectcardboard.client.models.gui.ImageLoader;
 
+import Config.Config;
 import javafx.animation.Transition;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -48,19 +51,29 @@ public class CardAnimation extends Transition {
     Playlist playlist;
     Image image;
     if (CardType.SPELL.equals(card.getType())) {
+      String path =
+          card.getIsCustom() ? Config.getInstance().getPathToCustomCardSprites() : "/icons/";
       image = cachedImages.computeIfAbsent(card.getSpriteName(),
-          key -> ImageLoader.load("/icons/" + card.getSpriteName() + ".png"));
+          key -> ImageLoader.load(path + card.getSpriteName() + ".png"));
       playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
         try {
           InputStream plistR =
-              this.getClass().getResourceAsStream("/icons/" + card.getSpriteName() + ".plist.json");
+              this.getClass().getResourceAsStream(path + card.getSpriteName() + ".plist.json");
           if (plistR == null) {
             throw new FileNotFoundException();
           }
           return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8),
               Playlist.class);
         } catch (FileNotFoundException e) {
-          return new Playlist();
+          try {
+            FileInputStream inputStream =
+                new FileInputStream(path + card.getSpriteName() + ".plist.json");
+            return new Gson().fromJson(new InputStreamReader(inputStream, StandardCharsets.UTF_8),
+                Playlist.class);
+          } catch (IOException ex) {
+            ex.printStackTrace();
+            return new Playlist();
+          }
         }
       });
       activeFramePositions = playlist.getLists().get("active").toArray(new FramePosition[1]);
@@ -68,19 +81,29 @@ public class CardAnimation extends Transition {
       extraX = 38 * Constants.SCALE;
       extraY = 31 * Constants.SCALE;
     } else {
+      String path = card.getIsCustom() ? Config.getInstance().getPathToCustomCardSprites()
+          : "/troopAnimations/";
       image = cachedImages.computeIfAbsent(card.getSpriteName(),
-          key -> ImageLoader.load("/troopAnimations/" + card.getSpriteName() + ".png"));
+          key -> ImageLoader.load(path + card.getSpriteName() + ".png"));
       playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
         try {
-          InputStream plistR = this.getClass()
-              .getResourceAsStream("/troopAnimations/" + card.getSpriteName() + ".plist.json");
+          InputStream plistR =
+              this.getClass().getResourceAsStream(path + card.getSpriteName() + ".plist.json");
           if (plistR == null) {
             throw new FileNotFoundException();
           }
           return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8),
               Playlist.class);
         } catch (FileNotFoundException e) {
-          return new Playlist();
+          try {
+            FileInputStream inputStream =
+                new FileInputStream(path + card.getSpriteName() + ".plist.json");
+            return new Gson().fromJson(new InputStreamReader(inputStream, StandardCharsets.UTF_8),
+                Playlist.class);
+          } catch (IOException ex) {
+            ex.printStackTrace();
+            return new Playlist();
+          }
         }
       });
       activeFramePositions = playlist.getLists().get("idle").toArray(new FramePosition[1]);

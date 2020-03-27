@@ -1,6 +1,8 @@
 package server.dataCenter;
 
 import com.google.gson.GsonBuilder;
+
+import Config.Config;
 import server.GameServer;
 import server.clientPortal.ClientPortal;
 import server.clientPortal.models.JsonConverter;
@@ -45,6 +47,11 @@ public class DataCenter extends Thread {
     if (dataBase.isEmpty()) {
       GameServer.serverPrint("Reading Cards...");
       readAllCards();
+      boolean readCustomCards =
+          Boolean.parseBoolean(Config.getInstance().getProperty("HOST_SERVER"));
+      if (readCustomCards) {
+        readAllCustomCards();
+      }
     }
     GameServer.serverPrint("Reading Accounts...");
     readAccounts();
@@ -332,6 +339,21 @@ public class DataCenter extends Thread {
       }
     }
     GameServer.serverPrint("Original Cards Loaded");
+  }
+
+  public void readAllCustomCards() {
+    String customCardsPath = Config.getInstance().getPathToCustomCards();
+    File[] files = new File(customCardsPath).listFiles();
+    if (files != null) {
+      for (File file : files) {
+        ServerCard card = loadFile(file, ServerCard.class);
+        if (card != null) {
+          System.out.println("adding " + card.getName());
+          dataBase.addOriginalCard(card);
+        }
+      }
+    }
+    GameServer.serverPrint("Custom Cards Loaded");
   }
 
   public void saveAccount(Account account) {

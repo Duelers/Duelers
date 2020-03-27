@@ -17,12 +17,12 @@ public class Deck_Test {
   int maximumDeckSize = 40;
 
   private ServerCard makeMinionCard() {
-    return new ServerCard(" ", " ", " ", " ", CardType.MINION, new ArrayList<>(), 1, 1, 1, 1,
+    return new ServerCard(" ", " ", " ", " ", CardType.MINION, false, new ArrayList<>(), 1, 1, 1, 1,
         AttackType.MELEE, 1);
   }
 
   private ServerCard makeGeneralCard() {
-    return new ServerCard(" ", " ", " ", " ", CardType.HERO, new ArrayList<>(), 1, 1, 1, 1,
+    return new ServerCard(" ", " ", " ", " ", CardType.HERO, false, new ArrayList<>(), 1, 1, 1, 1,
         AttackType.MELEE, 1);
   }
 
