@@ -2,11 +2,13 @@
   "name": "Phoenix Fire",
   "description": "Deal 3 damage to anything.",
   "cardId": "PhoenixFire",
+  "faction": "songhai",
   "spriteName": "icon_f2_phoenixfire02",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "deal_3_to_anything",
+      "fxName": "fx_f2_phoenixfire",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

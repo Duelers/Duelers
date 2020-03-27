@@ -23,27 +23,27 @@ public class Constants {
     static final double SPACE_BETWEEN_CELLS = 2;
     static final double MOVE_TIME_PER_CELL = 200;
 
-    static final Font NAME_FONT = Font.font("SansSerif", FontWeight.BOLD, 30 * SCALE);
-    static final Font AP_FONT = Font.font("SansSerif", FontWeight.LIGHT, 20 * SCALE);
-    static final Font END_TURN_FONT = Font.font("SansSerif", FontWeight.BOLD, 20 * SCALE);
-    static final Insets NAME_PADDING = new Insets(10 * SCALE);
+  static final Font NAME_FONT = Font.font("SansSerif", FontWeight.BOLD, 30 * SCALE);
+  static final Font AP_FONT = Font.font("SansSerif", FontWeight.LIGHT, 20 * SCALE);
+  static final Font END_TURN_FONT = Font.font("SansSerif", FontWeight.BOLD, 20 * SCALE);
+  static final Insets NAME_PADDING = new Insets(10 * SCALE);
 
-    static final Color DEPLOY_TROOP = Color.rgb(225, 210, 25, 1);
+  static final Color DEPLOY_TROOP = Color.rgb(225, 210, 25, 1);
 
-    static final Color CAN_ATTACK = Color.rgb(255, 157, 0, .6);
-    static final Color ATTACK_COLOR = Color.rgb(255, 157, 0);
+  static final Color CAN_ATTACK = Color.rgb(255, 157, 0, .6);
+  static final Color ATTACK_COLOR = Color.rgb(255, 157, 0);
 
-    static final Color CAN_MOVE = Color.rgb(21, 255, 0, .9);
-    static final Color MOVE_COLOR = Color.rgb(255, 255, 255, 0.6);
-    static final Color SELECTED_COLOR = Color.rgb(255, 255, 255, 1);
+  static final Color CAN_MOVE = Color.rgb(21, 255, 0, .9);
+  static final Color MOVE_COLOR = Color.rgb(255, 255, 255, 0.6);
+  static final Color SELECTED_COLOR = Color.rgb(255, 255, 255, 1);
 
-    static final Color ENEMY_UNIT = Color.rgb(255, 0, 44, 0.4);
+  static final Color ENEMY_UNIT = Color.rgb(255, 0, 44, 0.4);
 
-    static final Color SPELL_COLOR = Color.rgb(81, 25, 0, 0.8);
+  static final Color SPELL_COLOR = Color.rgb(225, 210, 25, 1);
 
-    static final Color defaultColor = Color.rgb(20, 255, 255, 0.5);
+  static final Color defaultColor = Color.rgb(20, 255, 255, 0.5);
 
-    static final ColorAdjust POSITIVE_BUFF_EFFECT = new ColorAdjust(-0.5, 1, -0.5, 0);
-    static final ColorAdjust NEGATIVE_BUFF_EFFECT = new ColorAdjust(0.5, 1, -0.5, 0);
+  static final ColorAdjust POSITIVE_BUFF_EFFECT = new ColorAdjust(-0.5, 1, -0.5, 0);
+  static final ColorAdjust NEGATIVE_BUFF_EFFECT = new ColorAdjust(0.5, 1, -0.5, 0);
 
 }

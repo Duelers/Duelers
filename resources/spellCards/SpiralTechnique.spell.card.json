@@ -2,11 +2,13 @@
   "name": "Spiral Technique",
   "description": "Deal 8 damage to anything",
   "cardId": "SpiralTechnique",
+  "faction": "songhai",
   "spriteName": "icon_f2_spiraltechnique",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "deal_8_to_anything",
+      "fxName": "fx_f2_spiraltechnique02",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
@@ -69,7 +71,7 @@
   ],
   "defaultAp": 0,
   "defaultHp": 0,
-  "manaCost": 8,
+  "manaCost": 7,
   "price": 100,
   "range": 0,
   "hasCombo": false,

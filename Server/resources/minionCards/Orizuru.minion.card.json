@@ -2,6 +2,7 @@
   "name": "Orizuru",
   "description": "Flying",
   "cardId": "Orizuru",
+  "faction": "songhai",
   "spriteName": "f2_orizuru",
   "type": "MINION",
   "spells": [],

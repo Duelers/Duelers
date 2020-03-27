@@ -15,56 +15,58 @@ import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 
 public class GlobalChatDialog {
-    private static final GlobalChatDialog ourInstance = new GlobalChatDialog();
+  private static final GlobalChatDialog ourInstance = new GlobalChatDialog();
 
-    private final VBox chatMessages = new VBox();
-    private final DialogBox dialogBox = new DialogBox();
-    private final NormalField normalField = new NormalField("Message");
-    private boolean isOpen;
+  private final VBox chatMessages = new VBox();
+  private final DialogBox dialogBox = new DialogBox();
+  private final NormalField normalField = new NormalField("Message");
+  private boolean isOpen;
 
-    private GlobalChatDialog() {
-        ScrollPane scrollPane = new ScrollPane(chatMessages);
-        OrangeButton sendButton = new OrangeButton("send",
-                event -> sendMessage(),
-                SoundEffectPlayer.SoundName.select, false);
-        dialogBox.getChildren().addAll(scrollPane, new HBox(normalField, sendButton));
-        normalField.setMinSize(500, 50);
-        normalField.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ENTER)) {
-                sendMessage();
-            }
-        });
-        sendButton.setAlignment(Pos.CENTER_LEFT);
-        scrollPane.setMinHeight(800);
-        dialogBox.getChildren().stream().filter(node -> node instanceof ScrollPane).forEach(node -> ((ScrollPane) node).setMinHeight(300 * SCALE));
+  private GlobalChatDialog() {
+    ScrollPane scrollPane = new ScrollPane(chatMessages);
+    OrangeButton sendButton =
+        new OrangeButton("send", event -> sendMessage(), SoundEffectPlayer.SoundName.select, false);
+    dialogBox.getChildren().addAll(scrollPane, new HBox(normalField, sendButton));
+    normalField.setMinSize(500, 50);
+    normalField.setOnKeyPressed(event -> {
+      if (event.getCode().equals(KeyCode.ENTER)) {
+        sendMessage();
+      }
+    });
+    sendButton.setAlignment(Pos.CENTER_LEFT);
+    scrollPane.setMinHeight(800);
+    dialogBox.getChildren().stream().filter(node -> node instanceof ScrollPane)
+        .forEach(node -> ((ScrollPane) node).setMinHeight(300 * SCALE));
 
-        chatMessages.heightProperty().addListener(observable -> scrollPane.setVvalue(1D)); // Autoscroll
+    chatMessages.heightProperty().addListener(observable -> scrollPane.setVvalue(1D)); // Autoscroll
+  }
+
+  public static GlobalChatDialog getInstance() {
+    return ourInstance;
+  }
+
+  private void sendMessage() {
+    MainMenuController.getInstance().sendChatMessage(normalField.getText());
+    normalField.setText("");
+  }
+
+  public void show() {
+    if (!isOpen) {
+      BackgroundMaker.makeMenuBackgroundFrozen();
+      normalField.setText("");
+      DialogContainer dialogContainer =
+          new DialogContainer(Client.getInstance().getCurrentShow().root, dialogBox);
+
+      dialogContainer.show();
+      dialogBox.makeClosable(dialogContainer, event -> {
+        isOpen = false;
+        BackgroundMaker.makeMenuBackgroundUnfrozen();
+      });
     }
+  }
 
-    public static GlobalChatDialog getInstance() {
-        return ourInstance;
-    }
-    
-    private void sendMessage() {
-        MainMenuController.getInstance().sendChatMessage(normalField.getText());
-        normalField.setText("");
-    }
-
-    public void show() {
-        if (!isOpen) {
-            BackgroundMaker.makeMenuBackgroundFrozen();
-            normalField.setText("");
-            DialogContainer dialogContainer = new DialogContainer(Client.getInstance().getCurrentShow().root, dialogBox);
-
-            dialogContainer.show();
-            dialogBox.makeClosable(dialogContainer, event -> {
-                isOpen = false;
-                BackgroundMaker.makeMenuBackgroundUnfrozen();
-            });
-        }
-    }
-
-    public void addMessage(ChatMessage chatMessage) {
-        chatMessages.getChildren().add(new DialogText(chatMessage.getSenderUsername() + ": " + chatMessage.getText()));
-    }
+  public void addMessage(ChatMessage chatMessage) {
+    chatMessages.getChildren()
+        .add(new DialogText(chatMessage.getSenderUsername() + ": " + chatMessage.getText()));
+  }
 }

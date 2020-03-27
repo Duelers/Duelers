@@ -2,6 +2,7 @@
   "name": "Vale Hunter",
   "description": "Ranged",
   "cardId": "ValeHunter",
+  "faction": "mercenary",
   "spriteName": "neutral_tribalranged1",
   "type": "MINION",
   "spells": [],

@@ -38,19 +38,23 @@ public class UIConstants {
     public static final double SCENE_HEIGHT = DEFAULT_SCENE_HEIGHT * SCALE;
     public static Cursor DEFAULT_CURSOR;
     public static Cursor SELECT_CURSOR;
-    
-    static{
-        try {
-            
-            InputStream defaultCursorResource = UIConstants.class.getResourceAsStream("/cursors/default.png");
-            if (defaultCursorResource == null) { throw new FileNotFoundException(); }
-            UIConstants.DEFAULT_CURSOR = new ImageCursor(new Image(defaultCursorResource));
 
-            InputStream selectCursorResource = UIConstants.class.getResourceAsStream("/cursors/select.png");
-            if (selectCursorResource == null) { throw new FileNotFoundException(); }
-            UIConstants.SELECT_CURSOR = new ImageCursor(new Image(selectCursorResource));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+  static {
+    try {
+      InputStream defaultCursorResource =
+          UIConstants.class.getResourceAsStream("/cursors/default.png");
+      if (defaultCursorResource == null) {
+        throw new FileNotFoundException();
+      }
+      UIConstants.DEFAULT_CURSOR = new ImageCursor(new Image(defaultCursorResource));
+
+      InputStream selectCursorResource =
+          UIConstants.class.getResourceAsStream("/cursors/select.png");
+      if (selectCursorResource == null) {
+        throw new FileNotFoundException();
+      }
+      UIConstants.SELECT_CURSOR = new ImageCursor(new Image(selectCursorResource));
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
     }
 }

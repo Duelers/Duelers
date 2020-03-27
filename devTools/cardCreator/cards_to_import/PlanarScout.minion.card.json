@@ -2,6 +2,7 @@
   "name": "Planar Scout",
   "description": "Airdrop, Provoke",
   "cardId": "PlanarScout",
+  "faction": "mercenary",
   "spriteName": "neutral_beastphasehound",
   "type": "MINION",
   "spells": [],

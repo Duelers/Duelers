@@ -2,11 +2,13 @@
   "name": "Tempest",
   "description": "Deal 2 Damage to ALL characters",
   "cardId": "Tempest",
+  "faction": "lyonar",
   "spriteName": "icon_f1_tempest",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "deal_2_dmg_everything",
+      "fxName": "fx_heavenlystrike",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

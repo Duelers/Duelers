@@ -2,6 +2,7 @@
     "name": "Azurite Lion",
     "description": "Celerity",
     "cardId": "AzuriteLion",
+	"faction": "lyonar",
     "spriteName": "f1_azuritelion",
     "type": "MINION",
     "defaultAp": 2,

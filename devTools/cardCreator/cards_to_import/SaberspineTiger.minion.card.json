@@ -2,6 +2,7 @@
   "name": "Saberspine Tiger",
   "description": "Rush",
   "cardId": "SaberspineTiger",
+  "faction": "mercenary",
   "spriteName": "neutral_beastsaberspinetiger",
   "type": "MINION",
   "defaultAp": 3,

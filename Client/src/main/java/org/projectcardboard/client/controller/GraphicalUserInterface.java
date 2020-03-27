@@ -12,51 +12,51 @@ import org.projectcardboard.client.view.LoginMenu;
 import Config.Config;
 
 public class GraphicalUserInterface {
-    private static GraphicalUserInterface GUI;
-    private Stage stage;
-    private Scene scene;
-    private MediaPlayer backgroundMusicPlayer;
-    private Media currentMedia;
+  private static GraphicalUserInterface GUI;
+  private Stage stage;
+  private Scene scene;
+  private MediaPlayer backgroundMusicPlayer;
+  private Media currentMedia;
 
-    private GraphicalUserInterface() {
-    }
+  private GraphicalUserInterface() {}
 
-    public static GraphicalUserInterface getInstance() {
-        if (GUI == null) {
-            GUI = new GraphicalUserInterface();
-        }
-        return GUI;
+  public static GraphicalUserInterface getInstance() {
+    if (GUI == null) {
+      GUI = new GraphicalUserInterface();
     }
+    return GUI;
+  }
 
-    public void start(Stage stage) {
-        this.stage = stage;
-        new LoginMenu().show();
-        setStageProperties(stage);
-    }
+  public void start(Stage stage) {
+    this.stage = stage;
+    new LoginMenu().show();
+    setStageProperties(stage);
+  }
 
-    public void changeScene(AnchorPane root) {
-        if (scene == null) {
-            makeScene(root);
-        } else {
-            scene.setRoot(root);
-        }
+  public void changeScene(AnchorPane root) {
+    if (scene == null) {
+      makeScene(root);
+    } else {
+      scene.setRoot(root);
     }
+  }
 
-    public void setBackgroundMusic(Media media) {
-        try {
-            if (media.equals(currentMedia)) return;
-            currentMedia = media;
-            if (backgroundMusicPlayer != null) {
-                backgroundMusicPlayer.stop();
-            }
-            backgroundMusicPlayer = new MediaPlayer(media);
-            backgroundMusicPlayer.setVolume(0.05);
-            backgroundMusicPlayer.setCycleCount(-1);
-            backgroundMusicPlayer.setAutoPlay(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+  public void setBackgroundMusic(Media media) {
+    try {
+      if (media.equals(currentMedia))
+        return;
+      currentMedia = media;
+      if (backgroundMusicPlayer != null) {
+        backgroundMusicPlayer.stop();
+      }
+      backgroundMusicPlayer = new MediaPlayer(media);
+      backgroundMusicPlayer.setVolume(0.05);
+      backgroundMusicPlayer.setCycleCount(-1);
+      backgroundMusicPlayer.setAutoPlay(true);
+    } catch (Exception e) {
+      e.printStackTrace();
     }
+  }
 
     private void setStageProperties(Stage stage) {
         stage.setTitle("CardBoard");
@@ -64,32 +64,32 @@ public class GraphicalUserInterface {
         stage.setFullScreen(setFullScreen);
         stage.setResizable(true); // note that resizing the window does not currently 'redraw' the window.
 
-        stage.setFullScreenExitHint(KeyboardShortcutConstants.EXIT_FULLSCREEN_HELP_MSG);
-        stage.setFullScreenExitKeyCombination(KeyboardShortcutConstants.EXIT_FULLSCREEN);
+      stage.setFullScreenExitHint(KeyboardShortcutConstants.EXIT_FULLSCREEN_HELP_MSG);
+      stage.setFullScreenExitKeyCombination(KeyboardShortcutConstants.EXIT_FULLSCREEN);
 
-        stage.show();
-        stage.setOnCloseRequest(event -> Client.getInstance().close());
-    }
+      stage.show();
+      stage.setOnCloseRequest(event -> Client.getInstance().close());
+  }
 
-    private void makeScene(AnchorPane root) {
-        scene = new Scene(root, UIConstants.SCENE_WIDTH, UIConstants.SCENE_HEIGHT);
-        //scene.getStylesheets().add(this.getClass().getResource("Client/resources/styles/scroll_pane.css").toExternalForm());
-        scene.setCursor(UIConstants.DEFAULT_CURSOR);
-        stage.setScene(scene);
-    }
+  private void makeScene(AnchorPane root) {
+    scene = new Scene(root, UIConstants.SCENE_WIDTH, UIConstants.SCENE_HEIGHT);
+    // scene.getStylesheets().add(this.getClass().getResource("Client/resources/styles/scroll_pane.css").toExternalForm());
+    scene.setCursor(UIConstants.DEFAULT_CURSOR);
+    stage.setScene(scene);
+  }
 
-    public void stopBackgroundMusic() {
-        if (backgroundMusicPlayer != null) {
-            backgroundMusicPlayer.stop();
-            currentMedia = null;
-        }
+  public void stopBackgroundMusic() {
+    if (backgroundMusicPlayer != null) {
+      backgroundMusicPlayer.stop();
+      currentMedia = null;
     }
+  }
 
-    public void closeFullscreen() {
-        stage.setFullScreen(false);
-    }
+  public void closeFullscreen() {
+    stage.setFullScreen(false);
+  }
 
-    public void makeFullScreen() {
-        stage.setFullScreen(true);
-    }
+  public void makeFullScreen() {
+    stage.setFullScreen(true);
+  }
 }

@@ -1,16 +1,17 @@
 {
-  "name": "Peacekeeper",
-  "description": "Celerity, Airdrop, Provoke\n After attacking, deal 6 damage to all surrounding enemies",
-  "cardId": "Peacekeeper",
-  "spriteName": "f1_peacekeeper",
-  "type": "MINION",
-    "spells": [ 
+  "name": "Flaming Stampede",
+  "description": "Deal 8 Damage to ALL characters",
+  "cardId": "FlamingStampede",
+  "spriteName": "icon_f5_flamingstampede",
+  "type": "SPELL",
+  "spells": [
     {
-      "spellId": "dmg_on_atk",
+      "spellId": "deal_8_dmg_everything",
+      "fxName": "f5_fx_flamingstampede",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": -6,
+        "hpChange": -8,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -30,16 +31,16 @@
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": true,
+        "isRelatedToCardOwnerPosition": false,
         "isForAroundOwnHero": false,
         "isRandom": false,
         "isForDeckCards": false,
         "dimensions": {
-          "row": 3,
-          "column": 3
+          "row": 20,
+          "column": 20
         },
         "owner": {
-          "own": false,
+          "own": true,
           "enemy": true
         },
         "cardType": {
@@ -55,18 +56,22 @@
         }
       },
       "availabilityType": {
-        "onAttack": true,
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
       },
       "coolDown": 0,
       "manaCost": 0,
       "lastTurnUsed": 0
     }
   ],
-  "defaultAp": 6,
-  "defaultHp": 6,
+  "defaultAp": 0,
+  "defaultHp": 0,
   "manaCost": 8,
   "price": 100,
-  "attackType": "MELEE",
   "range": 0,
   "hasCombo": false,
   "remainingNumber": 20

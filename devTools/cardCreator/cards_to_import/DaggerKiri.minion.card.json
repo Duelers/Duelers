@@ -1,0 +1,16 @@
+{
+    "name": "Dagger Kiri",
+    "description": "Celerity",
+    "cardId": "DaggerKiri",
+	"faction": "mercenary",
+    "spriteName": "neutral_mercdaggerkiri",
+    "type": "MINION",
+    "defaultAp": 2,
+    "defaultHp": 8,
+    "manaCost": 5,
+    "price": 100,
+    "attackType": "MELEE",
+    "range": 0,
+    "hasCombo": false,
+    "remainingNumber": 20
+}

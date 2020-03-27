@@ -2,6 +2,7 @@
   "name": "Mr Swampy",
   "description": "Provoke, Flying",
   "cardId": "MrSwampy",
+  "faction": "mercenary",
   "spriteName": "neutral_beastswamp",
   "type": "MINION",
   "spells": [],
