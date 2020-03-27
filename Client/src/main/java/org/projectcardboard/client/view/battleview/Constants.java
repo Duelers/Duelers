@@ -8,20 +8,22 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class Constants {
-    static final double SCREEN_WIDTH = Double.parseDouble(Config.getInstance().getProperty("CONFIG_SCREEN_WIDTH"));
-    static final double SCREEN_HEIGHT = Double.parseDouble(Config.getInstance().getProperty("CONFIG_SCREEN_HEIGHT"));
-    static final double SCALE = SCREEN_WIDTH / 1920;
-    // MAP
-    static final double MAP_X = SCREEN_WIDTH * 0.2, MAP_Y = SCREEN_HEIGHT * 0.3;
-    static final double MAP_DOWNER_WIDTH = SCREEN_WIDTH * 0.56, MAP_UPPER_WIDTH = SCREEN_WIDTH * 0.42;
-    static final double MAP_HEIGHT = (MAP_DOWNER_WIDTH + MAP_UPPER_WIDTH) * 5 / 16;
-    static final double HAND_X = SCREEN_WIDTH * 0.06;
-    static final double HAND_Y = SCREEN_HEIGHT * 0.8;
-    static final double TROOP_SCALE = 1.7;
-    static final double SPELL_SCALE = 1.2;
-    static final double CELLS_DEFAULT_OPACITY = 0.4;
-    static final double SPACE_BETWEEN_CELLS = 2;
-    static final double MOVE_TIME_PER_CELL = 200;
+  static final double SCREEN_WIDTH =
+      Double.parseDouble(Config.getInstance().getProperty("CONFIG_SCREEN_WIDTH"));
+  static final double SCREEN_HEIGHT =
+      Double.parseDouble(Config.getInstance().getProperty("CONFIG_SCREEN_HEIGHT"));
+  static final double SCALE = SCREEN_WIDTH / 1920;
+  // MAP
+  static final double MAP_X = SCREEN_WIDTH * 0.2, MAP_Y = SCREEN_HEIGHT * 0.3;
+  static final double MAP_DOWNER_WIDTH = SCREEN_WIDTH * 0.56, MAP_UPPER_WIDTH = SCREEN_WIDTH * 0.42;
+  static final double MAP_HEIGHT = (MAP_DOWNER_WIDTH + MAP_UPPER_WIDTH) * 5 / 16;
+  static final double HAND_X = SCREEN_WIDTH * 0.06;
+  static final double HAND_Y = SCREEN_HEIGHT * 0.8;
+  static final double TROOP_SCALE = 1.7;
+  static final double SPELL_SCALE = 1.2;
+  static final double CELLS_DEFAULT_OPACITY = 0.4;
+  static final double SPACE_BETWEEN_CELLS = 2;
+  static final double MOVE_TIME_PER_CELL = 200;
 
   static final Font NAME_FONT = Font.font("SansSerif", FontWeight.BOLD, 30 * SCALE);
   static final Font AP_FONT = Font.font("SansSerif", FontWeight.LIGHT, 20 * SCALE);

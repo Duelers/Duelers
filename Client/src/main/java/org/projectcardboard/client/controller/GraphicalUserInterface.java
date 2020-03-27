@@ -58,17 +58,18 @@ public class GraphicalUserInterface {
     }
   }
 
-    private void setStageProperties(Stage stage) {
-        stage.setTitle("CardBoard");
-        boolean setFullScreen = Boolean.parseBoolean(Config.getInstance().getProperty("FULLSCREEN"));
-        stage.setFullScreen(setFullScreen);
-        stage.setResizable(true); // note that resizing the window does not currently 'redraw' the window.
+  private void setStageProperties(Stage stage) {
+    stage.setTitle("CardBoard");
+    boolean setFullScreen = Boolean.parseBoolean(Config.getInstance().getProperty("FULLSCREEN"));
+    stage.setFullScreen(setFullScreen);
+    stage.setResizable(true); // note that resizing the window does not currently 'redraw' the
+                              // window.
 
-      stage.setFullScreenExitHint(KeyboardShortcutConstants.EXIT_FULLSCREEN_HELP_MSG);
-      stage.setFullScreenExitKeyCombination(KeyboardShortcutConstants.EXIT_FULLSCREEN);
+    stage.setFullScreenExitHint(KeyboardShortcutConstants.EXIT_FULLSCREEN_HELP_MSG);
+    stage.setFullScreenExitKeyCombination(KeyboardShortcutConstants.EXIT_FULLSCREEN);
 
-      stage.show();
-      stage.setOnCloseRequest(event -> Client.getInstance().close());
+    stage.show();
+    stage.setOnCloseRequest(event -> Client.getInstance().close());
   }
 
   private void makeScene(AnchorPane root) {
