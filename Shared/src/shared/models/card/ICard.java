@@ -16,4 +16,6 @@ public interface ICard {
     String getDescription();
 
     int getManaCost();
+
+    boolean getIsCustom();
 }
