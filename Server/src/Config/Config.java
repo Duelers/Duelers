@@ -2,12 +2,14 @@ package Config;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Properties;
-
+import java.util.Set;
 import net.harawata.appdirs.AppDirs;
 import net.harawata.appdirs.AppDirsFactory;
 
@@ -16,6 +18,7 @@ public class Config {
   private static Config configInstance = null;
   private static Properties config;
   private static InputStream file = null;
+  private static final String configFileName = "/config.properties";
 
   private Config() {
     /**
@@ -25,7 +28,6 @@ public class Config {
     try {
       AppDirs appDirs = AppDirsFactory.getInstance();
       String configDirPath = appDirs.getUserConfigDir("cardboard", "1.0", "projectcardboard", true);
-      String configFileName = "/config.properties";
       Path configFullPath = Path.of(configDirPath + configFileName);
       try {
         file = new FileInputStream(configFullPath.toString());
@@ -65,4 +67,72 @@ public class Config {
     return config.getProperty(property);
   }
 
+  private Properties loadDefaultConfigFile() {
+    Properties defaultProperties = null;
+
+    try {
+      InputStream defaultConfig = Config.class.getResourceAsStream(configFileName);
+      if (defaultConfig == null) {
+        throw new FileNotFoundException("Couldn't find default configuration at " + configFileName);
+      }
+      defaultProperties = new Properties();
+      defaultProperties.load(defaultConfig);
+
+      defaultConfig.close();
+    } catch (FileNotFoundException ex) {
+      ex.printStackTrace();
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+
+    return defaultProperties;
+  }
+
+  public boolean shouldUpdateUserConfig() {
+    boolean shouldUpdateUserConfig = false;
+    try {
+      if (config == null) {
+        throw new Exception("User's config file is null");
+      }
+
+      Properties defaultConfig = loadDefaultConfigFile();
+      Set<String> defaultVariables = defaultConfig.stringPropertyNames();
+      Set<String> userVariables = config.stringPropertyNames();
+      if (!defaultVariables.equals(userVariables)) {
+        shouldUpdateUserConfig = true;
+      }
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+
+    return shouldUpdateUserConfig;
+  }
+
+  public void updateUserConfig() {
+
+    Properties defaultConfig = loadDefaultConfigFile();
+    defaultConfig.forEach((key, value) -> {
+      if (!config.containsKey(key.toString())) {
+        config.put(key.toString(), value.toString());
+        System.out.println("User did not have variable " + key.toString() + ". Adding...");
+      }
+    });
+
+    try {
+      AppDirs appDirs = AppDirsFactory.getInstance();
+      String configDirPath = appDirs.getUserConfigDir("cardboard", "1.0", "projectcardboard", true);
+      Path configFullPath = Path.of(configDirPath + configFileName);
+      OutputStream out = new FileOutputStream(configFullPath.toString(), false);
+      String comment =
+          "#WARNING: IF YOURE GOING TO ADD NEW VARIABLES DO NOT ADD SPACES AROUND THE EQUALS(=) SIGN\n"
+              + "#WARNING: DO NOT EDIT FOR LOCAL CHANGES\n"
+              + "#This will be copied to your system's config location on first run. If you want to change it, change it there.\n"
+              + "#MacOSX: /Users/yourusername/Library/Application Support/cardboard/1.0\n"
+              + "#Windows: C:\\Users\\yourusername\\AppData\\Roaming\\projectcardboard\\cardboard\\1.0\n"
+              + "#Linux: /home/yourusername/.config/cardboard/1.0\n";
+      config.store(out, comment);
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+  }
 }
