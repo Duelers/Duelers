@@ -33,12 +33,12 @@ def main():
     print("Creating pandas dataframe")
     db_tmp = pd.DataFrame(dict_of_cards).T
 
-    card_database = pd.DataFrame(db_tmp, columns = ["type", "name", "description", "defaultAp", "defaultHp", "manaCost", "spriteName"])
+    card_database = pd.DataFrame(db_tmp, columns = ["type", "name", "description", "defaultAp", "defaultHp", "manaCost", "spriteName", "faction"])
     card_database.rename(columns={'defaultAp':'attack','defaultHp':'health','manaCost':'cost'}, inplace=True)
 
     card_database.fillna("n/a", inplace=True)
     card_database.set_index(['type', "name"], inplace=True)
-    card_database.sort_values(by=['type', "name"])
+    card_database.sort_values(by=['faction','type',"name"], inplace=True)
 
     print("Saving dataframe to csv")
     card_database.to_csv(OUTPUT_FILEPATH)

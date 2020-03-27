@@ -2,6 +2,7 @@
   "name": "Saberspine Seal",
   "description": "Give a minion or General +3 Attack this turn.",
   "cardId": "SaberspineSeal",
+  "faction": "songhai",
   "spriteName": "icon_f2_saberspineseal",
   "type": "SPELL",
   "spells": [

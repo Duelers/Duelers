@@ -7,19 +7,19 @@ import java.util.Collections;
 import java.util.List;
 
 public class BaseMove<TroopType extends Troop> {
-    private final TroopType troop;
-    private final List<Cell> targets;
+  private final TroopType troop;
+  private final List<Cell> targets;
 
-    public BaseMove(TroopType troop, List<Cell> targets) {
-        this.troop = troop;
-        this.targets = targets;
-    }
+  public BaseMove(TroopType troop, List<Cell> targets) {
+    this.troop = troop;
+    this.targets = targets;
+  }
 
-    public TroopType getTroop() {
-        return troop;
-    }
+  public TroopType getTroop() {
+    return troop;
+  }
 
-    public List<Cell> getTargets() {
-        return Collections.unmodifiableList(targets);
-    }
+  public List<Cell> getTargets() {
+    return Collections.unmodifiableList(targets);
+  }
 }

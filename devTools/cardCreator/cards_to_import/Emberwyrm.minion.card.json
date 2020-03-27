@@ -2,6 +2,7 @@
   "name": "Emberwyrm",
   "description": "Flying",
   "cardId": "Emberwyrm",
+  "faction": "mercenary",
   "spriteName": "neutral_veteranflamewing",
   "type": "MINION",
   "spells": [],

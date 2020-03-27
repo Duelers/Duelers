@@ -2,6 +2,7 @@
   "name": "Phalanxar",
   "description": "",
   "cardId": "Phalanxar",
+  "faction": "magmar",
   "spriteName": "f5_tank",
   "type": "MINION",
   "defaultAp": 7,

@@ -43,31 +43,31 @@ public class Config {
                 
             }
 
-            config = new Properties();
-            config.load(file);
+      config = new Properties();
+      config.load(file);
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    } finally {
+      if (file != null) {
+        try {
+          file.close();
         } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            if (file != null) {
-                try {
-                    file.close();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }
+          ex.printStackTrace();
         }
+      }
     }
+  }
 
-    public static Config getInstance() {
-        if (configInstance == null) {
-            configInstance = new Config();
-        }
-        return configInstance;
+  public static Config getInstance() {
+    if (configInstance == null) {
+      configInstance = new Config();
     }
+    return configInstance;
+  }
 
-    public String getProperty(String property) {
-        return config.getProperty(property);
-    }
+  public String getProperty(String property) {
+    return config.getProperty(property);
+  }
 
     public String getPathToCustomCards(){
         Path path = Path.of(configFullPath.getParent().toString() + "/Custom_Cards");

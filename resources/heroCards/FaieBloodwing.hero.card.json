@@ -2,6 +2,7 @@
   "name": "Faie Bloodwing",
   "description": "Vanar General",
   "cardId": "FaieBloodwing",
+  "faction": "vanar",
   "spriteName": "f6_general",
   "type": "HERO",
   "spells": [],
