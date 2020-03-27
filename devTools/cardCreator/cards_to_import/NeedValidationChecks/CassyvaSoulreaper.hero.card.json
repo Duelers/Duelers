@@ -1,0 +1,18 @@
+  
+{
+  "name": "Cassyva Soulreaper",
+  "description": "Abyssian General",
+  "cardId": "CassyvaSoulreaper",
+  "faction": "abyssian",
+  "spriteName": "f4_altgeneral",
+  "type": "HERO",
+  "spells": [],
+  "defaultAp": 2,
+  "defaultHp": 25,
+  "manaCost": 0,
+  "price": 10,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
