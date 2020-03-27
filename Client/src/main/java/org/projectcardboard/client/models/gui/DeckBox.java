@@ -189,7 +189,7 @@ public class DeckBox extends GridPane {
     return Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, size);
   }
 
-/**
+  /**
    * Returns the count of all faction cards in deck with faction names shortened to two chars. For
    * example a deck with 5 songhai cards and 35 mercs would return "So: 5 Me: 35"
    */
