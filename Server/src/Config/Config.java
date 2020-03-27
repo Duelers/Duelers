@@ -111,11 +111,10 @@ public class Config {
   public void updateUserConfig() {
 
     Properties defaultConfig = loadDefaultConfigFile();
-    Properties newValuesToAppend = new Properties();
     defaultConfig.forEach((key, value) -> {
       if (!config.containsKey(key.toString())) {
-        newValuesToAppend.put(key.toString(), value.toString());
-        System.out.println("added " + key.toString());
+        config.put(key.toString(), value.toString());
+        System.out.println("User did not have variable " + key.toString() + ". Adding...");
       }
     });
 
@@ -123,8 +122,14 @@ public class Config {
       AppDirs appDirs = AppDirsFactory.getInstance();
       String configDirPath = appDirs.getUserConfigDir("cardboard", "1.0", "projectcardboard", true);
       Path configFullPath = Path.of(configDirPath + configFileName);
-      OutputStream out = new FileOutputStream(configFullPath.toString(), true);
-      newValuesToAppend.store(out, "\n");
+      OutputStream out = new FileOutputStream(configFullPath.toString(), false);
+      String comment = "#WARNING: IF YOURE GOING TO ADD NEW VARIABLES DO NOT ADD SPACES AROUND THE EQUALS(=) SIGN\n" + 
+                        "#WARNING: DO NOT EDIT FOR LOCAL CHANGES\n" + 
+                        "#This will be copied to your system's config location on first run. If you want to change it, change it there.\n" + 
+                        "#MacOSX: /Users/yourusername/Library/Application Support/cardboard/1.0\n" + 
+                        "#Windows: C:\\Users\\yourusername\\AppData\\Roaming\\projectcardboard\\cardboard\\1.0\n" + 
+                        "#Linux: /home/yourusername/.config/cardboard/1.0\n";
+      config.store(out, comment);
     } catch (IOException ex) {
       ex.printStackTrace();
     }
