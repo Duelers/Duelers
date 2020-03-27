@@ -19,10 +19,6 @@ public class Deck extends BaseDeck<Card> {
         }
     }
 
-    protected Deck(String deckName, Card hero, ArrayList<Card> cards) { //Used for testing.
-        super(deckName, hero, cards);
-    }
-
     // TODO: overriding equals without changing hashcode is normally no bueno.
     // there's probably a safer way for us to accomplish this.
     @Override
