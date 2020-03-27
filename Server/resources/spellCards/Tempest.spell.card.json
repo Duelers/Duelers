@@ -7,6 +7,7 @@
   "spells": [
     {
       "spellId": "deal_2_dmg_everything",
+      "fxName": "fx_heavenlystrike",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

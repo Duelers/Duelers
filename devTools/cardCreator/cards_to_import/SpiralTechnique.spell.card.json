@@ -7,6 +7,7 @@
   "spells": [
     {
       "spellId": "deal_8_to_anything",
+      "fxName": "fx_f2_spiraltechnique02",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

@@ -95,17 +95,8 @@ public class BattleScene extends Show {
         mapBox.showDefend(defender, attacker);
     }
 
-    public void spell(AvailabilityType availabilityType, Cell cell) {
-        mapBox.showSpell(getSpellSpriteName(availabilityType), cell.getRow(), cell.getColumn());
-    }
-
-    private String getSpellSpriteName(AvailabilityType availabilityType) {
-        if (availabilityType.isOnAttack()) return spellSpriteNames.get(SpellType.ATTACK);
-        if (availabilityType.isOnDeath()) return spellSpriteNames.get(SpellType.DEATH);
-        if (availabilityType.isOnDefend()) return spellSpriteNames.get(SpellType.DEFEND);
-        if (availabilityType.isContinuous()) return spellSpriteNames.get(SpellType.CONTINUOUS);
-        if (availabilityType.isOnPut()) return spellSpriteNames.get(SpellType.PUT);
-        return spellSpriteNames.get(SpellType.DEFAULT);
+    public void spell(String fxName, Cell cell) {
+        mapBox.showSpell(fxName, cell.getRow(), cell.getColumn());
     }
 
     @Override
