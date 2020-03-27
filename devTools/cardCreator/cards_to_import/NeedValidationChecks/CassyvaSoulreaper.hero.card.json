@@ -3,7 +3,7 @@
   "name": "Cassyva Soulreaper",
   "description": "Abyssian General",
   "cardId": "CassyvaSoulreaper",
-  "faction": "Abyssian",
+  "faction": "abyssian",
   "spriteName": "f4_altgeneral",
   "type": "HERO",
   "spells": [],

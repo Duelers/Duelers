@@ -3,7 +3,7 @@
   "name": "Scioness Sajj",
   "description": "Vetruvian General",
   "cardId": "Scionesssajj",
-  "faction": "Vetruvian",
+  "faction": "vetruvian",
   "spriteName": "f3_altgeneral",
   "type": "HERO",
   "spells": [],

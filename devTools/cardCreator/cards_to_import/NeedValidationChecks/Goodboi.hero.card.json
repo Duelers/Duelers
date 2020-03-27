@@ -1,18 +1,18 @@
   
 {
   "name": "Good Boi",
-  "description": "Songhai General",
+  "description": "Mercenary General\nRange: (2)",
   "cardId": "GoodBoi",
-  "faction": "Songhai",
+  "faction": "mercenary",
   "spriteName": "f2_general_skindogehai",
   "type": "HERO",
   "spells": [],
   "defaultAp": 2,
-  "defaultHp": 25,
+  "defaultHp": 20,
   "manaCost": 0,
-  "price": 10,
-  "attackType": "MELEE",
-  "range": 0,
+  "price": 0,
+  "attackType": "HYBRID",
+  "range": 2,
   "hasCombo": false,
   "remainingNumber": 20
 }

@@ -3,7 +3,7 @@
   "name": "Zirix Starstrider",
   "description": "Vetruvian General",
   "cardId": "ZirixStarstrider",
-  "faction": "Vetruvian",
+  "faction": "vetruvian",
   "spriteName": "f3_general",
   "type": "HERO",
   "spells": [],
