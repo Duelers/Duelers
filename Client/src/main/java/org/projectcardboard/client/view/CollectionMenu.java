@@ -1,7 +1,6 @@
 package org.projectcardboard.client.view;
 
 import com.google.gson.Gson;
-import org.projectcardboard.client.Constants;
 import org.projectcardboard.client.controller.Client;
 import org.projectcardboard.client.controller.CollectionMenuController;
 import org.projectcardboard.client.controller.GraphicalUserInterface;
@@ -27,10 +26,6 @@ import javax.swing.filechooser.FileSystemView;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.*;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.projectcardboard.client.models.gui.UIConstants.*;
 
@@ -140,12 +135,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     }
 
     private String showJFileChooserDialog() {
-
-        // Use the directory most likely to contain decks.
-        Path exported_decks = Paths.get("./" + Constants.DECK_EXPORT_FOLDER).toAbsolutePath();
-        String directory = Files.exists(exported_decks) ? exported_decks.toString() : Paths.get("").toAbsolutePath().toString();
-
-        JFileChooser jfc = new JFileChooser(directory);
+        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
         GraphicalUserInterface.getInstance().closeFullscreen();
 

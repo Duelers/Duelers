@@ -36,7 +36,6 @@ def main():
     card_database = pd.DataFrame(db_tmp, columns = ["type", "name", "description", "defaultAp", "defaultHp", "manaCost", "spriteName"])
     card_database.rename(columns={'defaultAp':'attack','defaultHp':'health','manaCost':'cost'}, inplace=True)
 
-    card_database.fillna("n/a", inplace=True)
     card_database.set_index(['type', "name"], inplace=True)
     card_database.sort_values(by=['type', "name"])
 

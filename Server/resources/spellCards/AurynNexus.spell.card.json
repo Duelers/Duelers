@@ -7,7 +7,6 @@
   "spells": [
     {
       "spellId": "give_3_health",
-      "fxName": "fx_f1_aurynnexus",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

@@ -7,7 +7,6 @@
   "spells": [
     {
       "spellId": "deal_3_to_anything",
-      "fxName": "fx_f2_phoenixfire",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

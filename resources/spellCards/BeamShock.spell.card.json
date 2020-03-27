@@ -7,7 +7,6 @@
   "spells": [
     {
       "spellId": "stun",
-      "fxName": "fx_explosionorangesmoke",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

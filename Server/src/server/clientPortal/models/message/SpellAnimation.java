@@ -7,10 +7,10 @@ import java.util.Set;
 
 class SpellAnimation {
     private final Set<Cell> cells;
-    private final String fxName;
+    private final AvailabilityType availabilityType;
 
-    SpellAnimation(Set<Cell> cells, String fxName) {
+    SpellAnimation(Set<Cell> cells, AvailabilityType availabilityType) {
         this.cells = cells;
-        this.fxName = fxName;
+        this.availabilityType = availabilityType;
     }
 }
