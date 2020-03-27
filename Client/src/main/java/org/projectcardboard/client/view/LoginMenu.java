@@ -21,69 +21,64 @@ import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class LoginMenu extends Show {
 
-  public LoginMenu() {
-    try {
-      root.setBackground(UIConstants.DEFAULT_ROOT_BACKGROUND);
+    public LoginMenu() {
+        try {
+            root.setBackground(UIConstants.DEFAULT_ROOT_BACKGROUND);
 
-      BorderPane background = BackgroundMaker.getMenuBackground();
-      DefaultContainer container = new DefaultContainer(new LoginMenuContainer());
+            BorderPane background = BackgroundMaker.getMenuBackground();
+            DefaultContainer container = new DefaultContainer(new LoginMenuContainer());
 
-      AnchorPane sceneContents = new AnchorPane(background, container);
+            AnchorPane sceneContents = new AnchorPane(background, container);
 
-      root.getChildren().addAll(sceneContents);
+            root.getChildren().addAll(sceneContents);
 
-      String versionInfo = getClientVersionInfo();
-      if (versionInfo != null) {
-        String version = LanguageData.getInstance()
-            .getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.VERSION});
-        DefaultLabel versionLabel = new DefaultLabel(String.format("%s: %s", version, versionInfo),
-            Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.DARKGRAY, 10, 10);
-        root.getChildren().add(versionLabel);
-      }
+            String versionInfo = getClientVersionInfo();
+            if (versionInfo != null) {
+                String version = LanguageData.getInstance().getValue(new String[] {LanguageKeys.LOGIN_MENU, LanguageKeys.VERSION});
+                DefaultLabel versionLabel = new DefaultLabel(String.format("%s: %s", version, versionInfo), Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.DARKGRAY, 10, 10);
+                root.getChildren().add(versionLabel);
+            }
 
 
-      String serverName = getServerInfo();
-      if (serverName != null) {
-        String ServerNameFullString = String.format("server: %s", serverName);
-        DefaultLabel ServerLabel = new DefaultLabel(ServerNameFullString,
-            Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.DARKGRAY, 10, 30);
-        root.getChildren().add(ServerLabel);
-      }
+            String serverName = getServerInfo();
+            if (serverName != null) {
+                String ServerNameFullString = String.format("server: %s", serverName);
+                DefaultLabel ServerLabel = new DefaultLabel(ServerNameFullString, Font.font("SansSerif", FontWeight.EXTRA_BOLD, 40 * SCALE), Color.DARKGRAY, 10, 30);
+                root.getChildren().add(ServerLabel);
+            }
 
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  public String getServerInfo() {
-
-    // Todo (1) add localisation. (2) Only reveal last bit of server. eg "test3" instead of
-    // "wss://mechaz.org/test3"
-    Boolean isLocalConnection =
-        Boolean.parseBoolean(Config.getInstance().getProperty("HOST_SERVER"));
-    if (isLocalConnection) {
-      return "local host";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    return Config.getInstance().getProperty("SERVER_URI");
-  }
+    public String getServerInfo(){
 
-  public String getClientVersionInfo() throws IOException {
-    final String versionPath = "/clientVersion.txt";
+        // Todo (1) add localisation. (2) Only reveal last bit of server. eg "test3" instead of "wss://mechaz.org/test3"
+        Boolean isLocalConnection = Boolean.parseBoolean(Config.getInstance().getProperty("HOST_SERVER"));
+        if (isLocalConnection){
+            return "local host";
+        }
 
-    InputStream file = this.getClass().getResourceAsStream(versionPath);
-    Scanner scanner = new Scanner(file);
-    String clientVersionInfo = scanner.nextLine();
-    scanner.close();
-    file.close();
+        return Config.getInstance().getProperty("SERVER_URI");
+    }
 
-    return clientVersionInfo;
-  }
+    public String getClientVersionInfo() throws IOException {
+        final String versionPath = "/clientVersion.txt";
 
-  @Override
-  public void show() {
-    super.show();
-    BackgroundMaker.makeMenuBackgroundFrozen();
-    GraphicalUserInterface.getInstance().stopBackgroundMusic();
-  }
+         InputStream file = this.getClass().getResourceAsStream(versionPath);
+         Scanner scanner = new Scanner(file);
+         String clientVersionInfo = scanner.nextLine();
+         scanner.close();
+         file.close();
+
+         return clientVersionInfo;
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        BackgroundMaker.makeMenuBackgroundFrozen();
+        GraphicalUserInterface.getInstance().stopBackgroundMusic();
+    }
 }

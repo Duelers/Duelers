@@ -2,7 +2,6 @@
   "name": "Razorcrag Golem",
   "description": "Golem",
   "cardId": "RazorcragGolem",
-  "faction": "mercenary",
   "spriteName": "neutral_razorcraggolem",
   "type": "MINION",
   "defaultAp": 10,

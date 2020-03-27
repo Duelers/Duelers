@@ -2,7 +2,6 @@
   "name": "Katara",
   "description": "Backstab: (1)",
   "cardId": "Katara",
-  "faction": "songhai",
   "spriteName": "f2_katara",
   "type": "MINION",
   "spells": [],

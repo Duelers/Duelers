@@ -2,7 +2,6 @@
   "name": "Scion's First Wish",
   "description": "Give a friendly minion +1/+1. Draw a card",
   "cardId": "ScionsFirstWish",
-  "faction": "vetruvian",
   "spriteName": "icon_f3_scionsfirstwish",
   "type": "SPELL",
   "spells": [

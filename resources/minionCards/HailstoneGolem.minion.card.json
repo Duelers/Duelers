@@ -2,7 +2,6 @@
   "name": "Hailstone Golem",
   "description": "Golem",
   "cardId": "HailstoneGolem",
-  "faction": "mercenary",
   "spriteName": "neutral_golemice",
   "type": "MINION",
   "defaultAp": 4,

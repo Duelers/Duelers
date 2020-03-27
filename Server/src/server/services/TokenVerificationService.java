@@ -6,5 +6,5 @@ import java.util.concurrent.CompletableFuture;
 
 public interface TokenVerificationService {
 
-  public CompletableFuture<AuthenticationTokenResponse> verifyAuthenticationToken(String token);
+    public CompletableFuture<AuthenticationTokenResponse> verifyAuthenticationToken(String token);
 }

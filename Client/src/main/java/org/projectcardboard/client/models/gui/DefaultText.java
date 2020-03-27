@@ -7,11 +7,11 @@ import javafx.scene.text.TextAlignment;
 
 public class DefaultText extends Text {
 
-  public DefaultText(String text, double wrapWidth, Font font, Paint color) {
-    super(text);
-    setTextAlignment(TextAlignment.CENTER);
-    setWrappingWidth(wrapWidth);
-    setFont(font);
-    setFill(color);
-  }
+    public DefaultText(String text, double wrapWidth, Font font, Paint color) {
+        super(text);
+        setTextAlignment(TextAlignment.CENTER);
+        setWrappingWidth(wrapWidth);
+        setFont(font);
+        setFill(color);
+    }
 }

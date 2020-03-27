@@ -2,7 +2,6 @@
   "name": "Vaath The Immortal",
   "description": "Magmar General",
   "cardId": "VaathTheImmortal",
-  "faction": "magmar",
   "spriteName": "f5_general",
   "type": "HERO",
   "spells": [],

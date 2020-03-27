@@ -9,18 +9,20 @@ import static org.projectcardboard.client.models.gui.CardDetailBox.DESCRIPTION_F
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 class PriceBox extends VBox {
-  private static final double PRICE_Y = 430 * SCALE;
-  private final DefaultLabel priceLabel;
+    private static final double PRICE_Y = 430 * SCALE;
+    private final DefaultLabel priceLabel;
 
-  PriceBox(int price) {
-    priceLabel = new DefaultLabel("PRICE: " + price, DESCRIPTION_FONT, DESCRIPTION_COLOR);
-    setMinWidth(GLOW_WIDTH);
-    setAlignment(Pos.CENTER);
-    setLayoutY(PRICE_Y);
-    getChildren().add(priceLabel);
-  }
+    PriceBox(int price) {
+        priceLabel = new DefaultLabel(
+                "PRICE: " + price, DESCRIPTION_FONT, DESCRIPTION_COLOR
+        );
+        setMinWidth(GLOW_WIDTH);
+        setAlignment(Pos.CENTER);
+        setLayoutY(PRICE_Y);
+        getChildren().add(priceLabel);
+    }
 
-  void setPrice(int newValue) {
-    priceLabel.setText("PRICE: " + newValue);
-  }
+    void setPrice(int newValue) {
+        priceLabel.setText("PRICE: " + newValue);
+    }
 }

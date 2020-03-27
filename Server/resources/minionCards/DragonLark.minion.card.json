@@ -2,7 +2,6 @@
   "name": "Dragonlark",
   "description": "Flying, Ranged (2)",
   "cardId": "Dragonlark",
-  "faction": "mercenary",
   "spriteName": "neutral_monsterdragonhawk",
   "type": "MINION",
   "spells": [],

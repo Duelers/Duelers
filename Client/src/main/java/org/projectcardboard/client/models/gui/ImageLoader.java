@@ -16,19 +16,18 @@ public class ImageLoader {
         return makeImageView(new Image(imageResource), width, height);
     }
 
-  static ImageView loadImage(String url, double width, double height, double x, double y)
-      throws FileNotFoundException {
-    ImageView view = loadImage(url, width, height);
-    view.relocate(x, y);
-    return view;
-  }
+    static ImageView loadImage(String url, double width, double height, double x, double y) throws FileNotFoundException {
+        ImageView view = loadImage(url, width, height);
+        view.relocate(x, y);
+        return view;
+    }
 
-  public static ImageView makeImageView(Image image, double width, double height) {
-    ImageView menuView = new ImageView(image);
-    menuView.setFitWidth(width);
-    menuView.setFitHeight(height);
-    return menuView;
-  }
+    public static ImageView makeImageView(Image image, double width, double height) {
+        ImageView menuView = new ImageView(image);
+        menuView.setFitWidth(width);
+        menuView.setFitHeight(height);
+        return menuView;
+    }
 
     public static Image load(String url){
         System.out.println("Loading image: " + url);
@@ -45,6 +44,4 @@ public class ImageLoader {
         }
         return new Image(imageResource);
     }
-    return new Image(imageResource);
-  }
 }

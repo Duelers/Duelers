@@ -8,7 +8,6 @@
                 "name": "Argeon Highmayne",
                 "description": "Lyonar General",
                 "cardId": "duelyst_ArgeonHighmayne_1",
-                "faction": "lyonar",
                 "spriteName": "f1_general",
                 "type": "HERO",
                 "spells": [],
@@ -25,7 +24,6 @@
                 "name": "Faie Bloodwing",
                 "description": "Vanar General",
                 "cardId": "duelyst_FaieBloodwing_1",
-                "faction": "vanar",
                 "spriteName": "f6_general",
                 "type": "HERO",
                 "spells": [],
@@ -42,7 +40,6 @@
                 "name": "Reva Eventide",
                 "description": "Songhai General",
                 "cardId": "duelyst_RevaEventide_1",
-                "faction": "songhai",
                 "spriteName": "f2_altgeneral",
                 "type": "HERO",
                 "spells": [],
@@ -59,7 +56,6 @@
                 "name": "Vaath The Immortal",
                 "description": "Magmar General",
                 "cardId": "duelyst_VaathTheImmortal_1",
-                "faction": "magmar",
                 "spriteName": "f5_general",
                 "type": "HERO",
                 "spells": [],
@@ -78,7 +74,6 @@
                 "name": "Arctic Displacer",
                 "description": "Airdrop",
                 "cardId": "duelyst_ArcticDisplacer_1",
-                "faction": "vanar",
                 "spriteName": "f6_snowwyvern",
                 "type": "MINION",
                 "spells": [],
@@ -95,7 +90,6 @@
                 "name": "Arctic Displacer",
                 "description": "Airdrop",
                 "cardId": "duelyst_ArcticDisplacer_2",
-                "faction": "vanar",
                 "spriteName": "f6_snowwyvern",
                 "type": "MINION",
                 "spells": [],
@@ -112,7 +106,6 @@
                 "name": "Arctic Displacer",
                 "description": "Airdrop",
                 "cardId": "duelyst_ArcticDisplacer_3",
-                "faction": "vanar",
                 "spriteName": "f6_snowwyvern",
                 "type": "MINION",
                 "spells": [],
@@ -130,7 +123,6 @@
                 "description": "Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
                 "cardId": "duelyst_AymaraHealer_1",
                 "spriteName": "f3_aymarahealer",
-                "faction": "vetruvian",
                 "type": "MINION",
                 "spells": [
                     {
@@ -270,7 +262,6 @@
                 "description": "Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
                 "cardId": "duelyst_AymaraHealer_2",
                 "spriteName": "f3_aymarahealer",
-                "faction": "vetruvian",
                 "type": "MINION",
                 "spells": [
                     {
@@ -410,7 +401,6 @@
                 "description": "Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.",
                 "cardId": "duelyst_AymaraHealer_3",
                 "spriteName": "f3_aymarahealer",
-                "faction": "vetruvian",
                 "type": "MINION",
                 "spells": [
                     {
@@ -549,7 +539,6 @@
                 "name": "Azure Herald",
                 "description": "Opening Gambit: Add 3 Health to your General",
                 "cardId": "duelyst_AzureHerald_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_azureherald",
                 "type": "MINION",
                 "spells": [
@@ -607,7 +596,6 @@
                 "name": "Azure Herald",
                 "description": "Opening Gambit: Add 3 Health to your General",
                 "cardId": "duelyst_AzureHerald_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_azureherald",
                 "type": "MINION",
                 "spells": [
@@ -665,7 +653,6 @@
                 "name": "Azure Herald",
                 "description": "Opening Gambit: Add 3 Health to your General",
                 "cardId": "duelyst_AzureHerald_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_azureherald",
                 "type": "MINION",
                 "spells": [
@@ -723,7 +710,6 @@
                 "name": "Azure Horn Shaman",
                 "description": "Dying Wish: Give +4 health to friendly minions around it.",
                 "cardId": "duelyst_AzureHornShaman_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercazurehorn",
                 "type": "MINION",
                 "spells": [
@@ -797,7 +783,6 @@
                 "name": "Azure Horn Shaman",
                 "description": "Dying Wish: Give +4 health to friendly minions around it.",
                 "cardId": "duelyst_AzureHornShaman_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercazurehorn",
                 "type": "MINION",
                 "spells": [
@@ -871,7 +856,6 @@
                 "name": "Azure Horn Shaman",
                 "description": "Dying Wish: Give +4 health to friendly minions around it.",
                 "cardId": "duelyst_AzureHornShaman_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercazurehorn",
                 "type": "MINION",
                 "spells": [
@@ -945,7 +929,6 @@
                 "name": "Azurite Lion",
                 "description": "Celerity",
                 "cardId": "duelyst_AzuriteLion_1",
-                "faction": "lyonar",
                 "spriteName": "f1_azuritelion",
                 "type": "MINION",
                 "defaultAp": 2,
@@ -961,7 +944,6 @@
                 "name": "Azurite Lion",
                 "description": "Celerity",
                 "cardId": "duelyst_AzuriteLion_2",
-                "faction": "lyonar",
                 "spriteName": "f1_azuritelion",
                 "type": "MINION",
                 "defaultAp": 2,
@@ -977,7 +959,6 @@
                 "name": "Azurite Lion",
                 "description": "Celerity",
                 "cardId": "duelyst_AzuriteLion_3",
-                "faction": "lyonar",
                 "spriteName": "f1_azuritelion",
                 "type": "MINION",
                 "defaultAp": 2,
@@ -993,7 +974,6 @@
                 "name": "Beastbound Savage",
                 "description": "Celerity.\n After attacking, deal 2 damage to all surrounding enemies",
                 "cardId": "duelyst_BeastboundSavage_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastmaster",
                 "type": "MINION",
                 "spells": [
@@ -1072,7 +1052,6 @@
                 "name": "Beastbound Savage",
                 "description": "Celerity.\n After attacking, deal 2 damage to all surrounding enemies",
                 "cardId": "duelyst_BeastboundSavage_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastmaster",
                 "type": "MINION",
                 "spells": [
@@ -1151,7 +1130,6 @@
                 "name": "Beastbound Savage",
                 "description": "Celerity.\n After attacking, deal 2 damage to all surrounding enemies",
                 "cardId": "duelyst_BeastboundSavage_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastmaster",
                 "type": "MINION",
                 "spells": [
@@ -1230,7 +1208,6 @@
                 "name": "Blistering Skorn",
                 "description": "Opening Gambit: Deal 1 damage to everything (including itself)",
                 "cardId": "duelyst_BlisteringSkorn_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_blisteringscorn",
                 "type": "MINION",
                 "spells": [
@@ -1288,7 +1265,6 @@
                 "name": "Blistering Skorn",
                 "description": "Opening Gambit: Deal 1 damage to everything (including itself)",
                 "cardId": "duelyst_BlisteringSkorn_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_blisteringscorn",
                 "type": "MINION",
                 "spells": [
@@ -1346,7 +1322,6 @@
                 "name": "Blistering Skorn",
                 "description": "Opening Gambit: Deal 1 damage to everything (including itself)",
                 "cardId": "duelyst_BlisteringSkorn_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_blisteringscorn",
                 "type": "MINION",
                 "spells": [
@@ -1404,7 +1379,6 @@
                 "name": "Bloodshard Golem",
                 "description": "Golem",
                 "cardId": "duelyst_BloodshardGolem_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_golembloodshard",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -1420,7 +1394,6 @@
                 "name": "Bloodshard Golem",
                 "description": "Golem",
                 "cardId": "duelyst_BloodshardGolem_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_golembloodshard",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -1436,7 +1409,6 @@
                 "name": "Bloodshard Golem",
                 "description": "Golem",
                 "cardId": "duelyst_BloodshardGolem_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_golembloodshard",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -1452,7 +1424,6 @@
                 "name": "Brightmoss Golem",
                 "description": "Golem",
                 "cardId": "duelyst_BrightmossGolem_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemnature",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -1468,7 +1439,6 @@
                 "name": "Brightmoss Golem",
                 "description": "Golem",
                 "cardId": "duelyst_BrightmossGolem_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemnature",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -1484,7 +1454,6 @@
                 "name": "Brightmoss Golem",
                 "description": "Golem",
                 "cardId": "duelyst_BrightmossGolem_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemnature",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -1500,7 +1469,6 @@
                 "name": "Celestial Phantom",
                 "description": "Destroy any enemy minion that Celestial Phantom attacks or counterattacks",
                 "cardId": "duelyst_CelestialPhantom_1",
-                "faction": "songhai",
                 "spriteName": "f2_deathphantom",
                 "type": "MINION",
                 "spells": [
@@ -1557,7 +1525,6 @@
                 "name": "Celestial Phantom",
                 "description": "Destroy any enemy minion that Celestial Phantom attacks or counterattacks",
                 "cardId": "duelyst_CelestialPhantom_2",
-                "faction": "songhai",
                 "spriteName": "f2_deathphantom",
                 "type": "MINION",
                 "spells": [
@@ -1614,7 +1581,6 @@
                 "name": "Celestial Phantom",
                 "description": "Destroy any enemy minion that Celestial Phantom attacks or counterattacks",
                 "cardId": "duelyst_CelestialPhantom_3",
-                "faction": "songhai",
                 "spriteName": "f2_deathphantom",
                 "type": "MINION",
                 "spells": [
@@ -1671,7 +1637,6 @@
                 "name": "Dagger Kiri",
                 "description": "Celerity",
                 "cardId": "duelyst_DaggerKiri_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercdaggerkiri",
                 "type": "MINION",
                 "defaultAp": 2,
@@ -1687,7 +1652,6 @@
                 "name": "Dagger Kiri",
                 "description": "Celerity",
                 "cardId": "duelyst_DaggerKiri_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercdaggerkiri",
                 "type": "MINION",
                 "defaultAp": 2,
@@ -1703,7 +1667,6 @@
                 "name": "Dagger Kiri",
                 "description": "Celerity",
                 "cardId": "duelyst_DaggerKiri_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercdaggerkiri",
                 "type": "MINION",
                 "defaultAp": 2,
@@ -1719,7 +1682,6 @@
                 "name": "Dragonlark",
                 "description": "Flying, Ranged (2)",
                 "cardId": "duelyst_Dragonlark_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterdragonhawk",
                 "type": "MINION",
                 "spells": [],
@@ -1736,7 +1698,6 @@
                 "name": "Dragonlark",
                 "description": "Flying, Ranged (2)",
                 "cardId": "duelyst_Dragonlark_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterdragonhawk",
                 "type": "MINION",
                 "spells": [],
@@ -1753,7 +1714,6 @@
                 "name": "Dragonlark",
                 "description": "Flying, Ranged (2)",
                 "cardId": "duelyst_Dragonlark_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterdragonhawk",
                 "type": "MINION",
                 "spells": [],
@@ -1770,7 +1730,6 @@
                 "name": "Drybone Golem",
                 "description": "Golem",
                 "cardId": "duelyst_DryboneGolem_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemdragonbone",
                 "type": "MINION",
                 "defaultAp": 10,
@@ -1786,7 +1745,6 @@
                 "name": "Drybone Golem",
                 "description": "Golem",
                 "cardId": "duelyst_DryboneGolem_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemdragonbone",
                 "type": "MINION",
                 "defaultAp": 10,
@@ -1802,7 +1760,6 @@
                 "name": "Drybone Golem",
                 "description": "Golem",
                 "cardId": "duelyst_DryboneGolem_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemdragonbone",
                 "type": "MINION",
                 "defaultAp": 10,
@@ -1818,7 +1775,6 @@
                 "name": "Elucidator",
                 "description": "Rush. \n Opening Gambit: Deal 4 damage to your General",
                 "cardId": "duelyst_Elucidator_1",
-                "faction": "magmar",
                 "spriteName": "f5_support",
                 "type": "MINION",
                 "spells": [
@@ -1864,7 +1820,6 @@
                 "name": "Elucidator",
                 "description": "Rush. \n Opening Gambit: Deal 4 damage to your General",
                 "cardId": "duelyst_Elucidator_2",
-                "faction": "magmar",
                 "spriteName": "f5_support",
                 "type": "MINION",
                 "spells": [
@@ -1910,7 +1865,6 @@
                 "name": "Elucidator",
                 "description": "Rush. \n Opening Gambit: Deal 4 damage to your General",
                 "cardId": "duelyst_Elucidator_3",
-                "faction": "magmar",
                 "spriteName": "f5_support",
                 "type": "MINION",
                 "spells": [
@@ -1956,7 +1910,6 @@
                 "name": "Emberwyrm",
                 "description": "Flying",
                 "cardId": "duelyst_Emberwyrm_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_veteranflamewing",
                 "type": "MINION",
                 "spells": [],
@@ -1973,7 +1926,6 @@
                 "name": "Emberwyrm",
                 "description": "Flying",
                 "cardId": "duelyst_Emberwyrm_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_veteranflamewing",
                 "type": "MINION",
                 "spells": [],
@@ -1990,7 +1942,6 @@
                 "name": "Emberwyrm",
                 "description": "Flying",
                 "cardId": "duelyst_Emberwyrm_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_veteranflamewing",
                 "type": "MINION",
                 "spells": [],
@@ -2007,7 +1958,6 @@
                 "name": "Emerald Rejuvenator",
                 "description": "Opening Gambit: Give 4 Health to your General.",
                 "cardId": "duelyst_EmeraldRejuvenator_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_rejuvenator",
                 "type": "MINION",
                 "spells": [
@@ -2054,7 +2004,6 @@
                 "name": "Emerald Rejuvenator",
                 "description": "Opening Gambit: Give 4 Health to your General.",
                 "cardId": "duelyst_EmeraldRejuvenator_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_rejuvenator",
                 "type": "MINION",
                 "spells": [
@@ -2101,7 +2050,6 @@
                 "name": "Emerald Rejuvenator",
                 "description": "Opening Gambit: Give 4 Health to your General.",
                 "cardId": "duelyst_EmeraldRejuvenator_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_rejuvenator",
                 "type": "MINION",
                 "spells": [
@@ -2148,7 +2096,6 @@
                 "name": "Flameblood Warlock",
                 "description": "Opening Gambit: Deal 3 damage to both generals",
                 "cardId": "duelyst_FlamebloodWarlock_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercflamebloodwarlock",
                 "type": "MINION",
                 "spells": [
@@ -2194,7 +2141,6 @@
                 "name": "Flameblood Warlock",
                 "description": "Opening Gambit: Deal 3 damage to both generals",
                 "cardId": "duelyst_FlamebloodWarlock_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercflamebloodwarlock",
                 "type": "MINION",
                 "spells": [
@@ -2240,7 +2186,6 @@
                 "name": "Flameblood Warlock",
                 "description": "Opening Gambit: Deal 3 damage to both generals",
                 "cardId": "duelyst_FlamebloodWarlock_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercflamebloodwarlock",
                 "type": "MINION",
                 "spells": [
@@ -2286,7 +2231,6 @@
                 "name": "Frostbone Naga",
                 "description": "Opening Gambit: Deal 2 damage to everything around it",
                 "cardId": "duelyst_FrostboneNaga_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercfrostbonenaga",
                 "type": "MINION",
                 "spells": [
@@ -2423,7 +2367,6 @@
                 "name": "Frostbone Naga",
                 "description": "Opening Gambit: Deal 2 damage to everything around it",
                 "cardId": "duelyst_FrostboneNaga_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercfrostbonenaga",
                 "type": "MINION",
                 "spells": [
@@ -2560,7 +2503,6 @@
                 "name": "Frostbone Naga",
                 "description": "Opening Gambit: Deal 2 damage to everything around it",
                 "cardId": "duelyst_FrostboneNaga_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercfrostbonenaga",
                 "type": "MINION",
                 "spells": [
@@ -2697,7 +2639,6 @@
                 "name": "Gore Horn",
                 "description": "Backstab: (2)\n After this minion attacks, it gains +1/+1.",
                 "cardId": "duelyst_GoreHorn_1",
-                "faction": "songhai",
                 "spriteName": "f2_tank",
                 "type": "MINION",
                 "spells": [
@@ -2751,7 +2692,6 @@
                 "name": "Gore Horn",
                 "description": "Backstab: (2)\n After this minion attacks, it gains +1/+1.",
                 "cardId": "duelyst_GoreHorn_2",
-                "faction": "songhai",
                 "spriteName": "f2_tank",
                 "type": "MINION",
                 "spells": [
@@ -2805,7 +2745,6 @@
                 "name": "Gore Horn",
                 "description": "Backstab: (2)\n After this minion attacks, it gains +1/+1.",
                 "cardId": "duelyst_GoreHorn_3",
-                "faction": "songhai",
                 "spriteName": "f2_tank",
                 "type": "MINION",
                 "spells": [
@@ -2859,7 +2798,6 @@
                 "name": "Hailstone Golem",
                 "description": "Golem",
                 "cardId": "duelyst_HailstoneGolem_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemice",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -2875,7 +2813,6 @@
                 "name": "Hailstone Golem",
                 "description": "Golem",
                 "cardId": "duelyst_HailstoneGolem_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemice",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -2891,7 +2828,6 @@
                 "name": "Hailstone Golem",
                 "description": "Golem",
                 "cardId": "duelyst_HailstoneGolem_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemice",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -2907,7 +2843,6 @@
                 "name": "Hashishi",
                 "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_1",
-                "faction": "mercenary",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
                 "spells": [
@@ -2956,7 +2891,6 @@
                 "name": "Hashishi",
                 "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_2",
-                "faction": "mercenary",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
                 "spells": [
@@ -3005,7 +2939,6 @@
                 "name": "Hashishi",
                 "description": "Rush, Celerity, Backstab: (1)\nAfter attacking, draw a card",
                 "cardId": "duelyst_Hashishi_3",
-                "faction": "mercenary",
                 "spriteName": "f2_buildcommon",
                 "type": "MINION",
                 "spells": [
@@ -3054,7 +2987,6 @@
                 "name": "Ironcliffe Guardian",
                 "description": "Provoke, Airdrop",
                 "cardId": "duelyst_IroncliffeGuardian_1",
-                "faction": "lyonar",
                 "spriteName": "f1_ironcliffeguardian",
                 "type": "MINION",
                 "spells": [],
@@ -3071,7 +3003,6 @@
                 "name": "Ironcliffe Guardian",
                 "description": "Provoke, Airdrop",
                 "cardId": "duelyst_IroncliffeGuardian_2",
-                "faction": "lyonar",
                 "spriteName": "f1_ironcliffeguardian",
                 "type": "MINION",
                 "spells": [],
@@ -3088,7 +3019,6 @@
                 "name": "Ironcliffe Guardian",
                 "description": "Provoke, Airdrop",
                 "cardId": "duelyst_IroncliffeGuardian_3",
-                "faction": "lyonar",
                 "spriteName": "f1_ironcliffeguardian",
                 "type": "MINION",
                 "spells": [],
@@ -3105,7 +3035,6 @@
                 "name": "Kaido Assassin",
                 "description": "Backstab: (1)",
                 "cardId": "duelyst_KaidoAssassin_1",
-                "faction": "songhai",
                 "spriteName": "f2_melee",
                 "type": "MINION",
                 "spells": [],
@@ -3124,7 +3053,6 @@
                 "name": "Kaido Assassin",
                 "description": "Backstab: (1)",
                 "cardId": "duelyst_KaidoAssassin_2",
-                "faction": "songhai",
                 "spriteName": "f2_melee",
                 "type": "MINION",
                 "spells": [],
@@ -3143,7 +3071,6 @@
                 "name": "Kaido Assassin",
                 "description": "Backstab: (1)",
                 "cardId": "duelyst_KaidoAssassin_3",
-                "faction": "songhai",
                 "spriteName": "f2_melee",
                 "type": "MINION",
                 "spells": [],
@@ -3159,67 +3086,9 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Katara",
-                "description": "Backstab: (1)",
-                "cardId": "duelyst_Katara_1",
-                "faction": "songhai",
-                "spriteName": "f2_katara",
-                "type": "MINION",
-                "spells": [],
-                "defaultAp": 1,
-                "defaultHp": 3,
-                "manaCost": 1,
-                "price": 100,
-                "attackType": "MELEE",
-                "hasBackstab": true,
-                "backstab": 1,
-                "range": 0,
-                "hasCombo": false,
-                "remainingNumber": 20
-            },
-            {
-                "name": "Katara",
-                "description": "Backstab: (1)",
-                "cardId": "duelyst_Katara_2",
-                "faction": "songhai",
-                "spriteName": "f2_katara",
-                "type": "MINION",
-                "spells": [],
-                "defaultAp": 1,
-                "defaultHp": 3,
-                "manaCost": 1,
-                "price": 100,
-                "attackType": "MELEE",
-                "hasBackstab": true,
-                "backstab": 1,
-                "range": 0,
-                "hasCombo": false,
-                "remainingNumber": 20
-            },
-            {
-                "name": "Katara",
-                "description": "Backstab: (1)",
-                "cardId": "duelyst_Katara_3",
-                "faction": "songhai",
-                "spriteName": "f2_katara",
-                "type": "MINION",
-                "spells": [],
-                "defaultAp": 1,
-                "defaultHp": 3,
-                "manaCost": 1,
-                "price": 100,
-                "attackType": "MELEE",
-                "hasBackstab": true,
-                "backstab": 1,
-                "range": 0,
-                "hasCombo": false,
-                "remainingNumber": 20
-            },
-            {
                 "name": "Komodo Charger",
                 "description": "",
                 "cardId": "duelyst_KomodoCharger_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastcavern",
                 "type": "MINION",
                 "defaultAp": 1,
@@ -3235,7 +3104,6 @@
                 "name": "Komodo Charger",
                 "description": "",
                 "cardId": "duelyst_KomodoCharger_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastcavern",
                 "type": "MINION",
                 "defaultAp": 1,
@@ -3251,7 +3119,6 @@
                 "name": "Komodo Charger",
                 "description": "",
                 "cardId": "duelyst_KomodoCharger_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastcavern",
                 "type": "MINION",
                 "defaultAp": 1,
@@ -3267,7 +3134,6 @@
                 "name": "Lysian Brawler",
                 "description": "Celerity",
                 "cardId": "duelyst_LysianBrawler_1",
-                "faction": "lyonar",
                 "spriteName": "f1_silvermanevanguard",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -3283,7 +3149,6 @@
                 "name": "Lysian Brawler",
                 "description": "Celerity",
                 "cardId": "duelyst_LysianBrawler_2",
-                "faction": "lyonar",
                 "spriteName": "f1_silvermanevanguard",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -3299,7 +3164,6 @@
                 "name": "Lysian Brawler",
                 "description": "Celerity",
                 "cardId": "duelyst_LysianBrawler_3",
-                "faction": "lyonar",
                 "spriteName": "f1_silvermanevanguard",
                 "type": "MINION",
                 "defaultAp": 4,
@@ -3315,13 +3179,11 @@
                 "name": "Makantor Warbeast",
                 "description": "Rush.\n After attacking, deal 4 damage to all surrounding enemies",
                 "cardId": "duelyst_MakantorWarbeast_1",
-                "faction": "magmar",
                 "spriteName": "f5_mankatorwarbeast",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3395,13 +3257,11 @@
                 "name": "Makantor Warbeast",
                 "description": "Rush.\n After attacking, deal 4 damage to all surrounding enemies",
                 "cardId": "duelyst_MakantorWarbeast_2",
-                "faction": "magmar",
                 "spriteName": "f5_mankatorwarbeast",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3475,13 +3335,11 @@
                 "name": "Makantor Warbeast",
                 "description": "Rush.\n After attacking, deal 4 damage to all surrounding enemies",
                 "cardId": "duelyst_MakantorWarbeast_3",
-                "faction": "magmar",
                 "spriteName": "f5_mankatorwarbeast",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3555,7 +3413,6 @@
                 "name": "Mr Swampy",
                 "description": "Provoke, Flying",
                 "cardId": "duelyst_MrSwampy_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastswamp",
                 "type": "MINION",
                 "spells": [],
@@ -3572,7 +3429,6 @@
                 "name": "Mr Swampy",
                 "description": "Provoke, Flying",
                 "cardId": "duelyst_MrSwampy_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastswamp",
                 "type": "MINION",
                 "spells": [],
@@ -3589,7 +3445,6 @@
                 "name": "Mr Swampy",
                 "description": "Provoke, Flying",
                 "cardId": "duelyst_MrSwampy_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastswamp",
                 "type": "MINION",
                 "spells": [],
@@ -3606,7 +3461,6 @@
                 "name": "Orizuru",
                 "description": "Flying",
                 "cardId": "duelyst_Orizuru_1",
-                "faction": "songhai",
                 "spriteName": "f2_orizuru",
                 "type": "MINION",
                 "spells": [],
@@ -3623,7 +3477,6 @@
                 "name": "Orizuru",
                 "description": "Flying",
                 "cardId": "duelyst_Orizuru_2",
-                "faction": "songhai",
                 "spriteName": "f2_orizuru",
                 "type": "MINION",
                 "spells": [],
@@ -3640,7 +3493,6 @@
                 "name": "Orizuru",
                 "description": "Flying",
                 "cardId": "duelyst_Orizuru_3",
-                "faction": "songhai",
                 "spriteName": "f2_orizuru",
                 "type": "MINION",
                 "spells": [],
@@ -3657,13 +3509,11 @@
                 "name": "Peacekeeper",
                 "description": "Celerity, Airdrop, Provoke\n After attacking, deal 6 damage to all surrounding enemies",
                 "cardId": "duelyst_Peacekeeper_1",
-                "faction": "lyonar",
                 "spriteName": "f1_peacekeeper",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3732,13 +3582,11 @@
                 "name": "Peacekeeper",
                 "description": "Celerity, Airdrop, Provoke\n After attacking, deal 6 damage to all surrounding enemies",
                 "cardId": "duelyst_Peacekeeper_2",
-                "faction": "lyonar",
                 "spriteName": "f1_peacekeeper",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3807,13 +3655,11 @@
                 "name": "Peacekeeper",
                 "description": "Celerity, Airdrop, Provoke\n After attacking, deal 6 damage to all surrounding enemies",
                 "cardId": "duelyst_Peacekeeper_3",
-                "faction": "lyonar",
                 "spriteName": "f1_peacekeeper",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -3882,7 +3728,6 @@
                 "name": "Phalanxar",
                 "description": "",
                 "cardId": "duelyst_Phalanxar_1",
-                "faction": "magmar",
                 "spriteName": "f5_tank",
                 "type": "MINION",
                 "defaultAp": 7,
@@ -3898,7 +3743,6 @@
                 "name": "Phalanxar",
                 "description": "",
                 "cardId": "duelyst_Phalanxar_2",
-                "faction": "magmar",
                 "spriteName": "f5_tank",
                 "type": "MINION",
                 "defaultAp": 7,
@@ -3914,7 +3758,6 @@
                 "name": "Phalanxar",
                 "description": "",
                 "cardId": "duelyst_Phalanxar_3",
-                "faction": "magmar",
                 "spriteName": "f5_tank",
                 "type": "MINION",
                 "defaultAp": 7,
@@ -3930,13 +3773,11 @@
                 "name": "Piercing Mantis",
                 "description": "After attacking, deal 2 damage to all surrounding enemies",
                 "cardId": "duelyst_PiercingMantis_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_monstershreddingmantis",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -4010,13 +3851,11 @@
                 "name": "Piercing Mantis",
                 "description": "After attacking, deal 2 damage to all surrounding enemies",
                 "cardId": "duelyst_PiercingMantis_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_monstershreddingmantis",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -4090,13 +3929,11 @@
                 "name": "Piercing Mantis",
                 "description": "After attacking, deal 2 damage to all surrounding enemies",
                 "cardId": "duelyst_PiercingMantis_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_monstershreddingmantis",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -4170,7 +4007,6 @@
                 "name": "Planar Scout",
                 "description": "Airdrop, Provoke",
                 "cardId": "duelyst_PlanarScout_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastphasehound",
                 "type": "MINION",
                 "spells": [],
@@ -4187,7 +4023,6 @@
                 "name": "Planar Scout",
                 "description": "Airdrop, Provoke",
                 "cardId": "duelyst_PlanarScout_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastphasehound",
                 "type": "MINION",
                 "spells": [],
@@ -4204,7 +4039,6 @@
                 "name": "Planar Scout",
                 "description": "Airdrop, Provoke",
                 "cardId": "duelyst_PlanarScout_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastphasehound",
                 "type": "MINION",
                 "spells": [],
@@ -4221,7 +4055,6 @@
                 "name": "Primus Fist",
                 "description": "Opening Gambit: Give nearby friendly minions +1 attack.",
                 "cardId": "duelyst_PrimusFist_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_gauntletmaster",
                 "type": "MINION",
                 "spells": [
@@ -4358,7 +4191,6 @@
                 "name": "Primus Fist",
                 "description": "Opening Gambit: Give nearby friendly minions +1 attack.",
                 "cardId": "duelyst_PrimusFist_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_gauntletmaster",
                 "type": "MINION",
                 "spells": [
@@ -4495,7 +4327,6 @@
                 "name": "Primus Fist",
                 "description": "Opening Gambit: Give nearby friendly minions +1 attack.",
                 "cardId": "duelyst_PrimusFist_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_gauntletmaster",
                 "type": "MINION",
                 "spells": [
@@ -4632,7 +4463,6 @@
                 "name": "Razorcrag Golem",
                 "description": "Golem",
                 "cardId": "duelyst_RazorcragGolem_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_razorcraggolem",
                 "type": "MINION",
                 "defaultAp": 10,
@@ -4648,7 +4478,6 @@
                 "name": "Razorcrag Golem",
                 "description": "Golem",
                 "cardId": "duelyst_RazorcragGolem_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_razorcraggolem",
                 "type": "MINION",
                 "defaultAp": 10,
@@ -4664,7 +4493,6 @@
                 "name": "Razorcrag Golem",
                 "description": "Golem",
                 "cardId": "duelyst_RazorcragGolem_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_razorcraggolem",
                 "type": "MINION",
                 "defaultAp": 10,
@@ -4680,7 +4508,6 @@
                 "name": "Rock Pulverizer",
                 "description": "Provoke",
                 "cardId": "duelyst_RockPulverizer_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterexplodingdemon",
                 "type": "MINION",
                 "spells": [],
@@ -4697,7 +4524,6 @@
                 "name": "Rock Pulverizer",
                 "description": "Provoke",
                 "cardId": "duelyst_RockPulverizer_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterexplodingdemon",
                 "type": "MINION",
                 "spells": [],
@@ -4714,7 +4540,6 @@
                 "name": "Rock Pulverizer",
                 "description": "Provoke",
                 "cardId": "duelyst_RockPulverizer_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterexplodingdemon",
                 "type": "MINION",
                 "spells": [],
@@ -4731,7 +4556,6 @@
                 "name": "Rogue Warden",
                 "description": "Ranged",
                 "cardId": "duelyst_RogueWarden_1",
-                "faction": "mercenary",
                 "spriteName": "f1_ranged",
                 "type": "MINION",
                 "spells": [],
@@ -4748,7 +4572,6 @@
                 "name": "Rogue Warden",
                 "description": "Ranged",
                 "cardId": "duelyst_RogueWarden_2",
-                "faction": "mercenary",
                 "spriteName": "f1_ranged",
                 "type": "MINION",
                 "spells": [],
@@ -4765,7 +4588,6 @@
                 "name": "Rogue Warden",
                 "description": "Ranged",
                 "cardId": "duelyst_RogueWarden_3",
-                "faction": "mercenary",
                 "spriteName": "f1_ranged",
                 "type": "MINION",
                 "spells": [],
@@ -4782,7 +4604,6 @@
                 "name": "Saberspine Alpha",
                 "description": "Rush",
                 "cardId": "duelyst_SaberspineAlpha_1",
-                "faction": "mercenary",
                 "spriteName": "f6_eldersaberspine",
                 "type": "MINION",
                 "defaultAp": 5,
@@ -4798,7 +4619,6 @@
                 "name": "Saberspine Alpha",
                 "description": "Rush",
                 "cardId": "duelyst_SaberspineAlpha_2",
-                "faction": "mercenary",
                 "spriteName": "f6_eldersaberspine",
                 "type": "MINION",
                 "defaultAp": 5,
@@ -4814,7 +4634,6 @@
                 "name": "Saberspine Alpha",
                 "description": "Rush",
                 "cardId": "duelyst_SaberspineAlpha_3",
-                "faction": "mercenary",
                 "spriteName": "f6_eldersaberspine",
                 "type": "MINION",
                 "defaultAp": 5,
@@ -4830,7 +4649,6 @@
                 "name": "Saberspine Tiger",
                 "description": "Rush",
                 "cardId": "duelyst_SaberspineTiger_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastsaberspinetiger",
                 "type": "MINION",
                 "defaultAp": 3,
@@ -4846,7 +4664,6 @@
                 "name": "Saberspine Tiger",
                 "description": "Rush",
                 "cardId": "duelyst_SaberspineTiger_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastsaberspinetiger",
                 "type": "MINION",
                 "defaultAp": 3,
@@ -4862,7 +4679,6 @@
                 "name": "Saberspine Tiger",
                 "description": "Rush",
                 "cardId": "duelyst_SaberspineTiger_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_beastsaberspinetiger",
                 "type": "MINION",
                 "defaultAp": 3,
@@ -4875,67 +4691,9 @@
                 "remainingNumber": 20
             },
             {
-                "name": "Scarlet Viper",
-                "description": "Flying, Backstab: (4)",
-                "cardId": "duelyst_ScarletViper_1",
-                "faction": "songhai",
-                "spriteName": "f2_support",
-                "type": "MINION",
-                "spells": [],
-                "defaultAp": 2,
-                "defaultHp": 5,
-                "manaCost": 5,
-                "price": 100,
-                "attackType": "MELEE",
-                "hasBackstab": true,
-                "backstab": 4,
-                "range": 0,
-                "hasCombo": false,
-                "remainingNumber": 20
-            },
-            {
-                "name": "Scarlet Viper",
-                "description": "Flying, Backstab: (4)",
-                "cardId": "duelyst_ScarletViper_2",
-                "faction": "songhai",
-                "spriteName": "f2_support",
-                "type": "MINION",
-                "spells": [],
-                "defaultAp": 2,
-                "defaultHp": 5,
-                "manaCost": 5,
-                "price": 100,
-                "attackType": "MELEE",
-                "hasBackstab": true,
-                "backstab": 4,
-                "range": 0,
-                "hasCombo": false,
-                "remainingNumber": 20
-            },
-            {
-                "name": "Scarlet Viper",
-                "description": "Flying, Backstab: (4)",
-                "cardId": "duelyst_ScarletViper_3",
-                "faction": "songhai",
-                "spriteName": "f2_support",
-                "type": "MINION",
-                "spells": [],
-                "defaultAp": 2,
-                "defaultHp": 5,
-                "manaCost": 5,
-                "price": 100,
-                "attackType": "MELEE",
-                "hasBackstab": true,
-                "backstab": 4,
-                "range": 0,
-                "hasCombo": false,
-                "remainingNumber": 20
-            },
-            {
                 "name": "Sellsoul",
                 "description": "Dying Wish: Deal 4 damage to YOUR General.",
                 "cardId": "duelyst_Sellsoul_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_masteroftheseven",
                 "type": "MINION",
                 "spells": [
@@ -4981,7 +4739,6 @@
                 "name": "Sellsoul",
                 "description": "Dying Wish: Deal 4 damage to YOUR General.",
                 "cardId": "duelyst_Sellsoul_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_masteroftheseven",
                 "type": "MINION",
                 "spells": [
@@ -5027,7 +4784,6 @@
                 "name": "Sellsoul",
                 "description": "Dying Wish: Deal 4 damage to YOUR General.",
                 "cardId": "duelyst_Sellsoul_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_masteroftheseven",
                 "type": "MINION",
                 "spells": [
@@ -5073,13 +4829,11 @@
                 "name": "Serpenti",
                 "description": "After attacking, deal 7 damage to all surrounding enemies",
                 "cardId": "duelyst_Serpenti_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_serpenti",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5153,13 +4907,11 @@
                 "name": "Serpenti",
                 "description": "After attacking, deal 7 damage to all surrounding enemies",
                 "cardId": "duelyst_Serpenti_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_serpenti",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5233,13 +4985,11 @@
                 "name": "Serpenti",
                 "description": "After attacking, deal 7 damage to all surrounding enemies",
                 "cardId": "duelyst_Serpenti_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_serpenti",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -5313,7 +5063,6 @@
                 "name": "Skyrock Golem",
                 "description": "Golem",
                 "cardId": "duelyst_SkyrockGolem_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemrunesand",
                 "type": "MINION",
                 "defaultAp": 3,
@@ -5329,7 +5078,6 @@
                 "name": "Skyrock Golem",
                 "description": "Golem",
                 "cardId": "duelyst_SkyrockGolem_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemrunesand",
                 "type": "MINION",
                 "defaultAp": 3,
@@ -5345,7 +5093,6 @@
                 "name": "Skyrock Golem",
                 "description": "Golem",
                 "cardId": "duelyst_SkyrockGolem_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_golemrunesand",
                 "type": "MINION",
                 "defaultAp": 3,
@@ -5361,7 +5108,6 @@
                 "name": "Spectral Revenant",
                 "description": "Rush \n After attacking or counterattacking deal 4 damage to the enemy General",
                 "cardId": "duelyst_SpectralRevenant_1",
-                "faction": "abyssian",
                 "spriteName": "f4_daemonvoid",
                 "type": "MINION",
                 "spells": [
@@ -5420,7 +5166,6 @@
                 "name": "Spectral Revenant",
                 "description": "Rush \n After attacking or counterattacking deal 4 damage to the enemy General",
                 "cardId": "duelyst_SpectralRevenant_2",
-                "faction": "abyssian",
                 "spriteName": "f4_daemonvoid",
                 "type": "MINION",
                 "spells": [
@@ -5479,7 +5224,6 @@
                 "name": "Spectral Revenant",
                 "description": "Rush \n After attacking or counterattacking deal 4 damage to the enemy General",
                 "cardId": "duelyst_SpectralRevenant_3",
-                "faction": "abyssian",
                 "spriteName": "f4_daemonvoid",
                 "type": "MINION",
                 "spells": [
@@ -5538,7 +5282,6 @@
                 "name": "Storm Artha",
                 "description": "Flying",
                 "cardId": "duelyst_StormArtha_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterlightningbeetle",
                 "type": "MINION",
                 "spells": [],
@@ -5555,7 +5298,6 @@
                 "name": "Storm Artha",
                 "description": "Flying",
                 "cardId": "duelyst_StormArtha_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterlightningbeetle",
                 "type": "MINION",
                 "spells": [],
@@ -5572,7 +5314,6 @@
                 "name": "Storm Artha",
                 "description": "Flying",
                 "cardId": "duelyst_StormArtha_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterlightningbeetle",
                 "type": "MINION",
                 "spells": [],
@@ -5589,7 +5330,6 @@
                 "name": "Sun Seer",
                 "description": "When this minion attacks or counterattacks,  your General gains 3 Health",
                 "cardId": "duelyst_SunSeer_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercsunseer",
                 "type": "MINION",
                 "spells": [
@@ -5648,7 +5388,6 @@
                 "name": "Sun Seer",
                 "description": "When this minion attacks or counterattacks,  your General gains 3 Health",
                 "cardId": "duelyst_SunSeer_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercsunseer",
                 "type": "MINION",
                 "spells": [
@@ -5707,7 +5446,6 @@
                 "name": "Sun Seer",
                 "description": "When this minion attacks or counterattacks,  your General gains 3 Health",
                 "cardId": "duelyst_SunSeer_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_mercsunseer",
                 "type": "MINION",
                 "spells": [
@@ -5766,7 +5504,6 @@
                 "name": "Sun Wisp",
                 "description": "Opening Gambit: Draw a card",
                 "cardId": "duelyst_SunWisp_1",
-                "faction": "lyonar",
                 "spriteName": "f1_sunwisp",
                 "type": "MINION",
                 "spells": [
@@ -5805,7 +5542,6 @@
                 "name": "Sun Wisp",
                 "description": "Opening Gambit: Draw a card",
                 "cardId": "duelyst_SunWisp_2",
-                "faction": "lyonar",
                 "spriteName": "f1_sunwisp",
                 "type": "MINION",
                 "spells": [
@@ -5844,7 +5580,6 @@
                 "name": "Sun Wisp",
                 "description": "Opening Gambit: Draw a card",
                 "cardId": "duelyst_SunWisp_3",
-                "faction": "lyonar",
                 "spriteName": "f1_sunwisp",
                 "type": "MINION",
                 "spells": [
@@ -5883,7 +5618,6 @@
                 "name": "Terradon",
                 "description": "",
                 "cardId": "duelyst_Terradon_1",
-                "faction": "magmar",
                 "spriteName": "f5_flumposaur",
                 "type": "MINION",
                 "defaultAp": 2,
@@ -5899,7 +5633,6 @@
                 "name": "Terradon",
                 "description": "",
                 "cardId": "duelyst_Terradon_2",
-                "faction": "magmar",
                 "spriteName": "f5_flumposaur",
                 "type": "MINION",
                 "defaultAp": 2,
@@ -5915,7 +5648,6 @@
                 "name": "Terradon",
                 "description": "",
                 "cardId": "duelyst_Terradon_3",
-                "faction": "magmar",
                 "spriteName": "f5_flumposaur",
                 "type": "MINION",
                 "defaultAp": 2,
@@ -5931,7 +5663,6 @@
                 "name": "Vale Hunter",
                 "description": "Ranged",
                 "cardId": "duelyst_ValeHunter_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_tribalranged1",
                 "type": "MINION",
                 "spells": [],
@@ -5948,7 +5679,6 @@
                 "name": "Vale Hunter",
                 "description": "Ranged",
                 "cardId": "duelyst_ValeHunter_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_tribalranged1",
                 "type": "MINION",
                 "spells": [],
@@ -5965,7 +5695,6 @@
                 "name": "Vale Hunter",
                 "description": "Ranged",
                 "cardId": "duelyst_ValeHunter_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_tribalranged1",
                 "type": "MINION",
                 "spells": [],
@@ -5982,13 +5711,11 @@
                 "name": "War Talon",
                 "description": "Provoke, After attacking, deal 4 damage to all surrounding enemies",
                 "cardId": "duelyst_WarTalon_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_wartalon",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6062,13 +5789,11 @@
                 "name": "War Talon",
                 "description": "Provoke, After attacking, deal 4 damage to all surrounding enemies",
                 "cardId": "duelyst_WarTalon_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_wartalon",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6142,13 +5867,11 @@
                 "name": "War Talon",
                 "description": "Provoke, After attacking, deal 4 damage to all surrounding enemies",
                 "cardId": "duelyst_WarTalon_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_wartalon",
                 "type": "MINION",
                 "spells": [
                     {
                         "spellId": "dmg_on_atk",
-                        "fxName": "fx_slashfrenzy",
                         "action": {
                             "enemyHitChanges": 0,
                             "apChange": 0,
@@ -6222,7 +5945,6 @@
                 "name": "Widowmaker",
                 "description": "Ranged",
                 "cardId": "duelyst_Widowmaker_1",
-                "faction": "songhai",
                 "spriteName": "f2_ranged",
                 "type": "MINION",
                 "spells": [],
@@ -6239,7 +5961,6 @@
                 "name": "Widowmaker",
                 "description": "Ranged",
                 "cardId": "duelyst_Widowmaker_2",
-                "faction": "songhai",
                 "spriteName": "f2_ranged",
                 "type": "MINION",
                 "spells": [],
@@ -6256,7 +5977,6 @@
                 "name": "Widowmaker",
                 "description": "Ranged",
                 "cardId": "duelyst_Widowmaker_3",
-                "faction": "songhai",
                 "spriteName": "f2_ranged",
                 "type": "MINION",
                 "spells": [],
@@ -6273,7 +5993,6 @@
                 "name": "Worldcore Golem",
                 "description": "Golem",
                 "cardId": "duelyst_WorldcoreGolem_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_moltengolem",
                 "type": "MINION",
                 "defaultAp": 25,
@@ -6289,7 +6008,6 @@
                 "name": "Worldcore Golem",
                 "description": "Golem",
                 "cardId": "duelyst_WorldcoreGolem_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_moltengolem",
                 "type": "MINION",
                 "defaultAp": 25,
@@ -6305,7 +6023,6 @@
                 "name": "Worldcore Golem",
                 "description": "Golem",
                 "cardId": "duelyst_WorldcoreGolem_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_moltengolem",
                 "type": "MINION",
                 "defaultAp": 25,
@@ -6321,7 +6038,6 @@
                 "name": "Young Flamewing",
                 "description": "Flying",
                 "cardId": "duelyst_YoungFlamewing_1",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterflamewing",
                 "type": "MINION",
                 "spells": [],
@@ -6338,7 +6054,6 @@
                 "name": "Young Flamewing",
                 "description": "Flying",
                 "cardId": "duelyst_YoungFlamewing_2",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterflamewing",
                 "type": "MINION",
                 "spells": [],
@@ -6355,7 +6070,6 @@
                 "name": "Young Flamewing",
                 "description": "Flying",
                 "cardId": "duelyst_YoungFlamewing_3",
-                "faction": "mercenary",
                 "spriteName": "neutral_monsterflamewing",
                 "type": "MINION",
                 "spells": [],
@@ -6374,7 +6088,6 @@
                 "name": "Arms Race",
                 "description": "Both Generals gain +1 attack",
                 "cardId": "duelyst_ArmsRace_1",
-                "faction": "magmar",
                 "spriteName": "icon_f1_enthrall",
                 "type": "SPELL",
                 "spells": [
@@ -6453,7 +6166,6 @@
                 "name": "Arms Race",
                 "description": "Both Generals gain +1 attack",
                 "cardId": "duelyst_ArmsRace_2",
-                "faction": "magmar",
                 "spriteName": "icon_f1_enthrall",
                 "type": "SPELL",
                 "spells": [
@@ -6532,7 +6244,6 @@
                 "name": "Arms Race",
                 "description": "Both Generals gain +1 attack",
                 "cardId": "duelyst_ArmsRace_3",
-                "faction": "magmar",
                 "spriteName": "icon_f1_enthrall",
                 "type": "SPELL",
                 "spells": [
@@ -6611,7 +6322,6 @@
                 "name": "Auryn Nexus",
                 "description": "Give a friendly minion +3 Health",
                 "cardId": "duelyst_AurynNexus_1",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_aurynnexus",
                 "type": "SPELL",
                 "spells": [
@@ -6690,7 +6400,6 @@
                 "name": "Auryn Nexus",
                 "description": "Give a friendly minion +3 Health",
                 "cardId": "duelyst_AurynNexus_2",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_aurynnexus",
                 "type": "SPELL",
                 "spells": [
@@ -6769,7 +6478,6 @@
                 "name": "Auryn Nexus",
                 "description": "Give a friendly minion +3 Health",
                 "cardId": "duelyst_AurynNexus_3",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_aurynnexus",
                 "type": "SPELL",
                 "spells": [
@@ -6848,7 +6556,6 @@
                 "name": "Beam Shock",
                 "description": "STUN an enemy",
                 "cardId": "duelyst_BeamShock_1",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_beamshock",
                 "type": "SPELL",
                 "spells": [
@@ -6927,7 +6634,6 @@
                 "name": "Beam Shock",
                 "description": "STUN an enemy",
                 "cardId": "duelyst_BeamShock_2",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_beamshock",
                 "type": "SPELL",
                 "spells": [
@@ -7006,7 +6712,6 @@
                 "name": "Beam Shock",
                 "description": "STUN an enemy",
                 "cardId": "duelyst_BeamShock_3",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_beamshock",
                 "type": "SPELL",
                 "spells": [
@@ -7085,7 +6790,6 @@
                 "name": "Burden of Knowledge",
                 "description": "Deal 1 damage to your General. Draw a card",
                 "cardId": "duelyst_BurdenofKnowledge_1",
-                "faction": "vetruvian",
                 "spriteName": "icon_f3_glimpse",
                 "type": "SPELL",
                 "spells": [
@@ -7227,7 +6931,6 @@
                 "name": "Burden of Knowledge",
                 "description": "Deal 1 damage to your General. Draw a card",
                 "cardId": "duelyst_BurdenofKnowledge_2",
-                "faction": "vetruvian",
                 "spriteName": "icon_f3_glimpse",
                 "type": "SPELL",
                 "spells": [
@@ -7369,7 +7072,6 @@
                 "name": "Burden of Knowledge",
                 "description": "Deal 1 damage to your General. Draw a card",
                 "cardId": "duelyst_BurdenofKnowledge_3",
-                "faction": "vetruvian",
                 "spriteName": "icon_f3_glimpse",
                 "type": "SPELL",
                 "spells": [
@@ -7511,7 +7213,6 @@
                 "name": "Circle of Dessication",
                 "description": "Destroy all minions.",
                 "cardId": "duelyst_CircleofDessication_1",
-                "faction": "vetruvian",
                 "spriteName": "icon_f3_circleofdessication",
                 "type": "SPELL",
                 "spells": [
@@ -7590,7 +7291,6 @@
                 "name": "Circle of Dessication",
                 "description": "Destroy all minions.",
                 "cardId": "duelyst_CircleofDessication_2",
-                "faction": "vetruvian",
                 "spriteName": "icon_f3_circleofdessication",
                 "type": "SPELL",
                 "spells": [
@@ -7669,7 +7369,6 @@
                 "name": "Circle of Dessication",
                 "description": "Destroy all minions.",
                 "cardId": "duelyst_CircleofDessication_3",
-                "faction": "vetruvian",
                 "spriteName": "icon_f3_circleofdessication",
                 "type": "SPELL",
                 "spells": [
@@ -7748,7 +7447,6 @@
                 "name": "Circle of Life",
                 "description": "Deal 5 damage to an enemy minion. Your General gains 5 life.",
                 "cardId": "duelyst_CircleOfLife_1",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_circleoflife",
                 "type": "SPELL",
                 "spells": [
@@ -7857,7 +7555,6 @@
                 "name": "Circle of Life",
                 "description": "Deal 5 damage to an enemy minion. Your General gains 5 life.",
                 "cardId": "duelyst_CircleOfLife_2",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_circleoflife",
                 "type": "SPELL",
                 "spells": [
@@ -7966,7 +7663,6 @@
                 "name": "Circle of Life",
                 "description": "Deal 5 damage to an enemy minion. Your General gains 5 life.",
                 "cardId": "duelyst_CircleOfLife_3",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_circleoflife",
                 "type": "SPELL",
                 "spells": [
@@ -8075,7 +7771,6 @@
                 "name": "Dark Destruction",
                 "description": "Destroy target enemy minion.",
                 "cardId": "duelyst_DarkDestruction_1",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_darktransformation",
                 "type": "SPELL",
                 "spells": [
@@ -8154,7 +7849,6 @@
                 "name": "Dark Destruction",
                 "description": "Destroy target enemy minion.",
                 "cardId": "duelyst_DarkDestruction_2",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_darktransformation",
                 "type": "SPELL",
                 "spells": [
@@ -8233,7 +7927,6 @@
                 "name": "Dark Destruction",
                 "description": "Destroy target enemy minion.",
                 "cardId": "duelyst_DarkDestruction_3",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_darktransformation",
                 "type": "SPELL",
                 "spells": [
@@ -8312,7 +8005,6 @@
                 "name": "Doom",
                 "description": "The enemy General is DOOMED and will die after three turns",
                 "cardId": "duelyst_Doom_1",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_doom",
                 "type": "SPELL",
                 "spells": [
@@ -8391,7 +8083,6 @@
                 "name": "Doom",
                 "description": "The enemy General is DOOMED and will die after three turns",
                 "cardId": "duelyst_Doom_2",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_doom",
                 "type": "SPELL",
                 "spells": [
@@ -8470,7 +8161,6 @@
                 "name": "Doom",
                 "description": "The enemy General is DOOMED and will die after three turns",
                 "cardId": "duelyst_Doom_3",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_doom",
                 "type": "SPELL",
                 "spells": [
@@ -8549,7 +8239,6 @@
                 "name": "Draining Wave",
                 "description": "Deal 4 damage to a minion AND your General",
                 "cardId": "duelyst_DrainingWave_1",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_drainingwave",
                 "type": "SPELL",
                 "spells": [
@@ -8629,7 +8318,6 @@
                 "name": "Draining Wave",
                 "description": "Deal 4 damage to a minion AND your General",
                 "cardId": "duelyst_DrainingWave_2",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_drainingwave",
                 "type": "SPELL",
                 "spells": [
@@ -8709,7 +8397,6 @@
                 "name": "Draining Wave",
                 "description": "Deal 4 damage to a minion AND your General",
                 "cardId": "duelyst_DrainingWave_3",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_drainingwave",
                 "type": "SPELL",
                 "spells": [
@@ -8789,7 +8476,6 @@
                 "name": "Earth Sphere",
                 "description": "Add 8 Health to your general.",
                 "cardId": "duelyst_EarthSphere_1",
-                "faction": "magmar",
                 "spriteName": "icon_f5_earthsphere",
                 "type": "SPELL",
                 "spells": [
@@ -8868,7 +8554,6 @@
                 "name": "Earth Sphere",
                 "description": "Add 8 Health to your general.",
                 "cardId": "duelyst_EarthSphere_2",
-                "faction": "magmar",
                 "spriteName": "icon_f5_earthsphere",
                 "type": "SPELL",
                 "spells": [
@@ -8947,7 +8632,6 @@
                 "name": "Earth Sphere",
                 "description": "Add 8 Health to your general.",
                 "cardId": "duelyst_EarthSphere_3",
-                "faction": "magmar",
                 "spriteName": "icon_f5_earthsphere",
                 "type": "SPELL",
                 "spells": [
@@ -9026,7 +8710,6 @@
                 "name": "Flaming Stampede",
                 "description": "Deal 8 Damage to ALL characters",
                 "cardId": "duelyst_FlamingStampede_1",
-                "faction": "magmar",
                 "spriteName": "icon_f5_flamingstampede",
                 "type": "SPELL",
                 "spells": [
@@ -9105,7 +8788,6 @@
                 "name": "Flaming Stampede",
                 "description": "Deal 8 Damage to ALL characters",
                 "cardId": "duelyst_FlamingStampede_2",
-                "faction": "magmar",
                 "spriteName": "icon_f5_flamingstampede",
                 "type": "SPELL",
                 "spells": [
@@ -9184,7 +8866,6 @@
                 "name": "Flaming Stampede",
                 "description": "Deal 8 Damage to ALL characters",
                 "cardId": "duelyst_FlamingStampede_3",
-                "faction": "magmar",
                 "spriteName": "icon_f5_flamingstampede",
                 "type": "SPELL",
                 "spells": [
@@ -9263,7 +8944,6 @@
                 "name": "Frostburn",
                 "description": "Deal 3 damage to all enemy minions",
                 "cardId": "duelyst_Frostburn_1",
-                "faction": "vanar",
                 "spriteName": "icon_f6_frostburn",
                 "type": "SPELL",
                 "spells": [
@@ -9342,7 +9022,6 @@
                 "name": "Frostburn",
                 "description": "Deal 3 damage to all enemy minions",
                 "cardId": "duelyst_Frostburn_2",
-                "faction": "vanar",
                 "spriteName": "icon_f6_frostburn",
                 "type": "SPELL",
                 "spells": [
@@ -9421,7 +9100,6 @@
                 "name": "Frostburn",
                 "description": "Deal 3 damage to all enemy minions",
                 "cardId": "duelyst_Frostburn_3",
-                "faction": "vanar",
                 "spriteName": "icon_f6_frostburn",
                 "type": "SPELL",
                 "spells": [
@@ -9500,7 +9178,6 @@
                 "name": "Ghost Lightning",
                 "description": "Deal 1 damage to all enemy minions.",
                 "cardId": "duelyst_GhostLightning_1",
-                "faction": "songhai",
                 "spriteName": "icon_f2_ghost_lightning",
                 "type": "SPELL",
                 "spells": [
@@ -9579,7 +9256,6 @@
                 "name": "Ghost Lightning",
                 "description": "Deal 1 damage to all enemy minions.",
                 "cardId": "duelyst_GhostLightning_2",
-                "faction": "songhai",
                 "spriteName": "icon_f2_ghost_lightning",
                 "type": "SPELL",
                 "spells": [
@@ -9658,7 +9334,6 @@
                 "name": "Ghost Lightning",
                 "description": "Deal 1 damage to all enemy minions.",
                 "cardId": "duelyst_GhostLightning_3",
-                "faction": "songhai",
                 "spriteName": "icon_f2_ghost_lightning",
                 "type": "SPELL",
                 "spells": [
@@ -9737,7 +9412,6 @@
                 "name": "Kinetic Equilibrium",
                 "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
                 "cardId": "duelyst_KineticEquilibrium_1",
-                "faction": "magmar",
                 "spriteName": "icon_f5_kineticequilibrium",
                 "type": "SPELL",
                 "spells": [
@@ -9878,7 +9552,6 @@
                 "name": "Kinetic Equilibrium",
                 "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
                 "cardId": "duelyst_KineticEquilibrium_2",
-                "faction": "magmar",
                 "spriteName": "icon_f5_kineticequilibrium",
                 "type": "SPELL",
                 "spells": [
@@ -10019,7 +9692,6 @@
                 "name": "Kinetic Equilibrium",
                 "description": "Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack",
                 "cardId": "duelyst_KineticEquilibrium_3",
-                "faction": "magmar",
                 "spriteName": "icon_f5_kineticequilibrium",
                 "type": "SPELL",
                 "spells": [
@@ -10160,7 +9832,6 @@
                 "name": "Phoenix Fire",
                 "description": "Deal 3 damage to anything.",
                 "cardId": "duelyst_PhoenixFire_1",
-                "faction": "songhai",
                 "spriteName": "icon_f2_phoenixfire02",
                 "type": "SPELL",
                 "spells": [
@@ -10239,7 +9910,6 @@
                 "name": "Phoenix Fire",
                 "description": "Deal 3 damage to anything.",
                 "cardId": "duelyst_PhoenixFire_2",
-                "faction": "songhai",
                 "spriteName": "icon_f2_phoenixfire02",
                 "type": "SPELL",
                 "spells": [
@@ -10318,7 +9988,6 @@
                 "name": "Phoenix Fire",
                 "description": "Deal 3 damage to anything.",
                 "cardId": "duelyst_PhoenixFire_3",
-                "faction": "songhai",
                 "spriteName": "icon_f2_phoenixfire02",
                 "type": "SPELL",
                 "spells": [
@@ -10397,7 +10066,6 @@
                 "name": "Saberspine Seal",
                 "description": "Give a minion or General +3 Attack this turn.",
                 "cardId": "duelyst_SaberspineSeal_1",
-                "faction": "songhai",
                 "spriteName": "icon_f2_saberspineseal",
                 "type": "SPELL",
                 "spells": [
@@ -10459,7 +10127,6 @@
                 "name": "Saberspine Seal",
                 "description": "Give a minion or General +3 Attack this turn.",
                 "cardId": "duelyst_SaberspineSeal_2",
-                "faction": "songhai",
                 "spriteName": "icon_f2_saberspineseal",
                 "type": "SPELL",
                 "spells": [
@@ -10521,7 +10188,6 @@
                 "name": "Saberspine Seal",
                 "description": "Give a minion or General +3 Attack this turn.",
                 "cardId": "duelyst_SaberspineSeal_3",
-                "faction": "songhai",
                 "spriteName": "icon_f2_saberspineseal",
                 "type": "SPELL",
                 "spells": [
@@ -10583,7 +10249,6 @@
                 "name": "Scion's First Wish",
                 "description": "Give a friendly minion +1/+1. Draw a card",
                 "cardId": "duelyst_ScionsFirstWish_1",
-                "faction": "vetruvian",
                 "spriteName": "icon_f3_scionsfirstwish",
                 "type": "SPELL",
                 "spells": [
@@ -10663,7 +10328,6 @@
                 "name": "Scion's First Wish",
                 "description": "Give a friendly minion +1/+1. Draw a card",
                 "cardId": "duelyst_ScionsFirstWish_2",
-                "faction": "vetruvian",
                 "spriteName": "icon_f3_scionsfirstwish",
                 "type": "SPELL",
                 "spells": [
@@ -10743,7 +10407,6 @@
                 "name": "Scion's First Wish",
                 "description": "Give a friendly minion +1/+1. Draw a card",
                 "cardId": "duelyst_ScionsFirstWish_3",
-                "faction": "vetruvian",
                 "spriteName": "icon_f3_scionsfirstwish",
                 "type": "SPELL",
                 "spells": [
@@ -10823,7 +10486,6 @@
                 "name": "Shadow Reflection",
                 "description": "Give a friendly minion +5 Attack.",
                 "cardId": "duelyst_ShadowReflection_1",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_shadowreflection",
                 "type": "SPELL",
                 "spells": [
@@ -10902,7 +10564,6 @@
                 "name": "Shadow Reflection",
                 "description": "Give a friendly minion +5 Attack.",
                 "cardId": "duelyst_ShadowReflection_2",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_shadowreflection",
                 "type": "SPELL",
                 "spells": [
@@ -10981,7 +10642,6 @@
                 "name": "Shadow Reflection",
                 "description": "Give a friendly minion +5 Attack.",
                 "cardId": "duelyst_ShadowReflection_3",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_shadowreflection",
                 "type": "SPELL",
                 "spells": [
@@ -11060,7 +10720,6 @@
                 "name": "Soulshatter Pact",
                 "description": "Give all friendly minions +2 Attack this turn.",
                 "cardId": "duelyst_SoulshatterPact_1",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_soulshatterpact",
                 "type": "SPELL",
                 "spells": [
@@ -11139,7 +10798,6 @@
                 "name": "Soulshatter Pact",
                 "description": "Give all friendly minions +2 Attack this turn.",
                 "cardId": "duelyst_SoulshatterPact_2",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_soulshatterpact",
                 "type": "SPELL",
                 "spells": [
@@ -11218,7 +10876,6 @@
                 "name": "Soulshatter Pact",
                 "description": "Give all friendly minions +2 Attack this turn.",
                 "cardId": "duelyst_SoulshatterPact_3",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_soulshatterpact",
                 "type": "SPELL",
                 "spells": [
@@ -11297,7 +10954,6 @@
                 "name": "Spiral Technique",
                 "description": "Deal 8 damage to anything",
                 "cardId": "duelyst_SpiralTechnique_1",
-                "faction": "songhai",
                 "spriteName": "icon_f2_spiraltechnique",
                 "type": "SPELL",
                 "spells": [
@@ -11376,7 +11032,6 @@
                 "name": "Spiral Technique",
                 "description": "Deal 8 damage to anything",
                 "cardId": "duelyst_SpiralTechnique_2",
-                "faction": "songhai",
                 "spriteName": "icon_f2_spiraltechnique",
                 "type": "SPELL",
                 "spells": [
@@ -11455,7 +11110,6 @@
                 "name": "Spiral Technique",
                 "description": "Deal 8 damage to anything",
                 "cardId": "duelyst_SpiralTechnique_3",
-                "faction": "songhai",
                 "spriteName": "icon_f2_spiraltechnique",
                 "type": "SPELL",
                 "spells": [
@@ -11534,7 +11188,6 @@
                 "name": "Tempest",
                 "description": "Deal 2 Damage to ALL characters",
                 "cardId": "duelyst_Tempest_1",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_tempest",
                 "type": "SPELL",
                 "spells": [
@@ -11613,7 +11266,6 @@
                 "name": "Tempest",
                 "description": "Deal 2 Damage to ALL characters",
                 "cardId": "duelyst_Tempest_2",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_tempest",
                 "type": "SPELL",
                 "spells": [
@@ -11692,7 +11344,6 @@
                 "name": "Tempest",
                 "description": "Deal 2 Damage to ALL characters",
                 "cardId": "duelyst_Tempest_3",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_tempest",
                 "type": "SPELL",
                 "spells": [
@@ -11771,7 +11422,6 @@
                 "name": "Void Pulse",
                 "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_1",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_voidpulse",
                 "type": "SPELL",
                 "spells": [
@@ -11912,7 +11562,6 @@
                 "name": "Void Pulse",
                 "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_2",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_voidpulse",
                 "type": "SPELL",
                 "spells": [
@@ -12053,7 +11702,6 @@
                 "name": "Void Pulse",
                 "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
                 "cardId": "duelyst_VoidPulse_3",
-                "faction": "abyssian",
                 "spriteName": "icon_f4_voidpulse",
                 "type": "SPELL",
                 "spells": [
@@ -12194,7 +11842,6 @@
                 "name": "War Surge",
                 "description": "Give all friendly minions +1/+1.",
                 "cardId": "duelyst_WarSurge_1",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_warsurge",
                 "type": "SPELL",
                 "spells": [
@@ -12273,7 +11920,6 @@
                 "name": "War Surge",
                 "description": "Give all friendly minions +1/+1.",
                 "cardId": "duelyst_WarSurge_2",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_warsurge",
                 "type": "SPELL",
                 "spells": [
@@ -12352,7 +11998,6 @@
                 "name": "War Surge",
                 "description": "Give all friendly minions +1/+1.",
                 "cardId": "duelyst_WarSurge_3",
-                "faction": "lyonar",
                 "spriteName": "icon_f1_warsurge",
                 "type": "SPELL",
                 "spells": [

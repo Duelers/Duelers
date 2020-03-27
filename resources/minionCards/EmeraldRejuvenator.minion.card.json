@@ -2,7 +2,6 @@
     "name": "Emerald Rejuvenator",
     "description": "Opening Gambit: Give 4 Health to your General.",
     "cardId": "EmeraldRejuvenator",
-	"faction": "mercenary",
     "spriteName": "neutral_rejuvenator",
     "type": "MINION",
     "spells": [

@@ -1,9 +1,9 @@
 package server.clientPortal.models.message;
 
 public class ClientIDMessage {
-  private final String id;
+    private final String id;
 
-  ClientIDMessage(String clientID) {
-    this.id = clientID;
-  }
+    ClientIDMessage(String clientID) {
+        this.id = clientID;
+    }
 }

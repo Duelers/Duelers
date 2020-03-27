@@ -2,7 +2,6 @@
   "name": "Azure Horn Shaman",
   "description": "Dying Wish: Give +4 health to friendly minions around it.",
   "cardId": "AzureHornShaman",
-  "faction": "mercenary",
   "spriteName": "neutral_mercazurehorn",
   "type": "MINION",
   "spells": [

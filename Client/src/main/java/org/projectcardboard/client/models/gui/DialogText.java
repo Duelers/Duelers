@@ -10,12 +10,12 @@ import javafx.scene.text.Text;
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class DialogText extends Text {
-  private static final Effect SHADOW = new DropShadow(20 * SCALE, Color.WHITE);
-  private static final Font FONT = Font.font("SansSerif", FontWeight.EXTRA_BOLD, 35 * SCALE);
+    private static final Effect SHADOW = new DropShadow(20 * SCALE, Color.WHITE);
+    private static final Font FONT = Font.font("SansSerif", FontWeight.EXTRA_BOLD, 35 * SCALE);
 
-  public DialogText(String text) {
-    super(text);
-    setFont(FONT);
-    setEffect(SHADOW);
-  }
+    public DialogText(String text) {
+        super(text);
+        setFont(FONT);
+        setEffect(SHADOW);
+    }
 }

@@ -6,14 +6,14 @@ import shared.models.card.spell.AvailabilityType;
 import shared.models.game.map.Cell;
 
 public class SpellAnimation {
-  private Set<Cell> cells;
-  private String fxName;
+    private Set<Cell> cells;
+    private String fxName;
 
-  public Set<Cell> getCells() {
-    return cells;
-  }
+    public Set<Cell> getCells() {
+        return cells;
+    }
 
-  public String getFxName() {
-    return fxName;
-  }
+    public String getFxName() {
+        return fxName;
+    }
 }

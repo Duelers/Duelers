@@ -2,7 +2,6 @@
   "name": "Terradon",
   "description": "",
   "cardId": "Terradon",
-  "faction": "magmar",
   "spriteName": "f5_flumposaur",
   "type": "MINION",
   "defaultAp": 2,

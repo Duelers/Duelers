@@ -2,7 +2,6 @@
   "name": "Beam Shock",
   "description": "STUN an enemy",
   "cardId": "BeamShock",
-  "faction": "lyonar",
   "spriteName": "icon_f1_beamshock",
   "type": "SPELL",
   "spells": [

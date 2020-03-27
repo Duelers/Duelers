@@ -7,7 +7,7 @@ import shared.models.game.availableactions.BaseMove;
 import shared.models.game.map.Cell;
 
 public class Move extends BaseMove<Troop> {
-  public Move(Troop troop, ArrayList<Cell> targets) {
-    super(troop, targets);
-  }
+    public Move(Troop troop, ArrayList<Cell> targets) {
+        super(troop, targets);
+    }
 }

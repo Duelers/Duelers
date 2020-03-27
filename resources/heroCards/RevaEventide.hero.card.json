@@ -2,7 +2,6 @@
   "name": "Reva Eventide",
   "description": "Songhai General",
   "cardId": "RevaEventide",
-  "faction": "songhai",
   "spriteName": "f2_altgeneral",
   "type": "HERO",
   "spells": [],

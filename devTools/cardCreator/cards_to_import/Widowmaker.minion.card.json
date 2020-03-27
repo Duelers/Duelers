@@ -2,7 +2,6 @@
   "name": "Widowmaker",
   "description": "Ranged",
   "cardId": "Widowmaker",
-  "faction": "songhai",
   "spriteName": "f2_ranged",
   "type": "MINION",
   "spells": [],

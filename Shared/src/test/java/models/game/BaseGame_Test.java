@@ -18,57 +18,61 @@ import static org.mockito.Mockito.when;
 public class BaseGame_Test {
 
 
-  @Mock
-  BasePlayer<Card, Troop> mockPlayerOne;
+    @Mock
+    BasePlayer<Card, Troop> mockPlayerOne;
 
-  @Mock
-  BasePlayer<Card, Troop> mockPlayerTwo;
+    @Mock
+    BasePlayer<Card, Troop> mockPlayerTwo;
 
-  @Mock
-  BaseGameMap<Troop> mockGameMap;
+    @Mock
+    BaseGameMap<Troop> mockGameMap;
 
-  @Before
-  public void setup() {
-    MockitoAnnotations.initMocks(this);
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
 
-    when(mockPlayerOne.getPlayerNumber()).thenReturn(1);
-    when(mockPlayerTwo.getPlayerNumber()).thenReturn(2);
-  }
+        when(mockPlayerOne.getPlayerNumber()).thenReturn(1);
+        when(mockPlayerTwo.getPlayerNumber()).thenReturn(2);
+    }
 
-  @Test
-  public void getCurrentTurnPlayer_whenTurnOne_playerOne() {
-    BaseGame<BasePlayer<Card, Troop>, BaseGameMap<Troop>> sut =
-        new BaseGame<>(mockPlayerOne, mockPlayerTwo, mockGameMap, 1, GameType.KILL_HERO);
-    int expected = 1;
-    int actual = sut.getCurrentTurnPlayer().getPlayerNumber();
-    assertEquals(expected, actual);
-  }
+    @Test
+    public void getCurrentTurnPlayer_whenTurnOne_playerOne() {
+        BaseGame<BasePlayer<Card, Troop>, BaseGameMap<Troop>> sut = new BaseGame<>(
+                mockPlayerOne, mockPlayerTwo, mockGameMap, 1, GameType.KILL_HERO
+        );
+        int expected = 1;
+        int actual = sut.getCurrentTurnPlayer().getPlayerNumber();
+        assertEquals(expected, actual);
+    }
 
-  @Test
-  public void getCurrentTurnPlayer_whenTurnEleven_playerOne() {
-    BaseGame<BasePlayer<Card, Troop>, BaseGameMap<Troop>> sut =
-        new BaseGame<>(mockPlayerOne, mockPlayerTwo, mockGameMap, 11, GameType.KILL_HERO);
-    int expected = 1;
-    int actual = sut.getCurrentTurnPlayer().getPlayerNumber();
-    assertEquals(expected, actual);
-  }
+    @Test
+    public void getCurrentTurnPlayer_whenTurnEleven_playerOne() {
+        BaseGame<BasePlayer<Card, Troop>, BaseGameMap<Troop>> sut = new BaseGame<>(
+                mockPlayerOne, mockPlayerTwo, mockGameMap, 11, GameType.KILL_HERO
+        );
+        int expected = 1;
+        int actual = sut.getCurrentTurnPlayer().getPlayerNumber();
+        assertEquals(expected, actual);
+    }
 
-  @Test
-  public void getCurrentTurnPlayer_whenTurnTwo_playerTwo() {
-    BaseGame<BasePlayer<Card, Troop>, BaseGameMap<Troop>> sut =
-        new BaseGame<>(mockPlayerOne, mockPlayerTwo, mockGameMap, 2, GameType.KILL_HERO);
-    int expected = 2;
-    int actual = sut.getCurrentTurnPlayer().getPlayerNumber();
-    assertEquals(expected, actual);
-  }
+    @Test
+    public void getCurrentTurnPlayer_whenTurnTwo_playerTwo() {
+        BaseGame<BasePlayer<Card, Troop>, BaseGameMap<Troop>> sut = new BaseGame<>(
+                mockPlayerOne, mockPlayerTwo, mockGameMap, 2, GameType.KILL_HERO
+        );
+        int expected = 2;
+        int actual = sut.getCurrentTurnPlayer().getPlayerNumber();
+        assertEquals(expected, actual);
+    }
 
-  @Test
-  public void getCurrentTurnPlayer_whenTurnTwelve_playerTwo() {
-    BaseGame<BasePlayer<Card, Troop>, BaseGameMap<Troop>> sut =
-        new BaseGame<>(mockPlayerOne, mockPlayerTwo, mockGameMap, 12, GameType.KILL_HERO);
-    int expected = 2;
-    int actual = sut.getCurrentTurnPlayer().getPlayerNumber();
-    assertEquals(expected, actual);
-  }
+    @Test
+    public void getCurrentTurnPlayer_whenTurnTwelve_playerTwo() {
+        BaseGame<BasePlayer<Card, Troop>, BaseGameMap<Troop>> sut = new BaseGame<>(
+                mockPlayerOne, mockPlayerTwo, mockGameMap, 12, GameType.KILL_HERO
+        );
+        int expected = 2;
+        int actual = sut.getCurrentTurnPlayer().getPlayerNumber();
+        assertEquals(expected, actual);
+    }
 
 }

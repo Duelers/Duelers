@@ -14,31 +14,30 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class ErrorView {
-  private final AnchorPane root;
-  private DialogContainer dialogContainer;
+    private final AnchorPane root;
+    private DialogContainer dialogContainer;
 
-  ErrorView(AnchorPane root) {
-    this.root = root;
-  }
+    ErrorView(AnchorPane root) {
+        this.root = root;
+    }
 
-  public void show(String errorMsg, String buttonText, EventHandler<? super MouseEvent> event) {
-    SoundEffectPlayer.getInstance().playSound(SoundName.error);
+    public void show(String errorMsg, String buttonText, EventHandler<? super MouseEvent> event) {
+        SoundEffectPlayer.getInstance().playSound(SoundName.error);
 
-    String error = LanguageData.getInstance()
-        .getValue(new String[] {LanguageKeys.BUTTON_TEXT, LanguageKeys.ERROR});
+        String error = LanguageData.getInstance().getValue(new String[] {LanguageKeys.BUTTON_TEXT, LanguageKeys.ERROR});
 
-    DialogText errorLabel = new DialogText(error);
-    DialogText errorMessage = new DialogText(errorMsg);
+        DialogText errorLabel = new DialogText(error);
+        DialogText errorMessage = new DialogText(errorMsg);
 
-    DialogBox dialogBox = new DialogBox(errorLabel, errorMessage);
-    dialogContainer = new DialogContainer(root, dialogBox);
+        DialogBox dialogBox = new DialogBox(errorLabel, errorMessage);
+        dialogContainer = new DialogContainer(root, dialogBox);
 
-    dialogBox.makeButton(buttonText, e -> {
-      event.handle(e);
-      dialogContainer.close();
-      dialogBox.setCursor(UIConstants.DEFAULT_CURSOR);
-    });
+        dialogBox.makeButton(buttonText, e -> {
+            event.handle(e);
+            dialogContainer.close();
+            dialogBox.setCursor(UIConstants.DEFAULT_CURSOR);
+        });
 
-    dialogContainer.show();
-  }
+        dialogContainer.show();
+    }
 }

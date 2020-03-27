@@ -20,60 +20,63 @@ import java.util.List;
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 class MainMenuGrid extends GridPane {
-  private static final double ITEM_IMAGE_SIZE = 70 * SCALE;
-  private static final Font FONT =
-      Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 55 * SCALE);
-  private static final Effect SHADOW = new DropShadow(20 * SCALE, Color.WHITE);
-  private Image menuItemImage;
-  private Image hoverRing;
+    private static final double ITEM_IMAGE_SIZE = 70 * SCALE;
+    private static final Font FONT = Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 55 * SCALE);
+    private static final Effect SHADOW = new DropShadow(20 * SCALE, Color.WHITE);
+    private Image menuItemImage;
+    private Image hoverRing;
 
-  MainMenuGrid(List<MenuItem> items) throws FileNotFoundException {
-    setVgap(UIConstants.DEFAULT_SPACING * 3);
-    setHgap(UIConstants.DEFAULT_SPACING * 3);
+    MainMenuGrid(List<MenuItem> items) throws FileNotFoundException {
+        setVgap(UIConstants.DEFAULT_SPACING * 3);
+        setHgap(UIConstants.DEFAULT_SPACING * 3);
 
-    InputStream menuItemR = MainMenuGrid.class.getResourceAsStream("/ui/menu_item.png");
-    InputStream hoverRingR = MainMenuGrid.class.getResourceAsStream("/ui/glow_ring.png");
-    if (menuItemR == null || hoverRingR == null) {
-      throw new FileNotFoundException();
+        InputStream menuItemR = MainMenuGrid.class.getResourceAsStream("/ui/menu_item.png");
+        InputStream hoverRingR = MainMenuGrid.class.getResourceAsStream("/ui/glow_ring.png");
+        if (menuItemR == null || hoverRingR== null) {
+            throw new FileNotFoundException();
+        }
+        menuItemImage = new Image(menuItemR);
+        hoverRing = new Image(hoverRingR);
+
+        items.forEach(item -> addRow(item.index, makeRow(item)));
     }
-    menuItemImage = new Image(menuItemR);
-    hoverRing = new Image(hoverRingR);
 
-    items.forEach(item -> addRow(item.index, makeRow(item)));
-  }
+    private Node[] makeRow(MenuItem item) {
+        HintBox textWrapper = new HintBox(item.hint);
+        ImageView menuView = ImageLoader.makeImageView(
+                menuItemImage, ITEM_IMAGE_SIZE, ITEM_IMAGE_SIZE
+        );
+        ImageView ringView = ImageLoader.makeImageView(
+                hoverRing, ITEM_IMAGE_SIZE, ITEM_IMAGE_SIZE
+        );
+        ringView.setVisible(false);
+        RotateAnimation rotate = new RotateAnimation(ringView);
+        Label label = new DefaultLabel(item.title, FONT, Color.WHITE);
 
-  private Node[] makeRow(MenuItem item) {
-    HintBox textWrapper = new HintBox(item.hint);
-    ImageView menuView = ImageLoader.makeImageView(menuItemImage, ITEM_IMAGE_SIZE, ITEM_IMAGE_SIZE);
-    ImageView ringView = ImageLoader.makeImageView(hoverRing, ITEM_IMAGE_SIZE, ITEM_IMAGE_SIZE);
-    ringView.setVisible(false);
-    RotateAnimation rotate = new RotateAnimation(ringView);
-    Label label = new DefaultLabel(item.title, FONT, Color.WHITE);
+        label.setOnMouseClicked(event -> {
+            SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
+            item.event.handle(event);
+        });
 
-    label.setOnMouseClicked(event -> {
-      SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
-      item.event.handle(event);
-    });
+        label.setOnMouseEntered(event -> {
+            menuView.setOpacity(0.6);
+            SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
+            ringView.setVisible(true);
+            label.setCursor(UIConstants.SELECT_CURSOR);
+            label.setEffect(SHADOW);
+            rotate.play();
+            textWrapper.setVisible(item.hint != null);
+        });
 
-    label.setOnMouseEntered(event -> {
-      menuView.setOpacity(0.6);
-      SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.hover);
-      ringView.setVisible(true);
-      label.setCursor(UIConstants.SELECT_CURSOR);
-      label.setEffect(SHADOW);
-      rotate.play();
-      textWrapper.setVisible(item.hint != null);
-    });
+        label.setOnMouseExited(event -> {
+            menuView.setOpacity(1);
+            ringView.setVisible(false);
+            label.setCursor(UIConstants.DEFAULT_CURSOR);
+            label.setEffect(null);
+            rotate.pause();
+            textWrapper.setVisible(false);
+        });
 
-    label.setOnMouseExited(event -> {
-      menuView.setOpacity(1);
-      ringView.setVisible(false);
-      label.setCursor(UIConstants.DEFAULT_CURSOR);
-      label.setEffect(null);
-      rotate.pause();
-      textWrapper.setVisible(false);
-    });
-
-    return new Node[] {textWrapper, new StackPane(menuView, ringView), label};
-  }
+        return new Node[]{textWrapper, new StackPane(menuView, ringView), label};
+    }
 }

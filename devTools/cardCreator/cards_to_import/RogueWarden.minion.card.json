@@ -2,7 +2,6 @@
     "name": "Rogue Warden",
     "description": "Ranged",
     "cardId": "RogueWarden",
-	"faction": "mercenary",
     "spriteName": "f1_ranged",
     "type": "MINION",
     "spells": [],

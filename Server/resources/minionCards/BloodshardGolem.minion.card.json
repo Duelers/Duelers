@@ -2,7 +2,6 @@
   "name": "Bloodshard Golem",
   "description": "Golem",
   "cardId": "BloodshardGolem",
-  "faction": "mercenary",
   "spriteName": "neutral_golembloodshard",
   "type": "MINION",
   "defaultAp": 4,

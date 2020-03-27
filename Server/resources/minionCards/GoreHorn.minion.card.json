@@ -2,7 +2,6 @@
   "name": "Gore Horn",
   "description": "Backstab: (2)\n After this minion attacks, it gains +1/+1.",
   "cardId": "GoreHorn",
-  "faction": "songhai",
   "spriteName": "f2_tank",
   "type": "MINION",
   "spells": [  

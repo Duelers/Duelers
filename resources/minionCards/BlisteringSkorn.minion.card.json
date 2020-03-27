@@ -2,7 +2,6 @@
   "name": "Blistering Skorn",
   "description": "Opening Gambit: Deal 1 damage to everything (including itself)",
   "cardId": "BlisteringSkorn",
-  "faction": "mercenary",
   "spriteName": "neutral_blisteringscorn",
   "type": "MINION",
   "spells": [

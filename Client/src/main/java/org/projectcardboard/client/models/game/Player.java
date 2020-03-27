@@ -13,110 +13,112 @@ import shared.models.game.BasePlayer;
 import shared.models.game.Troop;
 
 public class Player extends BasePlayer<Card, Troop> {
-  private PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
-  public Player(String userName, int currentMP, List<Card> hand, List<Card> graveyard,
-      Card nextCard, int playerNumber, List<Troop> troops, Troop hero) {
-    super(userName, currentMP, hand, graveyard, playerNumber, troops, hero);
-  }
-
-  public void addPropertyChangeListener(PropertyChangeListener pcl) {
-    if (support == null) {
-      support = new PropertyChangeSupport(this);
-    }
-    support.addPropertyChangeListener(pcl);
-  }
-
-  public void removePropertyChangeListener(PropertyChangeListener pcl) {
-    support.removePropertyChangeListener(pcl);
-  }
-
-  public void addCardsToHand(int deckSize, Card... drawnCards) {
-    if (support == null) {
-      support = new PropertyChangeSupport(this);
+    public Player(String userName, int currentMP,
+                  List<Card> hand, List<Card> graveyard, Card nextCard,
+                  int playerNumber,
+                  List<Troop> troops,
+                  Troop hero) {
+        super(userName, currentMP, hand, graveyard, playerNumber, troops, hero);
     }
 
-    this.deckSize = deckSize;
-    for (Card drawnCard : drawnCards) {
-      if (drawnCard != null && this.hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
-        this.hand.add(drawnCard);
-      }
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        if (support == null) {
+            support = new PropertyChangeSupport(this);
+        }
+        support.addPropertyChangeListener(pcl);
     }
-    if (support == null) {
-      support = new PropertyChangeSupport(this);
+
+    public void removePropertyChangeListener(PropertyChangeListener pcl) {
+        support.removePropertyChangeListener(pcl);
     }
-    support.firePropertyChange("hand", null, null);
-  }
 
-  public void addCardToGraveYard(Card card) {
-    graveyard.add(card);
-  }
+    public void addCardsToHand(int deckSize, Card... drawnCards) {
+        if (support == null) {
+            support = new PropertyChangeSupport(this);
+        }
 
-  public void troopUpdate(Troop troop) {
-    if (troops == null)
-      troops = new ArrayList<>();
-    removeTroop(troop.getCard().getCardId());
-    if (troop.getCurrentHp() > 0) {
-      troops.add(troop);
-      if (troop.getCard().getType().equals(CardType.HERO))
-        hero = troop;
+        this.deckSize = deckSize;
+        for (Card drawnCard : drawnCards) {
+            if (drawnCard != null && this.hand.size() < Constants.MAXIMUM_CARD_HAND_SIZE) {
+                this.hand.add(drawnCard);
+            }
+        }
+        if (support == null) {
+            support = new PropertyChangeSupport(this);
+        }
+        support.firePropertyChange("hand", null, null);
     }
-  }
 
-  public void removeCardFromHand(String cardId) {
-    hand.removeIf(card -> card.getCardId().equalsIgnoreCase(cardId));
-    if (support == null) {
-      support = new PropertyChangeSupport(this);
+    public void addCardToGraveYard(Card card) {
+        graveyard.add(card);
     }
-    support.firePropertyChange("hand", null, null);
-  }
 
-  public void removeTroop(String cardId) {
-    if (troops == null)
-      troops = new ArrayList<>();
-    troops.removeIf(troop -> troop.getCard().getCardId().equalsIgnoreCase(cardId));
-    if (hero != null && hero.getCard().getCardId().equalsIgnoreCase(cardId))
-      hero = null;
-  }
-
-  public List<Troop> getTroops() {
-    return Collections.unmodifiableList(troops);
-  }
-
-  public void setTroops(List<Troop> troops) {// Todo this should be part of construction, not a
-                                             // method.
-    this.troops = troops;
-
-    for (Troop troop : troops) {
-      if (troop.getCard().getType().equals(CardType.HERO)) {
-        hero = troop;
-      }
+    public void troopUpdate(Troop troop) {
+        if (troops == null)
+            troops = new ArrayList<>();
+        removeTroop(troop.getCard().getCardId());
+        if (troop.getCurrentHp() > 0) {
+            troops.add(troop);
+            if (troop.getCard().getType().equals(CardType.HERO))
+                hero = troop;
+        }
     }
-  }
 
-  public Card searchGraveyard(String cardId) {
-    for (Card card : graveyard) {
-      if (card.getCardId().equalsIgnoreCase(cardId)) {
-        return card;
-      }
+    public void removeCardFromHand(String cardId) {
+        hand.removeIf(card -> card.getCardId().equalsIgnoreCase(cardId));
+        if (support == null) {
+            support = new PropertyChangeSupport(this);
+        }
+        support.firePropertyChange("hand", null, null);
     }
-    return null;
-  }
 
-  public void setCurrentMP(int currentMP, int turnNumber) {
-    this.currentMP = currentMP;
-  }
+    public void removeTroop(String cardId) {
+        if (troops == null)
+            troops = new ArrayList<>();
+        troops.removeIf(troop -> troop.getCard().getCardId().equalsIgnoreCase(cardId));
+        if (hero != null && hero.getCard().getCardId().equalsIgnoreCase(cardId))
+            hero = null;
+    }
+
+    public List<Troop> getTroops() {
+        return Collections.unmodifiableList(troops);
+    }
+
+    public void setTroops(List<Troop> troops) {//Todo this should be part of construction, not a method.
+        this.troops = troops;
+
+        for (Troop troop : troops) {
+            if (troop.getCard().getType().equals(CardType.HERO)) {
+                hero = troop;
+            }
+        }
+    }
+
+    public Card searchGraveyard(String cardId) {
+        for (Card card : graveyard) {
+            if (card.getCardId().equalsIgnoreCase(cardId)) {
+                return card;
+            }
+        }
+        return null;
+    }
+
+    public void setCurrentMP(int currentMP, int turnNumber) {
+        this.currentMP = currentMP;
+    }
 
 
-  public int getPlayerNumber() {
-    return playerNumber;
-  }
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
 
-  public int getDeckSize() {
-    return this.deckSize;
-  }
+    public int getDeckSize(){
+        return this.deckSize;
+    }
 
-  public void setDeckSize(int newSize) {
-    this.deckSize = newSize;
-  }
+    public void setDeckSize(int newSize){
+        this.deckSize = newSize;
+    }
 }

@@ -2,7 +2,6 @@
   "name": "Skyrock Golem",
   "description": "Golem",
   "cardId": "SkyrockGolem",
-  "faction": "mercenary",
   "spriteName": "neutral_golemrunesand",
   "type": "MINION",
   "defaultAp": 3,

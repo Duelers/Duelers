@@ -2,7 +2,6 @@
   "name": "Earth Sphere",
   "description": "Add 8 Health to your general.",
   "cardId": "EarthSphere",
-  "faction": "magmar",
   "spriteName": "icon_f5_earthsphere",
   "type": "SPELL",
   "spells": [

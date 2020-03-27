@@ -2,7 +2,6 @@
   "name": "Flaming Stampede",
   "description": "Deal 8 Damage to ALL characters",
   "cardId": "FlamingStampede",
-  "faction": "magmar",
   "spriteName": "icon_f5_flamingstampede",
   "type": "SPELL",
   "spells": [

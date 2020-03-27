@@ -2,7 +2,6 @@
 	"name": "Elucidator",
 	"description": "Rush. \n Opening Gambit: Deal 4 damage to your General",
 	"cardId": "Elucidator",
-	"faction": "magmar",
 	"spriteName": "f5_support",
 	"type": "MINION",
 	"spells": [

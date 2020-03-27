@@ -2,7 +2,6 @@
   "name": "Void Pulse",
   "description": "Deal 2 damage to the enemy General. Your General gains 2 Health.",
   "cardId": "VoidPulse",
-  "faction": "abyssian",
   "spriteName": "icon_f4_voidpulse",
   "type": "SPELL",
   "spells": [

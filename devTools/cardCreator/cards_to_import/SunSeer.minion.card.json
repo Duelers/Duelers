@@ -2,7 +2,6 @@
   "name": "Sun Seer",
   "description": "When this minion attacks or counterattacks,  your General gains 3 Health",
   "cardId": "SunSeer",
-  "faction": "mercenary",
   "spriteName": "neutral_mercsunseer",
   "type": "MINION",
   "spells": [

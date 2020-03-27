@@ -1,21 +1,21 @@
 package org.projectcardboard.client.controller;
 
 public class GameResultController {
-  private static GameResultController gameResultController;
-  private boolean amIWinner;
+    private static GameResultController gameResultController;
+    private boolean amIWinner;
 
-  public static GameResultController getInstance() {
-    if (gameResultController == null) {
-      gameResultController = new GameResultController();
+    public static GameResultController getInstance() {
+        if (gameResultController == null) {
+            gameResultController = new GameResultController();
+        }
+        return gameResultController;
     }
-    return gameResultController;
-  }
 
-  void setWinnerInfo(boolean amIWinner) {
-    this.amIWinner = amIWinner;
-  }
+    void setWinnerInfo(boolean amIWinner) {
+        this.amIWinner = amIWinner;
+    }
 
-  public boolean amInWinner() {
-    return amIWinner;
-  }
+    public boolean amInWinner() {
+        return amIWinner;
+    }
 }

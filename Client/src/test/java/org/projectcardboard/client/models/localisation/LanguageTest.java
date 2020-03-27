@@ -5,14 +5,14 @@ import org.junit.Test;
 
 public class LanguageTest {
 
-  @Test
-  public void placeholder() {
+    @Test
+    public void placeholder() {
 
-    /**
-     * This is just a placeholder for planned tests to make sure that our english language file is
-     * always functional.
-     */
+        /**
+         * This is just a placeholder for planned tests to make sure that our english language file is always
+         * functional.
+         */
 
-    Assert.assertEquals(true, true);
-  }
+        Assert.assertEquals(true, true);
+    }
 }

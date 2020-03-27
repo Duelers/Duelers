@@ -2,7 +2,6 @@
     "name": "Sun Wisp",
     "description": "Opening Gambit: Draw a card",
     "cardId": "SunWisp",
-	"faction": "lyonar",
     "spriteName": "f1_sunwisp",
     "type": "MINION",
     "spells": [

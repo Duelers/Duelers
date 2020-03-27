@@ -2,7 +2,6 @@
   "name": "Beastbound Savage",
   "description": "Celerity.\n After attacking, deal 2 damage to all surrounding enemies",
   "cardId": "BeastboundSavage",
-  "faction": "mercenary",
   "spriteName": "neutral_beastmaster",
   "type": "MINION",
     "spells": [ 

@@ -11,32 +11,34 @@ import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 
 public class ApiClientService {
-  private static ApiClientService instance;
-  private final Gson gson = new Gson();
-  private final HttpClient httpClient;
+    private static ApiClientService instance;
+    private final Gson gson = new Gson();
+    private final HttpClient httpClient;
 
-  private ApiClientService() {
-    this.httpClient = HttpClient.newHttpClient();
-  }
-
-  public static ApiClientService getInstance() {
-    if (instance == null) {
-      instance = new ApiClientService();
+    private ApiClientService() {
+        this.httpClient = HttpClient.newHttpClient();
     }
-    return instance;
-  }
 
-  public <T> T processResponse(HttpResponse<String> httpResponse, Type T) {
-    return this.gson.fromJson(httpResponse.body(), T);
-  }
+    public static ApiClientService getInstance() {
+        if (instance == null) {
+            instance = new ApiClientService();
+        }
+        return instance;
+    }
 
-  public CompletableFuture<HttpResponse<String>> sendPostRequestAsync(URI uri,
-      WebApiRequest request) {
-    String requestBody = gson.toJson(request);
-    HttpRequest httpRequest = HttpRequest.newBuilder(uri).header("Content-Type", "application/json")
-        .POST(HttpRequest.BodyPublishers.ofString(requestBody)).build();
-    return this.httpClient.sendAsync(httpRequest, HttpResponse.BodyHandlers.ofString());
-  }
+    public<T> T processResponse(HttpResponse<String> httpResponse, Type T){
+        return this.gson.fromJson(httpResponse.body(), T);
+    }
+
+    public CompletableFuture<HttpResponse<String>> sendPostRequestAsync(URI uri, WebApiRequest request) {
+        String requestBody = gson.toJson(request);
+        HttpRequest httpRequest  = HttpRequest.newBuilder(uri)
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+        return this.httpClient
+                .sendAsync(httpRequest, HttpResponse.BodyHandlers.ofString());
+    }
 
 
 }

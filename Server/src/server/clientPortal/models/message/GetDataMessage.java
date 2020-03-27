@@ -1,9 +1,9 @@
 package server.clientPortal.models.message;
 
 public class GetDataMessage {
-  private DataName dataName;
+    private DataName dataName;
 
-  public DataName getDataName() {
-    return dataName;
-  }
+    public DataName getDataName() {
+        return dataName;
+    }
 }

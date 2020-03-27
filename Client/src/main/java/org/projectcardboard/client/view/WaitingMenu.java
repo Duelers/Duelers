@@ -23,101 +23,108 @@ import java.io.FileNotFoundException;
 import static org.projectcardboard.client.models.gui.UIConstants.*;
 
 public class WaitingMenu extends Show {
-  private static final Background ROOT_BACKGROUND =
-      new Background(new BackgroundFill(Color.rgb(40, 43, 53), CornerRadii.EMPTY, Insets.EMPTY));
-  private static final String backgroundUrl = "/menu/background/wait_background.jpg";
-  private static final double SPACE_HEIGHT = SCENE_HEIGHT / 2;
-  private static final Image generalImage = ImageLoader.load("/wait/general.png");
-  private static final double HERO_WIDTH = 3800 * SCALE;
-  private static final double HERO_HEIGHT = 2875 * SCALE;
-  private static final Font FONT =
-      Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 100 * SCALE);
-  private static final Media backgroundMusic =
-      new Media(WaitingMenu.class.getResource("/music/waiting.m4a").toString());
-  private final Show previousShow;
+    private static final Background ROOT_BACKGROUND = new Background(
+            new BackgroundFill(
+                    Color.rgb(40, 43, 53), CornerRadii.EMPTY, Insets.EMPTY
+            )
+    );
+    private static final String backgroundUrl = "/menu/background/wait_background.jpg";
+    private static final double SPACE_HEIGHT = SCENE_HEIGHT / 2;
+    private static final Image generalImage = ImageLoader.load("/wait/general.png");
+    private static final double HERO_WIDTH = 3800 * SCALE;
+    private static final double HERO_HEIGHT = 2875 * SCALE;
+    private static final Font FONT = Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 100 * SCALE);
+    private static final Media backgroundMusic = new Media(
+            WaitingMenu.class.getResource("/music/waiting.m4a").toString()
+    );
+    private final Show previousShow;
 
-  WaitingMenu(Show show) {
-    this.previousShow = show;
-    root.setBackground(ROOT_BACKGROUND);
-    try {
-      BorderPane background = BackgroundMaker.getPlayBackground(backgroundUrl);
+    WaitingMenu(Show show) {
+        this.previousShow = show;
+        root.setBackground(ROOT_BACKGROUND);
+        try {
+            BorderPane background = BackgroundMaker.getPlayBackground(backgroundUrl);
 
-      ImageView heroView = ImageLoader.makeImageView(generalImage, HERO_WIDTH, HERO_HEIGHT);
-      heroView.relocate((SCENE_WIDTH - HERO_WIDTH) * 0.5, (SCENE_HEIGHT - HERO_HEIGHT) * 0.25);
+            ImageView heroView = ImageLoader.makeImageView(generalImage, HERO_WIDTH, HERO_HEIGHT);
+            heroView.relocate((SCENE_WIDTH - HERO_WIDTH) * 0.5, (SCENE_HEIGHT - HERO_HEIGHT) * 0.25);
 
-      VBox container = new VBox(DEFAULT_SPACING * 2);
-      container.setAlignment(Pos.BOTTOM_CENTER);
-      container.setMinSize(SCENE_WIDTH, SCENE_HEIGHT * 0.9);
+            VBox container = new VBox(DEFAULT_SPACING * 2);
+            container.setAlignment(Pos.BOTTOM_CENTER);
+            container.setMinSize(SCENE_WIDTH, SCENE_HEIGHT * 0.9);
 
-      DefaultLabel waitLabel = new DefaultLabel("WAITING...", FONT, Color.WHITE);
-      addShadowAnimation(waitLabel);
+            DefaultLabel waitLabel = new DefaultLabel("WAITING...", FONT, Color.WHITE);
+            addShadowAnimation(waitLabel);
 
-      String cancel = LanguageData.getInstance()
-          .getValue(new String[] {LanguageKeys.BUTTON_TEXT, LanguageKeys.CANCEL});
-      ImageButton cancelButton = new ImageButton(cancel, event -> cancel());
+            String cancel = LanguageData.getInstance().getValue(new String[] {LanguageKeys.BUTTON_TEXT, LanguageKeys.CANCEL});
+            ImageButton cancelButton = new ImageButton(cancel, event -> cancel());
 
-      container.getChildren().addAll(new Space(SPACE_HEIGHT), waitLabel, cancelButton);
+            container.getChildren().addAll(new Space(SPACE_HEIGHT), waitLabel, cancelButton);
 
-      RadialVignette vignette = new RadialVignette(SCENE_WIDTH, SCENE_HEIGHT);
+            RadialVignette vignette = new RadialVignette(SCENE_WIDTH, SCENE_HEIGHT);
 
-      AnchorPane sceneContents = new AnchorPane(background, heroView, vignette, container);
-      root.getChildren().addAll(sceneContents);
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    }
-  }
-
-  private void addShadowAnimation(DefaultLabel waitLabel) {
-    AnimationTimer animation = new AnimationTimer() {
-      private int currentOpacity = 50;
-      private boolean ascending = false;
-
-      @Override
-      public void handle(long now) {
-        if (ascending) {
-          if (currentOpacity >= 50) {
-            ascending = false;
-            return;
-          }
-          setEffect(++currentOpacity);
-        } else {
-          if (currentOpacity <= 20) {
-            ascending = true;
-            return;
-          }
-          setEffect(--currentOpacity);
+            AnchorPane sceneContents = new AnchorPane(background, heroView, vignette, container);
+            root.getChildren().addAll(sceneContents);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-      }
+    }
 
-      private void setEffect(int opacity) {
-        double spread = 0.7;
-        int blue = 255;
-        int green = 210;
-        int red = 115;
-        waitLabel.setEffect(new DropShadow(BlurType.THREE_PASS_BOX,
-            Color.rgb(red, green, blue, opacity * 0.02), 100 * SCALE, spread, 0, 0));
-      }
-    };
-    animation.start();
-  }
+    private void addShadowAnimation(DefaultLabel waitLabel) {
+        AnimationTimer animation = new AnimationTimer() {
+            private int currentOpacity = 50;
+            private boolean ascending = false;
 
-  private void cancel() {
-    WaitingController.getInstance().cancel();
-    close();
-  }
+            @Override
+            public void handle(long now) {
+                if (ascending) {
+                    if (currentOpacity >= 50) {
+                        ascending = false;
+                        return;
+                    }
+                    setEffect(++currentOpacity);
+                } else {
+                    if (currentOpacity <= 20) {
+                        ascending = true;
+                        return;
+                    }
+                    setEffect(--currentOpacity);
+                }
+            }
 
-  public void close() {
-    previousShow.show();
-  }
+            private void setEffect(int opacity) {
+                double spread = 0.7;
+                int blue = 255;
+                int green = 210;
+                int red = 115;
+                waitLabel.setEffect(
+                        new DropShadow(
+                                BlurType.THREE_PASS_BOX,
+                                Color.rgb(red, green, blue, opacity * 0.02),
+                                100 * SCALE, spread, 0, 0
+                        )
+                );
+            }
+        };
+        animation.start();
+    }
 
-  @Override
-  public void show() {
-    super.show();
-    GraphicalUserInterface.getInstance().setBackgroundMusic(backgroundMusic);
-  }
+    private void cancel() {
+        WaitingController.getInstance().cancel();
+        close();
+    }
 
-  @Override
-  public void showError(String message) {
-    super.showError(message, "OK", event -> close());
-  }
+    public void close() {
+        previousShow.show();
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        GraphicalUserInterface.getInstance().setBackgroundMusic(backgroundMusic);
+    }
+
+    @Override
+    public void showError(String message) {
+        super.showError(message, "OK", event -> close());
+    }
 }

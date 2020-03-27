@@ -19,32 +19,4 @@
         <module>Server</module>
         <module>tools</module>
     </modules>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>net.revelc.code.formatter</groupId>
-                    <artifactId>formatter-maven-plugin</artifactId>
-                    <version>2.11.0</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>net.revelc.code.formatter</groupId>
-                <artifactId>formatter-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                        <configuration>
-                            <configFile>${project.basedir}/formatter.xml</configFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

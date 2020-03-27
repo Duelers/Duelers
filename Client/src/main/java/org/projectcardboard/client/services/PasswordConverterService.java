@@ -5,23 +5,22 @@ import java.security.MessageDigest;
 
 public final class PasswordConverterService {
 
-  private final MessageDigest digest;
+    private final MessageDigest digest;
 
-  public PasswordConverterService(MessageDigest digest) {
-    this.digest = digest;
-  }
-
-  public String convertToHexString(String login, String password) {
-    String originalString = login + "_" + password;
-    byte[] hash = this.digest.digest(originalString.getBytes(StandardCharsets.UTF_8));
-    StringBuilder hexString = new StringBuilder();
-    for (byte b : hash) {
-      String hex = Integer.toHexString(0xff & b);
-      if (hex.length() == 1)
-        hexString.append('0');
-      hexString.append(hex);
+    public PasswordConverterService(MessageDigest digest) {
+        this.digest = digest;
     }
-    return hexString.toString();
-  }
+
+    public String convertToHexString(String login, String password) {
+        String originalString = login + "_" + password;
+        byte[] hash = this.digest.digest(originalString.getBytes(StandardCharsets.UTF_8));
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : hash) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
 
 }

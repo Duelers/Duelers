@@ -1,9 +1,9 @@
 package org.projectcardboard.client.models.message;
 
 public class ClientIDMessage {
-  private String id;
+    private String id;
 
-  public String getID() {
-    return id;
-  }
+    public String getID() {
+        return id;
+    }
 }

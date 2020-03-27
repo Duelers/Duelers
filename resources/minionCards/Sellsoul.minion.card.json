@@ -2,7 +2,6 @@
 	"name": "Sellsoul",
 	"description": "Dying Wish: Deal 4 damage to YOUR General.",
 	"cardId": "Sellsoul",
-	"faction": "mercenary",
 	"spriteName": "neutral_masteroftheseven",
 	"type": "MINION",
 	"spells": [{

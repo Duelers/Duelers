@@ -3,49 +3,42 @@ package server.gameCenter.models.game;
 import shared.models.card.spell.SpellAction;
 
 public class Buff {
-  private final SpellAction action;
-  private final TargetData target;
-  private final boolean positive;
+    private final SpellAction action;
+    private final TargetData target;
+    private final boolean positive;
 
-  Buff(SpellAction action, TargetData target) {
-    this.action = new SpellAction(action);
-    this.target = target;
-    this.positive = evaluate();
-  }
+    Buff(SpellAction action, TargetData target) {
+        this.action = new SpellAction(action);
+        this.target = target;
+        this.positive = evaluate();
+    }
 
-  private boolean evaluate() {
-    int weight = action.getApChange() + action.getHpChange() - action.getEnemyHitChanges()
-        - action.getRemoveBuffs();
-    if (action.isMakeDisarm())
-      weight--;
-    if (action.isMakeDisarm())
-      weight--;
-    if (action.isNoDisarm())
-      weight++;
-    if (action.isNoPoison())
-      weight++;
-    if (action.isNoStun())
-      weight++;
-    if (action.isNoBadEffect())
-      weight += 3;
-    if (action.isNoAttackFromWeakerOnes())
-      weight++;
-    if (action.isDisableHolyBuff())
-      weight++;
-    if (action.isKillsTarget())
-      weight -= 3;
-    return weight >= 0;
-  }
+    private boolean evaluate() {
+        int weight = action.getApChange() +
+                action.getHpChange() -
+                action.getEnemyHitChanges() -
+                action.getRemoveBuffs();
+        if (action.isMakeDisarm()) weight--;
+        if (action.isMakeDisarm()) weight--;
+        if (action.isNoDisarm()) weight++;
+        if (action.isNoPoison()) weight++;
+        if (action.isNoStun()) weight++;
+        if (action.isNoBadEffect()) weight += 3;
+        if (action.isNoAttackFromWeakerOnes()) weight++;
+        if (action.isDisableHolyBuff()) weight++;
+        if (action.isKillsTarget()) weight -= 3;
+        return weight >= 0;
+    }
 
-  public SpellAction getAction() {
-    return action;
-  }
+    public SpellAction getAction() {
+        return action;
+    }
 
-  public TargetData getTarget() {
-    return target;
-  }
+    public TargetData getTarget() {
+        return target;
+    }
 
-  boolean isPositive() {
-    return positive;
-  }
+    boolean isPositive() {
+        return positive;
+    }
 }

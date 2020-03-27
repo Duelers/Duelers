@@ -18,41 +18,41 @@ import org.testfx.util.WaitForAsyncUtils;
 
 public class BackButtonTest extends ApplicationTest {
 
-  private Stage stage;
-  private BackButton backButton;
+    private Stage stage;
+    private BackButton backButton;
 
-  @Override
-  public void start(Stage stage) {
-    this.stage = stage;
-  }
+    @Override
+    public void start(Stage stage) {
+        this.stage = stage;
+    }
 
-  @BeforeClass
-  public static void setupSpec() throws Exception {
-    System.setProperty("testfx.robot", "glass");
-    System.setProperty("testfx.headless", "true");
-    System.setProperty("prism.order", "sw");
-    System.setProperty("prism.text", "t2k");
-    System.setProperty("java.awt.headless", "true");
-  }
+    @BeforeClass
+    public static void setupSpec() throws Exception {
+        System.setProperty("testfx.robot", "glass");
+        System.setProperty("testfx.headless", "true");
+        System.setProperty("prism.order", "sw");
+        System.setProperty("prism.text", "t2k");
+        System.setProperty("java.awt.headless", "true");
+    }
 
-  @Before
-  public void setUp() throws Exception {
-    Platform.runLater(() -> {
-      backButton = new BackButton(null);
-      stage.setScene(new Scene(new StackPane(backButton), 100, 100));
-      stage.show();
-    });
-    WaitForAsyncUtils.waitForFxEvents();
-  }
+    @Before
+    public void setUp() throws Exception {
+        Platform.runLater(() -> {
+            backButton = new BackButton(null);
+            stage.setScene(new Scene(new StackPane(backButton), 100, 100));
+            stage.show();
+        });
+        WaitForAsyncUtils.waitForFxEvents();
+    }
 
-  @After
-  public void tearDown() throws Exception {
-    FxToolkit.hideStage();
-  }
+    @After
+    public void tearDown() throws Exception {
+        FxToolkit.hideStage();
+    }
 
-  @Test
-  public void imageLoaded() {
-    Image image = backButton.getImage();
-    Assert.assertFalse(image == null || image.isError());
-  }
+    @Test
+    public void imageLoaded() {
+        Image image = backButton.getImage();
+        Assert.assertFalse(image == null || image.isError());
+    }
 }
