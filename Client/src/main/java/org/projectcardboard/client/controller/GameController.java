@@ -24,9 +24,7 @@ public class GameController implements GameActions {
     private static GameController ourInstance;
     BattleScene battleScene;
     private Game currentGame;
-    private final AvailableActions availableActions = constructAvailableActions();
-
-
+    private final AvailableActions availableActions = new AvailableActions();
     private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
 
     private GameController() {
@@ -170,7 +168,7 @@ public class GameController implements GameActions {
         new Thread(() -> {
             gameAnimations.getSpellAnimations().forEach(
                     spellAnimation -> spellAnimation.getCells().forEach(
-                            position -> battleScene.spell(spellAnimation.getFxName(), position)
+                            position -> battleScene.spell(spellAnimation.getAvailabilityType(), position)
                     )
             );
             for (CardAnimation cardAnimation :
@@ -192,16 +190,5 @@ public class GameController implements GameActions {
         Client.getInstance().addToSendingMessagesAndSend(
                 Message.makeChatMessage(SERVER_NAME,
                         battleScene.getMyUserName(), battleScene.getOppUserName(), text));
-    }
-
-    private AvailableActions constructAvailableActions() {
-        AvailableActions availableActions;
-        try {
-            availableActions = new AvailableActions();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-            availableActions = null;
-        }
-        return availableActions;
     }
 }

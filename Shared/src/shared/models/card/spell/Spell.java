@@ -4,7 +4,6 @@ import shared.models.game.map.Cell;
 
 public class Spell {
     private final String spellId;
-    private final String fxName;
     private SpellAction action;
     private Target target;
     private AvailabilityType availabilityType;
@@ -12,9 +11,8 @@ public class Spell {
     private final int manaCost;
     private int lastTurnUsed;
 
-    public Spell(String spellId, String fxName, SpellAction action, Target target, AvailabilityType availabilityType, int coolDown, int manaCost) {
+    public Spell(String spellId, SpellAction action, Target target, AvailabilityType availabilityType, int coolDown, int manaCost) {
         this.spellId = spellId;
-        this.fxName = fxName;
         this.action = action;
         this.target = target;
         this.availabilityType = availabilityType;
@@ -24,7 +22,6 @@ public class Spell {
 
     public Spell(Spell referenceSpell) {
         this.spellId = referenceSpell.spellId;
-        this.fxName = referenceSpell.fxName;
         if (referenceSpell.action != null)
             this.action = new SpellAction(referenceSpell.action);
         if (referenceSpell.target != null)
@@ -38,10 +35,6 @@ public class Spell {
 
     public String getSpellId() {
         return this.spellId;
-    }
-
-    public String getFxName() {
-        return this.fxName;
     }
 
     public Target getTarget() {

@@ -7,7 +7,6 @@
   "spells": [
     {
       "spellId": "give_1_1_and_draw_1",
-      "fxName": "fx_f3_scionsfirstwish",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 1,

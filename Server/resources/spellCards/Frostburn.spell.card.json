@@ -7,7 +7,6 @@
   "spells": [
     {
       "spellId": "deal_3_dmg_everything",
-      "fxName": "fx_f6_cryogenesis",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

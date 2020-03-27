@@ -7,7 +7,6 @@
   "spells": [
     {
       "spellId": "2_damage",
-      "fxName": "fx_f5_kinectequilibrium",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
@@ -69,7 +68,6 @@
     },
     {
       "spellId": "2_atk_self",
-      "fxName": "fx_buff",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 2,

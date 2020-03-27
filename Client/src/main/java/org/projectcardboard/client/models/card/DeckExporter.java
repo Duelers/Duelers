@@ -4,11 +4,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.projectcardboard.client.Constants;
 import org.projectcardboard.client.models.JsonConverter;
 
 public class DeckExporter {
-    private static final String DIRECTORY_NAME = Constants.DECK_EXPORT_FOLDER;
+    private static final String DIRECTORY_NAME = "exported_decks";
     private static final String FORMAT = ".deck.json";
     private final ExportedDeck deck;
 

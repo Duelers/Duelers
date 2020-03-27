@@ -1,26 +1,24 @@
 package server.gameCenter.models.game.availableActions;
 
+import javafx.util.Pair;
 import server.dataCenter.models.card.ServerCard;
-import server.gameCenter.models.map.GameMap;
 import shared.models.card.AttackType;
 import server.gameCenter.models.game.Game;
 import server.gameCenter.models.game.Player;
 import server.gameCenter.models.game.ServerTroop;
-import shared.models.game.availableactions.BaseAvailableActions;
+import shared.models.game.map.Cell;
 
 import java.util.*;
 
-public class AvailableActions extends BaseAvailableActions<
-        Insert, Attack, Move, ServerTroop, GameMap, Game, ServerCard, Player> {
-
-    public AvailableActions() throws NoSuchMethodException {
-        super(Move.class.getDeclaredConstructor(ServerTroop.class, ArrayList.class));
-    }
+public class AvailableActions {
+    private final List<Insert> handInserts = new ArrayList<>();
+    private final List<Attack> attacks = new ArrayList<>();
+    private final List<Move> moves = new ArrayList<>();
 
     public void calculateAvailableActions(Game game) {
         calculateAvailableInserts(game);
         calculateAvailableAttacks(game);
-        calculateMoves(game);
+        calculateAvailableMoves(game);
     }
 
     public void calculateAvailableInserts(Game game) {
@@ -40,9 +38,7 @@ public class AvailableActions extends BaseAvailableActions<
         attacks.clear();
         for (ServerTroop myTroop : ownPlayer.getTroops()) {
             if (!myTroop.canAttack()) continue;
-            if (myTroop.getCurrentAp() <= 0) {
-                continue;
-            }
+            if (myTroop.getCurrentAp() <= 0){ continue;}
 
             ArrayList<ServerTroop> targets = new ArrayList<>();
             for (ServerTroop enemyTroop : otherPlayer.getTroops()) {
@@ -58,6 +54,87 @@ public class AvailableActions extends BaseAvailableActions<
 
             attacks.add(new Attack(myTroop, targets));
         }
+    }
+
+
+    public void calculateAvailableMoves(Game game) {
+        Player ownPlayer = game.getCurrentTurnPlayer();
+        moves.clear();
+        for (ServerTroop troop : ownPlayer.getTroops()) {
+            ArrayList<Cell> troopMoves = calculateAvailableMovesForTroop(game, troop);
+
+            if (troopMoves.size() > 0) {
+                moves.add(new Move(troop, troopMoves));
+            }
+        }
+    }
+
+
+    private ArrayList<Cell> calculateAvailableMovesForTroop(Game game, ServerTroop troop) {
+        Cell troopCell = troop.getCell();
+
+        HashSet<Cell> walkableCells = new HashSet<>(); //Cells which the unit can move to.
+//        walkableCells.add(troopCell);
+
+        boolean isProvoked = getIsProvoked(game, troopCell);
+        if (isProvoked || !troop.canMove()) {
+            return new ArrayList<>(walkableCells);
+        }
+
+        HashSet<Cell> seenCells = new HashSet<>();
+        seenCells.add(troopCell);
+
+        int moveSpeed = 2; // Todo make a troop property.
+
+        //Cells which the unit can move through.
+        //Pair of <Cell>, <Remaining move spaces>
+        ArrayList<Pair<Cell, Integer>> pathableFrontier = new ArrayList<>();
+        pathableFrontier.add(new Pair<>(troop.getCell(), moveSpeed));
+
+        while (pathableFrontier.size() > 0) {
+            Pair<Cell, Integer> currentCellMove = pathableFrontier.remove(0);
+            Cell currentCell = currentCellMove.getKey();
+            Integer remainingMovement = currentCellMove.getValue();
+
+            if (remainingMovement > 0) {
+                ArrayList<Cell> manhattanAdjacentCells = game.getGameMap().getManhattanAdjacentCells(currentCell);
+                for (Cell adjacentCell : manhattanAdjacentCells) {
+                    ServerTroop troopInSpace = game.getGameMap().getTroopAtLocation(adjacentCell);
+
+                    boolean blockedByAnything = troopInSpace != null;
+                    if (!blockedByAnything) {
+                        if (!seenCells.contains(adjacentCell)) {
+                            walkableCells.add(adjacentCell);
+                        }
+                    }
+
+                    boolean blockedByEnemy = blockedByAnything
+                            && troopInSpace.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber();
+                    if (!blockedByEnemy) {
+                        pathableFrontier.add(new Pair<>(adjacentCell, remainingMovement - 1));
+                    }
+                    seenCells.add(adjacentCell);
+                }
+            }
+        }
+
+        return new ArrayList<>(walkableCells);
+    }
+
+    private boolean getIsProvoked(Game game, Cell troopCell) {
+        boolean isProvoked = false;
+        List<Cell> neighbourCells = game.getGameMap().getNearbyCells(troopCell);
+        for (Cell nCell : neighbourCells) {
+            if (game.getGameMap().getTroopAtLocation(nCell) != null) {
+                ServerTroop nearbyUnit = game.getGameMap().getTroopAtLocation(nCell);
+                // is provoked?
+                if (nearbyUnit.getPlayerNumber() != game.getCurrentTurnPlayer().getPlayerNumber() && nearbyUnit.getCard().getDescription().contains("Provoke")) {
+                    isProvoked = true;
+                    break;
+                }
+            }
+        }
+        return isProvoked;
     }
 
     private boolean checkRangeForAttack(ServerTroop myTroop, ServerTroop enemyTroop) {
@@ -84,5 +161,13 @@ public class AvailableActions extends BaseAvailableActions<
 
         getHandInserts().forEach(n -> strBuilder.append(n.getCard().getCardId()).append(" | "));
         return strBuilder.toString();
+    }
+
+    public List<Attack> getAttacks() {
+        return Collections.unmodifiableList(attacks);
+    }
+
+    public List<Move> getMoves() {
+        return Collections.unmodifiableList(moves);
     }
 }

@@ -7,7 +7,6 @@
   "spells": [
     {
       "spellId": "Give_5_atk_to_friendly_minion",
-      "fxName": "fx_f4_shadowreflection",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 5,

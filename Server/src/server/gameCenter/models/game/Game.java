@@ -137,7 +137,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         this.future = this.timer.schedule(this.task, Constants.TURN_TIME_LIMIT, TimeUnit.SECONDS);
     }
 
-    private void drawCardsFromDeck(int cardsToDraw) {
+    private void drawCardsFromDeck(int cardsToDraw){
         ServerCard[] drawnCards = getCurrentTurnPlayer().getCardsFromDeck(cardsToDraw);
         getCurrentTurnPlayer().addCardsToHand(drawnCards);
         int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
@@ -158,7 +158,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             getCurrentTurnPlayer().setNumTimesReplacedThisTurn(timesReplaced + 1);
             int deckSize = getCurrentTurnPlayer().getDeck().getCards().size();
             GameServer.getInstance().sendChangeCardPositionMessage(this, removedCard, CardPosition.MAP);
-            GameServer.getInstance().sendCardsDrawnToHandMessage(this, deckSize, drawnCard);
+            GameServer.getInstance().sendCardsDrawnToHandMessage(this,deckSize,drawnCard);
         } else {
             System.out.println("Cannot replace card. Current canReplaceCard value: " + getCurrentTurnPlayer().getCanReplaceCard());
         }
@@ -168,21 +168,13 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         // AI
         final int delay = 1000;
         try {
-
-            AvailableActions actions = null;
-            try {
-                actions = new AvailableActions();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-                assert false;
-            }
-
+            AvailableActions actions = new AvailableActions();
             actions.calculateAvailableActions(this);
             while (actions.getMoves().size() > 0) {
                 Move move = actions.getMoves().get(new Random().nextInt(actions.getMoves().size()));
                 moveTroop("AI", move.getTroop().getCard().getCardId(), move.getTargets().get(new Random().nextInt(move.getTargets().size())));
                 Thread.sleep(delay);
-                actions.calculateMoves(this);
+                actions.calculateAvailableMoves(this);
             }
             actions.calculateAvailableAttacks(this);
             while (actions.getAttacks().size() > 0) {
@@ -577,23 +569,15 @@ public abstract class Game extends BaseGame<Player, GameMap> {
                 GameServer.getInstance().sendTroopUpdateMessage(this, attackerTroop);
                 applyOnAttackSpells(attackerTroop, defenderTroop);
                 applyOnDefendSpells(defenderTroop, attackerTroop);
-
-                boolean backstab = attackerTroop.hasBackstab() && attackerTroop.isDirectlyBehind(defenderTroop);
-                boolean counterAttack;
-
-                if (backstab) {
-                    counterAttack = false;
-                } else {
-                    try {
-                        counterAttack(defenderTroop, attackerTroop);
-                        counterAttack = true;
-                    } catch (LogicException e) {
-                        counterAttack = false;
-                    }
+                try {
+                    counterAttack(defenderTroop, attackerTroop);
+                } catch (LogicException e) {
+                    GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, false);
+//                    throw e;
                 }
+                GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, true);
 
-                GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, counterAttack);
-                damage(attackerTroop, defenderTroop, backstab);
+                damage(attackerTroop, defenderTroop);
             }
         } finally {
             GameCenter.getInstance().checkGameFinish(this);
@@ -630,19 +614,13 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         if (attackerTroop.canGiveBadEffect() &&
                 (attackerTroop.canBeAttackedFromWeakerOnes() || defenderTroop.getCurrentAp() > attackerTroop.getCurrentAp())
         ) {
-            boolean backstab = defenderTroop.hasBackstab() && defenderTroop.isDirectlyBehind(attackerTroop);
-
-            damage(defenderTroop, attackerTroop, backstab);
+            damage(defenderTroop, attackerTroop);
             applyOnCounterAttackSpells(defenderTroop, attackerTroop);
         }
     }
 
-    private void damage(ServerTroop attackerTroop, ServerTroop defenderTroop, boolean backstab) {
+    private void damage(ServerTroop attackerTroop, ServerTroop defenderTroop) {
         int attackPower = calculateAp(attackerTroop, defenderTroop);
-
-        if (backstab) {
-            attackPower += attackerTroop.getBackstab();
-        }
 
         defenderTroop.changeCurrentHp(-attackPower);
 
@@ -722,7 +700,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
             if (defenderTroop.canGiveBadEffect() &&
                     (defenderTroop.canBeAttackedFromWeakerOnes() || attackerTroop.getCurrentAp() > defenderTroop.getCurrentAp())
             ) {
-                damage(attackerTroop, defenderTroop, false);
+                damage(attackerTroop, defenderTroop);
 
                 attackerTroop.setCanAttack(false);
                 attackerTroop.setCanMove(false);
@@ -743,9 +721,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
     private void applySpell(Spell spell, TargetData target) {
         spell.setLastTurnUsed(turnNumber);
         Buff buff = new Buff(spell.getAction(), target);
-        if (spell.getFxName() != null) {
-            GameServer.getInstance().sendSpellMessage(this, target, spell.getFxName());
-        }
+        GameServer.getInstance().sendSpellMessage(this, target, spell.getAvailabilityType());
         buffs.add(buff);
         applyBuff(buff);
     }

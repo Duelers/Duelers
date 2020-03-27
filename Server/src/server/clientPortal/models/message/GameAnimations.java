@@ -20,7 +20,7 @@ class GameAnimations {
         counterAttacks.add(new CardAnimation(cardID, defenderCardID));
     }
 
-    void addSpellAnimation(Set<Cell> cells, String fxName) {
-        spellAnimations.add(new SpellAnimation(cells, fxName));
+    void addSpellAnimation(Set<Cell> cells, AvailabilityType availabilityType) {
+        spellAnimations.add(new SpellAnimation(cells, availabilityType));
     }
 }
