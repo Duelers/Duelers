@@ -9,6 +9,7 @@ import static org.projectcardboard.client.models.gui.UIConstants.SELECT_CURSOR;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import org.projectcardboard.client.controller.CollectionMenuController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
@@ -192,7 +193,7 @@ public class DeckBox extends GridPane {
    * Returns the count of all faction cards in deck with faction names shortened to two chars. For
    * example a deck with 5 songhai cards and 35 mercs would return "So: 5 Me: 35"
    */
-  private String getFactionCardCount(Deck deck) {
+  public String getFactionCardCount(Deck deck) {
     Map<String, Long> factionToCount =
         deck.getCards().stream().collect(Collectors.groupingBy(card -> {
           String faction = card.getFaction();

@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import shared.UtilityFunctions;
 import shared.models.card.CardType;
 import shared.models.card.ICard;
 
@@ -36,11 +37,7 @@ class CardDetailBox extends VBox {
 
     name = new DefaultLabel(card.getName(), NAME_FONT, NAME_COLOR);
 
-    String facName =
-        card.getFaction().substring(0, 1).toUpperCase() + card.getFaction().substring(1); // Capitalise.
-                                                                                          // "songhai"
-                                                                                          // =>
-                                                                                          // "Songhai"
+    String facName = UtilityFunctions.capitaliseString(card.getFaction());
     faction = new DefaultLabel(facName, TYPE_FONT, TYPE_COLOR);
 
     description = new DefaultText(card.getDescription(), DESCRIPTION_WIDTH, DESCRIPTION_FONT,
