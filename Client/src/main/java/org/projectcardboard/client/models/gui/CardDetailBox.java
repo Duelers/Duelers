@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import shared.UtilityFunctions;
 import shared.models.card.CardType;
 import shared.models.card.ICard;
 
@@ -25,7 +26,7 @@ class CardDetailBox extends VBox {
   private static final double DESCRIPTION_WIDTH = 400 * SCALE;
   private static final double SPACE_HEIGHT = 115 * SCALE;
   private final DefaultLabel name;
-  private final DefaultLabel type;
+  private final DefaultLabel faction;
   private final DefaultText description;
 
   CardDetailBox(ICard card) {
@@ -35,22 +36,13 @@ class CardDetailBox extends VBox {
     setAlignment(Pos.CENTER);
 
     name = new DefaultLabel(card.getName(), NAME_FONT, NAME_COLOR);
-    type = new DefaultLabel(card.getType().toString().replace("_", " "), TYPE_FONT, TYPE_COLOR);
+
+    String facName = UtilityFunctions.capitaliseString(card.getFaction());
+    faction = new DefaultLabel(facName, TYPE_FONT, TYPE_COLOR);
+
     description = new DefaultText(card.getDescription(), DESCRIPTION_WIDTH, DESCRIPTION_FONT,
         DESCRIPTION_COLOR);
 
-    getChildren().addAll(name, type, new Space(SPACE_HEIGHT), description);
-  }
-
-  void setName(String newValue) {
-    name.setText(newValue);
-  }
-
-  void setType(CardType newValue) {
-    type.setText(newValue.toString().replace("_", " "));
-  }
-
-  void setDescription(String newValue) {
-    description.setText(newValue);
+    getChildren().addAll(name, faction, new Space(SPACE_HEIGHT), description);
   }
 }
