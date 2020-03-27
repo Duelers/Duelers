@@ -8,6 +8,7 @@ import static org.projectcardboard.client.models.gui.UIConstants.SELECT_CURSOR;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.*;
 
 import org.projectcardboard.client.controller.CollectionMenuController;
 import org.projectcardboard.client.controller.SoundEffectPlayer;
@@ -28,6 +29,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import shared.models.card.Card;
 
 public class DeckBox extends GridPane {
   private static final Background DEFAULT_BACKGROUND =
@@ -87,6 +89,9 @@ public class DeckBox extends GridPane {
         new DefaultLabel(deck.getCards().size() + " Cards", DETAILS_FONT, Color.WHITE);
     DefaultLabel heroNumber =
         new DefaultLabel((deck.getHero() != null ? "1" : "0") + " Hero", DETAILS_FONT, Color.WHITE);
+
+    DefaultLabel factionCount =
+        new DefaultLabel(getFactionCardCount(deck), DETAILS_FONT, Color.WHITE);
 
     modify.setOnMouseEntered(event -> {
       modify.setEffect(ICON_SHADOW);
@@ -163,6 +168,10 @@ public class DeckBox extends GridPane {
       });
     }
 
+
+    add(factionCount, 0, 3, 30, 1); // Todo improve. As count increases in size, if messes up the
+                                    // rest of the grid.
+
     add(heroNumber, 5, 2, 2, 1);
     add(cardsNumber, 8, 2);
 
@@ -177,5 +186,24 @@ public class DeckBox extends GridPane {
   private Font getFont(String name) {
     double size = Math.min(45 * SCALE, 45 * SCALE * 8 / name.length());
     return Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, size);
+  }
+
+  private String getFactionCardCount(Deck deck) {
+    // Returns the count of all faction cards in deck with faction names shortened to two chars.
+    // For example a deck with 5 songhai cards and 35 mercs would return "So: 5 Me: 35"
+
+    HashMap<String, Integer> factionCount = new HashMap<>();
+
+    for (Card card : deck.getCards()) {
+      factionCount.merge(card.getFaction(), 1, Integer::sum);
+    }
+
+    ArrayList<String> factions = new ArrayList<>();
+
+    // Shorten faction name to 2 chars; "vanar" -> "Va"
+    factionCount.forEach((key, value) -> factions
+        .add(key.substring(0, 1).toUpperCase() + key.substring(1, 2) + " : " + value.toString()));
+
+    return String.join("  ", factions);
   }
 }
