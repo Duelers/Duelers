@@ -1,15 +1,17 @@
 package org.projectcardboard.client.view.battleview;
 
+import Config.Config;
 import javafx.geometry.Insets;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Screen;
 
 public class Constants {
-  static final double SCREEN_WIDTH = Screen.getPrimary().getBounds().getWidth();
-  static final double SCREEN_HEIGHT = Screen.getPrimary().getBounds().getHeight();
+  static final double SCREEN_WIDTH =
+      Double.parseDouble(Config.getInstance().getProperty("CONFIG_SCREEN_WIDTH"));
+  static final double SCREEN_HEIGHT =
+      Double.parseDouble(Config.getInstance().getProperty("CONFIG_SCREEN_HEIGHT"));
   static final double SCALE = SCREEN_WIDTH / 1920;
   // MAP
   static final double MAP_X = SCREEN_WIDTH * 0.2, MAP_Y = SCREEN_HEIGHT * 0.3;
