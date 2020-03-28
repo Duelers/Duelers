@@ -28,18 +28,20 @@ public class Card implements ICard {
   protected boolean targetEnemyUnit;
   protected boolean targetMinion;
   protected boolean targetHero;
+  protected boolean isCustom;
 
   // This is only used in tests right now. All other cards are loaded from json with gson.
   public Card(String name, // TODO refactor other constructors to use this one.
       String cardId, String faction, String description, String spriteName, CardType type,
       ArrayList<Spell> spells, int defaultAp, int defaultHp, int manaCost, int price,
-      AttackType attackType, int range) {
+      AttackType attackType, int range, boolean isCustom) {
     this.name = name;
     this.cardId = cardId;
     this.faction = faction;
     this.description = description;
     this.spriteName = spriteName;
     this.type = type;
+    this.isCustom = isCustom;
     this.spells = spells;
     this.defaultAp = defaultAp;
     this.defaultHp = defaultHp;
@@ -62,6 +64,7 @@ public class Card implements ICard {
     this.faction = referenceCard.faction;
     this.spriteName = referenceCard.spriteName;
     this.type = referenceCard.type;
+    this.isCustom = referenceCard.isCustom;
     this.spells = new ArrayList<>();
     if (referenceCard.spells != null) {
       for (Spell spell : referenceCard.spells) {
@@ -130,8 +133,14 @@ public class Card implements ICard {
     return this.defaultHp;
   }
 
+  @Override
   public int getManaCost() {
     return this.manaCost;
+  }
+
+  @Override
+  public boolean isCustom() {
+    return isCustom;
   }
 
   public AttackType getAttackType() {

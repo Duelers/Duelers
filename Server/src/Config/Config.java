@@ -15,10 +15,13 @@ import net.harawata.appdirs.AppDirsFactory;
 
 public class Config {
 
-  private static Config configInstance = null;
+  private static Config configInstance;
   private static Properties config;
-  private static InputStream file = null;
+  private static InputStream file;
   private static final String configFileName = "/config.properties";
+  private static Path configFullPath;
+  private static Path customCardsPath;
+  private static Path customCardSpritesPath;
 
   private Config() {
     /**
@@ -28,7 +31,7 @@ public class Config {
     try {
       AppDirs appDirs = AppDirsFactory.getInstance();
       String configDirPath = appDirs.getUserConfigDir("cardboard", "1.0", "projectcardboard", true);
-      Path configFullPath = Path.of(configDirPath + configFileName);
+      configFullPath = Path.of(configDirPath + configFileName);
       try {
         file = new FileInputStream(configFullPath.toString());
       } catch (FileNotFoundException e) {
@@ -43,6 +46,8 @@ public class Config {
 
       config = new Properties();
       config.load(file);
+      createCustomCardsDirectory();
+      createCustomCardSpritesDirectory();
     } catch (IOException ex) {
       ex.printStackTrace();
     } finally {
@@ -131,6 +136,33 @@ public class Config {
               + "#Windows: C:\\Users\\yourusername\\AppData\\Roaming\\projectcardboard\\cardboard\\1.0\n"
               + "#Linux: /home/yourusername/.config/cardboard/1.0\n";
       config.store(out, comment);
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  public Path getCustomCardsPath() {
+    return customCardsPath;
+  }
+
+  public Path getCustomCardSpritesPath() {
+    return customCardSpritesPath;
+  }
+
+  private void createCustomCardsDirectory() {
+    try {
+      customCardsPath = Path.of(configFullPath.getParent().toString() + "/Custom_Cards/", "\\");
+      Files.createDirectories(customCardsPath);
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  private void createCustomCardSpritesDirectory() {
+    try {
+      customCardSpritesPath =
+          Path.of(configFullPath.getParent().toString() + "/Custom_Cards_Sprites/", "\\");
+      Files.createDirectories(customCardSpritesPath);
     } catch (IOException ex) {
       ex.printStackTrace();
     }

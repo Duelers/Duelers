@@ -194,6 +194,7 @@ public class DeckBox extends GridPane {
    * example a deck with 5 songhai cards and 35 mercs would return "So: 5 Me: 35"
    */
   public String getFactionCardCount(Deck deck) {
+    /*
     Map<String, Long> factionToCount =
         deck.getCards().stream().collect(Collectors.groupingBy(card -> {
           String faction = card.getFaction();
@@ -203,5 +204,7 @@ public class DeckBox extends GridPane {
     return factionToCount.entrySet().stream()
         .map(entry -> entry.getKey() + " : " + entry.getValue().toString())
         .collect(Collectors.joining("  "));
+     */
+    return "Hello World";
   }
 }

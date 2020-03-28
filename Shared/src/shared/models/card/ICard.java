@@ -18,4 +18,6 @@ public interface ICard {
   String getDescription();
 
   int getManaCost();
+
+  boolean isCustom();
 }
