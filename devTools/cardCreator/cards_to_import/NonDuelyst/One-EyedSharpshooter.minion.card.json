@@ -2,7 +2,7 @@
   "name": "One-Eyed Sharpshooter",
   "description": "Opening Gambit: Destory a Random Enemy Minion with Ranged",
   "cardId": "OneEyedSharpshooter",
-  "faction": "Vetruvian",
+  "faction": "vetruvian",
   "spriteName": "f3_insightcaster",
   "type": "MINION",
   "spells": [
@@ -39,12 +39,21 @@
           "own": false,
           "enemy": true
         },
+	"owner": {
+          "own": true,
+          "enemy": false
+        },
         "cardType": {
           "cell": false,
           "hero": false,
           "minion": true,
           "player": false
         }
+"attackType": {
+			"melee": false,
+			"ranged": true,
+			"hybrid": true
+		}
       },
       "availabilityType": {
         "onPut": true,
