@@ -549,6 +549,8 @@ public abstract class Game extends BaseGame<Player, GameMap> {
       troop.setCanMove(false);
     }
 
+    applyOnMoveSpells();
+
     GameServer.getInstance().sendTroopUpdateMessage(this, troop);
   }
 
@@ -605,6 +607,29 @@ public abstract class Game extends BaseGame<Player, GameMap> {
       }
     } finally {
       GameCenter.getInstance().checkGameFinish(this);
+    }
+  }
+
+  private void applyOnMoveSpells(){
+    System.out.println("on move entered");
+    for(ServerTroop troop : getCurrentTurnPlayer().getTroops()){
+      for(Spell spell : troop.getCard().getSpells()){
+        System.out.println(spell.getSpellId() + " " + spell.getAvailabilityType().isOnMove());
+        if(spell.getAvailabilityType().isOnMove()){
+          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
+                  getOtherTurnPlayer().getHero().getCell()));
+        }
+      }
+    }
+
+    for(ServerTroop troop : getOtherTurnPlayer().getTroops()){
+      for(Spell spell : troop.getCard().getSpells()){
+        System.out.println(spell.getSpellId() + " " + spell.getAvailabilityType().isOnMove());
+        if(spell.getAvailabilityType().isOnMove()){;
+          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
+                  getOtherTurnPlayer().getHero().getCell()));
+        }
+      }
     }
   }
 
@@ -887,6 +912,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
 
   void killTroop(ServerTroop troop) {
     applyOnDeathSpells(troop);
+    applyDeathWatchSpells();
     if (troop.getPlayerNumber() == 1) {
       playerOne.killTroop(this, troop);
       gameMap.removeTroop(troop);
@@ -903,6 +929,29 @@ public abstract class Game extends BaseGame<Player, GameMap> {
       if (spell.getAvailabilityType().isOnDeath())
         applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
             getOtherTurnPlayer().getHero().getCell()));
+    }
+  }
+
+  private void applyDeathWatchSpells(){
+    System.out.println("on death entered");
+    for(ServerTroop troop : getCurrentTurnPlayer().getTroops()){
+      for(Spell spell : troop.getCard().getSpells()){
+        System.out.println(spell.getSpellId() + " " + spell.getAvailabilityType().isDeathWatch());
+        if(spell.getAvailabilityType().isDeathWatch()){;
+          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
+                  getOtherTurnPlayer().getHero().getCell()));
+        }
+      }
+    }
+
+    for(ServerTroop troop : getOtherTurnPlayer().getTroops()){
+      for(Spell spell : troop.getCard().getSpells()){
+        System.out.println(spell.getSpellId() + " " + spell.getAvailabilityType().isDeathWatch());
+        if(spell.getAvailabilityType().isDeathWatch()){;
+          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
+                  getOtherTurnPlayer().getHero().getCell()));
+        }
+      }
     }
   }
 
@@ -961,7 +1010,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
 
         player = (getCurrentTurnPlayer().getPlayerNumber() == playerNumber) ? getCurrentTurnPlayer()
             : getOtherTurnPlayer();
-
+        System.out.println("we should be here");
         setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
       }
       if (spell.getTarget().getOwner().isEnemy()) {
