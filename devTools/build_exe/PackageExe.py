@@ -1,5 +1,6 @@
 import os
 import shutil
+import subprocess
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__)) # path of this file, i.e \devTools\build_exe
 
@@ -76,6 +77,12 @@ if __name__ == "__main__":
     print("Creating directory...")
     release_dir = make_dirs(OUTPUT_DIR, release_name)
     print(f"output directory created at: {release_dir}")
+    
+    print("Building card validation exe")
+    os. chdir(EXAMPLE_APPDATA_MINION_PATH) # script requires you to be in its dir since paths are relative
+    p = subprocess.Popen(["python", "build_exe.py"])
+    p.wait()
+    os. chdir(DIR_PATH)
 
     print("Copying files to out_dir...")
     shutil.copy(CARDBOARD_EXE_PATH, os.path.join(release_dir, "data"))
@@ -87,7 +94,7 @@ if __name__ == "__main__":
 
     # Copy ExampleMinion
     shutil.copytree(EXAMPLE_APPDATA_MINION_PATH, os.path.join(release_dir, "mods", "card_creation"))
-
+    os.remove(os.path.join(release_dir, "mods", "card_creation", "build_exe.py"))
 
     print("Script COMPLETE.")
 

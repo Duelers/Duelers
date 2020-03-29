@@ -6,7 +6,7 @@ SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 FILENAME = 'AddJsonCardToGame_appData'
 EXTENTION = {"python": ".py", "executable": ".exe", "spec": ".spec"}
 
-if __name__ == "__main__":
+def main():
     path = os.path.join(SCRIPT_PATH, FILENAME + EXTENTION["python"])
     out_path = os.path.join(SCRIPT_PATH, "tmp")
     
@@ -28,3 +28,6 @@ if __name__ == "__main__":
     shutil.rmtree(os.path.join(SCRIPT_PATH, "build"))
 
     print("Complete")
+
+if __name__ == "__main__":
+    main()
