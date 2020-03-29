@@ -2,10 +2,12 @@ package org.projectcardboard.client.view.battleview;
 
 import static org.projectcardboard.client.view.battleview.CardAnimation.cachedImages;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
+import Config.Config;
 import com.google.gson.Gson;
 
 import org.projectcardboard.client.models.gui.DefaultLabel;
@@ -62,14 +64,16 @@ public class TroopAnimation extends Transition {
   private Group troopGroup;
 
   TroopAnimation(Group mapGroup, double[][] cellsX, double[][] cellsY, String fileName, int j,
-      int i, boolean isPlayer1Troop, boolean isMyTroop) throws Exception {
+      int i, boolean isPlayer1Troop, boolean isMyTroop, boolean isCustom) throws Exception {
     this.mapGroup = mapGroup;
     this.isPlayer1Troop = isPlayer1Troop;
     this.isMyTroop = isMyTroop;
 
     // read settings
-    InputStream plistR =
-        this.getClass().getResourceAsStream("/troopAnimations/" + fileName + ".plist.json");
+    System.out.println(isCustom);
+    String customCardPath = Config.getInstance().getCustomCardSpritesPath().toString() + "/";
+    InputStream plistR = isCustom ? new FileInputStream(customCardPath + fileName + ".plist.json")
+        : this.getClass().getResourceAsStream("/troopAnimations/" + fileName + ".plist.json");
     PlayList playlist =
         new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8), PlayList.class);
     attackFramePositions = playlist.getAttackFrames();
@@ -87,9 +91,9 @@ public class TroopAnimation extends Transition {
 
     currentI = i;
     currentJ = j;
-
-    Image image = cachedImages.computeIfAbsent(fileName,
-        key -> ImageLoader.load("/troopAnimations/" + fileName + ".png"));
+    String path = isCustom ? customCardPath : "/troopAnimations/";
+    Image image =
+        cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load(path + fileName + ".png"));
     imageView = new ImageView(image);
     imageView.setFitWidth(frameWidth * Constants.TROOP_SCALE * Constants.SCALE);
     imageView.setFitHeight(frameHeight * Constants.TROOP_SCALE * Constants.SCALE);

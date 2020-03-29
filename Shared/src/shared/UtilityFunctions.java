@@ -7,7 +7,7 @@ package shared;
 public class UtilityFunctions {
 
   public static String capitaliseString(String s) {
-    // "hello world" -> "Hello world"
+    // "hello world" -> "Hello world
     return s.substring(0, 1).toUpperCase() + s.substring(1);
   }
 }
