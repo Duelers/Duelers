@@ -3,6 +3,7 @@
   "description": "On Attack: All Your minions gain +1/+1.",
   "cardId": "NomadRaidLeader",
   "spriteName": "f3_mech",
+  "faction": "vetruvian",
   "type": "MINION",
   "spells": [
 
