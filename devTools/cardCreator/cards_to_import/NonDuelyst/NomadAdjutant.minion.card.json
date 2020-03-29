@@ -2,6 +2,7 @@
   "name": "Nomad Adjutant",
   "description": "Opening Gambit: Your General gains +3 attack and may not defened for 2 turns.",
   "cardId": "NomadAdjutant",
+  "faction": "vetruvian",
   "spriteName": "f3_sister",
   "type": "MINION",
   "spells": [
