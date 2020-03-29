@@ -38,8 +38,8 @@ if __name__ == "__main__":
     for c in cards:
         card_path = os.path.join(import_card_path, c)
         print("---------------------------------------")
-        print(f"Starting import process for Card: {c}")
+        print(f"Starting validation process for Card: {c}")
         main(c, card_path)
-        print(f"Finished import process for Card: {c}\n")
+        print(f"Finished validation process for Card: {c}\n")
 
     print("SCRIPT COMPLETE -- If you see this message no errors were detected :)")

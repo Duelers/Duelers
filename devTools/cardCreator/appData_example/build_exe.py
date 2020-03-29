@@ -3,7 +3,7 @@ import subprocess
 import shutil
 
 SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
-FILENAME = 'AddJsonCardToGame_appData'
+FILENAME = 'validate_cards'
 EXTENTION = {"python": ".py", "executable": ".exe", "spec": ".spec"}
 
 def main():
