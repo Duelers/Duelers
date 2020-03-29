@@ -2,7 +2,7 @@
   "name": "Nomad Scout",
   "description": "Flying",
   "cardId": "NomadScout",
-  "faction": "Vetruvian",
+  "faction": "vetruvian",
   "spriteName": "f3_buildcommon",
   "type": "MINION",
   "spells": [],
