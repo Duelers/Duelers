@@ -1,7 +1,8 @@
 {
   "name": "Nomad Spotter",
-  "description": "Opening Gambit: Your General gains +2 attack until the end of turn, and Heals 2 Health.",
+  "description": "Opening Gambit: Your General gains +2 attack until the end of turn, and Gains 2 Health.",
   "cardId": "NomadSpotter",
+  "faction": "vetruvian",
   "spriteName": "f3_falcius",
   "type": "MINION",
   "spells": [
@@ -31,7 +32,7 @@
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": true,
+        "isRelatedToCardOwnerPosition": false,
         "isForAroundOwnHero": false,
         "isRandom": false,
         "isForDeckCards": false,
@@ -93,7 +94,7 @@
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": true,
+        "isRelatedToCardOwnerPosition": false,
         "isForAroundOwnHero": false,
         "isRandom": false,
         "isForDeckCards": false,
@@ -131,8 +132,8 @@
     }
 	
   ],
-  "defaultAp": 2,
-  "defaultHp": 4,
+  "defaultAp": 3,
+  "defaultHp": 3,
   "manaCost": 3,
   "price": 100,
   "attackType": "MELEE",
