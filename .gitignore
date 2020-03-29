@@ -200,5 +200,4 @@ local.properties
 ## end Eclipse
 resources/config.properties
 *.pyc
-devTools/build_exe/.pytest_cache/v/cache/stepwise
-devTools/build_exe/.pytest_cache/v/cache/nodeids
+devTools/build_exe/.pytest_cache/*
