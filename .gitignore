@@ -201,5 +201,4 @@ local.properties
 resources/config.properties
 *.pyc
 devTools/build_exe/.pytest_cache/*
-devTools/cardCreator/appData_example/AddJsonCardToGame_appData.exe
 devTools/cardCreator/appData_example/validate_cards.exe
