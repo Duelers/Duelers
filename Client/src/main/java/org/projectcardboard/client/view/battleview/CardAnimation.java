@@ -50,63 +50,45 @@ public class CardAnimation extends Transition {
     // file settings
     Playlist playlist;
     Image image;
+
+    String path;
     if (CardType.SPELL.equals(card.getType())) {
-      String path =
+      path =
           card.isCustom() ? Config.getInstance().getCustomCardsPath().toString() + "/" : "/icons/";
-      image = cachedImages.computeIfAbsent(card.getSpriteName(),
-          key -> ImageLoader.load(path + card.getSpriteName() + ".png"));
-      playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
-        try {
-          InputStream plistR =
-              this.getClass().getResourceAsStream(path + card.getSpriteName() + ".plist.json");
-          if (plistR == null) {
-            throw new FileNotFoundException();
-          }
-          return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8),
-              Playlist.class);
-        } catch (FileNotFoundException e) {
-          try {
-            FileInputStream inputStream =
-                new FileInputStream(path + card.getSpriteName() + ".plist.json");
-            return new Gson().fromJson(new InputStreamReader(inputStream, StandardCharsets.UTF_8),
-                Playlist.class);
-          } catch (IOException ex) {
-            ex.printStackTrace();
-            return new Playlist();
-          }
+    } else {
+      path = card.isCustom() ? Config.getInstance().getCustomCardSpritesPath().toString() + "/"
+          : "/troopAnimations/";
+    }
+    image = cachedImages.computeIfAbsent(card.getSpriteName(),
+        key -> ImageLoader.load(path + card.getSpriteName() + ".png"));
+    playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
+      try {
+        InputStream plistR =
+            this.getClass().getResourceAsStream(path + card.getSpriteName() + ".plist.json");
+        if (plistR == null) {
+          throw new FileNotFoundException();
         }
-      });
+        return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8),
+            Playlist.class);
+      } catch (FileNotFoundException e) {
+        try {
+          FileInputStream inputStream =
+              new FileInputStream(path + card.getSpriteName() + ".plist.json");
+          return new Gson().fromJson(new InputStreamReader(inputStream, StandardCharsets.UTF_8),
+              Playlist.class);
+        } catch (IOException ex) {
+          ex.printStackTrace();
+          return new Playlist();
+        }
+      }
+    });
+
+    if (CardType.SPELL.equals(card.getType())) {
       activeFramePositions = playlist.getLists().get("active").toArray(new FramePosition[1]);
       inActiveFramePositions = playlist.getLists().get("inactive").toArray(new FramePosition[1]);
       extraX = 38 * Constants.SCALE;
       extraY = 31 * Constants.SCALE;
     } else {
-      String path =
-          card.isCustom() ? Config.getInstance().getCustomCardSpritesPath().toString() + "/"
-              : "/troopAnimations/";
-      image = cachedImages.computeIfAbsent(card.getSpriteName(),
-          key -> ImageLoader.load(path + card.getSpriteName() + ".png"));
-      playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
-        try {
-          InputStream plistR =
-              this.getClass().getResourceAsStream(path + card.getSpriteName() + ".plist.json");
-          if (plistR == null) {
-            throw new FileNotFoundException();
-          }
-          return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8),
-              Playlist.class);
-        } catch (FileNotFoundException e) {
-          try {
-            FileInputStream inputStream =
-                new FileInputStream(path + card.getSpriteName() + ".plist.json");
-            return new Gson().fromJson(new InputStreamReader(inputStream, StandardCharsets.UTF_8),
-                Playlist.class);
-          } catch (IOException ex) {
-            ex.printStackTrace();
-            return new Playlist();
-          }
-        }
-      });
       activeFramePositions = playlist.getLists().get("idle").toArray(new FramePosition[1]);
       inActiveFramePositions = activeFramePositions;
       extraX = playlist.extraX * Constants.SCALE;
@@ -117,17 +99,13 @@ public class CardAnimation extends Transition {
     frameHeight = playlist.frameHeight;
     setCycleDuration(Duration.millis(playlist.frameDuration));
 
-
     imageView = new ImageView(image);
-
     imageView.setFitWidth(frameWidth * Constants.TROOP_SCALE * Constants.SCALE);
     imageView.setFitHeight(frameHeight * Constants.TROOP_SCALE * Constants.SCALE);
     imageView.setX(x - extraX);
     imageView.setY(y - extraY);
-
     imageView.setViewport(new Rectangle2D(0, 0, 1, 1));
     this.group.getChildren().add(imageView);
-
 
     this.setCycleCount(INDEFINITE);
     setAction(ACTION.STOPPED);
