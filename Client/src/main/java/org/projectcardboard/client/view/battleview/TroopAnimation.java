@@ -72,9 +72,8 @@ public class TroopAnimation extends Transition {
     // read settings
     System.out.println(isCustom);
     String customCardPath = Config.getInstance().getCustomCardSpritesPath().toString() + "\\";
-    InputStream plistR = isCustom ?
-            new FileInputStream(customCardPath + fileName + ".plist.json") :
-            this.getClass().getResourceAsStream("/troopAnimations/" + fileName + ".plist.json");
+    InputStream plistR = isCustom ? new FileInputStream(customCardPath + fileName + ".plist.json")
+        : this.getClass().getResourceAsStream("/troopAnimations/" + fileName + ".plist.json");
     PlayList playlist =
         new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8), PlayList.class);
     attackFramePositions = playlist.getAttackFrames();
@@ -92,9 +91,9 @@ public class TroopAnimation extends Transition {
 
     currentI = i;
     currentJ = j;
-    String path = isCustom ? customCardPath :  "/troopAnimations/";
-    Image image = cachedImages.computeIfAbsent(fileName,
-        key -> ImageLoader.load( path + fileName + ".png"));
+    String path = isCustom ? customCardPath : "/troopAnimations/";
+    Image image =
+        cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load(path + fileName + ".png"));
     imageView = new ImageView(image);
     imageView.setFitWidth(frameWidth * Constants.TROOP_SCALE * Constants.SCALE);
     imageView.setFitHeight(frameHeight * Constants.TROOP_SCALE * Constants.SCALE);

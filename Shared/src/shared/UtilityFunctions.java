@@ -8,7 +8,6 @@ public class UtilityFunctions {
 
   public static String capitaliseString(String s) {
     // "hello world" -> "Hello world
-    return "Hello World";
-    //return s.substring(0, 1).toUpperCase() + s.substring(1);
+    return s.substring(0, 1).toUpperCase() + s.substring(1);
   }
 }

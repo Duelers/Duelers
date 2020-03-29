@@ -14,7 +14,7 @@ public class Main extends Application {
 
     LanguageData.getInstance(); // Initialise
     if (Config.getInstance().shouldUpdateUserConfig()) {
-      Config.getInstance().updateUserConfig();
+      // Config.getInstance().updateUserConfig();
     }
     String hostServer = Config.getInstance().getProperty("HOST_SERVER");
     boolean shouldHostServer = Boolean.parseBoolean(hostServer);
