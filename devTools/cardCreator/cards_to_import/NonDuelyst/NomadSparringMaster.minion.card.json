@@ -1,8 +1,8 @@
 {
   "name": "Nomad Sparring Master",
-  "description": "Provoke, On Defend: Your general gains 3 Health",
+  "description": "Provoke, When Counter Attacking: Your general gains 3 Health",
   "cardId": "NomadSparringMaster",
-  "faction": "Vetruvian",
+  "faction": "vetruvian",
   "spriteName": "neutral_thegreatprotector",
   "type": "MINION",
   "spells": [    
@@ -31,7 +31,7 @@
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": true,
+        "isRelatedToCardOwnerPosition": false,
         "isForAroundOwnHero": false,
         "isRandom": false,
         "isForDeckCards": false,
@@ -56,7 +56,7 @@
         "onDeath": false,
         "specialPower": false,
         "onStart": false,
-        "onDefend": true
+        "onCounterAttack": true
       },
       "coolDown": 0,
       "mannaPoint": 0,
