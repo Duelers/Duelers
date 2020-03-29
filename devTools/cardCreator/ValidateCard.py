@@ -1,4 +1,3 @@
-from os import name
 from typing import Dict, Any
 from distutils.util import strtobool
 
