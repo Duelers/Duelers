@@ -2,7 +2,7 @@
   "name": "Nomad Grenadier",
   "description": "Ranged, On Attack: The attacked Minion may no longer defend.",
   "cardId": "NomadGrenadier",
-  "faction": "Vetruvian",
+  "faction": "vetruvian",
   "spriteName": "f3_incinera",
   "type": "MINION",
   "spells": [
