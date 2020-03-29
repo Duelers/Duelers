@@ -18,12 +18,12 @@ public class Deck_Test {
 
   private ServerCard makeMinionCard() {
     return new ServerCard(" ", " ", " ", " ", "", CardType.MINION, new ArrayList<>(), 1, 1, 1, 1,
-        AttackType.MELEE, 1);
+        AttackType.MELEE, 1, false);
   }
 
   private ServerCard makeGeneralCard() {
     return new ServerCard(" ", " ", " ", " ", "", CardType.HERO, new ArrayList<>(), 1, 1, 1, 1,
-        AttackType.MELEE, 1);
+        AttackType.MELEE, 1, false);
   }
 
   @Test
