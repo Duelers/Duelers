@@ -36,7 +36,7 @@ public class SpellAnimation extends Transition {
     InputStream plistR = this.getClass().getResourceAsStream("/fx/" + fileName + ".plist.json");
     if (plistR == null) {
       isCustomCardFlag = true;
-      String customCardPath = Config.getInstance().getCustomCardSpritesPath().toString() + "\\";
+      String customCardPath = Config.getInstance().getCustomCardSpritesPath().toString() + "/";
       plistR = new FileInputStream(customCardPath + fileName + ".plist.json");
     }
     Playlist playlist =
@@ -48,7 +48,7 @@ public class SpellAnimation extends Transition {
     setCycleDuration(Duration.millis(playlist.frameDuration));
 
     String path =
-        isCustomCardFlag ? Config.getInstance().getCustomCardSpritesPath().toString() + "\\"
+        isCustomCardFlag ? Config.getInstance().getCustomCardSpritesPath().toString() + "/"
             : "/fx/";
     Image image =
         cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load(path + fileName + ".png"));

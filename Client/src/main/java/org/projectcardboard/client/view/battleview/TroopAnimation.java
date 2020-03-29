@@ -71,7 +71,7 @@ public class TroopAnimation extends Transition {
 
     // read settings
     System.out.println(isCustom);
-    String customCardPath = Config.getInstance().getCustomCardSpritesPath().toString() + "\\";
+    String customCardPath = Config.getInstance().getCustomCardSpritesPath().toString() + "/";
     InputStream plistR = isCustom ? new FileInputStream(customCardPath + fileName + ".plist.json")
         : this.getClass().getResourceAsStream("/troopAnimations/" + fileName + ".plist.json");
     PlayList playlist =

@@ -52,7 +52,7 @@ public class CardAnimation extends Transition {
     Image image;
     if (CardType.SPELL.equals(card.getType())) {
       String path =
-          card.isCustom() ? Config.getInstance().getCustomCardsPath().toString() + "\\" : "/icons/";
+          card.isCustom() ? Config.getInstance().getCustomCardsPath().toString() + "/" : "/icons/";
       image = cachedImages.computeIfAbsent(card.getSpriteName(),
           key -> ImageLoader.load(path + card.getSpriteName() + ".png"));
       playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
@@ -82,7 +82,7 @@ public class CardAnimation extends Transition {
       extraY = 31 * Constants.SCALE;
     } else {
       String path =
-          card.isCustom() ? Config.getInstance().getCustomCardSpritesPath().toString() + "\\"
+          card.isCustom() ? Config.getInstance().getCustomCardSpritesPath().toString() + "/"
               : "/troopAnimations/";
       image = cachedImages.computeIfAbsent(card.getSpriteName(),
           key -> ImageLoader.load(path + card.getSpriteName() + ".png"));
