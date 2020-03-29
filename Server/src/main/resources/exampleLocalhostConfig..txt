@@ -2,8 +2,14 @@
 #MacOSX: /Users/yourusername/Library/Application Support/cardboard/1.0
 #Windows: C:\Users\yourusername\AppData\Roaming\projectcardboard\cardboard\1.0
 #Linux: /home/yourusername/.config/cardboard/1.0
-HOST_SERVER = true
-SERVER_IP = localhost
-PORT = 8888
-SERVER_NAME = Server
-API_HOST = mechaz.org
+HOST_SERVER=true
+SERVER_IP=localhost
+PORT=8888
+SERVER_NAME=Server
+API_HOST=mechaz.org
+
+#UI
+CONFIG_SCREEN_HEIGHT=1080
+CONFIG_SCREEN_WIDTH=1920
+FULLSCREEN=true
+

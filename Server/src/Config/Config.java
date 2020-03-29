@@ -89,23 +89,20 @@ public class Config {
   }
 
   public boolean shouldUpdateUserConfig() {
-    boolean shouldUpdateUserConfig = false;
-    try {
-      if (config == null) {
-        throw new Exception("User's config file is null");
-      }
 
+    try {
       Properties defaultConfig = loadDefaultConfigFile();
       Set<String> defaultVariables = defaultConfig.stringPropertyNames();
       Set<String> userVariables = config.stringPropertyNames();
-      if (!defaultVariables.equals(userVariables)) {
-        shouldUpdateUserConfig = true;
+      boolean notRunningLocalHost = config.getProperty("HOST_SERVER").equalsIgnoreCase("false");
+      if (!defaultVariables.equals(userVariables) && notRunningLocalHost) {
+        return true;
       }
     } catch (Exception ex) {
       ex.printStackTrace();
     }
 
-    return shouldUpdateUserConfig;
+    return false;
   }
 
   public void updateUserConfig() {
