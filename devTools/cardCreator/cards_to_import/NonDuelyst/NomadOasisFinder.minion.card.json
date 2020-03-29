@@ -2,7 +2,7 @@
   "name": "Nomad Oasis Finder",
   "description": "In combat this unit gets +0/+3",
   "cardId": "NomadOasisFinder",
-  "faction": "Vetruvian",
+  "faction": "vetruvian",
   "spriteName": "f3_windgiver",
   "type": "MINION",
   "spells": [
