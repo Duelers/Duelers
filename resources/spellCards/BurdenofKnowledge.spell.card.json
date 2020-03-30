@@ -7,8 +7,8 @@
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "sub_1",
-      "fxName": "fx_redquasar",
+      "spellId": "sub_2",
+      "fxName": "fx_bloodground",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
