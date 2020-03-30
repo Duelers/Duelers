@@ -1,0 +1,27 @@
+{
+    "frameWidth": 150,
+    "frameHeight": 150,
+    "frameDuration": 100,
+    "extraX": 90,
+    "extraY": 90,
+    "lists": {
+        "frames": [
+            {
+                "x": 0,
+                "y": 0
+            },
+            {
+                "x": 0,
+                "y": 150
+            },
+            {
+                "x": 0,
+                "y": 300
+            },
+            {
+                "x": 0,
+                "y": 450
+            }
+        ]
+    }
+}

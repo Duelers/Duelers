@@ -1,48 +1,47 @@
 {
-	"name": "Sellsoul",
-	"description": "Dying Wish: Deal 4 damage to YOUR General.",
-	"cardId": "Sellsoul",
-	"faction": "mercenary",
-	"spriteName": "neutral_masteroftheseven",
-	"type": "MINION",
-	"spells": [{
-			"spellId": "deal_4_to_general",
-			"action": {
-				"hpChange": -4,
-				"durable": true,
-				"duration": 0
-			},
-			"target": {
-				"isRelatedToCardOwnerPosition": false,
-				"dimensions": {
-					"row": 20,
-					"column": 20
-				},
-				
-				"owner": {
-					"own": true,
-					"enemy": false
-				},
-
-
-				"cardType": {
-					"hero": true
-				},
-
-				"attackType": {
-					"melee": true,
-					"ranged": true,
-					"hybrid": true
-				}
-			},
-			"availabilityType": {
-				"onDeath": true
-			}
-	}],
-	"defaultAp": 4,
-	"defaultHp": 5,
-	"manaCost": 3,
-	"price": 100,
-	"attackType": "MELEE",
-	"remainingNumber": 20
+  "name": "Sellsoul",
+  "description": "Dying Wish: Deal 4 damage to YOUR General.",
+  "cardId": "Sellsoul",
+  "faction": "mercenary",
+  "spriteName": "neutral_masteroftheseven",
+  "type": "MINION",
+  "spells": [
+    {
+      "spellId": "deal_4_to_general",
+			"fxName": "fx_impact",
+      "action": {
+        "hpChange": -4,
+        "durable": true,
+        "duration": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": false,
+        "dimensions": {
+          "row": 20,
+          "column": 20
+        },
+        "owner": {
+          "own": true,
+          "enemy": false
+        },
+        "cardType": {
+          "hero": true
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onDeath": true
+      }
+    }
+  ],
+  "defaultAp": 4,
+  "defaultHp": 5,
+  "manaCost": 3,
+  "price": 100,
+  "attackType": "MELEE",
+  "remainingNumber": 20
 }

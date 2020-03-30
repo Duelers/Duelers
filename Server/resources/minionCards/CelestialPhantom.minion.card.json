@@ -5,9 +5,10 @@
   "faction": "songhai",
   "spriteName": "f2_deathphantom",
   "type": "MINION",
-  "spells": [ 
+  "spells": [
     {
       "spellId": "kill_on_atk",
+      "fxName": "fx_animalslash",
       "action": {
         "killsTarget": true,
         "removeBuffs": 0,
@@ -19,7 +20,7 @@
         "isForAroundOwnHero": false,
         "isRandom": false,
         "isForDeckCards": false,
-		"dimensions": {
+		    "dimensions": {
           "row": 1,
           "column": 1
         },

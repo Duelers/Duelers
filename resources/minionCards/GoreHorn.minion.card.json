@@ -5,24 +5,25 @@
   "faction": "songhai",
   "spriteName": "f2_tank",
   "type": "MINION",
-  "spells": [  
+  "spells": [
     {
       "spellId": "stats_on_atk",
+      "fxName": "fx_buff",
       "action": {
-		"apChange": 1,
+        "apChange": 1,
         "hpChange": 1,
-		"durable": true,
-		"duration": 1
+        "durable": true,
+        "duration": 1
       },
       "target": {
-	    "isRelatedToCardOwnerPosition": true,
-		"dimensions": {
+        "isRelatedToCardOwnerPosition": true,
+        "dimensions": {
           "row": 1,
           "column": 1
         },
         "owner": {
           "own": true,
-		  "enemy": false
+          "enemy": false
         },
         "cardType": {
           "minion": true

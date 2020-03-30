@@ -8,13 +8,14 @@
   "spells": [
     {
       "spellId": "4_dmg_on_attack",
+      "fxName": "fx_teleportpurpleorb",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
         "hpChange": -4,
         "mpChange": 0,
         "removeBuffs": 0,
-		"durable": true,
+        "durable": true,
         "duration": 1,
         "delay": 0
       },
@@ -38,7 +39,7 @@
           "ranged": true,
           "hybrid": true
         }
-	  },
+      },
       "availabilityType": {
         "onAttack": true,
         "onCounterAttack": true
