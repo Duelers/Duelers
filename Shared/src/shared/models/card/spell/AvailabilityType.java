@@ -6,6 +6,7 @@ public class AvailabilityType {
   private final boolean onCounterAttack;
   private final boolean onDeath;
   private final boolean onEndTurn;
+  private final boolean onSpellCast;
   private boolean onDefend;
   private boolean continuous;
 
@@ -18,6 +19,7 @@ public class AvailabilityType {
     this.onDefend = availabilityType.onDefend;
     this.continuous = availabilityType.continuous;
     this.onEndTurn = availabilityType.onEndTurn;
+    this.onSpellCast = availabilityType.onSpellCast;
   }
 
   public boolean isOnPut() {
@@ -42,6 +44,8 @@ public class AvailabilityType {
 
   public boolean isOnEndTurn() {
     return onEndTurn;
+  public boolean isOnSpellCast() {
+    return onSpellCast;
   }
 
   public boolean isContinuous() {
