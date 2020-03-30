@@ -13,10 +13,8 @@ Step (2): Add the card to the "Custom_Cards" directory
 Step (3): Open up the command line/powershell and run the .exe
 	cmd chdir <this directory>
 	cmd ./AddJsonCardToGame_appData.exe
-Step (4): If the .exe highlights any errors, try to correct them. Otherwise move directly to step(5)
-Step (5): Add this card to the "Custom_Cards" and "Custom_Cards_Sprites" folder in the config directory (if this is your first custom card, you will need to create these directories).
-
+Step (4): If the .exe highlights any errors, try to correct them. Otherwise move directly to step(5).
+Step (5): Add the json card to the "Custom_Cards" and and any art (eg spritesheets, plists) to "Custom_Cards_Sprites". Both of these folders need to be in the config directory (if this is your first custom card, you will need to create these directories).
 Step (6): Connect to "local host". You can do this by replacing contents of the config.properties file (found in the config directory) with the local host example found in docs/configs.
-
 Step (7): Load the game. On login screen, confirm that the server does say "local host"
 Step (8): Try to open the collection. If this fails, that means there maybe additional errors with the custom card that the .exe failed to find. 
