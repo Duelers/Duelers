@@ -1,15 +1,13 @@
 {
-  "name": "Shadowdancer",
-  "description": "Deathwatch: Your General gains 1 health, and your Opponent loses 1 Heath",
-  "cardId": "Shadowdancer",
+  "name": "Shadow Dancer",
+  "description": "Deathwatch: Deal 1 damage to the enemy General. Your General gains 1 Health.",
+  "cardId": "ShadowDancer",
   "faction": "abyssian",
   "spriteName": "f4_shadowdancer",
   "type": "MINION",
   "spells": [
-
-	{
-      "spellId": "1_health",
-	  "fxName": "fx_heal",
+    {
+      "spellId": "+1_hp_on_death",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
@@ -33,14 +31,14 @@
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": false,
-        "isForAroundOwnHero": false,
-        "isRandom": false,
-        "isForDeckCards": false,
+        "isRelatedToCardOwnerPosition": true,
         "dimensions": {
           "row": 20,
           "column": 20
-        },
+      },
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
         "owner": {
           "own": true,
           "enemy": false
@@ -49,29 +47,23 @@
           "cell": false,
           "hero": true,
           "minion": false,
-          "player": false
+          "player": true
         },
-		"attackType": {
-			"melee": true,
-			"ranged": true,
-			"hybrid": true
-		}
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
       },
       "availabilityType": {
-        "OnDeathWatch": true,
-        "onAttack": false,
-        "onDeath": false,
-        "specialPower": false,
-        "onStart": false,
-        "onDefend": false
+        "onDeathWatch": true
       },
       "coolDown": 0,
       "manaCost": 0,
       "lastTurnUsed": 0
     },
-	
-		{
-      "spellId": "1_damage",
+    {
+      "spellId": "-1_hp_on_death",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
@@ -95,14 +87,14 @@
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": false,
-        "isForAroundOwnHero": false,
-        "isRandom": false,
-        "isForDeckCards": false,
+        "isRelatedToCardOwnerPosition": true,
         "dimensions": {
           "row": 20,
           "column": 20
-        },
+      },
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
         "owner": {
           "own": false,
           "enemy": true
@@ -111,30 +103,25 @@
           "cell": false,
           "hero": true,
           "minion": false,
-          "player": false
+          "player": true
         },
-		"attackType": {
-			"melee": true,
-			"ranged": true,
-			"hybrid": true
-		}
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
       },
       "availabilityType": {
-        "OnDeathWatch": true,
-        "onAttack": false,
-        "onDeath": false,
-        "specialPower": false,
-        "onStart": false,
-        "onDefend": false
+        "onDeathWatch": true
       },
       "coolDown": 0,
       "manaCost": 0,
       "lastTurnUsed": 0
     }
   ],
-  "defaultAp": 4,
+  "defaultAp": 1,
   "defaultHp": 4,
-  "manaCost": 5,
+  "manaCost": 2,
   "price": 100,
   "attackType": "MELEE",
   "range": 0,
