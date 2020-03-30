@@ -58,7 +58,7 @@
 		}
       },
       "availabilityType": {
-        "deathwatch": true,
+        "OnDeathWatch": true,
         "onAttack": false,
         "onDeath": false,
         "specialPower": false,
