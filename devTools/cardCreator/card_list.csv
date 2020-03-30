@@ -1,5 +1,6 @@
 type,name,description,attack,health,cost,spriteName,faction
 HERO,Lilithe Blightchaser,Abyssian General,2,25,0,f4_general,abyssian
+MINION,Shadowdancer,"Deathwatch: Your General gains 1 health, and your Opponent loses 1 Heath",4,4,5,f4_shadowdancer,abyssian
 MINION,Spectral Revenant,"Rush 
  After attacking or counterattacking deal 4 damage to the enemy General",6,6,9,f4_daemonvoid,abyssian
 SPELL,Dark Destruction,Destroy target enemy minion.,0,0,5,icon_f4_darktransformation,abyssian
