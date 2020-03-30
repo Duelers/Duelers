@@ -918,7 +918,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         Spell currentSpell = spells.get(p);
         if (currentSpell.getAvailabilityType().isOnDeathWatch()) {
           applySpell(currentSpell, detectOnDeathTarget(currentSpell, currentTroop.getCell(),
-                  new Cell(0, 0), getOtherTurnPlayer().getHero().getCell()));
+              new Cell(0, 0), getOtherTurnPlayer().getHero().getCell()));
         }
       }
     }
@@ -931,7 +931,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         Spell currentSpell = spells.get(p);
         if (currentSpell.getAvailabilityType().isOnDeathWatch()) {
           applySpell(currentSpell, detectOnDeathTarget(currentSpell, currentTroop.getCell(),
-                  new Cell(0, 0), getOtherTurnPlayer().getHero().getCell()));
+              new Cell(0, 0), getOtherTurnPlayer().getHero().getCell()));
         }
       }
     }
