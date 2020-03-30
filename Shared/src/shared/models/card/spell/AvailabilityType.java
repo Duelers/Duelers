@@ -40,7 +40,7 @@ public class AvailabilityType {
     return onDefend;
   }
 
-  public boolean isOnSpellCast(){
+  public boolean isOnSpellCast() {
     return onSpellCast;
   }
 

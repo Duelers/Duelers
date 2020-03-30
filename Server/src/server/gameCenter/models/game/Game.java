@@ -459,11 +459,11 @@ public abstract class Game extends BaseGame<Player, GameMap> {
   }
 
   private void applyOnSpellCastSpells() {
-    for(ServerTroop troop : getCurrentTurnPlayer().getTroops()){
-      for(Spell spell : troop.getCard().getSpells()){
-        if(spell.getAvailabilityType().isOnSpellCast()){
+    for (ServerTroop troop : getCurrentTurnPlayer().getTroops()) {
+      for (Spell spell : troop.getCard().getSpells()) {
+        if (spell.getAvailabilityType().isOnSpellCast()) {
           applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
-                  getOtherTurnPlayer().getHero().getCell()));
+              getOtherTurnPlayer().getHero().getCell()));
         }
       }
     }
