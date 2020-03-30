@@ -7,6 +7,7 @@
 	"type": "MINION",
 	"spells": [{
 			"spellId": "deal_3_to_generals",
+			"fxName": "fx_redquasar",
 			"action": {
 				"hpChange": -3,
 				"durable": true,

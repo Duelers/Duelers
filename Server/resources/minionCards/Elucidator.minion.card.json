@@ -8,6 +8,7 @@
 	"spells": [
 		{
 			"spellId": "deal_4_your_general",
+			"fxName": "fx_redquasar",
 			"action": {
 				"hpChange": -4,
 				"durable": true,
