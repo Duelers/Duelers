@@ -6,7 +6,6 @@ public class AvailabilityType {
   private final boolean onCounterAttack;
   private final boolean onDeath;
   private final boolean onDeathWatch;
-  private final boolean onMove;
   private boolean onDefend;
   private boolean continuous;
 
@@ -18,7 +17,6 @@ public class AvailabilityType {
     this.onDeath = availabilityType.onDeath;
     this.onDefend = availabilityType.onDefend;
     this.onDeathWatch = availabilityType.onDeathWatch;
-    this.onMove = availabilityType.onMove;
     this.continuous = availabilityType.continuous;
   }
 
@@ -40,10 +38,6 @@ public class AvailabilityType {
 
   public boolean isDeathWatch() {
     return onDeathWatch;
-  }
-
-  public boolean isOnMove() {
-    return onMove;
   }
 
   public boolean isOnDefend() {

@@ -549,8 +549,6 @@ public abstract class Game extends BaseGame<Player, GameMap> {
       troop.setCanMove(false);
     }
 
-    applyOnMoveSpells();
-
     GameServer.getInstance().sendTroopUpdateMessage(this, troop);
   }
 
@@ -607,19 +605,6 @@ public abstract class Game extends BaseGame<Player, GameMap> {
       }
     } finally {
       GameCenter.getInstance().checkGameFinish(this);
-    }
-  }
-
-  private void applyOnMoveSpells() {
-    System.out.println("on move entered");
-    for (ServerTroop troop : getCurrentTurnPlayer().getTroops()) {
-      for (Spell spell : troop.getCard().getSpells()) {
-        System.out.println(spell.getSpellId() + " " + spell.getAvailabilityType().isOnMove());
-        if (spell.getAvailabilityType().isOnMove()) {
-          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
-              getOtherTurnPlayer().getHero().getCell()));
-        }
-      }
     }
   }
 
