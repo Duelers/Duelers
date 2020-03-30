@@ -917,6 +917,7 @@
         "spells": [
           {
             "spellId": "+4_hp_on_death",
+            "fxName": "fx_buff",
             "action": {
               "enemyHitChanges": 0,
               "apChange": 0,
@@ -991,6 +992,7 @@
         "spells": [
           {
             "spellId": "+4_hp_on_death",
+            "fxName": "fx_buff",
             "action": {
               "enemyHitChanges": 0,
               "apChange": 0,
@@ -1065,6 +1067,7 @@
         "spells": [
           {
             "spellId": "+4_hp_on_death",
+            "fxName": "fx_buff",
             "action": {
               "enemyHitChanges": 0,
               "apChange": 0,
