@@ -1616,6 +1616,7 @@
         "spells": [
           {
             "spellId": "kill_on_atk",
+            "fxName": "fx_animalslash",
             "action": {
               "killsTarget": true,
               "removeBuffs": 0,
@@ -1673,6 +1674,7 @@
         "spells": [
           {
             "spellId": "kill_on_atk",
+            "fxName": "fx_animalslash",
             "action": {
               "killsTarget": true,
               "removeBuffs": 0,
@@ -1730,6 +1732,7 @@
         "spells": [
           {
             "spellId": "kill_on_atk",
+            "fxName": "fx_animalslash",
             "action": {
               "killsTarget": true,
               "removeBuffs": 0,
