@@ -5,36 +5,7 @@
   "faction": "vanar",
   "spriteName": "f6_snowwyvern",
   "type": "MINION",
-  "spells": [
-    {
-      "spellId": "fx",
-      "fxName": "fx_clawslash",
-      "action": {},
-      "target": {
-        "dimensions": {
-          "row": 1,
-          "column": 1
-        },
-        "owner": {
-          "own": true,
-          "enemy": true
-        },
-        "cardType": {
-          "hero": true,
-          "minion": true
-        },
-        "attackType": {
-          "melee": true,
-          "ranged": true,
-          "hybrid": true
-        }
-      },
-      "availabilityType": {
-        "onAttack": true,
-        "onCounterAttack": true
-      }
-    }
-  ],
+  "spells": [],
   "defaultAp": 10,
   "defaultHp": 4,
   "manaCost": 5,
