@@ -459,11 +459,15 @@ public abstract class Game extends BaseGame<Player, GameMap> {
   }
 
   private void applyOnSpellCastSpells() {
-    for (ServerTroop troop : getCurrentTurnPlayer().getTroops()) {
-      for (Spell spell : troop.getCard().getSpells()) {
-        if (spell.getAvailabilityType().isOnSpellCast()) {
-          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
-              getOtherTurnPlayer().getHero().getCell()));
+    List<ServerTroop> troops = getCurrentTurnPlayer().getTroops();
+    for (int i = 0; i < troops.size(); i++) {
+      ServerTroop currentTroop = troops.get(i);
+      List<Spell> spells = currentTroop.getCard().getSpells();
+      for (int p = 0; p < spells.size(); p++) {
+        Spell currentSpell = spells.get(p);
+        if (currentSpell.getAvailabilityType().isOnSpellCast()) {
+          applySpell(currentSpell, detectOnDeathTarget(currentSpell, currentTroop.getCell(),
+              new Cell(0, 0), getOtherTurnPlayer().getHero().getCell()));
         }
       }
     }

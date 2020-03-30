@@ -29,11 +29,11 @@
         "isForGladiator": false,
         "durable": true,
         "removeBuffs": 0,
-        "duration": -1,
+        "duration": 1,
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": false,
+        "isRelatedToCardOwnerPosition": true,
         "isForAroundOwnHero": false,
         "isRandom": false,
         "isForDeckCards": false,
