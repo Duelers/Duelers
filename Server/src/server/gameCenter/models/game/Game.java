@@ -981,7 +981,6 @@ public abstract class Game extends BaseGame<Player, GameMap> {
 
         player = (getCurrentTurnPlayer().getPlayerNumber() == playerNumber) ? getCurrentTurnPlayer()
             : getOtherTurnPlayer();
-        System.out.println("we should be here");
         setTargetData(spell, cardCell, clickCell, heroCell, player, targetData);
       }
       if (spell.getTarget().getOwner().isEnemy()) {
