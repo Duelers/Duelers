@@ -92,7 +92,7 @@
         "isForGladiator": false,
         "durable": true,
         "removeBuffs": 0,
-        "duration": -1,
+        "duration": 1,
         "delay": 0
       },
       "target": {
