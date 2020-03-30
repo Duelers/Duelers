@@ -22,6 +22,8 @@ public class Troop {
   private final int playerNumber;
   protected boolean hasBackstab;
   protected int backstab;
+  protected boolean hasValor;
+  protected int valor;
 
   public Troop(Card card, int playerNumber) {
     this.card = card;
@@ -30,6 +32,8 @@ public class Troop {
     this.playerNumber = playerNumber;
     this.hasBackstab = card.hasBackstab();
     this.backstab = card.getBackstab();
+    this.hasValor = card.hasValor();
+    this.valor = card.getValor();
   }
 
   public Card getCard() {
@@ -116,11 +120,39 @@ public class Troop {
     return columnDifference == expectedColumnDifference;
   }
 
+  public boolean isDirectlyInFront(Troop defenderTroop) {
+    Cell attackerCell = this.cell;
+    Cell defenderCell = defenderTroop.cell;
+
+    int attackerRow = attackerCell.getRow();
+    int defenderRow = defenderCell.getRow();
+    boolean troopsAreInSameRow = attackerRow == defenderRow;
+
+    if (!troopsAreInSameRow) {
+      return false;
+    }
+
+    int attackerColumn = attackerCell.getColumn();
+    int defenderColumn = defenderCell.getColumn();
+    int columnDifference = attackerColumn - defenderColumn;
+    int expectedColumnDifference = this.playerNumber == 1 ? -1 : 1;
+
+    return columnDifference == expectedColumnDifference;
+  }
+
   public boolean hasBackstab() {
     return hasBackstab;
   }
 
   public int getBackstab() {
     return backstab;
+  }
+
+  public boolean hasValor() {
+    return hasValor;
+  }
+
+  public int getValor() {
+    return valor;
   }
 }
