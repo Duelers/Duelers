@@ -44,6 +44,8 @@ public class AvailabilityType {
 
   public boolean isOnEndTurn() {
     return onEndTurn;
+  }
+
   public boolean isOnSpellCast() {
     return onSpellCast;
   }
