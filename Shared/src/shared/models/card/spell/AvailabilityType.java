@@ -40,7 +40,9 @@ public class AvailabilityType {
     return onDefend;
   }
 
-  public boolean isOnEndTurn(){ return onEndTurn;}
+  public boolean isOnEndTurn() {
+    return onEndTurn;
+  }
 
   public boolean isContinuous() {
     return continuous;
