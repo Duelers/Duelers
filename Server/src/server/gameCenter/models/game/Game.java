@@ -97,6 +97,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         drawCardsFromDeck(Constants.END_OF_TURN_CARD_DRAW);
         getCurrentTurnPlayer().setNumTimesReplacedThisTurn(0);
 
+        applyOnEndTurnSpells();
         revertNotDurableBuffs();
         removeFinishedBuffs();
         turnNumber++;
@@ -445,6 +446,17 @@ public abstract class Game extends BaseGame<Player, GameMap> {
       }
     }
     return false;
+  }
+
+  private void applyOnEndTurnSpells() throws ClientException {
+    for(ServerTroop troop : getCurrentTurnPlayer().getTroops()){
+      for(Spell spell : troop.getCard().getSpells()){
+        if(spell.getAvailabilityType().isOnEndTurn()){
+          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
+                  getOtherTurnPlayer().getHero().getCell()));
+        }
+      }
+    }
   }
 
   private void applyOnPutSpells(ServerCard card, Cell cell) throws ClientException {
