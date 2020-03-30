@@ -740,6 +740,7 @@
         "spells": [
           {
             "spellId": "heal_on_put",
+            "fxName": "fx_heal",
             "action": {
               "enemyHitChanges": 0,
               "apChange": 0,
@@ -798,6 +799,7 @@
         "spells": [
           {
             "spellId": "heal_on_put",
+            "fxName": "fx_heal",
             "action": {
               "enemyHitChanges": 0,
               "apChange": 0,
@@ -856,6 +858,7 @@
         "spells": [
           {
             "spellId": "heal_on_put",
+            "fxName": "fx_heal",
             "action": {
               "enemyHitChanges": 0,
               "apChange": 0,
