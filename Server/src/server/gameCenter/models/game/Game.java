@@ -561,7 +561,20 @@ public abstract class Game extends BaseGame<Player, GameMap> {
       troop.setCanMove(false);
     }
 
+    applyOnMoveSpells();
+
     GameServer.getInstance().sendTroopUpdateMessage(this, troop);
+  }
+
+  private void applyOnMoveSpells() {
+    for (ServerTroop troop : getCurrentTurnPlayer().getTroops()) {
+      for (Spell spell : troop.getCard().getSpells()) {
+        if (spell.getAvailabilityType().isOnMove()) {
+          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
+              getOtherTurnPlayer().getHero().getCell()));
+        }
+      }
+    }
   }
 
   public void attack(String username, String attackerCardId, String defenderCardId)

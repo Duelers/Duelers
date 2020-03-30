@@ -8,6 +8,7 @@ public class AvailabilityType {
   private final boolean onSpellCast;
   private boolean onDefend;
   private boolean continuous;
+  private boolean onMove;
 
 
   public AvailabilityType(AvailabilityType availabilityType) {
@@ -18,6 +19,7 @@ public class AvailabilityType {
     this.onDefend = availabilityType.onDefend;
     this.continuous = availabilityType.continuous;
     this.onSpellCast = availabilityType.onSpellCast;
+    this.onMove = availabilityType.onMove;
   }
 
   public boolean isOnPut() {
@@ -48,4 +50,7 @@ public class AvailabilityType {
     return continuous;
   }
 
+  public boolean isOnMove() {
+    return onMove;
+  }
 }
