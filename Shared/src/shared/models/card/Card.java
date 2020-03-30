@@ -21,6 +21,8 @@ public class Card implements ICard {
   private final AttackType attackType;
   private boolean hasBackstab;
   private int backstab;
+  private boolean hasValor;
+  private int valor;
   private final int range;
   protected int remainingNumber = 20;
   protected boolean singleTarget;
@@ -78,6 +80,8 @@ public class Card implements ICard {
     this.attackType = referenceCard.attackType;
     this.hasBackstab = referenceCard.hasBackstab;
     this.backstab = referenceCard.backstab;
+    this.hasValor = referenceCard.hasValor;
+    this.valor = referenceCard.valor;
     this.range = referenceCard.range;
     this.remainingNumber = referenceCard.remainingNumber;
   }
@@ -153,6 +157,14 @@ public class Card implements ICard {
 
   public int getBackstab() {
     return backstab;
+  }
+
+  public boolean hasValor() {
+    return hasValor;
+  }
+
+  public int getValor() {
+    return valor;
   }
 
   public int getRange() {
