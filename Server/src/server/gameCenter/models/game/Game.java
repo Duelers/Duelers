@@ -380,7 +380,6 @@ public abstract class Game extends BaseGame<Player, GameMap> {
       player.insert(card);
 
       if (card.getType().equals(CardType.SPELL)) {
-        applyOnSpellCastSpells();
         player.addToGraveYard(card);
         GameServer.getInstance().sendChangeCardPositionMessage(this, card, CardPosition.GRAVE_YARD);
       }
@@ -454,17 +453,6 @@ public abstract class Game extends BaseGame<Player, GameMap> {
       if (spell.getAvailabilityType().isOnPut()) {
         applySpell(spell,
             detectTarget(spell, cell, cell, getCurrentTurnPlayer().getHero().getCell()));
-      }
-    }
-  }
-
-  private void applyOnSpellCastSpells() {
-    for (ServerTroop troop : getCurrentTurnPlayer().getTroops()) {
-      for (Spell spell : troop.getCard().getSpells()) {
-        if (spell.getAvailabilityType().isOnSpellCast()) {
-          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
-              getOtherTurnPlayer().getHero().getCell()));
-        }
       }
     }
   }
