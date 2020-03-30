@@ -118,7 +118,8 @@ public class MapBox implements PropertyChangeListener {
         animation = new TroopAnimation(mapGroup, cellsX, cellsY, newTroop.getCard().getSpriteName(),
             newTroop.getCell().getRow(), newTroop.getCell().getColumn(),
             newTroop.getPlayerNumber() == 1,
-            newTroop.getPlayerNumber() == battleScene.getMyPlayerNumber());
+            newTroop.getPlayerNumber() == battleScene.getMyPlayerNumber(),
+            newTroop.getCard().isCustom());
         animation.updateApHp(newTroop.getCurrentAp(), newTroop.getCurrentHp());
         animation.getTroopGroup()
             .setOnMouseClicked(mouseEvent -> clickCell(animation.getRow(), animation.getColumn()));

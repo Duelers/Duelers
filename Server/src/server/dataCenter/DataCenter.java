@@ -1,6 +1,8 @@
 package server.dataCenter;
 
 import com.google.gson.GsonBuilder;
+
+import Config.Config;
 import server.GameServer;
 import server.clientPortal.ClientPortal;
 import server.clientPortal.models.JsonConverter;
@@ -32,6 +34,7 @@ public class DataCenter extends Thread {
   private final Map<Account, String> accounts = new HashMap<>();// Account -> ClientName
   private final Map<String, Account> clients = new HashMap<>();// clientName -> Account
   private final DataBase dataBase = new OldDataBase();
+  private final Config config = Config.getInstance();
 
   public static DataCenter getInstance() {
     return ourInstance;
@@ -45,6 +48,7 @@ public class DataCenter extends Thread {
     if (dataBase.isEmpty()) {
       GameServer.serverPrint("Reading Cards...");
       readAllCards();
+      readAllCustomCards();
     }
     GameServer.serverPrint("Reading Accounts...");
     readAccounts();
@@ -324,6 +328,20 @@ public class DataCenter extends Thread {
           if (card != null) {
             dataBase.addOriginalCard(card);
           }
+        }
+      }
+    }
+    GameServer.serverPrint("Original Cards Loaded");
+  }
+
+  public void readAllCustomCards() {
+    String customCardsPath = config.getCustomCardsPath().toString();
+    File[] files = new File(customCardsPath).listFiles();
+    if (files != null) {
+      for (File file : files) {
+        ServerCard card = loadFile(file, ServerCard.class);
+        if (card != null) {
+          dataBase.addOriginalCard(card);
         }
       }
     }
