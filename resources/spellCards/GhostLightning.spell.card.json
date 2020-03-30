@@ -8,7 +8,7 @@
   "spells": [
     {
       "spellId": "deal_1_dmg_everything",
-      "fxName": "fx_collisionsparkred",
+      "fxName": "fx_redplasma_vertical",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
