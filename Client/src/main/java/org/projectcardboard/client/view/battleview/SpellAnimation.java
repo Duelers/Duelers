@@ -2,12 +2,14 @@ package org.projectcardboard.client.view.battleview;
 
 import static org.projectcardboard.client.view.battleview.CardAnimation.cachedImages;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import Config.Config;
 import com.google.gson.Gson;
 
 import org.projectcardboard.client.models.gui.ImageLoader;
@@ -30,7 +32,13 @@ public class SpellAnimation extends Transition {
   private Group mapGroup;
 
   SpellAnimation(Group mapGroup, String fileName, double x, double y) throws Exception {
+    boolean isCustomCardFlag = false;
     InputStream plistR = this.getClass().getResourceAsStream("/fx/" + fileName + ".plist.json");
+    if (plistR == null) {
+      isCustomCardFlag = true;
+      String customCardPath = Config.getInstance().getCustomCardSpritesPath().toString() + "/";
+      plistR = new FileInputStream(customCardPath + fileName + ".plist.json");
+    }
     Playlist playlist =
         new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8), Playlist.class);
     framePositions = playlist.getFrames();
@@ -39,8 +47,11 @@ public class SpellAnimation extends Transition {
     frameHeight = playlist.frameHeight;
     setCycleDuration(Duration.millis(playlist.frameDuration));
 
+    String path =
+        isCustomCardFlag ? Config.getInstance().getCustomCardSpritesPath().toString() + "/"
+            : "/fx/";
     Image image =
-        cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load("/fx/" + fileName + ".png"));
+        cachedImages.computeIfAbsent(fileName, key -> ImageLoader.load(path + fileName + ".png"));
     imageView = new ImageView(image);
 
     imageView.setFitWidth(frameWidth * Constants.SPELL_SCALE * Constants.SCALE);
