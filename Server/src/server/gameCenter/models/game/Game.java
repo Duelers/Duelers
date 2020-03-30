@@ -908,12 +908,17 @@ public abstract class Game extends BaseGame<Player, GameMap> {
   }
 
   private void applyDeathWatchSpells() {
-    System.out.println("on death entered");
     for (ServerTroop troop : getCurrentTurnPlayer().getTroops()) {
       for (Spell spell : troop.getCard().getSpells()) {
-        System.out.println(spell.getSpellId() + " " + spell.getAvailabilityType().isDeathWatch());
         if (spell.getAvailabilityType().isDeathWatch()) {
-          ;
+          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
+              getOtherTurnPlayer().getHero().getCell()));
+        }
+      }
+    }
+    for (ServerTroop troop : getOtherTurnPlayer().getTroops()) {
+      for (Spell spell : troop.getCard().getSpells()) {
+        if (spell.getAvailabilityType().isDeathWatch()) {
           applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
               getOtherTurnPlayer().getHero().getCell()));
         }
