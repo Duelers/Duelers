@@ -38,7 +38,7 @@ public class AvailabilityType {
     return onDeath;
   }
 
-  public boolean isDeathWatch() {
+  public boolean isOnDeathWatch() {
     return onDeathWatch;
   }
 

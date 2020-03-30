@@ -901,7 +901,7 @@ public abstract class Game extends BaseGame<Player, GameMap> {
 
   void killTroop(ServerTroop troop) {
     applyOnDeathSpells(troop);
-    applyDeathWatchSpells();
+    applyOnDeathWatchSpells();
     if (troop.getPlayerNumber() == 1) {
       playerOne.killTroop(this, troop);
       gameMap.removeTroop(troop);
@@ -921,20 +921,29 @@ public abstract class Game extends BaseGame<Player, GameMap> {
     }
   }
 
-  private void applyDeathWatchSpells() {
-    for (ServerTroop troop : getCurrentTurnPlayer().getTroops()) {
-      for (Spell spell : troop.getCard().getSpells()) {
-        if (spell.getAvailabilityType().isDeathWatch()) {
-          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
-              getOtherTurnPlayer().getHero().getCell()));
+  private void applyOnDeathWatchSpells() {
+    List<ServerTroop> troops = getCurrentTurnPlayer().getTroops();
+    for (int i = 0; i < troops.size(); i++) {
+      ServerTroop currentTroop = troops.get(i);
+      List<Spell> spells = currentTroop.getCard().getSpells();
+      for (int p = 0; p < spells.size(); p++) {
+        Spell currentSpell = spells.get(p);
+        if (currentSpell.getAvailabilityType().isOnDeathWatch()) {
+          applySpell(currentSpell, detectOnDeathTarget(currentSpell, currentTroop.getCell(),
+                  new Cell(0, 0), getOtherTurnPlayer().getHero().getCell()));
         }
       }
     }
-    for (ServerTroop troop : getOtherTurnPlayer().getTroops()) {
-      for (Spell spell : troop.getCard().getSpells()) {
-        if (spell.getAvailabilityType().isDeathWatch()) {
-          applySpell(spell, detectOnDeathTarget(spell, troop.getCell(), new Cell(0, 0),
-              getOtherTurnPlayer().getHero().getCell()));
+
+    troops = getOtherTurnPlayer().getTroops();
+    for (int i = 0; i < troops.size(); i++) {
+      ServerTroop currentTroop = troops.get(i);
+      List<Spell> spells = currentTroop.getCard().getSpells();
+      for (int p = 0; p < spells.size(); p++) {
+        Spell currentSpell = spells.get(p);
+        if (currentSpell.getAvailabilityType().isOnDeathWatch()) {
+          applySpell(currentSpell, detectOnDeathTarget(currentSpell, currentTroop.getCell(),
+                  new Cell(0, 0), getOtherTurnPlayer().getHero().getCell()));
         }
       }
     }
