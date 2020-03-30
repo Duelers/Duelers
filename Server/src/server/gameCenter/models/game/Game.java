@@ -584,7 +584,8 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         applyOnAttackSpells(attackerTroop, defenderTroop);
         applyOnDefendSpells(defenderTroop, attackerTroop);
 
-        boolean backstab = attackerTroop.hasBackstab() && attackerTroop.isDirectlyBehind(defenderTroop);
+        boolean backstab =
+            attackerTroop.hasBackstab() && attackerTroop.isDirectlyBehind(defenderTroop);
         boolean counterAttack = !backstab;
 
         if (counterAttack) {
@@ -595,7 +596,8 @@ public abstract class Game extends BaseGame<Player, GameMap> {
           }
         }
 
-        GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop, counterAttack);
+        GameServer.getInstance().sendAttackMessage(this, attackerTroop, defenderTroop,
+            counterAttack);
         damage(attackerTroop, defenderTroop);
       }
     } finally {
