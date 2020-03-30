@@ -1103,6 +1103,7 @@
         "spells": [
           {
             "spellId": "dmg_on_atk",
+            "fxName": "fx_slashfrenzy",
             "action": {
               "enemyHitChanges": 0,
               "apChange": 0,
@@ -1182,6 +1183,7 @@
         "spells": [
           {
             "spellId": "dmg_on_atk",
+            "fxName": "fx_slashfrenzy",
             "action": {
               "enemyHitChanges": 0,
               "apChange": 0,
@@ -1261,6 +1263,7 @@
         "spells": [
           {
             "spellId": "dmg_on_atk",
+            "fxName": "fx_slashfrenzy",
             "action": {
               "enemyHitChanges": 0,
               "apChange": 0,
