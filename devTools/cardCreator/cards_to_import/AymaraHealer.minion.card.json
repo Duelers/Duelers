@@ -8,6 +8,7 @@
   "spells": [
     {
       "spellId": "5_damage_on_death",
+      "fxName": "fx_impact2",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
@@ -69,6 +70,7 @@
     },
     {
       "spellId": "5_health_on_death",
+      "fxName": "fx_heal",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

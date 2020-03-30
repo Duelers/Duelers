@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-from AddJsonCardToGame import load_json, INFO_FILE
+from AddJsonCardToGame import load_json, IMPORT_DIRECTORY
 
 """
 Creates a CSV of all the cards we are about to import to the game.
@@ -9,21 +9,20 @@ Creates a CSV of all the cards we are about to import to the game.
 
 SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-IMPORT_DIR: str = load_json(INFO_FILE).get("import_directory", "Error")
 OUTPUT_FILEPATH = os.path.join(SCRIPT_PATH, "card_list.csv")
 
 
 def main():
-    assert os.path.isdir(IMPORT_DIR), "Error, import dir is empty"
+    assert os.path.isdir(IMPORT_DIRECTORY), "Error, import dir is empty"
 
     print("Attempted to create 'imported cards' csv file")
 
-    cards = [f for f in os.listdir(IMPORT_DIR) if f.endswith(".json")]
+    cards = [f for f in os.listdir(IMPORT_DIRECTORY) if f.endswith(".json")]
 
     print(f"Reading {len(cards)} json files")
     dict_of_cards = dict()
     for idx, card in enumerate(cards):
-        card_path = os.path.join(IMPORT_DIR, card)
+        card_path = os.path.join(IMPORT_DIRECTORY, card)
         
         assert os.path.isfile(card_path), card_path
         

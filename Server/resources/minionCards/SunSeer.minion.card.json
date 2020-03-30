@@ -8,13 +8,14 @@
   "spells": [
     {
       "spellId": "heal_on_attack",
+      "fxName": "fx_heal",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
         "hpChange": 3,
         "mpChange": 0,
         "removeBuffs": 0,
-		"durable": true,
+        "durable": true,
         "duration": 1,
         "delay": 0
       },
@@ -38,7 +39,7 @@
           "ranged": true,
           "hybrid": true
         }
-	  },
+      },
       "availabilityType": {
         "onAttack": true,
         "onCounterAttack": true
