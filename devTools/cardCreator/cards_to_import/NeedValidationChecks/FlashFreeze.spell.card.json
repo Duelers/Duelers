@@ -7,7 +7,7 @@
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "stun",
+      "spellId": "damage_1_stun",
       "fxName": "f6_flashfreeze",
       "action": {
         "enemyHitChanges": 0,
