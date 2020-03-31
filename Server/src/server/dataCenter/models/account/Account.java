@@ -1,6 +1,5 @@
 package server.dataCenter.models.account;
 
-import org.glassfish.tyrus.server.Server;
 import server.dataCenter.DataCenter;
 import server.dataCenter.models.card.Deck;
 import server.dataCenter.models.card.ServerCard;
