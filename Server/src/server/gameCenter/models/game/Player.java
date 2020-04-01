@@ -29,7 +29,7 @@ public class Player extends BasePlayer<ServerCard, ServerTroop> {
     if (card == null)
       throw new ClientException("card id is not valid");
 
-    if (card.getManaCost() > currentMP)
+    if (card.getManaCost() > currentMP && card.getManaCost() != 0)
       throw new ClientException("not enough mana");
   }
 
