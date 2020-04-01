@@ -1,19 +1,23 @@
 package shared.models.card;
 
 public interface ICard {
-    CardType getType();
+  CardType getType();
 
-    String getName();
+  String getName();
 
-    String getSpriteName();
+  String getFaction();
 
-    int getDefaultAp();
+  String getSpriteName();
 
-    int getDefaultHp();
+  int getDefaultAp();
 
-    int getPrice();
+  int getDefaultHp();
 
-    String getDescription();
+  int getPrice();
 
-    int getManaCost();
+  String getDescription();
+
+  int getManaCost();
+
+  boolean isCustom();
 }

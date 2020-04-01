@@ -2,6 +2,7 @@
   "name": "Argeon Highmayne",
   "description": "Lyonar General",
   "cardId": "ArgeonHighmayne",
+  "faction": "lyonar",
   "spriteName": "f1_general",
   "type": "HERO",
   "spells": [],

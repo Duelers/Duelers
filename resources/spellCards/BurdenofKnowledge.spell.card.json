@@ -2,11 +2,13 @@
   "name": "Burden of Knowledge",
   "description": "Deal 1 damage to your General. Draw a card",
   "cardId": "BurdenofKnowledge",
+  "faction": "vetruvian",
   "spriteName": "icon_f3_glimpse",
   "type": "SPELL",
   "spells": [
     {
-      "spellId": "sub_2",
+      "spellId": "sub_1",
+      "fxName": "fx_redquasar",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

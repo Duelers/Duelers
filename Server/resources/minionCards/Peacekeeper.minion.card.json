@@ -2,11 +2,13 @@
   "name": "Peacekeeper",
   "description": "Celerity, Airdrop, Provoke\n After attacking, deal 6 damage to all surrounding enemies",
   "cardId": "Peacekeeper",
+  "faction": "lyonar",
   "spriteName": "f1_peacekeeper",
   "type": "MINION",
-    "spells": [ 
+    "spells": [
     {
       "spellId": "dmg_on_atk",
+      "fxName": "fx_slashfrenzy",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

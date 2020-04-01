@@ -2,18 +2,20 @@
   "name": "Sun Seer",
   "description": "When this minion attacks or counterattacks,  your General gains 3 Health",
   "cardId": "SunSeer",
+  "faction": "mercenary",
   "spriteName": "neutral_mercsunseer",
   "type": "MINION",
   "spells": [
     {
       "spellId": "heal_on_attack",
+      "fxName": "fx_heal",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
         "hpChange": 3,
         "mpChange": 0,
         "removeBuffs": 0,
-		"durable": true,
+        "durable": true,
         "duration": 1,
         "delay": 0
       },
@@ -37,7 +39,7 @@
           "ranged": true,
           "hybrid": true
         }
-	  },
+      },
       "availabilityType": {
         "onAttack": true,
         "onCounterAttack": true

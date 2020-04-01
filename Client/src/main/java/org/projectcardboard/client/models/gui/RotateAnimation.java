@@ -7,20 +7,20 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 class RotateAnimation {
-    private final RotateTransition rotate;
+  private final RotateTransition rotate;
 
-    RotateAnimation(ImageView ringView) {
-        rotate = new RotateTransition(Duration.seconds(1.5), ringView);
-        rotate.setByAngle(360);
-        rotate.setInterpolator(Interpolator.LINEAR);
-        rotate.setCycleCount(Animation.INDEFINITE);
-    }
+  RotateAnimation(ImageView ringView) {
+    rotate = new RotateTransition(Duration.seconds(1.5), ringView);
+    rotate.setByAngle(360);
+    rotate.setInterpolator(Interpolator.LINEAR);
+    rotate.setCycleCount(Animation.INDEFINITE);
+  }
 
-    void play() {
-        rotate.play();
-    }
+  void play() {
+    rotate.play();
+  }
 
-    void pause() {
-        rotate.pause();
-    }
+  void pause() {
+    rotate.pause();
+  }
 }

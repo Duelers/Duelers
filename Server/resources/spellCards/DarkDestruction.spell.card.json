@@ -2,11 +2,13 @@
   "name": "Dark Destruction",
   "description": "Destroy target enemy minion.",
   "cardId": "DarkDestruction",
+  "faction": "abyssian",
   "spriteName": "icon_f4_darktransformation",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "destroy target",
+      "fxName": "fx_f4_darkfiretransformation",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

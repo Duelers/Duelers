@@ -4,20 +4,20 @@ import server.dataCenter.models.account.Account;
 import shared.models.game.GameType;
 
 public class GlobalRequest {
-    private final Account requester;
-    private final GameType gameType;
+  private final Account requester;
+  private final GameType gameType;
 
-    public GlobalRequest(Account requester, GameType gameType) {
-        this.requester = requester;
-        this.gameType = gameType;
-    }
+  public GlobalRequest(Account requester, GameType gameType) {
+    this.requester = requester;
+    this.gameType = gameType;
+  }
 
-    public Account getRequester() {
-        return requester;
-    }
+  public Account getRequester() {
+    return requester;
+  }
 
-    public GameType getGameType() {
-        return gameType;
-    }
+  public GameType getGameType() {
+    return gameType;
+  }
 
 }

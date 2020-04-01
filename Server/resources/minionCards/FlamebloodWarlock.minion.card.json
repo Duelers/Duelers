@@ -2,10 +2,12 @@
 	"name": "Flameblood Warlock",
 	"description": "Opening Gambit: Deal 3 damage to both generals",
 	"cardId": "FlamebloodWarlock",
+	"faction": "mercenary",
 	"spriteName": "neutral_mercflamebloodwarlock",
 	"type": "MINION",
 	"spells": [{
 			"spellId": "deal_3_to_generals",
+			"fxName": "fx_redquasar",
 			"action": {
 				"hpChange": -3,
 				"durable": true,

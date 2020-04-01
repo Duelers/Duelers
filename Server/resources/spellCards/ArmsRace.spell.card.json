@@ -2,11 +2,13 @@
   "name": "Arms Race",
   "description": "Both Generals gain +1 attack",
   "cardId": "ArmsRace",
+  "faction": "magmar",
   "spriteName": "icon_f1_enthrall",
   "type": "SPELL",
   "spells": [
     {
       "spellId": "_1_atk",
+      "fxName": "fx_martyrdom",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 1,

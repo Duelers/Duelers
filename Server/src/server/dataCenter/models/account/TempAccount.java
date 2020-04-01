@@ -11,18 +11,15 @@ import java.util.List;
 
 public class TempAccount extends BaseTempAccount<Collection, TempDeck, MatchHistory> {
 
-    public TempAccount(Account account) {
-        super(account.getUsername(),
-                account.getPassword(),
-                account.getAccountType(),
-                account.getCollection()
-                );
-        for (Deck deck : account.getDecks()) {
-            this.decks.add(new TempDeck(deck));
-        }
-        if (account.getMainDeck() != null) {
-            this.mainDeckName = account.getMainDeck().getName();
-        }
+  public TempAccount(Account account) {
+    super(account.getUsername(), account.getPassword(), account.getAccountType(),
+        account.getCollection());
+    for (Deck deck : account.getDecks()) {
+      this.decks.add(new TempDeck(deck));
     }
+    if (account.getMainDeck() != null) {
+      this.mainDeckName = account.getMainDeck().getName();
+    }
+  }
 
 }

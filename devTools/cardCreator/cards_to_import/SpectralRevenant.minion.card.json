@@ -2,18 +2,20 @@
   "name": "Spectral Revenant",
   "description": "Rush \n After attacking or counterattacking deal 4 damage to the enemy General",
   "cardId": "SpectralRevenant",
+  "faction": "abyssian",
   "spriteName": "f4_daemonvoid",
   "type": "MINION",
   "spells": [
     {
       "spellId": "4_dmg_on_attack",
+      "fxName": "fx_teleportpurpleorb",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
         "hpChange": -4,
         "mpChange": 0,
         "removeBuffs": 0,
-		"durable": true,
+        "durable": true,
         "duration": 1,
         "delay": 0
       },
@@ -37,7 +39,7 @@
           "ranged": true,
           "hybrid": true
         }
-	  },
+      },
       "availabilityType": {
         "onAttack": true,
         "onCounterAttack": true

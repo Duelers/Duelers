@@ -2,11 +2,13 @@
   "name": "Makantor Warbeast",
   "description": "Rush.\n After attacking, deal 4 damage to all surrounding enemies",
   "cardId": "MakantorWarbeast",
+  "faction": "magmar",
   "spriteName": "f5_mankatorwarbeast",
   "type": "MINION",
-    "spells": [ 
+    "spells": [
     {
       "spellId": "dmg_on_atk",
+      "fxName": "fx_slashfrenzy",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

@@ -2,11 +2,13 @@
   "name": "Serpenti",
   "description": "After attacking, deal 7 damage to all surrounding enemies",
   "cardId": "Serpenti",
+  "faction": "mercenary",
   "spriteName": "neutral_serpenti",
   "type": "MINION",
-  "spells": [ 
+  "spells": [
     {
       "spellId": "dmg_on_atk",
+      "fxName": "fx_slashfrenzy",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

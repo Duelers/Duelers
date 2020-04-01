@@ -2,11 +2,13 @@
   "name": "Azure Herald",
   "description": "Opening Gambit: Add 3 Health to your General",
   "cardId": "AzureHerald",
+  "faction": "mercenary",
   "spriteName": "neutral_azureherald",
   "type": "MINION",
   "spells": [
     {
       "spellId": "heal_on_put",
+      "fxName": "fx_heal",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,

@@ -2,32 +2,33 @@
   "name": "Primus Fist",
   "description": "Opening Gambit: Give nearby friendly minions +1 attack.",
   "cardId": "PrimusFist",
+  "faction": "mercenary",
   "spriteName": "neutral_gauntletmaster",
   "type": "MINION",
   "spells": [
-	{
-	    "spellId": "minus_power_on_put_self",
-        "action": {
-		"enemyHitChanges": 0,
-		"apChange": -1,
-		"hpChange": 0,
-		"mpChange": 0,
-		"poison": false,
-		"makeStun": false,
-		"makeDisarm": false,
-		"noDisarm": false,
-		"noPoison": false,
-		"noStun": false,
-		"noBadEffect": false,
-		"noAttackFromWeakerOnes": false,
-		"disableHolyBuff": false,
-		"addSpell": false,
-		"killsTarget": false,
-		"isForGladiator": false,
-		"durable": true,
-		"removeBuffs": 0,
-		"duration": 1,
-		"delay": 0
+    {
+      "spellId": "minus_power_on_put_self",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": -1,
+        "hpChange": 0,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 1,
+        "delay": 0
       },
       "target": {
         "isRelatedToCardOwnerPosition": false,
@@ -62,10 +63,10 @@
         "onStart": false,
         "onDefend": false
       }
-	},
-	
-	{
+    },
+    {
       "spellId": "power_on_put",
+      "fxName": "fx_buff",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 1,
@@ -107,11 +108,11 @@
           "minion": true,
           "player": false
         },
-		"attackType": {
-			"melee": true,
-			"ranged": true,
-			"hybrid": true
-		}
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
       },
       "availabilityType": {
         "onPut": true,
