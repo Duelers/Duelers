@@ -185,7 +185,8 @@ public class MapBox implements PropertyChangeListener {
         cardPane = null;
       }
       try {
-        cardPane = new CardPane(troop.getCard(), false, false, null);
+        int direction = troop.getPlayerNumber() == 1 ? 1 : -1;
+        cardPane = new CardPane(troop.getCard(), false, false, null, direction);
         cardPane.setLayoutY(Constants.MAP_HEIGHT / 3);
         if (troop.getPlayerNumber() == 1)
           cardPane.setLayoutX(-cardPane.getWidth() - 250 * Constants.SCALE);
