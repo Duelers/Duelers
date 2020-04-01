@@ -22,6 +22,8 @@ EXAMPLE_CONFIG_SERVER_PATH = os.path.join(DIR_PATH, "..", "..", "Server", "src",
 
 EXAMPLE_APPDATA_MINION_PATH = os.path.join(DIR_PATH, "..", "..", "devTools", "cardCreator", "appData_example")
 
+EXPORTED_DECKS_FOLDER = os.path.join(DIR_PATH, "..", "..", "exported_decks")
+
 OUTPUT_DIR = os.path.join(DIR_PATH, "release")
 
 
@@ -95,6 +97,11 @@ if __name__ == "__main__":
     # Copy ExampleMinion
     shutil.copytree(EXAMPLE_APPDATA_MINION_PATH, os.path.join(release_dir, "mods", "card_creation"))
     os.remove(os.path.join(release_dir, "mods", "card_creation", "build_exe.py"))
+    
+    # Copy starterDecks
+    shutil.copytree(EXPORTED_DECKS_FOLDER, os.path.join(release_dir, "exported_decks"))
+    os.remove(os.path.join(release_dir, "exported_decks", ".gitkeep"))
+    
 
     print("Script COMPLETE.")
 
