@@ -125,6 +125,8 @@ devTools/Build_exe/release/*
 ## white list 
 !.keep
 !/Server/resources/accounts/template.account.json
+!/exported_decks/Golem_starter_deck.deck.json
+!/exported_decks/Aggro_starter_deck.deck.json
 
 ## VSCode
 .vscode
