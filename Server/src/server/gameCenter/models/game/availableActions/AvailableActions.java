@@ -28,7 +28,7 @@ public class AvailableActions extends
     handInserts.clear();
 
     for (ServerCard card : ownPlayer.getHand()) {
-      if (ownPlayer.getCurrentMP() >= card.getManaCost()) {
+      if (card.getManaCost() == 0 || ownPlayer.getCurrentMP() >= card.getManaCost()) {
         handInserts.add(new Insert(card));
       }
     }

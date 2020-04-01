@@ -240,6 +240,9 @@ public class AvailableActions
   }
 
   public boolean haveSufficientMana(Player player, Card card) {
+    if (card.getManaCost() == 0) {
+      return true; // even if we have -20 mana, a card of 0 cost should always be playable.
+    }
     return player.getCurrentMP() >= card.getManaCost();
   }
 }
