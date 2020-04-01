@@ -34,16 +34,14 @@ public class DeckCardsGrid extends GridPane {
       DeckCardPane cardPane = new DeckCardPane(card, deck);
       cardPane.setOnMouseClicked(mouseEvent -> {
         MouseButton button = mouseEvent.getButton();
-        if(button.equals(MouseButton.PRIMARY)){
-          CollectionMenuController.getInstance().addCardToDeck(cardPane.getDeck(),
-            card.getName());
-        }
-        else if(button.equals(MouseButton.SECONDARY)){
-          CollectionMenuController.getInstance()
-            .removeCardFromDeck(cardPane.getDeck(), card.getName());
+        if (button.equals(MouseButton.PRIMARY)) {
+          CollectionMenuController.getInstance().addCardToDeck(cardPane.getDeck(), card.getName());
+        } else if (button.equals(MouseButton.SECONDARY)) {
+          CollectionMenuController.getInstance().removeCardFromDeck(cardPane.getDeck(),
+              card.getName());
         }
       });
-      
+
       deckCardBox.getChildren().addAll(cardPane);
 
       add(deckCardBox, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
