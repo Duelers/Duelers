@@ -99,14 +99,20 @@ public class Account extends BaseAccount<Deck, Collection, MatchHistory> {
 
   public void updateCollection(Collection collection) {
     this.getCollection().clearCollection();
+
+    System.out.println("Adding " + collection.getHeroes().size() + " Generals to account");
     for (ServerCard card : collection.getHeroes()) {
       this.collection.addCard(card.getName(), collection, this.username);
     }
+
+    System.out.println("Adding " + collection.getMinions().size() + " minions to account");
     for (ServerCard card : collection.getMinions()) {
       for (int i = 0; i < 3; i++) {
         this.collection.addCard(card.getName(), collection, this.username);
       }
     }
+
+    System.out.println("Adding " + collection.getSpells().size() + " spells to account");
     for (ServerCard card : collection.getSpells()) {
       for (int i = 0; i < 3; i++) {
         this.collection.addCard(card.getName(), collection, this.username);
