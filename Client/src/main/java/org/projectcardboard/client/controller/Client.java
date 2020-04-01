@@ -29,25 +29,25 @@ import org.slf4j.LoggerFactory;
 
 
 public class Client {
-	
-    private WebSocket ws;
-    private static Client client;
-    private final LinkedList<Message> sendingMessages = new LinkedList<>();
-    private String clientName;
-    private Account account;
-    private Show currentShow;
-    private final Gson gson = new Gson();
-    private static final String serverName = Config.getInstance().getProperty("SERVER_NAME");
-    private static final String GENERIC_ERROR = "Unknown error";
 
-    Logger logger = LoggerFactory.getLogger(Client.class);
+  private WebSocket ws;
+  private static Client client;
+  private final LinkedList<Message> sendingMessages = new LinkedList<>();
+  private String clientName;
+  private Account account;
+  private Show currentShow;
+  private final Gson gson = new Gson();
+  private static final String serverName = Config.getInstance().getProperty("SERVER_NAME");
+  private static final String GENERIC_ERROR = "Unknown error";
 
-    public static Client getInstance() {
-        if (client == null) {
-            client = new Client();
-        }
-        return client;
-	}
+  Logger logger = LoggerFactory.getLogger(Client.class);
+
+  public static Client getInstance() {
+    if (client == null) {
+      client = new Client();
+    }
+    return client;
+  }
 
   private void connect() throws IOException, NullPointerException {
     String serverUri = Config.getInstance().getProperty("SERVER_URI");
@@ -55,51 +55,50 @@ public class Client {
       String serverIp = Config.getInstance().getProperty("SERVER_IP");
       String port = Config.getInstance().getProperty("PORT");
       serverUri = "ws://" + serverIp + ":" + port;
-	  
+
     }
-        int connectionAttempts = 5;
+    int connectionAttempts = 5;
 
-        Thread sendMessageThread = new Thread(this::sendMessages);
+    Thread sendMessageThread = new Thread(this::sendMessages);
 
-        this.ws = new WebSocketFactory().createSocket(serverUri + "/websockets/game");
-        this.ws.addListener(new WebSocketAdapter() {
-            @Override
-            public void onTextMessage(WebSocket websocket, String message) {
-                Message messageObject = gson.fromJson(message, Message.class);
+    this.ws = new WebSocketFactory().createSocket(serverUri + "/websockets/game");
+    this.ws.addListener(new WebSocketAdapter() {
+      @Override
+      public void onTextMessage(WebSocket websocket, String message) {
+        Message messageObject = gson.fromJson(message, Message.class);
 
-                String msg = simplifyLogMessage(messageObject, "Server");
-                if (msg != null) {
-                    //System.out.println(msg);
-                    logger.info(msg);
-                } else {
-                    logger.info(message);
-                }
-                handleMessage(messageObject);
-            }
-        });
-        while (true) {
-            try {
-                this.ws.connect();
-                break;
-            } catch (WebSocketException e) {
-                //System.out.println(e.getMessage());
-
-                logger.warn("Failed to Connect");
-                logger.info(e.getMessage());
-
-                connectionAttempts -= 1;
-                if (connectionAttempts == 0) {
-                    throw new RuntimeException(e);
-                }
-                this.ws = this.ws.recreate();
-            }
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-			
+        String msg = simplifyLogMessage(messageObject, "Server");
+        if (msg != null) {
+          // System.out.println(msg);
+          logger.info(msg);
+        } else {
+          logger.info(message);
+        }
         handleMessage(messageObject);
+      }
+    });
+    while (true) {
+      try {
+        this.ws.connect();
+        break;
+      } catch (WebSocketException e) {
+        // System.out.println(e.getMessage());
+
+        logger.warn("Failed to Connect");
+        logger.info(e.getMessage());
+
+        connectionAttempts -= 1;
+        if (connectionAttempts == 0) {
+          throw new RuntimeException(e);
+        }
+        this.ws = this.ws.recreate();
+      }
+      try {
+        Thread.sleep(5000);
+      } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+      }
+    }
     sendMessageThread.start();
   }
 
