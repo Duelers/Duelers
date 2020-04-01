@@ -1,5 +1,6 @@
 package org.projectcardboard.client.models.gui;
 
+import javafx.scene.input.MouseButton;
 import org.projectcardboard.client.controller.CollectionMenuController;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
@@ -31,19 +32,17 @@ public class DeckCardsGrid extends GridPane {
       deckCardBox.setAlignment(Pos.CENTER);
 
       DeckCardPane cardPane = new DeckCardPane(card, deck);
+      cardPane.setOnMouseClicked(mouseEvent -> {
+        MouseButton button = mouseEvent.getButton();
+        if (button.equals(MouseButton.PRIMARY)) {
+          CollectionMenuController.getInstance().addCardToDeck(cardPane.getDeck(), card.getName());
+        } else if (button.equals(MouseButton.SECONDARY)) {
+          CollectionMenuController.getInstance().removeCardFromDeck(cardPane.getDeck(),
+              card.getName());
+        }
+      });
 
-      HBox buttonsBox =
-          new HBox(UIConstants.DEFAULT_SPACING,
-              new OrangeButton("ADD",
-                  event -> CollectionMenuController.getInstance().addCardToDeck(cardPane.getDeck(),
-                      card.getName()),
-                  select, false),
-              new OrangeButton("REMOVE", event -> CollectionMenuController.getInstance()
-                  .removeCardFromDeck(cardPane.getDeck(), card.getName()), select, false));
-
-      buttonsBox.setMaxWidth(BUTTONS_WIDTH);
-
-      deckCardBox.getChildren().addAll(cardPane, buttonsBox);
+      deckCardBox.getChildren().addAll(cardPane);
 
       add(deckCardBox, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
     }
