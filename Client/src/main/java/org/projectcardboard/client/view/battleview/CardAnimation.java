@@ -54,7 +54,7 @@ public class CardAnimation extends Transition {
     String path;
     if (CardType.SPELL.equals(card.getType())) {
       path =
-          card.isCustom() ? Config.getInstance().getCustomCardsPath().toString() + "/" : "/icons/";
+          card.isCustom() ? Config.getInstance().getCustomCardSpritesPath().toString() + "/" : "/icons/";
     } else {
       path = card.isCustom() ? Config.getInstance().getCustomCardSpritesPath().toString() + "/"
           : "/troopAnimations/";
