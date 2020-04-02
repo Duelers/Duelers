@@ -15,7 +15,8 @@ import javafx.scene.image.Image;
 
 public class ResourcesCenter {
   private final static ResourcesCenter ourInstance = new ResourcesCenter();
-  private static final String PATH = "Client/src/main/resources";
+  private static final String PATH = "Client/src/main/resources"; // todo read in as
+                                                                  // 'resourceasstream' ???
   private final HashMap<String, Image> imageHashMap = new HashMap<>(); // todo These HashMaps are
                                                                        // never read. Remove?
   private final HashMap<String, PlayList> playListHashMap = new HashMap<>();
@@ -57,14 +58,14 @@ public class ResourcesCenter {
 
   public static void main(String[] args) {
     try {
-      System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
+      // System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
       readData();
     } catch (OutOfMemoryError e) {
-      System.out.println("ho");
+      // System.out.println("ho");
     }
-    System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
+    // System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
 
-    System.out.println("x");
+    // System.out.println("x");
   }
 
   public static ResourcesCenter getInstance() {
