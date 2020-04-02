@@ -15,7 +15,6 @@ public class ImageLoader {
 
   public static ImageView loadImage(String url, double width, double height)
       throws FileNotFoundException {
-    System.out.println("Loading image: " + url);
     InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
     if (imageResource == null) {
       throw new FileNotFoundException();
