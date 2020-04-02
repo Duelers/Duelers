@@ -30,7 +30,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import shared.models.card.Card;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DeckBox extends GridPane {
   private static final Background DEFAULT_BACKGROUND =
@@ -49,6 +50,8 @@ public class DeckBox extends GridPane {
   private static Image saveIcon;
   private static Image mainIcon;
   private static Image disableMainIcon;
+
+  private static Logger logger = LoggerFactory.getLogger(DeckBox.class);
 
   static {
     try {
@@ -70,7 +73,8 @@ public class DeckBox extends GridPane {
       mainIcon = new Image(mainIconR);
       disableMainIcon = new Image(disableMainIconR);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("failed to find deck box file resource");
+      logger.trace(e.getMessage());
     }
   }
 
@@ -123,7 +127,8 @@ public class DeckBox extends GridPane {
       try {
         CollectionMenu.getInstance().showCollectionCards();
       } catch (FileNotFoundException e) {
-        e.printStackTrace();
+        logger.warn("Could not show collection");
+        logger.trace(e.getMessage());
       }
     });
 
