@@ -6,11 +6,15 @@ import java.io.IOException;
 
 import org.projectcardboard.client.Constants;
 import org.projectcardboard.client.models.JsonConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DeckExporter {
   private static final String DIRECTORY_NAME = Constants.DECK_EXPORT_FOLDER;
   private static final String FORMAT = ".deck.json";
   private final ExportedDeck deck;
+
+  Logger logger = LoggerFactory.getLogger(DeckExporter.class);
 
   public DeckExporter(Deck deck) {
     this.deck = new ExportedDeck(deck);
@@ -19,6 +23,7 @@ public class DeckExporter {
   public void export() {
     File directory = new File(DIRECTORY_NAME);
     if (!directory.exists()) {
+      logger.info(String.format("Creating Directory '%s'", DIRECTORY_NAME));
       directory.mkdir();
     }
     File[] files = directory.listFiles();
@@ -42,7 +47,8 @@ public class DeckExporter {
         writer.flush();
         writer.close();
       } catch (IOException e) {
-        e.printStackTrace();
+        logger.warn("Could not export deck");
+        logger.trace(e.getMessage());
       }
     }
   }
