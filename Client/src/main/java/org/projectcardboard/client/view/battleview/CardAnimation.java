@@ -77,7 +77,6 @@ public class CardAnimation extends Transition {
           return new Gson().fromJson(new InputStreamReader(inputStream, StandardCharsets.UTF_8),
               Playlist.class);
         } catch (IOException ex) {
-          ex.printStackTrace();
           return new Playlist();
         }
       }

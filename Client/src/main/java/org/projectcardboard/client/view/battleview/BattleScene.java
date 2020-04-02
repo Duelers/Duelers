@@ -10,7 +10,8 @@ import javafx.scene.media.Media;
 import org.projectcardboard.client.models.game.Game;
 import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.GameActions;
-import shared.models.card.spell.AvailabilityType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import shared.models.game.map.Cell;
 import org.projectcardboard.client.view.Show;
 
@@ -35,6 +36,8 @@ public class BattleScene extends Show {
   private final int myPlayerNumber;
   private Player myPlayer;
   private Player oppPlayer;
+
+  private static Logger logger = LoggerFactory.getLogger(BattleScene.class);
 
   static {
     spellSpriteNames.put(SpellType.ATTACK, "fx_f4_shadownova");
@@ -78,7 +81,8 @@ public class BattleScene extends Show {
       backGround.setFitHeight(Constants.SCREEN_HEIGHT);
       root.getChildren().add(backGround);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("failed to find Background image");
+      logger.trace(e.getMessage());
     }
   }
 
