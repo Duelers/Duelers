@@ -1,7 +1,8 @@
 package org.projectcardboard.client.models.game;
 
-import org.projectcardboard.client.models.game.Player;
 import org.projectcardboard.client.models.game.map.GameMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import shared.models.card.CardType;
 import shared.models.card.Card;
 import shared.models.game.BaseGame;
@@ -12,8 +13,10 @@ import shared.models.game.GameType;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+
 public class Game extends BaseGame<Player, GameMap> {
   private transient PropertyChangeSupport support = new PropertyChangeSupport(this);
+  private Logger logger = LoggerFactory.getLogger(Game.class);
 
 
   public Game(Player playerOne, Player playerTwo, GameMap gameMap, int turnNumber,
@@ -42,7 +45,7 @@ public class Game extends BaseGame<Player, GameMap> {
     if (card.getType().equals(CardType.HERO) || card.getType().equals(CardType.MINION)) {
       Troop troop = gameMap.getTroop(card.getCardId());
       if (troop == null) {
-        System.out.println("Client error, troop in moveCardToGraveYard is null");
+        logger.warn("troop in moveCardToGraveYard is null");
       } else {
         player = getPlayer(troop.getPlayerNumber());
         player.removeTroop(card.getCardId());
