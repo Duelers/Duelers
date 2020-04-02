@@ -7,6 +7,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -20,6 +22,8 @@ class PlayButtonBox extends VBox {
   private static final Effect SHADOW = new DropShadow(40 * SCALE, Color.BLACK);
   private static Image PLATE_IMAGE;
 
+  private static Logger logger = LoggerFactory.getLogger(PlayButtonBox.class);
+
   static {
     try {
       InputStream plateR =
@@ -29,7 +33,8 @@ class PlayButtonBox extends VBox {
       }
       PLATE_IMAGE = new Image(plateR);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("Failed to find file");
+      logger.trace(e.getMessage());
     }
   }
 

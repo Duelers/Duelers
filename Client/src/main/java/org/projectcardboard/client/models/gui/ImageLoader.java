@@ -45,8 +45,9 @@ public class ImageLoader {
       try {
         FileInputStream inputStream = new FileInputStream(url);
         return new Image(inputStream);
-      } catch (FileNotFoundException ex) {
-        ex.printStackTrace();
+      } catch (FileNotFoundException e) {
+        logger.warn("Failed to find file");
+        logger.trace(e.getMessage());
       }
     }
     return new Image(imageResource);

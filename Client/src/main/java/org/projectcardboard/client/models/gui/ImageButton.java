@@ -16,11 +16,15 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ImageButton extends StackPane {
   private static final Font FONT = Font.font("SansSerif", FontWeight.BOLD, 35 * SCALE);
   private static Image primaryDefault;
   private static Image primaryHover;
+
+  private static Logger logger = LoggerFactory.getLogger(ImageButton.class);
 
   static {
     try {
@@ -34,7 +38,8 @@ public class ImageButton extends StackPane {
       primaryDefault = new Image(primaryDefaultR);
       primaryHover = new Image(primaryGlowR);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("could not find button resource");
+      logger.trace(e.getMessage());
     }
   }
 

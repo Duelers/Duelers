@@ -14,6 +14,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UIConstants {
   public static final Background DEFAULT_ROOT_BACKGROUND =
@@ -33,6 +35,8 @@ public class UIConstants {
   public static Cursor DEFAULT_CURSOR;
   public static Cursor SELECT_CURSOR;
 
+  private static Logger logger = LoggerFactory.getLogger(UIConstants.class);
+
   static {
     try {
       InputStream defaultCursorResource =
@@ -49,7 +53,8 @@ public class UIConstants {
       }
       UIConstants.SELECT_CURSOR = new ImageCursor(new Image(selectCursorResource));
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("Could not find file");
+      logger.trace(e.getMessage());
     }
   }
 }

@@ -5,6 +5,8 @@ import javafx.scene.layout.GridPane;
 import org.projectcardboard.client.models.account.Account;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -27,6 +29,8 @@ public class ProfileGrid extends GridPane {
   private static Image defaultProfilePic;
   private static Image historyIcon;
 
+  private static Logger logger = LoggerFactory.getLogger(ProfileGrid.class);
+
   static {
     try {
       InputStream profilePicR = ProfileGrid.class.getResourceAsStream(DEFAULT_PROFILE_PIC_URL);
@@ -42,7 +46,8 @@ public class ProfileGrid extends GridPane {
       goldIcon = new Image(goldIconR);
       historyIcon = new Image(historyIconR);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("Could not load Profile Icon(s)");
+      logger.trace(e.getMessage());
     }
   }
 
