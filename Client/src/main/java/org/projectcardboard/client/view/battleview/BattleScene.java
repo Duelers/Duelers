@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.projectcardboard.client.controller.SoundEffectPlayer.SoundName.loos_match;
+import static org.projectcardboard.client.controller.SoundEffectPlayer.SoundName.lose_match;
 import static org.projectcardboard.client.controller.SoundEffectPlayer.SoundName.victory_match;
 
 public class BattleScene extends Show {
