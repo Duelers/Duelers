@@ -127,8 +127,8 @@ public class Client {
             + message.getTroopUpdateMessage().getTroop().getCell();
 
       case CARD_POSITION:
-        return "(CARD_POSITION) " + message.getCardPositionMessage().getCard().getCardId() + " has been moved to: "
-            + message.getCardPositionMessage().getCardPosition();
+        return "(CARD_POSITION) " + message.getCardPositionMessage().getCard().getCardId()
+            + " has been moved to: " + message.getCardPositionMessage().getCardPosition();
 
       case CHAT:
         return String.format("(CHAT) Message: '%s' was sent by '%s'",
