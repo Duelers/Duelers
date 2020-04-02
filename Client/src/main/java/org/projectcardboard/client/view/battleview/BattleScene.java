@@ -170,7 +170,7 @@ public class BattleScene extends Show {
             myPlayer.getHero().getCell().getColumn());
       }
     } else {
-      SoundEffectPlayer.getInstance().playSound(loos_match);
+      SoundEffectPlayer.getInstance().playSound(lose_match);
       if (oppPlayer.getHero() == null) {
         mapBox.showSpell(WINNER_SPRITE_NAME, oppPlayer.getTroops().get(0).getCell().getRow(),
             oppPlayer.getTroops().get(0).getCell().getColumn());
