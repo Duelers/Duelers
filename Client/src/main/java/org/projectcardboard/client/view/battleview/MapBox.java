@@ -23,6 +23,10 @@ import shared.models.card.Card;
 import shared.models.card.CardType;
 import shared.models.game.Troop;
 import shared.models.game.map.Cell;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 
 public class MapBox implements PropertyChangeListener {
   private final BattleScene battleScene;
@@ -36,6 +40,7 @@ public class MapBox implements PropertyChangeListener {
   private boolean spellSelected = false;
   private CardPane cardPane = null;
   private SelectionType selectionType;
+  private static Logger logger = LoggerFactory.getLogger(MapBox.class);
 
 
   MapBox(BattleScene battleScene, GameMap gameMap) {
@@ -129,7 +134,8 @@ public class MapBox implements PropertyChangeListener {
             .setOnMouseExited(mouseEvent -> exitCell(animation.getRow(), animation.getColumn()));
         troopAnimationHashMap.put(newTroop, animation);
       } catch (Exception e) {
-        System.out.println("Error making animation " + newTroop.getCard().getCardId());
+        logger.warn("Error making animation");
+        logger.trace(e.getMessage());
       }
     }
     battleScene.getHandBox().resetSelection();
@@ -193,7 +199,8 @@ public class MapBox implements PropertyChangeListener {
           cardPane.setLayoutX(Constants.MAP_DOWNER_WIDTH + cardPane.getWidth());
         mapGroup.getChildren().add(cardPane);
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.warn("CardPane Error when trying to hover cell");
+        logger.trace(e.getMessage());
       }
     }
     cells[row][column].setOpacity(Constants.CELLS_DEFAULT_OPACITY * 1.5);
@@ -214,13 +221,14 @@ public class MapBox implements PropertyChangeListener {
           if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap,
               player, card, row, column)) {
             battleScene.getController().insert(card, row, column);
-            System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
+            // System.out.println("Insert " +
+            // battleScene.getHandBox().getSelectedCard().getCardId());
             battleScene.getHandBox().resetSelection();
             resetSelection();
           }
         } else if (card.getType().equals(CardType.SPELL)) {
           battleScene.getController().insert(card, row, column);
-          System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
+          // System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
           battleScene.getHandBox().resetSelection();
           resetSelection();
         }
@@ -233,13 +241,13 @@ public class MapBox implements PropertyChangeListener {
         selectedTroop = currentTroop;
         updateMapColors();
         SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
-        System.out.println("Select " + currentTroop.getCard().getCardId());
+        // System.out.println("Select " + currentTroop.getCard().getCardId());
       }
       return;
     }
     if (selectedTroop != null && selectedTroop.getCell().getRow() == row
         && selectedTroop.getCell().getColumn() == column) {
-      System.out.println("DiSelect");
+      // System.out.println("DiSelect");
       SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
       battleScene.getHandBox().resetSelection();
       resetSelection();
@@ -249,14 +257,14 @@ public class MapBox implements PropertyChangeListener {
       if (GameController.getInstance().getAvailableActions().canAttack(gameMap, player,
           selectedTroop, row, column)) {
         battleScene.getController().attack(selectedTroop, currentTroop);
-        System.out.println(selectedTroop + " attacked to " + currentTroop);
+        // System.out.println(selectedTroop + " attacked to " + currentTroop);
         battleScene.getHandBox().resetSelection();
         resetSelection();
         SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.attack);
       } else if (GameController.getInstance().getAvailableActions().canMove(gameMap, player,
           selectedTroop, row, column)) {
         battleScene.getController().move(selectedTroop, row, column);
-        System.out.println(selectedTroop.getCard().getCardId() + " moved");
+        // System.out.println(selectedTroop.getCard().getCardId() + " moved");
         battleScene.getHandBox().resetSelection();
         resetSelection();
         SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.move);
@@ -418,42 +426,41 @@ public class MapBox implements PropertyChangeListener {
   }
 
   void showAttack(String cardId, String defender) {
-    if (cardId == null) {
-      System.out.println("MapBox attack cardID is null");
-    } else if (defender == null) {
-      System.out.println("MapBox defender is null");
+
+    if (cardId == null || defender == null) {
+      logger.info("CardId and/or Defender is null");
+      return;
     }
+
     Troop troop = gameMap.getTroop(cardId);
     Troop defenderTroop = gameMap.getTroop(defender);
-    if (troop == null) {
-      System.out.println("MapBox Error attacking troop is null");
-    } else if (defenderTroop == null) {
-      System.out.println("MapBox Error troop being attacked is null");
-    } else {
-      TroopAnimation animation = troopAnimationHashMap.get(troop);
-      if (animation == null)
-        System.out.println("MapBox attack animation is null");
-      else
-        animation.attack(defenderTroop.getCell().getColumn());
+
+    if (troop == null || defenderTroop == null) {
+      logger.info("(show attack) attacking troop and/or defending troop is null");
+      return;
     }
+
+    TroopAnimation animation = troopAnimationHashMap.get(troop);
+    if (animation == null) {
+      logger.error("(show attack) attack animation is null");
+    }
+    animation.attack(defenderTroop.getCell().getColumn());
   }
 
   void showDefend(String defender, String attacker) {
     Troop troop = gameMap.getTroop(defender);
     Troop attackerTroop = gameMap.getTroop(attacker);
-    if (troop == null) {
-      System.out.println("MapBox Error showDefend defending troop is null");
-    } else if (attackerTroop == null) {
-      System.out.println("MapBox Error showDefend attacking troop is null");
+    if (troop == null || attackerTroop == null) {
+      logger.info("(show defend) attacking troop and/or defending troop is null");
+      return;
     }
 
-    else {
-      TroopAnimation animation = troopAnimationHashMap.get(troop);
-      if (animation == null)
-        System.out.println("MapBox Error defending animation is null");
-      else
-        animation.hit(attackerTroop.getCell().getColumn());
+    TroopAnimation animation = troopAnimationHashMap.get(troop);
+    if (animation == null) {
+      logger.error("(show defend) attack animation is null");
+      return;
     }
+    animation.hit(attackerTroop.getCell().getColumn());
   }
 
   void showSpell(String spriteName, int j, int i) {
@@ -461,7 +468,8 @@ public class MapBox implements PropertyChangeListener {
       try {
         new SpellAnimation(mapGroup, spriteName, cellsX[j][i], cellsY[j][i]);
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.warn("Error animating spell");
+        logger.trace(e.getMessage());
       }
     });
   }
