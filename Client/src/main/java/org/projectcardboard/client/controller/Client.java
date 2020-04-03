@@ -23,8 +23,6 @@ import org.projectcardboard.client.view.battleview.BattleScene;
 import Config.Config;
 import javafx.application.Platform;
 import java.util.Objects;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +39,7 @@ public class Client {
   private final Gson gson = new Gson();
   private static final String serverName = Config.getInstance().getProperty("SERVER_NAME");
   private static final String GENERIC_ERROR = "Unknown error";
-  private Logger logger = LoggerFactory.getLogger(Client.class);
+  private static Logger logger = LoggerFactory.getLogger(Client.class);
 
   public static Client getInstance() {
     if (client == null) {
