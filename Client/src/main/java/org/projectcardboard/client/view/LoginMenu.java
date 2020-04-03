@@ -56,7 +56,7 @@ public class LoginMenu extends Show {
 
     } catch (IOException e) {
       logger.warn("error finding files in login menu");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

@@ -68,7 +68,7 @@ public class WaitingMenu extends Show {
       root.getChildren().addAll(sceneContents);
     } catch (FileNotFoundException e) {
       logger.warn("Error setting up Wait Menu");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

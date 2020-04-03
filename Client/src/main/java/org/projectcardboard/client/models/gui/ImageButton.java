@@ -39,7 +39,7 @@ public class ImageButton extends StackPane {
       primaryHover = new Image(primaryGlowR);
     } catch (FileNotFoundException e) {
       logger.warn("could not find button resource");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

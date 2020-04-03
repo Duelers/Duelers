@@ -54,7 +54,7 @@ public class UIConstants {
       UIConstants.SELECT_CURSOR = new ImageCursor(new Image(selectCursorResource));
     } catch (FileNotFoundException e) {
       logger.warn("Could not find file");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 }

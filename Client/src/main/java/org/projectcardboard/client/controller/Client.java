@@ -88,7 +88,7 @@ public class Client {
       } catch (WebSocketException e) {
 
         logger.warn("Failed to Connect");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
 
         connectionAttempts -= 1;
         if (connectionAttempts == 0) {

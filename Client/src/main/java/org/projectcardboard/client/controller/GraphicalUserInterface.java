@@ -58,7 +58,7 @@ public class GraphicalUserInterface {
       backgroundMusicPlayer.setAutoPlay(true);
     } catch (Exception e) {
       logger.warn("Failed to set background Music");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

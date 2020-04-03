@@ -50,7 +50,7 @@ public class PlayMenu extends Show {
         menu = new PlayMenu(items, BACKGROUND_URL, BACK_EVENT);
       } catch (FileNotFoundException e) {
         logger.warn("Error trying to setup PlayMenu");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
     return menu;

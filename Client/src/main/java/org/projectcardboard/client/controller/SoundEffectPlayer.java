@@ -43,7 +43,7 @@ public class SoundEffectPlayer {
       mediaPlayer.play();
     } catch (Exception e) {
       logger.warn("Failed to play sound");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

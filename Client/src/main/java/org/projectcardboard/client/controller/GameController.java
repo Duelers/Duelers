@@ -69,7 +69,7 @@ public class GameController implements GameActions {
         battleScene.show();
       } catch (Exception e) {
         logger.warn("Failed to create BattleScene");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     });
 
@@ -145,7 +145,7 @@ public class GameController implements GameActions {
       Client.getInstance().addToSendingMessagesAndSend(message);
     } catch (InputException e) {
       logger.warn("Failed to move troop");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 
@@ -212,7 +212,7 @@ public class GameController implements GameActions {
       availableActions = new AvailableActions();
     } catch (NoSuchMethodException e) {
       logger.warn("NoSuchMethodException was caught when 'constructAvailableActions'");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
       availableActions = null;
     }
     return availableActions;

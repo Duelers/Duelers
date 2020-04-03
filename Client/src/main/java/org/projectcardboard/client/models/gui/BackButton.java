@@ -33,7 +33,7 @@ public class BackButton extends ImageView {
       IMAGE = new Image(backButtonResource);
     } catch (FileNotFoundException | NullPointerException e) {
       logger.warn("Failed to find/load 'back button' resource");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

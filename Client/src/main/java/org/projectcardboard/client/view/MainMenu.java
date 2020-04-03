@@ -85,7 +85,7 @@ public class MainMenu extends Show {
       root.getChildren().addAll(sceneContents);
     } catch (FileNotFoundException e) {
       logger.warn("Error trying to setup main menu");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 
@@ -114,7 +114,7 @@ public class MainMenu extends Show {
         Platform.runLater(() -> onlineGamesList.setItems(onlineGames));
       } catch (InterruptedException e) {
         logger.warn("Thread interrupted when showing online games list");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }).start();
 

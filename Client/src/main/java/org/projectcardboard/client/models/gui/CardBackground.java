@@ -42,7 +42,7 @@ class CardBackground extends StackPane {
       background.put(CardType.MINION, troopBackground);
       background.put(CardType.SPELL, spellBackground);
     } catch (FileNotFoundException e) {
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

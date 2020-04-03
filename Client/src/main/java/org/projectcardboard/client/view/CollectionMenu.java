@@ -128,7 +128,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       root.getChildren().addAll(sceneContents);
     } catch (FileNotFoundException e) {
       logger.warn("error trying to show card collection");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 
@@ -167,7 +167,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         return bufferedReader.readLine();
       } catch (IOException e) {
         logger.warn("error trying to open selected file");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
     return null;
@@ -261,7 +261,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       cardsBox.getChildren().addAll(heroesGrid, minionsGrid, spellsGrid);
     } catch (FileNotFoundException e) {
       logger.warn("error trying to show card collection");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 }

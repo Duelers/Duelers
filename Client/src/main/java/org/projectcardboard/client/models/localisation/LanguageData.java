@@ -33,7 +33,7 @@ public class LanguageData {
 
     } catch (IOException e) {
       logger.warn("Could not load Language Json");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

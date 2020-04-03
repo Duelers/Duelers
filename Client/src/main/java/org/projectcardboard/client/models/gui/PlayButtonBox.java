@@ -34,7 +34,7 @@ class PlayButtonBox extends VBox {
       PLATE_IMAGE = new Image(plateR);
     } catch (FileNotFoundException e) {
       logger.warn("Failed to find file");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

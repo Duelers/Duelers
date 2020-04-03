@@ -135,7 +135,7 @@ public class MapBox implements PropertyChangeListener {
         troopAnimationHashMap.put(newTroop, animation);
       } catch (Exception e) {
         logger.warn("Error making animation");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
     battleScene.getHandBox().resetSelection();
@@ -200,7 +200,7 @@ public class MapBox implements PropertyChangeListener {
         mapGroup.getChildren().add(cardPane);
       } catch (Exception e) {
         logger.warn("CardPane Error when trying to hover cell");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
     cells[row][column].setOpacity(Constants.CELLS_DEFAULT_OPACITY * 1.5);
@@ -469,7 +469,7 @@ public class MapBox implements PropertyChangeListener {
         new SpellAnimation(mapGroup, spriteName, cellsX[j][i], cellsY[j][i]);
       } catch (Exception e) {
         logger.warn("Error animating spell");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     });
   }

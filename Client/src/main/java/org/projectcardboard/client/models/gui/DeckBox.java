@@ -74,7 +74,7 @@ public class DeckBox extends GridPane {
       disableMainIcon = new Image(disableMainIconR);
     } catch (FileNotFoundException e) {
       logger.warn("failed to find deck box file resource");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

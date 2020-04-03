@@ -48,7 +48,7 @@ public class DeckExporter {
         writer.close();
       } catch (IOException e) {
         logger.warn("Could not export deck");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
   }

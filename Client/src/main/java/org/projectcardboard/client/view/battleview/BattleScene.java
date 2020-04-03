@@ -82,7 +82,7 @@ public class BattleScene extends Show {
       root.getChildren().add(backGround);
     } catch (FileNotFoundException e) {
       logger.warn("failed to find Background image");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

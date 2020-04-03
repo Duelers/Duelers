@@ -24,7 +24,7 @@ public class GlobalGameMenu extends GameModeChooseMenu {
         menu = new GlobalGameMenu();
       } catch (FileNotFoundException e) {
         logger.warn("Error setting up GlobalGameMenu");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
     return menu;

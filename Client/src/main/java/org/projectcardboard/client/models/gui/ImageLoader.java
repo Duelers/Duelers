@@ -45,7 +45,7 @@ public class ImageLoader {
         return new Image(inputStream);
       } catch (FileNotFoundException e) {
         logger.warn("Failed to find file");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
     return new Image(imageResource);

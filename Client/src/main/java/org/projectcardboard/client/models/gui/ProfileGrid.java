@@ -47,7 +47,7 @@ public class ProfileGrid extends GridPane {
       historyIcon = new Image(historyIconR);
     } catch (FileNotFoundException e) {
       logger.warn("Could not load Profile Icon(s)");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 

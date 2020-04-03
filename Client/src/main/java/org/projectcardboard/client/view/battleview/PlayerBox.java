@@ -192,7 +192,7 @@ public class PlayerBox implements PropertyChangeListener {
         mpGroup.getChildren().add(imageView);
       } catch (Exception e) {
         logger.warn("Error updating Mana in GUI");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
     for (int i = player1.getCurrentMP() + 1; i <= maxMP; i++) {
@@ -205,7 +205,7 @@ public class PlayerBox implements PropertyChangeListener {
         mpGroup.getChildren().add(imageView);
       } catch (Exception e) {
         logger.warn("Error updating Mana in GUI");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
 
@@ -227,7 +227,7 @@ public class PlayerBox implements PropertyChangeListener {
         mpGroup.getChildren().add(imageView);
       } catch (Exception e) {
         logger.warn("Error updating Mana in GUI");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
     for (int i = player2.getCurrentMP() + 1; i <= maxMP; i++) {
@@ -240,7 +240,7 @@ public class PlayerBox implements PropertyChangeListener {
         mpGroup.getChildren().add(imageView);
       } catch (Exception e) {
         logger.warn("Error updating Mana in GUI");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
 

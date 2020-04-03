@@ -22,7 +22,7 @@ public class FriendGameMenu extends GameModeChooseMenu {
         menu = new FriendGameMenu();
       } catch (FileNotFoundException e) {
         logger.warn("Error setting FriendGameMenu");
-        logger.trace(e.getMessage());
+        logger.debug(e.getMessage());
       }
     }
     return menu;

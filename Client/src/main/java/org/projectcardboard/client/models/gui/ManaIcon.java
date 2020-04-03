@@ -31,7 +31,7 @@ class ManaIcon extends StackPane {
       manaIcon = new Image(manaIconR);
     } catch (FileNotFoundException e) {
       logger.warn("could not find mana icon");
-      logger.trace(e.getMessage());
+      logger.debug(e.getMessage());
     }
   }
 
