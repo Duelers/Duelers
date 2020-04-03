@@ -116,7 +116,8 @@ public class GameController implements GameActions {
       Client.getInstance().addToSendingMessagesAndSend(message);
 
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      logger.info("Attack Failed.");
+      logger.debug(e.getMessage());
     }
 
   }

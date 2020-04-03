@@ -161,7 +161,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     GraphicalUserInterface.getInstance().makeFullScreen();
     if (returnValue == JFileChooser.APPROVE_OPTION) {
       File selectedFile = jfc.getSelectedFile();
-      System.out.println(selectedFile.getAbsolutePath());
+      logger.info("Trying to import File: " + selectedFile.getAbsolutePath());
+
       try (BufferedReader bufferedReader =
           new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)))) {
         return bufferedReader.readLine();

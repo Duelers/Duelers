@@ -221,14 +221,11 @@ public class MapBox implements PropertyChangeListener {
           if (GameController.getInstance().getAvailableActions().canDeployMinionOnSquare(gameMap,
               player, card, row, column)) {
             battleScene.getController().insert(card, row, column);
-            // System.out.println("Insert " +
-            // battleScene.getHandBox().getSelectedCard().getCardId());
             battleScene.getHandBox().resetSelection();
             resetSelection();
           }
         } else if (card.getType().equals(CardType.SPELL)) {
           battleScene.getController().insert(card, row, column);
-          // System.out.println("Insert " + battleScene.getHandBox().getSelectedCard().getCardId());
           battleScene.getHandBox().resetSelection();
           resetSelection();
         }
@@ -241,13 +238,11 @@ public class MapBox implements PropertyChangeListener {
         selectedTroop = currentTroop;
         updateMapColors();
         SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
-        // System.out.println("Select " + currentTroop.getCard().getCardId());
       }
       return;
     }
     if (selectedTroop != null && selectedTroop.getCell().getRow() == row
         && selectedTroop.getCell().getColumn() == column) {
-      // System.out.println("DiSelect");
       SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.select);
       battleScene.getHandBox().resetSelection();
       resetSelection();
@@ -257,14 +252,12 @@ public class MapBox implements PropertyChangeListener {
       if (GameController.getInstance().getAvailableActions().canAttack(gameMap, player,
           selectedTroop, row, column)) {
         battleScene.getController().attack(selectedTroop, currentTroop);
-        // System.out.println(selectedTroop + " attacked to " + currentTroop);
         battleScene.getHandBox().resetSelection();
         resetSelection();
         SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.attack);
       } else if (GameController.getInstance().getAvailableActions().canMove(gameMap, player,
           selectedTroop, row, column)) {
         battleScene.getController().move(selectedTroop, row, column);
-        // System.out.println(selectedTroop.getCard().getCardId() + " moved");
         battleScene.getHandBox().resetSelection();
         resetSelection();
         SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.move);
