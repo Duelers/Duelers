@@ -17,6 +17,8 @@ import javafx.scene.text.FontWeight;
 import org.projectcardboard.client.models.gui.*;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 
@@ -35,6 +37,8 @@ public class WaitingMenu extends Show {
   private static final Media backgroundMusic =
       new Media(WaitingMenu.class.getResource("/music/waiting.m4a").toString());
   private final Show previousShow;
+
+  private static Logger logger = LoggerFactory.getLogger(WaitingMenu.class);
 
   WaitingMenu(Show show) {
     this.previousShow = show;
@@ -63,7 +67,8 @@ public class WaitingMenu extends Show {
       AnchorPane sceneContents = new AnchorPane(background, heroView, vignette, container);
       root.getChildren().addAll(sceneContents);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("Error setting up Wait Menu");
+      logger.debug(e.getMessage());
     }
   }
 

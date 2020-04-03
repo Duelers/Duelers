@@ -8,6 +8,8 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 import org.projectcardboard.client.models.gui.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 
@@ -27,6 +29,8 @@ public class PlayMenu extends Show {
           "Search for an opponent an play", event -> GlobalGameMenu.getInstance().show())};
   private static PlayMenu menu;
 
+  private static Logger logger = LoggerFactory.getLogger(PlayMenu.class);
+
   PlayMenu(PlayButtonItem[] items, String backgroundUrl, EventHandler<? super MouseEvent> backEvent)
       throws FileNotFoundException {
     root.setBackground(ROOT_BACKGROUND);
@@ -45,7 +49,8 @@ public class PlayMenu extends Show {
       try {
         menu = new PlayMenu(items, BACKGROUND_URL, BACK_EVENT);
       } catch (FileNotFoundException e) {
-        e.printStackTrace();
+        logger.warn("Error trying to setup PlayMenu");
+        logger.debug(e.getMessage());
       }
     }
     return menu;

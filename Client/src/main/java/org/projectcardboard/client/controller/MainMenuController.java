@@ -1,6 +1,5 @@
 package org.projectcardboard.client.controller;
 
-import shared.models.account.AccountType;
 import org.projectcardboard.client.models.message.ChatMessage;
 import org.projectcardboard.client.models.message.Message;
 import org.projectcardboard.client.view.GlobalChatDialog;
@@ -30,10 +29,5 @@ public class MainMenuController {
   public void sendChatMessage(String text) {
     Client.getInstance().addToSendingMessagesAndSend(Message.makeChatMessage(serverName,
         Client.getInstance().getAccount().getUsername(), null, text));
-  }
-
-  public void changeAccountTypeRequest(String username, AccountType newValue) {
-    Client.getInstance().addToSendingMessagesAndSend(
-        Message.makeChangeAccountTypeMessage(serverName, username, newValue));
   }
 }

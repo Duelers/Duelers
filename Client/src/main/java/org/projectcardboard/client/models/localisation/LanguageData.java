@@ -7,6 +7,8 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LanguageData {
   private static LanguageData languageDataInstance = null;
@@ -20,6 +22,8 @@ public class LanguageData {
   private Language languageMapDefault;
   private Language languageMapSelected;
 
+  private static Logger logger = LoggerFactory.getLogger(LanguageData.class);
+
   private LanguageData(String selectedLanguage) {
     this.selectedLanguage = selectedLanguage;
 
@@ -28,15 +32,16 @@ public class LanguageData {
       languageMapSelected = loadJson(this.selectedLanguage);
 
     } catch (IOException e) {
-      e.printStackTrace();
+      logger.warn("Could not load Language Json");
+      logger.debug(e.getMessage());
     }
   }
 
   public static LanguageData getInstance() {
     if (languageDataInstance == null) {
 
-      // ToDo load language from configurations.
-      String l = "english";
+
+      String l = "english"; // ToDo load language from configurations.
       languageDataInstance = new LanguageData(l);
     }
     return languageDataInstance;
@@ -52,16 +57,16 @@ public class LanguageData {
     try {
       value = getValue(languageMapSelected, keys);
     } catch (IllegalAccessException | NoSuchFieldException | NullPointerException e1) {
-      System.out.println(String.format(
-          "Language Localisation Error:: failed to find value for keys '%s' for selected language: '%s'. Will use default value.",
+      logger.warn(String.format(
+          "Language Localisation Error: failed to find value for keys '%s' for selected language: '%s'. Will use default value.",
           Arrays.deepToString(keys), selectedLanguage));
 
       // If we fail to find a translation, see if we can add default text.
       try {
         value = getValue(languageMapDefault, keys);
       } catch (IllegalAccessException | NoSuchFieldException | NullPointerException e2) {
-        System.out.println(String.format(
-            "Language Localisation Error:: failed to find value for keys '%s' for DEFAULT language: '%s'. Inserting '%s'",
+        logger.error(String.format(
+            "Language Localisation Error: failed to find value for keys '%s' for DEFAULT language: '%s'. Inserting '%s'",
             Arrays.deepToString(keys), defaultLanguage, missingValue));
       }
     }

@@ -9,6 +9,8 @@ import java.util.HashMap;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import shared.models.card.CardType;
 import shared.models.card.ICard;
 
@@ -19,6 +21,8 @@ class CardBackground extends StackPane {
   static final double GLOW_HEIGHT = 639 * SCALE;
   private static final HashMap<CardType, Image> background = new HashMap<>();
   private static Image glow;
+
+  private static Logger logger = LoggerFactory.getLogger(CardBackground.class);
 
   static {
     try {
@@ -38,7 +42,7 @@ class CardBackground extends StackPane {
       background.put(CardType.MINION, troopBackground);
       background.put(CardType.SPELL, spellBackground);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.debug(e.getMessage());
     }
   }
 

@@ -30,6 +30,9 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class PlayerBox implements PropertyChangeListener {
   private final Image manaImage =
       new Image(this.getClass().getResourceAsStream("/ui/icon_mana@2x.png"));
@@ -51,6 +54,8 @@ public class PlayerBox implements PropertyChangeListener {
   private ImageView player2Image;
   private ColorAdjust player1ImageEffect;
   private ColorAdjust player2ImageEffect;
+
+  private static Logger logger = LoggerFactory.getLogger(PlayerBox.class);
 
   PlayerBox(BattleScene battleScene, Game game) throws Exception {
     this.battleScene = battleScene;
@@ -175,6 +180,7 @@ public class PlayerBox implements PropertyChangeListener {
   }
 
   private void updateMP(int maxMP) {
+    // Todo can probably be refactored using the 'dry' principle.
     mpGroup.getChildren().clear();
     for (int i = 1; i <= player1.getCurrentMP(); i++) {
       try {
@@ -185,7 +191,8 @@ public class PlayerBox implements PropertyChangeListener {
         imageView.setY(SCALE * (150 - i * 2));
         mpGroup.getChildren().add(imageView);
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.warn("Error updating Mana in GUI");
+        logger.debug(e.getMessage());
       }
     }
     for (int i = player1.getCurrentMP() + 1; i <= maxMP; i++) {
@@ -197,7 +204,8 @@ public class PlayerBox implements PropertyChangeListener {
         imageView.setY(SCALE * (150 - i * 2));
         mpGroup.getChildren().add(imageView);
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.warn("Error updating Mana in GUI");
+        logger.debug(e.getMessage());
       }
     }
 
@@ -218,7 +226,8 @@ public class PlayerBox implements PropertyChangeListener {
         imageView.setY(SCALE * (150 - i * 2));
         mpGroup.getChildren().add(imageView);
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.warn("Error updating Mana in GUI");
+        logger.debug(e.getMessage());
       }
     }
     for (int i = player2.getCurrentMP() + 1; i <= maxMP; i++) {
@@ -230,7 +239,8 @@ public class PlayerBox implements PropertyChangeListener {
         imageView.setY(SCALE * (150 - i * 2));
         mpGroup.getChildren().add(imageView);
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.warn("Error updating Mana in GUI");
+        logger.debug(e.getMessage());
       }
     }
 
@@ -242,7 +252,6 @@ public class PlayerBox implements PropertyChangeListener {
     player2MPText.setFill(Color.AQUA);
     mpGroup.getChildren().add(player2MPText);
     handleOpponentDeckView(maxMP);
-
   }
 
   public void handleOpponentDeckView(int maxMP) {
@@ -251,13 +260,12 @@ public class PlayerBox implements PropertyChangeListener {
       opponentDeckInfo.setText("Deck: " + player2.getDeckSize() + " Hand: "
           + player2.getHand().size() + "/" + shared.Constants.MAXIMUM_CARD_HAND_SIZE);
       opponentDeckInfo.setX(SCREEN_WIDTH - SCALE * (550 + maxMP * 40));
-      opponentDeckInfo.setY(SCALE * (180 - maxMP * 2));
     } else {
       opponentDeckInfo.setText("Deck: " + player1.getDeckSize() + " Hand: "
           + player1.getHand().size() + "/" + shared.Constants.MAXIMUM_CARD_HAND_SIZE);
       opponentDeckInfo.setX(SCALE * (350 + maxMP * 40));
-      opponentDeckInfo.setY(SCALE * (180 - maxMP * 2));
     }
+    opponentDeckInfo.setY(SCALE * (180 - maxMP * 2));
     opponentDeckInfo.setFont(Constants.AP_FONT);
     opponentDeckInfo.setStyle("-fx-text-base-color: white; -fx-font-size: 24px;");
     opponentDeckInfo.setFill(Color.AQUAMARINE);

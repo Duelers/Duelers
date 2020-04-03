@@ -13,6 +13,8 @@ import org.projectcardboard.client.view.battleview.BattleScene;
 
 import Config.Config;
 import javafx.application.Platform;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import shared.models.card.AttackType;
 import shared.models.card.Card;
 import shared.models.card.CardType;
@@ -25,6 +27,7 @@ public class GameController implements GameActions {
   BattleScene battleScene;
   private Game currentGame;
   private final AvailableActions availableActions = constructAvailableActions();
+  private static Logger logger = LoggerFactory.getLogger(GameController.class);
 
 
   private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
@@ -65,7 +68,8 @@ public class GameController implements GameActions {
             "battlemap6_middleground@2x");
         battleScene.show();
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.warn("Failed to create BattleScene");
+        logger.debug(e.getMessage());
       }
     });
 
@@ -112,7 +116,8 @@ public class GameController implements GameActions {
       Client.getInstance().addToSendingMessagesAndSend(message);
 
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      logger.info("Attack Failed.");
+      logger.debug(e.getMessage());
     }
 
   }
@@ -140,7 +145,8 @@ public class GameController implements GameActions {
           Message.makeMoveTroopMessage(SERVER_NAME, selectedTroop.getCard().getCardId(), target);
       Client.getInstance().addToSendingMessagesAndSend(message);
     } catch (InputException e) {
-      System.out.println(e.getMessage());
+      logger.warn("Failed to move troop");
+      logger.debug(e.getMessage());
     }
   }
 
@@ -206,7 +212,8 @@ public class GameController implements GameActions {
     try {
       availableActions = new AvailableActions();
     } catch (NoSuchMethodException e) {
-      e.printStackTrace();
+      logger.warn("NoSuchMethodException was caught when 'constructAvailableActions'");
+      logger.debug(e.getMessage());
       availableActions = null;
     }
     return availableActions;
