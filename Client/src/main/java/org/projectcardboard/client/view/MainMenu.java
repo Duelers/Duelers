@@ -10,6 +10,8 @@ import org.projectcardboard.client.models.gui.*;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
 import org.projectcardboard.client.models.message.OnlineGame;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -57,6 +59,8 @@ public class MainMenu extends Show {
 
   private DialogContainer onlineGamesDialog;
 
+  private static Logger logger = LoggerFactory.getLogger(MainMenu.class);
+
   {
     items.addAll(Arrays.asList(itemsArray));
     if (Client.getInstance().getAccount().getAccountType().equals(ADMIN)) {
@@ -80,7 +84,8 @@ public class MainMenu extends Show {
       AnchorPane sceneContents = new AnchorPane(background, menuBox);
       root.getChildren().addAll(sceneContents);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("Error trying to setup main menu");
+      logger.trace(e.getMessage());
     }
   }
 
@@ -108,7 +113,8 @@ public class MainMenu extends Show {
         OnlineGame[] onlineGames = OnlineGamesListController.getInstance().getOnlineGames();
         Platform.runLater(() -> onlineGamesList.setItems(onlineGames));
       } catch (InterruptedException e) {
-        e.printStackTrace();
+        logger.warn("Thread interrupted when showing online games list");
+        logger.trace(e.getMessage());
       }
     }).start();
 
