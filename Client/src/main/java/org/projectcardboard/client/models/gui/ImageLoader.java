@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class ImageLoader {
-  static Logger logger = LoggerFactory.getLogger(ImageLoader.class);
+  private static Logger logger = LoggerFactory.getLogger(ImageLoader.class);
 
   public static ImageView loadImage(String url, double width, double height)
       throws FileNotFoundException {

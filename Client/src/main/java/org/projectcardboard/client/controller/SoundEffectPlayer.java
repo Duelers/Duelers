@@ -16,7 +16,7 @@ public class SoundEffectPlayer {
   private static final String format = ".m4a";
   private static final SoundEffectPlayer SEP = new SoundEffectPlayer();
 
-  Logger logger = LoggerFactory.getLogger(SoundEffectPlayer.class);
+  private static Logger logger = LoggerFactory.getLogger(SoundEffectPlayer.class);
 
   static {
     Arrays.stream(SoundName.values()).forEach(soundName -> {

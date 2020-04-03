@@ -14,7 +14,7 @@ public class DeckExporter {
   private static final String FORMAT = ".deck.json";
   private final ExportedDeck deck;
 
-  Logger logger = LoggerFactory.getLogger(DeckExporter.class);
+  private static Logger logger = LoggerFactory.getLogger(DeckExporter.class);
 
   public DeckExporter(Deck deck) {
     this.deck = new ExportedDeck(deck);

@@ -27,7 +27,7 @@ public class GameController implements GameActions {
   BattleScene battleScene;
   private Game currentGame;
   private final AvailableActions availableActions = constructAvailableActions();
-  Logger logger = LoggerFactory.getLogger(GameController.class);
+  private static Logger logger = LoggerFactory.getLogger(GameController.class);
 
 
   private static final String SERVER_NAME = Config.getInstance().getProperty("SERVER_NAME");
