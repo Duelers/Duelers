@@ -124,12 +124,7 @@ public class DeckBox extends GridPane {
     remove.setOnMouseClicked(event -> {
       SoundEffectPlayer.getInstance().playSound(SoundEffectPlayer.SoundName.click);
       CollectionMenuController.getInstance().removeDeck(deck.getName());
-      try {
-        CollectionMenu.getInstance().showCollectionCards();
-      } catch (FileNotFoundException e) {
-        logger.warn("Could not show collection");
-        logger.trace(e.getMessage());
-      }
+      CollectionMenu.getInstance().showCollectionCards();
     });
 
     export.setOnMouseEntered(event -> {

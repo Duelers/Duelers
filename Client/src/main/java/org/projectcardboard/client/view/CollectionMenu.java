@@ -20,6 +20,8 @@ import org.projectcardboard.client.models.account.Collection;
 import org.projectcardboard.client.models.card.Deck;
 import org.projectcardboard.client.models.card.ExportedDeck;
 import org.projectcardboard.client.models.gui.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -59,6 +61,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
   private VBox cardsBox;
   private VBox decksBox;
   private Collection showingCards;
+
+  private static Logger logger = LoggerFactory.getLogger(CollectionMenu.class);
 
   CollectionMenu() {
     menu = this;
@@ -112,11 +116,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       cardsScroll.setId("background_transparent");
 
       showCollectionButton = new ImageButton("BACK", event -> {
-        try {
-          showCollectionCards();
-        } catch (FileNotFoundException e) {
-          e.printStackTrace();
-        }
+        showCollectionCards();
       });
 
       collectionBox.getChildren().addAll(searchBox, cardsScroll);
@@ -127,7 +127,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
       root.getChildren().addAll(sceneContents);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("error trying to show card collection");
+      logger.trace(e.getMessage());
     }
   }
 
@@ -165,13 +166,14 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
           new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)))) {
         return bufferedReader.readLine();
       } catch (IOException e) {
-        e.printStackTrace();
+        logger.warn("error trying to open selected file");
+        logger.trace(e.getMessage());
       }
     }
     return null;
   }
 
-  public void showCollectionCards() throws FileNotFoundException {
+  public void showCollectionCards() {
     searchBox.setVisible(true);
     collectionBox.getChildren().remove(showCollectionButton);
     cardsBox.getChildren().clear();
@@ -258,7 +260,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
       cardsBox.getChildren().addAll(heroesGrid, minionsGrid, spellsGrid);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("error trying to show card collection");
+      logger.trace(e.getMessage());
     }
   }
 }
