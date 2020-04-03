@@ -16,7 +16,7 @@ import java.beans.PropertyChangeSupport;
 
 public class Game extends BaseGame<Player, GameMap> {
   private transient PropertyChangeSupport support = new PropertyChangeSupport(this);
-  private Logger logger = LoggerFactory.getLogger(Game.class);
+  private static Logger logger = LoggerFactory.getLogger(Game.class);
 
 
   public Game(Player playerOne, Player playerTwo, GameMap gameMap, int turnNumber,

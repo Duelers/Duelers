@@ -22,7 +22,7 @@ public class LanguageData {
   private Language languageMapDefault;
   private Language languageMapSelected;
 
-  private Logger logger = LoggerFactory.getLogger(LanguageData.class);
+  private static Logger logger = LoggerFactory.getLogger(LanguageData.class);
 
   private LanguageData(String selectedLanguage) {
     this.selectedLanguage = selectedLanguage;

@@ -19,7 +19,7 @@ public class GraphicalUserInterface {
   private MediaPlayer backgroundMusicPlayer;
   private Media currentMedia;
 
-  private Logger logger = LoggerFactory.getLogger(GraphicalUserInterface.class);
+  private static Logger logger = LoggerFactory.getLogger(GraphicalUserInterface.class);
 
   private GraphicalUserInterface() {}
 
