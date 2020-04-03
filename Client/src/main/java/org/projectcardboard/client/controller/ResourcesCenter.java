@@ -56,18 +56,6 @@ public class ResourcesCenter {
     }
   }
 
-  public static void main(String[] args) {
-    try {
-      // System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
-      readData();
-    } catch (OutOfMemoryError e) {
-      // System.out.println("ho");
-    }
-    // System.out.println(Runtime.getRuntime().totalMemory() / 1000000);
-
-    // System.out.println("x");
-  }
-
   public static ResourcesCenter getInstance() {
     return ourInstance;
   }
