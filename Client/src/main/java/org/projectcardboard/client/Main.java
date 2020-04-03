@@ -13,10 +13,11 @@ import org.slf4j.LoggerFactory;
 
 public class Main extends Application {
 
+  private static Logger logger = LoggerFactory.getLogger(Main.class);
+
   public static void main(String[] args) {
 
-    Logger logger = LoggerFactory.getLogger(Main.class);
-    logger.info("Starting Client");
+    logger.info("Starting Client with the following args: '" + String.join("", args) + "'");
 
     LanguageData.getInstance(); // Initialise
 
@@ -29,7 +30,6 @@ public class Main extends Application {
     Client.getInstance().makeConnection();
 
     // Todo add logging calls to get client and server versions.
-
     launch(args);
   }
 
