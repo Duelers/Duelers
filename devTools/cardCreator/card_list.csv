@@ -93,6 +93,7 @@ MINION,Nomad Adjutant,Opening Gambit: Your General gains +3 attack and may not d
 MINION,Nomad Grenadier,"Ranged, On Attack: The attacked Minion may no longer defend.",3,5,6,f3_incinera,vetruvian
 MINION,Nomad Oasis Finder,In combat this unit gets +0/+2,1,3,2,f3_windgiver,vetruvian
 MINION,Nomad Raid Leader,On Attack: All Your minions gain +1/+1.,3,3,3,f3_mech,vetruvian
+MINION,Nomad Scout,Flying,0,5,1,f3_buildcommon,vetruvian
 MINION,Nomad Sparring Master,"Provoke, When Counter Attacking: Your general gains 3 Health",3,7,5,neutral_thegreatprotector,vetruvian
 MINION,Nomad Spotter,"Opening Gambit: Your General gains +2 attack until the end of turn, and Gains 2 Health.",3,3,3,f3_falcius,vetruvian
 MINION,One-Eyed Sharpshooter,Opening Gambit: Destory a Random Enemy Minion with Ranged,2,2,2,f3_insightcaster,vetruvian
