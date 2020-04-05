@@ -1,0 +1,81 @@
+{
+  "name": "Fury Cutter",
+  "description": "Airdrop, Provoke, Backstab: (4)\n On counterattack, deal 3 damage to everything in a 3x3 area.",
+  "cardId": "FuryCutter",
+  "faction": "songhai",
+  "spriteName": "f2_synergyunit",
+  "type": "MINION",
+  "spells": [
+ {
+      "spellId": "dmg_on_counteratt",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": -3,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 1,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 3,
+          "column": 3
+        },
+        "owner": {
+          "own": true,
+          "enemy": true
+        },
+        "cardType": {
+          "cell": false,
+          "hero": true,
+          "minion": true,
+          "player": true
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": false,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onCounterAttack": true
+      },
+      "coolDown": 0,
+      "manaCost": 0,
+      "lastTurnUsed": 0
+    }
+],
+  "defaultAp": 3,
+  "defaultHp": 7,
+  "manaCost": 7,
+  "price": 100,
+  "attackType": "MELEE",
+  "hasBackstab": true,
+  "backstab": 4,
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
