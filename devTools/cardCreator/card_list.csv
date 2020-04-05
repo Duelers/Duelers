@@ -99,6 +99,14 @@ MINION,Nomad Spotter,"Opening Gambit: Your General gains +2 attack until the end
 MINION,One-Eyed Sharpshooter,Opening Gambit: Destory a Random Enemy Minion with Ranged,2,2,2,f3_insightcaster,vetruvian
 MINION,Sand Carved Guardian,"Provoke, Lock 3 Mana",4,6,4,neutral_goldenjusticar,vetruvian
 MINION,Sand Carved Juggernaut,Lock 3 Mana,5,5,2,f3_windstriker,vetruvian
+SPELL,Accretion Disk,Deal 1/3/5 damage to All Units in a 5x5 area./n Lock 2 Mana.,0,0,6,icon_f3_maelstrom,vetruvian
+SPELL,Bone Swarm,Deal 2 damage to the Enemy General and Enemy units nearby their general.,0,0,2,icon_f3_boneswarm,vetruvian
 SPELL,Burden of Knowledge,Deal 1 damage to your General. Draw a card,0,0,0,icon_f3_glimpse,vetruvian
 SPELL,Circle of Dessication,Destroy all minions.,0,0,8,icon_f3_circleofdessication,vetruvian
+SPELL,Entropic Decay,Destroy an Enemy Minion nearby your general.,0,0,4,icon_f3_entropicdecay,vetruvian
+SPELL,Heat Lightning,Deal 3 damage to any target. Lock 2.,0,0,1,icon_f3_astraflood,vetruvian
+SPELL,Judgment of the Sun,Destroy All Enemy units./n Lock 3 Mana.,0,0,8,icon_f3_godmulligan,vetruvian
+SPELL,Quick Sand,Target unit cannot move or attack.,0,0,2,icon_f3_sandtrap,vetruvian
 SPELL,Scion's First Wish,Give a friendly minion +1/+1. Draw a card,0,0,1,icon_f3_scionsfirstwish,vetruvian
+SPELL,Solar Wave,Deal 4 damage to All Enemy units in three Rows./n Lock 4 Mana.,0,0,7,icon_f3_gonewithwind,vetruvian
+SPELL,Spiteful Haboob,Deal 3 damage to All Enemy units./n Lock 3 Mana.,0,0,3,icon_f3_increasingwinds,vetruvian
