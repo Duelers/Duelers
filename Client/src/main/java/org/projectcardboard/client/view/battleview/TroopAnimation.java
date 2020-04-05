@@ -70,7 +70,6 @@ public class TroopAnimation extends Transition {
     this.isMyTroop = isMyTroop;
 
     // read settings
-    System.out.println(isCustom);
     String customCardPath = Config.getInstance().getCustomCardSpritesPath().toString() + "/";
     InputStream plistR = isCustom ? new FileInputStream(customCardPath + fileName + ".plist.json")
         : this.getClass().getResourceAsStream("/troopAnimations/" + fileName + ".plist.json");
@@ -250,7 +249,8 @@ public class TroopAnimation extends Transition {
       imageView.setScaleX(1);
     else
       imageView.setScaleX(-1);
-    switch (action) {
+    switch (action) { // Todo check if order matters. E.g. is death before attack the cause of our
+                      // no attack animations on death bug (#191) ??
       case BREATHING:
         currentFramePositions = breathingFramePositions;
         break;

@@ -10,6 +10,8 @@ import javafx.scene.text.FontWeight;
 import org.projectcardboard.client.models.gui.*;
 import org.projectcardboard.client.models.localisation.LanguageData;
 import org.projectcardboard.client.models.localisation.LanguageKeys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +22,8 @@ import java.util.regex.Pattern;
 import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class LoginMenu extends Show {
+
+  private static Logger logger = LoggerFactory.getLogger(LoginMenu.class);
 
   public LoginMenu() {
     try {
@@ -51,7 +55,8 @@ public class LoginMenu extends Show {
       }
 
     } catch (IOException e) {
-      e.printStackTrace();
+      logger.warn("error finding files in login menu");
+      logger.debug(e.getMessage());
     }
   }
 
@@ -68,7 +73,7 @@ public class LoginMenu extends Show {
     return Config.getInstance().getProperty("SERVER_URI");
   }
 
-  public String getClientVersionInfo() throws IOException {
+  public String getClientVersionInfo() throws IOException { // Todo refactor to use configs.
     final String versionPath = "/clientVersion.txt";
 
     InputStream file = this.getClass().getResourceAsStream(versionPath);

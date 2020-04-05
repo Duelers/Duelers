@@ -14,11 +14,15 @@ import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BackButton extends ImageView {
   private static final Effect HOVER_EFFECT = new ColorAdjust(0, 0.15, 0.2, 0);
   private static final double SIZE = 200 * SCALE;
   private static Image IMAGE;
+
+  private static Logger logger = LoggerFactory.getLogger(BackButton.class);
 
   static {
     try {
@@ -28,7 +32,8 @@ public class BackButton extends ImageView {
       }
       IMAGE = new Image(backButtonResource);
     } catch (FileNotFoundException | NullPointerException e) {
-      e.printStackTrace();
+      logger.warn("Failed to find/load 'back button' resource");
+      logger.debug(e.getMessage());
     }
   }
 

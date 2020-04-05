@@ -5,6 +5,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -17,6 +20,8 @@ class ManaIcon extends StackPane {
   private static final double HEIGHT = 148 * SCALE;
   private static Image manaIcon;
 
+  private static Logger logger = LoggerFactory.getLogger(ManaIcon.class);
+
   static {
     try {
       InputStream manaIconR = ManaIcon.class.getResourceAsStream("/ui/icon_mana@2x.png");
@@ -25,7 +30,8 @@ class ManaIcon extends StackPane {
       }
       manaIcon = new Image(manaIconR);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      logger.warn("could not find mana icon");
+      logger.debug(e.getMessage());
     }
   }
 

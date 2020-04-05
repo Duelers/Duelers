@@ -5,6 +5,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.projectcardboard.client.models.gui.UIConstants;
 import org.projectcardboard.client.models.gui.KeyboardShortcutConstants;
 import org.projectcardboard.client.view.LoginMenu;
@@ -15,6 +18,8 @@ public class GraphicalUserInterface {
   private Scene scene;
   private MediaPlayer backgroundMusicPlayer;
   private Media currentMedia;
+
+  private static Logger logger = LoggerFactory.getLogger(GraphicalUserInterface.class);
 
   private GraphicalUserInterface() {}
 
@@ -52,7 +57,8 @@ public class GraphicalUserInterface {
       backgroundMusicPlayer.setCycleCount(-1);
       backgroundMusicPlayer.setAutoPlay(true);
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.warn("Failed to set background Music");
+      logger.debug(e.getMessage());
     }
   }
 

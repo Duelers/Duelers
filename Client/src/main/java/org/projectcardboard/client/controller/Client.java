@@ -24,8 +24,12 @@ import Config.Config;
 import javafx.application.Platform;
 import java.util.Objects;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class Client {
+
   private WebSocket ws;
   private static Client client;
   private final LinkedList<Message> sendingMessages = new LinkedList<>();
@@ -35,7 +39,7 @@ public class Client {
   private final Gson gson = new Gson();
   private static final String serverName = Config.getInstance().getProperty("SERVER_NAME");
   private static final String GENERIC_ERROR = "Unknown error";
-
+  private static Logger logger = LoggerFactory.getLogger(Client.class);
 
   public static Client getInstance() {
     if (client == null) {
@@ -50,7 +54,13 @@ public class Client {
       String serverIp = Config.getInstance().getProperty("SERVER_IP");
       String port = Config.getInstance().getProperty("PORT");
       serverUri = "ws://" + serverIp + ":" + port;
+
+      logger.info("IP:" + serverIp);
+      logger.info("port: " + port);
     }
+
+    logger.info("uri: " + serverUri);
+
     int connectionAttempts = 5;
 
     Thread sendMessageThread = new Thread(this::sendMessages);
@@ -63,9 +73,10 @@ public class Client {
 
         String msg = simplifyLogMessage(messageObject, "Server");
         if (msg != null) {
-          System.out.println(msg);
+          logger.info(msg);
         } else {
-          System.out.println(message);
+          logger.info(String.format("Message of Type '%s' was sent by '%s'",
+              messageObject.getMessageType().toString(), messageObject.getSender()));
         }
         handleMessage(messageObject);
       }
@@ -75,7 +86,10 @@ public class Client {
         this.ws.connect();
         break;
       } catch (WebSocketException e) {
-        System.out.println(e.getMessage());
+
+        logger.warn("Failed to Connect");
+        logger.debug(e.getMessage());
+
         connectionAttempts -= 1;
         if (connectionAttempts == 0) {
           throw new RuntimeException(e);
@@ -100,21 +114,23 @@ public class Client {
 
   private String simplifyLogMessage(Message message, String sender) {
 
-    final String header = String.format("%s says: ", sender);
-
     switch (message.getMessageType()) {
       case TROOP_UPDATE:
 
         int currentAttack = message.getTroopUpdateMessage().getTroop().getCurrentAp();
         int currentHealth = message.getTroopUpdateMessage().getTroop().getCurrentHp();
 
-        return header + message.getTroopUpdateMessage().getTroop().getCard().getCardId()
+        return "(TROOP_UPDATE) " + message.getTroopUpdateMessage().getTroop().getCard().getCardId()
             + String.format(" is %d/%d and at location: ", currentAttack, currentHealth)
             + message.getTroopUpdateMessage().getTroop().getCell();
 
       case CARD_POSITION:
-        return header + message.getCardPositionMessage().getCard().getCardId()
+        return "(CARD_POSITION) " + message.getCardPositionMessage().getCard().getCardId()
             + " has been moved to: " + message.getCardPositionMessage().getCardPosition();
+
+      case CHAT:
+        return String.format("(CHAT) Message: '%s' was sent by '%s'",
+            message.getChatMessage().getText(), message.getChatMessage().getSenderUsername());
 
       default:
         return null;
@@ -130,8 +146,6 @@ public class Client {
       if (message != null) {
         String json = message.toJson();
         this.ws.sendText(json);
-
-        System.out.println("message sent: " + json);
 
       } else {
         try {

@@ -1150,12 +1150,6 @@ public abstract class Game extends BaseGame<Player, GameMap> {
         }
       }
     }
-
-    // Debugging print statements
-    // GameServer.serverPrint("( " + centerPosition.toString() + ") (" + dimensions.toString() +
-    // ")");
-    // targetCells.forEach((n) -> System.out.print("[" + n.getRow() + n.getColumn() + "] "));
-    // System.out.println();
     return targetCells;
   }
 

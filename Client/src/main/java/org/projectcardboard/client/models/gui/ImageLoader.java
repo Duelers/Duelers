@@ -1,17 +1,20 @@
 package org.projectcardboard.client.models.gui;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class ImageLoader {
+  private static Logger logger = LoggerFactory.getLogger(ImageLoader.class);
 
   public static ImageView loadImage(String url, double width, double height)
       throws FileNotFoundException {
-    System.out.println("Loading image: " + url);
     InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
     if (imageResource == null) {
       throw new FileNotFoundException();
@@ -34,17 +37,16 @@ public class ImageLoader {
   }
 
   public static Image load(String url) {
-    System.out.println("Loading image: " + url);
     InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
     if (imageResource == null) {
-      System.out.println("Failed to load image at: " + url + ". Attempting Custom Card check...");
+      logger.warn("Failed to load image at: " + url);
       try {
         FileInputStream inputStream = new FileInputStream(url);
         return new Image(inputStream);
-      } catch (FileNotFoundException ex) {
-        ex.printStackTrace();
+      } catch (FileNotFoundException e) {
+        logger.warn("Failed to find file");
+        logger.debug(e.getMessage());
       }
-      return null; // todo Instead of null, maybe return some placeholder image ?
     }
     return new Image(imageResource);
   }

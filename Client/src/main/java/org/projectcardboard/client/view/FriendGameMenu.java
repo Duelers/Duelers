@@ -1,5 +1,7 @@
 package org.projectcardboard.client.view;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import shared.models.game.GameType;
 
 import java.io.FileNotFoundException;
@@ -7,6 +9,8 @@ import java.io.FileNotFoundException;
 public class FriendGameMenu extends GameModeChooseMenu {
   private static final String BACKGROUND_URL = "/menu/background/friend_game_background.jpg";
   private static FriendGameMenu menu;
+
+  private static Logger logger = LoggerFactory.getLogger(FriendGameMenu.class);
 
   private FriendGameMenu() throws FileNotFoundException {
     super(BACKGROUND_URL);
@@ -17,7 +21,8 @@ public class FriendGameMenu extends GameModeChooseMenu {
       try {
         menu = new FriendGameMenu();
       } catch (FileNotFoundException e) {
-        e.printStackTrace();
+        logger.warn("Error setting FriendGameMenu");
+        logger.debug(e.getMessage());
       }
     }
     return menu;
