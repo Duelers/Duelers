@@ -1,9 +1,9 @@
 {
-  "frameWidth": 50,
-  "frameHeight": 50,
+  "frameWidth": 24,
+  "frameHeight": 24,
   "frameDuration": 100,
-  "extraX": 35.0,
-  "extraY": 35.0,
+  "extraX": 0.0,
+  "extraY": 0.0,
   "lists": {
     "frames": [
       {
@@ -29,6 +29,26 @@
       {
         "x": 0,
         "y": 0
+      },
+      {
+        "x": 51,
+        "y": 76
+      },
+      {
+        "x": 51,
+        "y": 51
+      },
+      {
+        "x": 51,
+        "y": 126
+      },
+      {
+        "x": 51,
+        "y": 151
+      },
+      {
+        "x": 51,
+        "y": 101
       }
     ]
   }
