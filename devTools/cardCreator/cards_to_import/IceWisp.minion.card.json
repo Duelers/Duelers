@@ -1,0 +1,65 @@
+{
+    "name": "Ice Wisp",
+    "description": "Opening Gambit: Draw 2 cards.",
+    "cardId": "IceWisp",
+    "faction": "vanar",
+    "spriteName": "f6_waterelemental",
+    "type": "MINION",
+    "spells": [
+	{
+	    "spellId": "draw_2",
+	    "fxName": "fx_carddraw",
+	    "action": {
+		"enemyHitChanges": 0,
+		"apChange": 0,
+		"hpChange": 0,
+		"mpChange": 0,
+		"cardDraw": 2,
+		"poison": false,
+		"makeStun": false,
+		"makeDisarm": false,
+		"noDisarm": false,
+		"noPoison": false,
+		"noStun": false,
+		"noBadEffect": false,
+		"noAttackFromWeakerOnes": false,
+		"disableHolyBuff": false,
+		"addSpell": false,
+		"killsTarget": false,
+		"isForGladiator": false,
+		"durable": true,
+		"removeBuffs": 0,
+		"duration": 1,
+		"delay": 0
+	    },
+	    "target": {
+		"isRelatedToCardOwnerPosition": true,
+		"dimensions": {
+                    "row": 20,
+                    "column": 20
+		},
+		"owner": {
+                    "own": true,
+                    "enemy": false
+		},
+		"cardType": {
+                    "player": true
+		},
+		"attackType": {
+                    "melee": true,
+                    "ranged": true,
+                    "hybrid": true
+		}
+            },
+            "availabilityType": {
+		"onPut": true
+            }
+	}
+    ],
+    "defaultAp": 2,
+    "defaultHp": 3,
+    "manaCost": 2,
+    "price": 100,
+    "attackType": "MELEE",
+    "remainingNumber": 20
+}
