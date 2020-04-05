@@ -24,14 +24,27 @@ SPELL,War Surge,Give all friendly minions +1/+1.,0,0,2,icon_f1_warsurge,lyonar
 HERO,Vaath The Immortal,Magmar General,2,25,0,f5_general,magmar
 MINION,Elucidator,"Rush. 
  Opening Gambit: Deal 4 damage to your General",5,4,4,f5_support,magmar
+MINION,Fossil Eater,"Opening Gambit: Restore 7 health to both generals. 
+ Dying Wish: Deal 7 damage to both Generals.",7,7,7,f5_juggernaut,magmar
+MINION,Hatchling,At the beginning of each turn this minion gains +1 Attack.,1,3,2,f5_earthwalker,magmar
+MINION,Helladon,Gain +1 Health on counter attack,2,6,3,f5_ankylos,magmar
+MINION,Ligmasaur,"Airdrop, This unit may not be stunned or disarmed. Opening Gambit: Permanently disarm and stun all minions nearby it.",7,4,7,boss_grym,magmar
 MINION,Makantor Warbeast,"Rush.
  After attacking, deal 4 damage to all surrounding enemies",4,4,7,f5_mankatorwarbeast,magmar
 MINION,Phalanxar,,7,2,3,f5_tank,magmar
+MINION,Pinata Dinosaur,"When this minion attacks draw a card. When this minion counter attacks, your opponent draws a card.",3,3,3,f5_brundlbeast,magmar
+MINION,Sleeping Quillgod,"Provoke, Can't move or attack. On counter attack, deal 2 damage to all nearby enemies",1,8,6,f5_catalystquillbeast,magmar
+MINION,Spirit Jankester,"Opening Gambit: deal 2 damage to all minions, including itself.",5,7,5,f5_spiritharvester,magmar
 MINION,Terradon,,2,8,3,f5_flumposaur,magmar
+SPELL,Angry Lizard Swing,Deal 5 damage to everything around your General.,0,0,5,icon_f5_diretidefrenzy,magmar
 SPELL,Arms Race,Both Generals gain +1 attack,0,0,1,icon_f1_enthrall,magmar
+SPELL,Dankening Wave,Disarm a minion,0,0,0,icon_f5_dampeningwave,magmar
 SPELL,Earth Sphere,Add 8 Health to your general.,0,0,4,icon_f5_earthsphere,magmar
 SPELL,Flaming Stampede,Deal 8 Damage to ALL characters,0,0,8,icon_f5_flamingstampede,magmar
+SPELL,Greater Jortitude,Give a minion +2/+2.,0,0,1,icon_f5_greaterfortitude,magmar
 SPELL,Kinetic Equilibrium,Deal 2 damage to ALL minions in a 3x3 area. Friendly minions in the area also gain +2 Attack,0,0,3,icon_f5_kineticequilibrium,magmar
+SPELL,Lizard Fight,Both Generals gain +4 attack until the start of your next turn,0,0,1,icon_f5_bloodrage,magmar
+SPELL,Vaath's Uwutality,Stun a minion and give your General +1 attack,0,0,2,icon_f5_spiritofvaath,magmar
 HERO,Calibero,Mercenary General,3,30,0,f1_caliber-o,mercenary
 HERO,Good Boi,"Mercenary General
 Range: (2)",2,20,0,f2_general_skindogehai,mercenary
