@@ -1,0 +1,18 @@
+{
+  "name": "Swift Archer",
+  "description": "Celerity, Ranged: (2)",
+  "cardId": "SwiftArcher",
+  "faction": "songhai",
+  "spriteName": "f2_ogremonk02",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 2,
+  "defaultHp": 1,
+  "manaCost": 3,
+  "price": 100,
+  "attackType": "HYBRID",
+  "hasBackstab": false,
+  "range": 2,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

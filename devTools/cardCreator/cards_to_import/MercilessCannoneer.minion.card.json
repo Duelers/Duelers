@@ -1,0 +1,18 @@
+{
+  "name": "Merciless Cannoneer",
+  "description": "Airdrop, Ranged: (3)",
+  "cardId": "MercilessCannoneer",
+  "faction": "songhai",
+  "spriteName": "f2_flareslinger",
+  "type": "MINION",
+  "spells": [],
+  "defaultAp": 4,
+  "defaultHp": 4,
+  "manaCost": 4,
+  "price": 100,
+  "attackType": "HYBRID",
+  "hasBackstab": false,
+  "range": 3,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
