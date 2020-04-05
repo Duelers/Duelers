@@ -71,16 +71,29 @@ MINION,Worldcore Golem,Golem,25,25,9,neutral_moltengolem,mercenary
 MINION,Young Flamewing,Flying,5,4,4,neutral_monsterflamewing,mercenary
 HERO,Reva Eventide,Songhai General,2,25,0,f2_altgeneral,songhai
 MINION,Celestial Phantom,Destroy any enemy minion that Celestial Phantom attacks or counterattacks,1,5,3,f2_deathphantom,songhai
+MINION,Expert Swordsman,"On attack and counterattack, deal 5 damage to other friendly minions in a 5x5 area.",7,9,5,f2_stormkage,songhai
+MINION,Fury Cutter,"Airdrop, Provoke, Backstab: (4)
+ On counterattack, deal 3 damage to everything in a 3x3 area.",3,7,7,f2_synergyunit,songhai
 MINION,Gore Horn,"Backstab: (2)
  After this minion attacks, it gains +1/+1.",3,3,3,f2_tank,songhai
-MINION,Hashishi,"Rush, Celerity, Backstab: (1)
-After attacking, draw a card",1,1,6,f2_buildcommon,songhai
-MINION,Kaido Assassin,Backstab: (1),2,3,2,f2_melee,songhai
-MINION,Katara,Backstab: (1),1,3,1,f2_katara,songhai
+MINION,HeartSeeker Trainee,"Ranged, on attack, destroy this minion and draw a card.",2,2,1,f2_caster,songhai
+MINION,Katara,Backstab: (3),1,3,1,f2_katara,songhai
+MINION,Lightfoot Assassin,"Celerity, Backstab: (1)
+ On attack, stun this minion for the rest of your turn.",2,3,2,f2_melee,songhai
+MINION,Merciless Cannoneer,"Airdrop, Ranged: (3)",4,4,4,f2_flareslinger,songhai
 MINION,Orizuru,Flying,3,4,3,f2_orizuru,songhai
-MINION,Scarlet Viper,"Flying, Backstab: (4)",2,5,5,f2_support,songhai
+MINION,Scarlet Elapid,"Flying, Celerity, Backstab: (4)",1,3,5,f2_support,songhai
+MINION,Seppuku Bomber,"Flying, On attack, destroy this and all nearby minions.",2,1,2,f2_sepukku,songhai
+MINION,Shadow Hawk,"Flying, Backstab: (1)",1,3,2,f2_masteroftaikwai,songhai
+MINION,Silent Assassin,"Airdrop, Backstab: (1)
+ On Attack, draw a card.",2,4,3,f2_seenoevil,songhai
+MINION,Swift Archer,"Celerity, Ranged: (2)",2,1,3,f2_ogremonk02,songhai
 MINION,Widowmaker,Ranged,2,3,3,f2_ranged,songhai
+SPELL,Burst Eruption,Give friendly minions in a 3x1 row +2/+2 this turn.,0,0,2,icon_f2_earthtwilight,songhai
+SPELL,Ethereal Blades,Give a friendly minion AND your general +2 attack this turn.,0,0,2,icon_f2_etherealblades,songhai
 SPELL,Ghost Lightning,Deal 1 damage to all enemy minions.,0,0,1,icon_f2_ghost_lightning,songhai
+SPELL,Gotatsu,Deal 1 damage to a minion and draw a card.,0,0,1,icon_f2_gotatsu,songhai
+SPELL,Lightning Bomb,Deal 4 damage to an enemy minion and 1 damage to enemies around it.,0,0,3,icon_f2_hellskitchen,songhai
 SPELL,Phoenix Fire,Deal 3 damage to anything.,0,0,2,icon_f2_phoenixfire02,songhai
 SPELL,Saberspine Seal,Give a minion or General +3 Attack this turn.,0,0,1,icon_f2_saberspineseal,songhai
 SPELL,Spiral Technique,Deal 8 damage to anything,0,0,7,icon_f2_spiraltechnique,songhai
