@@ -182,7 +182,7 @@ public class PlayerBox implements PropertyChangeListener {
   private void updateMP(int maxMP) {
     // Todo can probably be refactored using the 'dry' principle.
     mpGroup.getChildren().clear();
-    for (int i = 1; i <= player1.getCurrentMP(); i++) {
+    for (int i = 1; i <= Math.max(0, player1.getCurrentMP()); i++) {
       try {
         ImageView imageView = new ImageView(manaImage);
         imageView.setFitWidth(imageView.getImage().getWidth() * SCALE * 0.35);
@@ -195,7 +195,7 @@ public class PlayerBox implements PropertyChangeListener {
         logger.debug(e.getMessage());
       }
     }
-    for (int i = player1.getCurrentMP() + 1; i <= maxMP; i++) {
+    for (int i = Math.max(1, player1.getCurrentMP() + 1); i <= maxMP; i++) {
       try {
         ImageView imageView = new ImageView(inActiveManaImage);
         imageView.setFitWidth(imageView.getImage().getWidth() * SCALE * 0.35);
@@ -217,7 +217,7 @@ public class PlayerBox implements PropertyChangeListener {
     player1MPText.setFill(Color.AQUA);
     mpGroup.getChildren().add(player1MPText);
 
-    for (int i = 1; i <= player2.getCurrentMP(); i++) {
+    for (int i = 1; i <= Math.max(0, player2.getCurrentMP()); i++) {
       try {
         ImageView imageView = new ImageView(manaImage);
         imageView.setFitWidth(imageView.getImage().getWidth() * SCALE * 0.35);
@@ -230,7 +230,7 @@ public class PlayerBox implements PropertyChangeListener {
         logger.debug(e.getMessage());
       }
     }
-    for (int i = player2.getCurrentMP() + 1; i <= maxMP; i++) {
+    for (int i = Math.max(1, player2.getCurrentMP() + 1); i <= maxMP; i++) {
       try {
         ImageView imageView = new ImageView(inActiveManaImage);
         imageView.setFitWidth(imageView.getImage().getWidth() * SCALE * 0.35);
