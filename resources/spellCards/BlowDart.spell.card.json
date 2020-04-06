@@ -1,18 +1,18 @@
 {
-  "name": "Cacophynos",
-  "description": "Dying Wish: Destroy a random enemy minion nearby this unit.",
-  "cardId": "Cacophynos",
+  "name": "Blow Dart",
+  "description": "Target unit is poisoned",
+  "cardId": "BlowDart",
   "faction": "abyssian",
-  "spriteName": "f4_limbodweller",
-  "type": "MINION",
+  "spriteName": "icon_f4_sphereofdarkness",
+  "type": "SPELL",
   "spells": [
     {
-      "spellId": "random_e_minion_dies",
-      "fxName": "fx_buff",
+      "spellId": "posion_unit",
+	  "fxName": "fx_deathplagueicon",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": 0,
+        "hpChange": -1,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -24,24 +24,24 @@
         "noAttackFromWeakerOnes": false,
         "disableHolyBuff": false,
         "addSpell": false,
-        "killsTarget": true,
+        "killsTarget": false,
         "isForGladiator": false,
         "durable": true,
         "removeBuffs": 0,
-        "duration": 1,
+        "duration": 99,
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": true,
+        "isRelatedToCardOwnerPosition": false,
         "isForAroundOwnHero": false,
-        "isRandom": true,
+        "isRandom": false,
         "isForDeckCards": false,
         "dimensions": {
-          "row": 3,
-          "column": 3
+          "row": 1,
+          "column": 1
         },
         "owner": {
-          "own": false,
+          "own": true,
           "enemy": true
         },
         "cardType": {
@@ -57,18 +57,23 @@
         }
       },
       "availabilityType": {
-        "onDeath": true
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
       },
       "coolDown": 0,
       "manaCost": 0,
       "lastTurnUsed": 0
     }
+	
   ],
-  "defaultAp": 6,
-  "defaultHp": 3,
-  "manaCost": 4,
+  "defaultAp": 0,
+  "defaultHp": 0,
+  "manaCost": 1,
   "price": 100,
-  "attackType": "MELEE",
   "range": 0,
   "hasCombo": false,
   "remainingNumber": 20

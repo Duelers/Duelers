@@ -1,18 +1,17 @@
 {
-  "name": "Cacophynos",
-  "description": "Dying Wish: Destroy a random enemy minion nearby this unit.",
-  "cardId": "Cacophynos",
+  "name": "Bound Miasma Jinn",
+  "description": "Opening Gambit: This unit poisons itself and all nearby allies.",
+  "cardId": "BoundMiasmaJinn",
   "faction": "abyssian",
-  "spriteName": "f4_limbodweller",
+  "spriteName": "f4_mistressofcommands",
   "type": "MINION",
   "spells": [
-    {
-      "spellId": "random_e_minion_dies",
-      "fxName": "fx_buff",
+ {
+      "spellId": "poison_allies",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
-        "hpChange": 0,
+        "hpChange": -1,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -24,29 +23,29 @@
         "noAttackFromWeakerOnes": false,
         "disableHolyBuff": false,
         "addSpell": false,
-        "killsTarget": true,
+        "killsTarget": false,
         "isForGladiator": false,
         "durable": true,
         "removeBuffs": 0,
-        "duration": 1,
-        "delay": 0
+        "duration": -1,
+        "delay": 1
       },
       "target": {
         "isRelatedToCardOwnerPosition": true,
         "isForAroundOwnHero": false,
-        "isRandom": true,
+        "isRandom": false,
         "isForDeckCards": false,
         "dimensions": {
           "row": 3,
           "column": 3
         },
         "owner": {
-          "own": false,
-          "enemy": true
+          "own": true,
+          "enemy": false
         },
         "cardType": {
           "cell": false,
-          "hero": false,
+          "hero": true,
           "minion": true,
           "player": false
         },
@@ -57,18 +56,24 @@
         }
       },
       "availabilityType": {
-        "onDeath": true
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onCounterAttack": false
       },
       "coolDown": 0,
       "manaCost": 0,
       "lastTurnUsed": 0
     }
-  ],
-  "defaultAp": 6,
-  "defaultHp": 3,
-  "manaCost": 4,
+],
+  "defaultAp": 5,
+  "defaultHp": 9,
+  "manaCost": 3,
   "price": 100,
   "attackType": "MELEE",
+  "hasBackstab": false,
   "range": 0,
   "hasCombo": false,
   "remainingNumber": 20

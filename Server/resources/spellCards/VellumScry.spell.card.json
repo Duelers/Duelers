@@ -1,14 +1,14 @@
 {
-  "name": "Cacophynos",
-  "description": "Dying Wish: Destroy a random enemy minion nearby this unit.",
-  "cardId": "Cacophynos",
+  "name": "Vellum Scry",
+  "description": "Sacrifice a friendly minion. Draw 4 Cards",
+  "cardId": "VellumScry",
   "faction": "abyssian",
-  "spriteName": "f4_limbodweller",
-  "type": "MINION",
+  "spriteName": "icon_f4_soulclamp",
+  "type": "SPELL",
   "spells": [
     {
-      "spellId": "random_e_minion_dies",
-      "fxName": "fx_buff",
+      "spellId": "sac_unit_draw_4",
+	  "fxName": "fx_deathplagueicon",
       "action": {
         "enemyHitChanges": 0,
         "apChange": 0,
@@ -25,6 +25,7 @@
         "disableHolyBuff": false,
         "addSpell": false,
         "killsTarget": true,
+		"cardDraw": 4,
         "isForGladiator": false,
         "durable": true,
         "removeBuffs": 0,
@@ -32,23 +33,23 @@
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": true,
+        "isRelatedToCardOwnerPosition": false,
         "isForAroundOwnHero": false,
-        "isRandom": true,
+        "isRandom": false,
         "isForDeckCards": false,
         "dimensions": {
-          "row": 3,
-          "column": 3
+          "row": 1,
+          "column": 1
         },
         "owner": {
-          "own": false,
-          "enemy": true
+          "own": true,
+          "enemy": false
         },
         "cardType": {
           "cell": false,
           "hero": false,
           "minion": true,
-          "player": false
+          "player": true
         },
         "attackType": {
           "melee": true,
@@ -57,18 +58,22 @@
         }
       },
       "availabilityType": {
-        "onDeath": true
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
       },
       "coolDown": 0,
       "manaCost": 0,
       "lastTurnUsed": 0
     }
   ],
-  "defaultAp": 6,
-  "defaultHp": 3,
-  "manaCost": 4,
+  "defaultAp": 0,
+  "defaultHp": 0,
+  "manaCost": 2,
   "price": 100,
-  "attackType": "MELEE",
   "range": 0,
   "hasCombo": false,
   "remainingNumber": 20

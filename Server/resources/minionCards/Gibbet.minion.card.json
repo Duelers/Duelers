@@ -1,13 +1,13 @@
 {
-  "name": "Cacophynos",
-  "description": "Dying Wish: Destroy a random enemy minion nearby this unit.",
-  "cardId": "Cacophynos",
+  "name": "Gibbet",
+  "description": "Whenever this unit attacks an enemy minion destroy it.",
+  "cardId": "Gibbet",
   "faction": "abyssian",
-  "spriteName": "f4_limbodweller",
+  "spriteName": "f4_miniminion",
   "type": "MINION",
   "spells": [
     {
-      "spellId": "random_e_minion_dies",
+      "spellId": "kill_on_attack",
       "fxName": "fx_buff",
       "action": {
         "enemyHitChanges": 0,
@@ -32,15 +32,12 @@
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": true,
+        "isRelatedToCardOwnerPosition": false,
         "isForAroundOwnHero": false,
-        "isRandom": true,
+        "isRandom": false,
         "isForDeckCards": false,
-        "dimensions": {
-          "row": 3,
-          "column": 3
-        },
-        "owner": {
+        
+		"owner": {
           "own": false,
           "enemy": true
         },
@@ -57,16 +54,17 @@
         }
       },
       "availabilityType": {
-        "onDeath": true
+        "onAttack": true
       },
       "coolDown": 0,
       "manaCost": 0,
       "lastTurnUsed": 0
     }
+    
   ],
-  "defaultAp": 6,
-  "defaultHp": 3,
-  "manaCost": 4,
+  "defaultAp": 1,
+  "defaultHp": 2,
+  "manaCost": 2,
   "price": 100,
   "attackType": "MELEE",
   "range": 0,
