@@ -1,0 +1,49 @@
+{
+    "name": "Silent Devotee",
+    "description": "Dying Wish: Restore 6 health to your General.",
+    "cardId": "SilentDevotee",
+	"faction": "lyonar",
+    "spriteName": "boss_dissonance",
+    "type": "MINION",
+	"spells": [
+        {
+            "spellId": "restore_6_to_general",
+			"fxName": "fx_heal",
+            "action": {
+                "hpChange": 6,
+                "durable": true,
+                "duration": 1
+            },
+            "target": {
+                "isRelatedToCardOwnerPosition": true,
+                "dimensions": {
+                    "row": 20,
+                    "column": 20
+                },
+                "owner": {
+                    "own": true,
+                    "enemy": false
+                },
+                "cardType": {
+                    "hero": true
+                },
+                "attackType": {
+                    "melee": true,
+                    "ranged": true,
+                    "hybrid": true
+                }
+            },
+            "availabilityType": {
+                "onDeath": true
+            }
+        }
+    ],
+    "defaultAp": 3,
+    "defaultHp": 6,
+    "manaCost": 4,
+    "price": 100,
+    "attackType": "MELEE",
+    "range": 0,
+    "hasCombo": false,
+    "remainingNumber": 20
+}
