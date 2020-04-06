@@ -1,6 +1,6 @@
 {
   "name": "Katara",
-  "description": "Backstab: (1)",
+  "description": "Backstab: (3)",
   "cardId": "Katara",
   "faction": "songhai",
   "spriteName": "f2_katara",
@@ -12,7 +12,7 @@
   "price": 100,
   "attackType": "MELEE",
   "hasBackstab": true,
-  "backstab": 1,
+  "backstab": 3,
   "range": 0,
   "hasCombo": false,
   "remainingNumber": 20
