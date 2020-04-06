@@ -113,7 +113,24 @@ SPELL,Saberspine Seal,Give a minion or General +3 Attack this turn.,0,0,1,icon_f
 SPELL,Spiral Technique,Deal 8 damage to anything,0,0,7,icon_f2_spiraltechnique,songhai
 HERO,Faie Bloodwing,Vanar General,2,25,0,f6_general,vanar
 MINION,Arctic Displacer,Airdrop,10,4,5,f6_snowwyvern,vanar
+MINION,Banner Bearer,Opening Gambit: Give +2 hp to all nearby friendly minions including Banner Bearer.,2,2,3,f6_tundraguardian,vanar
+MINION,Blacksmith,Opening Gambit: Give your General +1 Attack this turn.,1,3,2,f6_buildcommon,vanar
+MINION,Bloodtear Apprentice,Opening Gambit: Deal 1 damage to all enemies in its row,2,1,2,f6_motherofdrakes,vanar
+MINION,Bloodtear Archmage,Opening Gambit: Deal 4 damage to all enemies in its row,4,2,6,f6_perfectreflection,vanar
+MINION,Freelance Riter,Opening Gambit: Draw 6 cards.,3,2,3,f6_freeblade,vanar
+MINION,Heatdrinker,"Provoke, Dying Wish: Destroy all nearby enemy minions.",3,3,4,f6_ynuytwarlock,vanar
+MINION,Ice Golem,,3,4,3,f6_vanarsentinel,vanar
+MINION,Ice Wisp,Opening Gambit: Draw 2 cards.,2,3,2,f6_waterelemental,vanar
+MINION,Nomodo Charger,Rush,1,1,1,f6_doofybear,vanar
+MINION,Paw,,3,1,1,f6_icy,vanar
+MINION,Pylon,Provoke,0,1,0,f6_bur,vanar
+MINION,Razorback,Opening Gambit: Give all friendly minions +2 Attack this turn.,4,3,4,f6_sentinel,vanar
+SPELL,Chill To The Bone,Give a minion -10 Attack.,0,0,2,icon_f6_icecapsule,vanar
+SPELL,Curse,Give a minion -1/-1. Draw a card,0,0,1,icon_f6_illusoryice,vanar
+SPELL,Fimbulwinter,STUN all enemies,0,0,6,icon_f6_snowstorm,vanar
 SPELL,Frostburn,Deal 3 damage to all enemy minions,0,0,6,icon_f6_frostburn,vanar
+SPELL,Frozen Wish,Draw 2 card,0,0,2,icon_f6_mesmerize,vanar
+SPELL,Hailstone Destruction,Destroy a minion. The enemy General draws 2 additional cards on their next turn.,0,0,2,icon_f6_hailstoneprison,vanar
 HERO,Zirix Starstrider,Vetruvian General,2,25,0,f3_general,vetruvian
 MINION,Aymara Healer,Dying Wish: Deal 5 damage to the enemy General. Your General gains 5 Health.,5,5,6,f3_aymarahealer,vetruvian
 MINION,Nomad Adjutant,Opening Gambit: Your General gains +3 attack and may not defend for 2 turns.,4,5,4,f3_sister,vetruvian
