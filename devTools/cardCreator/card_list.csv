@@ -129,6 +129,8 @@ MINION,Orizuru,Flying,3,4,3,f2_orizuru,songhai
 MINION,Scarlet Elapid,"Flying, Celerity, Backstab: (4)",1,3,5,f2_support,songhai
 MINION,Seppuku Bomber,"Flying, On attack, destroy this and all nearby minions.",2,1,2,f2_sepukku,songhai
 MINION,Shadow Hawk,"Flying, Backstab: (1)",1,3,2,f2_masteroftaikwai,songhai
+MINION,Silent Assassin,"Airdrop, Backstab: (1)
+ On Attack, draw a card.",2,4,3,f2_seenoevil,songhai
 MINION,Swift Archer,"Celerity, Ranged: (2)",2,1,3,f2_ogremonk02,songhai
 MINION,Widowmaker,Ranged,2,3,3,f2_ranged,songhai
 SPELL,Burst Eruption,Give friendly minions in a 3x1 row +2/+2 this turn.,0,0,2,icon_f2_earthtwilight,songhai
