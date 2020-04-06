@@ -2,6 +2,7 @@
   "name": "Primus Shieldmaster",
   "description": "Provoke",
   "cardId": "PrimusShieldmaster",
+  "faction": "mercenary",
   "spriteName": "neutral_primusshieldmaster",
   "type": "MINION",
   "spells": [],
