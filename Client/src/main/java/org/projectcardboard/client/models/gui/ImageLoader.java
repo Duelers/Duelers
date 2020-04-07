@@ -37,6 +37,7 @@ public class ImageLoader {
   }
 
   public static Image load(String url) {
+    System.out.println("loading image: " + url);
     InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
     if (imageResource == null) {
       logger.warn("Failed to load image at: " + url);
