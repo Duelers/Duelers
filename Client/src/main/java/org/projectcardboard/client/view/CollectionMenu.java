@@ -115,14 +115,16 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       cardsScroll.setMinWidth(COLLECTION_WIDTH);
       cardsScroll.setMaxWidth(COLLECTION_WIDTH);
       cardsScroll.setId("background_transparent");
+      cardsScroll.fitToHeightProperty();
+      cardsScroll.fitToWidthProperty();
 
       showCollectionButton = new ImageButton("BACK", event -> {
         showCollectionCards();
       });
 
       HBox pageButtons = new HBox();
-      StackPane nextPageButton = new ImageButton("NEXT PAGE", event -> importDeck());
-      StackPane previousPageButton = new ImageButton("PREVIOUS PAGE", event -> importDeck());
+      StackPane nextPageButton = new ImageButton("NEXT PAGE", event -> clickNextPage());
+      StackPane previousPageButton = new ImageButton("PREVIOUS PAGE", event -> clickPrevPage());
       pageButtons.getChildren().addAll(previousPageButton, nextPageButton);
       pageButtons.setAlignment(Pos.CENTER);
 
@@ -137,6 +139,12 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       logger.warn("error trying to show card collection");
       logger.debug(e.getMessage());
     }
+  }
+
+  private void clickPrevPage() {
+  }
+
+  private void clickNextPage() {
   }
 
   public static CollectionMenu getInstance() {
