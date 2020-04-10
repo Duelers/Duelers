@@ -2,6 +2,7 @@ package org.projectcardboard.client.models.gui;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 import org.slf4j.Logger;
@@ -38,9 +39,7 @@ public class ImageLoader {
 
   public static Image load(String url) {
     System.out.println("loading image: " + url);
-    InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
-    if (imageResource == null) {
-      logger.warn("Failed to load image at: " + url);
+    if( url.contains("Custom_Card") ){
       try {
         FileInputStream inputStream = new FileInputStream(url);
         return new Image(inputStream);
@@ -49,6 +48,18 @@ public class ImageLoader {
         logger.debug(e.getMessage());
       }
     }
-    return new Image(imageResource);
+
+    InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
+    if (imageResource == null) {
+      logger.warn("Failed to load image at: " + url);
+      return null;
+    }
+    Image image = new Image(imageResource);
+    try {
+      imageResource.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return image;
   }
 }

@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,14 +69,31 @@ public class CardAnimation extends Transition {
         if (plistR == null) {
           throw new FileNotFoundException();
         }
-        return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8),
-            Playlist.class);
+        InputStreamReader streamReader = new InputStreamReader(plistR, StandardCharsets.UTF_8);
+        Playlist gson = new Gson().fromJson(streamReader, Playlist.class);
+        try {
+          plistR.close();
+          streamReader.close();
+        }
+        catch(IOException ex){
+          ex.printStackTrace();
+        }
+        return gson;
       } catch (FileNotFoundException e) {
         try {
           FileInputStream inputStream =
               new FileInputStream(path + card.getSpriteName() + ".plist.json");
-          return new Gson().fromJson(new InputStreamReader(inputStream, StandardCharsets.UTF_8),
-              Playlist.class);
+          InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+          Playlist gson = new Gson().fromJson(inputStreamReader, Playlist.class);
+          try{
+            inputStream.close();
+            inputStreamReader.close();
+          }
+          catch(IOException ex){
+            ex.printStackTrace();
+          }
+
+          return gson;
         } catch (IOException ex) {
           return new Playlist();
         }

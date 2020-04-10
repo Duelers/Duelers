@@ -22,6 +22,7 @@ import org.projectcardboard.client.models.card.ExportedDeck;
 import org.projectcardboard.client.models.gui.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import shared.models.card.Card;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -119,7 +120,13 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
         showCollectionCards();
       });
 
-      collectionBox.getChildren().addAll(searchBox, cardsScroll);
+      HBox pageButtons = new HBox();
+      StackPane nextPageButton = new ImageButton("NEXT PAGE", event -> importDeck());
+      StackPane previousPageButton = new ImageButton("PREVIOUS PAGE", event -> importDeck());
+      pageButtons.getChildren().addAll(previousPageButton, nextPageButton);
+      pageButtons.setAlignment(Pos.CENTER);
+
+      collectionBox.getChildren().addAll(searchBox, cardsScroll, pageButtons);
 
       collectionPane.getChildren().addAll(collectionBox, decksPane);
 
@@ -181,13 +188,17 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
     showingCards.sort();
 
-    CollectionCardsGrid heroesGrid = new CollectionCardsGrid(showingCards.getHeroes());
+    //CollectionCardsGrid heroesGrid = new CollectionCardsGrid(showingCards.getHeroes());
 
-    CollectionCardsGrid minionsGrid = new CollectionCardsGrid(showingCards.getMinions());
+    //CollectionCardsGrid minionsGrid = new CollectionCardsGrid(showingCards.getMinions());
 
-    CollectionCardsGrid spellsGrid = new CollectionCardsGrid(showingCards.getSpells());
+    //CollectionCardsGrid spellsGrid = new CollectionCardsGrid(showingCards.getSpells());
 
-    cardsBox.getChildren().addAll(heroesGrid, minionsGrid, spellsGrid);
+
+
+    CollectionCardsGrid allCards = new CollectionCardsGrid(showingCards);
+
+    cardsBox.getChildren().add(allCards);
     cardsBox.setMinSize(COLLECTION_WIDTH * 0.95, SCROLL_HEIGHT * 0.95);
     cardsBox.setAlignment(Pos.TOP_CENTER);
   }
@@ -228,9 +239,9 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     if (evt.getPropertyName().equals("search_result")) {
       showingCards = (Collection) evt.getNewValue();
       Platform.runLater(() -> {
-        cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards.getHeroes()));
-        cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
-        cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
+        cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards));
+        //cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
+        //cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
       });
     }
 
@@ -253,13 +264,15 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       searchBox.setVisible(false);
       CollectionMenuController.getInstance().search("");
 
-      DeckCardsGrid heroesGrid = new DeckCardsGrid(showingCards.getHeroes(), deck);
+      //DeckCardsGrid heroesGrid = new DeckCardsGrid(showingCards.getHeroes(), deck);
 
-      DeckCardsGrid minionsGrid = new DeckCardsGrid(showingCards.getMinions(), deck);
+      //DeckCardsGrid minionsGrid = new DeckCardsGrid(showingCards.getMinions(), deck);
 
-      DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
+      //DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
 
-      cardsBox.getChildren().addAll(heroesGrid, minionsGrid, spellsGrid);
+      DeckCardsGrid cardGrid = new DeckCardsGrid(showingCards, deck);
+
+      cardsBox.getChildren().add(cardGrid);
     } catch (FileNotFoundException e) {
       logger.warn("error trying to show card collection");
       logger.debug(e.getMessage());
