@@ -1,0 +1,16 @@
+{
+    "name": "Silverguard Squire",
+    "description": "",
+    "cardId": "SilverguardSquire",
+	"faction": "lyonar",
+    "spriteName": "f1_silverguardsquire",
+    "type": "MINION",
+    "defaultAp": 1,
+    "defaultHp": 4,
+    "manaCost": 1,
+    "price": 100,
+    "attackType": "MELEE",
+    "range": 0,
+    "hasCombo": false,
+    "remainingNumber": 20
+}

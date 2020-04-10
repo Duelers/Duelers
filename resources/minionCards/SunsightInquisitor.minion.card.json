@@ -1,0 +1,80 @@
+{
+    "name": "Sunsight Inquisitor",
+    "description": "Opening Gambit: Give your General +1 attack.",
+    "cardId": "SunsightInquisitor",
+	"faction": "lyonar",
+    "spriteName": "f1_leovoyant",
+    "type": "MINION",
+	"spells": [
+{
+      "spellId": "og_1_a",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 1,
+        "hpChange": 0,
+        "mpChange": 0,
+        "cardDraw": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 1,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 20,
+          "column": 20
+        },
+        "owner": {
+          "own": true,
+          "enemy": false
+        },
+        "cardType": {
+          "cell": false,
+          "hero": true,
+          "minion": false,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
+      },
+      "coolDown": 0,
+      "manaCost": 0,
+      "lastTurnUsed": 0
+    }
+	],
+    "defaultAp": 4,
+    "defaultHp": 7,
+    "manaCost": 6,
+    "price": 100,
+    "attackType": "MELEE",
+    "range": 0,
+    "hasCombo": false,
+    "remainingNumber": 20
+}
