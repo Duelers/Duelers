@@ -10,7 +10,7 @@ import java.beans.PropertyChangeEvent;
 public class DeckCardPane extends CardPane {
 
   DeckCardPane(ICard card, Deck deck) {
-    super(card, false, true, deck);
+    super(card, false, true, deck, 1);
   }
 
   @Override
