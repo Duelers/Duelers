@@ -22,15 +22,12 @@ import org.projectcardboard.client.models.card.ExportedDeck;
 import org.projectcardboard.client.models.gui.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import shared.models.card.Card;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.*;
-import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -48,6 +45,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
   private static final double SCROLL_HEIGHT = SCENE_HEIGHT - DEFAULT_SPACING * 13;
   private static final Insets DECKS_PADDING = new Insets(20 * SCALE, 5 * SCALE, 0, 40 * SCALE);
   private static CollectionMenu menu;
+  CollectionCardsGrid allCards;
   private static final EventHandler<? super MouseEvent> BACK_EVENT = event -> {
     Client.getInstance().getAccount().removePropertyChangeListener(menu);
     CollectionMenuController.getInstance().removePropertyChangeListener(menu);
@@ -142,9 +140,13 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
   }
 
   private void clickPrevPage() {
+    System.out.println("called prev");
+    allCards.prevPage();
   }
 
   private void clickNextPage() {
+    System.out.println("called next");
+    allCards.nextPage();
   }
 
   public static CollectionMenu getInstance() {
@@ -204,7 +206,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
 
 
-    CollectionCardsGrid allCards = new CollectionCardsGrid(showingCards);
+    allCards = new CollectionCardsGrid(showingCards);
 
     cardsBox.getChildren().add(allCards);
     cardsBox.setMinSize(COLLECTION_WIDTH * 0.95, SCROLL_HEIGHT * 0.95);

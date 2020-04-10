@@ -21,20 +21,28 @@ import static org.projectcardboard.client.models.gui.UIConstants.SCALE;
 
 public class DeckCardsGrid extends GridPane {
   private static final double BUTTONS_WIDTH = 506 * SCALE;
-  private static final int COLUMN_NUMBER = 4;
+  private static final int COLUMN_NUMBER = 5;
   private static final double WIDTH = 2350 * SCALE;
+  private int currentIndex;
+  ArrayList<Card> allCards;
 
   public DeckCardsGrid(Collection collection, Deck deck) throws FileNotFoundException {
+    /*
     setHgap(DEFAULT_SPACING * 5);
     setVgap(DEFAULT_SPACING * 5);
     setMinWidth(WIDTH);
     setMaxWidth(WIDTH);
 
-    ArrayList<Card> allCards = new ArrayList<>(collection.getHeroes());
+     */
+    setHgap(DEFAULT_SPACING/2);
+    setVgap(DEFAULT_SPACING * 1);
+    setMinWidth(WIDTH/1.5);
+
+    allCards = new ArrayList<>(collection.getHeroes());
     allCards.addAll(collection.getMinions());
     allCards.addAll(collection.getSpells());
 
-    for (int i = 0; i < allCards.size(); i++) {
+    for (int i = 0; i < 10; i++) {
       final ICard card = allCards.get(i);
       VBox deckCardBox = new VBox(-DEFAULT_SPACING);
       deckCardBox.setAlignment(Pos.CENTER);
@@ -53,6 +61,36 @@ public class DeckCardsGrid extends GridPane {
       deckCardBox.getChildren().addAll(cardPane);
 
       add(deckCardBox, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
+    }
+    currentIndex = 10;
+  }
+
+  public void nextPage(){
+    if( currentIndex + 10 > allCards.size()){
+      System.out.println("next page will exceed deck size");
+      return;
+    }
+    getChildren().clear();
+    for (int i = currentIndex; i < currentIndex + 10; i++) {
+      final Card card = allCards.get(i);
+      CardPane cardPane = new CardPane(card, false, false, null);
+      add(cardPane, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
+    }
+    this.currentIndex += 10;
+  }
+
+  public void prevPage(){
+    if( currentIndex - 10 < 0){
+      System.out.println("next page will exceed deck size");
+      return;
+    }
+    this.currentIndex -= 10;
+    getChildren().clear();
+
+    for (int i = currentIndex; i < currentIndex + 10; i++) {
+      final Card card = allCards.get(i);
+      CardPane cardPane = new CardPane(card, false, false, null);
+      add(cardPane, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
     }
   }
 }
