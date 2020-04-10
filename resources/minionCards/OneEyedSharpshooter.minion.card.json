@@ -1,18 +1,17 @@
 {
-  "name": "Nomad Raid Leader",
-  "description": "On Attack: All Your minions gain +1/+1.",
-  "cardId": "NomadRaidLeader",
-  "spriteName": "f3_mech",
+  "name": "One-Eyed Sharpshooter",
+  "description": "Opening Gambit: Destory a Random Enemy Minion with Ranged",
+  "cardId": "OneEyedSharpshooter",
   "faction": "vetruvian",
+  "spriteName": "f3_insightcaster",
   "type": "MINION",
   "spells": [
-
-	{
-      "spellId": "1_1_onAttack",
+    {
+      "spellId": "Destory_Rand_ranged",
       "action": {
         "enemyHitChanges": 0,
-        "apChange": 1,
-        "hpChange": 1,
+        "apChange": 0,
+        "hpChange": 0,
         "mpChange": 0,
         "poison": false,
         "makeStun": false,
@@ -24,7 +23,7 @@
         "noAttackFromWeakerOnes": false,
         "disableHolyBuff": false,
         "addSpell": false,
-        "killsTarget": false,
+        "killsTarget": true,
         "isForGladiator": false,
         "durable": true,
         "removeBuffs": 0,
@@ -32,17 +31,17 @@
         "delay": 0
       },
       "target": {
-        "isRelatedToCardOwnerPosition": true,
+        "isRelatedToCardOwnerPosition": false,
         "isForAroundOwnHero": false,
-        "isRandom": false,
+        "isRandom": true,
         "isForDeckCards": false,
-        "dimensions": {
+      "dimensions": {
           "row": 20,
           "column": 20
-        },
-        "owner": {
-          "own": true,
-          "enemy": false
+        },  
+		"owner": {
+          "own": false,
+          "enemy": true
         },
         "cardType": {
           "cell": false,
@@ -50,29 +49,29 @@
           "minion": true,
           "player": false
         },
-		"attackType": {
-			"melee": true,
+		
+        "attackType": {
+			"melee": false,
 			"ranged": true,
 			"hybrid": true
 		}
       },
       "availabilityType": {
-        "onPut": false,
-        "onAttack": true,
+        "onPut": true,
+        "onAttack": false,
         "onDeath": false,
         "specialPower": false,
         "onStart": false,
         "onDefend": false
       },
       "coolDown": 0,
-      "manaCost": 0,
+      "mannaPoint": 0,
       "lastTurnUsed": 0
     }
-	
   ],
-  "defaultAp": 3,
-  "defaultHp": 3,
-  "manaCost": 3,
+  "defaultAp": 2,
+  "defaultHp": 2,
+  "manaCost": 2,
   "price": 100,
   "attackType": "MELEE",
   "range": 0,
