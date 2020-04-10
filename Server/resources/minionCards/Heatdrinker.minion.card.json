@@ -1,0 +1,80 @@
+{
+  "name": "Heatdrinker",
+  "description": "Provoke, Dying Wish: Destroy all nearby enemy minions.",
+  "cardId": "Heatdrinker",
+  "spriteName": "f6_ynuytwarlock",
+  "faction": "vanar",
+  "type": "MINION",
+  "spells": [
+    {
+      "spellId": "destroy_on_death",
+      "fxName": "fx_explosionblueelectrical",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": -99,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 1,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 3,
+          "column": 3
+        },
+        "owner": {
+          "own": false,
+          "enemy": true
+        },
+        "cardType": {
+          "cell": false,
+          "hero": false,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": false,
+        "onAttack": false,
+        "onDeath": true,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
+      },
+      "coolDown": 0,
+      "manaCost": 0,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 3,
+  "defaultHp": 3,
+  "manaCost": 4,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

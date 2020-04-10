@@ -1,0 +1,16 @@
+{
+  "name": "Paw",
+  "description": "",
+  "cardId": "Paw",
+  "faction": "vanar",
+  "spriteName": "f6_icy",
+  "type": "MINION",
+  "defaultAp": 3,
+  "defaultHp": 1,
+  "manaCost": 1,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
