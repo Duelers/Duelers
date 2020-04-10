@@ -198,11 +198,11 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
     showingCards.sort();
 
-    //CollectionCardsGrid heroesGrid = new CollectionCardsGrid(showingCards.getHeroes());
+    // CollectionCardsGrid heroesGrid = new CollectionCardsGrid(showingCards.getHeroes());
 
-    //CollectionCardsGrid minionsGrid = new CollectionCardsGrid(showingCards.getMinions());
+    // CollectionCardsGrid minionsGrid = new CollectionCardsGrid(showingCards.getMinions());
 
-    //CollectionCardsGrid spellsGrid = new CollectionCardsGrid(showingCards.getSpells());
+    // CollectionCardsGrid spellsGrid = new CollectionCardsGrid(showingCards.getSpells());
 
 
 
@@ -250,8 +250,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       showingCards = (Collection) evt.getNewValue();
       Platform.runLater(() -> {
         cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards));
-        //cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
-        //cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
+        // cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
+        // cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
       });
     }
 
@@ -274,11 +274,11 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       searchBox.setVisible(false);
       CollectionMenuController.getInstance().search("");
 
-      //DeckCardsGrid heroesGrid = new DeckCardsGrid(showingCards.getHeroes(), deck);
+      // DeckCardsGrid heroesGrid = new DeckCardsGrid(showingCards.getHeroes(), deck);
 
-      //DeckCardsGrid minionsGrid = new DeckCardsGrid(showingCards.getMinions(), deck);
+      // DeckCardsGrid minionsGrid = new DeckCardsGrid(showingCards.getMinions(), deck);
 
-      //DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
+      // DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
 
       DeckCardsGrid cardGrid = new DeckCardsGrid(showingCards, deck);
 

@@ -33,7 +33,7 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
   private final DefaultLabel apLabel;
   private final DefaultLabel hpLabel;
   private final ManaIcon manaPane;
-  //private final PriceBox priceBox;
+  // private final PriceBox priceBox;
 
   Deck deck;
   final ICard card;

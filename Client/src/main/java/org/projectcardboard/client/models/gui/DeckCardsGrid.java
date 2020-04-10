@@ -28,15 +28,13 @@ public class DeckCardsGrid extends GridPane {
 
   public DeckCardsGrid(Collection collection, Deck deck) throws FileNotFoundException {
     /*
-    setHgap(DEFAULT_SPACING * 5);
-    setVgap(DEFAULT_SPACING * 5);
-    setMinWidth(WIDTH);
-    setMaxWidth(WIDTH);
-
+     * setHgap(DEFAULT_SPACING * 5); setVgap(DEFAULT_SPACING * 5); setMinWidth(WIDTH);
+     * setMaxWidth(WIDTH);
+     * 
      */
-    setHgap(DEFAULT_SPACING/2);
+    setHgap(DEFAULT_SPACING / 2);
     setVgap(DEFAULT_SPACING * 1);
-    setMinWidth(WIDTH/1.5);
+    setMinWidth(WIDTH / 1.5);
 
     allCards = new ArrayList<>(collection.getHeroes());
     allCards.addAll(collection.getMinions());
@@ -65,8 +63,8 @@ public class DeckCardsGrid extends GridPane {
     currentIndex = 10;
   }
 
-  public void nextPage(){
-    if( currentIndex + 10 > allCards.size()){
+  public void nextPage() {
+    if (currentIndex + 10 > allCards.size()) {
       System.out.println("next page will exceed deck size");
       return;
     }
@@ -79,8 +77,8 @@ public class DeckCardsGrid extends GridPane {
     this.currentIndex += 10;
   }
 
-  public void prevPage(){
-    if( currentIndex - 10 < 0){
+  public void prevPage() {
+    if (currentIndex - 10 < 0) {
       System.out.println("next page will exceed deck size");
       return;
     }

@@ -16,10 +16,10 @@ public class CollectionCardsGrid extends GridPane {
   private int currentIndex;
 
   public CollectionCardsGrid(Collection collection) {
-    setHgap(DEFAULT_SPACING/2);
+    setHgap(DEFAULT_SPACING / 2);
     setVgap(DEFAULT_SPACING * 1);
-    setMinWidth(WIDTH/1.5);
-    //setMaxWidth(WIDTH);
+    setMinWidth(WIDTH / 1.5);
+    // setMaxWidth(WIDTH);
 
     this.allCards = new ArrayList<>(collection.getHeroes());
     allCards.addAll(collection.getMinions());
@@ -33,8 +33,8 @@ public class CollectionCardsGrid extends GridPane {
     this.currentIndex = 10;
   }
 
-  public void nextPage(){
-    if( currentIndex + 10 > allCards.size()){
+  public void nextPage() {
+    if (currentIndex + 10 > allCards.size()) {
       System.out.println("next page will exceed deck size");
       return;
     }
@@ -47,8 +47,8 @@ public class CollectionCardsGrid extends GridPane {
     this.currentIndex += 10;
   }
 
-  public void prevPage(){
-    if( currentIndex - 10 < 0){
+  public void prevPage() {
+    if (currentIndex - 10 < 0) {
       System.out.println("next page will exceed deck size");
       return;
     }

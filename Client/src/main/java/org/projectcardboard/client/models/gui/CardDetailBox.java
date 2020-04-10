@@ -37,8 +37,8 @@ class CardDetailBox extends VBox {
     String facName = UtilityFunctions.capitaliseString(card.getFaction());
     DefaultLabel faction = new DefaultLabel(facName, TYPE_FONT, TYPE_COLOR);
 
-    DefaultText description = new DefaultText(card.getDescription(), DESCRIPTION_WIDTH, DESCRIPTION_FONT,
-            DESCRIPTION_COLOR);
+    DefaultText description = new DefaultText(card.getDescription(), DESCRIPTION_WIDTH,
+        DESCRIPTION_FONT, DESCRIPTION_COLOR);
 
     getChildren().addAll(name, faction, new Space(SPACE_HEIGHT), description);
   }

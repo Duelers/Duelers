@@ -74,8 +74,7 @@ public class CardAnimation extends Transition {
         try {
           plistR.close();
           streamReader.close();
-        }
-        catch(IOException ex){
+        } catch (IOException ex) {
           ex.printStackTrace();
         }
         return gson;
@@ -83,13 +82,13 @@ public class CardAnimation extends Transition {
         try {
           FileInputStream inputStream =
               new FileInputStream(path + card.getSpriteName() + ".plist.json");
-          InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+          InputStreamReader inputStreamReader =
+              new InputStreamReader(inputStream, StandardCharsets.UTF_8);
           Playlist gson = new Gson().fromJson(inputStreamReader, Playlist.class);
-          try{
+          try {
             inputStream.close();
             inputStreamReader.close();
-          }
-          catch(IOException ex){
+          } catch (IOException ex) {
             ex.printStackTrace();
           }
 

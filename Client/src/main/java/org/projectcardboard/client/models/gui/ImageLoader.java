@@ -39,7 +39,7 @@ public class ImageLoader {
 
   public static Image load(String url) {
     System.out.println("loading image: " + url);
-    if( url.contains("Custom_Card") ){
+    if (url.contains("Custom_Card")) {
       try {
         FileInputStream inputStream = new FileInputStream(url);
         return new Image(inputStream);
