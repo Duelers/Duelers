@@ -36,10 +36,10 @@ import static org.projectcardboard.client.models.gui.UIConstants.*;
 
 public class CollectionMenu extends Show implements PropertyChangeListener {
   private static final Background DECKS_BACKGROUND =
-          new Background(new BackgroundFill(Color.rgb(39, 35, 40), CornerRadii.EMPTY, Insets.EMPTY));
+      new Background(new BackgroundFill(Color.rgb(39, 35, 40), CornerRadii.EMPTY, Insets.EMPTY));
 
   private static final Font TITLE_FONT =
-          Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 45 * SCALE);
+      Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 45 * SCALE);
   private static final double COLLECTION_WIDTH = SCENE_WIDTH * 0.8;
   private static final double DECKS_WIDTH = SCENE_WIDTH * 0.2;
   private static final double SCROLL_HEIGHT = SCENE_HEIGHT - DEFAULT_SPACING * 13;
@@ -53,7 +53,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     new MainMenu().show();
   };
   private static final Media backgroundMusic =
-          new Media(CollectionMenu.class.getResource("/music/collection_menu.m4a").toString());
+      new Media(CollectionMenu.class.getResource("/music/collection_menu.m4a").toString());
   private VBox collectionBox;
   private ImageButton showCollectionButton;
   private CollectionSearchBox searchBox;
@@ -106,7 +106,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       searchBox = new CollectionSearchBox();
       cardsBox = new VBox(DEFAULT_SPACING * 4);
       cardsBox.setBackground(new Background(
-              new BackgroundFill(Color.LIGHTSLATEGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+          new BackgroundFill(Color.LIGHTSLATEGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
       showCollectionCards();
 
       ScrollPane cardsScroll = new ScrollPane(cardsBox);
@@ -157,7 +157,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     String deckJson = showJFileChooserDialog();
     if (deckJson != null && !deckJson.isEmpty())
       CollectionMenuController.getInstance()
-              .importDeck(new Gson().fromJson(deckJson, ExportedDeck.class));
+          .importDeck(new Gson().fromJson(deckJson, ExportedDeck.class));
   }
 
   private String showJFileChooserDialog() {
@@ -165,7 +165,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     // Use the directory most likely to contain decks.
     Path exported_decks = Paths.get("./" + Constants.DECK_EXPORT_FOLDER).toAbsolutePath();
     String directory = Files.exists(exported_decks) ? exported_decks.toString()
-            : Paths.get("").toAbsolutePath().toString();
+        : Paths.get("").toAbsolutePath().toString();
 
     JFileChooser jfc = new JFileChooser(directory);
 
@@ -181,7 +181,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       logger.info("Trying to import File: " + selectedFile.getAbsolutePath());
 
       try (BufferedReader bufferedReader =
-                   new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)))) {
+          new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)))) {
         return bufferedReader.readLine();
       } catch (IOException e) {
         logger.warn("error trying to open selected file");

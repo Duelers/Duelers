@@ -51,9 +51,9 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
     getChildren().addAll(background, detailBox);
 
     apLabel = new DefaultLabel(String.valueOf(card.getDefaultAp()), AP_HP_FONT, Color.WHITE, AP_X,
-            AP_HP_Y);
+        AP_HP_Y);
     hpLabel = new DefaultLabel(String.valueOf(card.getDefaultHp()), AP_HP_FONT, Color.WHITE, HP_X,
-            AP_HP_Y);
+        AP_HP_Y);
     if (card.getType().equals(CardType.HERO) || card.getType().equals(CardType.MINION)) {
       getChildren().addAll(apLabel, hpLabel);
     }

@@ -55,17 +55,17 @@ public class CardAnimation extends Transition {
     String path;
     if (CardType.SPELL.equals(card.getType())) {
       path = card.isCustom() ? Config.getInstance().getCustomCardSpritesPath().toString() + "/"
-              : "/icons/";
+          : "/icons/";
     } else {
       path = card.isCustom() ? Config.getInstance().getCustomCardSpritesPath().toString() + "/"
-              : "/troopAnimations/";
+          : "/troopAnimations/";
     }
     image = cachedImages.computeIfAbsent(card.getSpriteName(),
-            key -> ImageLoader.load(path + card.getSpriteName() + ".png"));
+        key -> ImageLoader.load(path + card.getSpriteName() + ".png"));
     playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
       try {
         InputStream plistR =
-                this.getClass().getResourceAsStream(path + card.getSpriteName() + ".plist.json");
+            this.getClass().getResourceAsStream(path + card.getSpriteName() + ".plist.json");
         if (plistR == null) {
           throw new FileNotFoundException();
         }
@@ -81,9 +81,9 @@ public class CardAnimation extends Transition {
       } catch (FileNotFoundException e) {
         try {
           FileInputStream inputStream =
-                  new FileInputStream(path + card.getSpriteName() + ".plist.json");
+              new FileInputStream(path + card.getSpriteName() + ".plist.json");
           InputStreamReader inputStreamReader =
-                  new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+              new InputStreamReader(inputStream, StandardCharsets.UTF_8);
           Playlist gson = new Gson().fromJson(inputStreamReader, Playlist.class);
           try {
             inputStream.close();
@@ -138,7 +138,7 @@ public class CardAnimation extends Transition {
       flag = true;
     if (flag && v > 0.5) {
       imageView.setViewport(new Rectangle2D(currentFramePositions[nextIndex].x,
-              currentFramePositions[nextIndex].y, frameWidth, frameHeight));
+          currentFramePositions[nextIndex].y, frameWidth, frameHeight));
       generateNextState();
       flag = false;
     }
@@ -206,16 +206,16 @@ public class CardAnimation extends Transition {
     Image image;
     if (card.getType().equals(CardType.SPELL)) {
       image = cachedImages.computeIfAbsent(card.getSpriteName(),
-              key -> ImageLoader.load("/icons/" + card.getSpriteName() + ".png"));
+          key -> ImageLoader.load("/icons/" + card.getSpriteName() + ".png"));
       playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
         try {
           InputStream plistR =
-                  this.getClass().getResourceAsStream("/icons/" + card.getSpriteName() + ".plist.json");
+              this.getClass().getResourceAsStream("/icons/" + card.getSpriteName() + ".plist.json");
           if (plistR == null) {
             throw new FileNotFoundException();
           }
           return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8),
-                  Playlist.class);
+              Playlist.class);
         } catch (FileNotFoundException e) {
           return new Playlist();
         }
@@ -226,16 +226,16 @@ public class CardAnimation extends Transition {
       extraY = 31 * Constants.SCALE;
     } else {
       image = cachedImages.computeIfAbsent(card.getSpriteName(),
-              key -> ImageLoader.load("/troopAnimations/" + card.getSpriteName() + ".png"));
+          key -> ImageLoader.load("/troopAnimations/" + card.getSpriteName() + ".png"));
       playlist = cachedPlaylists.computeIfAbsent(card.getSpriteName(), key -> {
         try {
           InputStream plistR = this.getClass()
-                  .getResourceAsStream("/troopAnimations/" + card.getSpriteName() + ".plist.json");
+              .getResourceAsStream("/troopAnimations/" + card.getSpriteName() + ".plist.json");
           if (plistR == null) {
             throw new FileNotFoundException();
           }
           return new Gson().fromJson(new InputStreamReader(plistR, StandardCharsets.UTF_8),
-                  Playlist.class);
+              Playlist.class);
         } catch (FileNotFoundException e) {
           return new Playlist();
         }

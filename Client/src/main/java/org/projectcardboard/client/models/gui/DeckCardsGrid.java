@@ -52,7 +52,7 @@ public class DeckCardsGrid extends GridPane {
           CollectionMenuController.getInstance().addCardToDeck(cardPane.getDeck(), card.getName());
         } else if (button.equals(MouseButton.SECONDARY)) {
           CollectionMenuController.getInstance().removeCardFromDeck(cardPane.getDeck(),
-                  card.getName());
+              card.getName());
         }
       });
 

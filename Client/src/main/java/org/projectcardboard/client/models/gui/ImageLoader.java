@@ -15,7 +15,7 @@ public class ImageLoader {
   private static Logger logger = LoggerFactory.getLogger(ImageLoader.class);
 
   public static ImageView loadImage(String url, double width, double height)
-          throws FileNotFoundException {
+      throws FileNotFoundException {
     InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
     if (imageResource == null) {
       throw new FileNotFoundException();
@@ -24,7 +24,7 @@ public class ImageLoader {
   }
 
   static ImageView loadImage(String url, double width, double height, double x, double y)
-          throws FileNotFoundException {
+      throws FileNotFoundException {
     ImageView view = loadImage(url, width, height);
     view.relocate(x, y);
     return view;
