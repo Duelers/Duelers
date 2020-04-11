@@ -13,6 +13,7 @@ public class CollectionCardsGrid extends GridPane {
   private static final double WIDTH = 2350 * SCALE;
   ArrayList<Card> allCards;
   private int currentIndex;
+  private int numCardsOnScreen = 10;
 
   public CollectionCardsGrid(Collection collection) {
     setHgap(DEFAULT_SPACING / 2);
@@ -24,26 +25,27 @@ public class CollectionCardsGrid extends GridPane {
     allCards.addAll(collection.getMinions());
     allCards.addAll(collection.getSpells());
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < numCardsOnScreen; i++) {
       final Card card = allCards.get(i);
       CardPane cardPane = new CardPane(card, false, false, null);
       add(cardPane, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
     }
     this.currentIndex = 10;
+    setMaxHeight(getHeight());
   }
 
   public void nextPage() {
-    if (currentIndex + 10 > allCards.size()) {
+    if (currentIndex + numCardsOnScreen > allCards.size()) {
       System.out.println("next page will exceed deck size");
       return;
     }
     getChildren().clear();
-    for (int i = currentIndex; i < currentIndex + 10; i++) {
+    for (int i = currentIndex; i < currentIndex + numCardsOnScreen; i++) {
       final Card card = allCards.get(i);
       CardPane cardPane = new CardPane(card, false, false, null);
       add(cardPane, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
     }
-    this.currentIndex += 10;
+    this.currentIndex += numCardsOnScreen;
   }
 
   public void prevPage() {
@@ -54,7 +56,7 @@ public class CollectionCardsGrid extends GridPane {
     this.currentIndex -= 10;
     getChildren().clear();
 
-    for (int i = currentIndex; i < currentIndex + 10; i++) {
+    for (int i = currentIndex; i < currentIndex + numCardsOnScreen; i++) {
       final Card card = allCards.get(i);
       CardPane cardPane = new CardPane(card, false, false, null);
       add(cardPane, i % COLUMN_NUMBER, i / COLUMN_NUMBER);

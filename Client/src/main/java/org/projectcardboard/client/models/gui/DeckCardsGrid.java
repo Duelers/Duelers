@@ -25,6 +25,8 @@ public class DeckCardsGrid extends GridPane {
   private static final double WIDTH = 2350 * SCALE;
   private int currentIndex;
   ArrayList<Card> allCards;
+  private Deck currentDeck;
+  private int numCardsOnScreen = 10;
 
   public DeckCardsGrid(Collection collection, Deck deck) throws FileNotFoundException {
     /*
@@ -32,6 +34,7 @@ public class DeckCardsGrid extends GridPane {
      * setMaxWidth(WIDTH);
      *
      */
+    this.currentDeck = deck;
     setHgap(DEFAULT_SPACING / 2);
     setVgap(DEFAULT_SPACING * 1);
     setMinWidth(WIDTH / 1.5);
@@ -40,7 +43,7 @@ public class DeckCardsGrid extends GridPane {
     allCards.addAll(collection.getMinions());
     allCards.addAll(collection.getSpells());
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < numCardsOnScreen; i++) {
       final ICard card = allCards.get(i);
       VBox deckCardBox = new VBox(-DEFAULT_SPACING);
       deckCardBox.setAlignment(Pos.CENTER);
@@ -64,31 +67,61 @@ public class DeckCardsGrid extends GridPane {
   }
 
   public void nextPage() {
-    if (currentIndex + 10 > allCards.size()) {
+    if (currentIndex + numCardsOnScreen > allCards.size()) {
       System.out.println("next page will exceed deck size");
       return;
     }
     getChildren().clear();
-    for (int i = currentIndex; i < currentIndex + 10; i++) {
-      final Card card = allCards.get(i);
-      CardPane cardPane = new CardPane(card, false, false, null);
-      add(cardPane, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
+    for (int i = currentIndex; i < currentIndex + numCardsOnScreen; i++) {
+      final ICard card = allCards.get(i);
+      VBox deckCardBox = new VBox(-DEFAULT_SPACING);
+      deckCardBox.setAlignment(Pos.CENTER);
+
+      DeckCardPane cardPane = new DeckCardPane(card, currentDeck);
+      cardPane.setOnMouseClicked(mouseEvent -> {
+        MouseButton button = mouseEvent.getButton();
+        if (button.equals(MouseButton.PRIMARY)) {
+          CollectionMenuController.getInstance().addCardToDeck(cardPane.getDeck(), card.getName());
+        } else if (button.equals(MouseButton.SECONDARY)) {
+          CollectionMenuController.getInstance().removeCardFromDeck(cardPane.getDeck(),
+                  card.getName());
+        }
+      });
+
+      deckCardBox.getChildren().addAll(cardPane);
+
+      add(deckCardBox, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
     }
-    this.currentIndex += 10;
+    this.currentIndex += numCardsOnScreen;
   }
 
   public void prevPage() {
-    if (currentIndex - 10 < 0) {
+    if (currentIndex - numCardsOnScreen < 0) {
       System.out.println("next page will exceed deck size");
       return;
     }
-    this.currentIndex -= 10;
+    this.currentIndex -= numCardsOnScreen;
     getChildren().clear();
 
-    for (int i = currentIndex; i < currentIndex + 10; i++) {
-      final Card card = allCards.get(i);
-      CardPane cardPane = new CardPane(card, false, false, null);
-      add(cardPane, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
+    for (int i = currentIndex; i < currentIndex + numCardsOnScreen; i++) {
+      final ICard card = allCards.get(i);
+      VBox deckCardBox = new VBox(-DEFAULT_SPACING);
+      deckCardBox.setAlignment(Pos.CENTER);
+
+      DeckCardPane cardPane = new DeckCardPane(card, currentDeck);
+      cardPane.setOnMouseClicked(mouseEvent -> {
+        MouseButton button = mouseEvent.getButton();
+        if (button.equals(MouseButton.PRIMARY)) {
+          CollectionMenuController.getInstance().addCardToDeck(cardPane.getDeck(), card.getName());
+        } else if (button.equals(MouseButton.SECONDARY)) {
+          CollectionMenuController.getInstance().removeCardFromDeck(cardPane.getDeck(),
+                  card.getName());
+        }
+      });
+
+      deckCardBox.getChildren().addAll(cardPane);
+
+      add(deckCardBox, i % COLUMN_NUMBER, i / COLUMN_NUMBER);
     }
   }
 }

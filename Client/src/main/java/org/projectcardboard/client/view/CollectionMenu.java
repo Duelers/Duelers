@@ -45,7 +45,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
   private static final double SCROLL_HEIGHT = SCENE_HEIGHT - DEFAULT_SPACING * 13;
   private static final Insets DECKS_PADDING = new Insets(20 * SCALE, 5 * SCALE, 0, 40 * SCALE);
   private static CollectionMenu menu;
-  CollectionCardsGrid allCards;
+  private CollectionCardsGrid allCards;
+  private DeckCardsGrid cardGrid;
   private static final EventHandler<? super MouseEvent> BACK_EVENT = event -> {
     Client.getInstance().getAccount().removePropertyChangeListener(menu);
     CollectionMenuController.getInstance().removePropertyChangeListener(menu);
@@ -60,6 +61,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
   private VBox cardsBox;
   private VBox decksBox;
   private Collection showingCards;
+  private boolean onDeckBuildingScreen;
 
   private static Logger logger = LoggerFactory.getLogger(CollectionMenu.class);
 
@@ -133,6 +135,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       AnchorPane sceneContents = new AnchorPane(background, collectionPane, backButton);
 
       root.getChildren().addAll(sceneContents);
+      onDeckBuildingScreen = false;
     } catch (FileNotFoundException e) {
       logger.warn("error trying to show card collection");
       logger.debug(e.getMessage());
@@ -140,13 +143,21 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
   }
 
   private void clickPrevPage() {
-    System.out.println("called prev");
-    allCards.prevPage();
+    if(onDeckBuildingScreen){
+      cardGrid.prevPage();
+    }
+    else{
+      allCards.prevPage();
+    }
   }
 
   private void clickNextPage() {
-    System.out.println("called next");
-    allCards.nextPage();
+    if(onDeckBuildingScreen){
+      cardGrid.nextPage();
+    }
+    else{
+      allCards.nextPage();
+    }
   }
 
   public static CollectionMenu getInstance() {
@@ -211,6 +222,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     cardsBox.getChildren().add(allCards);
     cardsBox.setMinSize(COLLECTION_WIDTH * 0.95, SCROLL_HEIGHT * 0.95);
     cardsBox.setAlignment(Pos.TOP_CENTER);
+    onDeckBuildingScreen = false;
   }
 
   private void showNewDeckDialog() {
@@ -280,9 +292,11 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
       // DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
 
-      DeckCardsGrid cardGrid = new DeckCardsGrid(showingCards, deck);
+      cardGrid = new DeckCardsGrid(showingCards, deck);
 
       cardsBox.getChildren().add(cardGrid);
+      onDeckBuildingScreen = true;
+
     } catch (FileNotFoundException e) {
       logger.warn("error trying to show card collection");
       logger.debug(e.getMessage());
