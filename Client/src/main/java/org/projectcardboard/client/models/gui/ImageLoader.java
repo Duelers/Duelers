@@ -2,6 +2,7 @@ package org.projectcardboard.client.models.gui;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 import org.slf4j.Logger;
@@ -14,7 +15,7 @@ public class ImageLoader {
   private static Logger logger = LoggerFactory.getLogger(ImageLoader.class);
 
   public static ImageView loadImage(String url, double width, double height)
-      throws FileNotFoundException {
+          throws FileNotFoundException {
     InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
     if (imageResource == null) {
       throw new FileNotFoundException();
@@ -23,7 +24,7 @@ public class ImageLoader {
   }
 
   static ImageView loadImage(String url, double width, double height, double x, double y)
-      throws FileNotFoundException {
+          throws FileNotFoundException {
     ImageView view = loadImage(url, width, height);
     view.relocate(x, y);
     return view;
@@ -37,9 +38,8 @@ public class ImageLoader {
   }
 
   public static Image load(String url) {
-    InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
-    if (imageResource == null) {
-      logger.warn("Failed to load image at: " + url);
+    System.out.println("loading image: " + url);
+    if (url.contains("Custom_Card")) {
       try {
         FileInputStream inputStream = new FileInputStream(url);
         return new Image(inputStream);
@@ -48,6 +48,18 @@ public class ImageLoader {
         logger.debug(e.getMessage());
       }
     }
-    return new Image(imageResource);
+
+    InputStream imageResource = ImageLoader.class.getResourceAsStream(url);
+    if (imageResource == null) {
+      logger.warn("Failed to load image at: " + url);
+      return null;
+    }
+    Image image = new Image(imageResource);
+    try {
+      imageResource.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return image;
   }
 }

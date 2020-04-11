@@ -25,11 +25,9 @@ import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.*;
-import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,15 +36,16 @@ import static org.projectcardboard.client.models.gui.UIConstants.*;
 
 public class CollectionMenu extends Show implements PropertyChangeListener {
   private static final Background DECKS_BACKGROUND =
-      new Background(new BackgroundFill(Color.rgb(39, 35, 40), CornerRadii.EMPTY, Insets.EMPTY));
+          new Background(new BackgroundFill(Color.rgb(39, 35, 40), CornerRadii.EMPTY, Insets.EMPTY));
 
   private static final Font TITLE_FONT =
-      Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 45 * SCALE);
+          Font.font("DejaVu Sans Light", FontWeight.EXTRA_LIGHT, 45 * SCALE);
   private static final double COLLECTION_WIDTH = SCENE_WIDTH * 0.8;
   private static final double DECKS_WIDTH = SCENE_WIDTH * 0.2;
   private static final double SCROLL_HEIGHT = SCENE_HEIGHT - DEFAULT_SPACING * 13;
   private static final Insets DECKS_PADDING = new Insets(20 * SCALE, 5 * SCALE, 0, 40 * SCALE);
   private static CollectionMenu menu;
+  CollectionCardsGrid allCards;
   private static final EventHandler<? super MouseEvent> BACK_EVENT = event -> {
     Client.getInstance().getAccount().removePropertyChangeListener(menu);
     CollectionMenuController.getInstance().removePropertyChangeListener(menu);
@@ -54,7 +53,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     new MainMenu().show();
   };
   private static final Media backgroundMusic =
-      new Media(CollectionMenu.class.getResource("/music/collection_menu.m4a").toString());
+          new Media(CollectionMenu.class.getResource("/music/collection_menu.m4a").toString());
   private VBox collectionBox;
   private ImageButton showCollectionButton;
   private CollectionSearchBox searchBox;
@@ -107,19 +106,27 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       searchBox = new CollectionSearchBox();
       cardsBox = new VBox(DEFAULT_SPACING * 4);
       cardsBox.setBackground(new Background(
-          new BackgroundFill(Color.LIGHTSLATEGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+              new BackgroundFill(Color.LIGHTSLATEGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
       showCollectionCards();
 
       ScrollPane cardsScroll = new ScrollPane(cardsBox);
       cardsScroll.setMinWidth(COLLECTION_WIDTH);
       cardsScroll.setMaxWidth(COLLECTION_WIDTH);
       cardsScroll.setId("background_transparent");
+      cardsScroll.fitToHeightProperty();
+      cardsScroll.fitToWidthProperty();
 
       showCollectionButton = new ImageButton("BACK", event -> {
         showCollectionCards();
       });
 
-      collectionBox.getChildren().addAll(searchBox, cardsScroll);
+      HBox pageButtons = new HBox();
+      StackPane nextPageButton = new ImageButton("NEXT PAGE", event -> clickNextPage());
+      StackPane previousPageButton = new ImageButton("PREVIOUS PAGE", event -> clickPrevPage());
+      pageButtons.getChildren().addAll(previousPageButton, nextPageButton);
+      pageButtons.setAlignment(Pos.CENTER);
+
+      collectionBox.getChildren().addAll(searchBox, cardsScroll, pageButtons);
 
       collectionPane.getChildren().addAll(collectionBox, decksPane);
 
@@ -132,6 +139,16 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     }
   }
 
+  private void clickPrevPage() {
+    System.out.println("called prev");
+    allCards.prevPage();
+  }
+
+  private void clickNextPage() {
+    System.out.println("called next");
+    allCards.nextPage();
+  }
+
   public static CollectionMenu getInstance() {
     return menu;
   }
@@ -140,7 +157,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     String deckJson = showJFileChooserDialog();
     if (deckJson != null && !deckJson.isEmpty())
       CollectionMenuController.getInstance()
-          .importDeck(new Gson().fromJson(deckJson, ExportedDeck.class));
+              .importDeck(new Gson().fromJson(deckJson, ExportedDeck.class));
   }
 
   private String showJFileChooserDialog() {
@@ -148,7 +165,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     // Use the directory most likely to contain decks.
     Path exported_decks = Paths.get("./" + Constants.DECK_EXPORT_FOLDER).toAbsolutePath();
     String directory = Files.exists(exported_decks) ? exported_decks.toString()
-        : Paths.get("").toAbsolutePath().toString();
+            : Paths.get("").toAbsolutePath().toString();
 
     JFileChooser jfc = new JFileChooser(directory);
 
@@ -164,7 +181,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       logger.info("Trying to import File: " + selectedFile.getAbsolutePath());
 
       try (BufferedReader bufferedReader =
-          new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)))) {
+                   new BufferedReader(new InputStreamReader(new FileInputStream(selectedFile)))) {
         return bufferedReader.readLine();
       } catch (IOException e) {
         logger.warn("error trying to open selected file");
@@ -181,13 +198,17 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
     showingCards.sort();
 
-    CollectionCardsGrid heroesGrid = new CollectionCardsGrid(showingCards.getHeroes());
+    // CollectionCardsGrid heroesGrid = new CollectionCardsGrid(showingCards.getHeroes());
 
-    CollectionCardsGrid minionsGrid = new CollectionCardsGrid(showingCards.getMinions());
+    // CollectionCardsGrid minionsGrid = new CollectionCardsGrid(showingCards.getMinions());
 
-    CollectionCardsGrid spellsGrid = new CollectionCardsGrid(showingCards.getSpells());
+    // CollectionCardsGrid spellsGrid = new CollectionCardsGrid(showingCards.getSpells());
 
-    cardsBox.getChildren().addAll(heroesGrid, minionsGrid, spellsGrid);
+
+
+    allCards = new CollectionCardsGrid(showingCards);
+
+    cardsBox.getChildren().add(allCards);
     cardsBox.setMinSize(COLLECTION_WIDTH * 0.95, SCROLL_HEIGHT * 0.95);
     cardsBox.setAlignment(Pos.TOP_CENTER);
   }
@@ -228,9 +249,9 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     if (evt.getPropertyName().equals("search_result")) {
       showingCards = (Collection) evt.getNewValue();
       Platform.runLater(() -> {
-        cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards.getHeroes()));
-        cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
-        cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
+        cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards));
+        // cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
+        // cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
       });
     }
 
@@ -253,13 +274,15 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       searchBox.setVisible(false);
       CollectionMenuController.getInstance().search("");
 
-      DeckCardsGrid heroesGrid = new DeckCardsGrid(showingCards.getHeroes(), deck);
+      // DeckCardsGrid heroesGrid = new DeckCardsGrid(showingCards.getHeroes(), deck);
 
-      DeckCardsGrid minionsGrid = new DeckCardsGrid(showingCards.getMinions(), deck);
+      // DeckCardsGrid minionsGrid = new DeckCardsGrid(showingCards.getMinions(), deck);
 
-      DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
+      // DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
 
-      cardsBox.getChildren().addAll(heroesGrid, minionsGrid, spellsGrid);
+      DeckCardsGrid cardGrid = new DeckCardsGrid(showingCards, deck);
+
+      cardsBox.getChildren().add(cardGrid);
     } catch (FileNotFoundException e) {
       logger.warn("error trying to show card collection");
       logger.debug(e.getMessage());
