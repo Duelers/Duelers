@@ -25,9 +25,6 @@ class CardDetailBox extends VBox {
   private static final Color TYPE_COLOR = Color.rgb(133, 199, 202);
   private static final double DESCRIPTION_WIDTH = 400 * SCALE;
   private static final double SPACE_HEIGHT = 115 * SCALE;
-  private final DefaultLabel name;
-  private final DefaultLabel faction;
-  private final DefaultText description;
 
   CardDetailBox(ICard card) {
     super(UIConstants.DEFAULT_SPACING);
@@ -35,13 +32,13 @@ class CardDetailBox extends VBox {
     setMinWidth(GLOW_WIDTH);
     setAlignment(Pos.CENTER);
 
-    name = new DefaultLabel(card.getName(), NAME_FONT, NAME_COLOR);
+    DefaultLabel name = new DefaultLabel(card.getName(), NAME_FONT, NAME_COLOR);
 
     String facName = UtilityFunctions.capitaliseString(card.getFaction());
-    faction = new DefaultLabel(facName, TYPE_FONT, TYPE_COLOR);
+    DefaultLabel faction = new DefaultLabel(facName, TYPE_FONT, TYPE_COLOR);
 
-    description = new DefaultText(card.getDescription(), DESCRIPTION_WIDTH, DESCRIPTION_FONT,
-        DESCRIPTION_COLOR);
+    DefaultText description = new DefaultText(card.getDescription(), DESCRIPTION_WIDTH,
+        DESCRIPTION_FONT, DESCRIPTION_COLOR);
 
     getChildren().addAll(name, faction, new Space(SPACE_HEIGHT), description);
   }

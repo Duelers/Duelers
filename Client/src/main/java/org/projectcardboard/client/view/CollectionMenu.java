@@ -25,11 +25,9 @@ import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.*;
-import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -47,6 +45,8 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
   private static final double SCROLL_HEIGHT = SCENE_HEIGHT - DEFAULT_SPACING * 13;
   private static final Insets DECKS_PADDING = new Insets(20 * SCALE, 5 * SCALE, 0, 40 * SCALE);
   private static CollectionMenu menu;
+  private CollectionCardsGrid allCards;
+  private DeckCardsGrid cardGrid;
   private static final EventHandler<? super MouseEvent> BACK_EVENT = event -> {
     Client.getInstance().getAccount().removePropertyChangeListener(menu);
     CollectionMenuController.getInstance().removePropertyChangeListener(menu);
@@ -61,6 +61,7 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
   private VBox cardsBox;
   private VBox decksBox;
   private Collection showingCards;
+  private boolean onDeckBuildingScreen;
 
   private static Logger logger = LoggerFactory.getLogger(CollectionMenu.class);
 
@@ -114,21 +115,48 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       cardsScroll.setMinWidth(COLLECTION_WIDTH);
       cardsScroll.setMaxWidth(COLLECTION_WIDTH);
       cardsScroll.setId("background_transparent");
+      cardsScroll.fitToHeightProperty();
+      cardsScroll.fitToWidthProperty();
 
       showCollectionButton = new ImageButton("BACK", event -> {
         showCollectionCards();
       });
 
-      collectionBox.getChildren().addAll(searchBox, cardsScroll);
+      HBox pageButtons = new HBox();
+      StackPane nextPageButton = new ImageButton("NEXT PAGE", event -> clickNextPage());
+      StackPane previousPageButton = new ImageButton("PREVIOUS PAGE", event -> clickPrevPage());
+      pageButtons.getChildren().addAll(previousPageButton, nextPageButton);
+      pageButtons.setAlignment(Pos.CENTER);
+
+      collectionBox.getChildren().addAll(searchBox, cardsScroll, pageButtons);
 
       collectionPane.getChildren().addAll(collectionBox, decksPane);
 
       AnchorPane sceneContents = new AnchorPane(background, collectionPane, backButton);
 
       root.getChildren().addAll(sceneContents);
+      onDeckBuildingScreen = false;
     } catch (FileNotFoundException e) {
       logger.warn("error trying to show card collection");
       logger.debug(e.getMessage());
+    }
+  }
+
+  private void clickPrevPage() {
+    if(onDeckBuildingScreen){
+      cardGrid.prevPage();
+    }
+    else{
+      allCards.prevPage();
+    }
+  }
+
+  private void clickNextPage() {
+    if(onDeckBuildingScreen){
+      cardGrid.nextPage();
+    }
+    else{
+      allCards.nextPage();
     }
   }
 
@@ -181,15 +209,20 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
 
     showingCards.sort();
 
-    CollectionCardsGrid heroesGrid = new CollectionCardsGrid(showingCards.getHeroes());
+    // CollectionCardsGrid heroesGrid = new CollectionCardsGrid(showingCards.getHeroes());
 
-    CollectionCardsGrid minionsGrid = new CollectionCardsGrid(showingCards.getMinions());
+    // CollectionCardsGrid minionsGrid = new CollectionCardsGrid(showingCards.getMinions());
 
-    CollectionCardsGrid spellsGrid = new CollectionCardsGrid(showingCards.getSpells());
+    // CollectionCardsGrid spellsGrid = new CollectionCardsGrid(showingCards.getSpells());
 
-    cardsBox.getChildren().addAll(heroesGrid, minionsGrid, spellsGrid);
+
+
+    allCards = new CollectionCardsGrid(showingCards);
+
+    cardsBox.getChildren().add(allCards);
     cardsBox.setMinSize(COLLECTION_WIDTH * 0.95, SCROLL_HEIGHT * 0.95);
     cardsBox.setAlignment(Pos.TOP_CENTER);
+    onDeckBuildingScreen = false;
   }
 
   private void showNewDeckDialog() {
@@ -228,9 +261,9 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
     if (evt.getPropertyName().equals("search_result")) {
       showingCards = (Collection) evt.getNewValue();
       Platform.runLater(() -> {
-        cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards.getHeroes()));
-        cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
-        cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
+        cardsBox.getChildren().set(0, new CollectionCardsGrid(showingCards));
+        // cardsBox.getChildren().set(1, new CollectionCardsGrid(showingCards.getMinions()));
+        // cardsBox.getChildren().set(2, new CollectionCardsGrid(showingCards.getSpells()));
       });
     }
 
@@ -253,13 +286,17 @@ public class CollectionMenu extends Show implements PropertyChangeListener {
       searchBox.setVisible(false);
       CollectionMenuController.getInstance().search("");
 
-      DeckCardsGrid heroesGrid = new DeckCardsGrid(showingCards.getHeroes(), deck);
+      // DeckCardsGrid heroesGrid = new DeckCardsGrid(showingCards.getHeroes(), deck);
 
-      DeckCardsGrid minionsGrid = new DeckCardsGrid(showingCards.getMinions(), deck);
+      // DeckCardsGrid minionsGrid = new DeckCardsGrid(showingCards.getMinions(), deck);
 
-      DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
+      // DeckCardsGrid spellsGrid = new DeckCardsGrid(showingCards.getSpells(), deck);
 
-      cardsBox.getChildren().addAll(heroesGrid, minionsGrid, spellsGrid);
+      cardGrid = new DeckCardsGrid(showingCards, deck);
+
+      cardsBox.getChildren().add(cardGrid);
+      onDeckBuildingScreen = true;
+
     } catch (FileNotFoundException e) {
       logger.warn("error trying to show card collection");
       logger.debug(e.getMessage());
