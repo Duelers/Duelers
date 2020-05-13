@@ -1,11 +1,28 @@
 type,name,description,attack,health,cost,spriteName,faction
 HERO,Lilithe Blightchaser,Abyssian General,2,25,0,f4_general,abyssian
+MINION,Bog Boomer,Dying Wish: Poison all enemy minions on the same row and column as this minion.,2,1,2,f4_crawler,abyssian
+MINION,Bound Miasma Jinn,Opening Gambit: This unit poisons itself and all nearby allies.,5,9,3,f4_mistressofcommands,abyssian
+MINION,Cacophynos,Dying Wish: Destroy a random enemy minion nearby this unit.,6,3,4,f4_limbodweller,abyssian
+MINION,Creeping totem,"At the start of each turn, deal 2 damage to everything in it's row.",0,9,6,f4_buildminion,abyssian
+MINION,Desolation Dancer,Dying Wish: Drain 2 health from your opponent's general.,2,3,2,f4_desolater,abyssian
+MINION,Frenzied Skeleton,This unit dies after 2 turns.,4,2,1,f4_phantasm,abyssian
+MINION,Gibbet,Whenever this unit attacks an enemy minion destroy it.,1,2,2,f4_miniminion,abyssian
+MINION,Hag of Horror,"At the start of each turn, all enemy minions lose 1 attack.",4,5,5,f4_siren,abyssian
+MINION,Hex Claw,Dying Wish: Poison the enemy general.,4,2,4,f4_fallenaspect,abyssian
+MINION,Soul Gorger,At the beginning of each turn this minion deals 2 damage to a random friendly minion and gains +2/+2.,2,3,3,f4_abomination,abyssian
 MINION,Spectral Revenant,"Rush 
  After attacking or counterattacking deal 4 damage to the enemy General",6,6,9,f4_daemonvoid,abyssian
+SPELL,Aphotic Drain,Sacrifice a friendly unit./n All nearby friendly units gain 2 health and your general gains 4 health.,0,0,1,icon_f4_aphoticdrain,abyssian
+SPELL,Blow Dart,Target unit is poisoned,0,0,1,icon_f4_sphereofdarkness,abyssian
+SPELL,Curseful Banishing,Sacrifice a friendly minion. Destroy All minions on that row.,0,0,3,icon_f4_ritualbanishing,abyssian
 SPELL,Dark Destruction,Destroy target enemy minion.,0,0,5,icon_f4_darktransformation,abyssian
+SPELL,Dark Harvest,Sacrifice a friendly minion and give all friendly minions +2/+5.,0,0,6,icon_f4_gateofovervault,abyssian
 SPELL,Doom,The enemy General is DOOMED and will die after three turns,0,0,9,icon_f4_doom,abyssian
+SPELL,Necrotic Square,Destroy all minions nearby your general.,0,0,5,icon_f4_necroticsphere,abyssian
 SPELL,Shadow Reflection,Give a friendly minion +5 Attack.,0,0,3,icon_f4_shadowreflection,abyssian
 SPELL,Soulshatter Pact,Give all friendly minions +2 Attack this turn.,0,0,2,icon_f4_soulshatterpact,abyssian
+SPELL,Toxic Miasma,All enemies lose 2 attack permanently.,0,0,7,icon_f4_shadownova,abyssian
+SPELL,Vellum Scry,Sacrifice a friendly minion. Draw 4 Cards,0,0,2,icon_f4_soulclamp,abyssian
 SPELL,Void Pulse,Deal 2 damage to the enemy General. Your General gains 2 Health.,0,0,1,icon_f4_voidpulse,abyssian
 HERO,Argeon Highmayne,Lyonar General,2,25,0,f1_general,lyonar
 MINION,Azurite Lion,Celerity,2,3,2,f1_azuritelion,lyonar
