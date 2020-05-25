@@ -1,0 +1,141 @@
+{
+  "name": "Sleeping Quillgod",
+  "description": "Provoke, Can't move or attack. On counter attack, deal 2 damage to all nearby enemies",
+  "cardId": "SleepingQuillgod",
+  "faction": "magmar",
+  "spriteName": "f5_catalystquillbeast",
+  "type": "MINION",
+  "spells": [
+    {
+      "spellId": "dmg_on_counterattack",
+      "fxName": "fx_impact2",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": -2,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 1,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 3,
+          "column": 3
+        },
+        "owner": {
+          "own": false,
+          "enemy": true
+        },
+        "cardType": {
+          "cell": false,
+          "hero": true,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": false,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onCounterAttack": true
+      },
+      "coolDown": 0,
+      "manaCost": 0,
+      "lastTurnUsed": 0
+    },
+	{
+      "spellId": "perma_stun",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": 0,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": true,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 99,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": true,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 1,
+          "column": 1
+        },
+        "owner": {
+          "own": true,
+          "enemy": false
+        },
+        "cardType": {
+          "cell": false,
+          "hero": false,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onCounterAttack": false
+      },
+      "coolDown": 0,
+      "manaCost": 0,
+      "lastTurnUsed": 0
+    }
+  ],
+  "defaultAp": 1,
+  "defaultHp": 8,
+  "manaCost": 6,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

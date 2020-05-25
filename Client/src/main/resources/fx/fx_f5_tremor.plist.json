@@ -4,494 +4,452 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>fx_f2_eightgates_teallotus_000.png</key>
+			<key>fx_f5_tremor_000.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{543,362},{180,180}}</string>
+				<string>{{591,0},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_001.png</key>
+			<key>fx_f5_tremor_001.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1086,543},{180,180}}</string>
+				<string>{{1182,0},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_002.png</key>
+			<key>fx_f5_tremor_002.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1086,362},{180,180}}</string>
+				<string>{{985,788},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_003.png</key>
+			<key>fx_f5_tremor_003.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1086,181},{180,180}}</string>
+				<string>{{985,591},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_004.png</key>
+			<key>fx_f5_tremor_004.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1086,0},{180,180}}</string>
+				<string>{{985,394},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_005.png</key>
+			<key>fx_f5_tremor_005.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{905,724},{180,180}}</string>
+				<string>{{985,197},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_006.png</key>
+			<key>fx_f5_tremor_006.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{905,543},{180,180}}</string>
+				<string>{{985,0},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_007.png</key>
+			<key>fx_f5_tremor_007.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{905,362},{180,180}}</string>
+				<string>{{788,788},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_008.png</key>
+			<key>fx_f5_tremor_008.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{905,181},{180,180}}</string>
+				<string>{{788,591},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_009.png</key>
+			<key>fx_f5_tremor_009.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{905,0},{180,180}}</string>
+				<string>{{788,394},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_010.png</key>
+			<key>fx_f5_tremor_010.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{724,724},{180,180}}</string>
+				<string>{{788,197},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_011.png</key>
+			<key>fx_f5_tremor_011.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{724,543},{180,180}}</string>
+				<string>{{788,0},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_012.png</key>
+			<key>fx_f5_tremor_012.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{724,362},{180,180}}</string>
+				<string>{{591,788},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_013.png</key>
+			<key>fx_f5_tremor_013.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{724,181},{180,180}}</string>
+				<string>{{591,591},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_014.png</key>
+			<key>fx_f5_tremor_014.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{724,0},{180,180}}</string>
+				<string>{{591,394},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_015.png</key>
+			<key>fx_f5_tremor_015.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{543,724},{180,180}}</string>
+				<string>{{591,197},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_016.png</key>
+			<key>fx_f5_tremor_016.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{543,543},{180,180}}</string>
+				<string>{{1182,197},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_017.png</key>
+			<key>fx_f5_tremor_017.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1086,724},{180,180}}</string>
+				<string>{{394,788},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_018.png</key>
+			<key>fx_f5_tremor_018.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{543,181},{180,180}}</string>
+				<string>{{394,591},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_019.png</key>
+			<key>fx_f5_tremor_019.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{543,0},{180,180}}</string>
+				<string>{{394,394},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_020.png</key>
+			<key>fx_f5_tremor_020.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{362,724},{180,180}}</string>
+				<string>{{394,197},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_021.png</key>
+			<key>fx_f5_tremor_021.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{362,543},{180,180}}</string>
+				<string>{{394,0},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_022.png</key>
+			<key>fx_f5_tremor_022.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{362,362},{180,180}}</string>
+				<string>{{197,788},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_023.png</key>
+			<key>fx_f5_tremor_023.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{362,181},{180,180}}</string>
+				<string>{{197,591},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_024.png</key>
+			<key>fx_f5_tremor_024.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{362,0},{180,180}}</string>
+				<string>{{197,394},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_025.png</key>
+			<key>fx_f5_tremor_025.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{181,724},{180,180}}</string>
+				<string>{{197,197},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_026.png</key>
+			<key>fx_f5_tremor_026.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{181,543},{180,180}}</string>
+				<string>{{197,0},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_027.png</key>
+			<key>fx_f5_tremor_027.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{181,362},{180,180}}</string>
+				<string>{{0,788},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_028.png</key>
+			<key>fx_f5_tremor_028.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{181,181},{180,180}}</string>
+				<string>{{0,591},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_029.png</key>
+			<key>fx_f5_tremor_029.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{181,0},{180,180}}</string>
+				<string>{{0,394},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_030.png</key>
+			<key>fx_f5_tremor_030.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,724},{180,180}}</string>
+				<string>{{0,197},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
-			<key>fx_f2_eightgates_teallotus_031.png</key>
+			<key>fx_f5_tremor_031.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,543},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
+				<string>{{0,0},{196,196}}</string>
 				<key>sourceSize</key>
-				<string>{180,180}</string>
-			</dict>
-
-			<key>fx_f2_eightgates_teallotus_032.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{0,362},{180,180}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
-				<key>sourceSize</key>
-				<string>{180,180}</string>
-			</dict>
-
-			<key>fx_f2_eightgates_teallotus_033.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{0,181},{180,180}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
-				<key>sourceSize</key>
-				<string>{180,180}</string>
-			</dict>
-
-			<key>fx_f2_eightgates_teallotus_034.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{0,0},{180,180}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{180,180}}</string>
-				<key>sourceSize</key>
-				<string>{180,180}</string>
+				<string>{196,196}</string>
 			</dict>
 
 		</dict>
@@ -503,7 +461,7 @@
 			<key>size</key>
 			<string>{2048,1024}</string>
 			<key>textureFileName</key>
-			<string>fx_f2_eightgates_teallotus.png</string>
+			<string>fx_f5_tremor.png</string>
 			</dict>
 		</dict>
 </plist>
