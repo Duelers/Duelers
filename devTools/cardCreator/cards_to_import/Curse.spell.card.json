@@ -1,0 +1,129 @@
+{
+    "name": "Curse",
+    "description": "Give a minion -1/-1. Draw a card",
+    "cardId": "Curse",
+    "faction": "vanar",
+    "spriteName": "icon_f6_illusoryice",
+    "type": "SPELL",
+    "spells": [
+	{
+	    "spellId": "give_m1_m1",
+	    "fxName": "fx_f6_perfectreflection",
+	    "action": {
+		"enemyHitChanges": 0,
+		"apChange": -1,
+		"hpChange": -1,
+		"mpChange": 0,
+		"cardDraw": 0,
+		"poison": false,
+		"makeStun": false,
+		"makeDisarm": false,
+		"noDisarm": false,
+		"noPoison": false,
+		"noStun": false,
+		"noBadEffect": false,
+		"noAttackFromWeakerOnes": false,
+		"disableHolyBuff": false,
+		"addSpell": false,
+		"killsTarget": false,
+		"isForGladiator": false,
+		"durable": true,
+		"removeBuffs": 0,
+		"duration": 1,
+		"delay": 0
+	    },
+	    "target": {
+		"isRelatedToCardOwnerPosition": false,
+		"isForAroundOwnHero": false,
+		"isRandom": false,
+		"isForDeckCards": false,
+		"dimensions": {
+		    "row": 1,
+		    "column": 1
+		},
+		"owner": {
+		    "own": true,
+		    "enemy": true
+		},
+		"cardType": {
+		    "cell": false,
+		    "hero": false,
+		    "minion": true,
+		    "player": true
+		},
+		"attackType": {
+		    "melee": true,
+		    "ranged": true,
+		    "hybrid": true
+		}
+	    },
+	    "availabilityType": {
+		"onPut": true,
+		"onAttack": false,
+		"onDeath": false,
+		"specialPower": false,
+		"onStart": false,
+		"onDefend": false
+	    },
+	    "coolDown": 0,
+	    "manaCost": 0,
+	    "lastTurnUsed": 0
+	},
+	{
+	    "spellId": "draw_1",
+	    "fxName": "fx_f6_perfectreflection",
+	    "action": {
+		"enemyHitChanges": 0,
+		"apChange": 0,
+		"hpChange": 0,
+		"mpChange": 0,
+		"cardDraw": 1,
+		"poison": false,
+		"makeStun": false,
+		"makeDisarm": false,
+		"noDisarm": false,
+		"noPoison": false,
+		"noStun": false,
+		"noBadEffect": false,
+		"noAttackFromWeakerOnes": false,
+		"disableHolyBuff": false,
+		"addSpell": false,
+		"killsTarget": false,
+		"isForGladiator": false,
+		"durable": true,
+		"removeBuffs": 0,
+		"duration": 0,
+		"delay": 0
+      },
+	"target": {
+            "isRelatedToCardOwnerPosition": true,
+            "dimensions": {
+                "row": 20,
+                "column": 20
+            },
+            "owner": {
+                "own": true,
+                "enemy": false
+            },
+            "cardType": {
+                "player": true
+            },
+            "attackType": {
+                "melee": true,
+                "ranged": true,
+                "hybrid": true
+            }
+        },
+        "availabilityType": {
+            "onPut": true
+        }
+    }
+  ],
+  "defaultAp": 0,
+  "defaultHp": 0,
+  "manaCost": 1,
+  "price": 100,
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

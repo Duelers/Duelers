@@ -1,0 +1,77 @@
+{
+  "name": "Banner Bearer",
+  "description": "Opening Gambit: Give +2 hp to all nearby friendly minions including Banner Bearer.",
+  "cardId": "BannerBearer",
+  "faction": "vanar",
+  "spriteName": "f6_tundraguardian",
+  "type": "MINION",
+  "spells": [
+    {
+      "spellId": "health_on_put",
+      "fxName": "fx_f3_fountainofyouth",
+      "action": {
+        "enemyHitChanges": 0,
+        "apChange": 0,
+        "hpChange": 2,
+        "mpChange": 0,
+        "poison": false,
+        "makeStun": false,
+        "makeDisarm": false,
+        "noDisarm": false,
+        "noPoison": false,
+        "noStun": false,
+        "noBadEffect": false,
+        "noAttackFromWeakerOnes": false,
+        "disableHolyBuff": false,
+        "addSpell": false,
+        "killsTarget": false,
+        "isForGladiator": false,
+        "durable": true,
+        "removeBuffs": 0,
+        "duration": 1,
+        "delay": 0
+      },
+      "target": {
+        "isRelatedToCardOwnerPosition": false,
+        "isForAroundOwnHero": false,
+        "isRandom": false,
+        "isForDeckCards": false,
+        "dimensions": {
+          "row": 3,
+          "column": 3
+        },
+        "owner": {
+          "own": true,
+          "enemy": false
+        },
+        "cardType": {
+          "cell": false,
+          "hero": false,
+          "minion": true,
+          "player": false
+        },
+        "attackType": {
+          "melee": true,
+          "ranged": true,
+          "hybrid": true
+        }
+      },
+      "availabilityType": {
+        "onPut": true,
+        "onAttack": false,
+        "onDeath": false,
+        "specialPower": false,
+        "onStart": false,
+        "onDefend": false
+      }
+    }
+  ],
+  "defaultAp": 2,
+  "defaultHp": 2,
+  "manaCost": 3,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}

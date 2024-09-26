@@ -1,0 +1,47 @@
+{
+    "name": "Blacksmith",
+    "description": "Opening Gambit: Give your General +1 Attack this turn.",
+    "cardId": "Blacksmith",
+    "faction": "vanar",
+    "spriteName": "f6_buildcommon",
+    "type": "MINION",
+    "spells": [
+        {
+            "spellId": "give_1_atk_to_general",
+	    "fxName": "fx_ringswirl",
+            "action": {
+                "apChange": 1,
+                "durable": false,
+                "duration": 1
+            },
+            "target": {
+                "isRelatedToCardOwnerPosition": true,
+                "dimensions": {
+                    "row": 20,
+                    "column": 20
+                },
+                "owner": {
+                    "own": true,
+                    "enemy": false
+                },
+                "cardType": {
+                    "hero": true
+                },
+                "attackType": {
+                    "melee": true,
+                    "ranged": true,
+                    "hybrid": true
+                }
+            },
+            "availabilityType": {
+                "onPut": true
+            }
+        }
+    ],
+    "defaultAp": 1,
+    "defaultHp": 3,
+    "manaCost": 2,
+    "price": 100,
+    "attackType": "MELEE",
+    "remainingNumber": 20
+}

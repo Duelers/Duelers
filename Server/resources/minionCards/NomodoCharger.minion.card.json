@@ -1,0 +1,16 @@
+{
+  "name": "Nomodo Charger",
+  "description": "Rush",
+  "cardId": "NomodoCharger",
+  "faction": "vanar",
+  "spriteName": "f6_doofybear",
+  "type": "MINION",
+  "defaultAp": 1,
+  "defaultHp": 1,
+  "manaCost": 1,
+  "price": 100,
+  "attackType": "MELEE",
+  "range": 0,
+  "hasCombo": false,
+  "remainingNumber": 20
+}
