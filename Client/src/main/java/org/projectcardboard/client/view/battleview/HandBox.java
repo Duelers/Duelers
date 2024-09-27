@@ -35,6 +35,8 @@ public class HandBox implements PropertyChangeListener {
   private static final Effect DISABLE_BUTTON_EFFECT = new ColorAdjust(0, -1, 0, 0);
   private final BattleScene battleScene;
   private final Player player;
+  private int direction = 1; // direction card/minion is facing. 1 for facing right, -1 for facing
+                             // left.
   private final Group handGroup;
   private final Pane[] cards = new Pane[shared.Constants.MAXIMUM_CARD_HAND_SIZE];
   private final StackPane next = new StackPane();
@@ -59,19 +61,25 @@ public class HandBox implements PropertyChangeListener {
   HandBox(BattleScene battleScene, Player player) throws Exception {
     this.battleScene = battleScene;
     this.player = player;
+
     handGroup = new Group();
     handGroup.setLayoutX(Constants.HAND_X);
     handGroup.setLayoutY(Constants.HAND_Y);
 
 
     if (player != null) {
+
+      this.direction = player.getPlayerNumber() == 1 ? 1 : -1;
+
       HBox hBox = new HBox();
       hBox.setLayoutX(200 * Constants.SCALE);
       hBox.setLayoutY(25 * Constants.SCALE);
       hBox.setSpacing(-15 * Constants.SCALE);
       handGroup.getChildren().add(hBox);
+
       for (int i = 0; i < shared.Constants.MAXIMUM_CARD_HAND_SIZE; i++) {
         cards[i] = new Pane();
+        cards[i].setScaleX(direction);
         hBox.getChildren().add(cards[i]);
       }
       updateCards();
@@ -180,7 +188,7 @@ public class HandBox implements PropertyChangeListener {
             cardAnimation.inActive();
             imageView.setImage(cardBackGlow);
           }
-          cardPane = new CardPane(card, false, false, null);
+          cardPane = new CardPane(card, false, false, null, direction);
           cardPane.setLayoutY(-300 * Constants.SCALE + cards[I].getLayoutY());
           cardPane.setLayoutX(150 * Constants.SCALE + cards[I].getLayoutX());
           handGroup.getChildren().add(cardPane);
@@ -296,7 +304,7 @@ public class HandBox implements PropertyChangeListener {
     List<Card> graveyard = player.getGraveyard();
     for (int i = 0; i < graveyard.size(); i++) {
       Card card = graveyard.get(i);
-      CardPane cardPane = new CardPane(card, false, false, null);
+      CardPane cardPane = new CardPane(card, false, false, null, direction);
       cardsPane.add(cardPane, i % 3, i / 3);
     }
     scrollPane.setContent(cardsPane);

@@ -40,7 +40,9 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
   DefaultLabel countLabel;
   int oldCount;
 
-  public CardPane(ICard card, boolean showPrice, boolean showCount, Deck deck) {
+  public CardPane(ICard card, boolean showPrice, boolean showCount, Deck deck, int direction) {
+    assert direction == 1 || direction == -1;
+
     this.card = card;
     this.deck = deck;
     setPrefSize(GLOW_WIDTH, GLOW_HEIGHT);
@@ -74,6 +76,7 @@ public class CardPane extends AnchorPane implements PropertyChangeListener {
     }
 
     cardAnimation = new CardAnimation(this, card, SPRITE_CENTER_Y, SPRITE_CENTER_X);
+    cardAnimation.getImageView().setScaleX(direction);
 
     setOnMouseEntered(event -> {
       cardAnimation.inActive();
